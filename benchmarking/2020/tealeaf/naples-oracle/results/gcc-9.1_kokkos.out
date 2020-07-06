@@ -1,0 +1,130 @@
+Solution Parameters:
+	dt_init = 0.004000
+	end_time = 10.000000
+	end_step = 10
+	grid_x_min = 0.000000
+	grid_y_min = 0.000000
+	grid_x_max = 10.000000
+	grid_y_max = 10.000000
+	grid_x_cells = 4000
+	grid_y_cells = 4000
+	presteps = 30
+	ppcg_inner_steps = 10
+	eps_lim = 0.000010
+	max_iters = 10000
+	eps = 0.000000
+	halo_depth = 2
+	check_result = 1
+	coefficient = 1
+	num_chunks_per_rank = 1
+	summary_frequency = 10
+	
+state 0
+	density = 1.000000000000E+02
+	energy= 1.000000000000E-04
+	
+state 1
+	density = 1.000000000000E-01
+	energy= 2.500000000000E+01
+	x_min = 2.500000000000E-05
+	y_min = 1.000025000000E+00
+	x_max = 9.999750000000E-01
+	y_max = 1.999975000000E+00
+	radius = 0.000000000000E+00
+	geometry = 0
+	
+state 2
+	density = 1.000000000000E-01
+	energy= 1.000000000000E-01
+	x_min = 1.000025000000E+00
+	y_min = 1.000025000000E+00
+	x_max = 5.999975000000E+00
+	y_max = 1.999975000000E+00
+	radius = 0.000000000000E+00
+	geometry = 0
+	
+state 3
+	density = 1.000000000000E-01
+	energy= 1.000000000000E-01
+	x_min = 5.000025000000E+00
+	y_min = 1.000025000000E+00
+	x_max = 5.999975000000E+00
+	y_max = 7.999975000000E+00
+	radius = 0.000000000000E+00
+	geometry = 0
+	
+state 4
+	density = 1.000000000000E-01
+	energy= 1.000000000000E-01
+	x_min = 5.000025000000E+00
+	y_min = 7.000025000000E+00
+	x_max = 9.999975000000E+00
+	y_max = 7.999975000000E+00
+	radius = 0.000000000000E+00
+	geometry = 0
+Performing this solve with the Kokkos  solver
+
+Timestep 1
+CG: 			4873 iterations
+Wallclock: 		44.012s
+Avg. time per cell: 	2.750776e-06
+Error: 			9.746356e-31
+
+Timestep 2
+CG: 			4717 iterations
+Wallclock: 		86.460s
+Avg. time per cell: 	5.403727e-06
+Error: 			9.982422e-31
+
+Timestep 3
+CG: 			4560 iterations
+Wallclock: 		126.771s
+Avg. time per cell: 	7.923194e-06
+Error: 			9.646618e-31
+
+Timestep 4
+CG: 			4406 iterations
+Wallclock: 		165.631s
+Avg. time per cell: 	1.035193e-05
+Error: 			9.855545e-31
+
+Timestep 5
+CG: 			4261 iterations
+Wallclock: 		203.252s
+Avg. time per cell: 	1.270325e-05
+Error: 			9.889012e-31
+
+Timestep 6
+CG: 			4122 iterations
+Wallclock: 		239.650s
+Avg. time per cell: 	1.497810e-05
+Error: 			9.931857e-31
+
+Timestep 7
+CG: 			4001 iterations
+Wallclock: 		274.958s
+Avg. time per cell: 	1.718485e-05
+Error: 			9.833270e-31
+
+Timestep 8
+CG: 			3884 iterations
+Wallclock: 		309.290s
+Avg. time per cell: 	1.933062e-05
+Error: 			9.838563e-31
+
+Timestep 9
+CG: 			3780 iterations
+Wallclock: 		342.627s
+Avg. time per cell: 	2.141422e-05
+Error: 			9.829642e-31
+
+Timestep 10
+CG: 			3679 iterations
+Wallclock: 		375.104s
+Avg. time per cell: 	2.344402e-05
+Error: 			9.873042e-31
+
+Checking results...
+Expected 9.546235158221428e+01
+Actual   9.546235158219206e+01
+This run [32mPASSED[0m (Difference is within 0.00000000%)
