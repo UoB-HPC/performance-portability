@@ -1,0 +1,16 @@
+Mon 13 Jul 06:32:24 UTC 2020
+BabelStream
+Version: 3.4
+Implementation: CUDA
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using CUDA device Tesla V100-SXM2-16GB
+Driver: 10020
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        806525.128  0.01065     0.01068     0.01066     
+Mul         807403.295  0.01064     0.01101     0.01065     
+Add         844520.185  0.01526     0.01579     0.01527     
+Triad       844484.041  0.01526     0.01598     0.01527     
+Dot         892219.722  0.00963     0.01041     0.00967     
