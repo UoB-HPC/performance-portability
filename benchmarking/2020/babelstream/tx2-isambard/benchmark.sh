@@ -9,6 +9,7 @@ function usage() {
   echo "Valid compilers:"
   echo "  cce-10.0"
   echo "  gcc-9.2"
+  echo "  allinea-20.0"
   echo
   echo "Valid models:"
   echo "  omp"
@@ -52,6 +53,13 @@ gcc-9.2)
   MAKE_OPTS="COMPILER=GNU TARGET=CPU"
   export OMP_PROC_BIND=spread
   ;;
+allinea-20.0)
+  module purge
+  module load alps PrgEnv-allinea
+#  module swap allinea allinea/20.0.0.0
+  MAKE_OPTS="COMPILER=ARMCLANG TARGET=CPU"
+  export OMP_PROC_BIND=spread
+  ;;
 *)
   echo
   echo "Invalid compiler '$COMPILER'."
@@ -77,14 +85,16 @@ if [ "$ACTION" == "build" ]; then
     BINARY="omp-stream"
     ;;
   kokkos)
-    # module load kokkos/2.8.0/gcc-8.2
-    module load kokkos/3.1.1/gcc-9.2
+    KOKKOS_PATH=$(pwd)/$(fetch_kokkos)
+    echo "Using KOKKOS_PATH=${KOKKOS_PATH}"
     MAKE_FILE="Kokkos.make"
     BINARY="kokkos-stream"
+    MAKE_OPTS+=" KOKKOS_PATH=${KOKKOS_PATH} ARCH=ARMv8-TX2 DEVICE=OpenMP"
+    export OMP_PROC_BIND=spread
     ;;
   esac
 
-  if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS; then
+  if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
     echo
     echo "Build failed."
     echo

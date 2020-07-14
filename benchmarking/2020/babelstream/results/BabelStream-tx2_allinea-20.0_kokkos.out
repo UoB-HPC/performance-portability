@@ -1,0 +1,51 @@
+Tue 14 Jul 13:05:31 UTC 2020
+BabelStream
+Version: 3.4
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        233783.891  0.00230     0.00236     0.00232     
+Mul         214055.766  0.00251     0.00278     0.00255     
+Add         217493.187  0.00370     0.00395     0.00382     
+Triad       228350.698  0.00353     0.00423     0.00365     
+Dot         223256.213  0.00240     0.00365     0.00264     
+Application 1328627 resources: utime ~123s, stime ~52s, Rss ~1568428, inblocks ~0, outblocks ~0
+============================= PBS epilogue =============================
+
+End of Job Report
+Run at 2020-07-14 13:05:43 for job 55398.xci00
+Submitted              : 2020-07-14 13:03:13
+Queued                 : 2020-07-14 13:03:13
+Started                : 2020-07-14 13:05:30
+Completed              : 2020-07-14 13:05:43
+Queued Time            : 0:02:17 (137 seconds)
+Elapsed Time           : 0:00:08 (8 seconds, 1% of limit)
+Walltime Limit         : 0:15:00 (900 seconds)
+Node Time Limit        : 0:15:00 (900 seconds)
+Node Time              : 0:00:08 (8 seconds, 1% of limit)
+Job Name               : babelstream
+Queue                  : arm
+Owner                  : br-wlin
+Group                  : -default-
+Project                : bristol
+Subproject             : 
+Funding                : 
+Trustzone              : 
+STDOUT                 : /home/br-wlin/performance-portability/benchmarking/2020/babelstream/results/BabelStream-tx2_allinea-20.0_kokkos.out
+STDERR                 : /home/br-wlin/performance-portability/benchmarking/2020/babelstream/results/babelstream.e55398
+Job Directory          : /home/br-wlin/pbs.55398.xci00.x8z
+Job Arch               : XT
+CPU Core Type          : arm
+Total Nodes            : 1
+Total Tasks            : 64
+Parent Node            : xcimom2
+Parent Node Memory     : 
+Parent Node CPU Time   : 
+Compute Nodes          : 186
+Electrical Groups      : 1
+Run Version            : 1
+
+For more information see https://gw4-isambard.github.io/docs/
