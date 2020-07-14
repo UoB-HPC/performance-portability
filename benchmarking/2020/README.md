@@ -9,12 +9,18 @@ Result obtained via `amm progress.sc`:
 
  - [x] babelstream
    - [x] BabelStream: 
+     - [x] tx2 kokkos (allinea-20.0)
+     - [x] tx2 kokkos (gcc-9.2)
+     - [x] tx2 omp (allinea-20.0)
      - [x] tx2 omp (cce-10.0)
      - [x] tx2 omp (gcc-9.2)
      - [x] v100 acc (pgi-19.10)
      - [x] v100 cuda (gcc-7.3)
      - [x] v100 omp (llvm-trunk)
    - [x] BabelStream(2^29): 
+     - [x] tx2 kokkos (allinea-20.0)
+     - [x] tx2 kokkos (gcc-9.2)
+     - [x] tx2 omp (allinea-20.0)
      - [x] tx2 omp (cce-10.0)
      - [x] tx2 omp (gcc-9.2)
      - [x] v100 acc (pgi-19.10)
