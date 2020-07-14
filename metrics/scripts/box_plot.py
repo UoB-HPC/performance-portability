@@ -66,6 +66,7 @@ print(data_nona)
 # Box and whisker plot
 ax = data_nona.boxplot()
 ax.set(ylabel='% efficiency')
+plt.xticks(rotation=45)
 plt.savefig(args.output_file, bbox_inches='tight')
 plt.close()
 
