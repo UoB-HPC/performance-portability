@@ -16,7 +16,11 @@ applications=(
 )
 
 for code in ${applications[@]}; do
-  $1 data/"$code".csv $f "$graph"_"$code".pdf
+  if [[ "$code" -eq "babelstream_peak" ]]; then
+    $1 --input-is-throughput --calc-efficiency data/"$code".csv $f "$graph"_"$code".pdf
+  else
+    $1 data/"$code".csv $f "$graph"_"$code".pdf
+  fi
 done
 
 pdfnup --nup 3x2 "$graph"*.pdf
