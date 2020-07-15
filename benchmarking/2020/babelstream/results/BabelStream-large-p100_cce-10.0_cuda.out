@@ -1,0 +1,18 @@
+Wed 15 Jul 03:11:38 GMT 2020
+BabelStream
+Version: 3.4
+Implementation: CUDA
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using CUDA device Tesla P100-PCIE-16GB
+Driver: 10020
+Validation failed on sum. Error 7.44812e-07
+Sum was 636.656592434059 but should be 636.656593178871
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        543200.556  0.01581     0.01590     0.01587     
+Mul         543112.428  0.01582     0.01592     0.01588     
+Add         555142.622  0.02321     0.02325     0.02322     
+Triad       556481.578  0.02315     0.02317     0.02316     
+Dot         587015.220  0.01463     0.01478     0.01469     

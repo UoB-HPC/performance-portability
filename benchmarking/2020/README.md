@@ -9,6 +9,15 @@ Result obtained via `amm progress.sc`:
 
  - [x] babelstream
    - [x] BabelStream: 
+     - [x] p100 acc (pgi-19.10)
+     - [x] p100 cuda (cce-10.0)
+     - [x] p100 cuda (gcc-6.1)
+     - [x] p100 ocl (gcc-6.1)
+     - [x] power9 acc (pgi-19.10)
+     - [x] power9 kokkos (gcc-8.1)
+     - [x] power9 omp (gcc-8.1)
+     - [x] power9 omp (pgi-19.10)
+     - [x] power9 omp (xl-16.1)
      - [x] tx2 kokkos (allinea-20.0)
      - [x] tx2 kokkos (gcc-9.2)
      - [x] tx2 omp (allinea-20.0)
@@ -18,6 +27,15 @@ Result obtained via `amm progress.sc`:
      - [x] v100 cuda (gcc-7.3)
      - [x] v100 omp (llvm-trunk)
    - [x] BabelStream(2^29): 
+     - [x] p100 acc (pgi-19.10)
+     - [x] p100 cuda (cce-10.0)
+     - [x] p100 cuda (gcc-6.1)
+     - [x] p100 ocl (gcc-6.1)
+     - [x] power9 acc (pgi-19.10)
+     - [x] power9 kokkos (gcc-8.1)
+     - [x] power9 omp (gcc-8.1)
+     - [x] power9 omp (pgi-19.10)
+     - [x] power9 omp (xl-16.1)
      - [x] tx2 kokkos (allinea-20.0)
      - [x] tx2 kokkos (gcc-9.2)
      - [x] tx2 omp (allinea-20.0)
