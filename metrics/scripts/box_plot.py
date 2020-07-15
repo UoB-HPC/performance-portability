@@ -3,6 +3,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from pathlib import Path
 
 import argparse
 
@@ -67,6 +68,7 @@ print(data_nona)
 ax = data_nona.boxplot()
 ax.set(ylabel='% efficiency')
 plt.xticks(rotation=45)
+plt.title(Path(args.input_file).stem)
 plt.savefig(args.output_file, bbox_inches='tight')
 plt.close()
 
