@@ -3,6 +3,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from pathlib import Path
 
 import argparse
 
@@ -82,6 +83,7 @@ locs, labels = plt.xticks()
 labels[0] = "Did not run"
 labels[1] = "(0.0, 10.0]"
 plt.xticks(locs, labels)
+plt.title(Path(args.input_file).stem)
 plt.savefig(args.output_file, bbox_inches='tight')
 plt.close()
 
