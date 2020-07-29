@@ -1,0 +1,49 @@
+Wed 29 Jul 01:38:37 UTC 2020
+Opening tea.out as log file.
+Performing this solve with the Kokkos  solver
+Kokkos::OpenMP::initialize WARNING: OMP_PROC_BIND environment variable not set
+  In general, for best performance with OpenMP 4.0 or better set OMP_PROC_BIND=spread and OMP_PLACES=threads
+  For best performance with OpenMP 3.1 set OMP_PROC_BIND=true
+  For unit testing set OMP_PROC_BIND=false
+
+Timestep 1
+=>> PBS: job killed: walltime 903 exceeded limit 900
+aprun: Apid 1341724: Caught signal Terminated, sending to application
+Application 1341724 exit signals: Terminated
+Application 1341724 resources: utime ~834s, stime ~68s, Rss ~2011160, inblocks ~8, outblocks ~0
+============================= PBS epilogue =============================
+
+End of Job Report
+Run at 2020-07-29 01:53:56 for job 57273.xci00
+Submitted              : 2020-07-29 01:38:36
+Queued                 : 2020-07-29 01:38:36
+Started                : 2020-07-29 01:38:36
+Completed              : 2020-07-29 01:53:56
+Queued Time            : 0:00:00 (0 seconds)
+Elapsed Time           : 0:15:15 (915 seconds, 102% of limit)
+Walltime Limit         : 0:15:00 (900 seconds)
+Node Time Limit        : 0:15:00 (900 seconds)
+Node Time              : 0:15:15 (915 seconds, 102% of limit)
+Job Name               : TeaLeaf-kokkos
+Queue                  : arm
+Owner                  : br-wlin
+Group                  : -default-
+Project                : bristol
+Subproject             : 
+Funding                : 
+Trustzone              : 
+STDOUT                 : /lustre/home/br-wlin/performance-portability/benchmarking/2020/tealeaf/results/TeaLeaf-tx2_allinea-20.0_kokkos.out
+STDERR                 : /lustre/home/br-wlin/performance-portability/benchmarking/2020/tealeaf/results/TeaLeaf-kokkos.e57273
+Job Directory          : /home/br-wlin/pbs.57273.xci00.x8z
+Job Arch               : XT
+CPU Core Type          : arm
+Total Nodes            : 1
+Total Tasks            : 64
+Parent Node            : xcimom2
+Parent Node Memory     : 
+Parent Node CPU Time   : 
+Compute Nodes          : 101
+Electrical Groups      : 1
+Run Version            : 1
+
+For more information see https://gw4-isambard.github.io/docs/

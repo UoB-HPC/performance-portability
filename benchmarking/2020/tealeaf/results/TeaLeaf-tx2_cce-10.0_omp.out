@@ -1,0 +1,127 @@
+Wed 29 Jul 01:39:04 UTC 2020
+ 
+   Tea Version    1.403
+       MPI Version
+    OpenMP Version
+   Task Count      1
+ Thread Count:    64
+ 
+ Output file tea.out opened. All output will go there.
+ 
+   Tea Version    1.403
+       MPI Version
+    OpenMP Version
+   Task Count      1
+ Thread Count:    64
+ 
+ Step       1 time   0.0000000 timestep   4.00E-03
+Conduction error  0.9975393E-15
+Iteration count     3381
+      Solve Time   28.6371018887    Its   3382     Time Per It    0.0084675050
+ Wall clock  28.637629985809326
+ Average time per cell  0.44746296852827072
+ Step time per cell     0.44746296852827072
+ Step       2 time   0.0040000 timestep   4.00E-03
+Conduction error  0.9859447E-15
+Iteration count     4096
+      Solve Time   34.6866159439    Its   4097     Time Per It    0.0084663451
+ Wall clock  63.324426889419556
+ Average time per cell  0.49472208507359028
+ Step time per cell     0.54198098555207253
+ Step       3 time   0.0080000 timestep   4.00E-03
+Conduction error  0.9843700E-15
+Iteration count     4060
+      Solve Time   34.3798530102    Its   4061     Time Per It    0.0084658589
+ Wall clock  97.704484939575195
+ Average time per cell  0.50887752572695411
+ Step time per cell     0.53718812391161919
+ Step       4 time   0.0120000 timestep   4.00E-03
+Conduction error  0.9867102E-15
+Iteration count     3950
+      Solve Time   33.4525279999    Its   3951     Time Per It    0.0084668509
+ Wall clock  131.15724802017212
+ Average time per cell  0.51233300007879734
+ Step time per cell     0.52269865572452545
+ Step       5 time   0.0160000 timestep   4.00E-03
+Conduction error  0.9972166E-15
+Iteration count     3832
+      Solve Time   32.4488930702    Its   3833     Time Per It    0.0084656648
+ Wall clock  163.60631608963013
+ Average time per cell  0.5112697377800941
+ Step time per cell     0.50701640918850899
+ Step       6 time   0.0200000 timestep   4.00E-03
+Conduction error  0.9855214E-15
+Iteration count     3711
+      Solve Time   31.4256589413    Its   3712     Time Per It    0.0084659642
+ Wall clock  195.03212809562683
+ Average time per cell  0.50789616691569484
+ Step time per cell     0.4910280629992485
+ Step       7 time   0.0240000 timestep   4.00E-03
+Conduction error  0.9924232E-15
+Iteration count     3602
+      Solve Time   30.5000078678    Its   3603     Time Per It    0.0084651701
+ Wall clock  225.53231906890869
+ Average time per cell  0.50342035506452831
+ Step time per cell     0.47656525298953056
+ Step       8 time   0.0280000 timestep   4.00E-03
+Conduction error  0.9819526E-15
+Iteration count     3503
+      Solve Time   29.6704969406    Its   3504     Time Per It    0.0084676076
+ Wall clock  255.20299005508423
+ Average time per cell  0.49844333995133638
+ Step time per cell     0.46360396966338158
+ Step       9 time   0.0320000 timestep   4.00E-03
+Conduction error  0.9881729E-15
+Iteration count     3411
+      Solve Time   28.8930110931    Its   3412     Time Per It    0.0084680572
+ Wall clock  284.09616899490356
+ Average time per cell  0.49322251561615205
+ Step time per cell     0.45145567134022713
+ Step      10 time   0.0360000 timestep   4.00E-03
+Conduction error  0.9936205E-15
+Iteration count     3335
+      Solve Time   28.2490360737    Its   3336     Time Per It    0.0084679365
+ Wall clock  312Test problem   5 is within   0.1186167E-08% of the expected solution
+ This test is considered PASSED
+.3480179309845
+ Average time per cell  0.48804377801716325
+ Step time per cell     0.44143486022949219
+ First step overhead -6.0491518974304199
+ Wall clock  312.35687804222107
+Application 1341732 resources: utime ~20046s, stime ~185s, Rss ~2913624, inblocks ~392, outblocks ~56
+============================= PBS epilogue =============================
+
+End of Job Report
+Run at 2020-07-29 01:44:29 for job 57277.xci00
+Submitted              : 2020-07-29 01:39:03
+Queued                 : 2020-07-29 01:39:03
+Started                : 2020-07-29 01:39:03
+Completed              : 2020-07-29 01:44:29
+Queued Time            : 0:00:00 (0 seconds)
+Elapsed Time           : 0:05:21 (321 seconds, 36% of limit)
+Walltime Limit         : 0:15:00 (900 seconds)
+Node Time Limit        : 0:15:00 (900 seconds)
+Node Time              : 0:05:21 (321 seconds, 36% of limit)
+Job Name               : TeaLeaf-omp
+Queue                  : arm
+Owner                  : br-wlin
+Group                  : -default-
+Project                : bristol
+Subproject             : 
+Funding                : 
+Trustzone              : 
+STDOUT                 : /lustre/home/br-wlin/performance-portability/benchmarking/2020/tealeaf/results/TeaLeaf-tx2_cce-10.0_omp.out
+STDERR                 : /lustre/home/br-wlin/performance-portability/benchmarking/2020/tealeaf/results/TeaLeaf-omp.e57277
+Job Directory          : /home/br-wlin/pbs.57277.xci00.x8z
+Job Arch               : XT
+CPU Core Type          : arm
+Total Nodes            : 1
+Total Tasks            : 64
+Parent Node            : xcimom
+Parent Node Memory     : 
+Parent Node CPU Time   : 
+Compute Nodes          : 50
+Electrical Groups      : 1
+Run Version            : 1
+
+For more information see https://gw4-isambard.github.io/docs/
