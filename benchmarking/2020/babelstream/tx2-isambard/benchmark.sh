@@ -80,7 +80,7 @@ if [ "$ACTION" == "build" ]; then
   # Select Makefile to use
   case "$MODEL" in
   omp)
-    module load kokkos/3.1.1/cce-9.1
+#    module load kokkos/3.1.1/cce-9.1
     MAKE_FILE="OpenMP.make"
     BINARY="omp-stream"
     ;;
