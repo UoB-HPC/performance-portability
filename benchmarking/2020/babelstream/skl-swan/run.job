@@ -1,0 +1,11 @@
+#!/bin/bash
+#PBS -q sk56
+#PBS -l select=1:ncpus=56
+#PBS -l walltime=00:15:00
+#PBS -joe
+
+cd $RUN_DIR
+date
+export OMP_NUM_THREADS=56
+export OMP_PROC_BIND=true
+aprun -n 1 -d 56 -j 1 -cc depth ./$BENCHMARK_EXE
