@@ -8,4 +8,5 @@ cd $RUN_DIR
 date
 export OMP_NUM_THREADS=56
 export OMP_PROC_BIND=true
+export ACC_NUM_CORES=56
 aprun -n 1 -d 56 -j 1 -cc depth ./$BENCHMARK_EXE

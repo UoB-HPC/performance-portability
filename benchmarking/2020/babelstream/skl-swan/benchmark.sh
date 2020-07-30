@@ -98,7 +98,7 @@ case "$MODEL" in
     MAKE_FILE="OpenACC.make"
     BINARY="acc-stream"
     MAKE_OPTS+=' TARGET=SKL'
-    if [ "$COMPILER" != "pgi-10.1" ]
+    if [ "$COMPILER" != "pgi-20.1" ]
     then
       echo
       echo " Must use PGI with OpenACC"
