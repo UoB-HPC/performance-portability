@@ -82,17 +82,11 @@ case "$MODEL" in
     MAKE_OPTS+=" TARGET=CPU"
     ;;
   kokkos)
-    module use /lus/scratch/p02555/modules/modulefiles
-    module load kokkos/skylake
+    KOKKOS_PATH=$(pwd)/$(fetch_kokkos)
+    echo "Using KOKKOS_PATH=${KOKKOS_PATH}"
     MAKE_FILE="Kokkos.make"
     BINARY="kokkos-stream"
-    if [ "$COMPILER" != "intel-2019" ]
-    then
-      echo
-      echo " Must use Intel with Kokkos module"
-      echo
-      exit 1
-    fi
+    MAKE_OPTS+=" KOKKOS_PATH=${KOKKOS_PATH} ARCH=SKL DEVICE=OpenMP"
     ;;
   acc)
     MAKE_FILE="OpenACC.make"
