@@ -1,0 +1,17 @@
+Fri 31 Jul 05:53:28 CDT 2020
+BabelStream
+Version: 3.4
+Implementation: OpenACC
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Validation failed on sum. Error 1.98751e-08
+Sum was 636.656592414207 but should be 636.656592434083
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        66878.983   0.12844     0.12900     0.12865     
+Mul         59237.251   0.14501     0.14556     0.14532     
+Add         67762.765   0.19015     0.19062     0.19033     
+Triad       67675.712   0.19039     0.19081     0.19061     
+Dot         81852.786   0.10494     0.10542     0.10511     
+Application 6382354 resources: utime ~3060s, stime ~5s, Rss ~12588992, inblocks ~1470, outblocks ~0
