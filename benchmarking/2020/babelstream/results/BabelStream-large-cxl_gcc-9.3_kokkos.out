@@ -1,4 +1,4 @@
-Fri 31 Jul 05:48:21 CDT 2020
+Fri 31 Jul 07:29:36 CDT 2020
 BabelStream
 Version: 3.4
 Implementation: Kokkos
@@ -6,12 +6,12 @@ Running kernels 100 times
 Precision: double
 Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
-Validation failed on sum. Error 4.40751e-08
-Sum was 636.656592390007 but should be 636.656592434082
+Validation failed on sum. Error 4.40755e-08
+Sum was 636.656592390007 but should be 636.656592434083
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        138764.149  0.06190     0.06242     0.06215     
-Mul         138588.750  0.06198     0.06253     0.06221     
-Add         156160.387  0.08251     0.08311     0.08275     
-Triad       156579.333  0.08229     0.08277     0.08253     
-Dot         222112.172  0.03867     0.03932     0.03889     
-Application 6382350 resources: utime ~1308s, stime ~29s, Rss ~25167232, inblocks ~0, outblocks ~0
+Copy        139003.186  0.06180     0.06223     0.06205     
+Mul         138474.562  0.06203     0.06274     0.06233     
+Add         156564.575  0.08230     0.08300     0.08260     
+Triad       156369.717  0.08240     0.08289     0.08262     
+Dot         223874.969  0.03837     0.03879     0.03855     
+Application 6382382 resources: utime ~1307s, stime ~30s, Rss ~25167372, inblocks ~0, outblocks ~0

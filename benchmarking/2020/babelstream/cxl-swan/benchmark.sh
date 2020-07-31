@@ -86,7 +86,7 @@ case "$MODEL" in
     echo "Using KOKKOS_PATH=${KOKKOS_PATH}"
     MAKE_FILE="Kokkos.make"
     BINARY="kokkos-stream"
-    MAKE_OPTS+=" KOKKOS_PATH=${KOKKOS_PATH} ARCH=SKL DEVICE=OpenMP"
+    MAKE_OPTS+=" KOKKOS_PATH=${KOKKOS_PATH} ARCH=SKX DEVICE=OpenMP"
     ;;
   acc)
     MAKE_FILE="OpenACC.make"
