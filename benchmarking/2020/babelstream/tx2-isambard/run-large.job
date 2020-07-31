@@ -10,4 +10,4 @@ date
 export OMP_NUM_THREADS=64
 export OMP_PROC_BIND=true
 export OMP_PLACES=cores
-prun -n 1 -d 64 -cc depth ./$BENCHMARK_EXE --arraysize $((2 ** 29))
+aprun -n 1 -d 64 -cc depth ./$BENCHMARK_EXE --arraysize $((2 ** 29))
