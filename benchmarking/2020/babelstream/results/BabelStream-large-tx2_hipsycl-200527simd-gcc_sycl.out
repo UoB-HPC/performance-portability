@@ -1,0 +1,56 @@
+Thu 30 Jul 10:13:19 UTC 2020
+BabelStream
+Version: 3.4
+Implementation: SYCL
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using SYCL device hipCPU OpenMP host device
+Driver: hipSYCL 0.8.1-prerelease on HIP/CUDA 99999
+Reduction kernel config: 64 groups of size 2
+Validation failed on sum. Error 2.88999e-08
+Sum was 636.656592405183 but should be 636.656592434083
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        79052.204   0.10866     0.15373     0.13981     
+Mul         93194.249   0.09217     0.15926     0.12670     
+Add         99870.444   0.12902     0.22297     0.17591     
+Triad       104056.126  0.12383     0.21502     0.17089     
+Dot         1453.377    5.91033     7.13778     6.77438     
+Application 1341842 resources: utime ~4470s, stime ~656s, Rss ~25180460, inblocks ~496, outblocks ~0
+============================= PBS epilogue =============================
+
+End of Job Report
+Run at 2020-07-30 10:26:11 for job 57340.xci00
+Submitted              : 2020-07-30 10:13:18
+Queued                 : 2020-07-30 10:13:18
+Started                : 2020-07-30 10:13:18
+Completed              : 2020-07-30 10:26:11
+Queued Time            : 0:00:00 (0 seconds)
+Elapsed Time           : 0:12:48 (768 seconds, 85% of limit)
+Walltime Limit         : 0:15:00 (900 seconds)
+Node Time Limit        : 0:15:00 (900 seconds)
+Node Time              : 0:12:48 (768 seconds, 85% of limit)
+Job Name               : babelstream
+Queue                  : arm
+Owner                  : br-wlin
+Group                  : -default-
+Project                : bristol
+Subproject             : 
+Funding                : 
+Trustzone              : 
+STDOUT                 : /lustre/home/br-wlin/performance-portability/benchmarking/2020/babelstream/results/BabelStream-large-tx2_hipsycl-200527simd-gcc_sycl.out
+STDERR                 : /lustre/home/br-wlin/performance-portability/benchmarking/2020/babelstream/results/babelstream.e57340
+Job Directory          : /home/br-wlin/pbs.57340.xci00.x8z
+Job Arch               : XT
+CPU Core Type          : arm
+Total Nodes            : 1
+Total Tasks            : 64
+Parent Node            : xcimom
+Parent Node Memory     : 
+Parent Node CPU Time   : 
+Compute Nodes          : 21
+Electrical Groups      : 1
+Run Version            : 1
+
+For more information see https://gw4-isambard.github.io/docs/

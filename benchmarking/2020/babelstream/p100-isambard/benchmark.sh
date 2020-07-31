@@ -9,8 +9,9 @@ function usage() {
   echo "Valid compilers:"
   echo "  cce-10.0"
   echo "  gcc-6.1"
-  echo "  llvm-trunk"
+  echo "  llvm-10.0"
   echo "  pgi-19.10"
+  echo "  hipsycl-trunk"
   echo
   echo "Valid models:"
   echo "  omp"
@@ -18,6 +19,7 @@ function usage() {
   echo "  cuda"
   echo "  acc"
   echo "  ocl"
+  echo "  sycl"
   echo
   echo "The default configuration is '$DEFAULT_COMPILER'."
   echo "The default programming model is '$DEFAULT_MODEL'."
@@ -44,20 +46,28 @@ export RUN_DIR=$PWD/BabelStream-$CONFIG
 # Set up the environment
 #module swap craype-{mic-knl,broadwell}
 #module load craype-accel-nvidia60
+
 case "$COMPILER" in
 cce-10.0)
   module purge
+  module load gcc/7.4.0 # newer versions of libstdc++
   module load shared pbspro
   module load craype-broadwell
   module load PrgEnv-cray
   module swap cce cce/10.0.0
-  MAKE_OPTS="COMPILER=CRAY TARGET=NVIDIA"
+  module load craype-accel-nvidia60
+  MAKE_OPTS='COMPILER=CRAY TARGET=NVIDIA EXTRA_FLAGS="-fopenmp -fopenmp-targets=nvptx64 -Xopenmp-target -march=sm_60"'
   ;;
-llvm-trunk)
+llvm-10.0)
   module purge
-  module load llvm/trunk
+  module load gcc/7.4.0 # newer versions of libstdc++
+  module load llvm/10.0
   module load shared pbspro
-  MAKE_OPTS='COMPILER=CLANG TARGET=NVIDIA EXTRA_FLAGS="-Xopenmp-target -march=sm_60"'
+  module load craype-accel-nvidia60
+  module load cuda10.2/toolkit/10.2.89
+
+  #FIXME nvidia does not link with -Xopenmp-target -march=sm_60, llvm doesn't have libomptarget-nvptx-sm_60.bc
+  MAKE_OPTS='COMPILER=CLANG TARGET=NVIDIA EXTRA_FLAGS=" -Xopenmp-target -march=sm_60"'
   ;;
 gcc-6.1)
   module purge
@@ -68,8 +78,15 @@ gcc-6.1)
 pgi-19.10)
   module purge
   module load shared pbspro
+  module load craype-accel-nvidia60
+  module load cuda10.2/toolkit/10.2.89
   module load pgi/compiler/19.10
   MAKE_OPTS='COMPILER=PGI TARGET=PASCAL'
+  ;;
+hipsycl-trunk)
+  module purge
+  module load shared pbspro
+  module load hipsycl/trunk
   ;;
 *)
   echo
@@ -86,7 +103,7 @@ omp)
   BINARY="omp-stream"
   ;;
 kokkos)
-#  set -x
+  #  set -x
   if [ "$COMPILER" != "gcc-6.1" ]; then
     echo
     echo " Must use gcc-6.1 with Kokkos"
@@ -96,7 +113,7 @@ kokkos)
   module load craype-accel-nvidia60
   module load cuda10.2/toolkit/10.2.89
 
-# TODO NVCC fails to compile kokkos
+  # TODO NVCC fails to compile kokkos
   NVCC=$(which nvcc)
   CUDA_PATH=$(dirname $NVCC)/..
 
@@ -128,6 +145,9 @@ ocl)
   BINARY="ocl-stream"
   MAKE_OPTS+=' EXTRA_FLAGS="-I$CUDA_PATH/include/ -L$CUDA_PATH/lib64"'
   ;;
+sycl)
+  MAKE_FILE="SYCL.make"
+  BINARY="sycl-stream"
 esac
 
 # Handle actions
@@ -139,21 +159,27 @@ if [ "$ACTION" == "build" ]; then
   # Perform build
   rm -f $RUN_DIR/$BENCHMARK_EXE
 
-  if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS  ; then
-    echo
-    echo "Build failed."
-    echo
-    exit 1
+  if [ $MODEL == "sycl" ]; then
+    cd $SRC_DIR || exit
+    syclcc -O3 -std=c++17 -DSYCL main.cpp SYCLStream.cpp -o sycl-stream
+  else
+    if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
+      echo
+      echo "Build failed."
+      echo
+      exit 1
+    fi
   fi
-
   # Rename binary
   mkdir -p $RUN_DIR
   mv $SRC_DIR/$BINARY $RUN_DIR/$BENCHMARK_EXE
 
 elif [ "$ACTION" == "run" ]; then
+  module load gcc/7.4.0 # newer versions of libstdc++
   check_bin $RUN_DIR/$BENCHMARK_EXE
   qsub -o BabelStream-$CONFIG.out -N babelstream -V $SCRIPT_DIR/run.job
 elif [ "$ACTION" == "run-large" ]; then
+  module load gcc/7.4.0 # newer versions of libstdc++
   check_bin $RUN_DIR/$BENCHMARK_EXE
   qsub -o BabelStream-large-$CONFIG.out -N babelstream -V $SCRIPT_DIR/run-large.job
 else

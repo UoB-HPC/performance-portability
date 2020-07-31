@@ -1,4 +1,4 @@
-Wed 15 Jul 03:10:03 GMT 2020
+Thu 30 Jul 13:47:03 GMT 2020
 BabelStream
 Version: 3.4
 Implementation: OpenACC
@@ -6,7 +6,9 @@ Running kernels 100 times
 Precision: double
 Array size: 268.4 MB (=0.3 GB)
 Total size: 805.3 MB (=0.8 GB)
-Current file:     /lustre/home/br-wlin/performance-portability/benchmarking/2020/babelstream/results/BabelStream/ACCStream.cpp
-        function: _ZN9ACCStreamIdE11init_arraysEddd
-        line:     44
-This file was compiled: -ta=tesla:cc60
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        528918.099  0.00102     0.00105     0.00102     
+Mul         526450.870  0.00102     0.00113     0.00102     
+Add         550270.362  0.00146     0.00147     0.00147     
+Triad       551192.737  0.00146     0.00148     0.00146     
+Dot         517188.278  0.00104     0.00106     0.00104     
