@@ -86,6 +86,7 @@ pgi-19.10)
 hipsycl-trunk)
   module purge
   module load shared pbspro
+  module load gcc/8.2.0
   module load hipsycl/trunk
   ;;
 *)
@@ -146,6 +147,8 @@ ocl)
   MAKE_OPTS+=' EXTRA_FLAGS="-I$CUDA_PATH/include/ -L$CUDA_PATH/lib64"'
   ;;
 sycl)
+  module load craype-accel-nvidia60
+  module load cuda10.2/toolkit/10.2.89
   MAKE_FILE="SYCL.make"
   BINARY="sycl-stream"
 esac
@@ -161,7 +164,9 @@ if [ "$ACTION" == "build" ]; then
 
   if [ $MODEL == "sycl" ]; then
     cd $SRC_DIR || exit
-    syclcc -O3 -std=c++17 -DSYCL main.cpp SYCLStream.cpp -o sycl-stream
+
+    syclcc -O3 -std=c++17 --hipsycl-gpu-arch=sm_60  -DSYCL main.cpp SYCLStream.cpp -o sycl-stream
+
   else
     if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
       echo

@@ -14,21 +14,34 @@ Result obtained via `amm progress.sc`:
      - [x] gtx2080ti cuda      (nvcc)         16L @ 0.58 KB
      - [x] gtx2080ti ocl       (gcc-4.8)      17L @ 0.64 KB
      - [x] gtx2080ti omp       (clang)        14L @ 0.54 KB
-     - [x] p100 acc            (pgi-19.10)    12L @ 0.41 KB
+     - [x] p100 acc            (pgi-19.10)    14L @ 0.54 KB
      - [x] p100 cuda           (cce-10.0)     18L @ 0.68 KB
      - [x] p100 cuda           (gcc-6.1)      16L @ 0.59 KB
      - [x] p100 ocl            (gcc-6.1)      17L @ 0.64 KB
+     - [x] p100 omp            (cce-10.0)     14L @ 0.54 KB
+     - [x] p100 omp            (llvm-10.0)    14L @ 0.54 KB
+     - [x] p100 sycl           (hipsycl-trunk)17L @ 0.67 KB
      - [x] power9 acc          (pgi-19.10)    14L @ 0.54 KB
      - [x] power9 kokkos       (gcc-8.1)      16L @ 0.63 KB
      - [x] power9 omp          (gcc-8.1)      16L @ 0.63 KB
      - [x] power9 omp          (pgi-19.10)    14L @ 0.54 KB
      - [x] power9 omp          (xl-16.1)      14L @ 0.54 KB
      - [x] radeonvii ocl       (gcc-9.1)      17L @ 0.64 KB
+     - [x] skl acc             (pgi-20.1)     15L @ 0.63 KB
+     - [x] skl kokkos          (gcc-9.3)      15L @ 0.63 KB
+     - [x] skl kokkos          (intel-2019)   15L @ 0.63 KB
+     - [x] skl omp             (cce-10.0)     15L @ 0.63 KB
+     - [x] skl omp             (gcc-9.3)      15L @ 0.63 KB
+     - [x] skl omp             (intel-2019)   15L @ 0.63 KB
+     - [x] skl omp             (pgi-20.1)     15L @ 0.63 KB
      - [x] tx2 kokkos          (allinea-20.0) 51L @ 2.08 KB
      - [x] tx2 kokkos          (gcc-9.2)      51L @ 2.07 KB
      - [x] tx2 omp             (allinea-20.0) 51L @ 2.08 KB
      - [x] tx2 omp             (cce-10.0)     51L @ 2.07 KB
      - [x] tx2 omp             (gcc-9.2)      51L @ 2.07 KB
+     - [x] tx2 sycl            (hipsycl-200527-cce)52L @ 2.11 KB
+     - [x] tx2 sycl            (hipsycl-200527-gcc)54L @ 2.23 KB
+     - [x] tx2 sycl            (hipsycl-200527simd-gcc)54L @ 2.24 KB
      - [x] v100 acc            (pgi-19.10)    14L @ 0.54 KB
      - [x] v100 cuda           (gcc-7.3)      16L @ 0.59 KB
      - [x] v100 omp            (llvm-trunk)   14L @ 0.54 KB
@@ -38,21 +51,34 @@ Result obtained via `amm progress.sc`:
      - [x] gtx2080ti cuda      (nvcc)         12L @ 0.36 KB
      - [x] gtx2080ti ocl       (gcc-4.8)      13L @ 0.40 KB
      - [x] gtx2080ti omp       (clang)        9L @ 0.27 KB
-     - [x] p100 acc            (pgi-19.10)    12L @ 0.42 KB
+     - [x] p100 acc            (pgi-19.10)    14L @ 0.54 KB
      - [x] p100 cuda           (cce-10.0)     18L @ 0.69 KB
      - [x] p100 cuda           (gcc-6.1)      16L @ 0.59 KB
      - [x] p100 ocl            (gcc-6.1)      14L @ 0.57 KB
+     - [x] p100 omp            (cce-10.0)     14L @ 0.54 KB
+     - [x] p100 omp            (llvm-10.0)    14L @ 0.54 KB
+     - [x] p100 sycl           (hipsycl-trunk)17L @ 0.67 KB
      - [x] power9 acc          (pgi-19.10)    16L @ 0.64 KB
      - [x] power9 kokkos       (gcc-8.1)      16L @ 0.64 KB
      - [x] power9 omp          (gcc-8.1)      16L @ 0.64 KB
      - [x] power9 omp          (pgi-19.10)    16L @ 0.64 KB
      - [x] power9 omp          (xl-16.1)      16L @ 0.64 KB
      - [x] radeonvii ocl       (gcc-9.1)      17L @ 0.65 KB
+     - [x] skl acc             (pgi-20.1)     15L @ 0.64 KB
+     - [x] skl kokkos          (gcc-9.3)      17L @ 0.73 KB
+     - [x] skl kokkos          (intel-2019)   17L @ 0.74 KB
+     - [x] skl omp             (cce-10.0)     17L @ 0.73 KB
+     - [x] skl omp             (gcc-9.3)      17L @ 0.73 KB
+     - [x] skl omp             (intel-2019)   15L @ 0.64 KB
+     - [x] skl omp             (pgi-20.1)     15L @ 0.64 KB
      - [x] tx2 kokkos          (allinea-20.0) 53L @ 2.19 KB
      - [x] tx2 kokkos          (gcc-9.2)      53L @ 2.19 KB
      - [x] tx2 omp             (allinea-20.0) 53L @ 2.19 KB
      - [x] tx2 omp             (cce-10.0)     53L @ 2.18 KB
      - [x] tx2 omp             (gcc-9.2)      53L @ 2.18 KB
+     - [x] tx2 sycl            (hipsycl-200527-cce)52L @ 2.13 KB
+     - [x] tx2 sycl            (hipsycl-200527-gcc)56L @ 2.35 KB
+     - [x] tx2 sycl            (hipsycl-200527simd-gcc)56L @ 2.35 KB
      - [x] v100 acc            (pgi-19.10)    14L @ 0.54 KB
      - [x] v100 cuda           (gcc-7.3)      16L @ 0.59 KB
      - [x] v100 omp            (llvm-trunk)   14L @ 0.54 KB

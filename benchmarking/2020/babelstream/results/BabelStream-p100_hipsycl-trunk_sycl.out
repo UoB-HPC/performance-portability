@@ -1,4 +1,4 @@
-Thu 30 Jul 12:27:31 GMT 2020
+Mon  3 Aug 11:44:12 GMT 2020
 BabelStream
 Version: 3.4
 Implementation: SYCL
@@ -6,12 +6,12 @@ Running kernels 100 times
 Precision: double
 Array size: 268.4 MB (=0.3 GB)
 Total size: 805.3 MB (=0.8 GB)
-Using SYCL device hipCPU OpenMP host device
-Driver: hipSYCL 0.8.1-prerelease on HIP/CUDA 99999
-Reduction kernel config: 36 groups of size 2
+Using SYCL device Tesla P100-PCIE-16GB
+Driver: hipSYCL 0.8.1-prerelease on HIP/CUDA 10010
+Reduction kernel config: 224 groups of size 1024
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        44055.848   0.01219     0.01905     0.01438     
-Mul         49702.368   0.01080     0.02022     0.01588     
-Add         60824.676   0.01324     0.02101     0.01628     
-Triad       65189.833   0.01235     0.02186     0.01692     
-Dot         1883.194    0.28509     0.44269     0.35931     
+Copy        505166.653  0.00106     0.00121     0.00111     
+Mul         502684.825  0.00107     0.00119     0.00112     
+Add         525508.027  0.00153     0.00813     0.00172     
+Triad       526155.578  0.00153     0.00167     0.00160     
+Dot         519679.901  0.00103     0.00130     0.00111     
