@@ -1,0 +1,16 @@
+Fri 31 Jul 07:53:18 CDT 2020
+Unexpected KNL MCDRAM cache size 271106048
+BabelStream
+Version: 3.4
+Implementation: OpenACC
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        303787.674  0.02828     0.02879     0.02843     
+Mul         304714.119  0.02819     0.02867     0.02834     
+Add         302456.557  0.04260     0.04320     0.04284     
+Triad       305234.538  0.04221     0.04297     0.04247     
+Dot         330374.260  0.02600     0.02657     0.02629     
+Application 6382398 resources: utime ~1094s, stime ~16s, Rss ~12589144, inblocks ~1404, outblocks ~0

@@ -1,0 +1,12 @@
+#!/bin/bash
+#PBS -q cl40
+#PBS -l select=1:ncpus=40
+#PBS -l walltime=00:15:00
+#PBS -joe
+
+cd $RUN_DIR
+date
+export OMP_NUM_THREADS=40
+export OMP_PROC_BIND=true
+export ACC_NUM_CORES=40
+aprun -n 1 -d 40 -j 1 -cc depth ./$BENCHMARK_EXE
