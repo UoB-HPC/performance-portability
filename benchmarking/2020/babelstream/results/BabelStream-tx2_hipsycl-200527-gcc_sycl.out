@@ -1,4 +1,4 @@
-Fri 31 Jul 13:49:39 UTC 2020
+Mon  3 Aug 16:21:27 UTC 2020
 BabelStream
 Version: 3.4
 Implementation: SYCL
@@ -10,36 +10,36 @@ Using SYCL device hipCPU OpenMP host device
 Driver: hipSYCL 0.8.1-prerelease on HIP/CUDA 99999
 Reduction kernel config: 64 groups of size 2
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        21273.094   0.02524     0.04469     0.03246     
-Mul         197691.612  0.00272     0.01412     0.00615     
-Add         212116.201  0.00380     0.01426     0.01153     
-Triad       216743.562  0.00372     0.01600     0.01069     
-Dot         754.300     0.71175     0.73256     0.71830     
-Application 1342167 resources: utime ~209s, stime ~59s, Rss ~1587792, inblocks ~496, outblocks ~0
+Copy        32383.523   0.01658     0.04517     0.03189     
+Mul         179929.550  0.00298     0.01600     0.00971     
+Add         189259.412  0.00426     0.01600     0.01213     
+Triad       191660.392  0.00420     0.01711     0.01259     
+Dot         752.280     0.71366     0.73508     0.71771     
+Application 1342850 resources: utime ~216s, stime ~64s, Rss ~1587792, inblocks ~496, outblocks ~0
 ============================= PBS epilogue =============================
 
 End of Job Report
-Run at 2020-07-31 13:51:08 for job 57545.xci00
-Submitted              : 2020-07-31 13:49:38
-Queued                 : 2020-07-31 13:49:38
-Started                : 2020-07-31 13:49:38
-Completed              : 2020-07-31 13:51:08
+Run at 2020-08-03 16:22:57 for job 58022.xci00
+Submitted              : 2020-08-03 16:21:26
+Queued                 : 2020-08-03 16:21:26
+Started                : 2020-08-03 16:21:26
+Completed              : 2020-08-03 16:22:57
 Queued Time            : 0:00:00 (0 seconds)
-Elapsed Time           : 0:01:25 (85 seconds, 9% of limit)
+Elapsed Time           : 0:01:25 (85 seconds, 10% of limit)
 Walltime Limit         : 0:15:00 (900 seconds)
 Node Time Limit        : 0:15:00 (900 seconds)
-Node Time              : 0:01:25 (85 seconds, 9% of limit)
+Node Time              : 0:01:25 (85 seconds, 10% of limit)
 Job Name               : babelstream
 Queue                  : arm
-Owner                  : br-tdeakin
+Owner                  : br-wlin
 Group                  : -default-
 Project                : bristol
 Subproject             : 
 Funding                : 
 Trustzone              : 
-STDOUT                 : /home/br-tdeakin/codes/performance-portability/benchmarking/2020/babelstream/tx2-isambard/BabelStream-tx2_hipsycl-200527-gcc_sycl.out
-STDERR                 : /home/br-tdeakin/codes/performance-portability/benchmarking/2020/babelstream/tx2-isambard/babelstream.e57545
-Job Directory          : /home/br-tdeakin/pbs.57545.xci00.x8z
+STDOUT                 : /lustre/home/br-wlin/performance-portability/benchmarking/2020/babelstream/results/BabelStream-tx2_hipsycl-200527-gcc_sycl.out
+STDERR                 : /lustre/home/br-wlin/performance-portability/benchmarking/2020/babelstream/results/babelstream.e58022
+Job Directory          : /home/br-wlin/pbs.58022.xci00.x8z
 Job Arch               : XT
 CPU Core Type          : arm
 Total Nodes            : 1
@@ -47,7 +47,7 @@ Total Tasks            : 64
 Parent Node            : xcimom
 Parent Node Memory     : 
 Parent Node CPU Time   : 
-Compute Nodes          : 174
+Compute Nodes          : 0
 Electrical Groups      : 1
 Run Version            : 1
 

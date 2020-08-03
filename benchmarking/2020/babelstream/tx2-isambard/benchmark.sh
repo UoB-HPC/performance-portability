@@ -60,7 +60,7 @@ gcc-9.2)
 allinea-20.0)
   module purge
   module load alps PrgEnv-allinea
-#  module swap allinea allinea/20.0.0.0
+  #  module swap allinea allinea/20.0.0.0
   MAKE_OPTS="COMPILER=ARMCLANG TARGET=CPU"
   export OMP_PROC_BIND=spread
   ;;
@@ -68,16 +68,19 @@ hipsycl-200527-gcc)
   module purge
   module load alps PrgEnv-gnu
   module load hipsycl/gcc/200527
+  MAKE_OPTS="COMPILER=HIPSYCL TARGET=CPU"
   ;;
 hipsycl-200527-cce)
   module purge
   module load alps PrgEnv-cray
   module load hipsycl/cce/200527
+  MAKE_OPTS="COMPILER=HIPSYCL TARGET=CPU"
   ;;
 hipsycl-200527simd-gcc)
   module purge
   module load alps PrgEnv-gnu
   module load hipsycl/gcc/200527_simd
+  MAKE_OPTS="COMPILER=HIPSYCL TARGET=CPU"
   ;;
 *)
   echo
@@ -112,20 +115,19 @@ if [ "$ACTION" == "build" ]; then
     export OMP_PROC_BIND=spread
     ;;
   sycl)
+    HIPSYCL_PATH=$(realpath $(dirname $(which syclcc))/..)
+    echo "Using HIPSYCL_PATH=${HIPSYCL_PATH}"
+    MAKE_OPTS+=" SYCL_SDK_DIR=${HIPSYCL_PATH}"
+    MAKE_FILE="SYCL.make"
     BINARY="sycl-stream"
     ;;
   esac
 
-  if [ $MODEL == "sycl" ]; then
-    cd $SRC_DIR || exit
-    syclcc -O3 -std=c++17 -DSYCL main.cpp SYCLStream.cpp -o sycl-stream
-  else
-    if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
-      echo
-      echo "Build failed."
-      echo
-      exit 1
-    fi
+  if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
+    echo
+    echo "Build failed."
+    echo
+    exit 1
   fi
 
   # Rename binary

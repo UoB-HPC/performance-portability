@@ -88,6 +88,7 @@ hipsycl-trunk)
   module load shared pbspro
   module load gcc/8.2.0
   module load hipsycl/trunk
+  MAKE_OPTS='COMPILER=HIPSYCL TARGET=NVIDIA ARCH=sm_60'
   ;;
 *)
   echo
@@ -149,8 +150,12 @@ ocl)
 sycl)
   module load craype-accel-nvidia60
   module load cuda10.2/toolkit/10.2.89
+  HIPSYCL_PATH=$(realpath $(dirname $(which syclcc))/..)
+  echo "Using HIPSYCL_PATH=${HIPSYCL_PATH}"
+  MAKE_OPTS+=" SYCL_SDK_DIR=${HIPSYCL_PATH}"
   MAKE_FILE="SYCL.make"
   BINARY="sycl-stream"
+  ;;
 esac
 
 # Handle actions
@@ -162,19 +167,13 @@ if [ "$ACTION" == "build" ]; then
   # Perform build
   rm -f $RUN_DIR/$BENCHMARK_EXE
 
-  if [ $MODEL == "sycl" ]; then
-    cd $SRC_DIR || exit
-
-    syclcc -O3 -std=c++17 --hipsycl-gpu-arch=sm_60  -DSYCL main.cpp SYCLStream.cpp -o sycl-stream
-
-  else
-    if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
-      echo
-      echo "Build failed."
-      echo
-      exit 1
-    fi
+  if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
+    echo
+    echo "Build failed."
+    echo
+    exit 1
   fi
+
   # Rename binary
   mkdir -p $RUN_DIR
   mv $SRC_DIR/$BINARY $RUN_DIR/$BENCHMARK_EXE
