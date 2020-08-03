@@ -26,7 +26,7 @@ fetch_kokkos() {
 
 fetch_src() {
   if [ ! -e BabelStream/main.cpp ]; then
-    if ! git clone https://github.com/UoB-HPC/BabelStream; then
+    if ! git clone https://github.com/tom91136/BabelStream; then
       echo
       echo "Failed to fetch source code."
       echo

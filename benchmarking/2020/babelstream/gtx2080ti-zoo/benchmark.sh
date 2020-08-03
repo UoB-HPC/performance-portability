@@ -1,8 +1,5 @@
 #!/bin/bash
 
-
-# XXX must run `scl enable devtoolset-7 bash` for computecpp-2.x.x, not a requirement for 1.x.x
-
 DEFAULT_COMPILER=clang
 DEFAULT_MODEL=omp
 function usage() {
@@ -12,16 +9,13 @@ function usage() {
   echo "Valid compilers:"
   echo "  clang"
   echo "  gcc-4.8"
-  echo "  pgi-19.10"
-  echo "  hipsycl-trunk"
-  echo "  computecpp-2.0 (host only)"  
+  echo "  hipsycl"
   echo
   echo "Valid models:"
   echo "  omp"
   echo "  kokkos"
   echo "  cuda"
   echo "  ocl"
-  echo "  acc"
   echo "  sycl"
   echo
   echo "The default configuration is '$DEFAULT_COMPILER'."
@@ -60,19 +54,14 @@ clang)
 gcc-4.8)
   MAKE_OPTS="COMPILER=GNU"
   ;;
-pgi-19.10)
-  module load pgi/19.10
-  MAKE_OPTS="COMPILER=PGI"
+pgi-19.4)
+  MAKE_OPTS='\
+      COMPILER=PGI'
   ;;
-hipsycl-trunk)
-  module load llvm/10.0
+hipsycl)
   module load hipsycl/master-jun-16
-  ;;  
-computecpp-2.0)
-  # TODO does not run with PTX, it's here when ComputeCpp evntually supports it
-  module load gcc/10.1.0
-  module load computecpp/2.0.0
-  ;;    
+  MAKE_OPTS='COMPILER=HIPSYCL TARGET=NVIDIA ARCH=sm_75'
+  ;;
 *)
   echo
   echo "Invalid compiler '$COMPILER'."
@@ -123,9 +112,14 @@ acc)
   MAKE_OPTS="$MAKE_OPTS TARGET=VOLTA"
   ;;
 sycl)
+  export HIPSYCL_CUDA_PATH=$(realpath $(dirname $(which nvcc))/..)
+
+  HIPSYCL_PATH=$(realpath $(dirname $(which syclcc))/..)
+  echo "Using HIPSYCL_PATH=${HIPSYCL_PATH}"
+  MAKE_OPTS+=" SYCL_SDK_DIR=${HIPSYCL_PATH}"
   MAKE_FILE="SYCL.make"
   BINARY="sycl-stream"
-  ;;  
+  ;;
 esac
 
 # Handle actions
@@ -136,18 +130,12 @@ if [ "$ACTION" == "build" ]; then
   # Perform build
   rm -f $RUN_DIR/$BENCHMARK_EXE
 
-
-
-  if [[ $MODEL == "sycl" ]] && [[ "$COMPILER" == "hipsycl-trunk" ]]; then
-    cd $SRC_DIR || exit
-    syclcc -O3 -std=c++17 --hipsycl-gpu-arch=sm75  -DSYCL main.cpp SYCLStream.cpp -o sycl-stream
-  else
-    if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
-      echo
-      echo "Build failed."
-      echo
-      exit 1
-    fi
+  # Perform build
+  if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
+    echo
+    echo "Build failed."
+    echo
+    exit 1
   fi
 
   mkdir -p $RUN_DIR
