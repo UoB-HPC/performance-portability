@@ -10,10 +10,14 @@ function usage() {
   echo "  cce-10.0"
   echo "  gcc-9.2"
   echo "  allinea-20.0"
+  echo "  hipsycl-200527-gcc"
+  echo "  hipsycl-200527-cce"
+  echo "  hipsycl-200527simd-gcc"
   echo
   echo "Valid models:"
   echo "  omp"
   echo "  kokkos"
+  echo "  sycl"
   echo
   echo "The default configuration is '$DEFAULT_COMPILER'."
   echo "The default programming model is '$DEFAULT_MODEL'."
@@ -60,6 +64,21 @@ allinea-20.0)
   MAKE_OPTS="COMPILER=ARMCLANG TARGET=CPU"
   export OMP_PROC_BIND=spread
   ;;
+hipsycl-200527-gcc)
+  module purge
+  module load alps PrgEnv-gnu
+  module load hipsycl/gcc/200527
+  ;;
+hipsycl-200527-cce)
+  module purge
+  module load alps PrgEnv-cray
+  module load hipsycl/cce/200527
+  ;;
+hipsycl-200527simd-gcc)
+  module purge
+  module load alps PrgEnv-gnu
+  module load hipsycl/gcc/200527_simd
+  ;;
 *)
   echo
   echo "Invalid compiler '$COMPILER'."
@@ -80,7 +99,7 @@ if [ "$ACTION" == "build" ]; then
   # Select Makefile to use
   case "$MODEL" in
   omp)
-#    module load kokkos/3.1.1/cce-9.1
+    #    module load kokkos/3.1.1/cce-9.1
     MAKE_FILE="OpenMP.make"
     BINARY="omp-stream"
     ;;
@@ -92,13 +111,21 @@ if [ "$ACTION" == "build" ]; then
     MAKE_OPTS+=" KOKKOS_PATH=${KOKKOS_PATH} ARCH=ARMv8-TX2 DEVICE=OpenMP"
     export OMP_PROC_BIND=spread
     ;;
+  sycl)
+    BINARY="sycl-stream"
+    ;;
   esac
 
-  if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
-    echo
-    echo "Build failed."
-    echo
-    exit 1
+  if [ $MODEL == "sycl" ]; then
+    cd $SRC_DIR || exit
+    syclcc -O3 -std=c++17 -DSYCL main.cpp SYCLStream.cpp -o sycl-stream
+  else
+    if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
+      echo
+      echo "Build failed."
+      echo
+      exit 1
+    fi
   fi
 
   # Rename binary

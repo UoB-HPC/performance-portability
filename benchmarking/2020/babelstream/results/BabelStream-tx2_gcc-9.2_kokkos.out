@@ -1,4 +1,4 @@
-Tue 14 Jul 13:06:43 UTC 2020
+Fri 31 Jul 13:48:03 UTC 2020
 BabelStream
 Version: 3.4
 Implementation: Kokkos
@@ -7,44 +7,44 @@ Precision: double
 Array size: 268.4 MB (=0.3 GB)
 Total size: 805.3 MB (=0.8 GB)
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        227241.945  0.00236     0.00268     0.00247     
-Mul         202235.794  0.00265     0.00310     0.00288     
-Add         216650.848  0.00372     0.00401     0.00387     
-Triad       225279.301  0.00357     0.00399     0.00381     
-Dot         191944.169  0.00280     0.00364     0.00332     
-Application 1328631 resources: utime ~92s, stime ~50s, Rss ~1566472, inblocks ~0, outblocks ~0
+Copy        224577.869  0.00239     0.00280     0.00258     
+Mul         204775.003  0.00262     0.00298     0.00281     
+Add         220754.597  0.00365     0.00409     0.00382     
+Triad       223005.763  0.00361     0.00400     0.00377     
+Dot         210235.368  0.00255     0.00352     0.00322     
+Application 1342161 resources: utime ~90s, stime ~51s, Rss ~1566496, inblocks ~0, outblocks ~0
 ============================= PBS epilogue =============================
 
 End of Job Report
-Run at 2020-07-14 13:06:55 for job 55400.xci00
-Submitted              : 2020-07-14 13:04:43
-Queued                 : 2020-07-14 13:04:43
-Started                : 2020-07-14 13:06:42
-Completed              : 2020-07-14 13:06:55
-Queued Time            : 0:01:59 (119 seconds)
+Run at 2020-07-31 13:48:16 for job 57541.xci00
+Submitted              : 2020-07-31 13:48:02
+Queued                 : 2020-07-31 13:48:02
+Started                : 2020-07-31 13:48:03
+Completed              : 2020-07-31 13:48:16
+Queued Time            : 0:00:01 (1 second)
 Elapsed Time           : 0:00:08 (8 seconds, 1% of limit)
 Walltime Limit         : 0:15:00 (900 seconds)
 Node Time Limit        : 0:15:00 (900 seconds)
 Node Time              : 0:00:08 (8 seconds, 1% of limit)
 Job Name               : babelstream
 Queue                  : arm
-Owner                  : br-wlin
+Owner                  : br-tdeakin
 Group                  : -default-
 Project                : bristol
 Subproject             : 
 Funding                : 
 Trustzone              : 
-STDOUT                 : /home/br-wlin/performance-portability/benchmarking/2020/babelstream/results/BabelStream-tx2_gcc-9.2_kokkos.out
-STDERR                 : /home/br-wlin/performance-portability/benchmarking/2020/babelstream/results/babelstream.e55400
-Job Directory          : /home/br-wlin/pbs.55400.xci00.x8z
+STDOUT                 : /home/br-tdeakin/codes/performance-portability/benchmarking/2020/babelstream/tx2-isambard/BabelStream-tx2_gcc-9.2_kokkos.out
+STDERR                 : /home/br-tdeakin/codes/performance-portability/benchmarking/2020/babelstream/tx2-isambard/babelstream.e57541
+Job Directory          : /home/br-tdeakin/pbs.57541.xci00.x8z
 Job Arch               : XT
 CPU Core Type          : arm
 Total Nodes            : 1
 Total Tasks            : 64
-Parent Node            : xcimom2
+Parent Node            : xcimom
 Parent Node Memory     : 
 Parent Node CPU Time   : 
-Compute Nodes          : 72
+Compute Nodes          : 174
 Electrical Groups      : 1
 Run Version            : 1
 

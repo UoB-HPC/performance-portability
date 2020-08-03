@@ -1,4 +1,4 @@
-Mon 13 Jul 06:14:15 UTC 2020
+Fri 31 Jul 13:45:06 UTC 2020
 BabelStream
 Version: 3.4
 Implementation: OpenMP
@@ -7,36 +7,36 @@ Precision: double
 Array size: 268.4 MB (=0.3 GB)
 Total size: 805.3 MB (=0.8 GB)
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        224247.020  0.00239     0.00252     0.00243     
-Mul         202851.298  0.00265     0.00281     0.00272     
-Add         212605.977  0.00379     0.00400     0.00393     
-Triad       207175.786  0.00389     0.00413     0.00399     
-Dot         213649.863  0.00251     0.00378     0.00277     
-Application 1328337 resources: utime ~159s, stime ~48s, Rss ~1577908, inblocks ~0, outblocks ~0
+Copy        233342.596  0.00230     0.00250     0.00243     
+Mul         216369.666  0.00248     0.00288     0.00266     
+Add         216909.945  0.00371     0.00393     0.00383     
+Triad       229165.437  0.00351     0.00423     0.00374     
+Dot         204546.408  0.00262     0.00383     0.00298     
+Application 1342152 resources: utime ~136s, stime ~48s, Rss ~1577724, inblocks ~0, outblocks ~0
 ============================= PBS epilogue =============================
 
 End of Job Report
-Run at 2020-07-13 06:14:28 for job 55240.xci00
-Submitted              : 2020-07-13 06:14:14
-Queued                 : 2020-07-13 06:14:14
-Started                : 2020-07-13 06:14:14
-Completed              : 2020-07-13 06:14:28
-Queued Time            : 0:00:00 (0 seconds)
-Elapsed Time           : 0:00:09 (9 seconds, 1% of limit)
+Run at 2020-07-31 13:45:19 for job 57535.xci00
+Submitted              : 2020-07-31 13:45:05
+Queued                 : 2020-07-31 13:45:05
+Started                : 2020-07-31 13:45:06
+Completed              : 2020-07-31 13:45:19
+Queued Time            : 0:00:01 (1 second)
+Elapsed Time           : 0:00:07 (7 seconds, 1% of limit)
 Walltime Limit         : 0:15:00 (900 seconds)
 Node Time Limit        : 0:15:00 (900 seconds)
-Node Time              : 0:00:09 (9 seconds, 1% of limit)
+Node Time              : 0:00:07 (7 seconds, 1% of limit)
 Job Name               : babelstream
 Queue                  : arm
-Owner                  : br-wlin
+Owner                  : br-tdeakin
 Group                  : -default-
 Project                : bristol
 Subproject             : 
 Funding                : 
 Trustzone              : 
-STDOUT                 : /home/br-wlin/performance-portability/benchmarking/2020/babelstream/results/BabelStream-tx2_cce-10.0_omp.out
-STDERR                 : /home/br-wlin/performance-portability/benchmarking/2020/babelstream/results/babelstream.e55240
-Job Directory          : /home/br-wlin/pbs.55240.xci00.x8z
+STDOUT                 : /home/br-tdeakin/codes/performance-portability/benchmarking/2020/babelstream/tx2-isambard/BabelStream-tx2_cce-10.0_omp.out
+STDERR                 : /home/br-tdeakin/codes/performance-portability/benchmarking/2020/babelstream/tx2-isambard/babelstream.e57535
+Job Directory          : /home/br-tdeakin/pbs.57535.xci00.x8z
 Job Arch               : XT
 CPU Core Type          : arm
 Total Nodes            : 1
@@ -44,7 +44,7 @@ Total Tasks            : 64
 Parent Node            : xcimom
 Parent Node Memory     : 
 Parent Node CPU Time   : 
-Compute Nodes          : 11
+Compute Nodes          : 174
 Electrical Groups      : 1
 Run Version            : 1
 

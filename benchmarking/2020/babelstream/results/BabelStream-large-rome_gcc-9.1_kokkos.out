@@ -1,0 +1,21 @@
+ 
+ University of Bristol ACRC HPC Bluepebble Service
+ -------------------------------------------------
+ Job babelstream, jobid 299273.bp1, username td8469 - started execution at 09 :45:25 Mon 08/03/20 on node bp1-02-11-01.data.bp.acrc.priv
+ 
+Mon  3 Aug 09:45:25 BST 2020
+BabelStream
+Version: 3.4
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Validation failed on sum. Error 2.88998e-08
+Sum was 636.656592405183 but should be 636.656592434083
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        211344.992  0.04064     0.04105     0.04081     
+Mul         205920.274  0.04171     0.04216     0.04196     
+Add         228312.737  0.05644     0.05705     0.05669     
+Triad       229293.556  0.05619     0.05672     0.05639     
+Dot         320583.119  0.02679     0.02715     0.02694     
