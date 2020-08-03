@@ -10,5 +10,6 @@ date
 export OMP_NUM_THREADS=128
 export OMP_PROC_BIND=true
 export OMP_PLACES=cores
+export ACC_NUM_CORES=128
 ./$BENCHMARK_EXE
 

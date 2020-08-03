@@ -10,6 +10,7 @@ function usage() {
   echo "  gcc-9.1"
   echo "  intel-2020"
   echo "  aocc-2.1"
+  echo "  pgi-19.10"
   echo
   echo "Valid models:"
   echo "  omp"
@@ -56,6 +57,12 @@ aocc-2.1)
   module load aocc/2.1.0
   MAKE_OPTS="COMPILER=CLANG TARGET=CPU EXTRA_FLAGS='-fnt-store=aggressive -march=znver2 -mcmodel=medium'"
   ;;
+pgi-19.10)
+  module purge
+  module use /home/td8469/software/modulefiles
+  module load pgi/19.10
+  MAKE_OPTS="COMPILER=PGI TARGET=CPU EXTRA_FLAGS='-ta=multicore -tp=zen'"
+  ;;
 *)
   echo
   echo "Invalid compiler '$COMPILER'."
@@ -87,6 +94,18 @@ if [ "$ACTION" == "build" ]; then
     BINARY="kokkos-stream"
     MAKE_OPTS+=" KOKKOS_PATH=${KOKKOS_PATH} ARCH=EPYC DEVICE=OpenMP"
     ;;
+  acc)
+    MAKE_FILE="OpenACC.make"
+    BINARY="acc-stream"
+    MAKE_OPTS+=' TARGET=AMD'
+    if [ "$COMPILER" != "pgi-19.10" ]
+    then
+      echo
+      echo " Must use PGI with OpenACC"
+      echo
+      exit 1
+    fi
+  ;;
   sycl)
     BINARY="sycl-stream"
     ;;
