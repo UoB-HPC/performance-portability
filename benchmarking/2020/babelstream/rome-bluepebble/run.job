@@ -1,0 +1,14 @@
+#!/bin/bash
+#PBS -q amd
+#PBS -l select=1:ncpus=128:mem=256gb
+#PBS -l place=excl
+#PBS -l walltime=00:15:00
+#PBS -joe
+
+cd $RUN_DIR
+date
+export OMP_NUM_THREADS=128
+export OMP_PROC_BIND=true
+export OMP_PLACES=cores
+./$BENCHMARK_EXE
+
