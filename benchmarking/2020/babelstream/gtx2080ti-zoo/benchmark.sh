@@ -9,6 +9,7 @@ function usage() {
   echo "Valid compilers:"
   echo "  clang"
   echo "  gcc-4.8"
+  echo "  pgi-19.10"
   echo "  hipsycl"
   echo
   echo "Valid models:"
@@ -16,6 +17,7 @@ function usage() {
   echo "  kokkos"
   echo "  cuda"
   echo "  ocl"
+  echo "  acc"
   echo "  sycl"
   echo
   echo "The default configuration is '$DEFAULT_COMPILER'."
@@ -54,7 +56,8 @@ clang)
 gcc-4.8)
   MAKE_OPTS="COMPILER=GNU"
   ;;
-pgi-19.4)
+pgi-19.10)
+  module load pgi/19.10
   MAKE_OPTS='\
       COMPILER=PGI'
   ;;
@@ -89,15 +92,20 @@ kokkos)
     echo
     exit 1
   fi
+
+  module load gcc/8.3.0
+#  source scl_source enable devtoolset-7
+
+
 # TODO NVCC fails to compile kokkos
   NVCC=$(which nvcc)
-  CUDA_PATH=$(dirname $NVCC)/..
+  echo "Using NVCC=${NVCC}"
 
   KOKKOS_PATH=$(pwd)/$(fetch_kokkos)
   echo "Using KOKKOS_PATH=${KOKKOS_PATH}"
   MAKE_FILE="Kokkos.make"
   BINARY="kokkos-stream"
-  MAKE_OPTS+=" TARGET=GPU KOKKOS_PATH=${KOKKOS_PATH} ARCH=Volta72 DEVICE=Cuda NVCC_WRAPPER=${NVCC}"
+  MAKE_OPTS+=" TARGET=GPU KOKKOS_PATH=${KOKKOS_PATH} ARCH=Volta72 DEVICE=Cuda NVCC_WRAPPER=${KOKKOS_PATH}/bin/nvcc_wrapper"
   export OMP_PROC_BIND=spread
 
   ;;
@@ -131,7 +139,7 @@ if [ "$ACTION" == "build" ]; then
   rm -f $RUN_DIR/$BENCHMARK_EXE
 
   # Perform build
-  if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
+  if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS ; then
     echo
     echo "Build failed."
     echo
