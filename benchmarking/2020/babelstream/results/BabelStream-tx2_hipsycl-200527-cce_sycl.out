@@ -1,4 +1,4 @@
-Fri 31 Jul 13:50:43 UTC 2020
+Mon  3 Aug 16:55:23 UTC 2020
 BabelStream
 Version: 3.4
 Implementation: SYCL
@@ -10,42 +10,42 @@ Using SYCL device hipCPU OpenMP host device
 Driver: hipSYCL 0.8.1-prerelease on HIP/CUDA 99999
 Reduction kernel config: 256 groups of size 2
 CCE OpenMP fatal error: OpenMP parallel attempted from non-OpenMP thread
-=>> PBS: job killed: walltime 932 exceeded limit 900
-aprun: Apid 1342170: Caught signal Terminated, sending to application
-Application 1342170 exit signals: Terminated
-Application 1342170 resources: utime ~928s, stime ~2s, Rss ~790884, inblocks ~496, outblocks ~0
+=>> PBS: job killed: walltime 953 exceeded limit 900
+aprun: Apid 1342873: Caught signal Terminated, sending to application
+Application 1342873 exit signals: Terminated
+Application 1342873 resources: utime ~950s, stime ~2s, Rss ~790884, inblocks ~496, outblocks ~0
 ============================= PBS epilogue =============================
 
 End of Job Report
-Run at 2020-07-31 14:06:30 for job 57547.xci00
-Submitted              : 2020-07-31 13:50:42
-Queued                 : 2020-07-31 13:50:42
-Started                : 2020-07-31 13:50:42
-Completed              : 2020-07-31 14:06:30
-Queued Time            : 0:00:00 (0 seconds)
-Elapsed Time           : 0:15:43 (943 seconds, 105% of limit)
+Run at 2020-08-03 17:11:33 for job 58026.xci00
+Submitted              : 2020-08-03 16:25:19
+Queued                 : 2020-08-03 16:25:19
+Started                : 2020-08-03 16:55:22
+Completed              : 2020-08-03 17:11:33
+Queued Time            : 0:30:03 (1803 seconds)
+Elapsed Time           : 0:16:06 (966 seconds, 107% of limit)
 Walltime Limit         : 0:15:00 (900 seconds)
 Node Time Limit        : 0:15:00 (900 seconds)
-Node Time              : 0:15:43 (943 seconds, 105% of limit)
+Node Time              : 0:16:06 (966 seconds, 107% of limit)
 Job Name               : babelstream
 Queue                  : arm
-Owner                  : br-tdeakin
+Owner                  : br-wlin
 Group                  : -default-
 Project                : bristol
 Subproject             : 
 Funding                : 
 Trustzone              : 
-STDOUT                 : /home/br-tdeakin/codes/performance-portability/benchmarking/2020/babelstream/tx2-isambard/BabelStream-tx2_hipsycl-200527-cce_sycl.out
-STDERR                 : /home/br-tdeakin/codes/performance-portability/benchmarking/2020/babelstream/tx2-isambard/babelstream.e57547
-Job Directory          : /home/br-tdeakin/pbs.57547.xci00.x8z
+STDOUT                 : /lustre/home/br-wlin/performance-portability/benchmarking/2020/babelstream/results/BabelStream-tx2_hipsycl-200527-cce_sycl.out
+STDERR                 : /lustre/home/br-wlin/performance-portability/benchmarking/2020/babelstream/results/babelstream.e58026
+Job Directory          : /home/br-wlin/pbs.58026.xci00.x8z
 Job Arch               : XT
 CPU Core Type          : arm
 Total Nodes            : 1
 Total Tasks            : 64
-Parent Node            : xcimom2
+Parent Node            : xcimom
 Parent Node Memory     : 
 Parent Node CPU Time   : 
-Compute Nodes          : 183
+Compute Nodes          : 128
 Electrical Groups      : 1
 Run Version            : 1
 
