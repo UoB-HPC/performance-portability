@@ -93,11 +93,9 @@ kokkos)
     exit 1
   fi
 
+  # For libstd++6
   module load gcc/8.3.0
-#  source scl_source enable devtoolset-7
 
-
-# TODO NVCC fails to compile kokkos
   NVCC=$(which nvcc)
   echo "Using NVCC=${NVCC}"
 
@@ -105,9 +103,9 @@ kokkos)
   echo "Using KOKKOS_PATH=${KOKKOS_PATH}"
   MAKE_FILE="Kokkos.make"
   BINARY="kokkos-stream"
-  MAKE_OPTS+=" TARGET=GPU KOKKOS_PATH=${KOKKOS_PATH} ARCH=Volta72 DEVICE=Cuda NVCC_WRAPPER=${KOKKOS_PATH}/bin/nvcc_wrapper"
+  MAKE_OPTS+=" TARGET=GPU KOKKOS_PATH=${KOKKOS_PATH} ARCH=Turing75 DEVICE=Cuda NVCC_WRAPPER=${KOKKOS_PATH}/bin/nvcc_wrapper "
+  MAKE_OPTS+=' KOKKOS_CUDA_OPTIONS="enable_lambda"'
   export OMP_PROC_BIND=spread
-
   ;;
 ocl)
   MAKE_FILE="OpenCL.make"
@@ -139,7 +137,7 @@ if [ "$ACTION" == "build" ]; then
   rm -f $RUN_DIR/$BENCHMARK_EXE
 
   # Perform build
-  if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS ; then
+  if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
     echo
     echo "Build failed."
     echo
