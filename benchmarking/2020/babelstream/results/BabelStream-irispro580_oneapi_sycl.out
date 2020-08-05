@@ -1,0 +1,20 @@
+Wed  5 Aug 00:22:46 BST 2020
+BabelStream
+Version: 3.4
+Implementation: SYCL
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Using SYCL device Intel(R) Gen9 HD Graphics NEO
+Driver: 20.02.15268
+Reduction kernel config: 288 groups of size 256
+Validation failed on a[]. Average error 0.00168703
+Validation failed on b[]. Average error 0.00070293
+Validation failed on c[]. Average error 0.00246025
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        19764059.4910.00003     0.00009     0.00005     
+Mul         18985462.6210.00003     0.00009     0.00003     
+Add         32688194.8370.00002     0.00008     0.00004     
+Triad       32545520.8540.00002     0.00005     0.00003     
+Dot         9840730.845 0.00005     0.00011     0.00006     
