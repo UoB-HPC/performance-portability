@@ -66,7 +66,7 @@ esac
 # Handle actions
 if [ "$ACTION" == "build" ]; then
 
-   # Fetch source code
+  # Fetch source code
   fetch_src
 
   # Perform build
@@ -79,10 +79,19 @@ if [ "$ACTION" == "build" ]; then
     BINARY="omp-stream"
     ;;
   kokkos)
-    module load kokkos/volta
+
+    #module load gcc/8.1.0
+
+    NVCC=$(which nvcc)
+    echo "Using NVCC=${NVCC}"
+
+    KOKKOS_PATH=$(pwd)/$(fetch_kokkos)
+    echo "Using KOKKOS_PATH=${KOKKOS_PATH}"
     MAKE_FILE="Kokkos.make"
     BINARY="kokkos-stream"
-    MAKE_OPTS+=" CXX=$KOKKOS_PATH/bin/nvcc_wrapper"
+    MAKE_OPTS+=" TARGET=GPU KOKKOS_PATH=${KOKKOS_PATH} ARCH=Volta70 DEVICE=Cuda NVCC_WRAPPER=${KOKKOS_PATH}/bin/nvcc_wrapper "
+    MAKE_OPTS+=' KOKKOS_CUDA_OPTIONS="enable_lambda"'
+    export OMP_PROC_BIND=spread
     ;;
   cuda)
     MAKE_FILE="CUDA.make"
@@ -98,7 +107,7 @@ if [ "$ACTION" == "build" ]; then
     ;;
   esac
 
-  if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS; then
+  if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
     echo
     echo "Build failed."
     echo
@@ -112,15 +121,14 @@ if [ "$ACTION" == "build" ]; then
 elif [ "$ACTION" == "run" ]; then
   check_bin $RUN_DIR/$BENCHMARK_EXE
   cd $RUN_DIR || exit
-    bash "$SCRIPT_DIR/run.sh" BabelStream-$CONFIG.out
+  bash "$SCRIPT_DIR/run.sh" BabelStream-$CONFIG.out
 elif [ "$ACTION" == "run-large" ]; then
   check_bin $RUN_DIR/$BENCHMARK_EXE
   cd $RUN_DIR || exit
-    bash "$SCRIPT_DIR/run-large.sh" BabelStream-large-$CONFIG.out
+  bash "$SCRIPT_DIR/run-large.sh" BabelStream-large-$CONFIG.out
 else
   echo
   echo "Invalid action"
   usage
   exit 1
 fi
-
