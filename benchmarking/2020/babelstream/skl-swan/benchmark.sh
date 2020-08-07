@@ -12,12 +12,14 @@ function usage
     echo "  gcc-9.3"
     echo "  intel-2019"
     echo "  pgi-20.1"
+    echo "  dpcpp-2021.1.8"
     echo
     echo "Valid models:"
     echo "  omp"
     echo "  kokkos"
     echo "  acc"
     echo "  ocl"
+    echo "  sycl"
     echo
     echo "The default configuration is '$DEFAULT_COMPILER'."
     echo "The default programming model is '$DEFAULT_MODEL'."
@@ -66,6 +68,10 @@ case "$COMPILER" in
         module swap pgi pgi/20.1.1
 	MAKE_OPTS='COMPILER=PGI EXTRA_FLAGS="-ta=multicore -tp=skylake"'
         ;;
+    dpcpp-2021.1.8)
+        source /home/users/p02639/bin/intel/oneapi/setvars.sh
+	MAKE_OPTS='COMPILER=DPCPP'
+        ;;
     *)
         echo
         echo "Invalid compiler '$COMPILER'."
@@ -101,12 +107,21 @@ case "$MODEL" in
     fi
   ;;
   ocl)
-    module use /lus/scratch/p02555/modules/modulefiles
-    module load opencl/intel
+    module use /home/users/p02639/bin/modulefiles
+    module load intel-opencl-experimental
+    module load khronos/opencl-headers
     MAKE_FILE="OpenCL.make"
     BINARY="ocl-stream"
-    export LD_PRELOAD=/lus/scratch/p02555/modules/intel-opencl/lib/libintelocl.so
+    #export LD_PRELOAD=/lus/scratch/p02555/modules/intel-opencl/lib/libintelocl.so
     #export LD_PRELOAD=/lus/scratch/p02100/l_opencl_p_18.1.0.013/opt/intel/opencl_compilers_and_libraries_18.1.0.013/linux/compiler/lib/intel64_lin/libintelocl.so
+  ;;
+  sycl)
+    module use /home/users/p02639/bin/modulefiles
+    module load intel-opencl-experimental
+    module load khronos/opencl-headers
+    MAKE_FILE="SYCL.make"
+    BINARY="sycl-stream"
+    MAKE_OPTS+=' TARGET=CPU'
   ;;
 esac
 

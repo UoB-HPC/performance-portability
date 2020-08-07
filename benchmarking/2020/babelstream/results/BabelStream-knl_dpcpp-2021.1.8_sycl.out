@@ -1,0 +1,18 @@
+Fri  7 Aug 04:22:47 CDT 2020
+BabelStream
+Version: 3.4
+Implementation: SYCL
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Using SYCL device Intel(R) Xeon Phi(TM) CPU 7210 @ 1.30GHz
+Driver: 2020.10.7.0.15
+Reduction kernel config: 64 groups of size 8
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        240909.498  0.00223     0.00337     0.00231     
+Mul         232637.439  0.00231     0.00248     0.00238     
+Add         274681.250  0.00293     0.00311     0.00302     
+Triad       262983.201  0.00306     0.00354     0.00315     
+Dot         50082.840   0.01072     0.02093     0.01634     
+Application 6405277 resources: utime ~142s, stime ~17s, Rss ~1657480, inblocks ~1400, outblocks ~0
