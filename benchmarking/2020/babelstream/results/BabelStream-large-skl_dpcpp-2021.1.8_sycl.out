@@ -1,0 +1,20 @@
+Fri  7 Aug 04:17:02 CDT 2020
+BabelStream
+Version: 3.4
+Implementation: SYCL
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using SYCL device Intel(R) Xeon(R) Platinum 8176 CPU @ 2.10GHz
+Driver: 2020.10.7.0.15
+Reduction kernel config: 56 groups of size 8
+Validation failed on sum. Error 1.27966e-08
+Sum was 636.656592446879 but should be 636.656592434082
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        95381.744   0.09006     0.10338     0.09505     
+Mul         94405.383   0.09099     0.10444     0.09618     
+Add         108266.496  0.11901     0.13654     0.12659     
+Triad       110523.465  0.11658     0.13780     0.12606     
+Dot         18152.248   0.47322     0.54383     0.51053     
+Application 6405269 resources: utime ~5130s, stime ~53s, Rss ~25249600, inblocks ~1348, outblocks ~0
