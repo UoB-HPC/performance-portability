@@ -13,6 +13,7 @@ function usage
     echo "  intel-2019"
     echo "  pgi-20.1"
     echo "  dpcpp-2021.1.8"
+    echo "  computecpp-2.1"
     echo
     echo "Valid models:"
     echo "  omp"
@@ -71,6 +72,11 @@ case "$COMPILER" in
     dpcpp-2021.1.8)
         source /home/users/p02639/bin/intel/oneapi/setvars.sh
 	MAKE_OPTS='COMPILER=DPCPP'
+        ;;
+    computecpp-2.1)
+        module use /home/users/p02639/bin/modulefiles
+        module load computecpp/2.1.0
+	MAKE_OPTS='COMPILER=COMPUTECPP SYCL_SDK_DIR="/home/users/p02639/bin/ComputeCpp-CE-2.1.0-x86_64-linux-gnu"'
         ;;
     *)
         echo
