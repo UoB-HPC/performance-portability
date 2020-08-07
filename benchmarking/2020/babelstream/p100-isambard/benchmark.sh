@@ -117,13 +117,15 @@ kokkos)
 
   # TODO NVCC fails to compile kokkos
   NVCC=$(which nvcc)
+  echo "Using NVCC=${NVCC}"
   CUDA_PATH=$(dirname $NVCC)/..
 
   KOKKOS_PATH=$(pwd)/$(fetch_kokkos)
   echo "Using KOKKOS_PATH=${KOKKOS_PATH}"
   MAKE_FILE="Kokkos.make"
   BINARY="kokkos-stream"
-  MAKE_OPTS+=" KOKKOS_PATH=${KOKKOS_PATH} ARCH=Pascal60 DEVICE=Cuda NVCC_WRAPPER=${NVCC}"
+  MAKE_OPTS+=" KOKKOS_PATH=${KOKKOS_PATH} ARCH=Pascal60 DEVICE=Cuda NVCC_WRAPPER=${KOKKOS_PATH}/bin/nvcc_wrapper"
+  MAKE_OPTS+=' KOKKOS_CUDA_OPTIONS="enable_lambda"'
   MAKE_OPTS+=' EXTRA_INC="-I$CUDA_PATH/include/ -L$CUDA_PATH/lib64"'
   export OMP_PROC_BIND=spread
   ;;
