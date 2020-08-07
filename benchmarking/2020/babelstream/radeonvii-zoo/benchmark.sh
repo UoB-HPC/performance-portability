@@ -48,6 +48,10 @@ gcc-10.1)
 hipcc)
   MAKE_OPTS='COMPILER=HIPCC'
   ;;
+hipsycl)
+#  module load hipsycl/master-jun-16
+  MAKE_OPTS='COMPILER=HIPSYCL TARGET=AMD ARCH=gfx906'
+  ;;
 *)
   echo
   echo "Invalid compiler '$COMPILER'."
@@ -85,6 +89,17 @@ acc)
   MAKE_OPTS+=' EXTRA_FLAGS="-foffload=amdgcn-amdhsa="-march=gfx906""'
   MAKE_FILE="OpenACC.make"
   BINARY="acc-stream"
+  ;;
+sycl)
+#  module load gcc/8.3.0
+#  export HIPSYCL_CUDA_PATH=$(realpath $(dirname $(which nvcc))/..)
+
+#  HIPSYCL_PATH=$(realpath $(dirname $(which syclcc))/..)
+  HIPSYCL_PATH="/nfs/home/wl14928/hipSYCL/build/x"
+  echo "Using HIPSYCL_PATH=${HIPSYCL_PATH}"
+  MAKE_OPTS+=" SYCL_SDK_DIR=${HIPSYCL_PATH}"
+  MAKE_FILE="SYCL.make"
+  BINARY="sycl-stream"
   ;;
 *)
   echo

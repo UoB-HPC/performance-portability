@@ -7,7 +7,7 @@ function usage() {
   echo "Usage: ./benchmark.sh build|run [COMPILER] [MODEL]"
   echo
   echo "Valid compilers:"
-  echo "  oneapi2"
+  echo "  oneapi"
   echo "  gcc-10.1"
   echo
   echo "Valid models:"
@@ -43,16 +43,17 @@ module purge
 case "$COMPILER" in
 oneapi)
   source scl_source enable devtoolset-7
+  echo $LD_LIBRARY_PATH
+  source /nfs/software/x86_64/inteloneapi-beta/2021.1.8/setvars.sh --force
+  export LD_LIBRARY_PATH="/opt/rh/devtoolset-7/root/usr/lib64:/opt/rh/devtoolset-7/root/usr/lib:/opt/rh/devtoolset-7/root/usr/lib64/dyninst:/opt/rh/devtoolset-7/root/usr/lib/dyninst:/opt/rh/devtoolset-7/root/usr/lib64:/opt/rh/devtoolset-7/root/usr/lib:$LD_LIBRARY_PATH"
+
+
   echo $(gcc --version)
-  module load intel/oneapi/beta
+#  module load intel/oneapi/beta
   ;;
 gcc-10.1)
   module load gcc/10.1.0
   MAKE_OPTS="COMPILER=GNU"
-  ;;
-hipsycl)
-  module load hipsycl/master-jun-16
-  MAKE_OPTS='COMPILER=HIPSYCL TARGET=NVIDIA ARCH=sm_75'
   ;;
 *)
   echo
@@ -65,7 +66,7 @@ esac
 case "$MODEL" in
 omp)
   export OMP_TARGET_OFFLOAD="MANDATORY"
-  MAKE_OPTS='COMPILER=INTEL TARGET=INTEL_GT'
+  MAKE_OPTS='COMPILER=INTEL TARGET=INTEL_GPU'
   MAKE_FILE="OpenMP.make"
   BINARY="omp-stream"
   ;;
@@ -91,6 +92,8 @@ if [ "$ACTION" == "build" ]; then
 
   # Perform build
   rm -f $RUN_DIR/$BENCHMARK_EXE
+echo $LD_LIBRARY_PATH
+
 
   # Perform build
   if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
