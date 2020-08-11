@@ -17,6 +17,7 @@ function usage() {
   echo "  omp"
   echo "  kokkos"
   echo "  sycl"
+  echo "  ocl"
   echo
   echo "The default configuration is '$DEFAULT_COMPILER'."
   echo "The default programming model is '$DEFAULT_MODEL'."
@@ -117,6 +118,12 @@ if [ "$ACTION" == "build" ]; then
     BINARY="sycl-stream"
     MAKE_OPTS+=' TARGET=CPU'
   ;;
+  ocl)
+    module use $HOME/software/modulefiles
+    module load pocl/1.5
+    MAKE_FILE="OpenCL.make"
+    BINARY="ocl-stream"
+    ;;
   esac
 
   if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
