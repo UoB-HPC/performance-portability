@@ -69,7 +69,7 @@ allinea-20.0)
 llvm-10.0)
   module purge
   module load alps PrgEnv-cray
-  module load llvm/10.0
+  module load llvm/10.0.0
   MAKE_OPTS="COMPILER=CLANG"
   ;;
 hipsycl-200527-gcc)
@@ -154,9 +154,15 @@ if [ "$ACTION" == "build" ]; then
   mv $SRC_DIR/$BINARY $RUN_DIR/$BENCHMARK_EXE
 
 elif [ "$ACTION" == "run" ]; then
+  if [ "$MODEL" == "ocl" ]; then
+    module load pocl/1.5
+  fi
   check_bin $RUN_DIR/$BENCHMARK_EXE
   qsub -o BabelStream-$CONFIG.out -N babelstream -V $SCRIPT_DIR/run.job
 elif [ "$ACTION" == "run-large" ]; then
+  if [ "$MODEL" == "ocl" ]; then
+    module load pocl/1.5
+  fi
   check_bin $RUN_DIR/$BENCHMARK_EXE
   qsub -o BabelStream-large-$CONFIG.out -N babelstream -V $SCRIPT_DIR/run-large.job
 else
