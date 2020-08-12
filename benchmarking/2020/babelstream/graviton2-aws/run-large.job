@@ -1,0 +1,11 @@
+#!/bin/bash
+
+OUTPUT_DIR=$PWD
+cd $RUN_DIR
+date > $OUTPUT_DIR/BabelStream-large-$CONFIG.out
+export OMP_NUM_THREADS=64
+export OMP_PROC_BIND=true
+export OMP_PLACES=cores
+
+./$BENCHMARK_EXE --arraysize $((2 ** 29)) >> $OUTPUT_DIR/BabelStream-large-$CONFIG.out 2>&1
+
