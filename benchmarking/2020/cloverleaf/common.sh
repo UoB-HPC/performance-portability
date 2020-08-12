@@ -77,6 +77,11 @@ fetch_src() {
       git clone https://github.com/UoB-HPC/CloverLeaf-OpenACC
     fi
     ;;
+  sycl)
+    if [ ! -e cloverleaf_sycl/CMakeLists.txt ]; then
+      git clone https://github.com/UoB-HPC/cloverleaf_sycl
+    fi
+    ;;
   *)
     echo
     echo "Invalid model '$MODEL'."
