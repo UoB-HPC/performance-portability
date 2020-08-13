@@ -64,6 +64,21 @@ allinea-20.0)
   MAKE_OPTS+=' FLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -mcpu=thunderx2t99 -funroll-loops"'
   MAKE_OPTS+=' CFLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -mcpu=thunderx2t99 -funroll-loops"'
   ;;
+hipsycl-200527-gcc)
+  module purge
+  module load alps PrgEnv-gnu cray-mpich/7.7.12
+  module load hipsycl/gcc/200527
+  ;;
+hipsycl-200527-cce)
+  module purge
+  module load alps PrgEnv-cray cray-mpich/7.7.12
+  module load hipsycl/cce/200527
+  ;;
+hipsycl-200527simd-gcc)
+  module purge
+  module load alps PrgEnv-gnu cray-mpich/7.7.12
+  module load hipsycl/gcc/200527_simd
+  ;;
 *)
   echo
   echo "Invalid compiler '$COMPILER'."
@@ -85,6 +100,18 @@ kokkos)
   MAKE_OPTS+="CXX=CC  KOKKOS_PATH=${KOKKOS_PATH} ARCH=ARMv8-TX2 DEVICE=OpenMP"
   BINARY="clover_leaf"
   ;;
+sycl)
+
+  HIPSYCL_PATH=$(realpath $(dirname $(which syclcc))/..)
+  echo "Using HIPSYCL_PATH=${HIPSYCL_PATH}"
+  MAKE_OPTS+=" -DHIPSYCL_INSTALL_DIR=${HIPSYCL_PATH} -DSYCL_RUNTIME=HIPSYCL"
+  MAKE_OPTS+=" -DMPI_AS_LIBRARY=ON -DMPI_C_LIB_DIR=${CRAY_MPICH_DIR}/lib -DMPI_C_INCLUDE_DIR=${CRAY_MPICH_DIR}/include -DMPI_C_LIB=mpich"
+  MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=-mtune=native"
+
+  BINARY="clover_leaf"
+  export SRC_DIR=$PWD/cloverleaf_sycl
+  export DEVICE_ARGS="--device 1"
+  ;;
 esac
 
 # Handle actions
@@ -94,11 +121,23 @@ if [ "$ACTION" == "build" ]; then
 
   rm -f $RUN_DIR/$BENCHMARK_EXE
 
-  if ! eval make -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
-    echo
-    echo "Build failed."
-    echo
-    exit 1
+  if [ "$MODEL" == "sycl" ]; then
+    cd $SRC_DIR || exit
+    rm -rf build
+    module load cmake/3.17.3
+    cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release $MAKE_OPTS
+    cmake --build build --target clover_leaf --config Release -j $(nproc)
+    mv build/$BINARY $BINARY
+    cd $SRC_DIR/.. || exit
+  else
+
+    if ! eval make -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
+      echo
+      echo "Build failed."
+      echo
+      exit 1
+    fi
+
   fi
 
   # Rename binary

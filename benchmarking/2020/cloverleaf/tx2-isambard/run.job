@@ -12,7 +12,5 @@ export OMP_NUM_THREADS=64
 export CRAY_OMP_NUM_CHECK_AFFINITY=TRUE
 date
 
-
-
-aprun -n 1 -d 64 ./$BENCHMARK_EXE
+aprun -n 1 -d 64 ./$BENCHMARK_EXE --file clover.in
 
