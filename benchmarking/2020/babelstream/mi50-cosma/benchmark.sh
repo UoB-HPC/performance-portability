@@ -9,6 +9,7 @@ function usage() {
   echo "Valid compilers:"
   echo "  gcc-9.3"
   echo "  aocc-2.2"
+  echo "  aomp-11.7"
   echo "  hipcc"
   echo "  hipsycl"
   echo
@@ -51,6 +52,10 @@ gcc-9.3)
 aocc-2.2)
   module load aocc/2.2.0
   MAKE_OPTS="COMPILER=CLANG"
+  ;;
+aomp-11.7)
+  export PATH=/opt/rocm/aomp/bin:$PATH
+  MAKE_OPTS="COMPILER=AOMP"
   ;;
 hipcc)
   MAKE_OPTS="COMPILER=HIPCC"
