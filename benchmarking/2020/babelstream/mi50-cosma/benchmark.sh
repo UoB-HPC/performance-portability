@@ -61,8 +61,9 @@ hipcc)
   MAKE_OPTS="COMPILER=HIPCC"
   ;;
 hipsycl)
+  module use /cosma/home/do006/dc-deak1/bin/modulefiles
   module load hipsycl/master
-  MAKE_OPTS='COMPILER=HIPSYCL SYCL_SDK_DIR=/mnt/shared/software/hipsycl/master'
+  MAKE_OPTS='COMPILER=HIPSYCL SYCL_SDK_DIR=/cosma/home/do006/dc-deak1/bin/hipsycl/master EXTRA_FLAGS="--gcc-toolchain=/cosma/local/gcc/9.3.0"'
   ;;
 *)
   echo
@@ -107,6 +108,7 @@ ocl)
 sycl)
   MAKE_FILE="SYCL.make"
   BINARY="sycl-stream"
+  MAKE_OPTS+=' TARGET=AMD ARCH=gfx906'
   ;;
 esac
 
