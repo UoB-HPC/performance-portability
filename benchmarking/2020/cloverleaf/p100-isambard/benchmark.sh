@@ -1,18 +1,11 @@
 #!/bin/bash
 
 set -eu
-DEFAULT_COMPILER=cce-10.0
 DEFAULT_MODEL=cuda
 function usage() {
   echo
-  echo "Usage: ./benchmark.sh build|run [COMPILER] [MODEL]"
+  echo "Usage: ./benchmark.sh build|run [MODEL]"
   echo
-  echo "Valid compilers:"
-  echo "  cce-10.0"
-  echo "  gcc-6.1"
-  echo "  llvm-10.0"
-  echo "  pgi-19.10"
-  echo "  hipsycl-trunk"
   echo
   echo "Valid models:"
   echo "  omp-target"
@@ -20,6 +13,7 @@ function usage() {
   echo "  kokkos"
   echo "  acc"
   echo "  opencl"
+  echo "  sycl"
   echo
   echo "The default programming model is '$DEFAULT_MODEL'."
   echo
@@ -32,63 +26,23 @@ if [ $# -lt 1 ]; then
 fi
 
 ACTION=$1
-COMPILER=${2:-$DEFAULT_COMPILER}
-MODEL=${3:-$DEFAULT_MODEL}
+MODEL=${2:-$DEFAULT_MODEL}
 SCRIPT=$(realpath $0)
 SCRIPT_DIR=$(realpath $(dirname $SCRIPT))
 source ${SCRIPT_DIR}/../common.sh
-export CONFIG="p100"_"$COMPILER"_"$MODEL"
-export BENCHMARK_EXE=CloverLeaf-$CONFIG
 export SRC_DIR=$PWD/CloverLeaf
-export RUN_DIR=$PWD/CloverLeaf-$CONFIG
+
+
 
 module purge
 module load shared pbspro
 
-case "$COMPILER" in
-cce-10.0)
-  module load gcc/7.4.0 # newer versions of libstdc++
-  module load craype-broadwell
-  module load PrgEnv-cray
-  module load craype-accel-nvidia60
-#  module swap cce cce/10.0.0
-  ;;
-llvm-10.0)
-  module load gcc/7.4.0 # newer versions of libstdc++
-  module load llvm/10.0
-  module load craype-accel-nvidia60
-  module load cuda10.2/toolkit/10.2.89
-  ;;
-gcc-6.1)
-  module load gcc/6.1.0
-  module load openmpi/gcc-6.1.0/1.10.7
-  module load craype-accel-nvidia60 cuda10.2/toolkit/10.2.89
-  ;;
-pgi-19.10)
-  module load craype-accel-nvidia60
-  module load cuda10.2/toolkit/10.2.89
-  module load pgi/compiler/19.10 pgi/openmpi/3.1.3
-  ;;
-hipsycl-trunk)
-  module load gcc/8.2.0
-  module load openmpi/gcc-6.1.0/1.10.7
-  module load craype-accel-nvidia60 cuda10.2/toolkit/10.2.89
-  module load hipsycl/trunk
-  ;;
-*)
-  echo
-  echo "Invalid compiler '$COMPILER'."
-  usage
-  exit 1
-  ;;
-esac
-
 export MODEL=$MODEL
 case "$MODEL" in
 omp-target)
-  module purge
+  COMPILER=cce-10.0
   module load gcc/7.4.0 # newer versions of libstdc++
-  module load shared pbspro craype-broadwell PrgEnv-cray
+  module load PrgEnv-cray craype-broadwell craype-accel-nvidia60
   module swap cce cce/10.0.0
 
   export SRC_DIR="$PWD/CloverLeaf-OpenMP4"
@@ -98,17 +52,20 @@ omp-target)
   BINARY="clover_leaf"
   ;;
 cuda)
+  COMPILER=cce-10.0
+  module load gcc/7.4.0 # newer versions of libstdc++
+  module load PrgEnv-cray craype-broadwell craype-accel-nvidia60
+  module swap cce cce/10.0.0
+
   export SRC_DIR="$PWD/CloverLeaf_CUDA"
   MAKE_OPTS='-j16 COMPILER=CRAY NV_ARCH=PASCAL C_MPI_COMPILER=cc MPI_COMPILER=ftn'
   BINARY="clover_leaf"
   ;;
 kokkos)
-  if [ "$COMPILER" != "gcc-6.1" ]; then
-    echo
-    echo " Must use gcc-6.1 with Kokkos"
-    echo
-    stop
-  fi
+  COMPILER=gcc-6.1
+  module load gcc/6.1.0
+  module load openmpi/gcc-6.1.0/1.10.7
+  module load craype-accel-nvidia60 cuda10.2/toolkit/10.2.89
 
   NVCC=$(which nvcc)
   echo "Using NVCC=${NVCC}"
@@ -125,11 +82,20 @@ kokkos)
   BINARY="clover_leaf"
   ;;
 acc)
+  COMPILER=pgi-19.10
+  module load craype-accel-nvidia60
+  module load cuda10.2/toolkit/10.2.89
+  module load pgi/compiler/19.10 pgi/openmpi/3.1.3
+
   export SRC_DIR="$PWD/CloverLeaf-OpenACC"
   MAKE_OPTS='COMPILER=PGI C_MPI_COMPILER=mpicc MPI_F90=mpif90  FLAGS_PGI="-O3 -Mpreprocess -fast -acc -ta=tesla:cc60" CFLAGS_PGI="-O3 -ta=tesla:cc60" OMP_PGI=""'
   BINARY="clover_leaf"
   ;;
 opencl)
+  COMPILER=gcc-6.1
+  module load gcc/6.1.0
+  module load openmpi/gcc-6.1.0/1.10.7
+  module load craype-accel-nvidia60 cuda10.2/toolkit/10.2.89
 
   export SRC_DIR="$PWD/CloverLeaf"
   CUDA_PATH=$(dirname $(which nvcc))/..
@@ -142,6 +108,11 @@ opencl)
   BINARY="clover_leaf"
   ;;
 sycl)
+  COMPILER=hipsycl-trunk
+  module load gcc/8.2.0
+  module load openmpi/gcc-6.1.0/1.10.7
+  module load craype-accel-nvidia60 cuda10.2/toolkit/10.2.89
+  module load hipsycl/trunk
 
   HIPSYCL_PATH=$(realpath $(dirname $(which syclcc))/..)
   echo "Using HIPSYCL_PATH=${HIPSYCL_PATH}"
@@ -161,15 +132,19 @@ sycl)
   ;;
 esac
 
+export CONFIG="p100"_"$COMPILER"_"$MODEL"
+export BENCHMARK_EXE=CloverLeaf-$CONFIG
+export RUN_DIR=$PWD/CloverLeaf-$CONFIG
+
 # Handle actions
 if [ "$ACTION" == "build" ]; then
 
   fetch_src $MODEL
 
-#  if [ "$MODEL" == "omp-target" ]; then
-#    # As of 21 Mar 2019, the linker command does not work with the Cray compiler (and possibly others too)
-#    sed -i '/-o clover_leaf/c\\t$(MPI_F90) $(FFLAGS) $(OBJ) $(LDLIBS) -o clover_leaf' "$SRC_DIR/Makefile"
-#  fi
+  #  if [ "$MODEL" == "omp-target" ]; then
+  #    # As of 21 Mar 2019, the linker command does not work with the Cray compiler (and possibly others too)
+  #    sed -i '/-o clover_leaf/c\\t$(MPI_F90) $(FFLAGS) $(OBJ) $(LDLIBS) -o clover_leaf' "$SRC_DIR/Makefile"
+  #  fi
 
   build_bin "$MODEL" "$MAKE_OPTS" "$SRC_DIR" "$BINARY" "$RUN_DIR" "$BENCHMARK_EXE"
 
