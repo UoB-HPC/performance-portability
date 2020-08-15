@@ -1,4 +1,3 @@
-
 check_bin() {
   if [ ! -x "$1" ]; then
     echo "Executable '$1' not found."
@@ -6,7 +5,6 @@ check_bin() {
     exit 1
   fi
 }
-
 
 usage() {
   echo
@@ -89,4 +87,42 @@ fetch_src() {
     exit 1
     ;;
   esac
+}
+
+build_bin() {
+
+  MODEL=$1
+  MAKE_OPTS=$2
+  SRC_DIR=$3
+  BINARY=$4
+  RUN_DIR=$5
+  BENCHMARK_EXE=$6
+
+  rm -f $RUN_DIR/$BENCHMARK_EXE
+
+  if [ "$MODEL" == "sycl" ]; then
+    cd $SRC_DIR || exit
+    rm -rf build
+    module load cmake/3.12.3
+    cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release $MAKE_OPTS
+    cmake --build build --target clover_leaf --config Release -j $(nproc)
+    mv build/$BINARY $BINARY
+    cd $SRC_DIR/.. || exit
+  else
+
+    if [ "$MODEL" == "opencl" ]; then
+      mkdir -p $SRC_DIR/obj $SRC_DIR/mpiobj
+    fi
+
+    if ! eval make -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
+      echo
+      echo "Build failed."
+      echo
+      exit 1
+    fi
+
+  fi
+
+  mkdir -p $RUN_DIR
+  mv $SRC_DIR/$BINARY $RUN_DIR/$BENCHMARK_EXE
 }

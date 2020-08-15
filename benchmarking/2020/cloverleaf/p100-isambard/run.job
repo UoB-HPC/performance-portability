@@ -23,6 +23,10 @@ case "$MODEL" in
       mpirun -np 1 "./$BENCHMARK_EXE"
       ;;
 
+  sycl)
+      mpirun -np 1 "./$BENCHMARK_EXE" --file clover.in
+      ;;
+
   opencl)
       # Make sure OCL_SRC_PREFIX is set so the kernel source files can be found
       export OCL_SRC_PREFIX=../CloverLeaf
