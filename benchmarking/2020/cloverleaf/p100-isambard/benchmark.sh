@@ -50,8 +50,8 @@ cce-10.0)
   module load gcc/7.4.0 # newer versions of libstdc++
   module load craype-broadwell
   module load PrgEnv-cray
-  module swap cce cce/10.0.0
   module load craype-accel-nvidia60
+#  module swap cce cce/10.0.0
   ;;
 llvm-10.0)
   module load gcc/7.4.0 # newer versions of libstdc++
@@ -93,6 +93,9 @@ omp-target)
 
   export SRC_DIR="$PWD/CloverLeaf-OpenMP4"
   MAKE_OPTS='-j16 COMPILER=CRAY MPI_F90=ftn MPI_C=cc'
+  MAKE_OPTS+=' C_OPTIONS=" -fopenmp -fopenmp-targets=nvptx64 -Xopenmp-target -march=sm_60" '
+  MAKE_OPTS+=' OPTIONS=" -fopenmp" '
+  BINARY="clover_leaf"
   ;;
 cuda)
   export SRC_DIR="$PWD/CloverLeaf_CUDA"
@@ -163,10 +166,10 @@ if [ "$ACTION" == "build" ]; then
 
   fetch_src $MODEL
 
-  if [ "$MODEL" == "omp-target" ]; then
-    # As of 21 Mar 2019, the linker command does not work with the Cray compiler (and possibly others too)
-    sed -i '/-o clover_leaf/c\\t$(MPI_F90) $(FFLAGS) $(OBJ) $(LDLIBS) -o clover_leaf' "$SRC_DIR/Makefile"
-  fi
+#  if [ "$MODEL" == "omp-target" ]; then
+#    # As of 21 Mar 2019, the linker command does not work with the Cray compiler (and possibly others too)
+#    sed -i '/-o clover_leaf/c\\t$(MPI_F90) $(FFLAGS) $(OBJ) $(LDLIBS) -o clover_leaf' "$SRC_DIR/Makefile"
+#  fi
 
   build_bin "$MODEL" "$MAKE_OPTS" "$SRC_DIR" "$BINARY" "$RUN_DIR" "$BENCHMARK_EXE"
 
