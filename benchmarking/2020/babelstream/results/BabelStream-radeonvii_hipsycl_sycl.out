@@ -1,4 +1,4 @@
-Wed  5 Aug 21:58:42 BST 2020
+Tue 18 Aug 14:31:04 BST 2020
 BabelStream
 Version: 3.4
 Implementation: SYCL
@@ -8,5 +8,10 @@ Array size: 268.4 MB (=0.3 GB)
 Total size: 805.3 MB (=0.8 GB)
 Using SYCL device Vega 20
 Driver: hipSYCL 0.8.1-prerelease on HIP/CUDA 19361
-Reduction kernel config: 60 groups of size 64
-### HCC STATUS_CHECK Error: Unknown Error Code (0x29) at file:mcwamp_hsa.cpp line:1194
+Reduction kernel config: 240 groups of size 1024
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        826691.641  0.00065     0.00072     0.00065     
+Mul         827304.392  0.00065     0.00072     0.00065     
+Add         808140.517  0.00100     0.00103     0.00100     
+Triad       808417.157  0.00100     0.00103     0.00100     
+Dot         660106.936  0.00081     0.00088     0.00083     
