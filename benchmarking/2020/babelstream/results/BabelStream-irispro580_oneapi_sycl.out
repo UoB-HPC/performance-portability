@@ -1,4 +1,4 @@
-Wed  5 Aug 23:04:42 BST 2020
+Wed 12 Aug 01:42:50 BST 2020
 BabelStream
 Version: 3.4
 Implementation: SYCL
@@ -7,14 +7,11 @@ Precision: double
 Array size: 268.4 MB (=0.3 GB)
 Total size: 805.3 MB (=0.8 GB)
 Using SYCL device Intel(R) Gen9 HD Graphics NEO
-Driver: 20.02.15268
+Driver: 20.28.17293
 Reduction kernel config: 288 groups of size 256
-Validation failed on a[]. Average error 0.00168703
-Validation failed on b[]. Average error 0.00070293
-Validation failed on c[]. Average error 0.00246025
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        19677133.5580.00003     0.00008     0.00003     
-Mul         21443100.6910.00003     0.00007     0.00003     
-Add         32316961.6760.00002     0.00009     0.00003     
-Triad       31645173.2160.00003     0.00005     0.00003     
-Dot         9667253.300 0.00006     0.00013     0.00006     
+Copy        31196.001   0.01721     0.02033     0.01741     
+Mul         26424.769   0.02032     0.02334     0.02059     
+Add         26545.060   0.03034     0.03277     0.03056     
+Triad       27436.326   0.02935     0.03132     0.02956     
+Dot         24001.085   0.02237     0.02508     0.02259     

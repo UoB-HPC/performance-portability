@@ -54,8 +54,8 @@ cce-10.0)
   module load shared pbspro
   module load craype-broadwell
   module load PrgEnv-cray
-  module swap cce cce/10.0.0
   module load craype-accel-nvidia60
+  module swap cce cce/10.0.0
   MAKE_OPTS='COMPILER=CRAY TARGET=NVIDIA EXTRA_FLAGS="-fopenmp -fopenmp-targets=nvptx64 -Xopenmp-target -march=sm_60"'
   ;;
 llvm-10.0)
