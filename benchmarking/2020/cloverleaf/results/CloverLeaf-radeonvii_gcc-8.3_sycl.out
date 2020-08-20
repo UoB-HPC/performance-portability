@@ -1,0 +1,38 @@
+Mon 17 Aug 03:23:58 BST 2020
+
+Clover Version 1.300
+Kokkos Version
+Task Count 1
+
+Output file clover.out opened. All output will go there.
+Detected SYCL devices:
+  0. Vega 20(gpu)
+Using SYCL device: Vega 20(gpu)
+Args: --file clover.in --device 0
+Using input: `clover.in`
+Launching hydro
+ Step 1 time 0 control sound timestep  0.00154065 1,1 x 6.12641e-322 y 0
+Wall clock 0.100434
+Average time per cell 6.81112e-09
+Step time per cell    6.81112e-09
+[node30:10989] *** Process received signal ***
+[node30:10989] Signal: Aborted (6)
+[node30:10989] Signal code:  (-6)
+[node30:10989] [ 0] /lib64/libc.so.6(+0x36340)[0x7f03b1ea7340]
+[node30:10989] [ 1] /lib64/libc.so.6(gsignal+0x37)[0x7f03b1ea72c7]
+[node30:10989] [ 2] /lib64/libc.so.6(abort+0x148)[0x7f03b1ea89b8]
+[node30:10989] [ 3] /opt/rocm/lib/libmcwamp_hsa.so.2.9(+0x5c654)[0x7f03af566654]
+[node30:10989] [ 4] /opt/rocm/hsa/lib/libhsa-runtime64.so.1(+0x26fcf)[0x7f03b3518fcf]
+[node30:10989] [ 5] /opt/rocm/hsa/lib/libhsa-runtime64.so.1(+0x4c71b)[0x7f03b353e71b]
+[node30:10989] [ 6] /opt/rocm/hsa/lib/libhsa-runtime64.so.1(+0x13087)[0x7f03b3505087]
+[node30:10989] [ 7] /lib64/libpthread.so.0(+0x7dd5)[0x7f03b1a58dd5]
+[node30:10989] [ 8] /lib64/libc.so.6(clone+0x6d)[0x7f03b1f6f02d]
+[node30:10989] *** End of error message ***
+### HCC STATUS_CHECK Error: HSA_STATUS_ERROR_INVALID_ALLOCATION (0x1003) at file:mcwamp_hsa.cpp line:1194
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 0 on node node30 exited on signal 6 (Aborted).
+--------------------------------------------------------------------------
