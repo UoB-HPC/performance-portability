@@ -8,6 +8,7 @@ function usage() {
   echo
   echo "Valid compilers:"
   echo "  gcc-9.3"
+  echo "  gcc-10.2"
   echo "  aocc-2.2"
   echo "  aomp-11.7"
   echo "  hipcc"
@@ -49,6 +50,11 @@ gcc-9.3)
   module load gnu_comp/9.3.0
   MAKE_OPTS="COMPILER=GNU"
   ;;
+gcc-10.2)
+  module use /cosma/home/do006/dc-deak1/bin/modulefiles
+  module load gcc/10.2.0
+  MAKE_OPTS="COMPILER=GNU"
+  ;;
 aocc-2.2)
   module load aocc/2.2.0
   MAKE_OPTS="COMPILER=CLANG"
@@ -76,8 +82,12 @@ esac
 case "$MODEL" in
 omp)
   MAKE_FILE="OpenMP.make"
-  MAKE_OPTS+=" TARGET=GPU"
   BINARY="omp-stream"
+  if [ "$COMPILER" == "gcc-10.2" ]; then
+    MAKE_OPTS+=" EXTRA_FLAGS='-foffload=-march=gfx906' TARGET=AMD"
+  else
+    MAKE_OPTS+=" TARGET=GPU"
+  fi
   ;;
 kokkos)
 
