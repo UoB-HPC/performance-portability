@@ -106,6 +106,18 @@ kokkos)
     BINARY="kokkos-stream"
     MAKE_OPTS+=" KOKKOS_PATH=${KOKKOS_PATH} TARGET=GPU ARCH=VEGA906 DEVICE=HIP CXX=hipcc"
     ;;
+acc)
+  if [ "$COMPILER" != "gcc-10.2" ]; then
+    echo
+    echo " Must use gcc-10.2"
+    echo
+    exit 1
+  fi
+
+  MAKE_FILE="OpenACC.make"
+  BINARY="acc-stream"
+  MAKE_OPTS+=" EXTRA_FLAGS='-foffload=-march=gfx906' TARGET=AMD"
+  ;;
 
 ocl)
   export LIBRARY_PATH=$LIBRARY_PATH:/opt/rocm/opencl/lib
