@@ -81,7 +81,8 @@ for result in data:
 plt.rc('text', usetex=True)
 plt.rc('font', family='serif', serif='Times')
 fig, ax = plt.subplots()
-colors = "summer"
+colors = "summer_r"
+#colors = "inferno"
 # Set map so red is best, green is worst
 cmap = plt.cm.get_cmap(colors) if args.higher_is_better else plt.cm.get_cmap(colors+"_r")
 cmap.set_under('w')
@@ -89,6 +90,8 @@ plt.pcolor(np.array(heatmap), cmap=cmap, edgecolors='k', vmin=1.0E-6)
 ax.set_yticks(np.arange(len(heatmap)) + 0.5, minor=False)
 ax.set_xticks(np.arange(len(heatmap[0])) + 0.5, minor=False)
 ax.set_yticklabels(series, fontsize='xx-large')
+for i in range(len(headings)):
+  headings[i] = headings[i].replace('_', '\_')
 ax.set_xticklabels(headings, fontsize='xx-large', rotation=45)
 plt.gca().invert_yaxis()
 
@@ -110,8 +113,8 @@ if args.mean:
   # Calculate mean and standard deviation for each row
   means = np.mean(heatmap, axis=1)
   stdev = np.std(heatmap, axis=1)
-  print means
-  print stdev
+  print(means)
+  print(stdev)
 
   # Plot on graph as extra column
   plt.text(len(headings) + 0.5, 0, "Mean",
