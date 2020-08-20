@@ -6,24 +6,9 @@ check_bin() {
   fi
 }
 
-usage() {
-  echo
-  echo "Usage: ./fetch [MODEL]"
-  echo
-  echo "Valid models:"
-  echo "  omp"
-  echo "  omp-target"
-  echo "  kokkos"
-  echo "  cuda"
-  echo "  opencl"
-  echo "  acc"
-  echo
-  echo "The default programming model is '$DEFAULT_MODEL'."
-  echo
-}
-
 KOKKOS_VERSION=3.1.01
 fetch_kokkos() {
+  local KOKKOS_SRC_DIR KOKKOS_DIST
   KOKKOS_SRC_DIR="kokkos-${KOKKOS_VERSION}"
   KOKKOS_DIST="${KOKKOS_VERSION}.tar.gz"
   if [ ! -d ${KOKKOS_SRC_DIR} ]; then
@@ -39,16 +24,17 @@ fetch_kokkos() {
   echo ${KOKKOS_SRC_DIR}
 }
 
-DEFAULT_MODEL=omp
 fetch_src() {
   # Process arguments
-  MODEL=$1
+  local model
+  model=$1
 
-  case "$MODEL" in
-  omp)
+  case "$model" in
+  omp|mpi)
     if [ ! -e CloverLeaf_ref/clover.f90 ]; then
       git clone https://github.com/UK-MAC/CloverLeaf_ref
     fi
+    ( cd CloverLeaf_ref; git checkout 612c2da46cffe26941e5a06492215bdef2c3f971 )
     ;;
   omp-target)
     if [ ! -e CloverLeaf-OpenMP4/clover.f90 ]; then
@@ -82,7 +68,7 @@ fetch_src() {
     ;;
   *)
     echo
-    echo "Invalid model '$MODEL'."
+    echo "Invalid model '$model'."
     usage
     exit 1
     ;;
@@ -91,6 +77,7 @@ fetch_src() {
 
 build_bin() {
 
+  local MODEL MAKE_OPTS SRC_DIR BINARY RUN_DIR BENCHMARK_EXE
   MODEL=$1
   MAKE_OPTS=$2
   SRC_DIR=$3
