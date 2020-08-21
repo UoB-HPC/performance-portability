@@ -7,15 +7,17 @@ function usage
     echo
     echo "Usage: ./benchmark.sh build|run [MODEL] [COMPILER]"
     echo
-    echo "Valid compilers:"
-    echo "  pgi-20.1"
-    echo
     echo "Valid model and compiler options:"
     echo "  mpi | omp"
     echo "    intel-2020"
     echo "    gcc-9.1"
     echo "    aocc-2.1"
+    echo
     echo "  kokkos"
+    echo "    gcc-9.1"
+    echo
+    echo "  acc"
+    echo "    pgi-20.1"
     echo
     echo "The default configuration is '$DEFAULT_COMPILER $DEFAULT_MODEL'."
     echo
@@ -68,6 +70,13 @@ case "$COMPILER" in
         MAKE_OPTS=$MAKE_OPTS' FLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -march=znver2 -funroll-loops"'
         MAKE_OPTS=$MAKE_OPTS' CFLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -march=znver2 -funroll-loops"'
         ;;
+    pgi-19.10)
+        module purge
+        module use /home/td8469/software/modulefiles
+        module load pgi/19.10
+        export PATH=/home/td8469/software/pgi/19.10/linux86-64/19.10/mpi/openmpi-3.1.3/bin:$PATH
+        MAKE_OPTS="COMPILER=PGI MPI_COMPILER=mpif90 C_MPI_COMPILER=mpicc"
+        ;;
     *)
         echo
         echo "Invalid compiler '$COMPILER'."
@@ -111,7 +120,17 @@ case "$MODEL" in
         ;;
 
     acc)
-        MAKE_OPTS=$MAKE_OPTS' FLAGS_PGI="-O3 -Mpreprocess -fast -acc -ta=multicore -tp=skylake" CFLAGS_PGI="-O3 -ta=multicore -tp=skylake" OMP_PGI=""'
+        case "$COMPILER" in
+          pgi-19.10)
+            ;;
+          *)
+            echo
+            echo "Invalid compiler '$COMPILER'."
+            usage
+            exit 1
+            ;;
+        esac
+        MAKE_OPTS=$MAKE_OPTS' FLAGS_PGI="-O3 -Mpreprocess -fast -acc -ta=multicore -tp=zen" CFLAGS_PGI="-O3 -ta=multicore -tp=zen" OMP_PGI=""'
         export SRC_DIR=$PWD/CloverLeaf-OpenACC
         ;;
 

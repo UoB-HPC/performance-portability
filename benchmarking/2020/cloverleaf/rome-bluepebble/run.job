@@ -19,8 +19,8 @@ case "$MODEL" in
         ./$BENCHMARK_EXE
         ;;
     acc)
-        export ACC_NUM_CORES=56
-        aprun -n 1 -d 56 -j 1 -cc depth ./$BENCHMARK_EXE
+        export ACC_NUM_CORES=128
+        taskset -c 0-127 mpirun -np 1 --bind-to none ./$BENCHMARK_EXE
         ;;
     kokkos)
         export OMP_NUM_THREADS=128 OMP_PLACES=cores OMP_PROC_BIND=true KMP_AFFINITY=verbose
