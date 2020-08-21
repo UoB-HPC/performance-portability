@@ -15,7 +15,6 @@ function usage
     echo "    intel-2020"
     echo "    gcc-9.1"
     echo "    aocc-2.1"
-    echo "  omp"
     echo "  kokkos"
     echo
     echo "The default configuration is '$DEFAULT_COMPILER $DEFAULT_MODEL'."
@@ -69,11 +68,6 @@ case "$COMPILER" in
         MAKE_OPTS=$MAKE_OPTS' FLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -march=znver2 -funroll-loops"'
         MAKE_OPTS=$MAKE_OPTS' CFLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -march=znver2 -funroll-loops"'
         ;;
-    pgi-20.1)
-        module swap PrgEnv-{cray,pgi}
-        module swap pgi pgi/20.1.1
-        MAKE_OPTS='COMPILER=PGI C_MPI_COMPILER=cc MPI_COMPILER=ftn'
-        ;;
     *)
         echo
         echo "Invalid compiler '$COMPILER'."
@@ -98,9 +92,21 @@ case "$MODEL" in
         ;;
 
     kokkos)
-        module use /lus/snx11029/p02100/modules/modulefiles
-        module load kokkos/2.8.00/intel/skylake
-        MAKE_OPTS='CXX=CC'
+        case "$COMPILER" in
+          gcc-9.1)
+            ;;
+          *)
+            echo
+            echo "Invalid compiler '$COMPILER'."
+            usage
+            exit 1
+            ;;
+        esac
+        KOKKOS_PATH=$(pwd)/$(fetch_kokkos)
+        echo "Using KOKKOS_PATH=${KOKKOS_PATH}"
+        MAKE_FILE="Kokkos.make"
+        BINARY="kokkos-stream"
+        MAKE_OPTS+=" KOKKOS_PATH=${KOKKOS_PATH} ARCH=EPYC DEVICE=OpenMP"
         export SRC_DIR=$PWD/cloverleaf_kokkos
         ;;
 
