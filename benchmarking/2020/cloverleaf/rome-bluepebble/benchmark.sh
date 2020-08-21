@@ -19,6 +19,9 @@ function usage
     echo "  acc"
     echo "    pgi-20.1"
     echo
+    echo "  sycl"
+    echo "    hipsycl"
+    echo
     echo "The default configuration is '$DEFAULT_COMPILER $DEFAULT_MODEL'."
     echo
 }
@@ -77,6 +80,11 @@ case "$COMPILER" in
         export PATH=/home/td8469/software/pgi/19.10/linux86-64/19.10/mpi/openmpi-3.1.3/bin:$PATH
         MAKE_OPTS="COMPILER=PGI MPI_COMPILER=mpif90 C_MPI_COMPILER=mpicc"
         ;;
+    hipsycl)
+        module use /home/td8469/software/modulefiles
+        module load hipsycl/master-12-jun-2020
+        module load openmpi/4.0.4-mpi1
+        ;;
     *)
         echo
         echo "Invalid compiler '$COMPILER'."
@@ -134,6 +142,17 @@ case "$MODEL" in
         export SRC_DIR=$PWD/CloverLeaf-OpenACC
         ;;
 
+    sycl)
+      
+        HIPSYCL_PATH=$(realpath $(dirname $(which syclcc))/..)
+        echo "Using HIPSYCL_PATH=${HIPSYCL_PATH}"
+        MAKE_OPTS+=" -DHIPSYCL_INSTALL_DIR=${HIPSYCL_PATH} -DSYCL_RUNTIME=HIPSYCL"
+      
+        BINARY="clover_leaf"
+        export SRC_DIR=$PWD/cloverleaf_sycl
+        export DEVICE_ARGS="--device 1"
+        ;;
+
     *)
         echo
         echo "Invalid model '$MODEL'."
@@ -151,12 +170,25 @@ then
 
     # Perform build
     rm -f $SRC_DIR/$BENCHMARK_EXE $RUN_DIR/$BENCHMARK_EXE
-    if ! eval make -C $SRC_DIR -B $MAKE_OPTS
-    then
+
+    if [ "$MODEL" == "sycl" ]; then
+      cd $SRC_DIR || exit
+      rm -rf build
+      module load tools/cmake/3.14.2
+      module load lang/gcc/9.1.0
+      cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release $MAKE_OPTS -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+      cmake --build build --target clover_leaf --config Release -j $(nproc)
+      mv build/$BINARY $BINARY
+      cd $SRC_DIR/.. || exit
+    else
+  
+      if ! eval make -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
         echo
         echo "Build failed."
         echo
         exit 1
+      fi
+  
     fi
 
     mkdir -p $RUN_DIR
