@@ -1,16 +1,19 @@
 #!/bin/bash
 #PBS -q arm
 #PBS -l select=1:ncpus=64
-#PBS -l walltime=00:45:00
+#PBS -l walltime=00:15:00
 #PBS -joe
 
-cd $RUN_DIR
+cd "$RUN_DIR"
 
-cp $SRC_DIR/InputDecks/clover_bm16.in clover.in
+cp "$SRC_DIR/InputDecks/clover_bm16.in" clover.in
 
 export OMP_NUM_THREADS=64
-export CRAY_OMP_NUM_CHECK_AFFINITY=TRUE
 date
 
-aprun -n 1 -d 64 ./$BENCHMARK_EXE --file clover.in
+if [[ "$COMPILER" =~ allinea- ]]; then
+    OMP_PROC_BIND=true aprun -n 1 -d 64 -cc none "./$BENCHMARK_EXE"
+else
+    aprun -n 1 -d 64 "./$BENCHMARK_EXE"
+fi
 

@@ -8,7 +8,7 @@ function usage() {
   echo
   echo "Valid compilers:"
   echo "  cce-10.0"
-  echo "  gcc-9.2"
+  echo "  gcc-9.3"
   echo "  allinea-20.0"
   echo
   echo "Valid models:"
@@ -26,40 +26,34 @@ if [ $# -lt 1 ]; then
   exit 1
 fi
 
-ACTION=$1
-COMPILER=${2:-$DEFAULT_COMPILER}
-MODEL=${3:-$DEFAULT_MODEL}
-SCRIPT=$(realpath $0)
-SCRIPT_DIR=$(realpath $(dirname $SCRIPT))
-source ${SCRIPT_DIR}/../common.sh
-export CONFIG="tx2"_"$COMPILER"_"$MODEL"
-export BENCHMARK_EXE=CloverLeaf-$CONFIG
-export SRC_DIR=$PWD/CloverLeaf
-export RUN_DIR=$PWD/CloverLeaf-$CONFIG
+ACTION="$1"
+COMPILER="${2:-$DEFAULT_COMPILER}"
+MODEL="${3:-$DEFAULT_MODEL}"
+SCRIPT="$(realpath "$0")"
+SCRIPT_DIR="$(realpath "$(dirname "$SCRIPT")")"
+source "${SCRIPT_DIR}/../common.sh"
+export CONFIG="tx2_${COMPILER}_${MODEL}"
+export BENCHMARK_EXE="CloverLeaf-$CONFIG"
+export SRC_DIR="$PWD/CloverLeaf"
+export RUN_DIR="$PWD/CloverLeaf-$CONFIG"
 
 # Set up the environment
 case "$COMPILER" in
 cce-10.0)
-  module purge
-  module load alps PrgEnv-cray cray-mpich/7.7.12
   [ -z "$CRAY_CPU_TARGET" ] && module load craype-arm-thunderx2
   module swap cce cce/10.0.1
-  MAKE_OPTS='COMPILER=CRAY MPI_COMPILER=ftn C_MPI_COMPILER=cc'
+  MAKE_OPTS='COMPILER=ARM MPI_COMPILER=ftn C_MPI_COMPILER=cc FLAGS_ARM="-em -ra"'
   ;;
-gcc-9.2)
-  module purge
-  module load alps PrgEnv-gnu cray-mpich/7.7.12
-  module swap gcc gcc/9.2.0
-  # PrgEnv-gnu handles mpicc/mpifort for us, so use CC
+gcc-9.3)
+  module swap PrgEnv-{cray,gnu}
+  module swap gcc gcc/9.3.0
   MAKE_OPTS='COMPILER=GNU MPI_COMPILER=cc C_MPI_COMPILER=cc'
   MAKE_OPTS+=' FLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -mcpu=thunderx2t99 -funroll-loops"'
   MAKE_OPTS+=' CFLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -mcpu=thunderx2t99 -funroll-loops"'
-  export OMP_PROC_BIND=spread
   ;;
 allinea-20.0)
-  module purge
-  module load alps PrgEnv-allinea cray-mpich/7.7.12
-  #  module swap allinea allinea/20.0.0.0
+  module swap PrgEnv-{cray,allinea}
+  module swap allinea allinea/20.0.0.0
   MAKE_OPTS='COMPILER=GNU MPI_COMPILER=ftn C_MPI_COMPILER=cc'
   MAKE_OPTS+=' FLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -mcpu=thunderx2t99 -funroll-loops"'
   MAKE_OPTS+=' CFLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -mcpu=thunderx2t99 -funroll-loops"'
@@ -89,8 +83,7 @@ esac
 
 case "$MODEL" in
 omp)
-  export SRC_DIR=$PWD/CloverLeaf_ref
-  MAKE_OPTS+=' OMP_CRAY="-h omp"'
+  export SRC_DIR="$PWD/CloverLeaf_ref"
   BINARY="clover_leaf"
   ;;
 kokkos)
@@ -117,9 +110,9 @@ esac
 # Handle actions
 if [ "$ACTION" == "build" ]; then
   # Fetch source code
-  fetch_src $MODEL
+  fetch_src "$MODEL"
 
-  rm -f $RUN_DIR/$BENCHMARK_EXE
+  rm -f "$RUN_DIR/$BENCHMARK_EXE"
 
   if [ "$MODEL" == "sycl" ]; then
     cd $SRC_DIR || exit
@@ -131,7 +124,7 @@ if [ "$ACTION" == "build" ]; then
     cd $SRC_DIR/.. || exit
   else
 
-    if ! eval make -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
+    if ! eval make -C "$SRC_DIR" -B "$MAKE_OPTS" -j "$(nproc)"; then
       echo
       echo "Build failed."
       echo
@@ -141,12 +134,12 @@ if [ "$ACTION" == "build" ]; then
   fi
 
   # Rename binary
-  mkdir -p $RUN_DIR
-  mv $SRC_DIR/$BINARY $RUN_DIR/$BENCHMARK_EXE
+  mkdir -p "$RUN_DIR"
+  mv "$SRC_DIR/$BINARY" "$RUN_DIR/$BENCHMARK_EXE"
 
 elif [ "$ACTION" == "run" ]; then
-  check_bin $RUN_DIR/$BENCHMARK_EXE
-  qsub -o CloverLeaf-$CONFIG.out -N cloverleaf -V $SCRIPT_DIR/run.job
+  check_bin "$RUN_DIR/$BENCHMARK_EXE"
+  qsub -o "CloverLeaf-$CONFIG.out" -N cloverleaf -V "$SCRIPT_DIR/run.job"
 else
   echo
   echo "Invalid action (use 'build' or 'run')."
