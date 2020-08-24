@@ -12,6 +12,7 @@ function usage() {
   echo "  arm-20.0"
   echo
   echo "Valid models:"
+  echo " mpi"
   echo " omp"
   echo " kokkos"
   echo
@@ -28,14 +29,14 @@ fi
 
 ACTION="$1"
 export COMPILER="${2:-$DEFAULT_COMPILER}"
-MODEL="${3:-$DEFAULT_MODEL}"
+export MODEL="${3:-$DEFAULT_MODEL}"
 SCRIPT="$(realpath "$0")"
 SCRIPT_DIR="$(realpath "$(dirname "$SCRIPT")")"
 source "${SCRIPT_DIR}/../common.sh"
 export CONFIG="tx2_${COMPILER}_${MODEL}"
-export BENCHMARK_EXE="CloverLeaf-$CONFIG"
-export SRC_DIR="$PWD/CloverLeaf"
+export SRC_DIR="$PWD/CloverLeaf_ref"
 export RUN_DIR="$PWD/CloverLeaf-$CONFIG"
+export BENCHMARK_EXE="clover_leaf"
 
 # Set up the environment
 case "$COMPILER" in
@@ -84,14 +85,12 @@ esac
 case "$MODEL" in
 omp)
   export SRC_DIR="$PWD/CloverLeaf_ref"
-  BINARY="clover_leaf"
   ;;
 kokkos)
   KOKKOS_PATH=$(pwd)/$(fetch_kokkos)
   echo "Using KOKKOS_PATH=${KOKKOS_PATH}"
   export SRC_DIR=$PWD/cloverleaf_kokkos
   MAKE_OPTS+="CXX=CC  KOKKOS_PATH=${KOKKOS_PATH} ARCH=ARMv8-TX2 DEVICE=OpenMP"
-  BINARY="clover_leaf"
   ;;
 sycl)
 
@@ -101,7 +100,6 @@ sycl)
   MAKE_OPTS+=" -DMPI_AS_LIBRARY=ON -DMPI_C_LIB_DIR=${CRAY_MPICH_DIR}/lib -DMPI_C_INCLUDE_DIR=${CRAY_MPICH_DIR}/include -DMPI_C_LIB=mpich"
   MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=-mtune=native"
 
-  BINARY="clover_leaf"
   export SRC_DIR=$PWD/cloverleaf_sycl
   export DEVICE_ARGS="--device 1"
   ;;
@@ -115,13 +113,12 @@ if [ "$ACTION" == "build" ]; then
   rm -f "$RUN_DIR/$BENCHMARK_EXE"
 
   if [ "$MODEL" == "sycl" ]; then
-    cd $SRC_DIR || exit
+    ( cd "$SRC_DIR" || exit 1
     rm -rf build
     module load cmake/3.17.3
     cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release $MAKE_OPTS
     cmake --build build --target clover_leaf --config Release -j $(nproc)
-    mv build/$BINARY $BINARY
-    cd $SRC_DIR/.. || exit
+    mv "build/$BENCHMARK_EXE" "$RUN_DIR/" )
   else
 
     if ! eval make -C "$SRC_DIR" -B "$MAKE_OPTS" -j "$(nproc)"; then
@@ -131,11 +128,12 @@ if [ "$ACTION" == "build" ]; then
       exit 1
     fi
 
+    mv "$SRC_DIR/$BENCHMARK_EXE" "$RUN_DIR/"
+
   fi
 
   # Rename binary
   mkdir -p "$RUN_DIR"
-  mv "$SRC_DIR/$BINARY" "$RUN_DIR/$BENCHMARK_EXE"
 
 elif [ "$ACTION" == "run" ]; then
   check_bin "$RUN_DIR/$BENCHMARK_EXE"
