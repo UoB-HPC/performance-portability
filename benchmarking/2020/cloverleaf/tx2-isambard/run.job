@@ -11,7 +11,7 @@ cp "$SRC_DIR/InputDecks/clover_bm16.in" clover.in
 export OMP_NUM_THREADS=64
 date
 
-if [[ "$COMPILER" =~ allinea- ]]; then
+if [[ "$COMPILER" =~ arm- ]]; then
     OMP_PROC_BIND=true aprun -n 1 -d 64 -cc none "./$BENCHMARK_EXE"
 else
     aprun -n 1 -d 64 "./$BENCHMARK_EXE"

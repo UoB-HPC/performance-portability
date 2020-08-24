@@ -9,7 +9,7 @@ function usage() {
   echo "Valid compilers:"
   echo "  cce-10.0"
   echo "  gcc-9.3"
-  echo "  allinea-20.0"
+  echo "  arm-20.0"
   echo
   echo "Valid models:"
   echo " omp"
@@ -51,7 +51,7 @@ gcc-9.3)
   MAKE_OPTS+=' FLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -mcpu=thunderx2t99 -funroll-loops"'
   MAKE_OPTS+=' CFLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -mcpu=thunderx2t99 -funroll-loops"'
   ;;
-allinea-20.0)
+arm-20.0)
   module swap PrgEnv-{cray,allinea}
   module swap allinea allinea/20.0.0.0
   MAKE_OPTS='COMPILER=GNU MPI_COMPILER=ftn C_MPI_COMPILER=cc'

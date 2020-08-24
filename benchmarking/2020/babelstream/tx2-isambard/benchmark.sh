@@ -9,7 +9,7 @@ function usage() {
   echo "Valid compilers:"
   echo "  cce-10.0"
   echo "  gcc-9.2"
-  echo "  allinea-20.0"
+  echo "  arm-20.0"
   echo "  llvm-10.0"
   echo "  hipsycl-200527-gcc"
   echo "  hipsycl-200527-cce"
@@ -59,7 +59,7 @@ gcc-9.2)
   MAKE_OPTS="COMPILER=GNU TARGET=CPU"
   export OMP_PROC_BIND=spread
   ;;
-allinea-20.0)
+arm-20.0)
   module purge
   module load alps PrgEnv-allinea
   #  module swap allinea allinea/20.0.0.0
