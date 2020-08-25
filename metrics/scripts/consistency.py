@@ -59,12 +59,18 @@ def mad(n):
 def data_range(n):
   return max(n) - min(n)
 
+def pp(n):
+  if 0 in n:
+    return 0
+  return harmonic_mean(n)
+
 # Set up argument parsing
 parser = argparse.ArgumentParser(description="Produce table of \"average\" efficiencies")
 parser.add_argument('input_file', help="CSV file containing performance data")
 parser.add_argument('output_file', help="Output TeX file")
 parser.add_argument('--calc-efficiency', action="store_true", help="Calculate application efficiency")
 parser.add_argument('--input-is-throughput', action="store_true", help="If calculating application efficiency, then treat the data as throughput (higher is better)")
+parser.add_argument('--sort', action="store_true", help="Sort columns according to performance portability")
 
 args = parser.parse_args()
 
@@ -129,6 +135,14 @@ for (name, f) in measures.items():
   measure = data_nona.apply(f, raw=True).copy()
   measure.name = name
   results = results.append(measure, ignore_index=False)
+
+# Sort columns according to their PP value
+# sort_index is not supported by old Pandas
+if args.sort:
+    measure = data_nona.apply(pp, raw=True).copy()
+    order = sorted([col for col in results.columns], key=lambda col:measure[col])
+    results = results.reindex(order, axis=1)
+
 print()
 print(results)
 
