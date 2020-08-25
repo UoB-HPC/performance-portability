@@ -68,7 +68,7 @@ for result in data:
             l.append('-')
         else:
             if args.percent:
-                l.append('%.1f\\%%' % (raw[i]/args.factorize))
+                l.append('%.0f\\%%' % (raw[i]/args.factorize))
             else:
                 if raw[i]/args.factorize < 100.0:
                     l.append('%.1f' % (raw[i]/args.factorize))
@@ -82,10 +82,11 @@ plt.rc('text', usetex=True)
 plt.rc('font', family='serif', serif='Times')
 fig, ax = plt.subplots()
 colors = "summer_r"
-#colors = "inferno"
+colors = "inferno"
+colors = "gist_heat"
 # Set map so red is best, green is worst
 cmap = plt.cm.get_cmap(colors) if args.higher_is_better else plt.cm.get_cmap(colors+"_r")
-cmap.set_under('w')
+#cmap.set_under('w')
 plt.pcolor(np.array(heatmap), cmap=cmap, edgecolors='k', vmin=1.0E-6)
 ax.set_yticks(np.arange(len(heatmap)) + 0.5, minor=False)
 ax.set_xticks(np.arange(len(heatmap[0])) + 0.5, minor=False)
@@ -95,11 +96,14 @@ for i in range(len(headings)):
 ax.set_xticklabels(headings, fontsize='xx-large', rotation=45)
 plt.gca().invert_yaxis()
 
+# Add colorbar
+plt.colorbar()
+
 # Add labels
 for i in range(len(headings)):
     for j in range(len(series)):
         plt.text(i + 0.5, j + 0.55, labels[j][i],
-                 ha='center', va='center', color='black', weight='bold', size='xx-large')
+                 ha='center', va='center', color='#507060', weight='bold', size='xx-large')
 
 # Add caption
 if args.higher_is_better:
