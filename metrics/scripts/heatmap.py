@@ -1,4 +1,7 @@
 #!/usr/bin/python
+# Copyright (c) 2020 Performance Portability authors
+# SPDX-License-Identifier: MIT
+
 import argparse
 import csv
 import numpy as np

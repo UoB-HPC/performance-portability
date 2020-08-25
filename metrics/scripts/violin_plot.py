@@ -1,4 +1,6 @@
 #!/usr/local/bin/python3
+# Copyright (c) 2020 Performance Portability authors
+# SPDX-License-Identifier: MIT
 
 import numpy as np
 import pandas as pd
