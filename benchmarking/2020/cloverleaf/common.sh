@@ -11,17 +11,17 @@ fetch_kokkos() {
   local KOKKOS_SRC_DIR KOKKOS_DIST
   KOKKOS_SRC_DIR="kokkos-${KOKKOS_VERSION}"
   KOKKOS_DIST="${KOKKOS_VERSION}.tar.gz"
-  if [ ! -d ${KOKKOS_SRC_DIR} ]; then
+  if [ ! -d "$KOKKOS_SRC_DIR" ]; then
     if ! wget "https://github.com/kokkos/kokkos/archive/${KOKKOS_DIST}"; then
       echo
       echo "Failed to Kokkos source code."
       echo
       exit 1
     fi
-    tar -xf ${KOKKOS_DIST}
-    rm ${KOKKOS_DIST}
+    tar -xf "$KOKKOS_DIST"
+    rm "$KOKKOS_DIST"
   fi
-  echo ${KOKKOS_SRC_DIR}
+  echo "$KOKKOS_SRC_DIR"
 }
 
 fetch_src() {

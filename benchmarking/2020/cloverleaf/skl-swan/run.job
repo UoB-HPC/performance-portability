@@ -4,26 +4,26 @@
 #PBS -l walltime=00:15:00
 #PBS -joe
 
-cd $RUN_DIR
+cd "$RUN_DIR" || exit 2
 
-cp $SRC_DIR/InputDecks/clover_bm16.in clover.in
+cp "$SRC_DIR/InputDecks/clover_bm16.in" clover.in
 
 case "$MODEL" in
     mpi)
         export OMP_NUM_THREADS=1
-        aprun -n 56 -d 1 -j 1 ./$BENCHMARK_EXE
+        aprun -n 56 -d 1 -j 1 "./$BENCHMARK_EXE"
         ;;
     omp)
         export OMP_NUM_THREADS=56
-        aprun -n 1 -d 56 -j 1 -cc depth ./$BENCHMARK_EXE
+        aprun -n 1 -d 56 -j 1 -cc depth "./$BENCHMARK_EXE"
         ;;
     acc)
         export ACC_NUM_CORES=56
-        aprun -n 1 -d 56 -j 1 -cc depth ./$BENCHMARK_EXE
+        aprun -n 1 -d 56 -j 1 -cc depth "./$BENCHMARK_EXE"
         ;;
     kokkos)
         export OMP_NUM_THREADS=56
-        aprun -n 1 -d 56 -j 1 -cc depth ./$BENCHMARK_EXE
+        aprun -n 1 -d 56 -j 1 -cc depth "./$BENCHMARK_EXE"
         ;;
     *)
         echo "Unknown run configuration for model '$MODEL'"
