@@ -4,7 +4,7 @@
 #PBS -l walltime=00:15:00
 #PBS -joe
 
-cd "$RUN_DIR"
+cd "$RUN_DIR" || exit 2
 
 cp "$SRC_DIR/InputDecks/clover_bm16.in" clover.in
 
@@ -22,6 +22,9 @@ case "$MODEL" in
         else
             aprun -n 1 -d 64 "./$BENCHMARK_EXE"
         fi
+        ;;
+    kokkos)
+        OMP_PLACES=cores OMP_PROC_BIND=spread aprun -n 1 -d 64 -cc none "./$BENCHMARK_EXE"
         ;;
     *)
         echo "Unknown run configuration for model '$MODEL'"

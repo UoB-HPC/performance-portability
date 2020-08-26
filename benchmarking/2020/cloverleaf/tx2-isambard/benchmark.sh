@@ -4,20 +4,20 @@ DEFAULT_COMPILER=cce-10.0
 DEFAULT_MODEL=omp
 function usage() {
   echo
-  echo "Usage: ./benchmark.sh build|run [COMPILER] [MODEL]"
+  echo "Usage: ./benchmark.sh build|run [MODEL] [COMPILER]"
   echo
-  echo "Valid compilers:"
-  echo "  cce-10.0"
-  echo "  gcc-9.3"
-  echo "  arm-20.0"
+  echo "Valid model and compiler options:"
+  echo "  mpi | omp"
+  echo "    arm-20.0"
+  echo "    cce-10.0"
+  echo "    gcc-9.3"
   echo
-  echo "Valid models:"
-  echo " mpi"
-  echo " omp"
-  echo " kokkos"
+  echo "  kokkos"
+  echo "    arm-20.0"
+  echo "    cce-10.0"
+  echo "    gcc-9.3"
   echo
-  echo "The default configuration is '$DEFAULT_COMPILER'."
-  echo "The default programming model is '$DEFAULT_MODEL'."
+  echo "The default configuration is '$DEFAULT_MODEL $DEFAULT_COMPILER'."
   echo
 }
 
@@ -28,8 +28,8 @@ if [ $# -lt 1 ]; then
 fi
 
 ACTION="$1"
-export COMPILER="${2:-$DEFAULT_COMPILER}"
-export MODEL="${3:-$DEFAULT_MODEL}"
+export MODEL="${2:-$DEFAULT_MODEL}"
+export COMPILER="${3:-$DEFAULT_COMPILER}"
 SCRIPT="$(realpath "$0")"
 SCRIPT_DIR="$(realpath "$(dirname "$SCRIPT")")"
 source "${SCRIPT_DIR}/../common.sh"
@@ -87,10 +87,11 @@ omp)
   export SRC_DIR="$PWD/CloverLeaf_ref"
   ;;
 kokkos)
-  KOKKOS_PATH=$(pwd)/$(fetch_kokkos)
-  echo "Using KOKKOS_PATH=${KOKKOS_PATH}"
-  export SRC_DIR=$PWD/cloverleaf_kokkos
-  MAKE_OPTS+="CXX=CC  KOKKOS_PATH=${KOKKOS_PATH} ARCH=ARMv8-TX2 DEVICE=OpenMP"
+  KOKKOS_PATH="$PWD/$(fetch_kokkos)"
+  echo "Using KOKKOS_PATH='${KOKKOS_PATH}'"
+  MAKE_OPTS+=" CXX=CC KOKKOS_PATH=${KOKKOS_PATH} ARCH=ARMv8-TX2 DEVICE=OpenMP"
+  [[ "$COMPILER" =~ cce- ]] && MAKE_OPTS+=" KOKKOS_INTERNAL_OPENMP_FLAG=-fopenmp"
+  SRC_DIR="$PWD/cloverleaf_kokkos"
   ;;
 sycl)
 
@@ -111,6 +112,7 @@ if [ "$ACTION" == "build" ]; then
   fetch_src "$MODEL"
 
   rm -f "$RUN_DIR/$BENCHMARK_EXE"
+  mkdir -p "$RUN_DIR"
 
   if [ "$MODEL" == "sycl" ]; then
     ( cd "$SRC_DIR" || exit 1
@@ -131,10 +133,6 @@ if [ "$ACTION" == "build" ]; then
     mv "$SRC_DIR/$BENCHMARK_EXE" "$RUN_DIR/"
 
   fi
-
-  # Rename binary
-  mkdir -p "$RUN_DIR"
-
 elif [ "$ACTION" == "run" ]; then
   check_bin "$RUN_DIR/$BENCHMARK_EXE"
   qsub -o "CloverLeaf-$CONFIG.out" -N cloverleaf -V "$SCRIPT_DIR/run.job"
