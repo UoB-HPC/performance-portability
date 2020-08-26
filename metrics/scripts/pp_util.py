@@ -269,11 +269,11 @@ def pp_cdf(theapp, plats, throughput):
             if p.perf > 0 and p.perf != float("inf"):
                 valid_perfs.append((p, platforms[p.platform].app_eff(p.perf, throughput)))
     sorted_perfs = sorted(valid_perfs, key=lambda x: x[1])
-    effs = list(zip(reversed(range(len(sorted_perfs))), (x[1] for x in sorted_perfs)))
+    effs = list(zip(reversed(range(1,len(sorted_perfs)+1)), (x[1] for x in sorted_perfs)))
     perfs = [x[0].platform for x in sorted_perfs]
     pps = []
     for i in range(len(perfs)):
-        pps.append((len(perfs)-i, theapp.app_pp(perfs[i:], throughput)))
+        pps.append((len(perfs)-i, harmean([x[1] for x in sorted_perfs[i:]])))
     return pps, effs
 
 def pp_cdf_raw_effs(theapp):
