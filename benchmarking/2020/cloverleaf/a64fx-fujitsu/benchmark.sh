@@ -4,20 +4,20 @@ DEFAULT_COMPILER=fujitsu-4.1
 DEFAULT_MODEL=mpi
 function usage() {
   echo
-  echo "Usage: ./benchmark.sh build|run [COMPILER] [MODEL]"
+  echo "Usage: ./benchmark.sh build|run [MODEL] [COMPILER]"
   echo
-  echo "Valid compilers:"
-  echo "  arm-20.2"
-  echo "  fujitsu-4.1"
-  echo "  gcc-8.3"
+  echo "Valid model and compiler options:"
+  echo "  mpi | omp"
+  echo "    arm-20.2"
+  echo "    fujitsu-4.1"
+  echo "    gcc-8.3"
   echo
-  echo "Valid models:"
-  echo " mpi"
-  echo " omp"
-  echo " kokkos"
+  echo "  kokkos"
+  echo "    arm-20.2"
+  echo "    fujitsu-4.1"
+  echo "    gcc-8.3"
   echo
-  echo "The default configuration is '$DEFAULT_COMPILER'."
-  echo "The default programming model is '$DEFAULT_MODEL'."
+  echo "The default configuration is '$DEFAULT_MODEL $DEFAULT_COMPILER'."
   echo
 }
 
@@ -28,8 +28,8 @@ if [ $# -lt 1 ]; then
 fi
 
 ACTION="$1"
-export COMPILER="${2:-$DEFAULT_COMPILER}"
-export MODEL="${3:-$DEFAULT_MODEL}"
+export MODEL="${2:-$DEFAULT_MODEL}"
+export COMPILER="${3:-$DEFAULT_COMPILER}"
 SCRIPT="$(realpath "$0")"
 SCRIPT_DIR="$(realpath "$(dirname "$SCRIPT")")"
 source "${SCRIPT_DIR}/../common.sh"
@@ -69,6 +69,18 @@ gcc-8.3)
   usage
   exit 1
   ;;
+esac
+
+case "$MODEL" in
+  omp|mpi)
+    ;;
+  kokkos)
+    KOKKOS_PATH="$PWD/$(fetch_kokkos)"
+    echo "Using KOKKOS_PATH='${KOKKOS_PATH}'"
+    MAKE_OPTS+=" KOKKOS_PATH=${KOKKOS_PATH} ARCH=ARMv81 DEVICE=OpenMP"
+    [[ "$COMPILER" =~ fujitsu- ]] && MAKE_OPTS+=" CXX=mpiFCC"
+    SRC_DIR="$PWD/cloverleaf_kokkos"
+    ;;
 esac
 
 # Handle actions
