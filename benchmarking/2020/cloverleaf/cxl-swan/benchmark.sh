@@ -19,6 +19,9 @@ function usage
   echo "    gcc-9.3"
   echo "    intel-2019"
   echo
+  echo "  acc"
+  echo "    pgi-20.1"
+  echo
   echo "The default configuration is '$DEFAULT_COMPILER $DEFAULT_MODEL'."
   echo
 }
@@ -100,8 +103,15 @@ case "$MODEL" in
     ;;
 
   acc)
-    MAKE_OPTS=$MAKE_OPTS' FLAGS_PGI="-O3 -Mpreprocess -fast -acc -ta=multicore -tp=skylake" CFLAGS_PGI="-O3 -ta=multicore -tp=skylake" OMP_PGI=""'
-    export SRC_DIR=$PWD/CloverLeaf-OpenACC
+    if ! [[ "$COMPILER" =~ pgi- ]]; then
+      echo
+      echo "Invalid compiler '$COMPILER'."
+      usage
+      exit 1
+    fi
+
+    MAKE_OPTS+=' FLAGS_PGI="-O3 -Mpreprocess -fast -acc -ta=multicore -tp=skylake" CFLAGS_PGI="-O3 -ta=multicore -tp=skylake" OMP_PGI=""'
+    SRC_DIR="$PWD/CloverLeaf-OpenACC"
     ;;
 
   *)
