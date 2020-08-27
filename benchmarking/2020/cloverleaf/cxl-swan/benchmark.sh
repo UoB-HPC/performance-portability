@@ -97,7 +97,7 @@ case "$MODEL" in
 
     KOKKOS_PATH="$PWD/$(fetch_kokkos)"
     echo "Using KOKKOS_PATH='${KOKKOS_PATH}'"
-    MAKE_OPTS+=" KOKKOS_PATH='${KOKKOS_PATH}' ARCH=CXL DEVICE=OpenMP CXX=CC"
+    MAKE_OPTS+=" KOKKOS_PATH='${KOKKOS_PATH}' ARCH=SKX DEVICE=OpenMP CXX=CC"
     [[ "$COMPILER" =~ cce- ]] && MAKE_OPTS+=" KOKKOS_INTERNAL_OPENMP_FLAG=-fopenmp"
     SRC_DIR="$PWD/cloverleaf_kokkos"
     ;;
