@@ -47,7 +47,7 @@ module use $HOME/../work/modulefiles
 case "$COMPILER" in
     fujitsu-1.2.26)
         module load fujitsu/1.2.26
-        MAKE_OPTS='COMPILER=FUJITSU COMPILER_FUJITSU=FCC FLAGS_FUJITSU="-Nclang -std=c++11 -Ofast -ffast-math" OMP_FUJITSU_CPU="-fopenmp"'
+        MAKE_OPTS='COMPILER=FUJITSU COMPILER_FUJITSU=FCC FLAGS_FUJITSU="-Kfast,zfill,openmp,cmodel=large,restp -std=c++11" OMP_FUJITSU_CPU="-fopenmp"'
         ;;
     gcc-8.3)
         MAKE_OPTS='COMPILER=GNU'
@@ -67,6 +67,12 @@ esac
 # Select Makefile to use, and model specific information
 case "$MODEL" in
   omp)
+    if [ "$COMPILER" == "fujitsu-1.2.26" ]; then
+      WORK_DIR=$PWD
+      cd $SRC_DIR
+      patch < $SCRIPT_DIR/restrict-pointers.patch
+      cd $WORK_DIR
+    fi
     MAKE_FILE="OpenMP.make"
     BINARY="omp-stream"
     MAKE_OPTS+=" TARGET=CPU"
