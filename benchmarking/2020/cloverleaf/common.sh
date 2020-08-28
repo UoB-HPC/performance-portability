@@ -52,8 +52,11 @@ fetch_src() {
     fi
     ;;
   opencl)
-    if [ ! -e CloverLeaf/src/opencldefs.h ]; then
-      git clone https://github.com/UoB-HPC/CloverLeaf
+    #if [ ! -e CloverLeaf/src/opencldefs.h ]; then
+    #  git clone https://github.com/UoB-HPC/CloverLeaf
+    #fi
+    if [ ! -e CloverLeaf_OpenCL/clover_leaf.f90 ]; then
+      git clone https://github.com/UK-MAC/CloverLeaf_OpenCL
     fi
     ;;
   acc)
