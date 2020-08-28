@@ -10,11 +10,13 @@ function usage() {
   echo "  xl-16.1"
   echo "  gcc-8.1"
   echo "  pgi-19.10"
+  echo "  hipsycl"
   echo
   echo "Valid models:"
   echo "  omp"
   echo "  kokkos"
   echo "  acc"
+  echo "  sycl"
   echo
   echo "The default configuration is '$DEFAULT_COMPILER'."
   echo "The default programming model is '$DEFAULT_MODEL'."
@@ -51,6 +53,10 @@ gcc-8.1)
 pgi-19.10)
   module load pgi/compiler/19.10
   MAKE_OPTS="COMPILER=PGI TARGET=CPU"
+  ;;
+hipsycl)
+  module load hipsycl/jul-8-20
+  MAKE_OPTS="COMPILER=HIPSYCL TARGET=CPU SYCL_SDK_DIR=/lustre/projects/bristol/modules-power/hipsycl/jul-8-20"
   ;;
 *)
   echo
@@ -101,6 +107,10 @@ if [ "$ACTION" == "build" ]; then
       echo
       stop
     fi
+    ;;
+  sycl)
+    MAKE_FILE="SYCL.make"
+    BINARY="sycl-stream"
     ;;
   esac
 

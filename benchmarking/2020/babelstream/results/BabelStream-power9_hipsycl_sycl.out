@@ -1,0 +1,17 @@
+Tue 18 Aug 11:08:53 UTC 2020
+BabelStream
+Version: 3.4
+Implementation: SYCL
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Using SYCL device hipCPU OpenMP host device
+Driver: hipSYCL 0.8.1-prerelease on HIP/CUDA 99999
+Reduction kernel config: 160 groups of size 2
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        88500.671   0.00607     0.01097     0.00736     
+Mul         137202.149  0.00391     0.00509     0.00451     
+Add         193018.589  0.00417     0.00745     0.00597     
+Triad       200469.934  0.00402     0.00591     0.00509     
+Dot         544.628     0.98576     1.11031     1.05824     

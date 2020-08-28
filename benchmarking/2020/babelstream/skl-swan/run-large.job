@@ -11,8 +11,8 @@ export OMP_PROC_BIND=true
 export ACC_NUM_CORES=56
 
 if [[ "$CONFIG" = "skl_computecpp-2.1_sycl" ]]; then
-  aprun -n 1 -d 56 -j 1 -cc depth ./$BENCHMARK_EXE --device 1
+  aprun -n 1 -d 56 -j 1 -cc depth ./$BENCHMARK_EXE --device 1 --arraysize $((2 ** 29))
 else
-  aprun -n 1 -d 56 -j 1 -cc depth ./$BENCHMARK_EXE
+  aprun -n 1 -d 56 -j 1 -cc depth ./$BENCHMARK_EXE --arraysize $((2 ** 29))
 fi
 

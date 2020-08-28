@@ -10,12 +10,14 @@ function usage() {
   echo "  gcc-9.1"
   echo "  intel-2020"
   echo "  aocc-2.1"
-  echo "  pgi-19.10"
+  echo "  pgi-19.10" 
+  echo "  hipsycl"
   echo
   echo "Valid models:"
   echo "  omp"
   echo "  kokkos"
   echo "  sycl"
+  echo "  ocl"
   echo
   echo "The default configuration is '$DEFAULT_COMPILER'."
   echo "The default programming model is '$DEFAULT_MODEL'."
@@ -63,6 +65,11 @@ pgi-19.10)
   module load pgi/19.10
   MAKE_OPTS="COMPILER=PGI TARGET=CPU EXTRA_FLAGS='-ta=multicore -tp=zen'"
   ;;
+hipsycl)
+  module use /home/td8469/software/modulefiles
+  module load hipsycl/master-12-jun-2020
+  MAKE_OPTS="COMPILER=HIPSYCL SYCL_SDK_DIR=/work/td8469/software/hipsycl"
+  ;;
 *)
   echo
   echo "Invalid compiler '$COMPILER'."
@@ -107,20 +114,23 @@ if [ "$ACTION" == "build" ]; then
     fi
   ;;
   sycl)
+    MAKE_FILE="SYCL.make"
     BINARY="sycl-stream"
+    MAKE_OPTS+=' TARGET=CPU'
+  ;;
+  ocl)
+    module use $HOME/software/modulefiles
+    module load pocl/1.5
+    MAKE_FILE="OpenCL.make"
+    BINARY="ocl-stream"
     ;;
   esac
 
-  if [ $MODEL == "sycl" ]; then
-    cd $SRC_DIR || exit
-    syclcc -O3 -std=c++17 -DSYCL main.cpp SYCLStream.cpp -o sycl-stream
-  else
-    if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
-      echo
-      echo "Build failed."
-      echo
-      exit 1
-    fi
+  if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
+    echo
+    echo "Build failed."
+    echo
+    exit 1
   fi
 
   # Rename binary

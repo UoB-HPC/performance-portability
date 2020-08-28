@@ -10,12 +10,14 @@ function usage() {
   echo "  gcc-7.3" # CUDA 10 only supports GCC <= 7!
   echo "  llvm-trunk"
   echo "  pgi-19.10"
+  echo "  hipsycl"
   echo
   echo "Valid models:"
   echo "  omp"
   echo "  kokkos" # TODO track Kokkos 3
   echo "  cuda"
   echo "  acc"
+  echo "  sycl"
   echo
   echo "The default configuration is '$DEFAULT_COMPILER'."
   echo "The default programming model is '$DEFAULT_MODEL'."
@@ -55,6 +57,10 @@ pgi-19.10)
   module load pgi/compiler/19.10
   MAKE_OPTS='COMPILER=PGI TARGET=VOLTA'
   ;;
+hipsycl)
+  module load hipsycl/jul-8-20
+  MAKE_OPTS="COMPILER=HIPSYCL TARGET=NVIDIA ARCH=sm_70 SYCL_SDK_DIR=/lustre/projects/bristol/modules-power/hipsycl/jul-8-20"
+  ;;
 *)
   echo
   echo "Invalid compiler '$COMPILER'."
@@ -66,7 +72,7 @@ esac
 # Handle actions
 if [ "$ACTION" == "build" ]; then
 
-   # Fetch source code
+  # Fetch source code
   fetch_src
 
   # Perform build
@@ -79,10 +85,19 @@ if [ "$ACTION" == "build" ]; then
     BINARY="omp-stream"
     ;;
   kokkos)
-    module load kokkos/volta
+
+    #module load gcc/8.1.0
+
+    NVCC=$(which nvcc)
+    echo "Using NVCC=${NVCC}"
+
+    KOKKOS_PATH=$(pwd)/$(fetch_kokkos)
+    echo "Using KOKKOS_PATH=${KOKKOS_PATH}"
     MAKE_FILE="Kokkos.make"
     BINARY="kokkos-stream"
-    MAKE_OPTS+=" CXX=$KOKKOS_PATH/bin/nvcc_wrapper"
+    MAKE_OPTS+=" TARGET=GPU KOKKOS_PATH=${KOKKOS_PATH} ARCH=Volta70 DEVICE=Cuda NVCC_WRAPPER=${KOKKOS_PATH}/bin/nvcc_wrapper "
+    MAKE_OPTS+=' KOKKOS_CUDA_OPTIONS="enable_lambda"'
+    export OMP_PROC_BIND=spread
     ;;
   cuda)
     MAKE_FILE="CUDA.make"
@@ -96,9 +111,13 @@ if [ "$ACTION" == "build" ]; then
     MAKE_FILE="OpenACC.make"
     BINARY="acc-stream"
     ;;
+  sycl)
+    MAKE_FILE="SYCL.make"
+    BINARY="sycl-stream"
+    ;;
   esac
 
-  if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS; then
+  if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
     echo
     echo "Build failed."
     echo
@@ -112,15 +131,14 @@ if [ "$ACTION" == "build" ]; then
 elif [ "$ACTION" == "run" ]; then
   check_bin $RUN_DIR/$BENCHMARK_EXE
   cd $RUN_DIR || exit
-    bash "$SCRIPT_DIR/run.sh" BabelStream-$CONFIG.out
+  bash "$SCRIPT_DIR/run.sh" BabelStream-$CONFIG.out
 elif [ "$ACTION" == "run-large" ]; then
   check_bin $RUN_DIR/$BENCHMARK_EXE
   cd $RUN_DIR || exit
-    bash "$SCRIPT_DIR/run-large.sh" BabelStream-large-$CONFIG.out
+  bash "$SCRIPT_DIR/run-large.sh" BabelStream-large-$CONFIG.out
 else
   echo
   echo "Invalid action"
   usage
   exit 1
 fi
-

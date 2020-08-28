@@ -9,11 +9,13 @@ function usage() {
   echo "Valid compilers:"
   echo "  gcc-10.1"
   echo "  hipcc"
+  echo "  hipsycl"
   echo
   echo "Valid models:"
   echo "  ocl"
   echo "  omp"
   echo "  acc"
+  echo "  sycl"
   echo
   echo "The default configuration is '$DEFAULT_COMPILER'."
   echo "The default programming model is '$DEFAULT_MODEL'."
@@ -49,7 +51,7 @@ hipcc)
   MAKE_OPTS='COMPILER=HIPCC'
   ;;
 hipsycl)
-#  module load hipsycl/master-jun-16
+  module load hipsycl/master-mar-18
   MAKE_OPTS='COMPILER=HIPSYCL TARGET=AMD ARCH=gfx906'
   ;;
 *)
@@ -95,7 +97,8 @@ sycl)
 #  export HIPSYCL_CUDA_PATH=$(realpath $(dirname $(which nvcc))/..)
 
 #  HIPSYCL_PATH=$(realpath $(dirname $(which syclcc))/..)
-  HIPSYCL_PATH="/nfs/home/wl14928/hipSYCL/build/x"
+  #HIPSYCL_PATH="/nfs/home/wl14928/hipSYCL/build/x"
+  HIPSYCL_PATH="/nfs/software/x86_64/hipsycl/master"
   echo "Using HIPSYCL_PATH=${HIPSYCL_PATH}"
   MAKE_OPTS+=" SYCL_SDK_DIR=${HIPSYCL_PATH}"
   MAKE_FILE="SYCL.make"
