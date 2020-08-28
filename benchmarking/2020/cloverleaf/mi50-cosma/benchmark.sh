@@ -138,7 +138,7 @@ acc)
   MAKE_OPTS+=" EXTRA_FLAGS='-foffload=-march=gfx906' TARGET=AMD"
   ;;
 
-opencl)
+ocl)
   if [ "$COMPILER" != "gcc-7.3" ]; then
     echo "Must use gcc-7.3"
     exit 1
