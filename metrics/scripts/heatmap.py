@@ -82,7 +82,7 @@ for result in data:
 
 
 plt.rc('text', usetex=True)
-plt.rc('font', family='serif', serif='Times')
+#plt.rc('font', family='serif', serif='Times')
 fig, ax = plt.subplots()
 colors = "summer_r"
 colors = "inferno"
@@ -93,10 +93,12 @@ cmap = plt.cm.get_cmap(colors) if args.higher_is_better else plt.cm.get_cmap(col
 plt.pcolor(np.array(heatmap), cmap=cmap, edgecolors='k', vmin=1.0E-6)
 ax.set_yticks(np.arange(len(heatmap)) + 0.5, minor=False)
 ax.set_xticks(np.arange(len(heatmap[0])) + 0.5, minor=False)
-ax.set_yticklabels(series, fontsize='xx-large')
+#ax.set_yticklabels(series, fontsize='xx-large')
+ax.set_yticklabels(series)
 for i in range(len(headings)):
   headings[i] = headings[i].replace('_', '\_')
-ax.set_xticklabels(headings, fontsize='xx-large', rotation=45)
+#ax.set_xticklabels(headings, fontsize='xx-large', rotation=45)
+ax.set_xticklabels(headings, rotation=45)
 plt.gca().invert_yaxis()
 
 # Add colorbar
@@ -106,13 +108,13 @@ plt.colorbar()
 for i in range(len(headings)):
     for j in range(len(series)):
         plt.text(i + 0.5, j + 0.55, labels[j][i],
-                 ha='center', va='center', color='#b9c5bf', weight='bold', size='xx-large')
+                 ha='right', va='center', color='#b9c5bf', weight='bold')
 
 # Add caption
-if args.higher_is_better:
-    plt.title("Higher is better", fontsize='xx-large')
-else:
-    plt.title("Lower is better", fontsize='xx-large')
+#if args.higher_is_better:
+#    plt.title("Higher is better", fontsize='xx-large')
+#else:
+#    plt.title("Lower is better", fontsize='xx-large')
 
 # Add mean and standard deviation if required
 if args.mean:
