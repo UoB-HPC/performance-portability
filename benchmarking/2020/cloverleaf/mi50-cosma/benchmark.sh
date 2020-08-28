@@ -17,9 +17,10 @@ function usage() {
   echo "Valid models:"
   echo "  omp"
   echo "  kokkos"
+  echo "    gcc-7.3"
   echo "  cuda"
   echo "  opencl"
-  echo "    gcc-9.3"
+  echo "    gcc-7.3"
   echo "  acc"
   echo "  sycl"
   echo
@@ -97,22 +98,33 @@ omp)
   fi
   ;;
 kokkos)
-
-  if [ "$COMPILER" != "hipcc" ]; then
-    echo
-    echo " Must use hipcc with Kokkos module"
-    echo
+  if [ "$COMPILER" != "gcc-7.3" ]; then
+    echo "Must use gcc-7.3"
     exit 1
   fi
 
-    #KOKKOS_PATH=$(pwd)/$(fetch_kokkos)
-    echo "Using develop branch of Kokkos to work with HIP 3.5"
-    KOKKOS_PATH=$(pwd)/kokkos
-    echo "Using KOKKOS_PATH=${KOKKOS_PATH}"
-    MAKE_FILE="Kokkos.make"
-    BINARY="kokkos-stream"
-    MAKE_OPTS+=" KOKKOS_PATH=${KOKKOS_PATH} TARGET=GPU ARCH=VEGA906 DEVICE=HIP CXX=hipcc"
-    ;;
+
+  MAKE_OPTS='COMPILER=HIPCC'
+
+  echo "Using develop branch of Kokkos to work with HIP 3.5"
+  KOKKOS_PATH=$(pwd)/kokkos
+  echo "Using KOKKOS_PATH=${KOKKOS_PATH}"
+  export CXX=hipcc
+  # XXX
+  # TARGET=AMD isn't a thing in CloverLeaf but TARGET=CPU is misleading and TARGET=GPU uses nvcc
+  # for CXX which is not what we want so we use a non-existent target
+  # CXX needs to be specified again as we can't export inside CloverLeaf's makefile
+
+  MPI_LIB="/cosma/local/openmpi/gnu_7.3.0/3.0.1"
+  export LIBRARY_PATH=$MPI_LIB/lib:$LIBRARY_PATH
+  export LD_LIBRARY_PATH=$MPI_LIB/lib:$LD_LIBRARY_PATH
+  export CPATH=$MPI_LIB/include:$CPATH
+
+  MAKE_OPTS+=" KOKKOS_PATH=${KOKKOS_PATH} TARGET=AMD ARCH=Vega906 DEVICE=HIP CXX=hipcc"
+  MAKE_OPTS+=' OPTIONS="-L$MPI_LIB -lmpi -O3 "'
+  export SRC_DIR=$PWD/cloverleaf_kokkos
+  BINARY="clover_leaf"
+  ;;
 acc)
   if [ "$COMPILER" != "gcc-10.2" ]; then
     echo

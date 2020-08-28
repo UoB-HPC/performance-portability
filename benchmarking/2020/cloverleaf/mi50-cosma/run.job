@@ -37,7 +37,6 @@ case "$MODEL" in
 
   opencl)
       "./$BENCHMARK_EXE"
-      cat clover.out > $call_dir/CloverLeaf-"$CONFIG".out
       ;;
 
   *)
@@ -46,3 +45,4 @@ case "$MODEL" in
 esac
 
 
+cat clover.out > $call_dir/CloverLeaf-"$CONFIG".out
