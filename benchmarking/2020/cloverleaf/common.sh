@@ -51,7 +51,7 @@ fetch_src() {
       git clone --depth 1 https://github.com/UK-MAC/CloverLeaf_CUDA.git
     fi
     ;;
-  opencl)
+  ocl)
     #if [ ! -e CloverLeaf/src/opencldefs.h ]; then
     #  git clone https://github.com/UoB-HPC/CloverLeaf
     #fi

@@ -22,6 +22,9 @@ function usage
   echo "  acc"
   echo "    pgi-20.1"
   echo
+  echo "  ocl"
+  echo "    gcc-9.3"
+  echo
   echo "The default configuration is '$DEFAULT_COMPILER $DEFAULT_MODEL'."
   echo
 }
@@ -58,7 +61,7 @@ case "$COMPILER" in
   gcc-9.3)
     module swap PrgEnv-{cray,gnu}
     module swap gcc gcc/9.3.0
-    MAKE_OPTS='COMPILER=GNU MPI_COMPILER=ftn C_MPI_COMPILER=cc'
+    MAKE_OPTS='COMPILER=GNU MPI_COMPILER=ftn C_MPI_COMPILER=cc CXX_MPI_COMPILER=CC'
     MAKE_OPTS=$MAKE_OPTS' FLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -march=cascadelake -funroll-loops"'
     MAKE_OPTS=$MAKE_OPTS' CFLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -march=cascadelake -funroll-loops"'
     ;;
@@ -112,6 +115,21 @@ case "$MODEL" in
 
     MAKE_OPTS+=' FLAGS_PGI="-O3 -Mpreprocess -fast -acc -ta=multicore -tp=skylake" CFLAGS_PGI="-O3 -ta=multicore -tp=skylake" OMP_PGI=""'
     SRC_DIR="$PWD/CloverLeaf-OpenACC"
+    ;;
+
+  ocl)
+    if [ "$COMPILER" != "gcc-9.3" ]; then
+      echo "OpenCL is only supported with gcc-9.3"
+      exit 1
+    fi
+
+    module use /lus/scratch/p02639/modulefiles
+    module load intel-opencl-experimental
+    module load khronos/opencl-headers
+    export LD_PRELOAD=/lus/scratch/p02639/bin/oclcpuexp_2020.10.7.0.15/x64/libintelocl.so
+
+    SRC_DIR="$PWD/CloverLeaf_OpenCL"
+    MAKE_OPTS+=" OCL_VENDOR=INTEL COPTIONS='-DCL_TARGET_OPENCL_VERSION=110 -DOCL_IGNORE_PLATFORM -std=c++98' OPTIONS='-lstdc++ -cpp'"
     ;;
 
   *)

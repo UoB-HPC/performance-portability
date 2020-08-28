@@ -6,7 +6,16 @@
 
 cd "$RUN_DIR" || exit 2
 
-cp "$SRC_DIR/InputDecks/clover_bm16.in" clover.in
+if [ "$MODEL" = ocl ]; then
+    cp "$SRC_DIR"/*.cl ./
+    cp "$SRC_DIR"/ocl_knls.h ./
+
+    cp "$SRC_DIR/clover_bm16.in" clover.in
+    sed -i 's/opencl_vendor=.*/opencl_vendor=INTEL/' clover.in
+    sed -i 's/opencl_type=.*/opencl_type=CPU/' clover.in
+else
+    cp "$SRC_DIR/InputDecks/clover_bm16.in" clover.in
+fi
 
 case "$MODEL" in
     mpi)
@@ -24,6 +33,9 @@ case "$MODEL" in
     kokkos)
         export OMP_NUM_THREADS=40
         aprun -n 1 -d 40 -j 1 -cc depth "./$BENCHMARK_EXE"
+        ;;
+    ocl)
+        aprun -n 1 -d 40 -j 1 -cc none "./$BENCHMARK_EXE"
         ;;
     *)
         echo "Unknown run configuration for model '$MODEL'"
