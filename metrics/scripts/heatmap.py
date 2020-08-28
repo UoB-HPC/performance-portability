@@ -6,6 +6,7 @@ import argparse
 import csv
 import numpy as np
 import matplotlib.pyplot as plt
+from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 # Argument parsing
 parser = argparse.ArgumentParser()
@@ -84,17 +85,21 @@ for result in data:
 plt.rc('text', usetex=True)
 plt.rc('font', family='serif', serif='Computer Modern Roman')
 fig, ax = plt.subplots()
+fig.set_size_inches(4, 3)
 colors = "summer_r"
 colors = "inferno"
 colors = "gist_heat"
 # Set map so red is best, green is worst
 cmap = plt.cm.get_cmap(colors) if args.higher_is_better else plt.cm.get_cmap(colors+"_r")
 #cmap.set_under('w')
-plt.pcolor(np.array(heatmap), cmap=cmap, edgecolors='k', vmin=1.0E-6)
+#plt.pcolor(np.array(heatmap), cmap=cmap, edgecolors='k', vmin=1.0E-6)
+x = np.arange(7)
+y = np.arange(11)
+cmesh = plt.pcolormesh(x, y, np.array(heatmap), cmap=cmap, edgecolors='k', vmin=1.0E-6)
 ax.set_yticks(np.arange(len(heatmap)) + 0.5, minor=False)
 ax.set_xticks(np.arange(len(heatmap[0])) + 0.5, minor=False)
 
-ax.set_aspect('equal')
+#ax.set_aspect(0.25, adjustable='box')
 #ax.set_yticklabels(series, fontsize='xx-large')
 ax.set_yticklabels(series)
 for i in range(len(headings)):
@@ -104,7 +109,11 @@ ax.set_xticklabels(headings, rotation=45, ha="right", rotation_mode="anchor")
 plt.gca().invert_yaxis()
 
 # Add colorbar
-plt.colorbar()
+#divider = make_axes_locatable(ax)
+#cax = divider.append_axes("right", size="5%", pad=0.05)
+#plt.colorbar(cmesh, cax=cax)
+#plt.colorbar(cmesh, fraction=0.046, pad=0.04)
+plt.colorbar(cmesh)
 
 # Add labels
 for i in range(len(headings)):
