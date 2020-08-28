@@ -93,12 +93,13 @@ cmap = plt.cm.get_cmap(colors) if args.higher_is_better else plt.cm.get_cmap(col
 plt.pcolor(np.array(heatmap), cmap=cmap, edgecolors='k', vmin=1.0E-6)
 ax.set_yticks(np.arange(len(heatmap)) + 0.5, minor=False)
 ax.set_xticks(np.arange(len(heatmap[0])) + 0.5, minor=False)
+ax.set_aspect('equal')
 #ax.set_yticklabels(series, fontsize='xx-large')
 ax.set_yticklabels(series)
 for i in range(len(headings)):
   headings[i] = headings[i].replace('_', '\_')
 #ax.set_xticklabels(headings, fontsize='xx-large', rotation=45)
-ax.set_xticklabels(headings, rotation=45)
+ax.set_xticklabels(headings, rotation=90)
 plt.gca().invert_yaxis()
 
 # Add colorbar
@@ -107,7 +108,8 @@ plt.colorbar()
 # Add labels
 for i in range(len(headings)):
     for j in range(len(series)):
-        plt.text(i + 0.5, j + 0.55, labels[j][i],
+        #plt.text(i + 0.5, j + 0.55, labels[j][i],
+        plt.text(i + 0.9, j + 0.5, labels[j][i],
                  ha='right', va='center', color='#b9c5bf', weight='bold')
 
 # Add caption
@@ -117,24 +119,24 @@ for i in range(len(headings)):
 #    plt.title("Lower is better", fontsize='xx-large')
 
 # Add mean and standard deviation if required
-if args.mean:
-  heatmap = np.array(heatmap)
-  # Calculate mean and standard deviation for each row
-  means = np.mean(heatmap, axis=1)
-  stdev = np.std(heatmap, axis=1)
-  print(means)
-  print(stdev)
-
-  # Plot on graph as extra column
-  plt.text(len(headings) + 0.5, 0, "Mean",
-                 ha='center', va='center', color='black', weight='bold', size='xx-large')
-  plt.text(len(headings) + 1.5, 0, "Std. Dev.",
-                 ha='center', va='center', color='black', weight='bold', size='xx-large')
-  for i in range(len(series)):
-    plt.text(len(headings) + 0.5, i + 0.5, "%.1f" % means[i],
-                 ha='center', va='center', color='black', weight='bold', size='xx-large')
-    plt.text(len(headings) + 1.5, i + 0.5, "%.1f" % stdev[i],
-                 ha='center', va='center', color='black', weight='bold', size='xx-large')
+#if args.mean:
+#  heatmap = np.array(heatmap)
+#  # Calculate mean and standard deviation for each row
+#  means = np.mean(heatmap, axis=1)
+#  stdev = np.std(heatmap, axis=1)
+#  print(means)
+#  print(stdev)
+#
+#  # Plot on graph as extra column
+#  plt.text(len(headings) + 0.5, 0, "Mean",
+#                 ha='center', va='center', color='black', weight='bold', size='xx-large')
+#  plt.text(len(headings) + 1.5, 0, "Std. Dev.",
+#                 ha='center', va='center', color='black', weight='bold', size='xx-large')
+#  for i in range(len(series)):
+#    plt.text(len(headings) + 0.5, i + 0.5, "%.1f" % means[i],
+#                 ha='center', va='center', color='black', weight='bold', size='xx-large')
+#    plt.text(len(headings) + 1.5, i + 0.5, "%.1f" % stdev[i],
+#                 ha='center', va='center', color='black', weight='bold', size='xx-large')
 
 
 plt.savefig(args.output, bbox_inches='tight')
