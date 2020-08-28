@@ -82,7 +82,7 @@ for result in data:
 
 
 plt.rc('text', usetex=True)
-#plt.rc('font', family='serif', serif='Times')
+plt.rc('font', family='serif', serif='Computer Modern Roman')
 fig, ax = plt.subplots()
 colors = "summer_r"
 colors = "inferno"
