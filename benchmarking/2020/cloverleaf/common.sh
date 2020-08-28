@@ -104,7 +104,7 @@ build_bin() {
       mkdir -p $SRC_DIR/obj $SRC_DIR/mpiobj
     fi
 
-    if ! eval make -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
+    if ! eval make -C $SRC_DIR -B $MAKE_OPTS -j $nproc; then
       echo
       echo "Build failed."
       echo
