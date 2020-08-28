@@ -43,7 +43,7 @@ fetch_src() {
     ;;
   kokkos)
     if [ ! -e cloverleaf_kokkos/clover_leaf.cpp ]; then
-      git clone https://github.com/tom91136/cloverleaf_kokkos
+      git clone https://github.com/uob-hpc/cloverleaf_kokkos
     fi
     ;;
   cuda)
