@@ -1,0 +1,22 @@
+ 
+ University of Bristol ACRC HPC Bluepebble Service
+ -------------------------------------------------
+ Job babelstream, jobid 310872.bp1, username td8469 - started execution at 18 :13:24 Tue 08/11/20 on node bp1-02-11-01.data.bp.acrc.priv
+ 
+Tue 11 Aug 18:13:24 BST 2020
+BabelStream
+Version: 3.4
+Implementation: OpenCL
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using OpenCL device pthread-AMD EPYC 7742 64-Core Processor
+Driver: 1.5
+Reduction kernel config: 256 groups of size 8
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        101426.711  0.08469     0.10207     0.09353     
+Mul         96216.334   0.08928     0.11227     0.09768     
+Add         109215.461  0.11798     0.14617     0.12760     
+Triad       110449.421  0.11666     0.15487     0.12802     
+Dot         13316.002   0.64508     1.02644     0.67606     

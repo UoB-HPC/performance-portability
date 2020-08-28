@@ -39,17 +39,13 @@ export RUN_DIR=$PWD/BabelStream-$CONFIG
 
 # Set up the environment
 module purge
-
+#set -x
 case "$COMPILER" in
 oneapi)
-  source scl_source enable devtoolset-7
-  echo $LD_LIBRARY_PATH
+  # XXX oneapi changes SCRIPT_DIR, restore it after sourcing
+  CURRENT_SCRIPT_DIR=$SCRIPT_DIR
   source /nfs/software/x86_64/inteloneapi-beta/2021.1.8/setvars.sh --force
-  export LD_LIBRARY_PATH="/opt/rh/devtoolset-7/root/usr/lib64:/opt/rh/devtoolset-7/root/usr/lib:/opt/rh/devtoolset-7/root/usr/lib64/dyninst:/opt/rh/devtoolset-7/root/usr/lib/dyninst:/opt/rh/devtoolset-7/root/usr/lib64:/opt/rh/devtoolset-7/root/usr/lib:$LD_LIBRARY_PATH"
-
-
-  echo $(gcc --version)
-#  module load intel/oneapi/beta
+  SCRIPT_DIR=$CURRENT_SCRIPT_DIR
   ;;
 gcc-10.1)
   module load gcc/10.1.0
@@ -69,19 +65,22 @@ omp)
   MAKE_OPTS='COMPILER=INTEL TARGET=INTEL_GPU'
   MAKE_FILE="OpenMP.make"
   BINARY="omp-stream"
+  export DEVICE_ARGS=""
   ;;
 ocl)
   module load intel/opencl/18.1
   module load khronos/opencl/headers khronos/opencl/icd-loader
-#  module load intel/opencl/experimental/2020.10.3.0.04
+  #  module load intel/opencl/experimental/2020.10.3.0.04
   MAKE_FILE="OpenCL.make"
   BINARY="ocl-stream"
   MAKE_OPTS="$MAKE_OPTS TARGET=GPU"
+  export DEVICE_ARGS=""
   ;;
 sycl)
   MAKE_OPTS='COMPILER=DPCPP'
   MAKE_FILE="SYCL.make"
   BINARY="sycl-stream"
+  export DEVICE_ARGS="--device 1"
   ;;
 esac
 
@@ -92,8 +91,6 @@ if [ "$ACTION" == "build" ]; then
 
   # Perform build
   rm -f $RUN_DIR/$BENCHMARK_EXE
-echo $LD_LIBRARY_PATH
-
 
   # Perform build
   if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
@@ -110,6 +107,8 @@ echo $LD_LIBRARY_PATH
 elif [ "$ACTION" == "run" ]; then
   check_bin $RUN_DIR/$BENCHMARK_EXE
   cd $RUN_DIR || exit
+  echo $SCRIPT_DIR
+
   bash "$SCRIPT_DIR/run.sh" BabelStream-$CONFIG.out
 elif [ "$ACTION" == "run-large" ]; then
   check_bin $RUN_DIR/$BENCHMARK_EXE

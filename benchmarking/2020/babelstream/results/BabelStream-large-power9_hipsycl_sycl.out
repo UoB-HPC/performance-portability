@@ -1,0 +1,19 @@
+Tue 18 Aug 11:18:05 UTC 2020
+BabelStream
+Version: 3.4
+Implementation: SYCL
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using SYCL device hipCPU OpenMP host device
+Driver: hipSYCL 0.8.1-prerelease on HIP/CUDA 99999
+Reduction kernel config: 160 groups of size 2
+Validation failed on sum. Error 2.46274e-08
+Sum was 636.65659245871 but should be 636.656592434083
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        103059.042  0.08335     0.10727     0.09362     
+Mul         164650.319  0.05217     0.06984     0.06631     
+Add         223483.427  0.05765     0.13629     0.12317     
+Triad       213334.116  0.06040     0.09861     0.09214     
+Dot         511.410     16.79657    17.78039    17.26096    

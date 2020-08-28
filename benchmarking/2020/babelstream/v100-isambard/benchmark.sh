@@ -10,12 +10,14 @@ function usage() {
   echo "  gcc-7.3" # CUDA 10 only supports GCC <= 7!
   echo "  llvm-trunk"
   echo "  pgi-19.10"
+  echo "  hipsycl"
   echo
   echo "Valid models:"
   echo "  omp"
   echo "  kokkos" # TODO track Kokkos 3
   echo "  cuda"
   echo "  acc"
+  echo "  sycl"
   echo
   echo "The default configuration is '$DEFAULT_COMPILER'."
   echo "The default programming model is '$DEFAULT_MODEL'."
@@ -54,6 +56,10 @@ gcc-7.3)
 pgi-19.10)
   module load pgi/compiler/19.10
   MAKE_OPTS='COMPILER=PGI TARGET=VOLTA'
+  ;;
+hipsycl)
+  module load hipsycl/jul-8-20
+  MAKE_OPTS="COMPILER=HIPSYCL TARGET=NVIDIA ARCH=sm_70 SYCL_SDK_DIR=/lustre/projects/bristol/modules-power/hipsycl/jul-8-20"
   ;;
 *)
   echo
@@ -104,6 +110,10 @@ if [ "$ACTION" == "build" ]; then
   acc)
     MAKE_FILE="OpenACC.make"
     BINARY="acc-stream"
+    ;;
+  sycl)
+    MAKE_FILE="SYCL.make"
+    BINARY="sycl-stream"
     ;;
   esac
 

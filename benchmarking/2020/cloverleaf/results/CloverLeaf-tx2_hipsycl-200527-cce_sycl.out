@@ -1,0 +1,53 @@
+Thu 13 Aug 04:48:35 UTC 2020
+
+Clover Version 1.300
+Kokkos Version
+Task Count 1
+
+Output file clover.out opened. All output will go there.
+Detected SYCL devices:
+  0. hipCPU OpenMP host device(gpu)
+Using SYCL device: hipCPU OpenMP host device(gpu)
+Args: --file clover.in
+Using input: `clover.in`
+CCE OpenMP fatal error: OpenMP parallel attempted from non-OpenMP thread
+aprun: Apid 1344657: Caught signal Terminated, sending to application
+_pmiu_daemon(SIGCHLD): [NID 00172] [c0-0c2s11n0] [Thu Aug 13 04:57:31 2020] PE RANK 0 exit signal Terminated
+Application 1344657 exit codes: 143
+Application 1344657 resources: utime ~534s, stime ~2s, Rss ~9404, inblocks ~622, outblocks ~8
+============================= PBS epilogue =============================
+
+End of Job Report
+Run at 2020-08-13 04:57:42 for job 58613.xci00
+Submitted              : 2020-08-13 04:48:34
+Queued                 : 2020-08-13 04:48:34
+Started                : 2020-08-13 04:48:34
+Completed              : 2020-08-13 04:57:42
+Queued Time            : 0:00:00 (0 seconds)
+Elapsed Time           : 0:09:03 (543 seconds, 20% of limit)
+Walltime Limit         : 0:45:00 (2700 seconds)
+Node Time Limit        : 0:45:00 (2700 seconds)
+Node Time              : 0:09:03 (543 seconds, 20% of limit)
+Job Name               : cloverleaf
+Queue                  : arm
+Owner                  : br-wlin
+Group                  : -default-
+Project                : bristol
+Subproject             : 
+Funding                : 
+Trustzone              : 
+STDOUT                 : /home/br-wlin/performance-portability/benchmarking/2020/cloverleaf/results/CloverLeaf-tx2_hipsycl-200527-cce_sycl.out
+STDERR                 : /home/br-wlin/performance-portability/benchmarking/2020/cloverleaf/results/cloverleaf.e58613
+Job Directory          : /home/br-wlin/pbs.58613.xci00.x8z
+Job Arch               : XT
+CPU Core Type          : arm
+Total Nodes            : 1
+Total Tasks            : 64
+Parent Node            : xcimom2
+Parent Node Memory     : 
+Parent Node CPU Time   : 
+Compute Nodes          : 172
+Electrical Groups      : 1
+Run Version            : 1
+
+For more information see https://gw4-isambard.github.io/docs/

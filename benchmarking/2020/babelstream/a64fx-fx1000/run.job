@@ -1,0 +1,13 @@
+#!/bin/bash
+
+OUTPUT_DIR=$PWD
+cd $RUN_DIR
+date > $OUTPUT_DIR/BabelStream-$CONFIG.out
+export OMP_NUM_THREADS=48
+export OMP_PROC_BIND=true
+export OMP_PLACES="{12}:48:1"
+export XOS_MMM_L_PAGING_POLICY=demand:demand:demand
+
+
+./$BENCHMARK_EXE >> $OUTPUT_DIR/BabelStream-$CONFIG.out
+

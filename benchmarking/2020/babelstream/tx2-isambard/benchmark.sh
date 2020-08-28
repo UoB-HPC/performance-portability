@@ -9,7 +9,8 @@ function usage() {
   echo "Valid compilers:"
   echo "  cce-10.0"
   echo "  gcc-9.2"
-  echo "  allinea-20.0"
+  echo "  arm-20.0"
+  echo "  llvm-10.0"
   echo "  hipsycl-200527-gcc"
   echo "  hipsycl-200527-cce"
   echo "  hipsycl-200527simd-gcc"
@@ -18,6 +19,7 @@ function usage() {
   echo "  omp"
   echo "  kokkos"
   echo "  sycl"
+  echo "  ocl"
   echo
   echo "The default configuration is '$DEFAULT_COMPILER'."
   echo "The default programming model is '$DEFAULT_MODEL'."
@@ -57,12 +59,18 @@ gcc-9.2)
   MAKE_OPTS="COMPILER=GNU TARGET=CPU"
   export OMP_PROC_BIND=spread
   ;;
-allinea-20.0)
+arm-20.0)
   module purge
   module load alps PrgEnv-allinea
   #  module swap allinea allinea/20.0.0.0
   MAKE_OPTS="COMPILER=ARMCLANG TARGET=CPU"
   export OMP_PROC_BIND=spread
+  ;;
+llvm-10.0)
+  module purge
+  module load alps PrgEnv-cray
+  module load llvm/10.0.0
+  MAKE_OPTS="COMPILER=CLANG"
   ;;
 hipsycl-200527-gcc)
   module purge
@@ -121,6 +129,17 @@ if [ "$ACTION" == "build" ]; then
     MAKE_FILE="SYCL.make"
     BINARY="sycl-stream"
     ;;
+  ocl)
+    if [ "$COMPILER" != "llvm-10.0" ]; then
+      echo
+      echo " Must use llvm-10.0 with ocl"
+      echo
+      stop
+    fi
+    module load pocl/1.5
+    MAKE_FILE="OpenCL.make"
+    BINARY="ocl-stream"
+    ;;  
   esac
 
   if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
@@ -135,9 +154,15 @@ if [ "$ACTION" == "build" ]; then
   mv $SRC_DIR/$BINARY $RUN_DIR/$BENCHMARK_EXE
 
 elif [ "$ACTION" == "run" ]; then
+  if [ "$MODEL" == "ocl" ]; then
+    module load pocl/1.5
+  fi
   check_bin $RUN_DIR/$BENCHMARK_EXE
   qsub -o BabelStream-$CONFIG.out -N babelstream -V $SCRIPT_DIR/run.job
 elif [ "$ACTION" == "run-large" ]; then
+  if [ "$MODEL" == "ocl" ]; then
+    module load pocl/1.5
+  fi
   check_bin $RUN_DIR/$BENCHMARK_EXE
   qsub -o BabelStream-large-$CONFIG.out -N babelstream -V $SCRIPT_DIR/run-large.job
 else

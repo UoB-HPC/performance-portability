@@ -9,7 +9,7 @@ function usage() {
   echo "Valid compilers:"
   echo "  cce-10.0"
   echo "  gcc-9.2ls"
-  echo "  allinea-20.0"
+  echo "  arm-20.0"
   echo
   echo
   echo "Valid models:"
@@ -56,7 +56,7 @@ gcc-9.2)
   MAKE_OPTS+=' FLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -mcpu=thunderx2t99 -funroll-loops -cpp -ffree-line-length-none"'
   MAKE_OPTS+=' CFLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -mcpu=thunderx2t99 -funroll-loops"'
   ;;
-allinea-20.0)
+arm-20.0)
   module purge
   module load alps PrgEnv-allinea cray-mpich/7.7.12
   #  module swap allinea allinea/20.0.0.0
