@@ -17,7 +17,7 @@ applications=(
 
 for code in ${applications[@]}; do
   if [[ "$code" == "babelstream_peak" ]]; then
-    $1 --input-is-throughput data/"$code".csv $f "$graph"_"$code".pdf
+    $1 --calc-efficiency --input-is-throughput data/"$code".csv $f "$graph"_"$code".pdf
   else
     $1 --calc-efficiency data/"$code".csv $f "$graph"_"$code".pdf
   fi
