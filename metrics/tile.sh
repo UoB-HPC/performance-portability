@@ -10,9 +10,9 @@ graph=$(basename $1 .py)
 applications=(
   "babelstream_peak"
   "cloverleaf"
-  "minifmm"
   "neutral"
-  "tealeaf"
+  #"minifmm"
+  #"tealeaf"
 )
 
 for code in ${applications[@]}; do
@@ -23,7 +23,8 @@ for code in ${applications[@]}; do
   fi
 done
 
-pdfnup --nup 3x2 "$graph"*.pdf
-mv "$graph"*-nup.pdf "$graph"_tiled.pdf
+pdfnup --nup 3x1 "$graph"*.pdf
+pdfcrop "$graph"*-nup.pdf "$graph"_tiled.pdf
+#mv "$graph"*-nup.pdf "$graph"_tiled.pdf
 
 
