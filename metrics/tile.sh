@@ -16,10 +16,10 @@ applications=(
 )
 
 for code in ${applications[@]}; do
-  if [[ "$code" -eq "babelstream_peak" ]]; then
-    $1 --input-is-throughput --calc-efficiency data/"$code".csv $f "$graph"_"$code".pdf
+  if [[ "$code" == "babelstream_peak" ]]; then
+    $1 --input-is-throughput data/"$code".csv $f "$graph"_"$code".pdf
   else
-    $1 data/"$code".csv $f "$graph"_"$code".pdf
+    $1 --calc-efficiency data/"$code".csv $f "$graph"_"$code".pdf
   fi
 done
 
