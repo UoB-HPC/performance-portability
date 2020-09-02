@@ -20,6 +20,7 @@ function usage() {
   echo "    gcc-10.2"
   echo
   echo "  sycl"
+  echo "    hipsycl"
   echo
   echo "The default configuration is '$DEFAULT_COMPILER'."
   echo "The default programming model is '$DEFAULT_MODEL'."
@@ -77,7 +78,10 @@ hipcc)
 hipsycl)
   module use /cosma/home/do006/dc-deak1/bin/modulefiles
   module load hipsycl/master
-  MAKE_OPTS='COMPILER=HIPSYCL SYCL_SDK_DIR=/cosma/home/do006/dc-deak1/bin/hipsycl/master EXTRA_FLAGS="--gcc-toolchain=/cosma/local/gcc/9.3.0"'
+  module load gnu_comp/9.3.0
+  module load openmpi/4.0.3
+  module load cmake
+  export CPATH=$CPATH:/cosma/home/do006/dc-deak1/bin/llvm/10.0.1/lib/clang/10.0.1
   ;;
 *)
   echo
@@ -155,9 +159,19 @@ ocl)
   ;;
 
 sycl)
-  MAKE_FILE="SYCL.make"
-  BINARY="sycl-stream" "$MODEL"
-  MAKE_OPTS+=' TARGET=AMD ARCH=gfx906'
+  if [ "$COMPILER" != "hipsycl" ]; then
+    echo "Must use hipsycl"
+    exit 1
+  fi
+
+  HIPSYCL_PATH=$(realpath $(dirname $(which syclcc))/..)
+  echo "Using HIPSYCL_PATH=${HIPSYCL_PATH}"
+
+  MAKE_OPTS+=" -DHIPSYCL_INSTALL_DIR=${HIPSYCL_PATH} -DSYCL_RUNTIME=HIPSYCL -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc"
+  MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=-mtune=native -DHIPSYCL_PLATFORM=rocm -DHIPSYCL_GPU_ARCH=gfx906"
+
+  BINARY="clover_leaf"
+  export SRC_DIR=$PWD/cloverleaf_sycl
   ;;
 esac
 
