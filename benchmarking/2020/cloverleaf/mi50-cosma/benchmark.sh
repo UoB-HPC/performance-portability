@@ -6,22 +6,19 @@ function usage() {
   echo
   echo "Usage: ./benchmark.sh build|run [MODEL] [COMPILER]"
   echo
-  echo "Valid compilers:"
-  echo "  gcc-9.3"
-  echo "  gcc-10.2"
-  echo "  aocc-2.2"
-  echo "  aomp-11.7"
-  echo "  hipcc"
-  echo "  hipsycl"
-  echo
   echo "Valid models:"
-  echo "  omp"
+  echo "  omp-target"
+  echo "    gcc-10.2"
+  echo
   echo "  kokkos"
   echo "    gcc-7.3"
-  echo "  cuda"
-  echo "  opencl"
+  echo
+  echo "  ocl"
   echo "    gcc-7.3"
+  echo
   echo "  acc"
+  echo "    gcc-10.2"
+  echo
   echo "  sycl"
   echo
   echo "The default configuration is '$DEFAULT_COMPILER'."
@@ -61,6 +58,9 @@ gcc-9.3)
 gcc-10.2)
   module use /cosma/home/do006/dc-deak1/bin/modulefiles
   module load gcc/10.2.0
+  module load openmpi/4.0.5/gcc-10.2
+  module load openmpi/4.0.5/gcc-10.2
+  export OMPI_CC=gcc OMPI_CXX=g++ OMPI_FC=gfortran
   MAKE_OPTS="COMPILER=GNU"
   ;;
 aocc-2.2)
@@ -88,14 +88,15 @@ hipsycl)
 esac
 
 case "$MODEL" in
-omp)
-  MAKE_FILE="OpenMP.make"
-  BINARY="omp-stream"
-  if [ "$COMPILER" == "gcc-10.2" ]; then
-    MAKE_OPTS+=" EXTRA_FLAGS='-foffload=-march=gfx906' TARGET=AMD"
-  else
-    MAKE_OPTS+=" TARGET=GPU"
+omp-target)
+  if [ "$COMPILER" != "gcc-10.2" ]; then
+    echo "Must use gcc-10.2 because AOMP cannot build OpenMPI"
+    exit 1
   fi
+  export SRC_DIR="$PWD/CloverLeaf-OpenMP4"
+  MAKE_OPTS='-j16 COMPILER=GNU MPI_F90=mpif90 MPI_C=mpicc'
+  MAKE_OPTS+=' OPTIONS="-foffload=amdgcn-amdhsa -foffload=-march=gfx906 -foffload=-lm -fno-fast-math -fno-associative-math" C_OPTIONS="-foffload=amdgcn-amdhsa -foffload=-march=gfx906 -foffload=-lm -fno-fast-math -fno-associative-math"  '
+  BINARY="clover_leaf"
   ;;
 kokkos)
   if [ "$COMPILER" != "gcc-7.3" ]; then
@@ -133,9 +134,11 @@ acc)
     exit 1
   fi
 
-  MAKE_FILE="OpenACC.make"
-  BINARY="acc-stream"
-  MAKE_OPTS+=" EXTRA_FLAGS='-foffload=-march=gfx906' TARGET=AMD"
+  export SRC_DIR=$PWD/CloverLeaf-OpenACC
+  MAKE_OPTS='-j16 COMPILER=GNU MPI_F90=mpif90 MPI_C=mpicc'
+  MAKE_OPTS+=' C_OPTIONS=" -foffload=amdgcn-amdhsa=\""-march=gfx906"\"  " '
+  MAKE_OPTS+=' OPTIONS=" -fopenmp -cpp" '
+  BINARY="clover_leaf"
   ;;
 
 ocl)
