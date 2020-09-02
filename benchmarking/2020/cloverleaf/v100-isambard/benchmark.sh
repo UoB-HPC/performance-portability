@@ -67,6 +67,7 @@ acc)
   export PATH=/opt/pgi/linuxpower/18.10/mpi/openmpi/bin/:$PATH
   export SRC_DIR="$PWD/CloverLeaf-OpenACC"
   MAKE_OPTS='COMPILER=PGI C_MPI_COMPILER=mpicc MPI_F90=mpif90 FLAGS_PGI="-O3 -Mpreprocess -fast -acc -ta=tesla:cc70" CFLAGS_PGI="-O3 -ta=tesla:cc70" OMP_PGI=""'
+  BINARY="clover_leaf"
   ;;
 *)
   echo
