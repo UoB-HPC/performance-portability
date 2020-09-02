@@ -2,6 +2,8 @@
 
 set -eu
 
+call_dir=$PWD
+
 cd "$RUN_DIR"
 
 cp "$SRC_DIR/InputDecks/clover_bm16.in" "$RUN_DIR/clover.in"
@@ -15,3 +17,5 @@ then
 else
   "./$BENCHMARK_EXE"
 fi
+
+cat clover.out > $call_dir/CloverLeaf-"$CONFIG".out

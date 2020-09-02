@@ -24,12 +24,11 @@ if [ $# -lt 1 ]; then
 fi
 
 ACTION=$1
-COMPILER=${2:-$DEFAULT_COMPILER}
-MODEL=${3:-$DEFAULT_MODEL}
+export MODEL=${2:-$DEFAULT_MODEL}
 SCRIPT=$(realpath $0)
 SCRIPT_DIR=$(realpath $(dirname $SCRIPT))
 source ${SCRIPT_DIR}/../common.sh
-export CONFIG="v100"_"$COMPILER"_"$MODEL"
+export CONFIG="v100"_"$MODEL"
 export BENCHMARK_EXE=CloverLeaf-$CONFIG
 export SRC_DIR=$PWD/CloverLeaf
 export RUN_DIR=$PWD/CloverLeaf-$CONFIG
@@ -54,6 +53,7 @@ cuda)
   source /opt/rh/devtoolset-7/enable
   export SRC_DIR="$PWD/CloverLeaf_CUDA"
   MAKE_OPTS="-j20 COMPILER=GNU NV_ARCH=VOLTA CODEGEN_VOLTA='-gencode arch=compute_70,code=sm_70'"
+  BINARY="clover_leaf"
   ;;
 kokkos)
   module load kokkos/volta
@@ -78,25 +78,17 @@ esac
 # Handle actions
 if [ "$ACTION" == "build" ]; then
   # Fetch source code
-  fetch_src
+  fetch_src "$MODEL"
 
   # Perform build
-  rm -f $BENCHMARK_EXE
+  rm -f $RUN_DIR/$BENCHMARK_EXE
 
-  make -C "$SRC_DIR" clean
-  if ! eval make -C "$SRC_DIR" -B "$MAKE_OPTS"; then
-    echo
-    echo "Build failed."
-    echo
-    exit 1
-  fi
-
-  mkdir -p $RUN_DIR
-  mv $SRC_DIR/$BINARY $RUN_DIR/$BENCHMARK_EXE
+  # Perform build
+  build_bin "$MODEL" "$MAKE_OPTS" "$SRC_DIR" "$BINARY" "$RUN_DIR" "$BENCHMARK_EXE"
 
 elif [ "$ACTION" == "run" ]; then
     check_bin $RUN_DIR/$BENCHMARK_EXE
-    cd $RUN_DIR || exit
+    #cd $RUN_DIR || exit
     bash "$SCRIPT_DIR/run.sh"
 else
   echo
@@ -104,4 +96,4 @@ else
   echo
   exit 1
 fi
-A
+
