@@ -37,6 +37,9 @@ case "$MODEL" in
     ocl)
         aprun -n 1 -d 64 -j 1 -cc none "./$BENCHMARK_EXE"
         ;;
+    sycl)
+        aprun -n 1 -d 64 -j 1 -cc none "./$BENCHMARK_EXE" --device 1
+        ;;
     *)
         echo "Unknown run configuration for model '$MODEL'"
         exit 1
