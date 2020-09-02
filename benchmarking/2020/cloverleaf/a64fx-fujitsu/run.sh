@@ -18,6 +18,9 @@ case "$MODEL" in
             "./$BENCHMARK_EXE"
         fi
         ;;
+    sycl)
+        OMP_NUM_THREADS=48 "./$BENCHMARK_EXE"
+        ;;
     *)
         echo "Unknown run configuration for model '$MODEL'"
         exit 2
