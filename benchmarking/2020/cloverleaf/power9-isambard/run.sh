@@ -16,6 +16,7 @@ case "$MODEL" in
         mpirun -np 1 --bind-to none ./$BENCHMARK_EXE
         ;;
     acc)
+        export ACC_NUM_CORES=40
         mpirun -np 1 ./$BENCHMARK_EXE
         ;;
     kokkos)
