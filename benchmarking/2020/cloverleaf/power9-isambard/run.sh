@@ -2,6 +2,8 @@
 
 set -eu
 
+call_dir=$PWD
+
 cp $SRC_DIR/InputDecks/clover_bm16.in clover.in
 
 case "$MODEL" in
@@ -26,3 +28,4 @@ case "$MODEL" in
         ;;
 esac
 
+cat clover.out > $call_dir/CloverLeaf-"$CONFIG".out
