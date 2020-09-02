@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEFAULT_COMPILER=fujitsu-1.2.26
+DEFAULT_COMPILER=intel-2019
 DEFAULT_MODEL=omp
 function usage
 {
@@ -8,13 +8,18 @@ function usage
     echo "Usage: ./benchmark.sh build|run [COMPILER] [MODEL]"
     echo
     echo "Valid compilers:"
-    echo "  fujitsu-1.2.26"
-    echo "  gcc-8.3"
-    echo "  armclang-20.1"
+    echo "  cce-10.0"
+    echo "  gcc-9.3"
+    echo "  intel-2019"
+    echo "  pgi-20.1"
+    echo "  dpcpp-2021.1.8"
+    echo "  computecpp-2.1"
     echo
     echo "Valid models:"
     echo "  omp"
     echo "  kokkos"
+    echo "  acc"
+    echo "  ocl"
     echo "  sycl"
     echo
     echo "The default configuration is '$DEFAULT_COMPILER'."
@@ -36,25 +41,41 @@ SCRIPT=`realpath $0`
 SCRIPT_DIR=`realpath $(dirname $SCRIPT)`
 source ${SCRIPT_DIR}/../common.sh
 
-export CONFIG="a64fx"_"$COMPILER"_"$MODEL"
+export CONFIG="bdw"_"$COMPILER"_"$MODEL"
 export BENCHMARK_EXE=BabelStream-$CONFIG
 export SRC_DIR=$PWD/BabelStream
 export RUN_DIR=$PWD/BabelStream-$CONFIG
 
 
 # Set up the environment
-module use $HOME/../work/modulefiles
 case "$COMPILER" in
-    fujitsu-1.2.26)
-        module load fujitsu/1.2.26
-        MAKE_OPTS='COMPILER=FUJITSU COMPILER_FUJITSU=FCC FLAGS_FUJITSU="-Kfast,zfill,openmp,cmodel=large,restp -std=c++11" OMP_FUJITSU_CPU="-fopenmp"'
+    cce-10.0)
+        module swap cce cce/10.0.1
+        MAKE_OPTS='COMPILER=CRAY'
         ;;
-    gcc-8.3)
-        MAKE_OPTS='COMPILER=GNU'
+    gcc-9.3)
+        module swap PrgEnv-{cray,gnu}
+        module swap gcc gcc/9.3.0
+        MAKE_OPTS='COMPILER=GNU EXTRA_FLAGS="-march=broadwell"'
         ;;
-    armclang-20.1)
-        module load arm/20.1
-        MAKE_OPTS='COMPILER=ARMCLANG EXTRA_FLAGS="-mcpu=a64fx -O3"'
+    intel-2019)
+        module swap PrgEnv-{cray,intel}
+        module swap intel intel/19.0.4.243
+        MAKE_OPTS='COMPILER=INTEL EXTRA_FLAGS="-xbroadwell -fopenmp"'
+        ;;
+    pgi-20.1)
+        module swap PrgEnv-{cray,pgi}
+        module swap pgi pgi/20.1.1
+	MAKE_OPTS='COMPILER=PGI EXTRA_FLAGS="-ta=multicore -tp=haswell"'
+        ;;
+    dpcpp-2021.1.8)
+        source /home/users/p02639/bin/intel/oneapi/setvars.sh
+	MAKE_OPTS='COMPILER=DPCPP'
+        ;;
+    computecpp-2.1)
+        module use /home/users/p02639/bin/modulefiles
+        module load computecpp/2.1.0
+	MAKE_OPTS='COMPILER=COMPUTECPP SYCL_SDK_DIR="/home/users/p02639/bin/ComputeCpp-CE-2.1.0-x86_64-linux-gnu"'
         ;;
     *)
         echo
@@ -67,12 +88,6 @@ esac
 # Select Makefile to use, and model specific information
 case "$MODEL" in
   omp)
-    if [ "$COMPILER" == "fujitsu-1.2.26" ]; then
-      WORK_DIR=$PWD
-      cd $SRC_DIR
-      patch < $SCRIPT_DIR/restrict-pointers.patch
-      cd $WORK_DIR
-    fi
     MAKE_FILE="OpenMP.make"
     BINARY="omp-stream"
     MAKE_OPTS+=" TARGET=CPU"
@@ -82,12 +97,12 @@ case "$MODEL" in
     echo "Using KOKKOS_PATH=${KOKKOS_PATH}"
     MAKE_FILE="Kokkos.make"
     BINARY="kokkos-stream"
-    MAKE_OPTS+=" KOKKOS_PATH=${KOKKOS_PATH} ARCH=ARMv81 DEVICE=OpenMP"
+    MAKE_OPTS+=" KOKKOS_PATH=${KOKKOS_PATH} ARCH=BDW DEVICE=OpenMP"
     ;;
   acc)
     MAKE_FILE="OpenACC.make"
     BINARY="acc-stream"
-    MAKE_OPTS+=' TARGET=SKL'
+    MAKE_OPTS+=' TARGET=HSW'
     if [ "$COMPILER" != "pgi-20.1" ]
     then
       echo
@@ -138,10 +153,10 @@ then
 
 elif [ "$ACTION" == "run" ]; then
   check_bin $RUN_DIR/$BENCHMARK_EXE
-  eval $SCRIPT_DIR/run.job
+  qsub -o BabelStream-$CONFIG.out -N babelstream -V $SCRIPT_DIR/run.job
 elif [ "$ACTION" == "run-large" ]; then
   check_bin $RUN_DIR/$BENCHMARK_EXE
-  eval $SCRIPT_DIR/run-large.job
+  qsub -o BabelStream-large-$CONFIG.out -N babelstream -V $SCRIPT_DIR/run-large.job
 else
     echo
     echo "Invalid action (use 'build' or 'run')."
