@@ -60,6 +60,7 @@ kokkos)
   module load openmpi/3.0.2/gcc8
   export SRC_DIR="$PWD/cloverleaf_kokkos"
   MAKE_OPTS='-j -f Makefile.gpu'
+  BINARY="clover_leaf"
   ;;
 acc)
   module load pgi/compiler/19.10
