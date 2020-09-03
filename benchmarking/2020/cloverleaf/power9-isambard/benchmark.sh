@@ -69,6 +69,13 @@ case "$COMPILER" in
       MAKE_OPTS='COMPILER=XL FLAGS_XL="-O5 -qipa=partition=large -g -qfullpath -Q -qsigtrap -qextname=flush:ideal_gas_kernel_c:viscosity_kernel_c:pdv_kernel_c:revert_kernel_c:accelerate_kernel_c:flux_calc_kernel_c:advec_cell_kernel_c:advec_mom_kernel_c:reset_field_kernel_c:timer_c:unpack_top_bottom_buffers_c:pack_top_bottom_buffers_c:unpack_left_right_buffers_c:pack_left_right_buffers_c:field_summary_kernel_c:update_halo_kernel_c:generate_chunk_kernel_c:initialise_chunk_kernel_c:calc_dt_kernel_c:clover_unpack_message_bottom_c:clover_pack_message_bottom_c:clover_unpack_message_top_c:clover_pack_message_top_c:clover_unpack_message_right_c:clover_pack_message_right_c:clover_unpack_message_left_c:clover_pack_message_left_c -qlistopt -qattr=full -qlist -qreport -qxref=full -qsource -qsuppress=1506-224:1500-036FLAGS_"'
       BINARY="clover_leaf"
       ;;
+    hipsycl)
+      module load hipsycl/jul-8-20
+      module load gcc/8.1.0 openmpi/3.0.2/gcc8
+      MAKE_OPTS="COMPILER=HIPSYCL"
+      BINARY="clover_leaf"
+      MAKE_OPTS="-DSYCL_RUNTIME=HIPSYCL "
+      ;;
     *)
         echo
         echo "Invalid compiler '$COMPILER'."
@@ -89,6 +96,19 @@ case "$MODEL" in
     MAKE_OPTS="COMPILER=GNU"
     MAKE_OPTS+=" KOKKOS_PATH=${KOKKOS_PATH} ARCH=POWER9 DEVICE=OpenMP"
     ;;
+  sycl)
+   module load cmake/3.14
+    HIPSYCL_PATH="$(realpath "$(dirname "$(which syclcc)")"/..)"
+    echo "Using HIPSYCL_PATH=${HIPSYCL_PATH}"
+    MAKE_OPTS+=" -DHIPSYCL_INSTALL_DIR=${HIPSYCL_PATH} -DHIPSYCL_PLATFORM=cpu"
+    #MAKE_OPTS+=" -DMPI_AS_LIBRARY=ON -DMPI_C_LIB_DIR=${CRAY_MPICH_DIR}/lib -DMPI_C_INCLUDE_DIR=${CRAY_MPICH_DIR}/include -DMPI_C_LIB=mpich"
+    MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=-mcpu=native"
+    MAKE_OPTS+=" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
+
+    export SRC_DIR="$PWD/cloverleaf_sycl"
+    #export DEVICE_ARGS="--device 1"
+    ;;
+    
 esac
 
 

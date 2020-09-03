@@ -11,7 +11,7 @@ case "$MODEL" in
         export OMP_NUM_THREADS=1
         mpirun -np 40 --bind-to core ./$BENCHMARK_EXE
         ;;
-    omp)
+    omp|sycl)
         export OMP_NUM_THREADS=40 OMP_PROC_BIND=spread OMP_PLACES=cores
         mpirun -np 1 --bind-to none ./$BENCHMARK_EXE
         ;;
