@@ -94,11 +94,9 @@ case "$MODEL" in
     HIPSYCL_PATH="$(realpath "$(dirname "$(which syclcc)")"/..)"
     echo "Using HIPSYCL_PATH=${HIPSYCL_PATH}"
     MAKE_OPTS+=" -DHIPSYCL_INSTALL_DIR=${HIPSYCL_PATH} -DSYCL_RUNTIME=HIPSYCL"
-    # MAKE_OPTS+=" -DMPI_AS_LIBRARY=ON -DMPI_C_LIB_DIR=${CRAY_MPICH_DIR}/lib -DMPI_C_INCLUDE_DIR=${CRAY_MPICH_DIR}/include -DMPI_C_LIB=mpich"
     MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=-march=armv8.3-a+sve"
 
     SRC_DIR="$PWD/cloverleaf_sycl"
-    export DEVICE_ARGS="--device 1"
     ;;
 esac
 

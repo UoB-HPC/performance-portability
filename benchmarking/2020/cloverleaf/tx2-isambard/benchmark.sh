@@ -94,8 +94,7 @@ case "$MODEL" in
     MAKE_OPTS+=" -DMPI_AS_LIBRARY=ON -DMPI_C_LIB_DIR=${CRAY_MPICH_DIR}/lib -DMPI_C_INCLUDE_DIR=${CRAY_MPICH_DIR}/include -DMPI_C_LIB=mpich"
     MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=-mcpu=native"
 
-    export SRC_DIR="$PWD/cloverleaf_sycl"
-    export DEVICE_ARGS="--device 1"
+    SRC_DIR="$PWD/cloverleaf_sycl"
     ;;
 esac
 
