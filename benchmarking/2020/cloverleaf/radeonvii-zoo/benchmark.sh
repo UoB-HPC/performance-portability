@@ -6,7 +6,7 @@ function usage() {
   echo "Usage: ./benchmark.sh build|run [MODEL]"
   echo
   echo "Valid models:"
-  echo "  opencl"
+  echo "  ocl"
   echo "  omp"
   echo "  acc"
   echo "  sycl"
@@ -35,14 +35,12 @@ module load cmake/3.14.5
 
 export MODEL=$MODEL
 case "$MODEL" in
-opencl)
+ocl)
   COMPILER=gcc-8.3
 
   module load gcc/8.3.0 openmpi/4.0.1/gcc-8.3
-  export SRC_DIR=$PWD/CloverLeaf
-  MAKE_OPTS='COMPILER=GNU USE_OPENCL=1 \
-        EXTRA_INC="-I/nfs/software/x86_64/cuda/10.1/targets/x86_64-linux/include/CL/" \
-        EXTRA_PATH="-I/nfs/software/x86_64/cuda/10.1/targets/x86_64-linux/include/CL/"'
+  export SRC_DIR=$PWD/CloverLeaf_OpenCL
+  MAKE_OPTS="$MAKE_OPTS  OCL_VENDOR='AMD' COPTIONS='-DCL_TARGET_OPENCL_VERSION=110 -DOCL_IGNORE_PLATFORM -std=c++98'  OPTIONS='-lstdc++ -cpp'"
 
   BINARY="clover_leaf"
   ;;
