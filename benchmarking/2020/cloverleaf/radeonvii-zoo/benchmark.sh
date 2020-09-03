@@ -54,7 +54,8 @@ kokkos)
   MAKE_OPTS='COMPILER=HIPCC'
 
   KOKKOS_PATH=$(pwd)/$(fetch_kokkos)
-  echo "Using KOKKOS_PATH=${KOKKOS_PATH}"
+  #KOKKOS_PATH=$(pwd)/kokkos
+  echo "KOKKOS_PATH=${KOKKOS_PATH}"
   export CXX=hipcc
   # XXX
   # TARGET=AMD isn't a thing in CloverLeaf but TARGET=CPU is misleading and TARGET=GPU uses nvcc
@@ -79,8 +80,9 @@ omp-target)
   #
 
   export SRC_DIR="$PWD/CloverLeaf-OpenMP4"
+  export OMPI_CC=gcc OMPI_FC=gfortran
   MAKE_OPTS='-j16 COMPILER=GNU MPI_F90=mpif90 MPI_C=mpicc'
-#  MAKE_OPTS+=' C_OPTIONS=" -foffload=amdgcn-amdhsa=\""-march=gfx906"\"  " '
+  MAKE_OPTS+=' C_OPTIONS="-foffload=amdgcn-amdhsa -foffload=-march=gfx906 -foffload=-lm -fno-fast-math -fno-associative-math"'
   MAKE_OPTS+=' OPTIONS=" -fopenmp -lm " '
   BINARY="clover_leaf"
 
