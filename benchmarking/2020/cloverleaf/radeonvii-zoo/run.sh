@@ -17,7 +17,7 @@ fi
 case "$MODEL" in
 
 sycl)
-  mpirun -np 1 "./$BENCHMARK_EXE" --file clover.in --device 0 &>>../$1
+  "./$BENCHMARK_EXE" --file clover.in &>>../$1
   ;;
 *)
   "./$BENCHMARK_EXE" &>>../$1
