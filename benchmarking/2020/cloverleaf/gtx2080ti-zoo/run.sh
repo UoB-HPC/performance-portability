@@ -4,6 +4,8 @@ set -eu
 export OMP_PROC_BIND=spread
 date >../$1
 
+call_dir=$PWD
+
 cd "$RUN_DIR"
 
 if [ "$MODEL" != ocl ]; then
@@ -24,6 +26,9 @@ ocl)
   export OCL_SRC_PREFIX=../CloverLeaf_OpenCL
   echo $PWD
   "./$BENCHMARK_EXE" &>>../$1
+  ;;
+acc)
+  mpirun -np 1 "./$BENCHMARK_EXE"
   ;;
 *)
   "./$BENCHMARK_EXE" &>>../$1

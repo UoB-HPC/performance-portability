@@ -89,15 +89,16 @@ kokkos)
 acc)
   COMPILER=pgi-19.10
   module load pgi/19.10
-  module load openmpi/4.0.1/gcc-8.3
+  export PATH=$PATH:/nfs/software/x86_64/pgi/19.10/linux86-64-llvm/19.10/mpi/openmpi-3.1.3/bin
 
   export SRC_DIR=$PWD/CloverLeaf-OpenACC
 
   export OMPI_CC=pgcc
   export OMPI_FC=pgfortran
   MAKE_OPTS='COMPILER=PGI C_MPI_COMPILER=mpicc MPI_F90=mpif90 \
-        OPTIONS="-ta=tesla:cc70 -L/opt/local-modules/pgi/linux86-64/18.10/lib/ -Wl,-rpath,/opt/local-modules/pgi/linux86-64/18.10/lib/ -lpgm" \
-        C_OPTIONS="-ta=tesla:cc70 -L/opt/local-modules/pgi/linux86-64/18.10/lib/ -Wl,-rpath,/opt/local-modules/pgi/linux86-64/18.10/lib/ -lpgm"'
+        FLAGS_PGI="-O3 -Mpreprocess -fast -acc -ta=tesla:cc75" CFLAGS_PGI="-O3 -ta=tesla:cc75" OMP_PGI="" '
+        #OPTIONS="-ta=tesla:cc70 -L/opt/local-modules/pgi/linux86-64/18.10/lib/ -Wl,-rpath,/opt/local-modules/pgi/linux86-64/18.10/lib/ -lpgm" \
+        #C_OPTIONS="-ta=tesla:cc70 -L/opt/local-modules/pgi/linux86-64/18.10/lib/ -Wl,-rpath,/opt/local-modules/pgi/linux86-64/18.10/lib/ -lpgm"'
   BINARY="clover_leaf"
   ;;
 sycl)
