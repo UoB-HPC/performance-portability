@@ -8,7 +8,12 @@ set -eu
 
 cd "$RUN_DIR"
 
-cp "$SRC_DIR/InputDecks/clover_bm16.in" "$RUN_DIR/clover.in"
+if [ "$MODEL" != "ocl" ]; then
+  cp "$SRC_DIR/InputDecks/clover_bm16.in" "$RUN_DIR/clover.in"
+else
+  cp "$SRC_DIR/clover_bm16.in" "$RUN_DIR/clover.in"
+fi
+
 date
 export OMP_NUM_THREADS=1
 
@@ -29,9 +34,9 @@ case "$MODEL" in
       mpirun -np 1 "./$BENCHMARK_EXE" --file clover.in
       ;;
 
-  opencl)
+  ocl=)
       # Make sure OCL_SRC_PREFIX is set so the kernel source files can be found
-      export OCL_SRC_PREFIX=../CloverLeaf
+      export OCL_SRC_PREFIX=../CloverLeaf_OpenCL
       "./$BENCHMARK_EXE"
       ;;
 
