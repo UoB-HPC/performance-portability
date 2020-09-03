@@ -10,7 +10,7 @@ function usage() {
   echo "  omp"
   echo "  kokkos"
   echo "  cuda"
-  echo "  opencl"
+  echo "  ocl"
   echo "  acc"
   echo "  sycl"
   echo
@@ -50,15 +50,17 @@ cuda)
   MAKE_OPTS='COMPILER=GNU USE_CUDA=1'
   BINARY="clover_leaf"
   ;;
-opencl)
+ocl)
   COMPILER=gcc-8.3
   module load gcc/8.3.0
   module load openmpi/4.0.1/gcc-8.3
   export MAKEFLAGS='-j16'
-  export SRC_DIR=$PWD/CloverLeaf
-  MAKE_OPTS='COMPILER=GNU USE_OPENCL=1 \
+  export SRC_DIR=$PWD/CloverLeaf_OpenCL
+  MAKE_OPTS='COMPILER=GNU USE_OPENCL=1 OCL_VENDOR=NVIDIA \
+        COPTIONS="-std=c++98 -DCL_TARGET_OPENCL_VERSION=110 -DOCL_IGNORE_PLATFOR" \
+        OPTIONS="-lstdc++ -cpp -lOpenCL" \
         EXTRA_INC="-I/nfs/software/x86_64/cuda/10.1/targets/x86_64-linux/include/CL/" \
-        EXTRA_PATH="-I/nfs/software/x86_64/cuda/10.1/targets/x86_64-linux/include/CL/"'
+        EXTRA_PATH="-I/nfs/software/x86_64/cuda/10.1/targets/x86_64-linux/include/CL/ "'
   BINARY="clover_leaf"
   ;;
 kokkos)
@@ -131,7 +133,7 @@ if [ "$ACTION" == "build" ]; then
 
   case "$MODEL" in
   cuda) # cl uses the universal port
-    fetch_src "opencl"
+    fetch_src "ocl"
     ;;
   *)
     fetch_src $MODEL
@@ -140,9 +142,9 @@ if [ "$ACTION" == "build" ]; then
 
   fetch_src $MODEL
 
-  if [ "$MODEL" == "opencl" ]; then
-    sed -i 's/ cl::Platform default_platform = all_platforms\[.\];/ cl::Platform default_platform = all_platforms[0];/g' CloverLeaf/src/openclinit.cpp
-  fi
+  #if [ "$MODEL" == "ocl" ]; then
+  #  sed -i 's/ cl::Platform default_platform = all_platforms\[.\];/ cl::Platform default_platform = all_platforms[0];/g' CloverLeaf/src/openclinit.cpp
+  #fi
 
   build_bin "$MODEL" "$MAKE_OPTS" "$SRC_DIR" "$BINARY" "$RUN_DIR" "$BENCHMARK_EXE"
 
