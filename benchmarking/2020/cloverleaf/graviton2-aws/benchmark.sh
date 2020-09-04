@@ -1,24 +1,25 @@
 #!/bin/bash
 
-DEFAULT_COMPILER=cce-10.0
-DEFAULT_MODEL=omp
+DEFAULT_COMPILER=gcc-9.3
+DEFAULT_MODEL=mpi
 function usage() {
   echo
   echo "Usage: ./benchmark.sh build|run [MODEL] [COMPILER]"
   echo
   echo "Valid model and compiler options:"
   echo "  mpi | omp"
-  echo "    arm-20.0"
-  echo "    cce-10.0"
+  echo "    arm-20.2"
+  echo "    gcc-8.3"
   echo "    gcc-9.3"
   echo
   echo "  kokkos"
-  echo "    arm-20.0"
-  echo "    cce-10.0"
+  echo "    arm-20.2"
+  echo "    gcc-8.3"
   echo "    gcc-9.3"
   echo
   echo "  sycl"
-  echo "    hipsycl-200527-gcc"
+  echo "    hipsycl-200902-gcc"
+  echo "    hipsycl-200902-llvm"
   echo
   echo "The default configuration is '$DEFAULT_MODEL $DEFAULT_COMPILER'."
   echo
@@ -36,35 +37,45 @@ export COMPILER="${3:-$DEFAULT_COMPILER}"
 SCRIPT="$(realpath "$0")"
 SCRIPT_DIR="$(realpath "$(dirname "$SCRIPT")")"
 source "${SCRIPT_DIR}/../common.sh"
-export CONFIG="tx2_${COMPILER}_${MODEL}"
+export CONFIG="graviton2_${COMPILER}_${MODEL}"
 export SRC_DIR="$PWD/CloverLeaf_ref"
 export RUN_DIR="$PWD/CloverLeaf-$CONFIG"
 export BENCHMARK_EXE="clover_leaf"
 
 # Set up the environment
+module purge
+module use /mnt/shared/software/modulesfiles
 case "$COMPILER" in
-  cce-10.0)
-    [ -z "$CRAY_CPU_TARGET" ] && module load craype-arm-thunderx2
-    module swap cce cce/10.0.1
-    MAKE_OPTS='COMPILER=ARM MPI_COMPILER=ftn C_MPI_COMPILER=cc FLAGS_ARM="-em -ra"'
+  arm-20.2)
+    module load arm/20.2
+    module load openmpi/4.0.3/arm-20.2
+    MAKE_OPTS='COMPILER=ARM'
+    MAKE_OPTS+=' FLAGS_ARM="-Ofast -ffast-math -ffp-contract=fast -mcpu=neoverse-n1 -funroll-loops"'
+    MAKE_OPTS+=' CFLAGS_ARM="-Ofast -ffast-math -ffp-contract=fast -mcpu=neoverse-n1 -funroll-loops"'
+    ;;
+  gcc-8.3)
+    module load openmpi/4.0.3/gcc-8.3
+    MAKE_OPTS='COMPILER=GNU'
+    MAKE_OPTS+=' FLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -march=armv8.2-a -funroll-loops"'
+    MAKE_OPTS+=' CFLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -march=armv8.2-a -funroll-loops"'
     ;;
   gcc-9.3)
-    module swap PrgEnv-{cray,gnu}
-    module swap gcc gcc/9.3.0
-    MAKE_OPTS='COMPILER=GNU MPI_COMPILER=cc C_MPI_COMPILER=cc'
-    MAKE_OPTS+=' FLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -mcpu=thunderx2t99 -funroll-loops"'
-    MAKE_OPTS+=' CFLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -mcpu=thunderx2t99 -funroll-loops"'
+    module load gcc/9.3
+    module load openmpi/4.0.3/gcc-8.3
+    MAKE_OPTS='COMPILER=GNU'
+    MAKE_OPTS+=' FLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -mcpu=neoverse-n1 -funroll-loops"'
+    MAKE_OPTS+=' CFLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -mcpu=neoverse-n1 -funroll-loops"'
     ;;
-  arm-20.0)
-    module swap PrgEnv-{cray,allinea}
-    module swap allinea allinea/20.0.0.0
-    MAKE_OPTS='COMPILER=GNU MPI_COMPILER=ftn C_MPI_COMPILER=cc'
-    MAKE_OPTS+=' FLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -mcpu=thunderx2t99 -funroll-loops"'
-    MAKE_OPTS+=' CFLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -mcpu=thunderx2t99 -funroll-loops"'
+  hipsycl-200902-gcc)
+    module load hipsycl/200902-gcc
+    module load openmpi/4.0.3/gcc-8.3
+    MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=-march=armv8.2-a"
     ;;
-  hipsycl-200527-gcc)
-    module swap PrgEnv-{cray,gnu}
-    module load hipsycl/gcc/200527
+  hipsycl-200902-llvm)
+    module load hipsycl/200902-llvm
+    module load openmpi/4.0.3/arm-20.2
+    export CC=clang CXX=clang++
+    MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=-mcpu=neoverse-n1"
     ;;
   *)
     echo
@@ -75,15 +86,13 @@ case "$COMPILER" in
 esac
 
 case "$MODEL" in
-  omp)
-    export SRC_DIR="$PWD/CloverLeaf_ref"
+  omp|mpi)
     ;;
 
   kokkos)
     KOKKOS_PATH="$PWD/$(fetch_kokkos)"
     echo "Using KOKKOS_PATH='${KOKKOS_PATH}'"
-    MAKE_OPTS+=" CXX=CC KOKKOS_PATH=${KOKKOS_PATH} ARCH=ARMv8-TX2 DEVICE=OpenMP"
-    [[ "$COMPILER" =~ cce- ]] && MAKE_OPTS+=" KOKKOS_INTERNAL_OPENMP_FLAG=-fopenmp"
+    MAKE_OPTS+=" KOKKOS_PATH=${KOKKOS_PATH} ARCH=ARMv81 DEVICE=OpenMP"
     SRC_DIR="$PWD/cloverleaf_kokkos"
     ;;
 
@@ -91,8 +100,6 @@ case "$MODEL" in
     HIPSYCL_PATH="$(realpath "$(dirname "$(which syclcc)")"/..)"
     echo "Using HIPSYCL_PATH=${HIPSYCL_PATH}"
     MAKE_OPTS+=" -DHIPSYCL_INSTALL_DIR=${HIPSYCL_PATH} -DSYCL_RUNTIME=HIPSYCL"
-    MAKE_OPTS+=" -DMPI_AS_LIBRARY=ON -DMPI_C_LIB_DIR=${CRAY_MPICH_DIR}/lib -DMPI_C_INCLUDE_DIR=${CRAY_MPICH_DIR}/include -DMPI_C_LIB=mpich"
-    MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=-mcpu=native"
 
     SRC_DIR="$PWD/cloverleaf_sycl"
     ;;
@@ -109,12 +116,11 @@ if [ "$ACTION" == "build" ]; then
   if [ "$MODEL" == "sycl" ]; then
     ( cd "$SRC_DIR" || exit 1
     rm -rf build
-    module load cmake/3.17.3
-    cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release $MAKE_OPTS
+    module load cmake/3.18.2
+    CXXFLAGS='-O3 -fopenmp' cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release $MAKE_OPTS
     cmake --build build --target clover_leaf --config Release -j $(nproc)
     mv "build/$BENCHMARK_EXE" "$RUN_DIR/" )
   else
-
     if ! eval make -C "$SRC_DIR" -B "$MAKE_OPTS" -j "$(nproc)"; then
       echo
       echo "Build failed."
@@ -123,11 +129,11 @@ if [ "$ACTION" == "build" ]; then
     fi
 
     mv "$SRC_DIR/$BENCHMARK_EXE" "$RUN_DIR/"
-
   fi
+
 elif [ "$ACTION" == "run" ]; then
   check_bin "$RUN_DIR/$BENCHMARK_EXE"
-  qsub -o "CloverLeaf-$CONFIG.out" -N cloverleaf -V "$SCRIPT_DIR/run.job"
+  bash "$SCRIPT_DIR/run.sh" |& tee "CloverLeaf-$CONFIG.out"
 else
   echo
   echo "Invalid action (use 'build' or 'run')."

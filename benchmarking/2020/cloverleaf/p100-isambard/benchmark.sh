@@ -12,7 +12,7 @@ function usage() {
   echo "  cuda"
   echo "  kokkos"
   echo "  acc"
-  echo "  opencl"
+  echo "  ocl"
   echo "  sycl"
   echo
   echo "The default programming model is '$DEFAULT_MODEL'."
@@ -47,8 +47,8 @@ omp-target)
 
   export SRC_DIR="$PWD/CloverLeaf-OpenMP4"
   MAKE_OPTS='-j16 COMPILER=CRAY MPI_F90=ftn MPI_C=cc'
-  MAKE_OPTS+=' C_OPTIONS=" -fopenmp -fopenmp-targets=nvptx64 -Xopenmp-target -march=sm_60" '
-  MAKE_OPTS+=' OPTIONS=" -fopenmp" '
+  MAKE_OPTS+=' C_OPTIONS=" -g -O3 -fopenmp -fopenmp-targets=nvptx64 -Xopenmp-target -march=sm_60" '
+  MAKE_OPTS+=' OPTIONS=" -g -O3 -fopenmp" '
   BINARY="clover_leaf"
   ;;
 cuda)
@@ -91,17 +91,18 @@ acc)
   MAKE_OPTS='COMPILER=PGI C_MPI_COMPILER=mpicc MPI_F90=mpif90  FLAGS_PGI="-O3 -Mpreprocess -fast -acc -ta=tesla:cc60" CFLAGS_PGI="-O3 -ta=tesla:cc60" OMP_PGI=""'
   BINARY="clover_leaf"
   ;;
-opencl)
+ocl)
   COMPILER=gcc-6.1
   module load gcc/6.1.0
   module load openmpi/gcc-6.1.0/1.10.7
   module load craype-accel-nvidia60 cuda10.2/toolkit/10.2.89
 
-  export SRC_DIR="$PWD/CloverLeaf"
+  export SRC_DIR="$PWD/CloverLeaf_OpenCL"
   CUDA_PATH=$(dirname $(which nvcc))/..
   CUDA_INCLUDE=$CUDA_PATH/include
 
-  MAKE_OPTS='COMPILER=GNU USE_OPENCL=1'
+  MAKE_OPTS='COMPILER=GNU USE_OPENCL=1 OCL_VENDOR=NVIDIA'
+  MAKE_OPTS+=" COPTIONS='-DCL_TARGET_OPENCL_VERSION=110 -DOCL_IGNORE_PLATFORM -std=c++98'  OPTIONS='-lstdc++ -cpp -lOpenCL -L/home/br-jprice/modules/openmpi/gcc-6.1.0/1.10.7/lib -lmpi_cxx -lmpi'"
   MAKE_OPTS+=' EXTRA_INC="-I $CUDA_INCLUDE -I $CUDA_INCLUDE/CL -L$CUDA_PATH/lib64"'
   MAKE_OPTS+=' EXTRA_PATH="-I $CUDA_INCLUDE -I $CUDA_INCLUDE/CL -L$CUDA_PATH/lib64"'
 
