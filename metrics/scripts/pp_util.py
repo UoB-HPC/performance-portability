@@ -102,6 +102,8 @@ def load_app_perfs(appfile, appname=None, throughput=False):
         perfs = reader(fp, skipinitialspace=True)
         header = [x.strip() for x in next(perfs)]
         for row in perfs:
+            if len(row) == 0:
+                break
             plat = row[0]
             for i, item in enumerate(row[1:]):
                 appname = header[i+1]
@@ -139,8 +141,8 @@ def read_effs(appfile):
                 appname = header[i+1]
                 if appname not in apps:
                     apps[appname] = []
-                apps[appname].append(float(item)/100.0)
-    s = sorted(list(apps.items()), key=lambda x: harmean(x[1]))
+                apps[appname].append((plat, float(item)/100.0))
+    s = sorted(list(apps.items()), key=lambda x: harmean([i[1] for i in x[1]]))
     return s
 
 def app_effs(theapp, plats, throughput):
@@ -269,18 +271,15 @@ def pp_cdf(theapp, plats, throughput):
             if p.perf > 0 and p.perf != float("inf"):
                 valid_perfs.append((p, platforms[p.platform].app_eff(p.perf, throughput)))
     sorted_perfs = sorted(valid_perfs, key=lambda x: x[1])
-    effs = list(zip(reversed(range(1,len(sorted_perfs)+1)), (x[1] for x in sorted_perfs)))
-    perfs = [x[0].platform for x in sorted_perfs]
-    pps = []
-    for i in range(len(perfs)):
-        pps.append((len(perfs)-i, harmean([x[1] for x in sorted_perfs[i:]])))
-    return pps, effs
+    res = []
+    for i in range(len(sorted_perfs)):
+        res.append((sorted_perfs[i][1], harmean([x[1] for x in sorted_perfs[i:]]), sorted_perfs[i][0]))
+    return res
 
 def pp_cdf_raw_effs(theapp):
-    valid_effs = [ x for x in theapp  if x > 0 and x != float("inf")]
-    sorted_effs = sorted(valid_effs)
-    effs = list(zip(reversed(range(len(sorted_effs))), sorted_effs))
-    pps = []
+    valid_effs = [ x for x in theapp  if x[1] > 0 and x[1] != float("inf")]
+    sorted_effs = sorted(valid_effs, key=lambda x: x[1])
+    res = []
     for i in range(len(sorted_effs)):
-        pps.append((len(sorted_effs)-i, harmean(sorted_effs[i:])))
-    return pps, effs
+        res.append((sorted_effs[i][1], harmean([x[1] for x in sorted_effs[i:]]), sorted_effs[i][0]))
+    return res
