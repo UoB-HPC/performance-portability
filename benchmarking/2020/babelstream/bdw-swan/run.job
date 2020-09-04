@@ -1,0 +1,18 @@
+#!/bin/bash
+#PBS -q bw36
+#PBS -l select=1:ncpus=36
+#PBS -l walltime=00:15:00
+#PBS -joe
+
+cd $RUN_DIR
+date
+export OMP_NUM_THREADS=36
+export OMP_PROC_BIND=true
+export ACC_NUM_CORES=36
+
+if [[ "$CONFIG" = "bdw_computecpp-2.1_sycl" ]]; then
+  aprun -n 1 -d 36 -j 1 -cc depth ./$BENCHMARK_EXE --device 1
+else
+  aprun -n 1 -d 36 -j 1 -cc depth ./$BENCHMARK_EXE
+fi
+

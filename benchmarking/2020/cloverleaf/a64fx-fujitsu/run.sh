@@ -10,12 +10,16 @@ case "$MODEL" in
     mpi)
         OMP_NUM_THREADS=1 mpirun -np 48 "./$BENCHMARK_EXE"
         ;;
-    omp)
+    omp|kokkos)
+        export OMP_PROC_BIND=true OMP_PLACES=cores OMP_NUM_THREADS=48
         if [[ "$COMPILER" =~ fujitsu- ]]; then
-            OMP_NUM_THREADS=48 mpirun -np 1 "./$BENCHMARK_EXE"
+            mpirun -np 1 "./$BENCHMARK_EXE"
         else
-            OMP_NUM_THREADS=48 "./$BENCHMARK_EXE"
+            "./$BENCHMARK_EXE"
         fi
+        ;;
+    sycl)
+        OMP_NUM_THREADS=48 "./$BENCHMARK_EXE"
         ;;
     *)
         echo "Unknown run configuration for model '$MODEL'"

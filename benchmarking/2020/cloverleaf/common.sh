@@ -43,7 +43,7 @@ fetch_src() {
     ;;
   kokkos)
     if [ ! -e cloverleaf_kokkos/clover_leaf.cpp ]; then
-      git clone https://github.com/tom91136/cloverleaf_kokkos
+      git clone https://github.com/uob-hpc/cloverleaf_kokkos
     fi
     ;;
   cuda)
@@ -51,9 +51,12 @@ fetch_src() {
       git clone --depth 1 https://github.com/UK-MAC/CloverLeaf_CUDA.git
     fi
     ;;
-  opencl)
-    if [ ! -e CloverLeaf/src/opencldefs.h ]; then
-      git clone https://github.com/UoB-HPC/CloverLeaf
+  ocl)
+    #if [ ! -e CloverLeaf/src/opencldefs.h ]; then
+    #  git clone https://github.com/UoB-HPC/CloverLeaf
+    #fi
+    if [ ! -e CloverLeaf_OpenCL/clover_leaf.f90 ]; then
+      git clone https://github.com/UK-MAC/CloverLeaf_OpenCL
     fi
     ;;
   acc)

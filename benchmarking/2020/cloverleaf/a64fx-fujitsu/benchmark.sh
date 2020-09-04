@@ -4,20 +4,23 @@ DEFAULT_COMPILER=fujitsu-4.1
 DEFAULT_MODEL=mpi
 function usage() {
   echo
-  echo "Usage: ./benchmark.sh build|run [COMPILER] [MODEL]"
+  echo "Usage: ./benchmark.sh build|run [MODEL] [COMPILER]"
   echo
-  echo "Valid compilers:"
-  echo "  arm-20.2"
-  echo "  fujitsu-4.1"
-  echo "  gcc-8.3"
+  echo "Valid model and compiler options:"
+  echo "  mpi | omp"
+  echo "    arm-20.2"
+  echo "    fujitsu-4.1"
+  echo "    gcc-8.3"
   echo
-  echo "Valid models:"
-  echo " mpi"
-  echo " omp"
-  echo " kokkos"
+  echo "  kokkos"
+  echo "    arm-20.2"
+  echo "    fujitsu-4.1"
+  echo "    gcc-8.3"
   echo
-  echo "The default configuration is '$DEFAULT_COMPILER'."
-  echo "The default programming model is '$DEFAULT_MODEL'."
+  echo "  sycl"
+  echo "    hipsycl-200902-gcc"
+  echo
+  echo "The default configuration is '$DEFAULT_MODEL $DEFAULT_COMPILER'."
   echo
 }
 
@@ -28,8 +31,8 @@ if [ $# -lt 1 ]; then
 fi
 
 ACTION="$1"
-export COMPILER="${2:-$DEFAULT_COMPILER}"
-export MODEL="${3:-$DEFAULT_MODEL}"
+export MODEL="${2:-$DEFAULT_MODEL}"
+export COMPILER="${3:-$DEFAULT_COMPILER}"
 SCRIPT="$(realpath "$0")"
 SCRIPT_DIR="$(realpath "$(dirname "$SCRIPT")")"
 source "${SCRIPT_DIR}/../common.sh"
@@ -40,35 +43,61 @@ export BENCHMARK_EXE="clover_leaf"
 
 # Set up the environment
 case "$COMPILER" in
-arm-20.2)
-  module purge
-  module load arm/20.2
-  module load openmpi/4.0.3/arm-20.0
-  MAKE_OPTS='COMPILER=ARM'
-  MAKE_OPTS+=' FLAGS_ARM="-Ofast -ffast-math -ffp-contract=fast -mcpu=a64fx -funroll-loops -fiterative-reciprocal"'
-  MAKE_OPTS+=' CFLAGS_ARM="-Ofast -ffast-math -ffp-contract=fast -mcpu=a64fx -funroll-loops -fiterative-reciprocal"'
-  ;;
-fujitsu-4.1)
-  module purge
-  module load fujitsu/1.2.26
-  MAKE_OPTS='COMPILER=GNU MPI_COMPILER=mpifrt C_MPI_COMPILER=mpifcc'
-  MAKE_OPTS+=' FLAGS_GNU="-Kfast,simd2,assume=memory_bandwidth"'
-  # MAKE_OPTS+=' FLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -march=armv8.3-a+sve -funroll-loops"'
-  MAKE_OPTS+=' CFLAGS_GNU="-Nclang -Ofast -ffast-math -ffp-contract=fast -march=armv8.3-a+sve -funroll-loops"'
-  ;;
-gcc-8.3)
-  module purge
-  module load openmpi/4.0.3/gcc-8.3
-  MAKE_OPTS='COMPILER=GNU'
-  MAKE_OPTS+=' FLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -march=armv8.3-a+sve -funroll-loops"'
-  MAKE_OPTS+=' CFLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -march=armv8.3-a+sve -funroll-loops"'
-  ;;
-*)
-  echo
-  echo "Invalid compiler '$COMPILER'."
-  usage
-  exit 1
-  ;;
+  arm-20.2)
+    module purge
+    module load arm/20.2
+    module load openmpi/4.0.3/arm-20.0
+    MAKE_OPTS='COMPILER=ARM'
+    MAKE_OPTS+=' FLAGS_ARM="-Ofast -ffast-math -ffp-contract=fast -mcpu=a64fx -funroll-loops -fiterative-reciprocal"'
+    MAKE_OPTS+=' CFLAGS_ARM="-Ofast -ffast-math -ffp-contract=fast -mcpu=a64fx -funroll-loops -fiterative-reciprocal"'
+    ;;
+  fujitsu-4.1)
+    module purge
+    module load fujitsu/1.2.26
+    MAKE_OPTS='COMPILER=GNU MPI_COMPILER=mpifrt C_MPI_COMPILER=mpifcc'
+    MAKE_OPTS+=' FLAGS_GNU="-Kfast,simd2,assume=memory_bandwidth"'
+    # MAKE_OPTS+=' FLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -march=armv8.3-a+sve -funroll-loops"'
+    MAKE_OPTS+=' CFLAGS_GNU="-Nclang -Ofast -ffast-math -ffp-contract=fast -march=armv8.3-a+sve -funroll-loops"'
+    ;;
+  gcc-8.3)
+    module purge
+    module load openmpi/4.0.3/gcc-8.3
+    MAKE_OPTS='COMPILER=GNU'
+    MAKE_OPTS+=' FLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -march=armv8.3-a+sve -funroll-loops"'
+    MAKE_OPTS+=' CFLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -march=armv8.3-a+sve -funroll-loops"'
+    ;;
+  hipsycl-200902-gcc)
+    module load hipsycl/200902-gcc
+    module load openmpi/4.0.3/gcc-8.3
+    ;;
+  *)
+    echo
+    echo "Invalid compiler '$COMPILER'."
+    usage
+    exit 1
+    ;;
+esac
+
+case "$MODEL" in
+  omp|mpi)
+    ;;
+
+  kokkos)
+    KOKKOS_PATH="$PWD/$(fetch_kokkos)"
+    echo "Using KOKKOS_PATH='${KOKKOS_PATH}'"
+    MAKE_OPTS+=" KOKKOS_PATH=${KOKKOS_PATH} ARCH=ARMv81 DEVICE=OpenMP"
+    [[ "$COMPILER" =~ fujitsu- ]] && MAKE_OPTS+=" CXX=mpiFCC"
+    SRC_DIR="$PWD/cloverleaf_kokkos"
+    ;;
+
+  sycl)
+    HIPSYCL_PATH="$(realpath "$(dirname "$(which syclcc)")"/..)"
+    echo "Using HIPSYCL_PATH=${HIPSYCL_PATH}"
+    MAKE_OPTS+=" -DHIPSYCL_INSTALL_DIR=${HIPSYCL_PATH} -DSYCL_RUNTIME=HIPSYCL"
+    MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=-march=armv8.3-a+sve"
+
+    SRC_DIR="$PWD/cloverleaf_sycl"
+    ;;
 esac
 
 # Handle actions
@@ -77,16 +106,24 @@ if [ "$ACTION" == "build" ]; then
   fetch_src "$MODEL"
 
   rm -f "$RUN_DIR/$BENCHMARK_EXE"
-
-  if ! eval make -C "$SRC_DIR" -B "$MAKE_OPTS" -j "$(nproc)"; then
-    echo
-    echo "Build failed."
-    echo
-    exit 1
-  fi
-
   mkdir -p "$RUN_DIR"
-  mv "$SRC_DIR/$BENCHMARK_EXE" "$RUN_DIR/"
+
+  if [ "$MODEL" == "sycl" ]; then
+    ( cd "$SRC_DIR" || exit 1
+    rm -rf build
+    CXXFLAGS='-O3 -fopenmp' cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release $MAKE_OPTS
+    cmake --build build --target clover_leaf --config Release -j $(nproc)
+    mv "build/$BENCHMARK_EXE" "$RUN_DIR/" )
+  else
+    if ! eval make -C "$SRC_DIR" -B "$MAKE_OPTS" -j "$(nproc)"; then
+      echo
+      echo "Build failed."
+      echo
+      exit 1
+    fi
+
+    mv "$SRC_DIR/$BENCHMARK_EXE" "$RUN_DIR/"
+  fi
 
 elif [ "$ACTION" == "run" ]; then
   check_bin "$RUN_DIR/$BENCHMARK_EXE"

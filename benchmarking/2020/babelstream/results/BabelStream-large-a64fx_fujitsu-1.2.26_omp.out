@@ -1,3 +1,4 @@
+Fri Aug 28 22:29:51 JST 2020
 BabelStream
 Version: 3.4
 Implementation: OpenMP
@@ -5,11 +6,9 @@ Running kernels 100 times
 Precision: double
 Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
-Validation failed on sum. Error 5.14535e-08
-Sum was 636.656592382618 but should be 636.656592434072
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        302197.052  0.02842     0.02856     0.02848     
-Mul         306442.745  0.02803     0.02822     0.02811     
-Add         328910.663  0.03917     0.03941     0.03928     
-Triad       329608.593  0.03909     0.03938     0.03919     
-Dot         187519.211  0.04581     0.04583     0.04582     
+Copy        414164.305  0.02074     0.02085     0.02080     
+Mul         411642.695  0.02087     0.02098     0.02092     
+Add         403648.847  0.03192     0.03205     0.03198     
+Triad       403970.291  0.03190     0.03205     0.03197     
+Dot         442544.102  0.01941     0.01947     0.01944     

@@ -47,11 +47,11 @@ module purge
 module load cuda/10.1
 case "$COMPILER" in
 clang)
-  module load llvm/trunk
+  module load llvm/omptarget/10.0.0
   MAKE_OPTS='\
       COMPILER=CLANG \
       TARGET=NVIDIA \
-      EXTRA_FLAGS="-Xopenmp-target -march=sm_75 --cuda-path=/nfs/software/x86_64/cuda/10.1"'
+      EXTRA_FLAGS="-Xopenmp-target -march=sm_75"'
   ;;
 gcc-4.8)
   MAKE_OPTS="COMPILER=GNU"

@@ -1,0 +1,18 @@
+Fri 28 Aug 10:51:41 CDT 2020
+BabelStream
+Version: 3.4
+Implementation: OpenCL
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Using OpenCL device Intel(R) Xeon(R) CPU E5-2697 v4 @ 2.30GHz
+Driver: 2020.10.7.0.15
+Reduction kernel config: 36 groups of size 8
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        66522.279   0.00807     0.00920     0.00849     
+Mul         50951.021   0.01054     0.01165     0.01094     
+Add         59386.869   0.01356     0.01560     0.01449     
+Triad       59158.673   0.01361     0.01570     0.01452     
+Dot         52722.879   0.01018     0.01242     0.01154     
+Application 6451442 resources: utime ~216s, stime ~3s, Rss ~1658884, inblocks ~16, outblocks ~0
