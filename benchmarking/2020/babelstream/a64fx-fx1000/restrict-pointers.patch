@@ -99,3 +99,38 @@ index c475274..6db6362 100644
  
    public:
      OMPStream(const unsigned int, T*, T*, T*, int);
+diff --git a/main.cpp b/main.cpp
+index f006f8c..d36305d 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -128,10 +128,6 @@ void run()
+ 
+   }
+ 
+-  // Create host vectors
+-  std::vector<T> a(ARRAY_SIZE);
+-  std::vector<T> b(ARRAY_SIZE);
+-  std::vector<T> c(ARRAY_SIZE);
+ 
+   // Result of the Dot kernel
+   T sum;
+@@ -172,7 +168,7 @@ void run()
+ 
+ #elif defined(OMP)
+   // Use the OpenMP implementation
+-  stream = new OMPStream<T>(ARRAY_SIZE, a.data(), b.data(), c.data(), deviceIndex);
++  stream = new OMPStream<T>(ARRAY_SIZE, nullptr,nullptr,nullptr,/*a.data(), b.data(), c.data(), */deviceIndex);
+ 
+ #endif
+ 
+@@ -219,6 +215,10 @@ void run()
+ 
+   }
+ 
++  // Create host vectors
++  std::vector<T> a(ARRAY_SIZE);
++  std::vector<T> b(ARRAY_SIZE);
++  std::vector<T> c(ARRAY_SIZE);
+   // Check solutions
+   stream->read_arrays(a, b, c);
+   check_solution<T>(num_times, a, b, c, sum);
