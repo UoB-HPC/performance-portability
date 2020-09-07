@@ -106,7 +106,7 @@ plt.colorbar()
 for i in range(len(headings)):
     for j in range(len(series)):
         plt.text(i + 0.5, j + 0.55, labels[j][i],
-                 ha='center', va='center', color='#507060', weight='bold', size='xx-large')
+                 ha='center', va='center', color='#b9c5bf', weight='bold', size='xx-large')
 
 # Add caption
 if args.higher_is_better:
