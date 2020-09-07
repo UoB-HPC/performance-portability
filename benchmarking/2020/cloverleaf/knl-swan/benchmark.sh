@@ -22,6 +22,13 @@ function usage
   echo "  acc"
   echo "    pgi-20.1"
   echo
+  echo "  ocl"
+  echo "    gcc-9.3"
+  echo
+  echo "  sycl"
+  echo "    computecpp-2.1"
+  echo "    dpcpp-2021.1.8"
+  echo
   echo "The default configuration is '$DEFAULT_COMPILER $DEFAULT_MODEL'."
   echo
 }
@@ -58,7 +65,7 @@ case "$COMPILER" in
   gcc-9.3)
     module swap PrgEnv-{cray,gnu}
     module swap gcc gcc/9.3.0
-    MAKE_OPTS='COMPILER=GNU MPI_COMPILER=ftn C_MPI_COMPILER=cc'
+    MAKE_OPTS='COMPILER=GNU MPI_COMPILER=ftn C_MPI_COMPILER=cc CXX_MPI_COMPILER=CC'
     MAKE_OPTS=$MAKE_OPTS' FLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -march=knl -funroll-loops"'
     MAKE_OPTS=$MAKE_OPTS' CFLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -march=knl -funroll-loops"'
     ;;
@@ -73,6 +80,17 @@ case "$COMPILER" in
     module swap PrgEnv-{cray,pgi}
     module swap pgi pgi/20.1.1
     MAKE_OPTS='COMPILER=PGI C_MPI_COMPILER=cc MPI_COMPILER=ftn'
+    ;;
+  dpcpp-2021.1.8)
+    module use /lus/scratch/p02639/modulefiles
+    source /lus/scratch/p02639/bin/intel/oneapi/setvars.sh
+    MAKE_OPTS=" -DSYCL_RUNTIME=DPCPP"
+    ;;
+  computecpp-2.1)
+    module use /lus/scratch/p02639/modulefiles
+    module load computecpp/2.1.0
+    MAKE_OPTS=" -DSYCL_RUNTIME=COMPUTECPP -DComputeCpp_DIR=${COMPUTECPP_PACKAGE_ROOT_DIR}"
+    MAKE_OPTS+=" -DOpenCL_LIBRARY=/lus/scratch/p02639/bin/oclcpuexp_2020.10.7.0.15/x64/libintelocl.so -DOpenCL_INCLUDE_DIR=/lus/snx11029/p02639/bin/OpenCL-Headers"
     ;;
   *)
     echo
@@ -114,6 +132,37 @@ case "$MODEL" in
     SRC_DIR="$PWD/CloverLeaf-OpenACC"
     ;;
 
+  ocl)
+    if [ "$COMPILER" != "gcc-9.3" ]; then
+      echo "OpenCL is only supported with gcc-9.3"
+      exit 1
+    fi
+
+    module use /lus/scratch/p02639/modulefiles
+    module load intel-opencl-experimental
+    module load khronos/opencl-headers
+    export LD_PRELOAD=/lus/scratch/p02639/bin/oclcpuexp_2020.10.7.0.15/x64/libintelocl.so
+
+    SRC_DIR="$PWD/CloverLeaf_OpenCL"
+    MAKE_OPTS+=" OCL_VENDOR=INTEL COPTIONS='-DCL_TARGET_OPENCL_VERSION=110 -DOCL_IGNORE_PLATFORM -std=c++98' OPTIONS='-lstdc++ -cpp'"
+    ;;
+
+  sycl)
+    if ! [[ "$COMPILER" =~ (computecpp|dpcpp)- ]]; then
+      echo "SYCL is only supported with computecpp-2.1 and dpcpp-2021.1.8"
+      exit 1
+    fi
+
+    module load intel-opencl-experimental
+    module load khronos/opencl-headers
+    export LD_PRELOAD=/lus/scratch/p02639/bin/oclcpuexp_2020.10.7.0.15/x64/libintelocl.so
+
+    MAKE_OPTS+=" -DMPI_AS_LIBRARY=ON -DMPI_C_LIB_DIR='${CRAY_MPICH_DIR}/lib' -DMPI_C_INCLUDE_DIR='${CRAY_MPICH_DIR}/include' -DMPI_C_LIB=mpich"
+    MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=-mtune=mic-avx512"
+
+    SRC_DIR="$PWD/cloverleaf_sycl"
+    ;;
+
   *)
     echo
     echo "Invalid model '$MODEL'."
@@ -129,18 +178,27 @@ then
   # Fetch source code
   fetch_src "$MODEL"
 
+  mkdir -p "$RUN_DIR"
+
   # Perform build
   rm -f "$SRC_DIR/$BENCHMARK_EXE" "$RUN_DIR/$BENCHMARK_EXE"
-  if ! eval make -C "$SRC_DIR" -B "$MAKE_OPTS"
-  then
-    echo
-    echo "Build failed."
-    echo
-    exit 1
+  if [ "$MODEL" = "sycl" ]; then
+    ( cd "$SRC_DIR" || exit 1
+    module load cmake/3.18.2
+    rm -rf build
+    cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release $MAKE_OPTS
+    cmake --build build --target clover_leaf --config Release -j $(nproc)
+    mv "build/$BENCHMARK_EXE" "$RUN_DIR/" )
+  else
+    if ! eval make -C "$SRC_DIR" -B "$MAKE_OPTS"
+    then
+      echo
+      echo "Build failed."
+      echo
+      exit 1
+    fi
+    mv "$SRC_DIR/$BENCHMARK_EXE" "$RUN_DIR"
   fi
-
-  mkdir -p "$RUN_DIR"
-  mv "$SRC_DIR/$BENCHMARK_EXE" "$RUN_DIR"
 
 elif [ "$ACTION" == "run" ]
 then

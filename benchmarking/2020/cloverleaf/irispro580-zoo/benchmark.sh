@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEFAULT_COMPILER=clang
+DEFAULT_COMPILER=gcc
 DEFAULT_MODEL=omp
 function usage() {
   echo
@@ -26,6 +26,7 @@ fi
 
 ACTION=$1
 MODEL=${2:-$DEFAULT_MODEL}
+COMPILER=${3:-$DEFAULT_COMPILER}
 SCRIPT=$(realpath $0)
 SCRIPT_DIR=$(realpath $(dirname $SCRIPT))
 source ${SCRIPT_DIR}/../common.sh
@@ -35,10 +36,12 @@ export SRC_DIR=$PWD/CloverLeaf
 module purge
 module load cmake/3.14.5
 
+if [ "$COMPILER" == "oneapi" ]; then
 CURRENT_SCRIPT_DIR=$SCRIPT_DIR
 source /nfs/software/x86_64/inteloneapi-beta/2021.1.8/setvars.sh --force
 SCRIPT_DIR=$CURRENT_SCRIPT_DIR
 COMPILER=oneapi
+fi
 
 export MODEL=$MODEL
 case "$MODEL" in
@@ -53,16 +56,19 @@ omp)
   # parse.f90(86): catastrophic error: **Internal compiler error: internal abort** Please report this error along with the circumstances in which it occurred in a Software Problem Report.  Note: File and line given may not be explicit cause of this error.
   # compilation aborted for parse.f90 (code 1)
   ;;
-opencl)
+ocl)
   module load intel/opencl/18.1
   module load khronos/opencl/headers khronos/opencl/icd-loader
+  module load openmpi/4.0.1/gcc-8.3 
 
-  MAKE_OPTS='COMPILER=INTEL USE_OPENCL=1 \
-        EXTRA_INC="-I/nfs/software/x86_64/cuda/10.1/targets/x86_64-linux/include/CL/" \
-        EXTRA_PATH="-I/nfs/software/x86_64/cuda/10.1/targets/x86_64-linux/include/CL/"'
+  MAKE_OPTS='COMPILER=GCC USE_OPENCL=1 OCL_VENDOR=INTEL \
+        COPTIONS="-std=c++98 -DCL_TARGET_OPENCL_VERSION=110 -DOCL_IGNORE_PLATFORM -I/nfs/software/x86_64/cuda/10.1/targets/x86_64-linux/include/" \
+        OPTIONS="-lstdc++ -cpp -lOpenCL" '
 
   BINARY="clover_leaf"
+  export SRC_DIR=$PWD/CloverLeaf_OpenCL
   ;;
+
 sycl)
   BINARY="clover_leaf"
   MAKE_OPTS=" -DSYCL_RUNTIME=DPCPP"
@@ -77,11 +83,11 @@ export RUN_DIR=$PWD/CloverLeaf-$CONFIG
 # Handle actions
 if [ "$ACTION" == "build" ]; then
   # Fetch source code
-  fetch_src $MODEL
+  fetch_src "$MODEL"
 
-  if [ "$MODEL" == "opencl" ]; then
-    sed -i 's/ cl::Platform default_platform = all_platforms\[.\];/ cl::Platform default_platform = all_platforms[1];/g' CloverLeaf/src/openclinit.cpp
-  fi
+#  if [ "$MODEL" == "ocl" ]; then
+#    sed -i 's/ cl::Platform default_platform = all_platforms\[.\];/ cl::Platform default_platform = all_platforms[1];/g' CloverLeaf/src/openclinit.cpp
+#  fi
 
   build_bin "$MODEL" "$MAKE_OPTS" "$SRC_DIR" "$BINARY" "$RUN_DIR" "$BENCHMARK_EXE"
 

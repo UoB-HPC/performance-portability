@@ -6,7 +6,7 @@ function usage() {
   echo "Usage: ./benchmark.sh build|run [MODEL]"
   echo
   echo "Valid models:"
-  echo "  opencl"
+  echo "  ocl"
   echo "  omp"
   echo "  acc"
   echo "  sycl"
@@ -35,14 +35,12 @@ module load cmake/3.14.5
 
 export MODEL=$MODEL
 case "$MODEL" in
-opencl)
+ocl)
   COMPILER=gcc-8.3
 
   module load gcc/8.3.0 openmpi/4.0.1/gcc-8.3
-  export SRC_DIR=$PWD/CloverLeaf
-  MAKE_OPTS='COMPILER=GNU USE_OPENCL=1 \
-        EXTRA_INC="-I/nfs/software/x86_64/cuda/10.1/targets/x86_64-linux/include/CL/" \
-        EXTRA_PATH="-I/nfs/software/x86_64/cuda/10.1/targets/x86_64-linux/include/CL/"'
+  export SRC_DIR=$PWD/CloverLeaf_OpenCL
+  MAKE_OPTS="$MAKE_OPTS  OCL_VENDOR='AMD' COPTIONS='-DCL_TARGET_OPENCL_VERSION=110 -DOCL_IGNORE_PLATFORM -std=c++98'  OPTIONS='-lstdc++ -cpp'"
 
   BINARY="clover_leaf"
   ;;
@@ -54,7 +52,8 @@ kokkos)
   MAKE_OPTS='COMPILER=HIPCC'
 
   KOKKOS_PATH=$(pwd)/$(fetch_kokkos)
-  echo "Using KOKKOS_PATH=${KOKKOS_PATH}"
+  #KOKKOS_PATH=$(pwd)/kokkos
+  echo "KOKKOS_PATH=${KOKKOS_PATH}"
   export CXX=hipcc
   # XXX
   # TARGET=AMD isn't a thing in CloverLeaf but TARGET=CPU is misleading and TARGET=GPU uses nvcc
@@ -79,8 +78,9 @@ omp-target)
   #
 
   export SRC_DIR="$PWD/CloverLeaf-OpenMP4"
+  export OMPI_CC=gcc OMPI_FC=gfortran
   MAKE_OPTS='-j16 COMPILER=GNU MPI_F90=mpif90 MPI_C=mpicc'
-#  MAKE_OPTS+=' C_OPTIONS=" -foffload=amdgcn-amdhsa=\""-march=gfx906"\"  " '
+  MAKE_OPTS+=' C_OPTIONS="-foffload=amdgcn-amdhsa -foffload=-march=gfx906 -foffload=-lm -fno-fast-math -fno-associative-math"'
   MAKE_OPTS+=' OPTIONS=" -fopenmp -lm " '
   BINARY="clover_leaf"
 

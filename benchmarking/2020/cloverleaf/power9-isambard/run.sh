@@ -2,6 +2,8 @@
 
 set -eu
 
+call_dir=$PWD
+
 cp $SRC_DIR/InputDecks/clover_bm16.in clover.in
 
 case "$MODEL" in
@@ -9,11 +11,12 @@ case "$MODEL" in
         export OMP_NUM_THREADS=1
         mpirun -np 40 --bind-to core ./$BENCHMARK_EXE
         ;;
-    omp)
+    omp|sycl)
         export OMP_NUM_THREADS=40 OMP_PROC_BIND=spread OMP_PLACES=cores
         mpirun -np 1 --bind-to none ./$BENCHMARK_EXE
         ;;
     acc)
+        export ACC_NUM_CORES=40
         mpirun -np 1 ./$BENCHMARK_EXE
         ;;
     kokkos)
@@ -26,3 +29,4 @@ case "$MODEL" in
         ;;
 esac
 
+cat clover.out > $call_dir/CloverLeaf-"$CONFIG".out

@@ -51,7 +51,7 @@ fetch_src() {
       git clone --depth 1 https://github.com/UK-MAC/CloverLeaf_CUDA.git
     fi
     ;;
-  opencl)
+  ocl)
     #if [ ! -e CloverLeaf/src/opencldefs.h ]; then
     #  git clone https://github.com/UoB-HPC/CloverLeaf
     #fi
@@ -104,7 +104,7 @@ build_bin() {
       mkdir -p $SRC_DIR/obj $SRC_DIR/mpiobj
     fi
 
-    if ! eval make -C $SRC_DIR -B $MAKE_OPTS -j $nproc; then
+    if ! eval make -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
       echo
       echo "Build failed."
       echo

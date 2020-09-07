@@ -1,0 +1,60 @@
+BabelStream
+Version: 3.4
+Implementation: CUDA
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Using CUDA device A100-SXM4-40GB MIG 7g.40gb
+Driver: 11000
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1386507.387 0.00039     0.00039     0.00039     
+Mul         1344920.919 0.00040     0.00040     0.00040     
+Add         1361886.041 0.00059     0.00060     0.00059     
+Triad       1370221.139 0.00059     0.00060     0.00059     
+Dot         1257291.261 0.00043     0.00045     0.00044     
+BabelStream
+Version: 3.4
+Implementation: CUDA
+Running kernels 100 times
+Precision: double
+Array size: 2147.5 MB (=2.1 GB)
+Total size: 6442.5 MB (=6.4 GB)
+Using CUDA device A100-SXM4-40GB MIG 7g.40gb
+Driver: 11000
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1384670.213 0.00310     0.00346     0.00311     
+Mul         1379079.730 0.00311     0.00313     0.00312     
+Add         1396187.938 0.00461     0.00475     0.00472     
+Triad       1397043.243 0.00461     0.00588     0.00474     
+Dot         1356797.194 0.00317     0.00331     0.00319     
+BabelStream
+Version: 3.4
+Implementation: CUDA
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using CUDA device A100-SXM4-40GB MIG 7g.40gb
+Driver: 11000
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1383939.158 0.00621     0.00847     0.00623     
+Mul         1381570.829 0.00622     0.00672     0.00623     
+Add         1398209.962 0.00922     0.00954     0.00945     
+Triad       1398208.444 0.00922     0.01083     0.00947     
+Dot         1359359.370 0.00632     0.01022     0.00640     
+BabelStream
+Version: 3.4
+Implementation: CUDA
+Running kernels 100 times
+Precision: double
+Array size: 8589.9 MB (=8.6 GB)
+Total size: 25769.8 MB (=25.8 GB)
+Using CUDA device A100-SXM4-40GB MIG 7g.40gb
+Driver: 11000
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1383279.373 0.01242     0.01246     0.01242     
+Mul         1381961.579 0.01243     0.01312     0.01244     
+Add         1398246.377 0.01843     0.01892     0.01890     
+Triad       1398669.922 0.01842     0.01893     0.01889     
+Dot         1384617.538 0.01241     0.01289     0.01260     

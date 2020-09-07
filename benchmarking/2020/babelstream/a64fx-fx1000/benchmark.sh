@@ -11,6 +11,7 @@ function usage
     echo "  fujitsu-1.2.26"
     echo "  gcc-8.3"
     echo "  armclang-20.1"
+    echo "  hipsycl-200902-gcc"
     echo
     echo "Valid models:"
     echo "  omp"
@@ -31,7 +32,7 @@ fi
 
 ACTION=$1
 COMPILER=${2:-$DEFAULT_COMPILER}
-MODEL=${3:-$DEFAULT_MODEL}
+export MODEL=${3:-$DEFAULT_MODEL}
 SCRIPT=`realpath $0`
 SCRIPT_DIR=`realpath $(dirname $SCRIPT)`
 source ${SCRIPT_DIR}/../common.sh
@@ -56,6 +57,10 @@ case "$COMPILER" in
         module load arm/20.1
         MAKE_OPTS='COMPILER=ARMCLANG EXTRA_FLAGS="-mcpu=a64fx -O3"'
         ;;
+    hipsycl-200902-gcc)
+      module load hipsycl/200902-gcc
+      MAKE_OPTS="COMPILER=HIPSYCL TARGET=CPU"
+      ;;
     *)
         echo
         echo "Invalid compiler '$COMPILER'."
@@ -104,15 +109,14 @@ case "$MODEL" in
     BINARY="ocl-stream"
     #export LD_PRELOAD=/lus/scratch/p02555/modules/intel-opencl/lib/libintelocl.so
     #export LD_PRELOAD=/lus/scratch/p02100/l_opencl_p_18.1.0.013/opt/intel/opencl_compilers_and_libraries_18.1.0.013/linux/compiler/lib/intel64_lin/libintelocl.so
-  ;;
+    ;;
   sycl)
-    module use /home/users/p02639/bin/modulefiles
-    module load intel-opencl-experimental
-    module load khronos/opencl-headers
+    HIPSYCL_PATH=$(realpath $(dirname $(which syclcc))/..)
+    echo "Using HIPSYCL_PATH=${HIPSYCL_PATH}"
+    MAKE_OPTS+=" SYCL_SDK_DIR=${HIPSYCL_PATH}"
     MAKE_FILE="SYCL.make"
     BINARY="sycl-stream"
-    MAKE_OPTS+=' TARGET=CPU'
-  ;;
+    ;;
 esac
 
 
@@ -121,7 +125,6 @@ if [ "$ACTION" == "build" ]
 then
     # Fetch source code
     fetch_src
-
 
     # Perform build
     if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS
