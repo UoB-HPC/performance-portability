@@ -42,7 +42,7 @@ fi
 
 ACTION="$1"
 export MODEL="${2:-$DEFAULT_MODEL}"
-COMPILER="${3:-$DEFAULT_COMPILER}"
+export COMPILER="${3:-$DEFAULT_COMPILER}"
 SCRIPT="$(realpath "$0")"
 SCRIPT_DIR="$(realpath "$(dirname "$SCRIPT")")"
 source "$SCRIPT_DIR/../common.sh"
@@ -84,12 +84,12 @@ case "$COMPILER" in
   dpcpp-2021.1.8)
     module use /lus/scratch/p02639/modulefiles
     source /lus/scratch/p02639/bin/intel/oneapi/setvars.sh
-    MAKE_OPTS=" -DSYCL_RUNTIME=DPCPP"
+    MAKE_OPTS=" -DSYCL_RUNTIME=DPCPP -DMPI_C_LIB=mpi"
     ;;
   computecpp-2.1)
     module use /lus/scratch/p02639/modulefiles
     module load computecpp/2.1.0
-    MAKE_OPTS=" -DSYCL_RUNTIME=COMPUTECPP -DComputeCpp_DIR=${COMPUTECPP_PACKAGE_ROOT_DIR}"
+    MAKE_OPTS=" -DSYCL_RUNTIME=COMPUTECPP -DComputeCpp_DIR=${COMPUTECPP_PACKAGE_ROOT_DIR} -DMPI_C_LIB=mpich"
     MAKE_OPTS+=" -DOpenCL_LIBRARY=/lus/scratch/p02639/bin/oclcpuexp_2020.10.7.0.15/x64/libintelocl.so -DOpenCL_INCLUDE_DIR=/lus/snx11029/p02639/bin/OpenCL-Headers"
     ;;
   *)
@@ -154,10 +154,8 @@ case "$MODEL" in
     fi
 
     module load intel-opencl-experimental
-    module load khronos/opencl-headers
-    export LD_PRELOAD=/lus/scratch/p02639/bin/oclcpuexp_2020.10.7.0.15/x64/libintelocl.so
 
-    MAKE_OPTS+=" -DMPI_AS_LIBRARY=ON -DMPI_C_LIB_DIR='${CRAY_MPICH_DIR}/lib' -DMPI_C_INCLUDE_DIR='${CRAY_MPICH_DIR}/include' -DMPI_C_LIB=mpich"
+    MAKE_OPTS+=" -DMPI_AS_LIBRARY=ON -DMPI_C_LIB_DIR=/lus/scratch/p02639/bin/intel/oneapi/mpi/2021.1-beta08/lib -DMPI_C_INCLUDE_DIR=/lus/scratch/p02639/bin/intel/oneapi/mpi/2021.1-beta08/include"
     MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=-mtune=mic-avx512"
 
     SRC_DIR="$PWD/cloverleaf_sycl"
