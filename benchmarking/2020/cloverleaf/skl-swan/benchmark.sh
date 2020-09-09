@@ -154,10 +154,10 @@ case "$MODEL" in
     fi
 
     module load intel-opencl-experimental
-    module load khronos/opencl-headers
-    export LD_PRELOAD=/lus/scratch/p02639/bin/oclcpuexp_2020.10.7.0.15/x64/libintelocl.so
+    #module load khronos/opencl-headers
+    #export LD_PRELOAD=/lus/scratch/p02639/bin/oclcpuexp_2020.10.7.0.15/x64/libintelocl.so
 
-    MAKE_OPTS+=" -DMPI_AS_LIBRARY=ON -DMPI_C_LIB_DIR='${CRAY_MPICH_DIR}/lib' -DMPI_C_INCLUDE_DIR='${CRAY_MPICH_DIR}/include' -DMPI_C_LIB=mpich"
+    MAKE_OPTS+=" -DMPI_AS_LIBRARY=ON -DMPI_C_LIB_DIR=/lus/scratch/p02639/bin/intel/oneapi/mpi/2021.1-beta08/lib -DMPI_C_INCLUDE_DIR=/lus/scratch/p02639/bin/intel/oneapi/mpi/2021.1-beta08/include -DMPI_C_LIB=mpi"
     MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=-mtune=skylake-avx512"
 
     SRC_DIR="$PWD/cloverleaf_sycl"
