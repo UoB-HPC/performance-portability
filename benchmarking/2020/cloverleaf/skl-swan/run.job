@@ -17,6 +17,14 @@ else
     cp "$SRC_DIR/InputDecks/clover_bm16.in" clover.in
 fi
 
+if [ "$MODEL" = sycl ]; then
+    if [[ "$COMPILER" =~ dpcpp- ]]; then
+        device=0
+    else
+        device=1
+    fi
+fi
+
 case "$MODEL" in
     mpi)
         export OMP_NUM_THREADS=1
@@ -38,7 +46,7 @@ case "$MODEL" in
         aprun -n 1 -d 56 -j 1 -cc none "./$BENCHMARK_EXE"
         ;;
     sycl)
-        aprun -n 1 -d 56 -j 1 -cc none "./$BENCHMARK_EXE" --device 1
+        aprun -n 1 -d 56 -j 1 -cc none "./$BENCHMARK_EXE" --device "$device"
         ;;
     *)
         echo "Unknown run configuration for model '$MODEL'"
