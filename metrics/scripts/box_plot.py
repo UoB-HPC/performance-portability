@@ -16,6 +16,12 @@ parser.add_argument('output_file', help="Output PDF file")
 parser.add_argument('--calc-efficiency', action="store_true", help="Calculate application efficiency")
 parser.add_argument('--input-is-throughput', action="store_true", help="If calculating application efficiency, then treat the data as throughput (higher is better)")
 
+plt.rcParams.update({
+    "font.family": "serif",  # use serif/main font for text elements
+    "text.usetex": False,     # use inline math for ticks
+    "pgf.rcfonts": False,    # don't setup fonts from rc parameters
+})
+
 args = parser.parse_args()
 
 
@@ -67,14 +73,21 @@ print()
 print(data_nona)
 
 # Box and whisker plot
-ax = data_nona.boxplot()
+fig, ax = plt.subplots(figsize=(5,4))
+data_nona.boxplot(ax=ax, notch=True, medianprops = dict(linestyle='-',linewidth=3.0))
 ax.set(ylabel='% efficiency')
-plt.xticks(rotation=45)
-plt.title(Path(args.input_file).stem)
+labels=ax.get_xticklabels()
+for i in range(len(labels)):
+  if not plt.rcParams['text.usetex']:
+    labels[i].set_text(labels[i].get_text().replace(r"\%", "%"))
+
+
+ax.set_xticklabels(labels, rotation=45, ha="right", rotation_mode="anchor")
+
+#plt.title(Path(args.input_file).stem)
 plt.savefig(args.output_file, bbox_inches='tight')
 plt.close()
 
 print(80*'-')
 print()
 print()
-
