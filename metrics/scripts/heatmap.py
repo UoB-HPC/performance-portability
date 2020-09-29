@@ -72,18 +72,22 @@ for result in data:
             l.append('-')
         else:
             if args.percent:
-                l.append('%.0f\\%%' % (raw[i]/args.factorize))
+                if plt.rcParams['text.usetex']:
+                    l.append('%.0f\\%%' % (raw[i]/args.factorize))
+                else:
+                    l.append('%.0f%%' % (raw[i]/args.factorize))
             else:
                 if raw[i]/args.factorize < 100.0:
                     l.append('%.1f' % (raw[i]/args.factorize))
                 else:
                     l.append('%.0f' % (raw[i]/args.factorize))
-
     labels.append(l)
 
-
-plt.rc('text', usetex=True)
-plt.rc('font', family='serif', serif='Computer Modern Roman')
+plt.rcParams.update({
+    "font.family": "serif",  # use serif/main font for text elements
+    "text.usetex": False,     # use inline math for ticks
+    "pgf.rcfonts": False,    # don't setup fonts from rc parameters
+})
 fig, ax = plt.subplots()
 fig.set_size_inches(4, 3)
 colors = "summer_r"
@@ -103,7 +107,10 @@ ax.set_xticks(np.arange(len(heatmap[0])) + 0.5, minor=False)
 #ax.set_yticklabels(series, fontsize='xx-large')
 ax.set_yticklabels(series)
 for i in range(len(headings)):
-  headings[i] = headings[i].replace('_', '\_')
+  heading = headings[i].replace('_', '\_')
+  if not plt.rcParams['text.usetex']:
+    heading = heading.replace(r"\%", "%")
+  headings[i] = heading
 #ax.set_xticklabels(headings, fontsize='xx-large', rotation=45)
 ax.set_xticklabels(headings, rotation=45, ha="right", rotation_mode="anchor")
 plt.gca().invert_yaxis()
@@ -120,7 +127,7 @@ for i in range(len(headings)):
     for j in range(len(series)):
         #plt.text(i + 0.5, j + 0.55, labels[j][i],
         plt.text(i + 0.9, j + 0.5, labels[j][i],
-                 ha='right', va='center', color='#b9c5bf', weight='bold')
+                 ha='right', va='center', color='#b9c5bf',fontsize='small')#, weight='bold')
 
 # Add caption
 #if args.higher_is_better:
