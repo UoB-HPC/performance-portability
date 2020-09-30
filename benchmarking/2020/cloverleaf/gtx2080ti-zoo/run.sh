@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -eu
-export OMP_PROC_BIND=spread
+# export OMP_PROC_BIND=spread
 date >../$1
 
 call_dir=$PWD

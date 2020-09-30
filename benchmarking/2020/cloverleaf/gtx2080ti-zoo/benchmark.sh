@@ -7,7 +7,7 @@ function usage() {
   echo "Usage: ./benchmark.sh build|run [COMPILER] [MODEL]"
   echo
   echo "Valid models:"
-  echo "  omp"
+  echo "  omp-target"
   echo "  kokkos"
   echo "  cuda"
   echo "  ocl"
@@ -37,9 +37,22 @@ module load cmake/3.14.5
 
 export MODEL=$MODEL
 case "$MODEL" in
-omp)
-  MAKE_FILE="OpenMP.make"
-  BINARY="omp-stream"
+omp-target)
+  module load llvm/omptarget/10.0.0
+  module load openmpi/4.0.1/gcc-8.3
+  module load cmake/3.14.5
+
+  COMPILER=llvm-10.0
+
+  MAKE_OPTS=(
+    "-DCMAKE_C_COMPILER=clang" 
+    "-DCMAKE_CXX_COMPILER=clang++" 
+    "-DOMP_ALLOW_HOST=OFF" 
+    "-DOMP_OFFLOAD_FLAGS='-fopenmp-targets=nvptx64 -Xopenmp-target -march=sm_75'"
+  )
+  
+  export SRC_DIR=$PWD/cloverleaf_openmp_target
+  BINARY="clover_leaf"
   ;;
 cuda)
   COMPILER=gcc-8.3
@@ -147,7 +160,22 @@ if [ "$ACTION" == "build" ]; then
   #  sed -i 's/ cl::Platform default_platform = all_platforms\[.\];/ cl::Platform default_platform = all_platforms[0];/g' CloverLeaf/src/openclinit.cpp
   #fi
 
-  build_bin "$MODEL" "$MAKE_OPTS" "$SRC_DIR" "$BINARY" "$RUN_DIR" "$BENCHMARK_EXE"
+  if [ "$MODEL" == "omp-target" ]; then
+    # Passing quoted string args to cmake requires an array hence the special case here
+    cd $SRC_DIR || exit
+    rm -rf build
+    module load cmake/3.12.3
+    cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release "${MAKE_OPTS[@]}" 
+    cmake --build build --target clover_leaf --config Release -j $(nproc)
+    mv build/$BINARY $BINARY
+    cd $SRC_DIR/.. || exit
+    mkdir -p $RUN_DIR
+    mv $SRC_DIR/$BINARY $RUN_DIR/$BENCHMARK_EXE
+  else 
+
+    build_bin "$MODEL" "$MAKE_OPTS" "$SRC_DIR" "$BINARY" "$RUN_DIR" "$BENCHMARK_EXE"
+
+  fi
 
 elif [ "$ACTION" == "run" ]; then
   check_bin $RUN_DIR/$BENCHMARK_EXE
