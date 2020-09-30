@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DEFAULT_COMPILER=gcc
-DEFAULT_MODEL=omp
+DEFAULT_MODEL=ocl
 function usage() {
   echo
   echo "Usage: ./benchmark.sh build|run  [MODEL]"
@@ -9,7 +9,7 @@ function usage() {
 
   echo
   echo "Valid models:"
-  echo "  omp"
+  echo "  omp-target oneapi"
   echo "  ocl"
   echo "  sycl"
   echo
@@ -45,16 +45,18 @@ fi
 
 export MODEL=$MODEL
 case "$MODEL" in
-omp)
-  export SRC_DIR=$PWD/CloverLeaf_ref
+omp-target)
+  export SRC_DIR=$PWD/cloverleaf_openmp_target
   export OMP_TARGET_OFFLOAD="MANDATORY"
-  MAKE_OPTS='COMPILER=INTEL OMP_INTEL="-qopenmp" MPI_COMPILER=mpiifort C_MPI_COMPILER=mpiicc'
-  MAKE_OPTS+=' OPTIONS="-qnextgen -fiopenmp -fopenmp-targets=spir64"'
-  MAKE_OPTS+=' C_OPTIONS="-qnextgen -fiopenmp -fopenmp-targets=spir64"'
+
+  MAKE_OPTS=(
+    "-DCMAKE_C_COMPILER=icc" 
+    "-DCMAKE_CXX_COMPILER=icpc" 
+    "-DOMP_ALLOW_HOST=OFF" 
+    "-DOMP_OFFLOAD_FLAGS='-qnextgen -fiopenmp -fopenmp-targets=spir64'"
+  )
+
   BINARY="clover_leaf"
-  # FIXME  mpicc crashes with
-  # parse.f90(86): catastrophic error: **Internal compiler error: internal abort** Please report this error along with the circumstances in which it occurred in a Software Problem Report.  Note: File and line given may not be explicit cause of this error.
-  # compilation aborted for parse.f90 (code 1)
   ;;
 ocl)
   module load intel/opencl/18.1
@@ -88,8 +90,21 @@ if [ "$ACTION" == "build" ]; then
 #  if [ "$MODEL" == "ocl" ]; then
 #    sed -i 's/ cl::Platform default_platform = all_platforms\[.\];/ cl::Platform default_platform = all_platforms[1];/g' CloverLeaf/src/openclinit.cpp
 #  fi
+  if [ "$MODEL" == "omp-target" ]; then
+    # Passing quoted string args to cmake requires an array hence the special case here
+    cd $SRC_DIR || exit
+    rm -rf build
+    cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release "${MAKE_OPTS[@]}" 
+    cmake --build build --target clover_leaf --config Release -j $(nproc)
+    mv build/$BINARY $BINARY
+    cd $SRC_DIR/.. || exit
+    mkdir -p $RUN_DIR
+    mv $SRC_DIR/$BINARY $RUN_DIR/$BENCHMARK_EXE
+  else 
 
-  build_bin "$MODEL" "$MAKE_OPTS" "$SRC_DIR" "$BINARY" "$RUN_DIR" "$BENCHMARK_EXE"
+    build_bin "$MODEL" "$MAKE_OPTS" "$SRC_DIR" "$BINARY" "$RUN_DIR" "$BENCHMARK_EXE"
+
+  fi
 
 elif [ "$ACTION" == "run" ]; then
   check_bin $RUN_DIR/$BENCHMARK_EXE
