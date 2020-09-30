@@ -93,13 +93,34 @@ esac
 
 case "$MODEL" in
 omp-target)
-  if [ "$COMPILER" != "gcc-10.2" ]; then
-    echo "Must use gcc-10.2 because AOMP cannot build OpenMPI"
+  if [[ "$COMPILER" != "gcc-10.2" && "$COMPILER" != "aomp-11.7" ]]; then
+    echo "Must use gcc-10.2 or aomp-11.7"
     exit 1
   fi
-  export SRC_DIR="$PWD/CloverLeaf-OpenMP4"
-  MAKE_OPTS='-j16 COMPILER=GNU MPI_F90=mpif90 MPI_C=mpicc'
-  MAKE_OPTS+=' OPTIONS="-foffload=amdgcn-amdhsa -foffload=-march=gfx906 -foffload=-lm -fno-fast-math -fno-associative-math" C_OPTIONS="-foffload=amdgcn-amdhsa -foffload=-march=gfx906 -foffload=-lm -fno-fast-math -fno-associative-math"  '
+  export SRC_DIR="$PWD/cloverleaf_openmp_target"
+
+  module load cmake/3.18.1
+
+  export OMPI_CC=gcc
+  export OMPI_CXX=g++
+
+  if [ "$COMPILER" == "gcc-10.2" ]; then
+  MAKE_OPTS=(
+    "-DCMAKE_C_COMPILER=mpicc" 
+    "-DCMAKE_CXX_COMPILER=mpic++" 
+    "-DOMP_ALLOW_HOST=OFF" 
+    "-DOMP_OFFLOAD_FLAGS='-foffload=amdgcn-amdhsa=-march=gfx906 -foffload=-lm -fno-fast-math -fno-associative-math'"
+  )
+  fi
+
+  if [ "$COMPILER" == "aomp-11.7" ]; then
+  MAKE_OPTS=(
+    "-DCMAKE_C_COMPILER=/opt/rocm/aomp/bin/clang"
+    "-DCMAKE_CXX_COMPILER=/opt/rocm/aomp/bin/clang++"
+    "-DOMP_OFFLOAD_FLAGS='-fopenmp-targets=amdgcn-amd-amdhsa -Xopenmp-target=amdgcn-amd-amdhsa -march=gfx906'"
+  )
+  fi
+
   BINARY="clover_leaf"
   ;;
 kokkos)
@@ -184,7 +205,19 @@ if [ "$ACTION" == "build" ]; then
   rm -f $RUN_DIR/$BENCHMARK_EXE
 
   # Perform build
-  build_bin "$MODEL" "$MAKE_OPTS" "$SRC_DIR" "$BINARY" "$RUN_DIR" "$BENCHMARK_EXE"
+  if [ "$MODEL" == "omp-target" ]; then
+    # Passing quoted string args to cmake requires an array hence the special case here
+    cd $SRC_DIR || exit
+    rm -rf build
+    cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release "${MAKE_OPTS[@]}" 
+    cmake --build build --target clover_leaf --config Release -j $(nproc)
+    mv build/$BINARY $BINARY
+    cd $SRC_DIR/.. || exit
+    mkdir -p $RUN_DIR
+    mv $SRC_DIR/$BINARY $RUN_DIR/$BENCHMARK_EXE
+  else 
+    build_bin "$MODEL" "$MAKE_OPTS" "$SRC_DIR" "$BINARY" "$RUN_DIR" "$BENCHMARK_EXE"
+  fi
 
 
 elif [ "$ACTION" == "run" ]; then
