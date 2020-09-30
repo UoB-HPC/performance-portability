@@ -37,8 +37,8 @@ fetch_src() {
     ( cd CloverLeaf_ref; git checkout 612c2da46cffe26941e5a06492215bdef2c3f971 )
     ;;
   omp-target)
-    if [ ! -e CloverLeaf-OpenMP4/clover.f90 ]; then
-      git clone -b doe-p3-2019 https://github.com/UoB-HPC/CloverLeaf-OpenMP4
+    if [ ! -e cloverleaf_openmp_target/CMakeLists.txt ]; then
+      git clone -b omp-target https://github.com/UoB-HPC/cloverleaf_openmp_target
     fi
     ;; 
   kokkos)
@@ -69,11 +69,6 @@ fetch_src() {
       git clone https://github.com/UoB-HPC/cloverleaf_sycl
     fi
     ;;
-  omp-target-cc)
-    if [ ! -e cloverleaf_openmp_target/CMakeLists.txt ]; then
-      git clone -b omp-plain https://github.com/UoB-HPC/cloverleaf_openmp_target
-    fi
-    ;; 
   *)
     echo
     echo "Invalid model '$model'."
@@ -95,13 +90,12 @@ build_bin() {
 
   rm -f $RUN_DIR/$BENCHMARK_EXE
 
-  if [ "$MODEL" == "sycl" ]; then
+  if [[ "$MODEL" == "sycl" || "$MODEL" == "omp-target" ]]; then
     cd $SRC_DIR || exit
     echo "${MAKE_OPTS[@]}" 
     rm -rf build
-    module load cmake/3.12.3
-    cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release $MAKE_OPTS
-    cmake --build build --target clover_leaf --config Release -j $(nproc)
+    cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release "$MAKE_OPTS"
+    cmake --build build --target clover_leaf --config Release
     mv build/$BINARY $BINARY
     cd $SRC_DIR/.. || exit
   else

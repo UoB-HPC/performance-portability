@@ -1,7 +1,8 @@
 #!/bin/bash
 #PBS -q pascalq
-#PBS -l nodes=1:ppn=36
+#PBS -l select=1
 #PBS -l walltime=00:30:00
+#PBS -l place=excl
 #PBS -joe
 
 set -eu
@@ -15,14 +16,11 @@ else
 fi
 
 date
-export OMP_NUM_THREADS=1
+#export OMP_NUM_THREADS=1
 
 case "$MODEL" in
 
   omp-target)
-      export MV2_USE_CUDA=1
-      export MV2_USE_RDMA_CM=0
-      sed -i '/test_problem 5/a use_c_kernels' "$RUN_DIR/clover.in"
       "./$BENCHMARK_EXE"
       ;;
 
@@ -33,11 +31,6 @@ case "$MODEL" in
   sycl)
       mpirun -np 1 "./$BENCHMARK_EXE" --file clover.in
       ;;
-  omp-target-cc)
-      export MV2_USE_CUDA=1
-      export MV2_USE_RDMA_CM=0
-      "./$BENCHMARK_EXE" --file clover.in --device 0
-      ;;    
 
   ocl=)
       # Make sure OCL_SRC_PREFIX is set so the kernel source files can be found

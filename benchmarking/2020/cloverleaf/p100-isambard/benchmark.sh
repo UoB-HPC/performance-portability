@@ -9,7 +9,6 @@ function usage() {
   echo
   echo "Valid models:"
   echo "  omp-target"
-  echo "  omp-target-cc"
   echo "  cuda"
   echo "  kokkos"
   echo "  acc"
@@ -41,18 +40,6 @@ module load craype-broadwell
 
 export MODEL=$MODEL
 case "$MODEL" in
-omp-target)
-  COMPILER=cce-10.0
-  module load gcc/7.4.0 # newer versions of libstdc++
-  module load PrgEnv-cray craype-broadwell craype-accel-nvidia60
-  module swap cce cce/10.0.0
-
-  export SRC_DIR="$PWD/CloverLeaf-OpenMP4"
-  MAKE_OPTS='-j16 COMPILER=CRAY MPI_F90=ftn MPI_C=cc'
-  MAKE_OPTS+=' C_OPTIONS=" -g -O3 -fopenmp -fopenmp-targets=nvptx64 -Xopenmp-target -march=sm_60" '
-  MAKE_OPTS+=' OPTIONS=" -g -O3 -fopenmp" '
-  BINARY="clover_leaf"
-  ;;
 cuda)
   COMPILER=cce-10.0
   module load gcc/7.4.0 # newer versions of libstdc++
@@ -127,11 +114,12 @@ sycl)
   BINARY="clover_leaf"
   export SRC_DIR=$PWD/cloverleaf_sycl
   ;;
-omp-target-cc)
+omp-target)
   COMPILER=cce-10.0
   module load gcc/7.4.0 # newer versions of libstdc++
   module load PrgEnv-cray craype-broadwell craype-accel-nvidia60 
   module swap cce cce/10.0.0
+  module load cmake/3.18.3
 # set -x
   # MAKE_OPTS+=" -DCMAKE_C_COMPILER=cc -DCMAKE_CXX_COMPILER=CC"
   # MAKE_OPTS+=" -DOMP_ALLOW_HOST=OFF"
@@ -171,7 +159,7 @@ if [ "$ACTION" == "build" ]; then
   #  fi
 
 
-  if [ "$MODEL" == "omp-target-cc" ]; then
+  if [ "$MODEL" == "omp-target" ]; then
     # Passing quoted string args to cmake requires an array hence the special case here
     cd $SRC_DIR || exit
     rm -rf build
