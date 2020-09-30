@@ -40,7 +40,7 @@ fetch_src() {
     if [ ! -e CloverLeaf-OpenMP4/clover.f90 ]; then
       git clone -b doe-p3-2019 https://github.com/UoB-HPC/CloverLeaf-OpenMP4
     fi
-    ;;
+    ;; 
   kokkos)
     if [ ! -e cloverleaf_kokkos/clover_leaf.cpp ]; then
       git clone https://github.com/uob-hpc/cloverleaf_kokkos
@@ -69,6 +69,11 @@ fetch_src() {
       git clone https://github.com/UoB-HPC/cloverleaf_sycl
     fi
     ;;
+  omp-target-cc)
+    if [ ! -e cloverleaf_openmp_target/CMakeLists.txt ]; then
+      git clone -b omp-plain https://github.com/UoB-HPC/cloverleaf_openmp_target
+    fi
+    ;; 
   *)
     echo
     echo "Invalid model '$model'."
@@ -92,6 +97,7 @@ build_bin() {
 
   if [ "$MODEL" == "sycl" ]; then
     cd $SRC_DIR || exit
+    echo "${MAKE_OPTS[@]}" 
     rm -rf build
     module load cmake/3.12.3
     cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release $MAKE_OPTS

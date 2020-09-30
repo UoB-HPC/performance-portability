@@ -9,6 +9,7 @@ function usage() {
   echo
   echo "Valid models:"
   echo "  omp-target"
+  echo "  omp-target-cc"
   echo "  cuda"
   echo "  kokkos"
   echo "  acc"
@@ -36,6 +37,7 @@ export SRC_DIR=$PWD/CloverLeaf
 
 module purge
 module load shared pbspro
+module load craype-broadwell
 
 export MODEL=$MODEL
 case "$MODEL" in
@@ -125,6 +127,27 @@ sycl)
   BINARY="clover_leaf"
   export SRC_DIR=$PWD/cloverleaf_sycl
   ;;
+omp-target-cc)
+  COMPILER=cce-10.0
+  module load gcc/7.4.0 # newer versions of libstdc++
+  module load PrgEnv-cray craype-broadwell craype-accel-nvidia60 
+  module swap cce cce/10.0.0
+# set -x
+  # MAKE_OPTS+=" -DCMAKE_C_COMPILER=cc -DCMAKE_CXX_COMPILER=CC"
+  # MAKE_OPTS+=" -DOMP_ALLOW_HOST=OFF"
+  # MAKE_OPTS+=" -DOMP_OFFLOAD_FLAGS='-fopenmp-targets=nvptx64 -Xopenmp-target -march=sm_60' "
+
+  MAKE_OPTS=(
+    "-DCMAKE_C_COMPILER=cc" 
+    "-DCMAKE_CXX_COMPILER=CC" 
+    # "-DOMP_ALLOW_HOST=OFF" 
+    "-DOMP_OFFLOAD_FLAGS='-fopenmp-targets=nvptx64 -Xopenmp-target -march=sm_60'"
+  )
+
+
+  BINARY="clover_leaf"
+  export SRC_DIR=$PWD/cloverleaf_openmp_target
+  ;;    
 *)
   echo
   echo "Invalid model '$MODEL'."
@@ -147,8 +170,21 @@ if [ "$ACTION" == "build" ]; then
   #    sed -i '/-o clover_leaf/c\\t$(MPI_F90) $(FFLAGS) $(OBJ) $(LDLIBS) -o clover_leaf' "$SRC_DIR/Makefile"
   #  fi
 
-  build_bin "$MODEL" "$MAKE_OPTS" "$SRC_DIR" "$BINARY" "$RUN_DIR" "$BENCHMARK_EXE"
 
+  if [ "$MODEL" == "omp-target-cc" ]; then
+    # Passing quoted string args to cmake requires an array hence the special case here
+    cd $SRC_DIR || exit
+    rm -rf build
+    module load cmake/3.12.3
+    cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release "${MAKE_OPTS[@]}" 
+    cmake --build build --target clover_leaf --config Release -j $(nproc)
+    mv build/$BINARY $BINARY
+    cd $SRC_DIR/.. || exit
+    mkdir -p $RUN_DIR
+    mv $SRC_DIR/$BINARY $RUN_DIR/$BENCHMARK_EXE
+  else 
+    build_bin "$MODEL" "$MAKE_OPTS" "$SRC_DIR" "$BINARY" "$RUN_DIR" "$BENCHMARK_EXE"
+  fi
 elif
   [ "$ACTION" == "run" ]
 then
