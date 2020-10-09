@@ -74,7 +74,7 @@ print(data_nona)
 
 # Box and whisker plot
 fig, ax = plt.subplots(figsize=(5,4))
-data_nona.boxplot(ax=ax, notch=True, medianprops = dict(linestyle='-',linewidth=3.0))
+data_nona.boxplot(ax=ax, notch=False, medianprops = dict(linestyle='-',linewidth=3.0))
 ax.set(ylabel='% efficiency')
 labels=ax.get_xticklabels()
 for i in range(len(labels)):
