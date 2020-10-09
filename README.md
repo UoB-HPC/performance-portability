@@ -1,7 +1,7 @@
 Performance Portability Utilities
 =================================
 
-This repository contains various data, scripts, and utilities for the study of performance portability (and productivity). It began with a collaboration between researchers at the University of Bristol and at Intel, and it is the original authors' hope that this material will help others in there exploration of this growing area of interest.  We welcome contributions!
+This repository contains various data, scripts, and utilities for the study of performance portability (and productivity). It began with a collaboration between researchers at the University of Bristol and at Intel, and it is the original authors' hope that this material will help others in their exploration of this growing area of interest.  We welcome contributions!
 
 ## Organization ##
 
