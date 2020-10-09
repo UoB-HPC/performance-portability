@@ -28,3 +28,12 @@ The repository is arranged as follows:
 ## Jupyter Notebooks ##
 
 [Jupyter](jupyter.org "Jupyter website") is a web-based interactive framework for developing and presenting code, images, and equations in an integrated fashion. The `.ipynb` files in this repository are Jupyter notebooks used to produce the figures in the paper and presentations.
+
+## For More Information
+
+The performance portability metric computed by these scripts was first proposed in the following two papers:
+- S.J. Pennycook, J.D. Sewall and V.W. Lee, "[A Metric for Performance Portability](https://arxiv.org/abs/1611.07409)", in Proceedings of the 7th International Workshop in Performance Modeling, Benchmarking and Simulation of High Performance Computer Systems (PMBS), 2016
+- S.J. Pennycook, J.D. Sewall and V.W. Lee, "[Implications of a Metric for Performance Portability](https://doi.org/10.1016/j.future.2017.08.007)", in Future Generation Computer Systems, Volume 92, March 2019, Pages 947-958
+
+The datasets used here were originally collected for the following paper, which also served as the inspiration for the efficiency cascade plots:
+- T. Deakin et al., "[Performance Portability Across Diverse Computer Architectures](https://doi.org/10.1109/P3HPC49587.2019.00006)", in Proceedings of the 2019 IEEE/ACM International Workshop on Performance, Portability and Productivity in HPC (P3HPC), 2019
