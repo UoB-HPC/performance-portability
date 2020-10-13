@@ -283,3 +283,40 @@ def pp_cdf_raw_effs(theapp):
     for i in range(len(sorted_effs)):
         res.append((sorted_effs[i][1], harmean([x[1] for x in sorted_effs[i:]]), sorted_effs[i][0]))
     return res
+
+from matplotlib import pylab as plt
+from pathlib import Path
+
+def plot_pdf(ax, path, throughput, handles, plat_colors=None, symlog=True):
+    app_eff = get_effs(path, throughput=throughput)
+    ax.set_aspect(0.15)
+    if plat_colors is None:
+        plat_colors = []
+        qual_colormap = plt.get_cmap("tab10")
+        for i, name in enumrate(app_eff.keys()):
+            plat_colors.append(qual_colormap(i), name)
+    for color, name in plat_colors:
+        if name not in app_eff:
+            continue
+        data  = app_eff[name]
+        d = sorted(data)
+        l_akde = akde(numpy.linspace(0,1,1000), d, 0.05)
+        fs = l_akde.pdf_refine(10)
+        extended_x = [-0.035] + list(l_akde.x) + [1.035]
+        extended_y = [fs[0]] + list(fs) + [fs[-1]]
+        h = ax.plot(extended_x,extended_y,label=name, color=color,clip_on=False)[0]
+        if name not in handles:
+            handles[name] = h
+    if symlog:
+        plt.yscale('symlog', subsy=range(10))
+    else:
+        ax.set_aspect(0.01)
+    plt.grid(True)
+    plt.xlim([0,1])
+    ax.yaxis.grid(True, which='minor')
+    ax.set_title(Path(path).stem,pad=10)
+    if symlog:
+        plt.ylabel("Density (symlog)")
+    else:
+        plt.ylabel("Density")
+    plt.xlabel("Efficiency")
