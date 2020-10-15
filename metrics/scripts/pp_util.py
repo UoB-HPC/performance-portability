@@ -293,8 +293,8 @@ def plot_pdf(ax, path, throughput, handles, plat_colors=None, symlog=True):
     if plat_colors is None:
         plat_colors = []
         qual_colormap = plt.get_cmap("tab10")
-        for i, name in enumrate(app_eff.keys()):
-            plat_colors.append(qual_colormap(i), name)
+        for i, name in enumerate(app_eff.keys()):
+            plat_colors.append((qual_colormap(i), name))
     for color, name in plat_colors:
         if name not in app_eff:
             continue
@@ -319,4 +319,30 @@ def plot_pdf(ax, path, throughput, handles, plat_colors=None, symlog=True):
         plt.ylabel("Density (symlog)")
     else:
         plt.ylabel("Density")
+    plt.xlabel("Efficiency")
+
+def plot_bins(ax, path, throughput, handles, plat_colors=None):
+    app_eff = get_effs(path, throughput=throughput)
+    if plat_colors is None:
+        plat_colors = []
+        qual_colormap = plt.get_cmap("tab10")
+        for i, name in enumerate(app_eff.keys()):
+            plat_colors.append((qual_colormap(i), name))
+    width=0.1
+    bins= numpy.linspace(0,1,10)
+    plat_ct = len(plat_colors)
+    for idx, (color, name) in enumerate(plat_colors):
+        if name not in app_eff:
+            continue
+        data  = app_eff[name]
+        d = sorted(data)
+        histo = numpy.histogram(d, bins=bins, density=True)
+        h = ax.bar(histo[1][:-1] + idx*width/plat_ct, histo[0], width=width/plat_ct, color=color)
+        if name not in handles:
+            handles[name] = h
+    plt.grid(True)
+    plt.xlim([0,1])
+    ax.yaxis.grid(True, which='minor')
+    ax.set_title(Path(path).stem,pad=10)
+    plt.ylabel("Density")
     plt.xlabel("Efficiency")
