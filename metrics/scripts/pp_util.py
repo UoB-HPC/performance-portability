@@ -287,8 +287,7 @@ def pp_cdf_raw_effs(theapp):
 from matplotlib import pylab as plt
 from pathlib import Path
 
-def plot_pdf(ax, path, throughput, handles, plat_colors=None, symlog=True):
-    app_eff = get_effs(path, throughput=throughput)
+def plot_pdf(ax, app_eff, handles, plat_colors=None, symlog=True):
     ax.set_aspect(0.15)
     if plat_colors is None:
         plat_colors = []
@@ -314,15 +313,14 @@ def plot_pdf(ax, path, throughput, handles, plat_colors=None, symlog=True):
     plt.grid(True)
     plt.xlim([0,1])
     ax.yaxis.grid(True, which='minor')
-    ax.set_title(Path(path).stem,pad=10)
     if symlog:
         plt.ylabel("Density (symlog)")
     else:
         plt.ylabel("Density")
     plt.xlabel("Efficiency")
 
-def plot_bins(ax, path, throughput, handles, plat_colors=None):
-    app_eff = get_effs(path, throughput=throughput)
+def plot_bins(ax, app_eff, handles, plat_colors=None):
+    app_eff = app_eff
     if plat_colors is None:
         plat_colors = []
         qual_colormap = plt.get_cmap("tab10")
@@ -343,6 +341,5 @@ def plot_bins(ax, path, throughput, handles, plat_colors=None):
     plt.grid(True)
     plt.xlim([0,1])
     ax.yaxis.grid(True, which='minor')
-    ax.set_title(Path(path).stem,pad=10)
     plt.ylabel("Density")
     plt.xlabel("Efficiency")
