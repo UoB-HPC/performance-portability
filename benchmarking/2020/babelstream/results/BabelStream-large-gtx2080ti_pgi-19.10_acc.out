@@ -1,0 +1,18 @@
+Tue  4 Aug 11:30:15 BST 2020
+BabelStream
+Version: 3.4
+Implementation: OpenACC
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Out of memory allocating 4294967296 bytes of device memory
+Failing in Thread:1
+total/free CUDA memory: 11520638976/2756771840
+Present table dump for device[1]: NVIDIA Tesla GPU 0, compute capability 7.5, threadid=1
+host:0x7f2a9fe2c010 device:0x7f2770000000 size:4294967296 presentcount:0+1 line:23 name:b
+host:0x7f2b9fe2d010 device:0x7f2870000000 size:4294967296 presentcount:0+1 line:23 name:a
+allocated block device:0x7f2770000000 size:4294967296 thread:1
+allocated block device:0x7f2870000000 size:4294967296 thread:1
+call to cuMemAlloc returned error 2: Out of memory
+

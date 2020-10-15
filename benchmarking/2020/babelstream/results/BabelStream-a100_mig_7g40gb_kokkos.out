@@ -1,0 +1,82 @@
+Sun Sep 20 07:37:06 2020       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 450.51.06    Driver Version: 450.51.06    CUDA Version: 11.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  A100-SXM4-40GB      On   | 00000000:07:00.0 Off |                   On |
+| N/A   31C    P0    71W / 300W |      0MiB / 40537MiB |     N/A      Default |
+|                               |                      |              Enabled |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| MIG devices:                                                                |
++------------------+----------------------+-----------+-----------------------+
+| GPU  GI  CI  MIG |         Memory-Usage |        Vol|         Shared        |
+|      ID  ID  Dev |                      | SM     Unc| CE  ENC  DEC  OFA  JPG|
+|                  |                      |        ECC|                       |
+|==================+======================+===========+=======================|
+|  0    0   0   0  |      0MiB / 40537MiB | 98      0 |  7   0    5    1    1 |
++------------------+----------------------+-----------+-----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+BabelStream
+Version: 3.4
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1319907.147 0.00041     0.00064     0.00041     
+Mul         1307894.106 0.00041     0.00042     0.00041     
+Add         1336834.399 0.00060     0.00061     0.00060     
+Triad       1342707.650 0.00060     0.00061     0.00060     
+Dot         1115810.096 0.00048     0.00049     0.00049     
+BabelStream
+Version: 3.4
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 2147.5 MB (=2.1 GB)
+Total size: 6442.5 MB (=6.4 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1350828.917 0.00318     0.00503     0.00321     
+Mul         1348292.206 0.00319     0.00319     0.00319     
+Add         1368090.046 0.00471     0.00645     0.00474     
+Triad       1365660.958 0.00472     0.00548     0.00474     
+Dot         1188937.042 0.00361     0.00368     0.00364     
+BabelStream
+Version: 3.4
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1352258.579 0.00635     0.00736     0.00638     
+Mul         1351448.427 0.00636     0.00637     0.00636     
+Add         1368940.494 0.00941     0.01124     0.00947     
+Triad       1367870.301 0.00942     0.00944     0.00943     
+Dot         1196915.834 0.00718     0.00760     0.00723     
+BabelStream
+Version: 3.4
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 8589.9 MB (=8.6 GB)
+Total size: 25769.8 MB (=25.8 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1352631.856 0.01270     0.01392     0.01273     
+Mul         1353475.309 0.01269     0.01461     0.01273     
+Add         1368993.001 0.01882     0.01937     0.01884     
+Triad       1369021.365 0.01882     0.02039     0.01886     
+Dot         1197247.479 0.01435     0.01516     0.01444     

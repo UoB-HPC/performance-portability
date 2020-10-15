@@ -1,0 +1,34 @@
+#!/bin/bash
+#PBS -q arm
+#PBS -l select=1:ncpus=64
+#PBS -l walltime=01:00:00
+#PBS -joe
+
+cd "$RUN_DIR" || exit 2
+
+cp "$SRC_DIR/InputDecks/clover_bm16.in" clover.in
+
+export OMP_NUM_THREADS=64
+date
+
+case "$MODEL" in
+    mpi)
+        export OMP_NUM_THREADS=1
+        aprun -n 64 -d 1 -j 1 "./$BENCHMARK_EXE"
+        ;;
+    omp)
+        if [[ "$COMPILER" =~ arm- ]]; then
+            OMP_PROC_BIND=true aprun -n 1 -d 64 -cc none "./$BENCHMARK_EXE"
+        else
+            aprun -n 1 -d 64 "./$BENCHMARK_EXE"
+        fi
+        ;;
+    kokkos|sycl)
+        OMP_PLACES=cores OMP_PROC_BIND=spread aprun -n 1 -d 64 -cc none "./$BENCHMARK_EXE"
+        ;;
+    *)
+        echo "Unknown run configuration for model '$MODEL'"
+        exit 1
+        ;;
+esac
+

@@ -1,0 +1,17 @@
+Wed  5 Aug 08:56:35 BST 2020
+BabelStream
+Version: 3.4
+Implementation: OpenCL
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using OpenCL device gfx906+sram-ecc
+Driver: 2982.0 (HSA1.1,LC)
+Reduction kernel config: 240 groups of size 256
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        834638.134  0.01029     0.01112     0.01058     
+Mul         833175.193  0.01031     0.01117     0.01063     
+Add         806516.698  0.01598     0.01683     0.01637     
+Triad       794317.384  0.01622     0.01677     0.01661     
+Dot         835898.015  0.01028     0.01097     0.01073     

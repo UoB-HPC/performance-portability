@@ -1,0 +1,52 @@
+Mon  3 Aug 16:57:03 UTC 2020
+BabelStream
+Version: 3.4
+Implementation: SYCL
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using SYCL device hipCPU OpenMP host device
+Driver: hipSYCL 0.8.1-prerelease on HIP/CUDA 99999
+Reduction kernel config: 256 groups of size 2
+CCE OpenMP fatal error: OpenMP parallel attempted from non-OpenMP thread
+=>> PBS: job killed: walltime 915 exceeded limit 900
+aprun: Apid 1342875: Caught signal Terminated, sending to application
+Application 1342875 exit signals: Terminated
+Application 1342875 resources: utime ~874s, stime ~5s, Rss ~12587364, inblocks ~496, outblocks ~0
+============================= PBS epilogue =============================
+
+End of Job Report
+Run at 2020-08-03 17:11:59 for job 58027.xci00
+Submitted              : 2020-08-03 16:25:24
+Queued                 : 2020-08-03 16:25:24
+Started                : 2020-08-03 16:56:28
+Completed              : 2020-08-03 17:11:59
+Queued Time            : 0:31:04 (1864 seconds)
+Elapsed Time           : 0:15:26 (926 seconds, 103% of limit)
+Walltime Limit         : 0:15:00 (900 seconds)
+Node Time Limit        : 0:15:00 (900 seconds)
+Node Time              : 0:15:26 (926 seconds, 103% of limit)
+Job Name               : babelstream
+Queue                  : arm
+Owner                  : br-wlin
+Group                  : -default-
+Project                : bristol
+Subproject             : 
+Funding                : 
+Trustzone              : 
+STDOUT                 : /lustre/home/br-wlin/performance-portability/benchmarking/2020/babelstream/results/BabelStream-large-tx2_hipsycl-200527-cce_sycl.out
+STDERR                 : /lustre/home/br-wlin/performance-portability/benchmarking/2020/babelstream/results/babelstream.e58027
+Job Directory          : /home/br-wlin/pbs.58027.xci00.x8z
+Job Arch               : XT
+CPU Core Type          : arm
+Total Nodes            : 1
+Total Tasks            : 64
+Parent Node            : xcimom
+Parent Node Memory     : 
+Parent Node CPU Time   : 
+Compute Nodes          : 0
+Electrical Groups      : 1
+Run Version            : 1
+
+For more information see https://gw4-isambard.github.io/docs/

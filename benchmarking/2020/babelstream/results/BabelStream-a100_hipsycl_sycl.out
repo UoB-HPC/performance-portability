@@ -1,0 +1,60 @@
+BabelStream
+Version: 3.4
+Implementation: HIP
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Using HIP device A100-SXM4-40GB MIG 7g.40gb
+Driver: 4
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1382252.228 0.00039     0.00039     0.00039     
+Mul         1343675.478 0.00040     0.00040     0.00040     
+Add         1353674.489 0.00059     0.00060     0.00060     
+Triad       1358183.472 0.00059     0.00060     0.00060     
+Dot         1247310.000 0.00043     0.00045     0.00044     
+BabelStream
+Version: 3.4
+Implementation: HIP
+Running kernels 100 times
+Precision: double
+Array size: 2147.5 MB (=2.1 GB)
+Total size: 6442.5 MB (=6.4 GB)
+Using HIP device A100-SXM4-40GB MIG 7g.40gb
+Driver: 4
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1383369.707 0.00310     0.00487     0.00312     
+Mul         1377781.302 0.00312     0.00420     0.00313     
+Add         1374426.773 0.00469     0.00471     0.00470     
+Triad       1373789.610 0.00469     0.00593     0.00471     
+Dot         1350547.722 0.00318     0.00378     0.00321     
+BabelStream
+Version: 3.4
+Implementation: HIP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using HIP device A100-SXM4-40GB MIG 7g.40gb
+Driver: 4
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1382589.062 0.00621     0.00622     0.00622     
+Mul         1380503.065 0.00622     0.00732     0.00624     
+Add         1373848.348 0.00938     0.00941     0.00939     
+Triad       1374437.035 0.00937     0.01064     0.00941     
+Dot         1354467.378 0.00634     0.00721     0.00638     
+BabelStream
+Version: 3.4
+Implementation: HIP
+Running kernels 100 times
+Precision: double
+Array size: 8589.9 MB (=8.6 GB)
+Total size: 25769.8 MB (=25.8 GB)
+Using HIP device A100-SXM4-40GB MIG 7g.40gb
+Driver: 4
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1381941.680 0.01243     0.01340     0.01247     
+Mul         1380456.475 0.01245     0.01245     0.01245     
+Add         1374670.041 0.01875     0.01879     0.01877     
+Triad       1374518.630 0.01875     0.01948     0.01880     
+Dot         1357200.107 0.01266     0.01277     0.01271     

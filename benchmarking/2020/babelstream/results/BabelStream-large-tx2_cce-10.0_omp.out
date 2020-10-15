@@ -1,0 +1,53 @@
+Mon  3 Aug 09:15:52 UTC 2020
+BabelStream
+Version: 3.4
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Validation failed on sum. Error 4.69511e-08
+Sum was 636.656592387131 but should be 636.656592434082
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        225879.462  0.03803     0.04034     0.03852     
+Mul         216422.010  0.03969     0.04374     0.04010     
+Add         228089.381  0.05649     0.06027     0.05753     
+Triad       232375.377  0.05545     0.06444     0.06045     
+Dot         239090.677  0.03593     0.03942     0.03608     
+Application 1342706 resources: utime ~2028s, stime ~792s, Rss ~25170688, inblocks ~0, outblocks ~0
+============================= PBS epilogue =============================
+
+End of Job Report
+Run at 2020-08-03 09:16:50 for job 57938.xci00
+Submitted              : 2020-08-03 09:14:30
+Queued                 : 2020-08-03 09:14:30
+Started                : 2020-08-03 09:15:51
+Completed              : 2020-08-03 09:16:50
+Queued Time            : 0:01:21 (81 seconds)
+Elapsed Time           : 0:00:54 (54 seconds, 6% of limit)
+Walltime Limit         : 0:15:00 (900 seconds)
+Node Time Limit        : 0:15:00 (900 seconds)
+Node Time              : 0:00:54 (54 seconds, 6% of limit)
+Job Name               : babelstream
+Queue                  : arm
+Owner                  : br-tdeakin
+Group                  : -default-
+Project                : bristol
+Subproject             : 
+Funding                : 
+Trustzone              : 
+STDOUT                 : /home/br-tdeakin/codes/performance-portability/benchmarking/2020/babelstream/tx2-isambard/BabelStream-large-tx2_cce-10.0_omp.out
+STDERR                 : /home/br-tdeakin/codes/performance-portability/benchmarking/2020/babelstream/tx2-isambard/babelstream.e57938
+Job Directory          : /home/br-tdeakin/pbs.57938.xci00.x8z
+Job Arch               : XT
+CPU Core Type          : arm
+Total Nodes            : 1
+Total Tasks            : 64
+Parent Node            : xcimom
+Parent Node Memory     : 
+Parent Node CPU Time   : 
+Compute Nodes          : 181
+Electrical Groups      : 1
+Run Version            : 1
+
+For more information see https://gw4-isambard.github.io/docs/

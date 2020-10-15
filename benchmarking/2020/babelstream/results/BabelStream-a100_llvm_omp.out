@@ -1,0 +1,72 @@
+Tue Sep 15 05:31:53 2020       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 450.51.06    Driver Version: 450.51.06    CUDA Version: 11.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  A100-SXM4-40GB      On   | 00000000:0F:00.0 Off |                    0 |
+| N/A   31C    P0    62W / 400W |      0MiB / 40537MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+BabelStream
+Version: 3.4
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1072373.475 0.00050     0.00320     0.00053     
+Mul         1079371.827 0.00050     0.00052     0.00050     
+Add         1161401.297 0.00069     0.00239     0.00072     
+Triad       1160713.298 0.00069     0.00072     0.00071     
+Dot         44887.758   0.01196     0.01386     0.01212     
+BabelStream
+Version: 3.4
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 2147.5 MB (=2.1 GB)
+Total size: 6442.5 MB (=6.4 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1336888.216 0.00321     0.00504     0.00325     
+Mul         1338674.972 0.00321     0.00334     0.00322     
+Add         1331128.910 0.00484     0.00591     0.00487     
+Triad       1330462.282 0.00484     0.00496     0.00486     
+Dot         48605.014   0.08836     0.14713     0.09018     
+BabelStream
+Version: 3.4
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1361026.217 0.00631     0.00785     0.00637     
+Mul         1362215.686 0.00631     0.00776     0.00636     
+Add         1345737.597 0.00957     0.01023     0.00962     
+Triad       1346399.786 0.00957     0.00994     0.00962     
+Dot         49015.312   0.17525     0.18884     0.17756     
+BabelStream
+Version: 3.4
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 8589.9 MB (=8.6 GB)
+Total size: 25769.8 MB (=25.8 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1373069.082 0.01251     0.01421     0.01256     
+Mul         1373136.136 0.01251     0.01262     0.01253     
+Add         1353409.308 0.01904     0.01950     0.01908     
+Triad       1353561.721 0.01904     0.01971     0.01908     
+Dot         48714.293   0.35267     0.35767     0.35454     

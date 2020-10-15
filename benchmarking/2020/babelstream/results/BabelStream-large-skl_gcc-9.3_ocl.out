@@ -1,0 +1,20 @@
+Fri  7 Aug 02:51:06 CDT 2020
+BabelStream
+Version: 3.4
+Implementation: OpenCL
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using OpenCL device Intel(R) Xeon(R) Platinum 8176 CPU @ 2.10GHz
+Driver: 2020.10.7.0.15
+Reduction kernel config: 56 groups of size 8
+Validation failed on sum. Error 1.27962e-08
+Sum was 636.656592446879 but should be 636.656592434083
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        110700.720  0.07760     0.08768     0.08218     
+Mul         95098.645   0.09033     0.09952     0.09417     
+Add         110270.938  0.11685     0.13232     0.12518     
+Triad       109625.958  0.11754     0.13596     0.12510     
+Dot         18682.559   0.45978     0.53162     0.50008     
+Application 6405229 resources: utime ~4959s, stime ~54s, Rss ~25250336, inblocks ~8, outblocks ~0

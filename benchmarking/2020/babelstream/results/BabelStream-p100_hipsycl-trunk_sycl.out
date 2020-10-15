@@ -1,0 +1,17 @@
+Thu 13 Aug 12:38:27 GMT 2020
+BabelStream
+Version: 3.4
+Implementation: SYCL
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Using SYCL device Tesla P100-PCIE-16GB
+Driver: hipSYCL 0.8.1-prerelease on HIP/CUDA 10010
+Reduction kernel config: 224 groups of size 1024
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        498006.024  0.00108     0.00134     0.00113     
+Mul         495912.048  0.00108     0.00139     0.00115     
+Add         522631.300  0.00154     0.00780     0.00167     
+Triad       520301.730  0.00155     0.01295     0.00174     
+Dot         516310.896  0.00104     0.00137     0.00116     

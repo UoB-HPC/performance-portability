@@ -1,0 +1,15 @@
+Wed  5 Aug 08:40:35 BST 2020
+BabelStream
+Version: 3.4
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Kokkos::initialize() fyi: HIP enabled and initialized
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        802075.682  0.01071     0.01101     0.01074     
+Mul         799640.763  0.01074     0.01142     0.01079     
+Add         777281.062  0.01658     0.01715     0.01665     
+Triad       776820.506  0.01659     0.01706     0.01665     
+Dot         674913.342  0.01273     0.01341     0.01282     

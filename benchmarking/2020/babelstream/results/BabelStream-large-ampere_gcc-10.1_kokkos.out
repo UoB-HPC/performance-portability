@@ -1,0 +1,16 @@
+Tue 21 Jul 11:46:49 BST 2020
+BabelStream
+Version: 3.4
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Validation failed on sum. Error 1.30751e-07
+Sum was 636.656592564833 but should be 636.656592434083
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        108714.419  0.07901     0.08550     0.08157     
+Mul         107780.815  0.07970     0.13111     0.08247     
+Add         106875.469  0.12056     0.16772     0.12271     
+Triad       106837.660  0.12060     0.12568     0.12248     
+Dot         101701.793  0.08446     0.09120     0.08478     

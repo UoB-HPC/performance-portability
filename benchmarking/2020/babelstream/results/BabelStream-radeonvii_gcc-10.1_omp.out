@@ -1,0 +1,16 @@
+Wed  5 Aug 07:21:38 BST 2020
+BabelStream
+Version: 3.4
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+
+libgomp: while loading libgomp-plugin-nvptx.so.1: libcuda.so.1: cannot open shared object file: No such file or directory
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        469806.915  0.00114     0.00142     0.00125     
+Mul         474667.619  0.00113     0.00125     0.00116     
+Add         502376.722  0.00160     0.00167     0.00162     
+Triad       487516.379  0.00165     0.00186     0.00168     
+Dot         25295.410   0.02122     0.02276     0.02208     

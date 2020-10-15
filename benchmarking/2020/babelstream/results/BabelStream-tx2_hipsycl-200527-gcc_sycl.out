@@ -1,0 +1,54 @@
+Mon  3 Aug 16:21:27 UTC 2020
+BabelStream
+Version: 3.4
+Implementation: SYCL
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Using SYCL device hipCPU OpenMP host device
+Driver: hipSYCL 0.8.1-prerelease on HIP/CUDA 99999
+Reduction kernel config: 64 groups of size 2
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        32383.523   0.01658     0.04517     0.03189     
+Mul         179929.550  0.00298     0.01600     0.00971     
+Add         189259.412  0.00426     0.01600     0.01213     
+Triad       191660.392  0.00420     0.01711     0.01259     
+Dot         752.280     0.71366     0.73508     0.71771     
+Application 1342850 resources: utime ~216s, stime ~64s, Rss ~1587792, inblocks ~496, outblocks ~0
+============================= PBS epilogue =============================
+
+End of Job Report
+Run at 2020-08-03 16:22:57 for job 58022.xci00
+Submitted              : 2020-08-03 16:21:26
+Queued                 : 2020-08-03 16:21:26
+Started                : 2020-08-03 16:21:26
+Completed              : 2020-08-03 16:22:57
+Queued Time            : 0:00:00 (0 seconds)
+Elapsed Time           : 0:01:25 (85 seconds, 10% of limit)
+Walltime Limit         : 0:15:00 (900 seconds)
+Node Time Limit        : 0:15:00 (900 seconds)
+Node Time              : 0:01:25 (85 seconds, 10% of limit)
+Job Name               : babelstream
+Queue                  : arm
+Owner                  : br-wlin
+Group                  : -default-
+Project                : bristol
+Subproject             : 
+Funding                : 
+Trustzone              : 
+STDOUT                 : /lustre/home/br-wlin/performance-portability/benchmarking/2020/babelstream/results/BabelStream-tx2_hipsycl-200527-gcc_sycl.out
+STDERR                 : /lustre/home/br-wlin/performance-portability/benchmarking/2020/babelstream/results/babelstream.e58022
+Job Directory          : /home/br-wlin/pbs.58022.xci00.x8z
+Job Arch               : XT
+CPU Core Type          : arm
+Total Nodes            : 1
+Total Tasks            : 64
+Parent Node            : xcimom
+Parent Node Memory     : 
+Parent Node CPU Time   : 
+Compute Nodes          : 0
+Electrical Groups      : 1
+Run Version            : 1
+
+For more information see https://gw4-isambard.github.io/docs/

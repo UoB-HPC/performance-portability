@@ -1,0 +1,21 @@
+#!/bin/bash
+#PBS -q amd
+#PBS -l select=1:ncpus=128:mem=256gb
+#PBS -l place=excl
+#PBS -l walltime=00:15:00
+#PBS -joe
+
+cd $RUN_DIR
+date
+export OMP_NUM_THREADS=128
+export OMP_PROC_BIND=true
+export OMP_PLACES=cores
+export ACC_NUM_CORES=128
+
+if [ "$CONFIG" == "rome_gcc-9.1_ocl" ] ; then
+  export LD_PRELOAD=/work/td8469/software/pocl/1.5/lib64/libOpenCL.so
+  taskset -c 0-127 ./$BENCHMARK_EXE
+else
+  ./$BENCHMARK_EXE
+fi
+

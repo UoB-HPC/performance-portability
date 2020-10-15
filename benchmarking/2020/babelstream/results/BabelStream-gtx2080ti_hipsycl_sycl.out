@@ -1,0 +1,17 @@
+Mon  3 Aug 17:52:56 BST 2020
+BabelStream
+Version: 3.4
+Implementation: SYCL
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Using SYCL device GeForce RTX 2080 Ti
+Driver: hipSYCL 0.8.1-prerelease on HIP/CUDA 10010
+Reduction kernel config: 272 groups of size 1024
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        512176.330  0.00105     0.00114     0.00108     
+Mul         505971.725  0.00106     0.00117     0.00110     
+Add         527538.406  0.00153     0.00613     0.00162     
+Triad       529564.685  0.00152     0.00326     0.00159     
+Dot         505837.765  0.00106     0.00123     0.00109     
