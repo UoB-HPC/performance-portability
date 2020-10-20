@@ -7,10 +7,13 @@ function usage() {
   echo
   echo "Usage: ./benchmark.sh build|run [MODEL] [COMPILER]"
   echo
-  echo "Valid model and compiler options:"
+  echo "Valid model and compiler options for BUDE:"
   echo "  omp"
   echo "    arm-20.0"
   echo "    cce-10.0"
+  echo "    gcc-9.3"
+  echo
+  echo "  ocl"
   echo "    gcc-9.3"
   echo
   echo "  kokkos"
@@ -21,6 +24,10 @@ function usage() {
   echo "  sycl"
   echo "    hipsycl-200527-gcc"
   echo
+  echo "Selected platform: $PLATFORM"
+  echo "  Compilers available: $COMPILERS"
+  echo "  Models available: $MODELS"
+  echo
   echo "The default configuration is '$DEFAULT_MODEL $DEFAULT_COMPILER'."
   echo
 }
@@ -29,6 +36,9 @@ function usage() {
 if [ $# -lt 1 ]; then
   usage
   exit 1
+elif [ "$1" = '-h' ] || [ "$1" = '--help' ]; then
+  usage
+  exit
 fi
 
 
@@ -36,6 +46,11 @@ action="$1"
 export MODEL="${2:-$DEFAULT_MODEL}"
 export COMPILER="${3:-$DEFAULT_COMPILER}"
 export CONFIG="${PLATFORM}_${COMPILER}_${MODEL}"
+
+if [[ ! "$MODELS" =~ $MODEL ]] || [[ ! "$COMPILERS" =~ $COMPILER ]]; then
+  echo "Configuration '$MODEL $COMPILER' not available on $PLATFORM."
+  exit 2
+fi
 
 export SRC_DIR="$PWD/bude-portability-benchmark"
 export RUN_DIR="$PWD/bude-$CONFIG"
@@ -48,6 +63,11 @@ setup_env
 case "$MODEL" in
   omp)
     SRC_DIR+="/openmp"
+    RUN_DIR="$SRC_DIR"
+    ;;
+
+  ocl)
+    SRC_DIR+="/opencl"
     RUN_DIR="$SRC_DIR"
     ;;
 
