@@ -39,7 +39,7 @@ export CONFIG="${PLATFORM}_${COMPILER}_${MODEL}"
 
 export SRC_DIR="$PWD/bude-portability-benchmark"
 export RUN_DIR="$PWD/bude-$CONFIG"
-export BENCHMARK_EXE="bude"
+export BENCHMARK_EXE="bude_$CONFIG"
 
 # Set up the environment
 setup_env
@@ -49,7 +49,6 @@ case "$MODEL" in
   omp)
     SRC_DIR+="/openmp"
     RUN_DIR="$SRC_DIR"
-    BENCHMARK_EXE="bude-openmp"
     ;;
 
   kokkos)
@@ -83,6 +82,7 @@ cd "$SRC_DIR"
 # Handle actions
 if [ "$action" == "build" ]; then
   make clean
+  rm -f "$BENCHMARK_EXE"
 
   if ! eval make -B "$MAKE_OPTS" -j; then
     echo
@@ -90,6 +90,7 @@ if [ "$action" == "build" ]; then
     echo
     exit 1
   fi
+  mv bude "$BENCHMARK_EXE"
 elif [ "$action" == "run" ]; then
   # Check binary exists
   if [ ! -x "$BENCHMARK_EXE" ]; then
