@@ -126,7 +126,7 @@ def get_effs(appfile, appname=None, throughput=False):
     load_app_perfs(appfile, appname, throughput)
     res = {}
     for name,theapp in apps.items():
-        res[name] = app_effs(theapp, list(platforms.keys()), throughput)
+        res[name] = [x[1] for x in app_effs(theapp, list(platforms.keys()), throughput)]
     return res
 
 def read_effs(appfile):
@@ -157,9 +157,7 @@ def app_effs(theapp, plats, throughput):
                 valid_perfs.append((p, platforms[p.platform].app_eff(p.perf, throughput)))
             else:
                 valid_perfs.append((p, 0.0))
-    effs = list(x[1] for x in valid_perfs)
-    return effs
-
+    return valid_perfs
 
 import numpy
 
@@ -285,6 +283,7 @@ def pp_cdf_raw_effs(theapp):
     return res
 
 from matplotlib import pylab as plt
+import matplotlib.gridspec as gridspec
 from pathlib import Path
 
 def plot_pdf(ax, app_eff, handles, plat_colors=None, symlog=True):
@@ -343,3 +342,77 @@ def plot_bins(ax, app_eff, handles, plat_colors=None):
     ax.yaxis.grid(True, which='minor')
     plt.ylabel("Density")
     plt.xlabel("Efficiency")
+
+def plot_cascade(fig, gs, index, app_eff, appname, handles, app_colors=None, plat_colors=None):
+    subgrid=gridspec.GridSpecFromSubplotSpec(2,1,subplot_spec=gs[index[0],index[1]],hspace=0, height_ratios=[5,1])
+    qual_colormap = plt.get_cmap("tab10")
+    ax2 = fig.add_subplot(subgrid[1,:])
+    ax = fig.add_subplot(subgrid[0,:],sharex=ax2)
+
+    if plat_colors is None:
+        plat_colors = []
+        qual_colormap = plt.get_cmap("tab10")
+        for i, name in enumerate(app_eff.keys()):
+            plat_colors.append((qual_colormap(i), name))
+
+    min_plat = None
+    max_plat = None
+    appinfo = {}
+    for i, (name, in_effs) in enumerate(app_eff):
+
+        cascade = pp_cdf_raw_effs(in_effs)
+
+        effs, pps, plats = zip(*cascade)
+
+        ppl = list(enumerate(reversed(pps),1))
+        ppl =  ppl + [(ppl[-1][0], 0.0)]
+        data_pp = numpy.asarray(ppl)
+        effl = list(enumerate(reversed(effs),1))
+        effl =  effl + [(effl[-1][0], 0.0)]
+        data_eff = numpy.asarray(effl)
+
+        center = data_pp[:,0]
+
+        lo = center-0.5
+        hi = center+0.5
+        if min_plat == None or center[0] < min_plat:
+            min_plat = center[0]
+        if max_plat == None or center[-1] > max_plat:
+            max_plat = center[-1]
+
+        if app_colors is None or name not in app_colors:
+            color = qual_colormap(i)
+        else:
+            color = app_colors[name]
+        appinfo[name] = (data_pp, data_eff, plats, center, i, color)
+    for name, (data_pp, data_eff, plats, center, i, color) in appinfo.items():
+        name = name.replace(r"\%", "%")
+        eff_name=f"{name} eff."
+        pp_name=f"{name} PP"
+
+        pp_h = ax.plot(center,data_pp[:,1], label=pp_name, color=color, lw=3, marker="s", ls='dashed')[0]
+        eff_h = ax.plot(center,data_eff[:,1], label=eff_name, color=color, marker="o", lw=3)[0]
+
+        colors = [plat_colors[p] for p in plats]
+        fac=0.25
+        ax2.bar(center[:-1], height=fac, width=1.0,bottom=i*fac,color=colors,edgecolor=color, linewidth=0, alpha=1.0)
+
+        ax2.bar([0.0, max_plat+1.0], height=fac, width=1.0,bottom=i*fac,color=color)
+
+        if eff_name not in handles:
+            handles[eff_name] = eff_h
+        if pp_name not in handles:
+            handles[pp_name] = pp_h
+
+    ax.set_ylabel("App PP (dashed)/efficiency (solid)")
+    ax2.set_xlabel("# of platforms")
+    ax2.set_xlim([0,max_plat+1])
+    ax2.set_ylim([0,len(appinfo)*fac])
+    ax.set_ylim([0,1.1])
+    ax2.set_xticks(numpy.arange(min_plat, max_plat+1))
+    ax2.set_yticks([])
+    ax.label_outer()
+    ax.xaxis.set_ticks_position('none')
+    ax2.axvline(min_plat-0.5,color="black")
+    ax2.axvline(max_plat+0.5,color="black")
+    ax.grid(True)
