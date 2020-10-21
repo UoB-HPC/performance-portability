@@ -129,7 +129,7 @@ def get_effs(appfile, appname=None, throughput=False):
         res[name] = [x[1] for x in app_effs(theapp, list(platforms.keys()), throughput)]
     return res
 
-def read_effs(appfile):
+def read_effs(appfile, skip_plats=False):
     global apps
     apps = {}
     with open(appfile, "r") as fp:
@@ -141,8 +141,15 @@ def read_effs(appfile):
                 appname = header[i+1]
                 if appname not in apps:
                     apps[appname] = []
-                apps[appname].append((plat, float(item)/100.0))
-    s = sorted(list(apps.items()), key=lambda x: harmean([i[1] for i in x[1]]))
+                if skip_plats:
+                    apps[appname].append(float(item)/100.0)
+                else:
+                    apps[appname].append((plat, float(item)/100.0))
+
+    if skip_plats:
+        s = sorted(list(apps.items()), key=lambda x: harmean([i for i in x[1]]))
+    else:
+        s = sorted(list(apps.items()), key=lambda x: harmean([i[1] for i in x[1]]))
     return s
 
 def app_effs(theapp, plats, throughput):
@@ -416,3 +423,20 @@ def plot_cascade(fig, gs, index, app_eff, appname, handles, app_colors=None, pla
     ax2.axvline(min_plat-0.5,color="black")
     ax2.axvline(max_plat+0.5,color="black")
     ax.grid(True)
+
+def boxplot(ax, effs):
+    effs_names = []
+    effs_data = []
+    for e in effs:
+        effs_names.append(e[0])
+        effs_data.append(e[1])
+
+    ax.boxplot(effs_data, notch=False, whiskerprops=dict(color="#5799c6"), boxprops=dict(color="#5799c6"), medianprops = dict(linestyle='-',linewidth=3.0))
+    ax.set(ylabel='Efficiency')
+    ax.grid(True)
+    labels=effs_names
+    ax.set_xticklabels(labels, rotation=45, ha="right", rotation_mode="anchor")
+    labels=ax.get_xticklabels()
+    for i in range(len(labels)):
+        if not plt.rcParams['text.usetex']:
+            labels[i].set_text(labels[i].get_text().replace(r"\%", "%"))
