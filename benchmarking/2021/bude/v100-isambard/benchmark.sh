@@ -9,10 +9,28 @@ setup_env() {
   fi
 
   case "$COMPILER" in
+    cce-10.0)
+      module load PrgEnv-cray
+      module swap cce cce/10.0.0
+      module load craype-accel-nvidia70
+      module load cuda10.2/toolkit/10.2.89
+      MAKE_OPTS=''
+      ;;
+    gcc-8.1)
+      module load gcc/8.1.0
+      module load cuda10.2/toolkit/10.2.89
+      MAKE_OPTS=''
+      ;;
     gcc-9.3)
       module load gcc/9.3.0
       module load cuda10.2/toolkit/10.2.89
       MAKE_OPTS=''
+      ;;
+    llvm-10.0)
+      module load cuda10.1/toolkit/10.1.243
+      module load llvm/10.0
+      module load gcc/9.3.0
+      MAKE_OPTS='CC=clang'
       ;;
     *)
       echo
@@ -29,9 +47,9 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="gcc-9.3"
+export COMPILERS="cce-10.0 gcc-8.1 gcc-9.3 llvm-10.0"
 export DEFAULT_COMPILER="gcc-9.3"
-export MODELS="ocl"
+export MODELS="ocl cuda omp-target"
 export DEFAULT_MODEL="ocl"
 export PLATFORM="v100-isambard"
 

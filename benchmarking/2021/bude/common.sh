@@ -13,8 +13,15 @@ function usage() {
   echo "    cce-10.0"
   echo "    gcc-9.3"
   echo
+  echo "  omp-target"
+  echo "    cce-10.0"
+  echo "    llvm-10.0"
+  echo
   echo "  ocl"
   echo "    gcc-9.3"
+  echo
+  echo "  cuda"
+  echo "    gcc-8.1"
   echo
   echo "  kokkos"
   echo "    arm-20.0"
@@ -66,9 +73,30 @@ case "$MODEL" in
     RUN_DIR="$SRC_DIR"
     ;;
 
+  omp-target)
+    if ! [[ "$COMPILER" =~ (cce|llvm)-10.0 ]]; then
+      echo "Model '$MODEL' can only be used with compilers: cce-10.0 llvm-10.0."
+      exit 3
+    fi
+
+    SRC_DIR+="/openmp-target"
+    RUN_DIR="$SRC_DIR"
+    ;;
+
   ocl)
     SRC_DIR+="/opencl"
     RUN_DIR="$SRC_DIR"
+    ;;
+
+  cuda)
+    if [ "$COMPILER" != gcc-8.1 ]; then
+      echo "Model '$MODEL' can only be used with compiler 'gcc-8.1'."
+      exit 3
+    fi
+
+    SRC_DIR+="/cuda"
+    RUN_DIR="$SRC_DIR"
+    MAKE_OPTS+=" COMPILER=GNU"
     ;;
 
   kokkos)
