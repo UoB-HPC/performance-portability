@@ -4,6 +4,7 @@
 from csv import DictReader, reader
 import attr
 import numpy as np
+from pathlib import Path
 
 def harmean(vals):
     try:
@@ -288,6 +289,7 @@ def pp_cdf_raw_effs(theapp):
 
 from matplotlib import pylab as plt
 import matplotlib.gridspec as gridspec
+import matplotlib.patches as mpatches
 from pathlib import Path
 
 def plot_pdf(ax, app_eff, handles, plat_colors=None, symlog=True):
@@ -493,3 +495,67 @@ def boxplot(ax, effs):
     for i in range(len(labels)):
         if not plt.rcParams['text.usetex']:
             labels[i].set_text(labels[i].get_text().replace(r"\%", "%"))
+
+import sys
+
+if __name__ == '__main__':
+    filename = sys.argv[1]
+
+    # Eff. cascade
+
+    fig = plt.figure(figsize=(4, 4))
+    plat_colors = {}
+    plat_handles = []
+    synth_plats=[chr(x) for x in range(65, 75)]
+    plat_cmap = plt.get_cmap("summer")
+    for i, p in enumerate(synth_plats):
+        plat_colors[p] = plat_cmap(float(i)/(len(synth_plats)-1))
+        plat_handles.append(mpatches.Patch(color=plat_colors[p], label=p))
+
+    handles = {}
+    gs = fig.add_gridspec(1,1)
+    index = [0, 0]
+    app_eff = read_effs(filename)
+    app_eff = sorted(list(app_eff.items()), key=lambda x: harmean([i[1] for i in x[1]]))
+    plot_cascade(fig, gs, index, app_eff, None, handles, app_colors=None, plat_colors=plat_colors)
+
+    handle_names, handle_lists = zip(*handles.items())
+    fig.legend(handle_lists, handle_names, loc='upper left', bbox_to_anchor=(1.0,1.0),ncol=1, handlelength=2.0)
+    fig.legend(handles=plat_handles, loc='lower left', bbox_to_anchor=(1.0,0.1), ncol=3, handlelength=1.0)
+    plt.tight_layout(pad=0.4,w_pad=0.5, h_pad=1.0)
+    plt.savefig(f"{Path(filename).stem}_eff_cascade.pdf", bbox_inches="tight")
+
+    # PDF
+
+    fig = plt.figure(figsize=(5, 4))
+    ax = fig.add_subplot(1,1,1)
+    app_eff = read_effs(filename, skip_plats=True)
+    handles = plot_pdf(ax, app_eff, {}, symlog=True)
+    plt.tight_layout(pad=0.4,w_pad=1.5, h_pad=0.5)
+    plt.legend(loc= "upper center", handlelength=0.5, labels=handles)
+    plt.savefig(f"{Path(filename).stem}_estimated_density_chart.pdf", bbox_inches="tight")
+
+    # Box plot
+
+    fig = plt.figure(figsize=(5, 4))
+    ax = fig.add_subplot(1,1,1)
+    app_eff = read_effs(filename, skip_plats=True)
+    app_eff = sorted(list(app_eff.items()), key=lambda x: harmean(x[1]))
+    boxplot(ax, app_eff)
+    plt.tight_layout(pad=0.4,w_pad=1.5, h_pad=0.5)
+    plt.savefig(f"{Path(filename).stem}_box_chart.pdf", bbox_inches="tight")
+
+    ## Bins
+
+    fig = plt.figure(figsize=(5, 4))
+    ax = fig.add_subplot(1,1,1)
+
+    app_eff = read_effs(filename, skip_plats=True)
+    app_eff = sorted(list(app_eff.items()), key=lambda x: harmean(x[1]))
+    binplot(ax, app_eff, False)
+    L=plt.legend()
+    texts = [ m.get_text().replace(r"\%", "%") for m in L.get_texts()]
+    plt.tight_layout(pad=0.4,w_pad=1.5, h_pad=0.5)
+    plt.legend(loc= "upper center", handlelength=0.5, labels=texts)
+
+    plt.savefig(f"{Path(filename).stem}_binned_chart.pdf", bbox_inches="tight")
