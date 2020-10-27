@@ -164,10 +164,8 @@ def app_effs(theapp, plats, throughput):
                 valid_perfs.append((p, 0.0))
     return valid_perfs
 
-import numpy
-
 def gaussian(x):
-    return 1.0/numpy.sqrt(2.0*numpy.pi)*numpy.exp(-0.5*x**2.0)
+    return 1.0/np.sqrt(2.0*np.pi)*np.exp(-0.5*x**2.0)
 
 from scipy.special import erf
 from scipy.integrate import simps
@@ -185,7 +183,7 @@ class gaussian_family:
         self.cdf_func = gaussian_cdf
 
 def bw_estimate(samples):
-    sigma = numpy.std(samples)
+    sigma = np.std(samples)
     cand = ((4*sigma**5.0)/(3.0*len(samples)))**(1.0/5.0)
     if cand < 1e-7:
         return 1.0
@@ -210,7 +208,7 @@ class akde:
     def density_estimate(self, lx):
         assert self.last_pdf is not None
 
-        loc = numpy.searchsorted(self.x, lx)
+        loc = np.searchsorted(self.x, lx)
         if loc >= len(self.last_pdf):
             return self.last_pdf[-1]
         else:
@@ -219,7 +217,7 @@ class akde:
     def pdf(self):
         scaling_func = self.kernel_family.scaling_func
         kernel_func = self.kernel_family.kernel_func
-        pdf = numpy.zeros(len(self.x))
+        pdf = np.zeros(len(self.x))
         for s in self.samples:
             loc_h = self.bw_estimate(s)
             if self.clip:
@@ -232,7 +230,7 @@ class akde:
         self.last_pdf = pdf
         area = simps(pdf, self.x)
         if self.clip:
-            assert numpy.fabs(area-1.0) < 1e-3
+            assert np.fabs(area-1.0) < 1e-3
         return pdf, area
 
     def pdf_series(self, num):
@@ -252,7 +250,7 @@ class akde:
     def cdf(self):
         scaling_func = self.kernel_family.scaling_func
         cdf_func = self.kernel_family.cdf_func
-        cdf = numpy.zeros(len(self.x))
+        cdf = np.zeros(len(self.x))
         for s in self.samples:
             loc_h = self.bw_estimate(s)
             if self.clip:
@@ -304,7 +302,7 @@ def plot_pdf(ax, app_eff, handles, plat_colors=None, symlog=True):
             continue
         data  = app_eff[name]
         d = sorted(data)
-        l_akde = akde(numpy.linspace(0,1,1000), d, 0.05)
+        l_akde = akde(np.linspace(0,1,1000), d, 0.05)
         fs = l_akde.pdf_refine(10)
         extended_x = [-0.035] + list(l_akde.x) + [1.035]
         extended_y = [fs[0]] + list(fs) + [fs[-1]]
@@ -325,7 +323,7 @@ def plot_pdf(ax, app_eff, handles, plat_colors=None, symlog=True):
     plt.xlabel("Efficiency")
 
 def histogram(bins, data):
-    z= numpy.zeros(len(bins)-1)
+    z= np.zeros(len(bins)-1)
     for d in data:
         if d < bins[0]:
             continue
@@ -348,7 +346,7 @@ def binplot(ax, app_effs, colordict=None):
         bar_data[name] = histogram(bins, data)
         bar_data[name] = bar_data[name] / bar_data[name].sum() * 100.0
 
-    bin_offsets = 2*numpy.array(range(len(bins)-1))
+    bin_offsets = 2*np.array(range(len(bins)-1))
 
     handles = []
     width =float(1.0)/len(bar_data.items())
@@ -388,14 +386,14 @@ def plot_bins(ax, app_eff, handles, plat_colors=None):
         for i, name in enumerate(app_eff.keys()):
             plat_colors.append((qual_colormap(i), name))
     width=0.1
-    bins= numpy.linspace(0,1,10)
+    bins= np.linspace(0,1,10)
     plat_ct = len(plat_colors)
     for idx, (color, name) in enumerate(plat_colors):
         if name not in app_eff:
             continue
         data  = app_eff[name]
         d = sorted(data)
-        histo = numpy.histogram(d, bins=bins, density=True)
+        histo = np.histogram(d, bins=bins, density=True)
         h = ax.bar(histo[1][:-1] + idx*width/plat_ct, histo[0], width=width/plat_ct, color=color)
         if name not in handles:
             handles[name] = h
@@ -428,10 +426,10 @@ def plot_cascade(fig, gs, index, app_eff, appname, handles, app_colors=None, pla
 
         ppl = list(enumerate(reversed(pps),1))
         ppl =  ppl + [(ppl[-1][0], 0.0)]
-        data_pp = numpy.asarray(ppl)
+        data_pp = np.asarray(ppl)
         effl = list(enumerate(reversed(effs),1))
         effl =  effl + [(effl[-1][0], 0.0)]
-        data_eff = numpy.asarray(effl)
+        data_eff = np.asarray(effl)
 
         center = data_pp[:,0]
 
@@ -471,7 +469,7 @@ def plot_cascade(fig, gs, index, app_eff, appname, handles, app_colors=None, pla
     ax2.set_xlim([0,max_plat+1])
     ax2.set_ylim([0,len(appinfo)*fac])
     ax.set_ylim([0,1.1])
-    ax2.set_xticks(numpy.arange(min_plat, max_plat+1))
+    ax2.set_xticks(np.arange(min_plat, max_plat+1))
     ax2.set_yticks([])
     ax.label_outer()
     ax.xaxis.set_ticks_position('none')
