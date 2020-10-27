@@ -3,6 +3,7 @@
 
 from csv import DictReader, reader
 import attr
+import numpy as np
 
 def harmean(vals):
     try:
@@ -147,11 +148,6 @@ def read_effs(appfile, skip_plats=False):
                     apps[appname].append((plat, float(item)/100.0))
 
     return apps
-    # if skip_plats:
-    #     s = sorted(list(apps.items()), key=lambda x: harmean([i for i in x[1]]))
-    # else:
-    #     s = sorted(list(apps.items()), key=lambda x: harmean([i[1] for i in x[1]]))
-    # return s
 
 def app_effs(theapp, plats, throughput):
     perfs = []
@@ -325,6 +321,62 @@ def plot_pdf(ax, app_eff, handles, plat_colors=None, symlog=True):
     else:
         plt.ylabel("Density")
     plt.xlabel("Efficiency")
+
+def histogram(bins, data):
+    z= numpy.zeros(len(bins)-1)
+    for d in data:
+        if d < bins[0]:
+            continue
+        for i, b in enumerate(bins[1:]):
+            if d <= b:
+                z[i] += 1.0
+                found = True
+                break
+    return z
+
+def binplot(ax, app_effs, colordict=None):
+    # Group bar chart
+    # First manually bin the data
+    # First group should be zeros, then (0.0-10.0), [10.0-20.0), etc
+    bins = np.arange(0,1.1,0.1, dtype=np.float)
+    bins[0] = np.finfo(float).eps
+    bins = np.append(np.zeros(1), bins)
+    bar_data = {}
+    for name, data in app_effs:
+        bar_data[name] = histogram(bins, data)
+        bar_data[name] = bar_data[name] / bar_data[name].sum() * 100.0
+
+    bin_offsets = 2*numpy.array(range(len(bins)-1))
+
+    handles = []
+    width =float(1.0)/len(bar_data.items())
+    for i, (name,data) in enumerate(list(bar_data.items())):
+        pbins = float(i)*width + width/2.0 + bin_offsets
+        if colordict:
+            res = ax.bar(pbins, height=data, width=width, color=colordict[name])
+        else:
+            res = ax.bar(pbins, height=data, width=width)
+        handles.append(res.patches[0])
+        handles[-1].set_label(name)
+    plt.ylabel('Frequency in %')
+    plt.xlabel('Efficiency')
+    plt.grid(axis='y')
+
+    ax.set_ylim([0,100.0])
+
+    ax.set_xticks(bin_offsets+0.5)
+    # Rename the first bin
+    locs, labels = plt.xticks()
+    labels[0] = "Did not run"
+    for i,_ in enumerate(labels):
+        if i == 0:
+            continue
+        labels[i] = f"({round(bins[i],3)}, {round(bins[i+1],3)}]"
+    plt.xticks(locs, labels)
+
+    labels=ax.get_xticklabels()
+    ax.set_xticklabels(labels, rotation=45, ha="right", rotation_mode="anchor")
+    return handles
 
 def plot_bins(ax, app_eff, handles, plat_colors=None):
     app_eff = app_eff
