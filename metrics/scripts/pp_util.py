@@ -146,11 +146,12 @@ def read_effs(appfile, skip_plats=False):
                 else:
                     apps[appname].append((plat, float(item)/100.0))
 
-    if skip_plats:
-        s = sorted(list(apps.items()), key=lambda x: harmean([i for i in x[1]]))
-    else:
-        s = sorted(list(apps.items()), key=lambda x: harmean([i[1] for i in x[1]]))
-    return s
+    return apps
+    # if skip_plats:
+    #     s = sorted(list(apps.items()), key=lambda x: harmean([i for i in x[1]]))
+    # else:
+    #     s = sorted(list(apps.items()), key=lambda x: harmean([i[1] for i in x[1]]))
+    # return s
 
 def app_effs(theapp, plats, throughput):
     perfs = []
