@@ -327,63 +327,115 @@ def boxplot(ax, effs_pd):
         if not plt.rcParams['text.usetex']:
             labels[i].set_text(labels[i].get_text().replace(r"\%", "%"))
 
-import sys
+def save_and_report(filename,exts):
+    for x in exts:
+        of = f"{filename}.{x}"
+        plt.savefig(of, bbox_inches="tight")
+        print(f"Wrote {of}.")
 
 if __name__ == '__main__':
-    filename = sys.argv[1]
+    import sys
+    import argparse
 
-    effs_df = app_effs(filename, raw_effs=False, throughput=True)
-    plats = effs_df[effs_df.columns[0]]
+    legal_extensions = set(['png', 'pdf'])
+    legal_vis = set(['box', 'bins', 'casc', 'epdf'])
 
-    # Eff. cascade
+    desc=f"performance portability visualization demo"
+    parser = argparse.ArgumentParser(description=desc)
+    parser.add_argument("-r", "--raw-effs", dest='raw_effs', action='store_true', default=False, help='Interpret csv contents as raw efficiencies.')
+    parser.add_argument("-t", "--thoughput", dest='throughput', action='store_true', default=False, help='Interpret csv contents throughput numbers.')
+    parser.add_argument("-o", "--output-prefix", dest='oprefix', action='store', default=".", help='Write output files with a specific prefix')
+    parser.add_argument("-F", "--ofile-format", dest='ofile_fmt', metavar=f'[{"|".join(legal_extensions)}]+', action='store', default="pdf", help='Type of output files to produce.')
+    parser.add_argument("-V", "--vis-types", dest='vis_types', metavar=f'[{"|".join(legal_vis)}]+', action='store', default="box,bins,casc,epdf", help='Visualizations to produce.')
+    parser.add_argument('csvfiles', metavar='<CSV-FILE>+', nargs=argparse.REMAINDER)
 
-    plat_colors = {}
-    plat_handles = []
-    plat_cmap = plt.get_cmap("summer")
-    for i, p in enumerate(plats):
-        plat_colors[p] = plat_cmap(float(i)/(len(plats)-1))
-        plat_handles.append(mpatches.Patch(color=plat_colors[p], label=p))
+    args = parser.parse_args()
 
-    fig = plt.figure(figsize=(4, 4))
-    handles = {}
-    gs = fig.add_gridspec(1,1)
-    index = [0, 0]
+    if args.raw_effs and args.throughput:
+        print("Asked to intrepret CSV as both raw eff. & throughput!")
+        sys.exit(1)
 
-    plot_cascade(fig, gs, index, effs_df, None, handles, app_colors=None, plat_colors=plat_colors)
+    if len(args.csvfiles) == 0:
+        print("No input files specified.")
+        sys.exit(1)
 
-    handle_names, handle_lists = zip(*handles.items())
-    fig.legend(handle_lists, handle_names, loc='upper left', bbox_to_anchor=(1.0,1.0),ncol=1, handlelength=2.0)
-    fig.legend(handles=plat_handles, loc='lower left', bbox_to_anchor=(1.0,0.1), ncol=3, handlelength=1.0)
-    plt.tight_layout(pad=0.4,w_pad=0.5, h_pad=1.0)
-    plt.savefig(f"{Path(filename).stem}_eff_cascade.pdf", bbox_inches="tight")
+    output_extensions = set()
+    for t in args.ofile_fmt.split(','):
+        if t.lower() in legal_extensions:
+            if t in output_extensions:
+                printf("Warning: duplicate output extension found. Skipping.")
+            else:
+                output_extensions.add(t)
 
-    # PDF
+    if len(output_extensions) == 0:
+        print("Warning: no output extensions found; no output will be written")
 
-    fig = plt.figure(figsize=(5, 4))
-    ax = fig.add_subplot(1,1,1)
+    vis_types = set()
+    for vt in args.vis_types.split(','):
+        if vt.lower() in legal_vis:
+            if vt in vis_types:
+                print("Warning: duplicate vis type found. Skipping.")
+            else:
+                vis_types.add(vt)
 
-    handles = plot_pdf(ax, effs_df, {}, symlog=True)
-    plt.tight_layout(pad=0.4,w_pad=1.5, h_pad=0.5)
-    plt.legend(loc= "upper center", handlelength=0.5, labels=handles)
-    plt.savefig(f"{Path(filename).stem}_estimated_density_chart.pdf", bbox_inches="tight")
+    for filename in args.csvfiles:
 
-    # Box plot
+        effs_df = app_effs(filename, raw_effs=args.raw_effs, throughput=args.throughput)
+        plats = effs_df[effs_df.columns[0]]
 
-    fig = plt.figure(figsize=(5, 4))
-    ax = fig.add_subplot(1,1,1)
-    boxplot(ax, effs_df)
-    plt.tight_layout(pad=0.4,w_pad=1.5, h_pad=0.5)
-    plt.savefig(f"{Path(filename).stem}_box_chart.pdf", bbox_inches="tight")
+        output_base = args.oprefix + Path(filename).stem
 
-    # Bins
+        if 'casc' in vis_types:
 
-    fig = plt.figure(figsize=(5, 4))
-    ax = fig.add_subplot(1,1,1)
+            # Eff. cascade
 
-    binplot(ax, effs_df, False)
-    L=plt.legend()
-    texts = [ m.get_text().replace(r"\%", "%") for m in L.get_texts()]
-    plt.tight_layout(pad=0.4,w_pad=1.5, h_pad=0.5)
-    plt.legend(loc= "upper center", handlelength=0.5, labels=texts)
+            plat_colors = {}
+            plat_handles = []
+            plat_cmap = plt.get_cmap("summer")
+            for i, p in enumerate(plats):
+                plat_colors[p] = plat_cmap(float(i)/(len(plats)-1))
+                plat_handles.append(mpatches.Patch(color=plat_colors[p], label=p))
 
-    plt.savefig(f"{Path(filename).stem}_binned_chart.pdf", bbox_inches="tight")
+            fig = plt.figure(figsize=(4, 4))
+            handles = {}
+            gs = fig.add_gridspec(1,1)
+            index = [0, 0]
+
+            plot_cascade(fig, gs, index, effs_df, None, handles, app_colors=None, plat_colors=plat_colors)
+
+            handle_names, handle_lists = zip(*handles.items())
+            fig.legend(handle_lists, handle_names, loc='upper left', bbox_to_anchor=(1.0,1.0),ncol=1, handlelength=2.0)
+            fig.legend(handles=plat_handles, loc='lower left', bbox_to_anchor=(1.0,0.1), ncol=3, handlelength=1.0)
+            plt.tight_layout(pad=0.4,w_pad=0.5, h_pad=1.0)
+            save_and_report(f"{output_base}_eff_cascade", output_extensions)
+
+        if 'epdf' in vis_types:
+            # PDF
+            fig = plt.figure(figsize=(5, 4))
+            ax = fig.add_subplot(1,1,1)
+
+            handles = plot_pdf(ax, effs_df, {}, symlog=True)
+            plt.tight_layout(pad=0.4,w_pad=1.5, h_pad=0.5)
+            plt.legend(loc= "upper center", handlelength=0.5, labels=handles)
+            save_and_report(f"{output_base}_estimated_density_chart", output_extensions)
+
+        if 'box' in vis_types:
+            # Box plot
+            fig = plt.figure(figsize=(5, 4))
+            ax = fig.add_subplot(1,1,1)
+            boxplot(ax, effs_df)
+            plt.tight_layout(pad=0.4,w_pad=1.5, h_pad=0.5)
+            save_and_report(f"{output_base}_box_chart", output_extensions)
+
+        if 'bins' in vis_types:
+            # Bins
+
+            fig = plt.figure(figsize=(5, 4))
+            ax = fig.add_subplot(1,1,1)
+
+            binplot(ax, effs_df, False)
+            L=plt.legend()
+            texts = [ m.get_text().replace(r"\%", "%") for m in L.get_texts()]
+            plt.tight_layout(pad=0.4,w_pad=1.5, h_pad=0.5)
+            plt.legend(loc= "upper center", handlelength=0.5, labels=texts)
+            save_and_report(f"{output_base}_binned_chart", output_extensions)
