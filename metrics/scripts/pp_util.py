@@ -1,10 +1,26 @@
 # Copyright (c) 2020 Performance Portability authors
 # SPDX-License-Identifier: MIT
 
-from csv import DictReader, reader
-import attr
 import numpy as np
 from pathlib import Path
+
+import pandas
+
+def app_effs(filename, raw_effs=False, raw_effs_scaling=1/100.0, throughput=False):
+    df = pandas.read_csv(filename, na_values=['x','X'], skipinitialspace=True).fillna(0)
+    if not raw_effs:
+        if throughput:
+            df[df.columns[1:]]=df[df.columns[1:]].apply(lambda r: r/r.max(), axis=1)
+        else:
+            df[df.columns[1:]]=df[df.columns[1:]].apply(lambda r: r.min()/r, axis=1)
+    else:
+        df[df.columns[1:]]=df[df.columns[1:]].applymap(lambda x: x*raw_effs_scaling)
+
+    harmean_vals = df[df.columns[1:]].apply(harmean, axis=0)
+    zeros = df[df.columns[1:]].apply(lambda x: x.value_counts()[0.0], axis=0)
+    vals = pandas.DataFrame([harmean_vals,zeros]).sort_values(by=0, axis=1).sort_values(by=1, axis=1, ascending=False)
+    df= df[df.columns.tolist()[:1] + vals.columns.tolist()]
+    return df
 
 def harmean(vals):
     try:
@@ -12,157 +28,6 @@ def harmean(vals):
     except ZeroDivisionError:
         return 0.0
     return len(vals)/s
-
-@attr.s
-class platform(object):
-    name = attr.ib()
-    arch_bw = attr.ib()
-    types = attr.ib(default=attr.Factory(list))
-    best_bw = attr.ib(default=None)
-    def arch_eff(self, perf, throughput):
-        if throughput:
-            return perf/self.arch_bw
-        else:
-            return self.arch_bw/perf
-    def app_eff(self, perf, throughput):
-        if throughput:
-            return perf/self.best_bw
-        else:
-            return self.best_bw/perf
-
-global platforms
-
-platforms = dict()
-
-def add_platform(name, arch_bw, types):
-    platforms[name] = platform(name, float(arch_bw), types)
-
-@attr.s
-class perf_entry(object):
-    platform = attr.ib()
-    perf = attr.ib()
-
-@attr.s
-class app(object):
-    name = attr.ib()
-    perfs = attr.ib(default=attr.Factory(dict))
-    @classmethod
-    def entries(cls, name, perf_pairs):
-        perfs = dict()
-        for k, v in perf_pairs:
-            perfs[k] = perf_entry(k,float(v))
-        return cls(name, perfs)
-    def bad_pp_arch(self):
-        return harmean([platforms[v.platform].arch_eff(v.perf) for v in self.perfs.values()])
-    def bad_pp_app(self):
-        return harmean([platforms[v.platform].app_eff(v.perf) for v in self.perfs.values()])
-    def arch_pp(self, plats, throughput):
-        try:
-            vals = [platforms[k].arch_eff(self.perfs[k].perf, throughput) for k in plats]
-            return harmean(vals)
-        except KeyError:
-            return 0.0
-    def app_pp(self, plats, throughput):
-        try:
-            vals = [platforms[k].app_eff(self.perfs[k].perf, throughput) for k in plats]
-            return harmean(vals)
-        except KeyError:
-            return 0.0
-
-global apps
-
-apps = dict()
-
-def add_app(name, pairs):
-    apps[name] = app.entries(name, pairs)
-
-def best_plat_perf(plat_name, apps, throughput):
-    best = None
-    for a in apps:
-       for p, v in a.perfs.items():
-           if p == plat_name:
-               if throughput:
-                   if best == None or best < v.perf:
-                       best = v.perf
-               else:
-                   if best == None or best > v.perf:
-                       best = v.perf
-    return best
-
-def load_app_perfs(appfile, appname=None, throughput=False):
-    global apps
-    apps=dict()
-    global platforms
-    platforms=dict()
-    with open("../data/spec.csv", "r") as fp:
-        plats = DictReader(fp, skipinitialspace=True)
-        plat_dict = {}
-        for row in plats:
-            plat_dict[row["Architecture"]] = row
-            add_platform(row["Architecture"], float(row['Mem BW']), row['Category'])
-    with open(appfile, "r") as fp:
-        perfs = reader(fp, skipinitialspace=True)
-        header = [x.strip() for x in next(perfs)]
-        for row in perfs:
-            if len(row) == 0:
-                break
-            plat = row[0]
-            for i, item in enumerate(row[1:]):
-                appname = header[i+1]
-                if appname not in apps:
-                    apps[appname] = app(appname)
-                if item.strip() == 'X':
-                    if throughput:
-                        item = 0.0
-                    else:
-                        item = "inf"
-                apps[appname].perfs[plat] = perf_entry(plat, float(item))
-    for p in list(platforms.values()):
-        p.best_bw = best_plat_perf(p.name, apps.values(), throughput)
-        if p.best_bw == 0.0:
-            del platforms[p.name]
-
-def get_effs(appfile, appname=None, throughput=False):
-    global apps
-    global platforms
-    load_app_perfs(appfile, appname, throughput)
-    res = {}
-    for name,theapp in apps.items():
-        res[name] = [x[1] for x in app_effs(theapp, list(platforms.keys()), throughput)]
-    return res
-
-def read_effs(appfile, skip_plats=False):
-    global apps
-    apps = {}
-    with open(appfile, "r") as fp:
-        perfs = reader(fp, skipinitialspace=True)
-        header = [x.strip() for x in next(perfs)]
-        for row in perfs:
-            plat = row[0]
-            for i, item in enumerate(row[1:]):
-                appname = header[i+1]
-                if appname not in apps:
-                    apps[appname] = []
-                if skip_plats:
-                    apps[appname].append(float(item)/100.0)
-                else:
-                    apps[appname].append((plat, float(item)/100.0))
-
-    return apps
-
-def app_effs(theapp, plats, throughput):
-    perfs = []
-    for p in plats:
-        if p in theapp.perfs:
-            perfs.append(theapp.perfs[p])
-    valid_perfs = []
-    for p in perfs:
-        if p.platform in plats:
-            if p.perf > 0 and p.perf != float("inf"):
-                valid_perfs.append((p, platforms[p.platform].app_eff(p.perf, throughput)))
-            else:
-                valid_perfs.append((p, 0.0))
-    return valid_perfs
 
 def gaussian(x):
     return 1.0/np.sqrt(2.0*np.pi)*np.exp(-0.5*x**2.0)
@@ -290,17 +155,15 @@ import matplotlib.gridspec as gridspec
 import matplotlib.patches as mpatches
 from pathlib import Path
 
-def plot_pdf(ax, app_eff, handles, plat_colors=None, symlog=True):
+def plot_pdf(ax, app_eff_df, handles, plat_colors=None, symlog=True):
     ax.set_aspect(0.15)
     if plat_colors is None:
         plat_colors = []
         qual_colormap = plt.get_cmap("tab10")
-        for i, name in enumerate(app_eff.keys()):
+        for i, name in enumerate(app_eff_df.columns[1:]):
             plat_colors.append((qual_colormap(i), name))
     for color, name in plat_colors:
-        if name not in app_eff:
-            continue
-        data  = app_eff[name]
+        data  = app_eff_df[name][1:]
         d = sorted(data)
         l_akde = akde(np.linspace(0,1,1000), d, 0.05)
         fs = l_akde.pdf_refine(10)
@@ -310,7 +173,7 @@ def plot_pdf(ax, app_eff, handles, plat_colors=None, symlog=True):
         if name not in handles:
             handles[name] = h
     if symlog:
-        plt.yscale('symlog', subsy=range(10))
+        plt.yscale('symlog', subs=range(10))
     else:
         ax.set_aspect(0.01)
     plt.grid(True)
@@ -342,7 +205,8 @@ def binplot(ax, app_effs, colordict=None):
     bins[0] = np.finfo(float).eps
     bins = np.append(np.zeros(1), bins)
     bar_data = {}
-    for name, data in app_effs:
+    for name in app_effs.columns[1:]:
+        data = app_effs[name]
         bar_data[name] = histogram(bins, data)
         bar_data[name] = bar_data[name] / bar_data[name].sum() * 100.0
 
@@ -378,32 +242,7 @@ def binplot(ax, app_effs, colordict=None):
     ax.set_xticklabels(labels, rotation=45, ha="right", rotation_mode="anchor")
     return handles
 
-def plot_bins(ax, app_eff, handles, plat_colors=None):
-    app_eff = app_eff
-    if plat_colors is None:
-        plat_colors = []
-        qual_colormap = plt.get_cmap("tab10")
-        for i, name in enumerate(app_eff.keys()):
-            plat_colors.append((qual_colormap(i), name))
-    width=0.1
-    bins= np.linspace(0,1,10)
-    plat_ct = len(plat_colors)
-    for idx, (color, name) in enumerate(plat_colors):
-        if name not in app_eff:
-            continue
-        data  = app_eff[name]
-        d = sorted(data)
-        histo = np.histogram(d, bins=bins, density=True)
-        h = ax.bar(histo[1][:-1] + idx*width/plat_ct, histo[0], width=width/plat_ct, color=color)
-        if name not in handles:
-            handles[name] = h
-    plt.grid(True)
-    plt.xlim([0,1])
-    ax.yaxis.grid(True, which='minor')
-    plt.ylabel("Density")
-    plt.xlabel("Efficiency")
-
-def plot_cascade(fig, gs, index, app_eff, appname, handles, app_colors=None, plat_colors=None):
+def plot_cascade(fig, gs, index, app_eff_df, appname, handles, app_colors=None, plat_colors=None):
     subgrid=gridspec.GridSpecFromSubplotSpec(2,1,subplot_spec=gs[index[0],index[1]],hspace=0, height_ratios=[5,1])
     qual_colormap = plt.get_cmap("tab10")
     ax2 = fig.add_subplot(subgrid[1,:])
@@ -412,14 +251,14 @@ def plot_cascade(fig, gs, index, app_eff, appname, handles, app_colors=None, pla
     if plat_colors is None:
         plat_colors = []
         qual_colormap = plt.get_cmap("tab10")
-        for i, name in enumerate(app_eff.keys()):
+        for i, name in  enumerate(app_eff_df.columns[1:]):
             plat_colors.append((qual_colormap(i), name))
 
     min_plat = None
     max_plat = None
     appinfo = {}
-    for i, (name, in_effs) in enumerate(app_eff):
-
+    for i, name in enumerate(app_eff_df.columns[1:]):
+        in_effs = list(zip(app_eff_df[app_eff_df.columns[0]], app_eff_df[name]))
         cascade = pp_cdf_raw_effs(in_effs)
 
         effs, pps, plats = zip(*cascade)
@@ -477,17 +316,11 @@ def plot_cascade(fig, gs, index, app_eff, appname, handles, app_colors=None, pla
     ax2.axvline(max_plat+0.5,color="black")
     ax.grid(True)
 
-def boxplot(ax, effs):
-    effs_names = []
-    effs_data = []
-    for e in effs:
-        effs_names.append(e[0])
-        effs_data.append(e[1])
-
-    ax.boxplot(effs_data, notch=False, whiskerprops=dict(color="#5799c6"), boxprops=dict(color="#5799c6"), medianprops = dict(linestyle='-',linewidth=3.0))
+def boxplot(ax, effs_pd):
+    ax.boxplot(effs_pd[effs_pd.columns[1:]].to_numpy(), notch=False, whiskerprops=dict(color="#5799c6"), boxprops=dict(color="#5799c6"), medianprops = dict(linestyle='-',linewidth=3.0))
     ax.set(ylabel='Efficiency')
     ax.grid(True)
-    labels=effs_names
+    labels=effs_pd.columns[1:].tolist()
     ax.set_xticklabels(labels, rotation=45, ha="right", rotation_mode="anchor")
     labels=ax.get_xticklabels()
     for i in range(len(labels)):
@@ -499,23 +332,24 @@ import sys
 if __name__ == '__main__':
     filename = sys.argv[1]
 
+    effs_df = app_effs(filename, raw_effs=False, throughput=True)
+    plats = effs_df[effs_df.columns[0]]
+
     # Eff. cascade
 
-    fig = plt.figure(figsize=(4, 4))
     plat_colors = {}
     plat_handles = []
-    synth_plats=[chr(x) for x in range(65, 75)]
     plat_cmap = plt.get_cmap("summer")
-    for i, p in enumerate(synth_plats):
-        plat_colors[p] = plat_cmap(float(i)/(len(synth_plats)-1))
+    for i, p in enumerate(plats):
+        plat_colors[p] = plat_cmap(float(i)/(len(plats)-1))
         plat_handles.append(mpatches.Patch(color=plat_colors[p], label=p))
 
+    fig = plt.figure(figsize=(4, 4))
     handles = {}
     gs = fig.add_gridspec(1,1)
     index = [0, 0]
-    app_eff = read_effs(filename)
-    app_eff = sorted(list(app_eff.items()), key=lambda x: harmean([i[1] for i in x[1]]))
-    plot_cascade(fig, gs, index, app_eff, None, handles, app_colors=None, plat_colors=plat_colors)
+
+    plot_cascade(fig, gs, index, effs_df, None, handles, app_colors=None, plat_colors=plat_colors)
 
     handle_names, handle_lists = zip(*handles.items())
     fig.legend(handle_lists, handle_names, loc='upper left', bbox_to_anchor=(1.0,1.0),ncol=1, handlelength=2.0)
@@ -527,8 +361,8 @@ if __name__ == '__main__':
 
     fig = plt.figure(figsize=(5, 4))
     ax = fig.add_subplot(1,1,1)
-    app_eff = read_effs(filename, skip_plats=True)
-    handles = plot_pdf(ax, app_eff, {}, symlog=True)
+
+    handles = plot_pdf(ax, effs_df, {}, symlog=True)
     plt.tight_layout(pad=0.4,w_pad=1.5, h_pad=0.5)
     plt.legend(loc= "upper center", handlelength=0.5, labels=handles)
     plt.savefig(f"{Path(filename).stem}_estimated_density_chart.pdf", bbox_inches="tight")
@@ -537,20 +371,16 @@ if __name__ == '__main__':
 
     fig = plt.figure(figsize=(5, 4))
     ax = fig.add_subplot(1,1,1)
-    app_eff = read_effs(filename, skip_plats=True)
-    app_eff = sorted(list(app_eff.items()), key=lambda x: harmean(x[1]))
-    boxplot(ax, app_eff)
+    boxplot(ax, effs_df)
     plt.tight_layout(pad=0.4,w_pad=1.5, h_pad=0.5)
     plt.savefig(f"{Path(filename).stem}_box_chart.pdf", bbox_inches="tight")
 
-    ## Bins
+    # Bins
 
     fig = plt.figure(figsize=(5, 4))
     ax = fig.add_subplot(1,1,1)
 
-    app_eff = read_effs(filename, skip_plats=True)
-    app_eff = sorted(list(app_eff.items()), key=lambda x: harmean(x[1]))
-    binplot(ax, app_eff, False)
+    binplot(ax, effs_df, False)
     L=plt.legend()
     texts = [ m.get_text().replace(r"\%", "%") for m in L.get_texts()]
     plt.tight_layout(pad=0.4,w_pad=1.5, h_pad=0.5)
