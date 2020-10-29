@@ -46,7 +46,6 @@ def app_effs(filename,
     zeros = df[df.columns[1:]].apply(count_zeros, axis=0)
     vals = pandas.DataFrame([harmean_vals, zeros]).sort_values(by=0, axis=1).sort_values(by=1, axis=1, ascending=False)
     df = df[df.columns.tolist()[:1] + vals.columns.tolist()]
-    print(df)
     return df
 
 
@@ -381,7 +380,7 @@ def plot_cascade(fig,
     ax2.axvline(min_plat - 0.5, color="black")
     ax2.axvline(max_plat + 0.5, color="black")
     ax.grid(True)
-
+    return ax
 
 def boxplot(ax, effs_pd):
     """Plot a a box-and-whisker plot of the dataframe effs_pd onto ax."""
