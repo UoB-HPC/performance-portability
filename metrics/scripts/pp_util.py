@@ -6,8 +6,20 @@ from pathlib import Path
 
 import pandas
 
+def count_zeros(col):
+    """Count zeros in column. Helper function to work around pandas weirdness."""
+    try:
+        return col.value_counts()[0.0]
+    except KeyError:
+        return 0
+
 def app_effs(filename, raw_effs=False, raw_effs_scaling=1/100.0, throughput=False):
-    df = pandas.read_csv(filename, na_values=['x','X'], skipinitialspace=True).fillna(0)
+    """Load a csv file. Assumes comma separation, and that first column is list of platforms.
+    Can interpret values as raw efficiencies, which are scaled from percentages by default.
+    Otherwise, computes application efficiencies, possibly intepreting as throughtput.
+    Sorts dataframe columns by harmonic mean of efficiencies (major) and by # of unsupported platforms (minor)."""
+
+    df = pandas.read_csv(filename, sep="\s*[,]\s*", na_values=[r'x',r'X'], skipinitialspace=True, engine='python')
     if not raw_effs:
         if throughput:
             df[df.columns[1:]]=df[df.columns[1:]].apply(lambda r: r/r.max(), axis=1)
@@ -15,14 +27,16 @@ def app_effs(filename, raw_effs=False, raw_effs_scaling=1/100.0, throughput=Fals
             df[df.columns[1:]]=df[df.columns[1:]].apply(lambda r: r.min()/r, axis=1)
     else:
         df[df.columns[1:]]=df[df.columns[1:]].applymap(lambda x: x*raw_effs_scaling)
-
+    df = df.fillna(0)
     harmean_vals = df[df.columns[1:]].apply(harmean, axis=0)
-    zeros = df[df.columns[1:]].apply(lambda x: x.value_counts()[0.0], axis=0)
+    zeros = df[df.columns[1:]].apply(count_zeros, axis=0)
     vals = pandas.DataFrame([harmean_vals,zeros]).sort_values(by=0, axis=1).sort_values(by=1, axis=1, ascending=False)
     df= df[df.columns.tolist()[:1] + vals.columns.tolist()]
+    print(df)
     return df
 
 def harmean(vals):
+    """Compute the harmonic mean of list-like vals. Special case for presence of 0: return 0."""
     try:
         s = sum((1.0/x for x in vals))
     except ZeroDivisionError:
@@ -30,24 +44,30 @@ def harmean(vals):
     return len(vals)/s
 
 def gaussian(x):
+    """Computes unit Gaussian."""
     return 1.0/np.sqrt(2.0*np.pi)*np.exp(-0.5*x**2.0)
 
 from scipy.special import erf
 from scipy.integrate import simps
 
 def gaussian_cdf(x):
+    """Cumulative distribution function of Gaussian."""
     return 0.5*(1.0+erf(x*2**-0.5))
 
 def gaussian_scaling(a, b):
+    """Factor needed to scale a unit Gaussian centered at 0 that is truncated into [a,b] back to unity."""
     return -2.0/(erf(a*2**-0.5)+erf(-b*2**-0.5))
 
 class gaussian_family:
+    """Describes the functions needed to perform kernel density estimation with Gaussians."""
     def __init__(self):
+        """Set Gaussian functions."""
         self.kernel_func = gaussian
         self.scaling_func = gaussian_scaling
         self.cdf_func = gaussian_cdf
 
 def bw_estimate(samples):
+    """Computes Abraham's bandwidth heuristic."""
     sigma = np.std(samples)
     cand = ((4*sigma**5.0)/(3.0*len(samples)))**(1.0/5.0)
     if cand < 1e-7:
@@ -55,7 +75,9 @@ def bw_estimate(samples):
     return cand
 
 class akde:
+    """Implements iterative 1D Adapative Kernel Density Estimation, keeping state between stages."""
     def __init__(self, x, samples, bw_fac):
+        """reconstruct on grid x, samples is list-like of samples from unknown distribution, bw_fac is scaling factor for reconstruction bandwidth."""
         self.clip = True
         self.kernel_family = gaussian_family()
         self.bw_fac = bw_fac
@@ -65,12 +87,14 @@ class akde:
         self.bw0 = bw_estimate(samples)
 
     def bw_estimate(self, lx):
+        """Choose reconstruction bandwidth to use a point lx. Use constant, initial input if no steps have been taken; otherwise use density estimation from last iterate."""
         if self.last_pdf is None:
             return self.bw0
 
         return self.bw_fac*(self.density_estimate(lx)**-0.5)
 
     def density_estimate(self, lx):
+        """Estimate density at point lx based on last iterate."""
         assert self.last_pdf is not None
 
         loc = np.searchsorted(self.x, lx)
@@ -80,6 +104,7 @@ class akde:
             return self.last_pdf[loc]
 
     def pdf(self):
+        """Compute a single step of adaptive density estimation using establish parameters. Return PDF and area estimate."""
         scaling_func = self.kernel_family.scaling_func
         kernel_func = self.kernel_family.kernel_func
         pdf = np.zeros(len(self.x))
@@ -95,10 +120,12 @@ class akde:
         self.last_pdf = pdf
         area = simps(pdf, self.x)
         if self.clip:
-            assert np.fabs(area-1.0) < 1e-3
+            if np.fabs(area-1.0) > 1e-3:
+                print(f"Warning: area under PDF is {area}; it should be (very) close to 1.0. This is likely sampling error.")
         return pdf, area
 
     def pdf_series(self, num):
+        """Compute num iterations of the kernel density estimation process, storing each intermediate."""
         self.last_pdf = None
         res = []
         for i in range(num):
@@ -107,42 +134,14 @@ class akde:
         return res
 
     def pdf_refine(self, num):
+        """Compute num iterations of the kernel density estimation process, storing only the final one."""
         self.last_pdf = None
         for i in range(num):
             pdf, area = self.pdf()
         return pdf
 
-    def cdf(self):
-        scaling_func = self.kernel_family.scaling_func
-        cdf_func = self.kernel_family.cdf_func
-        cdf = np.zeros(len(self.x))
-        for s in self.samples:
-            loc_h = self.bw_estimate(s)
-            if self.clip:
-                assert s >= self.x[0] and s <= self.x[-1]
-                scaling = scaling_func((self.x[0]-s)/loc_h, (self.x[-1]-s)/loc_h)
-            else:
-                scaling = 1.0
-            cdf +=  scaling * (cdf_func((self.x-s)/loc_h)-cdf_func((self.x[0]-s)/loc_h))
-        return cdf/len(self.samples)
-
-def pp_cdf(theapp, plats, throughput):
-    perfs = []
-    for p in plats:
-        if p in theapp.perfs:
-            perfs.append(theapp.perfs[p])
-    valid_perfs = []
-    for p in perfs:
-        if p.platform in plats:
-            if p.perf > 0 and p.perf != float("inf"):
-                valid_perfs.append((p, platforms[p.platform].app_eff(p.perf, throughput)))
-    sorted_perfs = sorted(valid_perfs, key=lambda x: x[1])
-    res = []
-    for i in range(len(sorted_perfs)):
-        res.append((sorted_perfs[i][1], harmean([x[1] for x in sorted_perfs[i:]]), sorted_perfs[i][0]))
-    return res
-
 def pp_cdf_raw_effs(theapp):
+    """Returns sorted subsequences and harmonic means of same."""
     valid_effs = [ x for x in theapp  if x[1] > 0 and x[1] != float("inf")]
     sorted_effs = sorted(valid_effs, key=lambda x: x[1])
     res = []
@@ -156,6 +155,10 @@ import matplotlib.patches as mpatches
 from pathlib import Path
 
 def plot_pdf(ax, app_eff_df, handles, plat_colors=None, symlog=True):
+    """Plot probability density estimation based on app_eff_df dataframe onto axis ax.
+    Add plot handles (for legend purposes) to handles if they are not already present.
+    Use order & colors found in list of (color, name) tuples if present, otherwise throw something together.
+    Use symlog y axis in if symlog is true; otherwise use linear."""
     ax.set_aspect(0.15)
     if plat_colors is None:
         plat_colors = []
@@ -184,8 +187,11 @@ def plot_pdf(ax, app_eff_df, handles, plat_colors=None, symlog=True):
     else:
         plt.ylabel("Density")
     plt.xlabel("Efficiency")
+    return handles
 
 def histogram(bins, data):
+    """Compute and return 1D histogram of samples in data into bins, where bins is a list of n boundaries for n+1 bins.
+    Drop samples that fall outside bins. Each bin counts the values at its right endpoint inclusively, except bin 0 which has both."""
     z= np.zeros(len(bins)-1)
     for d in data:
         if d < bins[0]:
@@ -198,9 +204,8 @@ def histogram(bins, data):
     return z
 
 def binplot(ax, app_effs, colordict=None):
-    # Group bar chart
-    # First manually bin the data
-    # First group should be zeros, then (0.0-10.0), [10.0-20.0), etc
+    """Compute and plot histogram of dataframe app_effs onto axis ax. Use colors for each column as specified in colordict or compute manually.
+    Bin 0 is handled specially and kept separate from others."""
     bins = np.arange(0,1.1,0.1, dtype=np.float)
     bins[0] = np.finfo(float).eps
     bins = np.append(np.zeros(1), bins)
@@ -242,7 +247,11 @@ def binplot(ax, app_effs, colordict=None):
     ax.set_xticklabels(labels, rotation=45, ha="right", rotation_mode="anchor")
     return handles
 
-def plot_cascade(fig, gs, index, app_eff_df, appname, handles, app_colors=None, plat_colors=None):
+def plot_cascade(fig, gs, index, app_eff_df, handles, app_colors=None, plat_colors=None):
+    """Plot efficiency cascade & platform chart on figure/gridspec fig/gs with gridspec index index.
+    app_eff_df is input dataframe. Handles is a dict of column names to handles for legends, which is updated.
+    app_colors is a dictionary of column names to colors; if not present, a heuristic is used.
+    plat_colors is a list of (color, platform_name) pairs to use in the platform chart. One is created if it is not passed in."""
     subgrid=gridspec.GridSpecFromSubplotSpec(2,1,subplot_spec=gs[index[0],index[1]],hspace=0, height_ratios=[5,1])
     qual_colormap = plt.get_cmap("tab10")
     ax2 = fig.add_subplot(subgrid[1,:])
@@ -317,6 +326,7 @@ def plot_cascade(fig, gs, index, app_eff_df, appname, handles, app_colors=None, 
     ax.grid(True)
 
 def boxplot(ax, effs_pd):
+    """Plot a a box-and-whisker plot of the dataframe effs_pd onto ax."""
     ax.boxplot(effs_pd[effs_pd.columns[1:]].to_numpy(), notch=False, whiskerprops=dict(color="#5799c6"), boxprops=dict(color="#5799c6"), medianprops = dict(linestyle='-',linewidth=3.0))
     ax.set(ylabel='Efficiency')
     ax.grid(True)
@@ -328,6 +338,7 @@ def boxplot(ax, effs_pd):
             labels[i].set_text(labels[i].get_text().replace(r"\%", "%"))
 
 def save_and_report(filename,exts):
+    """Save current figure to filename.exts for each extension in sequence exts. Also print progress."""
     for x in exts:
         of = f"{filename}.{x}"
         plt.savefig(of, bbox_inches="tight")
@@ -381,6 +392,7 @@ if __name__ == '__main__':
     for filename in args.csvfiles:
 
         effs_df = app_effs(filename, raw_effs=args.raw_effs, throughput=args.throughput)
+
         plats = effs_df[effs_df.columns[0]]
 
         output_base = args.oprefix + Path(filename).stem
@@ -399,9 +411,7 @@ if __name__ == '__main__':
             fig = plt.figure(figsize=(4, 4))
             handles = {}
             gs = fig.add_gridspec(1,1)
-            index = [0, 0]
-
-            plot_cascade(fig, gs, index, effs_df, None, handles, app_colors=None, plat_colors=plat_colors)
+            plot_cascade(fig, gs, [0,0], effs_df, handles, app_colors=None, plat_colors=plat_colors)
 
             handle_names, handle_lists = zip(*handles.items())
             fig.legend(handle_lists, handle_names, loc='upper left', bbox_to_anchor=(1.0,1.0),ncol=1, handlelength=2.0)
