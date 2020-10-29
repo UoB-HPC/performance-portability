@@ -15,19 +15,59 @@ The repository is arranged as follows:
         metrics/
             data/               # Collated benchmark data in csv files, to be fed to scripts
             scripts/            # Processing scripts
-                *.ipynb         # Jupyter Notebooks used to generate visualizations in paper & presentations
                 averages.py     # Compute different types of averages from datasets
-                binned_chart.py # Draw histograms from datasets
-                box_plot.py     # Draw box plots from datasets
-                calculator.py   # Compute PP scores and format tables
                 consistency.py  # Compute different types of variance/consistency-tracking scores from datasets
                 heatmap.py      # Draw efficiency heatmaps
-                pp_util.py      # Compute efficiencies and PP, contains adaptive kernel estimation computations
-                violin_plot.py  # Draw violin plots from datasets
+                pp_util.py      # Compute efficiency and PP, contains adaptive kernel estimation computations
+                *.ipynb
 
 ## Jupyter Notebooks ##
 
 [Jupyter](jupyter.org "Jupyter website") is a web-based interactive framework for developing and presenting code, images, and equations in an integrated fashion. The `.ipynb` files in this repository are Jupyter notebooks used to produce the figures in the paper and presentations.
+
+## `pp_vis.py` ##
+
+The `pp_vis.py` script contains implementations of the various visualization methods discussed in the companion paper. We hope it will prove useful to the community, both as a tool for evaluating datasets and as a springboard for new visualization and evaluation techniques.
+
+The script can be used as a module for more sophisticated usage (as in the companion Jupyter notebooks), and can be used from the command line to generate plots.
+
+This requires Python 3.7 or higher, Pandas 1.0 or higher, matplotlib, numpy, and scipy. These may be installed with pip or your local package manager.
+
+Command-line usage is self-documenting with the `$ ./pp_vis.py -h` option, but to get started with the example data, try this:
+
+    $ ./pp_vis.py --raw-effs -F pdf ../data/synthetic.csv
+    Wrote ./synthetic_eff_cascade.pdf.
+    Wrote ./synthetic_estimated_density_chart.pdf.
+    Wrote ./synthetic_box_chart.pdf.
+    Wrote ./synthetic_binned_chart.pdf.
+
+    $ ./pp_vis.py --throughput -F pdf ../data/babelstream.csv
+    Wrote ./babelstream_eff_cascade.pdf.
+    Wrote ./babelstream_estimated_density_chart.pdf.
+    Wrote ./babelstream_box_chart.pdf.
+    Wrote ./babelstream_binned_chart.pdf.
+
+    $ ./pp_vis.py -F pdf ../data/neutral.csv ../data/minifmm.csv ../data/tealeaf.csv ../data/cloverleaf.csv
+    Wrote ./neutral_eff_cascade.pdf.
+    Wrote ./neutral_estimated_density_chart.pdf.
+    Wrote ./neutral_box_chart.pdf.
+    Wrote ./neutral_binned_chart.pdf.
+    Wrote ./minifmm_eff_cascade.pdf.
+    Wrote ./minifmm_estimated_density_chart.pdf.
+    Wrote ./minifmm_box_chart.pdf.
+    Wrote ./minifmm_binned_chart.pdf.
+    Wrote ./tealeaf_eff_cascade.pdf.
+    Wrote ./tealeaf_estimated_density_chart.pdf.
+    Wrote ./tealeaf_box_chart.pdf.
+    Wrote ./tealeaf_binned_chart.pdf.
+    Wrote ./cloverleaf_eff_cascade.pdf.
+    Wrote ./cloverleaf_estimated_density_chart.pdf.
+    Wrote ./cloverleaf_box_chart.pdf.
+    Wrote ./cloverleaf_binned_chart.pdf.
+
+Data is expected to be in comma-separated csv format, with the first column being a list of platform names and each successive column the containing an application, with the results for each platform. An 'x' or 'X' may be used indicate that a platform did not run. By default, it is assumed that the input is in time-to-solution, but with the `--throughput` flag, this may be changed to be throughput. With the `--raw-effs` flag, the data is assumed to be in percentage efficiency already.
+
+Multiple csv files can be passed in at once; all options are applied to each input..
 
 ## For More Information
 

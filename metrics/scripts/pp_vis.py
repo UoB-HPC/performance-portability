@@ -1,3 +1,4 @@
+#!/usr/bin/env python3.7
 # Copyright (c) 2020 Performance Portability authors
 # SPDX-License-Identifier: MIT
 
@@ -424,7 +425,7 @@ if __name__ == '__main__':
                         default=False,
                         help='Interpret csv contents as raw efficiencies.')
     parser.add_argument("-t",
-                        "--thoughput",
+                        "--throughput",
                         dest='throughput',
                         action='store_true',
                         default=False,
@@ -433,7 +434,7 @@ if __name__ == '__main__':
                         "--output-prefix",
                         dest='oprefix',
                         action='store',
-                        default=".",
+                        default="./",
                         help='Write output files with a specific prefix')
     parser.add_argument("-F",
                         "--ofile-format",
