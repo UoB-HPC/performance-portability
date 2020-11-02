@@ -32,20 +32,24 @@ def app_effs(filename,
 
     df = pandas.read_csv(filename,
                          sep=r"\s*[,]\s*",
-                         na_values=[r'x',r'X'],
+                         na_values=[r'x', r'X'],
                          skipinitialspace=True,
                          engine='python')
     if not raw_effs:
         if throughput:
-            df[df.columns[1:]] = df[df.columns[1:]].apply(lambda r: r / r.max(), axis=1)
+            df[df.columns[1:]] = df[df.columns[1:]].apply(
+                lambda r: r / r.max(), axis=1)
         else:
-            df[df.columns[1:]] = df[df.columns[1:]].apply(lambda r: r.min() / r, axis=1)
+            df[df.columns[1:]] = df[df.columns[1:]].apply(
+                lambda r: r.min() / r, axis=1)
     else:
-        df[df.columns[1:]] = df[df.columns[1:]].applymap(lambda x: x * raw_effs_scaling)
+        df[df.columns[1:]] = df[df.columns[1:]].applymap(
+            lambda x: x * raw_effs_scaling)
     df = df.fillna(0)
     harmean_vals = df[df.columns[1:]].apply(harmean, axis=0)
     zeros = df[df.columns[1:]].apply(count_zeros, axis=0)
-    vals = pandas.DataFrame([harmean_vals, zeros]).sort_values(by=0, axis=1).sort_values(by=1, axis=1, ascending=False)
+    vals = pandas.DataFrame([harmean_vals, zeros]).sort_values(
+        by=0, axis=1).sort_values(by=1, axis=1, ascending=False)
     df = df[df.columns.tolist()[:1] + vals.columns.tolist()]
     return df
 
@@ -132,7 +136,8 @@ class akde:
             loc_h = self.bw_estimate(s)
             if self.clip:
                 assert s >= self.x[0] and s <= self.x[-1]
-                scaling = scaling_func((self.x[0] - s) / loc_h, (self.x[-1] - s) / loc_h)
+                scaling = scaling_func(
+                    (self.x[0] - s) / loc_h, (self.x[-1] - s) / loc_h)
             else:
                 scaling = 1.0
             pdf += 1.0 / loc_h * scaling * kernel_func((self.x - s) / loc_h)
@@ -141,7 +146,8 @@ class akde:
         area = simps(pdf, self.x)
         if self.clip:
             if np.fabs(area - 1.0) > 1e-3:
-                print(f"Warning: area under PDF is {area}; it should be (very) close to 1.0. This is likely sampling error.")
+                print(
+                    f"Warning: area under PDF is {area}; it should be (very) close to 1.0. This is likely sampling error.")
         return pdf, area
 
     def pdf_series(self, num):
@@ -167,7 +173,8 @@ def pp_cdf_raw_effs(theapp):
     sorted_effs = sorted(valid_effs, key=lambda x: x[1])
     res = []
     for i in range(len(sorted_effs)):
-        res.append((sorted_effs[i][1], harmean([x[1] for x in sorted_effs[i:]]), sorted_effs[i][0]))
+        res.append((sorted_effs[i][1], harmean([x[1]
+                                                for x in sorted_effs[i:]]), sorted_effs[i][0]))
     return res
 
 
@@ -193,7 +200,7 @@ def plot_pdf(ax, app_eff_df, handles, plat_colors=None, symlog=True):
                     extended_y,
                     label=name,
                     color=color,
-                clip_on=False)[0]
+                    clip_on=False)[0]
         if name not in handles:
             handles[name] = h
     if symlog:
@@ -285,10 +292,8 @@ def plot_cascade(fig,
     app_eff_df is input dataframe. Handles is a dict of column names to handles for legends, which is updated.
     app_colors is a dictionary of column names to colors; if not present, a heuristic is used.
     plat_colors is a list of (color, platform_name) pairs to use in the platform chart. One is created if it is not passed in."""
-    subgrid = gridspec.GridSpecFromSubplotSpec(2, 1,
-                                               subplot_spec=gs[index[0], index[1]],
-                                               hspace=0,
-                                               height_ratios=[5, 1])
+    subgrid = gridspec.GridSpecFromSubplotSpec(
+        2, 1, subplot_spec=gs[index[0], index[1]], hspace=0, height_ratios=[5, 1])
     qual_colormap = plt.get_cmap("tab10")
     ax2 = fig.add_subplot(subgrid[1, :])
     ax = fig.add_subplot(subgrid[0, :], sharex=ax2)
@@ -303,7 +308,8 @@ def plot_cascade(fig,
     max_plat = None
     appinfo = {}
     for i, name in enumerate(app_eff_df.columns[1:]):
-        in_effs = list(zip(app_eff_df[app_eff_df.columns[0]], app_eff_df[name]))
+        in_effs = list(
+            zip(app_eff_df[app_eff_df.columns[0]], app_eff_df[name]))
         cascade = pp_cdf_raw_effs(in_effs)
 
         effs, pps, plats = zip(*cascade)
@@ -382,6 +388,7 @@ def plot_cascade(fig,
     ax2.axvline(max_plat + 0.5, color="black")
     ax.grid(True)
     return ax
+
 
 def boxplot(ax, effs_pd):
     """Plot a a box-and-whisker plot of the dataframe effs_pd onto ax."""
@@ -487,7 +494,7 @@ if __name__ == '__main__':
 
         effs_df = app_effs(filename,
                            raw_effs=args.raw_effs,
-                        throughput=args.throughput)
+                           throughput=args.throughput)
 
         plats = effs_df[effs_df.columns[0]]
 
@@ -515,12 +522,12 @@ if __name__ == '__main__':
             fig.legend(handle_lists,
                        handle_names,
                        loc='upper left',
-                       bbox_to_anchor=(1.0,1.0),
+                       bbox_to_anchor=(1.0, 1.0),
                        ncol=1,
                        handlelength=2.0)
             fig.legend(handles=plat_handles,
                        loc='lower left',
-                       bbox_to_anchor=(1.0,0.1),
+                       bbox_to_anchor=(1.0, 0.1),
                        ncol=3,
                        handlelength=1.0)
             plt.tight_layout(pad=0.4, w_pad=0.5, h_pad=1.0)
