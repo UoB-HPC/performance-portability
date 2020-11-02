@@ -121,8 +121,7 @@ data = pd.read_csv(
 data = data.replace(r'^X', np.nan, regex=True)
 
 # Make sure the data is all floating point
-data[list(data.columns[1:])] = data[list(
-    data.columns[1:])].apply(pd.to_numeric)
+data[list(data.columns[1:])] = data[list(data.columns[1:])].apply(pd.to_numeric)
 
 
 print(data)

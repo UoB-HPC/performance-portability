@@ -136,8 +136,7 @@ class akde:
             loc_h = self.bw_estimate(s)
             if self.clip:
                 assert s >= self.x[0] and s <= self.x[-1]
-                scaling = scaling_func(
-                    (self.x[0] - s) / loc_h, (self.x[-1] - s) / loc_h)
+                scaling = scaling_func((self.x[0] - s) / loc_h, (self.x[-1] - s) / loc_h)
             else:
                 scaling = 1.0
             pdf += 1.0 / loc_h * scaling * kernel_func((self.x - s) / loc_h)
@@ -173,8 +172,7 @@ def pp_cdf_raw_effs(theapp):
     sorted_effs = sorted(valid_effs, key=lambda x: x[1])
     res = []
     for i in range(len(sorted_effs)):
-        res.append((sorted_effs[i][1], harmean([x[1]
-                                                for x in sorted_effs[i:]]), sorted_effs[i][0]))
+        res.append((sorted_effs[i][1], harmean([x[1] for x in sorted_effs[i:]]), sorted_effs[i][0]))
     return res
 
 
@@ -308,8 +306,7 @@ def plot_cascade(fig,
     max_plat = None
     appinfo = {}
     for i, name in enumerate(app_eff_df.columns[1:]):
-        in_effs = list(
-            zip(app_eff_df[app_eff_df.columns[0]], app_eff_df[name]))
+        in_effs = list(zip(app_eff_df[app_eff_df.columns[0]], app_eff_df[name]))
         cascade = pp_cdf_raw_effs(in_effs)
 
         effs, pps, plats = zip(*cascade)
