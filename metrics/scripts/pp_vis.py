@@ -143,10 +143,8 @@ class akde:
         pdf = pdf / len(self.samples)
         self.last_pdf = pdf
         area = simps(pdf, self.x)
-        if self.clip:
-            if np.fabs(area - 1.0) > 1e-3:
-                print(
-                    f"Warning: area under PDF is {area}; it should be (very) close to 1.0. This is likely sampling error.")
+        if self.clip and np.fabs(area - 1.0) > 1e-3:
+            print(f"Warning: area under PDF is {area}; it should be very close to 1.0. This is likely sampling error.")
         return pdf, area
 
     def pdf_series(self, num):
