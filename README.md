@@ -1,5 +1,5 @@
-Performance Portability Utilities
-=================================
+Bristol HPC Performance Portability Studies
+===========================================
 
 This repository contains various data, scripts, and utilities for the study of performance portability (and productivity). It began with a collaboration between researchers at the University of Bristol and at Intel, and it is the original authors' hope that this material will help others in their exploration of this growing area of interest.  We welcome contributions!
 
@@ -69,7 +69,7 @@ Data is expected to be in comma-separated csv format, with the first column bein
 
 Multiple csv files can be passed in at once; all options are applied to each input..
 
-## For More Information
+## Citing
 
 The performance portability metric computed by these scripts was first proposed in the following two papers:
 - S.J. Pennycook, J.D. Sewall and V.W. Lee, "[A Metric for Performance Portability](https://arxiv.org/abs/1611.07409)", in Proceedings of the 7th International Workshop in Performance Modeling, Benchmarking and Simulation of High Performance Computer Systems (PMBS), 2016
@@ -77,3 +77,5 @@ The performance portability metric computed by these scripts was first proposed 
 
 The datasets used here were originally collected for the following paper, which also served as the inspiration for the efficiency cascade plots:
 - T. Deakin et al., "[Performance Portability Across Diverse Computer Architectures](https://doi.org/10.1109/P3HPC49587.2019.00006)", in Proceedings of the 2019 IEEE/ACM International Workshop on Performance, Portability and Productivity in HPC (P3HPC), 2019
+- T. Deakin, A. Poenaru, T. Lin, and S. McIntosh-Smith, "Tracking Performance Portability on the Yellow Brick Road to Exascale" in Proceedings of the 2020 IEEE/ACM International Workshop on Performance, Portability and Productivity in HPC (P3HPC), 2020 (in press).
+HPC (P3HPC), 2019
