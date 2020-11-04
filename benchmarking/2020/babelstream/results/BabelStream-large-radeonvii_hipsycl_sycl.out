@@ -1,0 +1,17 @@
+Tue 18 Aug 14:31:08 BST 2020
+BabelStream
+Version: 3.4
+Implementation: SYCL
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using SYCL device Vega 20
+Driver: hipSYCL 0.8.1-prerelease on HIP/CUDA 19361
+Reduction kernel config: 240 groups of size 1024
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        824688.084  0.01042     0.01053     0.01045     
+Mul         823523.716  0.01043     0.01095     0.01048     
+Add         808594.670  0.01593     0.01614     0.01598     
+Triad       809769.616  0.01591     0.01607     0.01595     
+Dot         692245.055  0.01241     0.01277     0.01259     

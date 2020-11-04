@@ -1,0 +1,17 @@
+Wed 15 Jul 03:29:18 GMT 2020
+BabelStream
+Version: 3.4
+Implementation: OpenCL
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Using OpenCL device Tesla P100-PCIE-16GB
+Driver: 440.64.00
+Reduction kernel config: 224 groups of size 1024
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        540276.817  0.00099     0.00103     0.00100     
+Mul         537455.126  0.00100     0.00101     0.00100     
+Add         555294.089  0.00145     0.00146     0.00146     
+Triad       552291.631  0.00146     0.00148     0.00146     
+Dot         585098.855  0.00092     0.00093     0.00092     

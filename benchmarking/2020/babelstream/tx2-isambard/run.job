@@ -1,0 +1,18 @@
+#!/bin/bash
+#PBS -q arm
+#PBS -l select=1:ncpus=64
+#PBS -l walltime=00:15:00
+#PBS -joe
+
+cd $RUN_DIR
+date
+# Best performance observed when only running 16 cores per socket.
+export OMP_NUM_THREADS=64
+export OMP_PROC_BIND=true
+export OMP_PLACES=cores
+
+if [ "$CONFIG" == "tx2_llvm-10.0_ocl" ]; then
+  aprun -n 1 -d 64 -j 1 -cc none taskset -c 0-63 ./$BENCHMARK_EXE
+else
+  aprun -n 1 -d 64 -cc depth ./$BENCHMARK_EXE
+fi

@@ -65,3 +65,9 @@ Dual-socket Intel Xeon Platinum 8176 (Skylake) 28-core @ 2.1 GHz, with 192 GB of
 **skl-horizon:**
 Internal system provided by Cray.
 Dual-socket Intel Xeon Gold 6148 (Skylake) 20-core @ 2.4 GHz, with 192 GB of DDR4-2666 memory.
+
+## Citing
+
+Please use the following citation to reference this work:
+
+> T. Deakin et al., "Performance Portability across Diverse Computer Architectures," 2019 IEEE/ACM International Workshop on Performance, Portability and Productivity in HPC (P3HPC), Denver, CO, USA, 2019, pp. 1-13, doi: 10.1109/P3HPC49587.2019.00006

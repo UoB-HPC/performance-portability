@@ -1,0 +1,136 @@
+diff --git a/OMPStream.cpp b/OMPStream.cpp
+index e10c8c1..2cf2d93 100644
+--- a/OMPStream.cpp
++++ b/OMPStream.cpp
+@@ -14,7 +14,7 @@
+ template <class T>
+ OMPStream<T>::OMPStream(const unsigned int ARRAY_SIZE, T *a, T *b, T *c, int device)
+ {
+-  array_size = ARRAY_SIZE;
++  array_size = static_cast<int>(ARRAY_SIZE);
+ 
+ #ifdef OMP_TARGET_GPU
+   omp_set_default_device(device);
+@@ -60,6 +60,9 @@ void OMPStream<T>::init_arrays(T initA, T initB, T initC)
+   T *c = this->c;
+   #pragma omp target teams distribute parallel for simd
+ #else
++  T * __restrict a = this->a;
++  T * __restrict b = this->b;
++  T * __restrict c = this->c;
+   #pragma omp parallel for
+ #endif
+   for (int i = 0; i < array_size; i++)
+@@ -85,6 +88,9 @@ void OMPStream<T>::read_arrays(std::vector<T>& h_a, std::vector<T>& h_b, std::ve
+   #pragma omp target update from(a[0:array_size], b[0:array_size], c[0:array_size])
+   {}
+ #else
++  T * __restrict a = this->a;
++  T * __restrict b = this->b;
++  T * __restrict c = this->c;
+   #pragma omp parallel for
+   for (int i = 0; i < array_size; i++)
+   {
+@@ -104,6 +110,8 @@ void OMPStream<T>::copy()
+   T *c = this->c;
+   #pragma omp target teams distribute parallel for simd
+ #else
++  const T * __restrict a = this->a;
++  T * __restrict c = this->c;
+   #pragma omp parallel for
+ #endif
+   for (int i = 0; i < array_size; i++)
+@@ -128,6 +136,8 @@ void OMPStream<T>::mul()
+   T *c = this->c;
+   #pragma omp target teams distribute parallel for simd
+ #else
++  T * __restrict b = this->b;
++  const T * __restrict c = this->c;
+   #pragma omp parallel for
+ #endif
+   for (int i = 0; i < array_size; i++)
+@@ -151,6 +161,9 @@ void OMPStream<T>::add()
+   T *c = this->c;
+   #pragma omp target teams distribute parallel for simd
+ #else
++  const T * __restrict a = this->a;
++  const T * __restrict b = this->b;
++  T * __restrict c = this->c;
+   #pragma omp parallel for
+ #endif
+   for (int i = 0; i < array_size; i++)
+@@ -176,6 +189,9 @@ void OMPStream<T>::triad()
+   T *c = this->c;
+   #pragma omp target teams distribute parallel for simd
+ #else
++  T * __restrict a = this->a;
++  const T * __restrict b = this->b;
++  const T * __restrict c = this->c;
+   #pragma omp parallel for
+ #endif
+   for (int i = 0; i < array_size; i++)
+@@ -200,6 +216,8 @@ T OMPStream<T>::dot()
+   T *b = this->b;
+   #pragma omp target teams distribute parallel for simd map(tofrom: sum) reduction(+:sum)
+ #else
++  const T * __restrict a = this->a;
++  const T * __restrict b = this->b;
+   #pragma omp parallel for reduction(+:sum)
+ #endif
+   for (int i = 0; i < array_size; i++)
+diff --git a/OMPStream.h b/OMPStream.h
+index c475274..6db6362 100644
+--- a/OMPStream.h
++++ b/OMPStream.h
+@@ -21,12 +21,12 @@ class OMPStream : public Stream<T>
+ {
+   protected:
+     // Size of arrays
+-    unsigned int array_size;
++    int array_size;
+ 
+     // Device side pointers
+-    T *a;
+-    T *b;
+-    T *c;
++    T * a;
++    T * b;
++    T * c;
+ 
+   public:
+     OMPStream(const unsigned int, T*, T*, T*, int);
+diff --git a/main.cpp b/main.cpp
+index f006f8c..d36305d 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -128,10 +128,6 @@ void run()
+ 
+   }
+ 
+-  // Create host vectors
+-  std::vector<T> a(ARRAY_SIZE);
+-  std::vector<T> b(ARRAY_SIZE);
+-  std::vector<T> c(ARRAY_SIZE);
+ 
+   // Result of the Dot kernel
+   T sum;
+@@ -172,7 +168,7 @@ void run()
+ 
+ #elif defined(OMP)
+   // Use the OpenMP implementation
+-  stream = new OMPStream<T>(ARRAY_SIZE, a.data(), b.data(), c.data(), deviceIndex);
++  stream = new OMPStream<T>(ARRAY_SIZE, nullptr,nullptr,nullptr,/*a.data(), b.data(), c.data(), */deviceIndex);
+ 
+ #endif
+ 
+@@ -219,6 +215,10 @@ void run()
+ 
+   }
+ 
++  // Create host vectors
++  std::vector<T> a(ARRAY_SIZE);
++  std::vector<T> b(ARRAY_SIZE);
++  std::vector<T> c(ARRAY_SIZE);
+   // Check solutions
+   stream->read_arrays(a, b, c);
+   check_solution<T>(num_times, a, b, c, sum);

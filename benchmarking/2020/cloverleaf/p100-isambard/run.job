@@ -1,0 +1,46 @@
+#!/bin/bash
+#PBS -q pascalq
+#PBS -l select=1
+#PBS -l walltime=00:30:00
+#PBS -l place=excl
+#PBS -joe
+
+set -eu
+
+cd "$RUN_DIR"
+
+if [ "$MODEL" != "ocl" ]; then
+  cp "$SRC_DIR/InputDecks/clover_bm16.in" "$RUN_DIR/clover.in"
+else
+  cp "$SRC_DIR/clover_bm16.in" "$RUN_DIR/clover.in"
+fi
+
+date
+#export OMP_NUM_THREADS=1
+
+case "$MODEL" in
+
+  omp-target)
+      "./$BENCHMARK_EXE"
+      ;;
+
+  acc)
+      mpirun -np 1 "./$BENCHMARK_EXE"
+      ;;
+
+  sycl)
+      mpirun -np 1 "./$BENCHMARK_EXE" --file clover.in
+      ;;
+
+  ocl=)
+      # Make sure OCL_SRC_PREFIX is set so the kernel source files can be found
+      export OCL_SRC_PREFIX=../CloverLeaf_OpenCL
+      "./$BENCHMARK_EXE"
+      ;;
+
+  *)
+      "./$BENCHMARK_EXE"
+      ;;
+esac
+
+

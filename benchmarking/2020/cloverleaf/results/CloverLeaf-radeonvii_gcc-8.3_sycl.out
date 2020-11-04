@@ -1,0 +1,31 @@
+Thu  3 Sep 17:16:06 BST 2020
+
+Clover Version 1.300
+Kokkos Version
+Task Count 1
+
+Output file clover.out opened. All output will go there.
+Detected SYCL devices:
+  0. Vega 20(gpu)
+Using SYCL device: Vega 20(gpu)
+Args: --file clover.in
+Using input: `clover.in`
+Launching hydro
+ Step 1 time 0 control sound timestep  0.00154065 1,1 x 6.92264e-310 y 6.92264e-310
+Wall clock 0.0770369
+Average time per cell 5.2244e-09
+Step time per cell    5.22433e-09
+### HCC STATUS_CHECK Error: HSA_STATUS_ERROR_INVALID_ALLOCATION (0x1003) at file:mcwamp_hsa.cpp line:1194
+[node30:07988] *** Process received signal ***
+[node30:07988] Signal: Aborted (6)
+[node30:07988] Signal code:  (-6)
+[node30:07988] [ 0] /lib64/libpthread.so.0(+0xf5d0)[0x7f6f3beda5d0]
+[node30:07988] [ 1] /lib64/libc.so.6(gsignal+0x37)[0x7f6f3bb342c7]
+[node30:07988] [ 2] /lib64/libc.so.6(abort+0x148)[0x7f6f3bb359b8]
+[node30:07988] [ 3] /opt/rocm/lib/libmcwamp_hsa.so.2.9(+0x5c654)[0x7f6f38c0f654]
+[node30:07988] [ 4] /opt/rocm/hsa/lib/libhsa-runtime64.so.1(+0x26fcf)[0x7f6f3d3c1fcf]
+[node30:07988] [ 5] /opt/rocm/hsa/lib/libhsa-runtime64.so.1(+0x4c71b)[0x7f6f3d3e771b]
+[node30:07988] [ 6] /opt/rocm/hsa/lib/libhsa-runtime64.so.1(+0x13087)[0x7f6f3d3ae087]
+[node30:07988] [ 7] /lib64/libpthread.so.0(+0x7dd5)[0x7f6f3bed2dd5]
+[node30:07988] [ 8] /lib64/libc.so.6(clone+0x6d)[0x7f6f3bbfc02d]
+[node30:07988] *** End of error message ***

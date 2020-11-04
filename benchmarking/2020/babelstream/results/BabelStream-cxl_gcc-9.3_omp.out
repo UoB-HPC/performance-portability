@@ -1,0 +1,15 @@
+Fri 31 Jul 05:39:30 CDT 2020
+BabelStream
+Version: 3.4
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        139039.802  0.00386     0.00390     0.00388     
+Mul         133558.716  0.00402     0.00407     0.00404     
+Add         158333.411  0.00509     0.00513     0.00511     
+Triad       159421.654  0.00505     0.00511     0.00507     
+Dot         208430.503  0.00258     0.00271     0.00261     
+Application 6382336 resources: utime ~84s, stime ~2s, Rss ~1571060, inblocks ~0, outblocks ~0

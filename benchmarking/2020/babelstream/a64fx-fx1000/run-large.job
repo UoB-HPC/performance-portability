@@ -1,0 +1,17 @@
+#!/bin/bash
+
+
+OUTPUT_DIR="$PWD"
+cd "$RUN_DIR"
+date > "$OUTPUT_DIR/BabelStream-large-$CONFIG.out"
+
+export OMP_NUM_THREADS=48
+if ! [ "$MODEL" = sycl ]; then
+    export OMP_PROC_BIND=true
+    export OMP_PLACES="{12}:48:1"
+    export XOS_MMM_L_PAGING_POLICY=demand:demand:demand
+fi
+
+
+"./$BENCHMARK_EXE" --arraysize $((2 ** 29)) >> "$OUTPUT_DIR/BabelStream-large-$CONFIG.out" 2>&1
+

@@ -1,0 +1,16 @@
+Wed 15 Jul 02:02:31 UTC 2020
+BabelStream
+Version: 3.4
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Validation failed on sum. Error 3.74494e-06
+Sum was 636.65659245871 but should be 636.656588713774
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        170435.126  0.05040     0.10855     0.06109     
+Mul         172367.861  0.04983     0.15374     0.06385     
+Add         162009.322  0.07953     0.17357     0.09208     
+Triad       163175.130  0.07896     0.15553     0.09144     
+Dot         276165.980  0.03110     0.11178     0.04540     

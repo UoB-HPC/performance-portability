@@ -1,0 +1,18 @@
+Wed  5 Aug 08:42:41 BST 2020
+BabelStream
+Version: 3.4
+Implementation: OpenACC
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+
+libgomp: while loading libgomp-plugin-nvptx.so.1: libcuda.so.1: cannot open shared object file: No such file or directory
+Validation failed on sum. Error 4.80798e-08
+Sum was 636.656592386002 but should be 636.656592434082
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        146323.743  0.05870     0.05927     0.05895     
+Mul         119217.545  0.07205     0.07237     0.07221     
+Add         116440.671  0.11066     0.11157     0.11104     
+Triad       104605.364  0.12318     0.12412     0.12367     
+Dot         34778.057   0.24699     0.25510     0.25271     

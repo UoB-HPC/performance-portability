@@ -76,6 +76,6 @@ The performance portability metric computed by these scripts was first proposed 
 - S.J. Pennycook, J.D. Sewall and V.W. Lee, "[Implications of a Metric for Performance Portability](https://doi.org/10.1016/j.future.2017.08.007)", in Future Generation Computer Systems, Volume 92, March 2019, Pages 947-958
 
 The datasets used here were originally collected for the following paper, which also served as the inspiration for the efficiency cascade plots:
-- T. Deakin et al., "[Performance Portability Across Diverse Computer Architectures](https://doi.org/10.1109/P3HPC49587.2019.00006)", in Proceedings of the 2019 IEEE/ACM International Workshop on Performance, Portability and Productivity in HPC (P3HPC), 2019
+- T. Deakin et al., "[Performance Portability Across Diverse Computer Architectures](https://doi.org/10.1109/P3HPC49587.2019.00006)", in Proceedings of the 2019 IEEE/ACM International Workshop on Performance, Portability and Productivity in HPC (P3HPC), 2019.
 - T. Deakin, A. Poenaru, T. Lin, and S. McIntosh-Smith, "Tracking Performance Portability on the Yellow Brick Road to Exascale" in Proceedings of the 2020 IEEE/ACM International Workshop on Performance, Portability and Productivity in HPC (P3HPC), 2020 (in press).
-HPC (P3HPC), 2019
+
