@@ -19,6 +19,10 @@ setup_env() {
       module load gcc/9.3.0
       MAKE_OPTS='COMPILER=GNU ARCH=skylake-avx512'
       ;;
+    gcc-10.2)
+      module load gcc/10.2.0
+      MAKE_OPTS='COMPILER=GNU ARCH=skylake-avx512'
+      ;;
     intel-2019)
       module load intel-parallel-studio-xe/compilers/64/2019u4/19.0.4
       MAKE_OPTS='COMPILER=INTEL ARCH=skylake-avx512'
@@ -38,7 +42,7 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="cce-10.0 gcc-9.3 intel-2019"
+export COMPILERS="cce-10.0 gcc-9.3 gcc-10.2 intel-2019"
 export DEFAULT_COMPILER="cce-10.0"
 export MODELS="omp kokkos"
 export DEFAULT_MODEL="omp"
