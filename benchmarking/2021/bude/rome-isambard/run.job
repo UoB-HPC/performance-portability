@@ -1,0 +1,24 @@
+#!/bin/bash
+#PBS -q romeq
+#PBS -l select=1:ncpus=128
+#PBS -l walltime=00:10:00
+#PBS -joe
+
+cd "$RUN_DIR" || exit 2
+
+export OMP_NUM_THREADS=128 OMP_PLACES=cores OMP_PROC_BIND=spread
+date
+
+case "$MODEL" in
+    omp)
+        "./$BENCHMARK_EXE" -n 65536 -i 8
+        ;;
+    kokkos|sycl)
+        echo "$MODEL is not implemented" && exit 99
+        ;;
+    *)
+        echo "Unknown run configuration for model '$MODEL'"
+        exit 1
+        ;;
+esac
+
