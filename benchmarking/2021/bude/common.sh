@@ -4,13 +4,22 @@ set -eu
 set -o pipefail
 
 function loadOneAPI() {
-  module load gcc/9.3.0
+  if [ -z "${1:-}" ]; then
+    echo "${FUNCNAME[0]}: Usage: ${FUNCNAME[0]} /path/to/oneapi/source.sh"
+    echo "No OneAPI path provided. Stop."
+    exit 5
+  fi
+
+  local oneapi_env="${1}"
+
   set +u # setvars can't handle unbound vars
-  CURRENT_SCRIPT_DIR=$SCRIPT_DIR # save current script dir as the setvars overwrites it
+  CURRENT_SCRIPT_DIR="$SCRIPT_DIR" # save current script dir as the setvars overwrites it
+
   # their script also terminates the shell for some reason so we short-circuit it first
-  source /lustre/projects/bristol/modules/intel/oneapi/setvars.sh  --force || true 
+  source "$oneapi_env"  --force || true
+
   set -u
-  SCRIPT_DIR=$CURRENT_SCRIPT_DIR #recover script dir 
+  SCRIPT_DIR="$CURRENT_SCRIPT_DIR" #recover script dir
 }
 
 function usage() {
@@ -144,9 +153,9 @@ cd "$SRC_DIR"
 
 # Handle actions
 if [ "$action" == "build" ]; then
-  
+
   rm -f "$BENCHMARK_EXE"
-  if [ "$USE_CMAKE" = true ]; then 
+  if [ "$USE_CMAKE" = true ]; then
 
     echo "Using opts: ${MAKE_OPTS}"
     rm -rf build
@@ -154,8 +163,8 @@ if [ "$action" == "build" ]; then
     cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release "${CMAKE_OPTS[@]}"
     cmake --build build --target bude --config Release -j "$(nproc)"
     mv build/bude "$BENCHMARK_EXE"
-    
-  else 
+
+  else
     make clean
     if ! eval make -B "$MAKE_OPTS" -j; then
       echo
