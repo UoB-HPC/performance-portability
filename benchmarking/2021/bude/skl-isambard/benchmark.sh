@@ -63,6 +63,6 @@ export COMPILERS="cce-10.0 gcc-9.3 intel-2019 oneapi-2021.1-beta10 hipsycl-46bc9
 export DEFAULT_COMPILER="cce-10.0"
 export MODELS="omp kokkos sycl"
 export DEFAULT_MODEL="omp"
-export PLATFORM="cxl-isambard"
+export PLATFORM="skl-isambard"
 
 bash "$PLATFORM_DIR/../common.sh" "$@"

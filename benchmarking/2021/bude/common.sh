@@ -3,6 +3,16 @@
 set -eu
 set -o pipefail
 
+function loadOneAPI() {
+  module load gcc/9.3.0
+  set +u # setvars can't handle unbound vars
+  CURRENT_SCRIPT_DIR=$SCRIPT_DIR # save current script dir as the setvars overwrites it
+  # their script also terminates the shell for some reason so we short-circuit it first
+  source /lustre/projects/bristol/modules/intel/oneapi/setvars.sh  --force || true 
+  set -u
+  SCRIPT_DIR=$CURRENT_SCRIPT_DIR #recover script dir 
+}
+
 function usage() {
   echo
   echo "Usage: ./benchmark.sh build|run [MODEL] [COMPILER]"
@@ -30,6 +40,7 @@ function usage() {
   echo
   echo "  sycl"
   echo "    hipsycl-200527-gcc"
+  echo "    oneapi-2021.1-beta10"
   echo
   echo "Selected platform: $PLATFORM"
   echo "  Compilers available: $COMPILERS"
@@ -66,6 +77,7 @@ export BENCHMARK_EXE="bude_$CONFIG"
 # Set up the environment
 setup_env
 
+USE_CMAKE=false
 # Setup model
 case "$MODEL" in
   omp)
@@ -104,7 +116,9 @@ case "$MODEL" in
     ;;
 
   sycl)
-    echo "$MODEL is not implemented" && exit 99
+    SRC_DIR+="/sycl"
+    RUN_DIR="$SRC_DIR"
+    USE_CMAKE=true
     ;;
 
   *)
@@ -117,7 +131,7 @@ esac
 
 # Fetch source
 if [ ! -e bude-portability-benchmark/openmp/bude.c ]; then
-  if ! git clone https://github.com/UoB-HPC/bude-portability-benchmark; then
+  if ! git clone https://github.com/UoB-HPC/bude-portability-benchmark.git; then
     echo
     echo "Failed to fetch source code."
     echo
@@ -129,16 +143,27 @@ cd "$SRC_DIR"
 
 # Handle actions
 if [ "$action" == "build" ]; then
-  make clean
+  
   rm -f "$BENCHMARK_EXE"
+  if [ "$USE_CMAKE" = true ]; then 
 
-  if ! eval make -B "$MAKE_OPTS" -j; then
-    echo
-    echo "Build failed."
-    echo
-    exit 1
+    echo "Using opts: ${MAKE_OPTS}"
+    rm -rf build
+    read -ra CMAKE_OPTS <<<"${MAKE_OPTS}" # explicit word splitting
+    cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release "${CMAKE_OPTS[@]}"
+    cmake --build build --target bude --config Release -j "$(nproc)"
+    mv build/bude "$BENCHMARK_EXE"
+    
+  else 
+    make clean
+    if ! eval make -B "$MAKE_OPTS" -j; then
+      echo
+      echo "Build failed."
+      echo
+      exit 1
+    fi
+    mv bude "$BENCHMARK_EXE"
   fi
-  mv bude "$BENCHMARK_EXE"
 elif [ "$action" == "run" ]; then
   # Check binary exists
   if [ ! -x "$BENCHMARK_EXE" ]; then
@@ -147,7 +172,7 @@ elif [ "$action" == "run" ]; then
     exit 1
   fi
 
-  qsub -o "bude-$CONFIG.out" -N bude -V "$SCRIPT_DIR/run.job"
+  qsub -o "bude-$CONFIG.out" -e "bude-$CONFIG.err" -N "bude-$CONFIG" -V "$SCRIPT_DIR/run.job"
 else
   echo
   echo "Invalid action (use 'build' or 'run')."
