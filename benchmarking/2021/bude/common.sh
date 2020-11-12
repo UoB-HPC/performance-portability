@@ -22,6 +22,7 @@ function usage() {
   echo "    arm-20.0"
   echo "    cce-10.0"
   echo "    gcc-9.3"
+  echo "    gcc-10.2"
   echo
   echo "  omp-target"
   echo "    cce-10.0"
