@@ -30,8 +30,11 @@ function usage() {
   echo "  omp"
   echo "    arm-20.0"
   echo "    cce-10.0"
+  echo "    cce-sve-10.0"
+  echo "    gcc-8.1"
   echo "    gcc-9.3"
   echo "    gcc-10.2"
+  echo "    gcc-11.0"
   echo
   echo "  omp-target"
   echo "    cce-10.0"
