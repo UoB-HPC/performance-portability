@@ -9,7 +9,7 @@ cd "$RUN_DIR" || exit 2
 date
 
 case "$MODEL" in
-    omp-target|ocl|cuda)
+    omp-target|ocl|cuda|acc)
         "./$BENCHMARK_EXE" -n 65536 -i 8
         ;;
     kokkos|sycl)

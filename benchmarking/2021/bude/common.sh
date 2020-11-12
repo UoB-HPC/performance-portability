@@ -46,6 +46,10 @@ function usage() {
   echo "  cuda"
   echo "    gcc-8.1"
   echo
+  echo "  acc"
+  echo "    cce-9.1-classic"
+  echo "    pgi-19.10"
+  echo
   echo "  kokkos"
   echo "    arm-20.0"
   echo "    cce-10.0"
@@ -122,6 +126,16 @@ case "$MODEL" in
     SRC_DIR+="/cuda"
     RUN_DIR="$SRC_DIR"
     MAKE_OPTS+=" COMPILER=GNU"
+    ;;
+
+  acc)
+    if [[ ! "$COMPILER" =~ (cce-9.1-classic|pgi-19.10) ]]; then
+      echo "Model '$MODEL' can only be used with compilers: cce-9.1-classic pgi-19.10."
+      exit 3
+    fi
+
+    SRC_DIR+="/openacc"
+    RUN_DIR="$SRC_DIR"
     ;;
 
   kokkos)
