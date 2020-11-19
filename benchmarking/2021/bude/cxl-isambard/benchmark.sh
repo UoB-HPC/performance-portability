@@ -32,7 +32,7 @@ setup_env() {
       loadOneAPI /lustre/projects/bristol/modules/intel/oneapi/setvars.sh
       module load cmake/3.18.3
       MAKE_OPTS=" -DSYCL_RUNTIME=DPCPP"
-      MAKE_OPTS+=" -DNUM_TD_PER_THREAD=16"
+      MAKE_OPTS+=" -DNUM_TD_PER_THREAD=2"
       MAKE_OPTS+=" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
       MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=--gcc-toolchain=/cm/local/apps/gcc/8.2.0"
       ;;
