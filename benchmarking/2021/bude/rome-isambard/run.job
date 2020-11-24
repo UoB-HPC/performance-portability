@@ -4,17 +4,24 @@
 #PBS -l walltime=00:10:00
 #PBS -joe
 
+set -eu
+
 cd "$RUN_DIR" || exit 2
 
 export OMP_NUM_THREADS=128 OMP_PLACES=cores OMP_PROC_BIND=spread
 date
 
+params=( -n 65536 -i 8 --deck ../data/bm1 )
+
 case "$MODEL" in
     omp)
-        "./$BENCHMARK_EXE" -n 65536 -i 8
+        "./$BENCHMARK_EXE" "${params[@]}"
         ;;
-    kokkos|sycl)
+    kokkos)
         echo "$MODEL is not implemented" && exit 99
+        ;;
+    sycl)
+        "./$BENCHMARK_EXE" "${params[@]}" --device AMD  --wgsize 64
         ;;
     *)
         echo "Unknown run configuration for model '$MODEL'"
