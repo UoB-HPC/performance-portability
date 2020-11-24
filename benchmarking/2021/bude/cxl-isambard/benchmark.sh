@@ -49,6 +49,21 @@ setup_env() {
       MAKE_OPTS+=" -DHIPSYCL_PLATFORM=cpu"
       MAKE_OPTS+=" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
       ;;
+    computecpp-2.1.1)
+      module load gcc/8.2.0
+      loadOneAPI /lustre/projects/bristol/modules/intel/oneapi/setvars.sh # for the Intel OpenCL libs
+      module load computecpp/2.1.1
+      module load cmake/3.18.3
+      COMPUTECPP_PATH="$(realpath "$(dirname "$(which compute++)")"/..)"
+      INTEL_OCL_LIB_PATH="$(realpath "$(dirname "$(which icc)")"/../..)/lib/libOpenCL.so.1"
+      echo "Using COMPUTECPP_PATH=${COMPUTECPP_PATH}"
+      echo "Using INTEL_OCL_LIB_PATH=${INTEL_OCL_LIB_PATH}"
+      MAKE_OPTS=" -DSYCL_RUNTIME=COMPUTECPP"
+      MAKE_OPTS+=" -DNUM_TD_PER_THREAD=2"
+      MAKE_OPTS+=" -DComputeCpp_DIR=$COMPUTECPP_PATH"
+      MAKE_OPTS+=" -DOpenCL_LIBRARY=${INTEL_OCL_LIB_PATH}"
+      MAKE_OPTS+=" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
+      ;;
     *)
       echo
       echo "Invalid compiler '$COMPILER'."
@@ -64,7 +79,7 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="cce-10.0 gcc-9.3 gcc-10.2 intel-2019 oneapi-2021.1-beta10 hipsycl-46bc9bd"
+export COMPILERS="cce-10.0 gcc-9.3 gcc-10.2 intel-2019 oneapi-2021.1-beta10 hipsycl-46bc9bd computecpp-2.1.1"
 export DEFAULT_COMPILER="cce-10.0"
 export MODELS="omp kokkos sycl"
 export DEFAULT_MODEL="omp"
