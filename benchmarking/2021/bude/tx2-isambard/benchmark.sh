@@ -23,7 +23,7 @@ setup_env() {
     hipsycl-201124-gcc9.3)
       module swap PrgEnv-{cray,gnu}
       module load hipsycl/cc320b6-201124/gcc-9.3
-      MAKE_OPTS='-DSYCL_RUNTIME=HIPSYCL-NEXT -DHIPSYCL_INSTALL_DIR=/lustre/projects/bristol/modules-arm-phase2/hipsycl/cc320b6-201124-gcc9.3 -DHIPSYCL_PLATFORM=cpu -DNUM_TD_PER_THREAD=16 -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++'
+      MAKE_OPTS='-DSYCL_RUNTIME=HIPSYCL-NEXT -DHIPSYCL_INSTALL_DIR=/lustre/projects/bristol/modules-arm-phase2/hipsycl/cc320b6-201124-gcc9.3 -DHIPSYCL_PLATFORM=cpu -DNUM_TD_PER_THREAD=32 -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++'
       ;;
     *)
       echo

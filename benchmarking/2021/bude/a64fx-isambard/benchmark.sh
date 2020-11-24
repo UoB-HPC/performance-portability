@@ -28,6 +28,11 @@ setup_env() {
       module load gcc/11-20201025
       MAKE_OPTS='COMPILER=GNU WGSIZE=128'
       ;;
+    hipsycl-201124-gcc11.0)
+      module load hipsycl/cc320b6-201124/gcc-11.0
+      module load cmake
+      MAKE_OPTS='-DSYCL_RUNTIME=HIPSYCL-NEXT -DHIPSYCL_INSTALL_DIR=/lustre/projects/bristol/modules-a64fx/hipsycl/cc320b6-201124/gcc-11.0 -DHIPSYCL_PLATFORM=cpu -DNUM_TD_PER_THREAD=128 -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++'
+      ;;
     *)
       echo
       echo "Invalid compiler '$COMPILER'."
@@ -43,9 +48,9 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="cce-10.0 cce-sve-10.0 gcc-8.1 gcc-11.0"
+export COMPILERS="cce-10.0 cce-sve-10.0 gcc-8.1 gcc-11.0 hipsycl-201124-gcc11.0"
 export DEFAULT_COMPILER="cce-sve-10.0"
-export MODELS="omp"
+export MODELS="omp sycl"
 export DEFAULT_MODEL="omp"
 export PLATFORM="a64fx-isambard"
 
