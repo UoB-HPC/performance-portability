@@ -17,9 +17,11 @@ case "$MODEL" in
             aprun -n 1 -d 64 "./$BENCHMARK_EXE"
         fi
         ;;
-    kokkos|sycl)
+    sycl)
+        OMP_PLACES=cores OMP_PROC_BIND=spread aprun -n 1 -d 64 -cc none "./$BENCHMARK_EXE" --deck "$SRC_DIR/../data/bm1"
+        ;;
+    kokkos)
         echo "$MODEL is not implemented" && exit 99
-        OMP_PLACES=cores OMP_PROC_BIND=spread aprun -n 1 -d 64 -cc none "./$BENCHMARK_EXE"
         ;;
     *)
         echo "Unknown run configuration for model '$MODEL'"

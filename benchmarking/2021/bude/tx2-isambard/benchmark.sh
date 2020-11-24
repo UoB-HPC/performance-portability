@@ -20,10 +20,10 @@ setup_env() {
       module swap allinea allinea/20.0.0.0
       MAKE_OPTS='COMPILER=ARM'
       ;;
-    hipsycl-200527-gcc)
-      echo "$COMPILER is not implemented" && exit 99
+    hipsycl-201124-gcc9.3)
       module swap PrgEnv-{cray,gnu}
-      module load hipsycl/gcc/200527
+      module load hipsycl/cc320b6-201124/gcc-9.3
+      MAKE_OPTS='-DSYCL_RUNTIME=HIPSYCL-NEXT -DHIPSYCL_INSTALL_DIR=/lustre/projects/bristol/modules-arm-phase2/hipsycl/cc320b6-201124-gcc9.3 -DHIPSYCL_PLATFORM=cpu -DNUM_TD_PER_THREAD=16 -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++'
       ;;
     *)
       echo
@@ -40,7 +40,7 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="cce-10.0 gcc-9.3 arm-20.0 hipsycl-200527-gcc"
+export COMPILERS="cce-10.0 gcc-9.3 arm-20.0 hipsycl-201124-gcc9.3"
 export DEFAULT_COMPILER="cce-10.0"
 export MODELS="omp kokkos sycl"
 export DEFAULT_MODEL="omp"

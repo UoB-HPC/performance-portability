@@ -56,7 +56,7 @@ function usage() {
   echo "    gcc-9.3"
   echo
   echo "  sycl"
-  echo "    hipsycl-200527-gcc"
+  echo "    hipsycl-201124-gcc9.3"
   echo "    oneapi-2021.1-beta10"
   echo
   echo "Selected platform: $PLATFORM"
