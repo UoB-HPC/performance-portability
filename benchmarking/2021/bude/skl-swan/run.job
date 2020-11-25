@@ -21,7 +21,12 @@ case "$MODEL" in
         echo "$MODEL is not implemented" && exit 99
         ;;
     sycl)
-        aprun -n 1 -d 56 -j 1 -cc none  "./$BENCHMARK_EXE" "${params[@]}" --device "Platinum 8176"  --wgsize 32
+        if [[ "$COMPILER" =~ hipsycl-* ]]; then
+            export OMP_NUM_THREADS=56 OMP_PLACES=cores OMP_PROC_BIND=true
+            aprun -n 1 -d 56 -j 1 -cc none  "./$BENCHMARK_EXE" "${params[@]}" --wgsize 16
+        else
+            aprun -n 1 -d 56 -j 1 -cc none  "./$BENCHMARK_EXE" "${params[@]}" --device "Platinum 8176"  --wgsize 32
+        fi
         ;;
     *)
         echo "Unknown run configuration for model '$MODEL'"

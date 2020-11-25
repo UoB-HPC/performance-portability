@@ -4,12 +4,8 @@
 set -eu
 
 setup_env() {
-  # if ! grep -q bristol/modules/ <<<"$MODULEPATH"; then
-  #   module use /lustre/projects/bristol/modules/modulefiles
-  # fi
-
-  # Load TomD's stuff which contains cmake
   module use /lus/scratch/p02639/modulefiles
+  module use /lus/snx11029/p02508-modules/modulefiles
   
   case "$COMPILER" in
     cce-10.0)
@@ -32,17 +28,17 @@ setup_env() {
       module load gcc/9.3.0
       MAKE_OPTS=" -DSYCL_RUNTIME=DPCPP"
       MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=-mtune=skylake-avx512"
-      MAKE_OPTS+=" -DNUM_TD_PER_THREAD=4"
+      MAKE_OPTS+=" -DNUM_TD_PER_THREAD=2"
       MAKE_OPTS+=" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
       ;;  
-    hipsycl-46bc9bd)
-      # FIXME 46bc9bd is the head of the stable branch and it still can't handle local_ptr overloads
-      # dev branch compiles but it's fairly volatile there
-      module load hipsycl/46bc9bd
+    hipsycl-cc320b6)
+      module swap PrgEnv-{cray,gnu}
+      module swap gcc gcc/10.1.0
+      module load cmake/3.18.2
+      module load hipsycl/cc320b6-201124/gcc-10.1
       HIPSYCL_PATH="$(realpath "$(dirname "$(which syclcc)")"/..)"
-      module load cmake/3.18.3 gcc/8.2.0
       echo "Using HIPSYCL_PATH=${HIPSYCL_PATH}"
-      MAKE_OPTS=" -DSYCL_RUNTIME=HIPSYCL"
+      MAKE_OPTS=" -DSYCL_RUNTIME=HIPSYCL-NEXT"
       MAKE_OPTS+=" -DNUM_TD_PER_THREAD=16"
       MAKE_OPTS+=" -DHIPSYCL_INSTALL_DIR=$HIPSYCL_PATH"
       MAKE_OPTS+=" -DHIPSYCL_PLATFORM=cpu"
@@ -77,7 +73,7 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="cce-10.0 gcc-9.3 intel-2019 oneapi-2021.1-beta10 hipsycl-46bc9bd computecpp-2.1.1"
+export COMPILERS="cce-10.0 gcc-9.3 intel-2019 oneapi-2021.1-beta10 computecpp-2.1.1 hipsycl-cc320b6"
 export DEFAULT_COMPILER="cce-10.0"
 export MODELS="omp kokkos sycl"
 export DEFAULT_MODEL="omp"
