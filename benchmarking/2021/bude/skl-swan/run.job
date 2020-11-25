@@ -1,0 +1,31 @@
+#!/bin/bash
+#PBS -q sk56
+#PBS -l select=1
+#PBS -l walltime=00:10:00
+#PBS -joe
+set -eu
+
+cd "$RUN_DIR" || exit 2
+
+
+date
+
+params=( -n 65536 -i 8 --deck ../data/bm1 )
+
+case "$MODEL" in
+    omp)
+        export OMP_NUM_THREADS=56 OMP_PLACES=cores OMP_PROC_BIND=true
+        aprun -n 1 -d 56 -j 1 -cc depth "./$BENCHMARK_EXE" "${params[@]}"
+        ;;
+    kokkos)
+        echo "$MODEL is not implemented" && exit 99
+        ;;
+    sycl)
+        aprun -n 1 -d 56 -j 1 -cc none  "./$BENCHMARK_EXE" "${params[@]}" --device "Platinum 8176"  --wgsize 32
+        ;;
+    *)
+        echo "Unknown run configuration for model '$MODEL'"
+        exit 1
+        ;;
+esac
+
