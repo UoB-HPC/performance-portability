@@ -30,10 +30,7 @@ setup_env() {
       loadOneAPI /lus/scratch/wlin/intel/oneapi/setvars.sh 
       module load cmake/3.18.2
       module load gcc/9.3.0
-      module load intel-opencl-experimental
-      INTEL_OCL_LIB_PATH="/lus/scratch/p02639/bin/oclcpuexp_2020.10.7.0.15/x64/libintelocl.so"
       MAKE_OPTS=" -DSYCL_RUNTIME=DPCPP"
-      MAKE_OPTS+=" -DOpenCL_LIBRARY=${INTEL_OCL_LIB_PATH}"
       MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=-mtune=skylake-avx512"
       MAKE_OPTS+=" -DNUM_TD_PER_THREAD=4"
       MAKE_OPTS+=" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
