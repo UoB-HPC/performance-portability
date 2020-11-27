@@ -21,7 +21,7 @@ case "$MODEL" in
         echo "$MODEL is not implemented" && exit 99
         ;;
     sycl)
-        "./$BENCHMARK_EXE" "${params[@]}" --device 1  --wgsize 32
+        "./$BENCHMARK_EXE" "${params[@]}" --device Xeon  --wgsize 32
         ;;
     *)
         echo "Unknown run configuration for model '$MODEL'"
