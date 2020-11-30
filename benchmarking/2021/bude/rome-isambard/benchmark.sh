@@ -13,16 +13,19 @@ setup_env() {
       module load PrgEnv-cray
       module swap cce cce/10.0.0
       module swap craype-{broadwell,x86-rome}
+      KOKKOS_ARCH="ZEN2"
       MAKE_OPTS='COMPILER=CLANG CC=cc ARCH=znver2'
       MAKE_OPTS+=' WGSIZE=512'
       ;;
     gcc-9.3)
       module load gcc/9.3.0
+      KOKKOS_ARCH="ZEN2"
       MAKE_OPTS='COMPILER=GNU ARCH=znver2'
       MAKE_OPTS+=' WGSIZE=512'
       ;;
     gcc-10.2)
       module load gcc/10.2.0
+      KOKKOS_ARCH="ZEN2"
       MAKE_OPTS='COMPILER=GNU ARCH=znver2'
       MAKE_OPTS+=' WGSIZE=512'
       ;;
@@ -85,7 +88,7 @@ export SCRIPT_DIR PLATFORM_DIR
 
 export COMPILERS="cce-10.0 gcc-9.3 gcc-10.2 intel-2019 oneapi-2021.1-beta10 hipsycl-46bc9bd computecpp-2.1.1"
 export DEFAULT_COMPILER="cce-10.0"
-export MODELS="omp kokkos sycl"
+export MODELS="omp kokkos sycl kokkos"
 export DEFAULT_MODEL="omp"
 export PLATFORM="rome-isambard"
 

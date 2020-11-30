@@ -18,7 +18,7 @@ case "$MODEL" in
         "./$BENCHMARK_EXE" "${params[@]}"
         ;;
     kokkos)
-        echo "$MODEL is not implemented" && exit 99
+        "./$BENCHMARK_EXE" "${params[@]}"
         ;;
     sycl)
         "./$BENCHMARK_EXE" "${params[@]}" --device Xeon  --wgsize 32

@@ -54,6 +54,7 @@ function usage() {
   echo "    arm-20.0"
   echo "    cce-10.0"
   echo "    gcc-9.3"
+  echo "    gcc-10.2"
   echo
   echo "  sycl"
   echo "    hipsycl-201124-gcc9.3"
@@ -139,9 +140,51 @@ case "$MODEL" in
     ;;
 
   kokkos)
-    echo "$MODEL is not implemented" && exit 99
-    ;;
+    SRC_DIR+="/kokkos"
+    RUN_DIR="$SRC_DIR"
+    USE_CMAKE=true
+    module load cmake/3.18.3
+    
+    KOKKOS_VER="3.2.01"
+    KOKKOS_DIR="$(realpath kokkos-$KOKKOS_VER)"
+    echo "Using Kokkos src $KOKKOS_DIR"
 
+    if [ ! -e "$KOKKOS_DIR" ]; then
+       wget https://github.com/kokkos/kokkos/archive/3.2.01.tar.gz
+       tar -xf "$KOKKOS_VER.tar.gz"
+       rm "$KOKKOS_VER.tar.gz"
+    fi
+
+    # We're using CMake with in-tree Kokkos here
+    # So let's wipe out the existing make flags
+    MAKE_OPTS="-DKOKKOS_IN_TREE=$KOKKOS_DIR"
+    MAKE_OPTS+=" -DKokkos_ENABLE_OPENMP=ON"
+    MAKE_OPTS+=" -DWG_SIZE=128"
+
+    if [ ! -z "$KOKKOS_ARCH" ]; then
+      echo "Using Kokkos arch=$KOKKOS_ARCH"
+      MAKE_OPTS+=" -DKokkos_ARCH_$KOKKOS_ARCH=ON"
+    else
+      echo "KOKKOS_ARCH was not specified, this should be done in the setup_env() part of the script but wasn't"
+      exit 1
+    fi
+
+
+    case "$COMPILER" in
+      cce-*)
+        module load gcc/8.2.0 # this is only for libstd++, the compilers are still CC
+        MAKE_OPTS+=" -DCMAKE_C_COMPILER=cc -DCMAKE_CXX_COMPILER=CC"
+      ;;
+      gcc-*)
+        MAKE_OPTS+=" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
+      ;;
+      *)
+        echo "Cannot use '$COMPILER' with Kokkos."
+        usage
+        exit 1
+      ;;
+    esac
+    ;;
   sycl)
     SRC_DIR+="/sycl"
     RUN_DIR="$SRC_DIR"
