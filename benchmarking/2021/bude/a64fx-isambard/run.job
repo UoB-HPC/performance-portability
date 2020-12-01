@@ -15,7 +15,7 @@ case "$MODEL" in
     omp)
         "./$BENCHMARK_EXE"
         ;;
-    sycl)
+    sycl|kokkos)
         "./$BENCHMARK_EXE" --deck "$SRC_DIR/../data/bm1"
         ;;
     *)

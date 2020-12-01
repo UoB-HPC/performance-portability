@@ -18,7 +18,8 @@ case "$MODEL" in
         aprun -n 1 -d 56 -j 1 -cc depth "./$BENCHMARK_EXE" "${params[@]}"
         ;;
     kokkos)
-        echo "$MODEL is not implemented" && exit 99
+        export OMP_NUM_THREADS=56 OMP_PLACES=cores OMP_PROC_BIND=true
+        aprun -n 1 -d 56 -j 1 -cc none  "./$BENCHMARK_EXE" "${params[@]}"
         ;;
     sycl)
         if [[ "$COMPILER" =~ hipsycl-* ]]; then

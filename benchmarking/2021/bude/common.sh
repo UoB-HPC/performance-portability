@@ -143,8 +143,7 @@ case "$MODEL" in
     SRC_DIR+="/kokkos"
     RUN_DIR="$SRC_DIR"
     USE_CMAKE=true
-    module load cmake/3.18.3
-    
+
     KOKKOS_VER="3.2.01"
     KOKKOS_DIR="$(realpath kokkos-$KOKKOS_VER)"
     echo "Using Kokkos src $KOKKOS_DIR"
@@ -159,9 +158,10 @@ case "$MODEL" in
     # So let's wipe out the existing make flags
     MAKE_OPTS="-DKOKKOS_IN_TREE=$KOKKOS_DIR"
     MAKE_OPTS+=" -DKokkos_ENABLE_OPENMP=ON"
-    MAKE_OPTS+=" -DWG_SIZE=128"
+    MAKE_OPTS+=" -DWG_SIZE=$KOKKOS_WGSIZE"
+    MAKE_OPTS+=" ${KOKKOS_EXTRA_FLAGS+-DCXX_EXTRA_FLAGS='$KOKKOS_EXTRA_FLAGS'}"
 
-    if [ ! -z "$KOKKOS_ARCH" ]; then
+    if [ -n "${KOKKOS_ARCH:-}" ]; then
       echo "Using Kokkos arch=$KOKKOS_ARCH"
       MAKE_OPTS+=" -DKokkos_ARCH_$KOKKOS_ARCH=ON"
     else

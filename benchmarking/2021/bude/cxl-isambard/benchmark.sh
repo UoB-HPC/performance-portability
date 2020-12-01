@@ -8,22 +8,21 @@ setup_env() {
     module use /lustre/projects/bristol/modules/modulefiles
   fi
 
+  module load cmake/3.18.3
+
   case "$COMPILER" in
     cce-10.0)
       module load PrgEnv-cray
       module swap cce cce/10.0.0
       module swap craype-{broadwell,x86-skylake}
-      KOKKOS_ARCH="SKX"
       MAKE_OPTS='COMPILER=CLANG CC=cc ARCH=skylake-avx512'
       ;;
     gcc-9.3)
       module load gcc/9.3.0
-      KOKKOS_ARCH="SKX"
       MAKE_OPTS='COMPILER=GNU ARCH=skylake-avx512'
       ;;
     gcc-10.2)
       module load gcc/10.2.0
-      KOKKOS_ARCH="SKX"
       MAKE_OPTS='COMPILER=GNU ARCH=skylake-avx512'
       ;;
     intel-2019)
@@ -33,7 +32,6 @@ setup_env() {
     oneapi-2021.1-beta10)
       module load gcc/8.2.0
       loadOneAPI /lustre/projects/bristol/modules/intel/oneapi/setvars.sh
-      module load cmake/3.18.3
       MAKE_OPTS=" -DSYCL_RUNTIME=DPCPP"
       MAKE_OPTS+=" -DNUM_TD_PER_THREAD=2"
       MAKE_OPTS+=" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
@@ -44,7 +42,7 @@ setup_env() {
       # dev branch compiles but it's fairly volatile there
       module load hipsycl/46bc9bd
       HIPSYCL_PATH="$(realpath "$(dirname "$(which syclcc)")"/..)"
-      module load cmake/3.18.3 gcc/8.2.0
+      module load gcc/8.2.0
       echo "Using HIPSYCL_PATH=${HIPSYCL_PATH}"
       MAKE_OPTS=" -DSYCL_RUNTIME=HIPSYCL"
       MAKE_OPTS+=" -DNUM_TD_PER_THREAD=16"
@@ -56,7 +54,6 @@ setup_env() {
       module load gcc/8.2.0
       loadOneAPI /lustre/projects/bristol/modules/intel/oneapi/setvars.sh # for the Intel OpenCL libs
       module load computecpp/2.1.1
-      module load cmake/3.18.3
       COMPUTECPP_PATH="$(realpath "$(dirname "$(which compute++)")"/..)"
       INTEL_OCL_LIB_PATH="$(realpath "$(dirname "$(which icc)")"/../..)/lib/libOpenCL.so.1"
       echo "Using COMPUTECPP_PATH=${COMPUTECPP_PATH}"
@@ -87,5 +84,9 @@ export DEFAULT_COMPILER="cce-10.0"
 export MODELS="omp kokkos sycl kokkos"
 export DEFAULT_MODEL="omp"
 export PLATFORM="cxl-isambard"
+
+export KOKKOS_ARCH="SKX"
+export KOKKOS_WGSIZE="128"
+export KOKKOS_EXTRA_FLAGS="-march=skylake-avx512"
 
 bash "$PLATFORM_DIR/../common.sh" "$@"
