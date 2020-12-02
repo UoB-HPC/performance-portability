@@ -1,6 +1,6 @@
 #!/bin/bash
 #PBS -q sk56
-#PBS -l select=1
+#PBS -l select=1,place=excl
 #PBS -l walltime=00:10:00
 #PBS -joe
 set -eu
