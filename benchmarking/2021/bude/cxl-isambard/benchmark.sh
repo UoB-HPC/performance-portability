@@ -37,14 +37,12 @@ setup_env() {
       MAKE_OPTS+=" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
       MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=--gcc-toolchain=/cm/local/apps/gcc/8.2.0"
       ;;
-    hipsycl-46bc9bd)
-      # FIXME 46bc9bd is the head of the stable branch and it still can't handle local_ptr overloads
-      # dev branch compiles but it's fairly volatile there
-      module load hipsycl/46bc9bd
+    hipsycl-b13c71f)
+      module load cmake/3.18.3  
+      module load gcc/10.2.0 boost/1.73.0/gcc-10.2.0 hipsycl/b13c71f/gcc-10.2.0
       HIPSYCL_PATH="$(realpath "$(dirname "$(which syclcc)")"/..)"
-      module load gcc/8.2.0
       echo "Using HIPSYCL_PATH=${HIPSYCL_PATH}"
-      MAKE_OPTS=" -DSYCL_RUNTIME=HIPSYCL"
+      MAKE_OPTS=" -DSYCL_RUNTIME=HIPSYCL-NEXT"
       MAKE_OPTS+=" -DNUM_TD_PER_THREAD=16"
       MAKE_OPTS+=" -DHIPSYCL_INSTALL_DIR=$HIPSYCL_PATH"
       MAKE_OPTS+=" -DHIPSYCL_PLATFORM=cpu"
@@ -79,7 +77,7 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="cce-10.0 gcc-9.3 gcc-10.2 intel-2019 oneapi-2021.1-beta10 hipsycl-46bc9bd computecpp-2.1.1"
+export COMPILERS="cce-10.0 gcc-9.3 gcc-10.2 intel-2019 oneapi-2021.1-beta10 hipsycl-b13c71f computecpp-2.1.1"
 export DEFAULT_COMPILER="cce-10.0"
 export MODELS="omp kokkos sycl kokkos"
 export DEFAULT_MODEL="omp"

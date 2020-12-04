@@ -201,7 +201,7 @@ esac
 
 # Fetch source
 if [ ! -e bude-portability-benchmark/openmp/bude.c ]; then
-  if ! git clone https://github.com/UoB-HPC/bude-portability-benchmark.git; then
+  if ! git clone -b timing https://github.com/UoB-HPC/bude-portability-benchmark.git; then
     echo
     echo "Failed to fetch source code."
     echo
