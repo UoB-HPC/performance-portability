@@ -89,8 +89,9 @@ export MODELS="omp kokkos sycl kokkos"
 export DEFAULT_MODEL="omp"
 export PLATFORM="rome-isambard"
 
+export KOKKOS_BACKEND="OPENMP"
 export KOKKOS_ARCH="ZEN2"
 export KOKKOS_WGSIZE="512"
-export KOKKOS_EXTRA_FLAGS="-march=znver2"
+export KOKKOS_EXTRA_FLAGS="-Ofast -march=znver2"
 
 bash "$PLATFORM_DIR/../common.sh" "$@"

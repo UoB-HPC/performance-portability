@@ -83,8 +83,9 @@ export MODELS="omp kokkos sycl kokkos"
 export DEFAULT_MODEL="omp"
 export PLATFORM="cxl-isambard"
 
+export KOKKOS_BACKEND="OPENMP"
 export KOKKOS_ARCH="SKX"
 export KOKKOS_WGSIZE="128"
-export KOKKOS_EXTRA_FLAGS="-march=skylake-avx512"
+export KOKKOS_EXTRA_FLAGS="-Ofast -march=skylake-avx512"
 
 bash "$PLATFORM_DIR/../common.sh" "$@"

@@ -149,7 +149,7 @@ case "$MODEL" in
     echo "Using Kokkos src $KOKKOS_DIR"
 
     if [ ! -e "$KOKKOS_DIR" ]; then
-       wget https://github.com/kokkos/kokkos/archive/3.2.01.tar.gz
+       wget "https://github.com/kokkos/kokkos/archive/$KOKKOS_VER.tar.gz"
        tar -xf "$KOKKOS_VER.tar.gz"
        rm "$KOKKOS_VER.tar.gz"
     fi
@@ -157,9 +157,16 @@ case "$MODEL" in
     # We're using CMake with in-tree Kokkos here
     # So let's wipe out the existing make flags
     MAKE_OPTS="-DKOKKOS_IN_TREE=$KOKKOS_DIR"
-    MAKE_OPTS+=" -DKokkos_ENABLE_OPENMP=ON"
     MAKE_OPTS+=" -DWG_SIZE=$KOKKOS_WGSIZE"
     MAKE_OPTS+=" ${KOKKOS_EXTRA_FLAGS+-DCXX_EXTRA_FLAGS='$KOKKOS_EXTRA_FLAGS'}"
+
+    if [ -n "${KOKKOS_BACKEND:-}" ]; then
+      echo "Using Kokkos backend=$KOKKOS_BACKEND"
+      MAKE_OPTS+=" -DKokkos_ENABLE_$KOKKOS_BACKEND=ON"
+    else
+      echo "KOKKOS_BACKEND was not specified, this should be done in the setup_env() part of the script but wasn't"
+      exit 1
+    fi
 
     if [ -n "${KOKKOS_ARCH:-}" ]; then
       echo "Using Kokkos arch=$KOKKOS_ARCH"
@@ -169,21 +176,42 @@ case "$MODEL" in
       exit 1
     fi
 
+    case "$KOKKOS_BACKEND" in 
+      CUDA)
 
-    case "$COMPILER" in
-      cce-*)
-        module load gcc/8.2.0 # this is only for libstd++, the compilers are still CC
-        MAKE_OPTS+=" -DCMAKE_C_COMPILER=cc -DCMAKE_CXX_COMPILER=CC"
-      ;;
-      gcc-*)
-        MAKE_OPTS+=" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
-      ;;
+        if [ "$COMPILER" != gcc-8.1 ]; then
+          echo "Model '$MODEL' can only be used with compiler 'gcc-8.1'."
+          exit 3
+        fi
+
+        NVCC_BIN="$KOKKOS_DIR/bin/nvcc_wrapper"
+        MAKE_OPTS+=" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=$NVCC_BIN"
+        MAKE_OPTS+=" -DKokkos_ENABLE_CUDA_LAMBDA=ON"
+        MAKE_OPTS+=" -DCMAKE_VERBOSE_MAKEFILE=ON"
+        ;;
+      OPENMP)
+        case "$COMPILER" in
+        cce-*)
+          module load gcc/8.2.0 # this is only for libstdc++, the compilers are still CC
+          MAKE_OPTS+=" -DCMAKE_C_COMPILER=cc -DCMAKE_CXX_COMPILER=CC"
+          ;;
+        gcc-*)
+          MAKE_OPTS+=" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
+          ;;
+        *)
+          echo "Cannot use '$COMPILER' with Kokkos."
+          usage
+          exit 1
+          ;;
+        esac
+        ;;
       *)
-        echo "Cannot use '$COMPILER' with Kokkos."
+        echo "Unsupported '$KOKKOS_ARCH', implement the correct compiler for me."
         usage
         exit 1
-      ;;
     esac
+
+    
     ;;
   sycl)
     SRC_DIR+="/sycl"
@@ -201,7 +229,7 @@ esac
 
 # Fetch source
 if [ ! -e bude-portability-benchmark/openmp/bude.c ]; then
-  if ! git clone -b timing https://github.com/UoB-HPC/bude-portability-benchmark.git; then
+  if ! git clone https://github.com/UoB-HPC/bude-portability-benchmark.git; then
     echo
     echo "Failed to fetch source code."
     echo

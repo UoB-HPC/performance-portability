@@ -1,7 +1,8 @@
 #!/bin/bash
 #PBS -q voltaq
-#PBS -l select=1:ncpus=40
+#PBS -l select=1
 #PBS -l walltime=00:10:00
+#PBS -l place=excl
 #PBS -joe
 
 cd "$RUN_DIR" || exit 2
@@ -9,10 +10,10 @@ cd "$RUN_DIR" || exit 2
 date
 
 case "$MODEL" in
-    omp-target|ocl|cuda|acc)
+    omp-target|ocl|cuda|acc|kokkos)
         "./$BENCHMARK_EXE" -n 65536 -i 8
         ;;
-    kokkos|sycl)
+    sycl)
         echo "$MODEL is not implemented" && exit 99
         OMP_PLACES=cores OMP_PROC_BIND=spread aprun -n 1 -d 64 -cc none "./$BENCHMARK_EXE"
         ;;

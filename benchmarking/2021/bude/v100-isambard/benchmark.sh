@@ -24,6 +24,7 @@ setup_env() {
       ;;
     gcc-8.1)
       module load gcc/8.1.0
+      module load craype-accel-nvidia70 
       module load cuda10.2/toolkit/10.2.89
       MAKE_OPTS=''
       ;;
@@ -31,7 +32,7 @@ setup_env() {
       module load gcc/9.3.0
       module load cuda10.2/toolkit/10.2.89
       MAKE_OPTS=''
-      ;;
+      ;;  
     llvm-10.0)
       module load cuda10.1/toolkit/10.1.243
       module load llvm/10.0
@@ -60,8 +61,16 @@ export SCRIPT_DIR PLATFORM_DIR
 
 export COMPILERS="cce-9.1-classic cce-10.0 gcc-8.1 gcc-9.3 llvm-10.0 pgi-19.10"
 export DEFAULT_COMPILER="gcc-9.3"
-export MODELS="ocl cuda omp-target acc"
+export MODELS="ocl cuda omp-target acc kokkos"
 export DEFAULT_MODEL="ocl"
 export PLATFORM="v100-isambard"
 
+export KOKKOS_BACKEND="CUDA"
+export KOKKOS_ARCH="VOLTA70"
+export KOKKOS_WGSIZE="128"
+# defaults to O3, don't add Ofast here as nvcc chokes
+export KOKKOS_EXTRA_FLAGS="-march=native"  
+
 bash "$PLATFORM_DIR/../common.sh" "$@"
+
+ 
