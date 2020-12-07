@@ -1,0 +1,25 @@
+#!/bin/bash
+
+
+set -eu
+
+cd "$RUN_DIR" || exit 2
+
+export OMP_NUM_THREADS=40 OMP_PLACES=cores OMP_PROC_BIND=spread
+date
+
+params=( -n 65536 -i 8 --deck ../data/bm1 )
+
+case "$MODEL" in
+    omp-target|kokkos)
+        "./$BENCHMARK_EXE" "${params[@]}"
+        ;;
+    sycl)
+        "./$BENCHMARK_EXE" "${params[@]}" --device NEO  --wgsize 32
+        ;;
+    *)
+        echo "Unknown run configuration for model '$MODEL'"
+        exit 1
+        ;;
+esac
+

@@ -4,6 +4,7 @@
 set -eu
 
 setup_env() {
+  USE_QUEUE=true
   module use /lus/scratch/p02639/modulefiles
   module use /lus/snx11029/p02508-modules/modulefiles
 

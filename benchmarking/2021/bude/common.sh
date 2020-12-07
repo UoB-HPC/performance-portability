@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-set -eu
+# set -eu
 set -o pipefail
 
 function loadOneAPI() {
@@ -104,7 +104,9 @@ case "$MODEL" in
     ;;
 
   omp-target)
-    if ! [[ "$COMPILER" =~ (cce|llvm)-10.0 ]]; then
+    # icpx(icc) supports offloading too, see
+    # https://software.intel.com/content/www/us/en/develop/documentation/get-started-with-cpp-fortran-compiler-openmp
+    if ! [[ "$COMPILER" =~ (cce|llvm)-10.0 || "$COMPILER" =~ icpx-* ]]; then
       echo "Model '$MODEL' can only be used with compilers: cce-10.0 llvm-10.0."
       exit 3
     fi
@@ -179,15 +181,15 @@ case "$MODEL" in
     case "$KOKKOS_BACKEND" in 
       CUDA)
 
-        if [ "$COMPILER" != gcc-8.1 ]; then
-          echo "Model '$MODEL' can only be used with compiler 'gcc-8.1'."
+        if ! [[ "$COMPILER" =~ gcc-8* ]]; then
+          echo "Model '$MODEL' can only be used with compilers: gcc-8*."
           exit 3
         fi
 
         NVCC_BIN="$KOKKOS_DIR/bin/nvcc_wrapper"
         MAKE_OPTS+=" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=$NVCC_BIN"
         MAKE_OPTS+=" -DKokkos_ENABLE_CUDA_LAMBDA=ON"
-        MAKE_OPTS+=" -DCMAKE_VERBOSE_MAKEFILE=ON"
+        # MAKE_OPTS+=" -DCMAKE_VERBOSE_MAKEFILE=ON"
         ;;
       OPENMP)
         case "$COMPILER" in
@@ -269,8 +271,13 @@ elif [ "$action" == "run" ]; then
     echo "Use the 'build' action first."
     exit 1
   fi
+  if [ "$USE_QUEUE" = true ]; then
+    qsub -o "bude-$CONFIG.out" -e "bude-$CONFIG.err" -N "bude-$CONFIG" -V "$SCRIPT_DIR/run.job"
+  else 
+    bash $SCRIPT_DIR/run.job
+  fi
 
-  qsub -o "bude-$CONFIG.out" -e "bude-$CONFIG.err" -N "bude-$CONFIG" -V "$SCRIPT_DIR/run.job"
+  
 else
   echo
   echo "Invalid action (use 'build' or 'run')."

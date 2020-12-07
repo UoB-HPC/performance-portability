@@ -4,6 +4,7 @@
 set -eu
 
 setup_env() {
+  USE_QUEUE=true
   case "$COMPILER" in
     cce-10.0)
       [ -z "$CRAY_CPU_TARGET" ] && module load craype-arm-thunderx2

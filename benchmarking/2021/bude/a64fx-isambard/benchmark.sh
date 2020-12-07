@@ -4,6 +4,7 @@
 set -eu
 
 setup_env() {
+  USE_QUEUE=true
   if ! grep -q bristol/modules-a64fx/ <<<"$MODULEPATH"; then
     module use /lustre/projects/bristol/modules-a64fx/modulefiles
   fi
