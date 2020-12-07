@@ -68,7 +68,7 @@ export PLATFORM="v100-isambard"
 
 export KOKKOS_BACKEND="CUDA"
 export KOKKOS_ARCH="VOLTA70"
-export KOKKOS_WGSIZE="128"
+export KOKKOS_WGSIZE="2"
 # defaults to O3, don't add Ofast here as nvcc chokes
 export KOKKOS_EXTRA_FLAGS="-march=native"  
 
