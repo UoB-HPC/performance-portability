@@ -22,6 +22,33 @@ function loadOneAPI() {
   SCRIPT_DIR="$CURRENT_SCRIPT_DIR" #recover script dir
 }
 
+function findhipSYCL(){
+  local HIPSYCL_PATH="$(realpath "$(dirname "$(which syclcc)")"/..)"	
+  if [ ! -d "$HIPSYCL_PATH" ]; then 
+    echo "No hipSYCL path found based on the location of syclcc, is hipsycl loaded?"
+    exit 5
+  fi
+  echo "$HIPSYCL_PATH"
+}
+
+function findComputeCpp(){
+  local COMPUTECPP_PATH="$(realpath "$(dirname "$(which compute++)")"/..)"	
+  if [ ! -d "$COMPUTECPP_PATH" ]; then 
+    echo "No ComputeCpp path found based on the location of compute++, is computecpp loaded?"
+    exit 5
+  fi
+  echo "$COMPUTECPP_PATH"
+}
+
+function findOneAPIlibOpenCL(){
+  local ICD_PATH="$(realpath "$(dirname "$(which icpx)")"/..)/lib/libOpenCL.so.1"
+  if [ ! -f "$ICD_PATH" ]; then 
+    echo "No OpenCL lib (ICD) found based on the location of icpx, is oneAPI loaded?"
+    exit 5
+  fi
+  echo "$ICD_PATH"
+}
+
 function usage() {
   echo
   echo "Usage: ./benchmark.sh build|run [MODEL] [COMPILER]"
