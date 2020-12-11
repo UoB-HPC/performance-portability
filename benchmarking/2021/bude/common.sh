@@ -196,7 +196,6 @@ case "$MODEL" in
     # So let's wipe out the existing make flags
     MAKE_OPTS="-DKOKKOS_IN_TREE=$KOKKOS_DIR"
     MAKE_OPTS+=" -DWG_SIZE=$KOKKOS_WGSIZE"
-    MAKE_OPTS+=" ${KOKKOS_EXTRA_FLAGS+-DCXX_EXTRA_FLAGS='$KOKKOS_EXTRA_FLAGS'}"
 
     if [ -n "${KOKKOS_BACKEND:-}" ]; then
       echo "Using Kokkos backend=$KOKKOS_BACKEND"
@@ -229,8 +228,11 @@ case "$MODEL" in
         ;;
       OPENMP)
         case "$COMPILER" in
+        arm-*)
+          MAKE_OPTS+=" -DCMAKE_C_COMPILER=armclang -DCMAKE_CXX_COMPILER=armclang++"
+          ;;
         cce-*)
-          module load gcc/8.2.0 # this is only for libstdc++, the compilers are still CC
+          module load gcc/8.2.0 >/dev/null || module load gcc/8.1.0 # this is only for libstdc++, the compilers are still CC
           MAKE_OPTS+=" -DCMAKE_C_COMPILER=cc -DCMAKE_CXX_COMPILER=CC"
           ;;
         gcc-*)
@@ -283,9 +285,13 @@ if [ "$action" == "build" ]; then
   rm -f "$BENCHMARK_EXE"
   if [ "$USE_CMAKE" = true ]; then
 
-    echo "Using opts: ${MAKE_OPTS}"
-    rm -rf build
     read -ra CMAKE_OPTS <<<"${MAKE_OPTS}" # explicit word splitting
+    if [ "$MODEL" = kokkos ] && [ -n "$KOKKOS_EXTRA_FLAGS" ]; then
+      CMAKE_OPTS+=("-DCXX_EXTRA_FLAGS=$KOKKOS_EXTRA_FLAGS")
+    fi
+    echo "Using opts: ${CMAKE_OPTS[@]}"
+
+    rm -rf build
     set -x
     cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release "${CMAKE_OPTS[@]}"
     cmake --build build --target bude --config Release -j "$(nproc)"
