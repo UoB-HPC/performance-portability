@@ -238,6 +238,9 @@ case "$MODEL" in
         gcc-*)
           MAKE_OPTS+=" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
           ;;
+        intel-*)
+          MAKE_OPTS+=" -DCMAKE_C_COMPILER=icc -DCMAKE_CXX_COMPILER=icpc"
+          ;;
         *)
           echo "Cannot use '$COMPILER' with Kokkos."
           usage
