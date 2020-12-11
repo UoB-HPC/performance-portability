@@ -14,9 +14,11 @@ case "$MODEL" in
         "./$BENCHMARK_EXE" -n 65536 -i 8
         ;;
     sycl)
-        echo "$MODEL is not implemented" && exit 99
-        OMP_PLACES=cores OMP_PROC_BIND=spread aprun -n 1 -d 64 -cc none "./$BENCHMARK_EXE"
-        ;;
+        # FIXME Fox oneAPI, it may find the host device and pick that 
+        # even if we specify the substring; this only happens if CUDA 
+        # support is not there. This isn't an issue for hipSYCL.
+        "./$BENCHMARK_EXE" -n 65536 -i 1 --device V100
+        ;;    
     *)
         echo "Unknown run configuration for model '$MODEL'"
         exit 1

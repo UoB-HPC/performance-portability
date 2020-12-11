@@ -49,6 +49,15 @@ function findOneAPIlibOpenCL(){
   echo "$ICD_PATH"
 }
 
+function findGCC(){
+  local GCC_PATH="$(realpath "$(dirname "$(which gcc)")"/..)"	
+  if [ ! -d "$GCC_PATH" ]; then 
+    echo "No GCC path found based on the location of gcc, is gcc loaded?"
+    exit 5
+  fi
+  echo "$GCC_PATH"
+}
+
 function usage() {
   echo
   echo "Usage: ./benchmark.sh build|run [MODEL] [COMPILER]"
@@ -277,6 +286,7 @@ if [ "$action" == "build" ]; then
     echo "Using opts: ${MAKE_OPTS}"
     rm -rf build
     read -ra CMAKE_OPTS <<<"${MAKE_OPTS}" # explicit word splitting
+    set -x
     cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release "${CMAKE_OPTS[@]}"
     cmake --build build --target bude --config Release -j "$(nproc)"
     mv build/bude "$BENCHMARK_EXE"

@@ -58,6 +58,6 @@ export PLATFORM="tx2-isambard"
 
 export KOKKOS_BACKEND="OPENMP"
 export KOKKOS_ARCH="ARMV8_THUNDERX2"
-export KOKKOS_EXTRA_FLAGS="-Ofast -mcpu=thunderx2t99"
+export KOKKOS_EXTRA_FLAGS="-Ofast;-mcpu=thunderx2t99"
 
 bash "$PLATFORM_DIR/../common.sh" "$@"
