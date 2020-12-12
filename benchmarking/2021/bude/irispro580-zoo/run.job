@@ -11,11 +11,11 @@ date
 params=( -n 65536 -i 8 --deck ../data/bm1 )
 
 case "$MODEL" in
-    omp-target)
+    omp-target|kokkos)
         "./$BENCHMARK_EXE" "${params[@]}"
         ;;
     sycl)
-        "./$BENCHMARK_EXE" "${params[@]}" --device NEO  --wgsize 32
+        "./$BENCHMARK_EXE" "${params[@]}" --device Graphics  --wgsize 32
         ;;
     *)
         echo "Unknown run configuration for model '$MODEL'"

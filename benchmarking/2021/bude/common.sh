@@ -234,6 +234,9 @@ case "$MODEL" in
           ;;
         esac
         ;;
+      OPENMPTARGET)  
+        MAKE_OPTS+=" -DCMAKE_C_COMPILER=icx -DCMAKE_CXX_COMPILER=icpx"
+        ;;  
       *)
         echo "Unsupported '$KOKKOS_ARCH', implement the correct compiler for me."
         usage
@@ -301,7 +304,7 @@ elif [ "$action" == "run" ]; then
   if [ "$USE_QUEUE" = true ]; then
     qsub -o "bude-$CONFIG.out" -e "bude-$CONFIG.err" -N "bude-$CONFIG" -V "$SCRIPT_DIR/run.job"
   else 
-    bash $SCRIPT_DIR/run.job
+    bash $SCRIPT_DIR/run.job &> "bude-$CONFIG.out"
   fi
 
   
