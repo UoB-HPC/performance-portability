@@ -5,7 +5,6 @@ set -eu
 
 cd "$RUN_DIR" || exit 2
 
-export OMP_NUM_THREADS=40 OMP_PLACES=cores OMP_PROC_BIND=spread
 date
 
 params=( -n 65536 -i 8 --deck ../data/bm1 )
@@ -13,6 +12,9 @@ params=( -n 65536 -i 8 --deck ../data/bm1 )
 case "$MODEL" in
     omp-target|kokkos)
         "./$BENCHMARK_EXE" "${params[@]}"
+        ;;
+    ocl)
+        "./$BENCHMARK_EXE" "${params[@]}" --wgsize "$OCL_WGSIZE"
         ;;
     sycl)
         "./$BENCHMARK_EXE" "${params[@]}" --device Graphics  --wgsize 32

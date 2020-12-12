@@ -39,6 +39,13 @@ setup_env() {
       exit 1
       ;;
   esac
+
+  case "$MODEL" in
+      ocl)
+          module load khronos/opencl/headers
+          module load khronos/opencl/icd-loader
+          ;;
+    esac
 }
 export -f setup_env
 
@@ -48,10 +55,12 @@ PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
 export COMPILERS="gcc-10.1 icpx-2021.1 dpcpp-2021.1 computecpp-2.3.0"
-export DEFAULT_COMPILER="cce-10.0"
-export MODELS="omp omp-target sycl kokkos"
-export DEFAULT_MODEL="omp-target"
+export DEFAULT_COMPILER="gcc-10.1"
+export MODELS="omp omp-target ocl sycl kokkos"
+export DEFAULT_MODEL="ocl"
 export PLATFORM="irispro580-zoo"
+
+export OCL_WGSIZE=128
 
 export KOKKOS_BACKEND="OPENMPTARGET"
 export KOKKOS_ARCH="INTEL_GEN"
