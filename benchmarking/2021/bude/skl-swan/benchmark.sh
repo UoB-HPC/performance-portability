@@ -7,20 +7,33 @@ setup_env() {
   USE_QUEUE=true
   module use /lus/scratch/p02639/modulefiles
   module use /lus/snx11029/p02508-modules/modulefiles
+  module load cmake
+
+  module swap craype-{broadwell,x86-skylake}
 
   case "$COMPILER" in
     cce-10.0)
       module load PrgEnv-cray
       module swap cce cce/10.0.0
-      module swap craype-{broadwell,x86-skylake}
       MAKE_OPTS='COMPILER=CLANG CC=cc ARCH=skylake-avx512'
+      export KOKKOS_WGSIZE="128"
       ;;
     gcc-9.3)
-      module load gcc/9.3.0
+      module swap PrgEnv-{cray,gnu}
+      module swap gcc gcc/9.3.0
       MAKE_OPTS='COMPILER=GNU ARCH=skylake-avx512'
+      KOKKOS_EXTRA_FLAGS+=";-mprefer-vector-width=512"
+      ;;
+    gcc-10.1)
+      module swap PrgEnv-{cray,gnu}
+      module swap gcc gcc/10.1.0
+      MAKE_OPTS='COMPILER=GNU ARCH=skylake-avx512'
+      KOKKOS_EXTRA_FLAGS+=";-mprefer-vector-width=512"
+      export KOKKOS_WGSIZE="32"
       ;;
     intel-2019)
-      module load intel-parallel-studio-xe/compilers/64/2019u4/19.0.4
+      module swap PrgEnv-{cray,intel}
+      KOKKOS_EXTRA_FLAGS+=";-qopt-zmm-usage=high"
       MAKE_OPTS='COMPILER=INTEL ARCH=skylake-avx512'
       ;;
     oneapi-2021.1-beta10)
@@ -74,7 +87,7 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="cce-10.0 gcc-9.3 intel-2019 oneapi-2021.1-beta10 computecpp-2.1.1 hipsycl-cc320b6"
+export COMPILERS="cce-10.0 gcc-9.3 gcc-10.1 intel-2019 oneapi-2021.1-beta10 computecpp-2.1.1 hipsycl-cc320b6"
 export DEFAULT_COMPILER="cce-10.0"
 export MODELS="omp kokkos sycl"
 export DEFAULT_MODEL="omp"
@@ -82,7 +95,7 @@ export PLATFORM="skl-swan"
 
 export KOKKOS_BACKEND="OPENMP"
 export KOKKOS_ARCH="SKX"
-export KOKKOS_WGSIZE="128"
-export KOKKOS_EXTRA_FLAGS="-Ofast -march=skylake-avx512"
+export KOKKOS_WGSIZE="256"
+export KOKKOS_EXTRA_FLAGS="-Ofast;-march=skylake-avx512"
 
 bash "$PLATFORM_DIR/../common.sh" "$@"

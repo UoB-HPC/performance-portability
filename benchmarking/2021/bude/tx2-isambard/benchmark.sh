@@ -10,25 +10,21 @@ setup_env() {
       [ -z "$CRAY_CPU_TARGET" ] && module load craype-arm-thunderx2
       module swap cce cce/10.0.1
       MAKE_OPTS='COMPILER=CLANG CC=cc'
-      KOKKOS_WGSIZE="1024"
       ;;
     cce-11.0)
       [ -z "$CRAY_CPU_TARGET" ] && module load craype-arm-thunderx2
       module swap cce cce/11.0.0.7500
       MAKE_OPTS='COMPILER=CLANG CC=cc'
-      KOKKOS_WGSIZE="1024"
       ;;
     gcc-9.3)
       module swap PrgEnv-{cray,gnu}
       module swap gcc gcc/9.3.0
       MAKE_OPTS='COMPILER=GNU'
-      KOKKOS_WGSIZE="256"
       ;;
     arm-20.0)
       module swap PrgEnv-{cray,allinea}
       module swap allinea allinea/20.0.0.0
       MAKE_OPTS='COMPILER=ARM'
-      KOKKOS_WGSIZE="128"
       ;;
     hipsycl-201124-gcc9.3)
       module swap PrgEnv-{cray,gnu}
@@ -58,6 +54,7 @@ export PLATFORM="tx2-isambard"
 
 export KOKKOS_BACKEND="OPENMP"
 export KOKKOS_ARCH="ARMV8_THUNDERX2"
-export KOKKOS_EXTRA_FLAGS="-Ofast -mcpu=thunderx2t99"
+export KOKKOS_EXTRA_FLAGS="-Ofast;-mcpu=thunderx2t99"
+export KOKKOS_WGSIZE="1024"
 
 bash "$PLATFORM_DIR/../common.sh" "$@"

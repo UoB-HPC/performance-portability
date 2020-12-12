@@ -40,9 +40,8 @@ setup_env() {
       MAKE_OPTS=" -DSYCL_RUNTIME=DPCPP"
       MAKE_OPTS+=" -DNUM_TD_PER_THREAD=2"
       MAKE_OPTS+=" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
-       ;;
+      ;;
     hipsycl-cf71460)
-      module load cmake/3.18.3  
       module load gcc/10.2.0 boost/1.73.0/gcc-10.2.0 hipsycl/cf71460/gcc-10.2.0
       export HIPSYCL_OMP_LINK_LINE="-fopenmp $BOOST_ROOT/lib/libboost_fiber.so $BOOST_ROOT/lib/libboost_context.so"
       MAKE_OPTS=" -DSYCL_RUNTIME=HIPSYCL-NEXT"
@@ -85,6 +84,6 @@ export PLATFORM="rome-isambard"
 export KOKKOS_BACKEND="OPENMP"
 export KOKKOS_ARCH="ZEN2"
 export KOKKOS_WGSIZE="512"
-export KOKKOS_EXTRA_FLAGS="-Ofast -march=znver2"
+export KOKKOS_EXTRA_FLAGS="-Ofast;-march=znver2"
 
 bash "$PLATFORM_DIR/../common.sh" "$@"
