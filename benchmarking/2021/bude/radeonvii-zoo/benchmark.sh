@@ -4,6 +4,7 @@
 set -eu
 
 module load cmake/3.14.5
+module load rocm/node30/3.10.0
 
 setup_env() {
   USE_QUEUE=false
@@ -14,8 +15,6 @@ setup_env() {
       ;;
     gcc-10.1)
       module load gcc/10.1.0
-      # TODO omp-target via gcc
-      exit 1
       ;;
     
     hipsycl-cf71460) # TODO change hipsycl-<hash> to the appropriate one 
@@ -56,6 +55,12 @@ setup_env() {
       exit 1
       ;;
   esac
+
+  case "$MODEL" in
+    cuda)
+      MAKE_OPTS='USE_HIP=1'
+      ;;
+  esac
 }
 export -f setup_env
 
@@ -65,10 +70,12 @@ PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
 export COMPILERS="hipcc-2.8 gcc-10.1 hipsycl-cf71460"
-export DEFAULT_COMPILER="cce-10.0"
-export MODELS="kokkos omp-target sycl"
+export DEFAULT_COMPILER="gcc-10.1"
+export MODELS="ocl kokkos omp-target sycl cuda"
 export DEFAULT_MODEL="kokkos"
 export PLATFORM="radeonvii-zoo"
+
+export OCL_WGSIZE=128
 
 export KOKKOS_BACKEND="HIP"
 export KOKKOS_ARCH="Vega906"

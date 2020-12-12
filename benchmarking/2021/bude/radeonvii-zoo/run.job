@@ -14,6 +14,9 @@ case "$MODEL" in
     omp-target|kokkos)
         "./$BENCHMARK_EXE" "${params[@]}"
         ;;
+    ocl|cuda)
+        "./$BENCHMARK_EXE" "${params[@]}" --wgsize 128
+        ;;
     sycl)
         "./$BENCHMARK_EXE" "${params[@]}" --device gfx906  --wgsize 32
         ;;

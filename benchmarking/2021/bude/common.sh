@@ -78,9 +78,11 @@ function usage() {
   echo
   echo "  ocl"
   echo "    gcc-9.3"
+  echo "    gcc-10.1"
   echo
   echo "  cuda"
   echo "    gcc-8.1"
+  echo "    gcc-10.1"
   echo
   echo "  acc"
   echo "    cce-9.1-classic"
@@ -157,8 +159,11 @@ case "$MODEL" in
     ;;
 
   cuda)
-    if [ "$COMPILER" != gcc-8.1 ]; then
-      echo "Model '$MODEL' can only be used with compiler 'gcc-8.1'."
+    if [[ "$PLATFORM" =~ isamabrd ]] && [ "$COMPILER" != gcc-8.1 ]; then
+      echo "Model '$MODEL' can only be used with compiler 'gcc-8.1' on platform '$PLATFORM'."
+      exit 3
+    elif [[ "$PLATFORM" =~ zoo ]] && [ "$COMPILER" != gcc-10.1 ]; then
+      echo "Model '$MODEL' can only be used with compiler 'gcc-10.1' on platform '$PLATFORM'."
       exit 3
     fi
 
