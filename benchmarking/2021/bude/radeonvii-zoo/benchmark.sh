@@ -11,9 +11,11 @@ setup_env() {
   case "$COMPILER" in
     aomp-11.12)
       module load aomp/11.12
+      MAKE_OPTS='CC=aomp'
       ;;
     gcc-10.1)
       module load gcc/10.1.0
+      MAKE_OPTS='CC=gcc'
       ;;
     hipcc-3.10)
       # nothing to setup

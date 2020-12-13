@@ -146,7 +146,7 @@ case "$MODEL" in
   omp-target)
     # icpx(icc) supports offloading too, see
     # https://software.intel.com/content/www/us/en/develop/documentation/get-started-with-cpp-fortran-compiler-openmp
-    if ! [[ "$COMPILER" =~ (cce|llvm)-10.0 || "$COMPILER" =~ (aomp|icpx) ]]; then
+    if ! [[ "$COMPILER" =~ (cce|gcc|llvm)-10 || "$COMPILER" =~ (aomp|icpx) ]]; then
       echo "Model '$MODEL' can only be used with compilers: cce-10.0 llvm-10.0."
       exit 3
     fi
