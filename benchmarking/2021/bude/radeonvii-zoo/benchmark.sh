@@ -9,11 +9,14 @@ module load rocm/node30/3.10.0
 setup_env() {
   USE_QUEUE=false
   case "$COMPILER" in
-    hipcc-3.10)
-      # nothing to setup 
+    aomp-11.12)
+      module load aomp/11.12
       ;;
     gcc-10.1)
       module load gcc/10.1.0
+      ;;
+    hipcc-3.10)
+      # nothing to setup
       ;;
     hipsycl-cff515c)
 
@@ -34,7 +37,7 @@ setup_env() {
       MAKE_OPTS+=" -DHIPSYCL_PLATFORM=rocm -DHIPSYCL_GPU_ARCH=gfx906"
       MAKE_OPTS+=" -DCMAKE_C_COMPILER=$ROCM_LLVM/bin/clang -DCMAKE_CXX_COMPILER=$ROCM_LLVM/bin/clang++"
       MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=--gcc-toolchain=$(findGCC)" # need this for libstdc++
-      ;;      
+      ;;
     *)
       echo
       echo "Invalid compiler '$COMPILER'."
@@ -47,6 +50,9 @@ setup_env() {
     cuda)
       MAKE_OPTS='USE_HIP=1'
       ;;
+    omp-target)
+      MAKE_OPTS+=" TARGET=AMD TD_PER_THREAD=1"
+      ;;
   esac
 }
 export -f setup_env
@@ -56,7 +62,7 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="hipcc-3.10 gcc-10.1 hipsycl-cff515c"
+export COMPILERS="aomp-11.12 gcc-10.1 hipcc-3.10 hipsycl-cff515c"
 export DEFAULT_COMPILER="gcc-10.1"
 export MODELS="ocl kokkos omp-target sycl cuda"
 export DEFAULT_MODEL="kokkos"

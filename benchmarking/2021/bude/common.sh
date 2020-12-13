@@ -23,8 +23,8 @@ function loadOneAPI() {
 }
 
 function findhipSYCL(){
-  local HIPSYCL_PATH="$(realpath "$(dirname "$(which syclcc)")"/..)"	
-  if [ ! -d "$HIPSYCL_PATH" ]; then 
+  local HIPSYCL_PATH="$(realpath "$(dirname "$(which syclcc)")"/..)"
+  if [ ! -d "$HIPSYCL_PATH" ]; then
     echo "No hipSYCL path found based on the location of syclcc, is hipsycl loaded?"
     exit 5
   fi
@@ -32,8 +32,8 @@ function findhipSYCL(){
 }
 
 function findComputeCpp(){
-  local COMPUTECPP_PATH="$(realpath "$(dirname "$(which compute++)")"/..)"	
-  if [ ! -d "$COMPUTECPP_PATH" ]; then 
+  local COMPUTECPP_PATH="$(realpath "$(dirname "$(which compute++)")"/..)"
+  if [ ! -d "$COMPUTECPP_PATH" ]; then
     echo "No ComputeCpp path found based on the location of compute++, is computecpp loaded?"
     exit 5
   fi
@@ -42,7 +42,7 @@ function findComputeCpp(){
 
 function findOneAPIlibOpenCL(){
   local ICD_PATH="$(realpath "$(dirname "$(which icpx)")"/..)/lib/libOpenCL.so.1"
-  if [ ! -f "$ICD_PATH" ]; then 
+  if [ ! -f "$ICD_PATH" ]; then
     echo "No OpenCL lib (ICD) found based on the location of icpx, is oneAPI loaded?"
     exit 5
   fi
@@ -50,8 +50,8 @@ function findOneAPIlibOpenCL(){
 }
 
 function findGCC(){
-  local GCC_PATH="$(realpath "$(dirname "$(which gcc)")"/..)"	
-  if [ ! -d "$GCC_PATH" ]; then 
+  local GCC_PATH="$(realpath "$(dirname "$(which gcc)")"/..)"
+  if [ ! -d "$GCC_PATH" ]; then
     echo "No GCC path found based on the location of gcc, is gcc loaded?"
     exit 5
   fi
@@ -73,6 +73,8 @@ function usage() {
   echo "    gcc-11.0"
   echo
   echo "  omp-target"
+  echo "    aomp-11.12"
+  echo "    icpx-2021.1"
   echo "    cce-10.0"
   echo "    llvm-10.0"
   echo
@@ -144,7 +146,7 @@ case "$MODEL" in
   omp-target)
     # icpx(icc) supports offloading too, see
     # https://software.intel.com/content/www/us/en/develop/documentation/get-started-with-cpp-fortran-compiler-openmp
-    if ! [[ "$COMPILER" =~ (cce|llvm)-10.0 || "$COMPILER" =~ icpx-* ]]; then
+    if ! [[ "$COMPILER" =~ (cce|llvm)-10.0 || "$COMPILER" =~ (aomp|icpx) ]]; then
       echo "Model '$MODEL' can only be used with compilers: cce-10.0 llvm-10.0."
       exit 3
     fi
@@ -218,7 +220,7 @@ case "$MODEL" in
       exit 1
     fi
 
-    case "$KOKKOS_BACKEND" in 
+    case "$KOKKOS_BACKEND" in
       CUDA)
 
         if ! [[ "$COMPILER" =~ gcc-8* ]]; then
@@ -260,16 +262,16 @@ case "$MODEL" in
         fi
         MAKE_OPTS+=" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=hipcc"
         ;;
-      OPENMPTARGET)  
+      OPENMPTARGET)
         MAKE_OPTS+=" -DCMAKE_C_COMPILER=icx -DCMAKE_CXX_COMPILER=icpx"
-        ;;  
+        ;;
       *)
         echo "Unsupported '$KOKKOS_ARCH', implement the correct compiler for me."
         usage
         exit 1
     esac
 
-    
+
     ;;
   sycl)
     SRC_DIR+="/sycl"
@@ -333,11 +335,11 @@ elif [ "$action" == "run" ]; then
   fi
   if [ "$USE_QUEUE" = true ]; then
     qsub -o "bude-$CONFIG.out" -e "bude-$CONFIG.err" -N "bude-$CONFIG" -V "$SCRIPT_DIR/run.job"
-  else 
+  else
     bash $SCRIPT_DIR/run.job &> "bude-$CONFIG.out"
   fi
 
-  
+
 else
   echo
   echo "Invalid action (use 'build' or 'run')."

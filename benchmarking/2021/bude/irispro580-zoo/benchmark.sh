@@ -4,7 +4,7 @@
 set -eu
 
 module load cmake/3.14.5
-module load intel/neo/20.49.18626 
+module load intel/neo/20.49.18626
 
 setup_env() {
   USE_QUEUE=false
@@ -15,7 +15,7 @@ setup_env() {
       ;;
     icpx-2021.1)
       loadOneAPI /nfs/software/x86_64/intel/oneapi/2021.1/setvars.sh
-      MAKE_OPTS='CC=icx CFLAGS="-fiopenmp -fopenmp-targets=spir64 -Ofast -march=native -DNUM_TD_PER_THREAD=4"'
+      MAKE_OPTS='TARGET=INTEL TD_PER_THREAD=4'
       ;;
     dpcpp-2021.1)
       loadOneAPI /nfs/software/x86_64/intel/oneapi/2021.1/setvars.sh

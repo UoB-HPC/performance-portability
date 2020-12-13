@@ -9,7 +9,7 @@ setup_env() {
     module use /lustre/projects/bristol/modules/modulefiles
   fi
 
-  module load cmake/3.18.3  
+  module load cmake/3.18.3
 
   case "$COMPILER" in
     cce-9.1-classic)
@@ -27,7 +27,7 @@ setup_env() {
       ;;
     gcc-8.1)
       module load gcc/8.1.0
-      module load craype-accel-nvidia70 
+      module load craype-accel-nvidia70
       module load cuda10.2/toolkit/10.2.89
       MAKE_OPTS=''
       ;;
@@ -35,7 +35,7 @@ setup_env() {
       module load gcc/9.3.0
       module load cuda10.2/toolkit/10.2.89
       MAKE_OPTS=''
-      ;;  
+      ;;
     llvm-10.0)
       module load cuda10.1/toolkit/10.1.243
       module load llvm/10.0
@@ -49,7 +49,7 @@ setup_env() {
       ;;
     oneapi-2021.1)
       # FIXME does not work; apparently oneAPI 2021.1 shipped without CUDA support(!?)
-      module load craype-accel-nvidia70 
+      module load craype-accel-nvidia70
       module load cuda10.2/toolkit/10.2.89
       module load 10.2.0
       loadOneAPI /lustre/projects/bristol/modules/intel/oneapi/2021.1/setvars.sh
@@ -60,7 +60,7 @@ setup_env() {
       MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=--gcc-toolchain=$(findGCC)"
       ;;
     hipsycl-cf71460)
-      # module load cuda10.1/toolkit/10.1.243 # loading this has no effect, hipSYCL needs direct path 
+      # module load cuda10.1/toolkit/10.1.243 # loading this has no effect, hipSYCL needs direct path
       module load gcc/10.2.0 boost/1.73.0/gcc-10.2.0 hipsycl/cf71460/gcc-10.2.0
       module load llvm/10.0 # hipSYCL adds -lomp so we need this on path
       local CUDA_TOOLKIT_LIB="/cm/shared/apps/cuda10.1/toolkit/10.1.243/lib64"
@@ -74,13 +74,19 @@ setup_env() {
       MAKE_OPTS+=" -DHIPSYCL_PLATFORM=cuda -DHIPSYCL_GPU_ARCH=sm_70"
       MAKE_OPTS+=" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
       MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=--gcc-toolchain=$(findGCC)"
-      ;;      
+      ;;
     *)
       echo
       echo "Invalid compiler '$COMPILER'."
       usage
       exit 1
       ;;
+  esac
+
+  case "$MODEL" in
+      omp-target)
+        MAKE_OPTS+=" TARGET=NVIDIA"
+        ;;
   esac
 }
 export -f setup_env
@@ -100,8 +106,8 @@ export KOKKOS_BACKEND="CUDA"
 export KOKKOS_ARCH="VOLTA70"
 export KOKKOS_WGSIZE="2"
 # defaults to O3, don't add Ofast here as nvcc chokes
-export KOKKOS_EXTRA_FLAGS="-march=native"  
+export KOKKOS_EXTRA_FLAGS="-march=native"
 
 bash "$PLATFORM_DIR/../common.sh" "$@"
 
- 
+
