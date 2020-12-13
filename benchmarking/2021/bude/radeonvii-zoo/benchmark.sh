@@ -3,50 +3,37 @@
 
 set -eu
 
-module load cmake/3.14.5
+module load cmake/3.19.1 # cmake 3.14 misdetected C++11 support for hipcc
 module load rocm/node30/3.10.0
 
 setup_env() {
   USE_QUEUE=false
   case "$COMPILER" in
-    hipcc-2.8)
-      # TODO kokkos via hipcc
-      exit 1
+    hipcc-3.10)
+      # nothing to setup 
       ;;
     gcc-10.1)
       module load gcc/10.1.0
       ;;
-    
-    hipsycl-cf71460) # TODO change hipsycl-<hash> to the appropriate one 
+    hipsycl-cff515c)
 
-      # TODO from p3hpc, doesn't compile 
-      module load hipsycl/master-mar-18
-      module load gcc/8.3.0
+      module load gcc/10.1.0 boost/1.73.0/gcc-10.1.0 hipsycl/cff515c/gcc-10.1.0
 
-      # TODO replace with the following:
-      # module load gcc/10.2.0 boost/1.73.0/gcc-10.2.0 hipsycl/cf71460/gcc-10.2.0
-      # module load llvm/10.0 # hipSYCL adds -lomp so we need this on path
+      export HIPSYCL_ROCM_PATH="/opt/rocm-3.10.0"
+      local ROCM_TOOLKIT_LIB="$HIPSYCL_ROCM_PATH/lib"
+      local ROCM_LLVM="$HIPSYCL_ROCM_PATH/llvm"
+      HIPSYCL_ROCM_LINK_LINE=" -Wl,-rpath=$ROCM_TOOLKIT_LIB -L$ROCM_TOOLKIT_LIB -lamdhip64 -lhsa-runtime64"
+      HIPSYCL_ROCM_LINK_LINE+=" $BOOST_ROOT/lib/libboost_context.so"
+      HIPSYCL_ROCM_LINK_LINE+=" $BOOST_ROOT/lib/libboost_fiber.so"
+      export HIPSYCL_ROCM_LINK_LINE
+      export LD_LIBRARY_PATH=$ROCM_LLVM/lib/:$LD_LIBRARY_PATH # for libomp
 
-      # HIPSYCL_ROCM_LINK_LINE=""
-      # local ROCM_TOOLKIT_LIB="/opt/rocm/lib64" 
-      
-      # # XXX might not even need the -Wl stuff
-      # # in theory, this should have been done by syclcc
-      # # default-rocm-link-line in <modules>/hipsycl/b13c71f/gcc-<version>/etc/hipSYCL/syclcc.json
-      # HIPSYCL_ROCM_LINK_LINE+=" -Wl,-rpath=$ROCM_TOOLKIT_LIB -L$ROCM_TOOLKIT_LIB"       
-
-      # HIPSYCL_ROCM_LINK_LINE+=" $BOOST_ROOT/lib/libboost_context.so"
-      # HIPSYCL_ROCM_LINK_LINE+=" $BOOST_ROOT/lib/libboost_fiber.so"
-      # export HIPSYCL_ROCM_LINK_LINE
-
-
-      MAKE_OPTS=" -DSYCL_RUNTIME=HIPSYCL"
-      MAKE_OPTS+=" -DNUM_TD_PER_THREAD=16"
-      MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=-mtune=native"
+      MAKE_OPTS=" -DSYCL_RUNTIME=HIPSYCL-NEXT"
+      MAKE_OPTS+=" -DNUM_TD_PER_THREAD=8"
       MAKE_OPTS+=" -DHIPSYCL_INSTALL_DIR=$(findhipSYCL)"
       MAKE_OPTS+=" -DHIPSYCL_PLATFORM=rocm -DHIPSYCL_GPU_ARCH=gfx906"
-      MAKE_OPTS+=" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
-      # MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=--gcc-toolchain=$(findGCC)"
+      MAKE_OPTS+=" -DCMAKE_C_COMPILER=$ROCM_LLVM/bin/clang -DCMAKE_CXX_COMPILER=$ROCM_LLVM/bin/clang++"
+      MAKE_OPTS+=" -DCXX_EXTRA_FLAGS=--gcc-toolchain=$(findGCC)" # need this for libstdc++
       ;;      
     *)
       echo
@@ -69,7 +56,7 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="hipcc-2.8 gcc-10.1 hipsycl-cf71460"
+export COMPILERS="hipcc-3.10 gcc-10.1 hipsycl-cff515c"
 export DEFAULT_COMPILER="gcc-10.1"
 export MODELS="ocl kokkos omp-target sycl cuda"
 export DEFAULT_MODEL="kokkos"
@@ -78,10 +65,9 @@ export PLATFORM="radeonvii-zoo"
 export OCL_WGSIZE=128
 
 export KOKKOS_BACKEND="HIP"
-export KOKKOS_ARCH="Vega906"
-export KOKKOS_WGSIZE="2"
-# defaults to O3, don't add Ofast here as nvcc chokes
-export KOKKOS_EXTRA_FLAGS="-march=native"
+export KOKKOS_ARCH="VEGA906"
+export KOKKOS_WGSIZE="4"
+export KOKKOS_EXTRA_FLAGS="-Ofast;-march=native"
 
 
 bash "$PLATFORM_DIR/../common.sh" "$@"

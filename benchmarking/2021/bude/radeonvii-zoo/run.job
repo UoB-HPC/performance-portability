@@ -18,7 +18,7 @@ case "$MODEL" in
         "./$BENCHMARK_EXE" "${params[@]}" --wgsize 128
         ;;
     sycl)
-        "./$BENCHMARK_EXE" "${params[@]}" --device gfx906  --wgsize 32
+        "./$BENCHMARK_EXE" "${params[@]}" --device Radeon  --wgsize 128
         ;;
     *)
         echo "Unknown run configuration for model '$MODEL'"

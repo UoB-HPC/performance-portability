@@ -253,6 +253,13 @@ case "$MODEL" in
           ;;
         esac
         ;;
+      HIP)
+        if ! [[ "$COMPILER" =~ hipcc* ]]; then
+          echo "Model '$MODEL' can only be used with hipcc"
+          exit 3
+        fi
+        MAKE_OPTS+=" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=hipcc"
+        ;;
       OPENMPTARGET)  
         MAKE_OPTS+=" -DCMAKE_C_COMPILER=icx -DCMAKE_CXX_COMPILER=icpx"
         ;;  
@@ -303,7 +310,6 @@ if [ "$action" == "build" ]; then
     echo "Using opts: ${CMAKE_OPTS[@]}"
 
     rm -rf build
-    set -x
     cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release "${CMAKE_OPTS[@]}"
     cmake --build build --target bude --config Release -j "$(nproc)"
     mv build/bude "$BENCHMARK_EXE"
