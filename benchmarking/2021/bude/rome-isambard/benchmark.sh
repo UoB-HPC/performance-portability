@@ -12,6 +12,10 @@ setup_env() {
   module load cmake/3.18.3
 
   case "$COMPILER" in
+    aocc-2.3)
+      module load aocc/2.3
+      MAKE_OPTS='COMPILER=CLANG ARCH=znver2 WGSIZE=512'
+      ;;
     cce-10.0)
       module load PrgEnv-cray
       module swap cce cce/10.0.0
@@ -80,7 +84,7 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="cce-10.0 gcc-9.3 gcc-10.2 intel-2019 intel-2020 oneapi-2021.1 hipsycl-cf71460 computecpp-2.1.1"
+export COMPILERS="aocc-2.3 cce-10.0 gcc-9.3 gcc-10.2 intel-2019 intel-2020 oneapi-2021.1 hipsycl-cf71460 computecpp-2.1.1"
 export DEFAULT_COMPILER="cce-10.0"
 export MODELS="omp kokkos sycl kokkos"
 export DEFAULT_MODEL="omp"
