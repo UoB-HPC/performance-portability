@@ -235,7 +235,7 @@ case "$MODEL" in
         ;;
       OPENMP)
         case "$COMPILER" in
-        aocc-*)
+        aocc-*|llvm-*)
           MAKE_OPTS+=" -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
           ;;
         arm-*)

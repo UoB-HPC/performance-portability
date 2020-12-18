@@ -11,7 +11,7 @@ date
 
 case "$MODEL" in
     omp)
-        if [[ "$COMPILER" =~ arm- ]]; then
+        if [[ "$COMPILER" =~ (arm|llvm)- ]]; then
             OMP_PROC_BIND=true aprun -n 1 -d 64 -cc none "./$BENCHMARK_EXE"
         else
             aprun -n 1 -d 64 "./$BENCHMARK_EXE"
