@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-# set -eu
+set -eu
 set -o pipefail
 
 function loadOneAPI() {
@@ -58,11 +58,22 @@ function findGCC(){
   echo "$GCC_PATH"
 }
 
+function fetchCLHeader(){
+  local CL_HEADER_DIR="$PWD/OpenCL-Headers-2020.06.16"
+  local TARBALL="v2020.06.16.tar.gz"
+  if [ ! -d "$CL_HEADER_DIR" ]; then
+    wget "https://github.com/KhronosGroup/OpenCL-Headers/archive/$TARBALL"
+    tar -xf "$TARBALL"
+    rm -rf "$TARBALL"
+  fi
+  echo "$CL_HEADER_DIR"
+}
+
 function usage() {
   echo
   echo "Usage: ./benchmark.sh build|run [MODEL] [COMPILER]"
   echo
-  echo "Valid model and compiler options for BUDE:"
+  echo "Valid model and compiler options for CloverLeaf:"
   echo "  omp"
   echo "    arm-20.0"
   echo "    cce-10.0"
@@ -128,9 +139,9 @@ if [[ ! "$MODELS" =~ $MODEL ]] || [[ ! "$COMPILERS" =~ $COMPILER ]]; then
   exit 2
 fi
 
-export SRC_DIR="$PWD/bude-portability-benchmark"
-export RUN_DIR="$PWD/bude-$CONFIG"
-export BENCHMARK_EXE="bude_$CONFIG"
+# export SRC_DIR="$PWD/bude-portability-benchmark"
+export RUN_DIR="$PWD/cloverleaf-$CONFIG"
+export BENCHMARK_EXE="cloverleaf_$CONFIG"
 
 # Set up the environment
 setup_env
@@ -138,36 +149,60 @@ setup_env
 USE_CMAKE=false
 # Setup model
 case "$MODEL" in
-  omp)
-    SRC_DIR+="/openmp"
-    RUN_DIR="$SRC_DIR"
+  omp|mpi)
+    if [ ! -e CloverLeaf_ref/clover.f90 ]; then
+      git clone https://github.com/UK-MAC/CloverLeaf_ref
+    fi
+    ( cd CloverLeaf_ref || exit; git checkout 612c2da46cffe26941e5a06492215bdef2c3f971 )
+    export SRC_DIR="$PWD/CloverLeaf_ref"
+    export BINARY="clover_leaf"
     ;;
-
   omp-target)
+    if [ ! -e cloverleaf_openmp_target/CMakeLists.txt ]; then
+      git clone -b omp-target https://github.com/UoB-HPC/cloverleaf_openmp_target
+    fi
     # icpx(icc) supports offloading too, see
     # https://software.intel.com/content/www/us/en/develop/documentation/get-started-with-cpp-fortran-compiler-openmp
     if ! [[ "$COMPILER" =~ (cce|gcc|llvm)-10 || "$COMPILER" =~ (aomp|icpx) ]]; then
       echo "Model '$MODEL' can only be used with compilers: cce-10.0 llvm-10.0."
       exit 3
     fi
-
-    SRC_DIR+="/openmp-target"
-    RUN_DIR="$SRC_DIR"
+    export SRC_DIR="$PWD/cloverleaf_openmp_target"
+    export BINARY="clover_leaf"
+    USE_CMAKE=true
     ;;
-
   ocl)
-    SRC_DIR+="/opencl"
+    if [ ! -e CloverLeaf_OpenCL/clover_leaf.f90 ]; then
+      git clone https://github.com/UK-MAC/CloverLeaf_OpenCL
+    fi
+    CL_HEADER_DIR="$PWD/OpenCL-Headers-2020.06.16"
+    if [ ! -d "$CL_HEADER_DIR" ]; then
+      wget https://github.com/KhronosGroup/OpenCL-Headers/archive/v2020.06.16.tar.gz
+      tar -xf v2020.06.16.tar.gz
+    fi
+    
+    export SRC_DIR="$PWD/CloverLeaf_OpenCL"
+    export BINARY="clover_leaf"
+
+    
+
     # loadOneAPI /lustre/projects/bristol/modules/intel/oneapi/2021.1/setvars.sh
-    # CL_HEADER_DIR="$PWD/OpenCL-Headers-2020.06.16"
-    # if [ ! -d "$CL_HEADER_DIR" ]; then
-    #   wget https://github.com/KhronosGroup/OpenCL-Headers/archive/v2020.06.16.tar.gz
-    #   tar -xf v2020.06.16.tar.gz
-    # fi
+    # MAKE_OPTS+=" USE_OPENCL=1"
+    # MAKE_OPTS+=' COPTIONS="-std=c++98 -DCL_TARGET_OPENCL_VERSION=110 -DOCL_IGNORE_PLATFORM"'
+    # MAKE_OPTS+=' OPTIONS="-lstdc++ -cpp -lOpenCL"'
+    # MAKE_OPTS+=" OCL_VENDOR=AMD" 
+    # MAKE_OPTS+=" OCL_LIB_AMD_INC=$(fetchCLHeader)"
+    # MAKE_OPTS+=" OCL_AMD_LIB=-L$(findOneAPIlibOpenCL)"
+    
+   
     # export C_INCLUDE_PATH="$CL_HEADER_DIR:${C_INCLUDE_PATH:-}"
-    RUN_DIR="$SRC_DIR"
+   
     ;;
 
   cuda)
+    if [ ! -e CloverLeaf_CUDA/clover_leaf.f90 ]; then
+      git clone --depth 1 "https://github.com/UK-MAC/CloverLeaf_CUDA.git"
+    fi
     if [[ "$PLATFORM" =~ isamabrd ]] && [ "$COMPILER" != gcc-8.1 ]; then
       echo "Model '$MODEL' can only be used with compiler 'gcc-8.1' on platform '$PLATFORM'."
       exit 3
@@ -176,24 +211,24 @@ case "$MODEL" in
       exit 3
     fi
 
-    SRC_DIR+="/cuda"
-    RUN_DIR="$SRC_DIR"
-    MAKE_OPTS+=" COMPILER=GNU"
+    export SRC_DIR="$PWD/CloverLeaf_CUDA"
+    export BINARY="clover_leaf"
+    
     ;;
-
   acc)
     if [[ ! "$COMPILER" =~ (cce-9.1-classic|pgi-19.10) ]]; then
       echo "Model '$MODEL' can only be used with compilers: cce-9.1-classic pgi-19.10."
       exit 3
     fi
-
-    SRC_DIR+="/openacc"
-    RUN_DIR="$SRC_DIR"
+    export SRC_DIR="$PWD/openacc"
+    export BINARY="clover_leaf"
     ;;
-
   kokkos)
-    SRC_DIR+="/kokkos"
-    RUN_DIR="$SRC_DIR"
+    if [ ! -e cloverleaf_kokkos/clover_leaf.cpp ]; then
+      git clone "https://github.com/UoB-HPC/cloverleaf_kokkos"
+    fi
+    export SRC_DIR="$PWD/cloverleaf_kokkos"
+    export BINARY="clover_leaf"
     USE_CMAKE=true
 
     KOKKOS_VER="3.2.01"
@@ -209,7 +244,6 @@ case "$MODEL" in
     # We're using CMake with in-tree Kokkos here
     # So let's wipe out the existing make flags
     MAKE_OPTS="-DKOKKOS_IN_TREE=$KOKKOS_DIR"
-    MAKE_OPTS+=" -DWG_SIZE=$KOKKOS_WGSIZE"
 
     if [ -n "${KOKKOS_BACKEND:-}" ]; then
       echo "Using Kokkos backend=$KOKKOS_BACKEND"
@@ -284,8 +318,10 @@ case "$MODEL" in
 
     ;;
   sycl)
-    SRC_DIR+="/sycl"
-    RUN_DIR="$SRC_DIR"
+    if [ ! -e cloverleaf_sycl/CMakeLists.txt ]; then
+      git clone -b sycl-history "https://github.com/UoB-HPC/cloverleaf_sycl"
+    fi
+    export SRC_DIR="$PWD/cloverleaf_sycl"
     USE_CMAKE=true
     ;;
 
@@ -297,20 +333,14 @@ case "$MODEL" in
     ;;
 esac
 
-# Fetch source
-if [ ! -e bude-portability-benchmark/openmp/bude.c ]; then
-  if ! git clone https://github.com/UoB-HPC/bude-portability-benchmark.git; then
-    echo
-    echo "Failed to fetch source code."
-    echo
-    exit 1
-  fi
-fi
+export RUN_DIR="$SRC_DIR"
 
-cd "$SRC_DIR"
+
 
 # Handle actions
 if [ "$action" == "build" ]; then
+
+  cd "$SRC_DIR" || exit 1
 
   rm -f "$BENCHMARK_EXE"
   if [ "$USE_CMAKE" = true ]; then
@@ -319,12 +349,12 @@ if [ "$action" == "build" ]; then
     if [ "$MODEL" = kokkos ] && [ -n "$KOKKOS_EXTRA_FLAGS" ]; then
       CMAKE_OPTS+=("-DCXX_EXTRA_FLAGS=$KOKKOS_EXTRA_FLAGS")
     fi
-    echo "Using opts: ${CMAKE_OPTS[@]}"
+    echo "Using opts: ${CMAKE_OPTS[@]} was ${MAKE_OPTS}"
 
     rm -rf build
     cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release "${CMAKE_OPTS[@]}"
-    cmake --build build --target bude --config Release -j "$(nproc)"
-    mv build/bude "$BENCHMARK_EXE"
+    cmake --build build --target clover_leaf --config Release -j "$(nproc)"
+    mv "build/$BINARY" "$BENCHMARK_EXE"
 
   else
     make clean
@@ -334,21 +364,22 @@ if [ "$action" == "build" ]; then
       echo
       exit 1
     fi
-    mv bude "$BENCHMARK_EXE"
+    mv "$BINARY" "$BENCHMARK_EXE"
   fi
 elif [ "$action" == "run" ]; then
+
   # Check binary exists
-  if [ ! -x "$BENCHMARK_EXE" ]; then
+  if [ ! -x "$SRC_DIR/$BENCHMARK_EXE" ]; then
     echo "Executable '$BENCHMARK_EXE' not found."
     echo "Use the 'build' action first."
     exit 1
   fi
   if [ "$USE_QUEUE" = true ]; then
-    qsub -o "bude-$CONFIG.out" -e "bude-$CONFIG.err" -N "bude-$CONFIG" -V "$SCRIPT_DIR/run.job"
+    pwd
+    qsub -o "$PWD/cloverleaf-$CONFIG.out" -N "cloverleaf-$CONFIG" -V "$SCRIPT_DIR/run.job"
   else
-    bash $SCRIPT_DIR/run.job &> "bude-$CONFIG.out"
+    bash $SCRIPT_DIR/run.job &> "cloverleaf-$CONFIG.out"
   fi
-
 
 else
   echo

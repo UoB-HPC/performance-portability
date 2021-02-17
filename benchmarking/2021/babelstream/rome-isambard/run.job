@@ -1,0 +1,31 @@
+#!/bin/bash
+#PBS -q romeq
+#PBS -l select=1:ncpus=128
+#PBS -l walltime=00:10:00
+#PBS -l place=excl
+#PBS -joe
+
+set -eu
+
+cd $RUN_DIR || exit 2
+date
+export OMP_NUM_THREADS=128
+export OMP_PROC_BIND=true
+export OMP_PLACES=cores
+export ACC_NUM_CORES=128
+
+ 
+./$BENCHMARK_EXE --list
+
+case "$MODEL" in
+    ocl)
+        ./$BENCHMARK_EXE --device 1
+        ;;
+    omp|kokkos)
+        ./$BENCHMARK_EXE
+        ;;
+    *)
+        echo "Unknown run configuration for model '$MODEL'"
+        exit 1
+        ;;
+esac

@@ -2,6 +2,7 @@
 #PBS -q clxq
 #PBS -l select=1:ncpus=40
 #PBS -l walltime=00:10:00
+#PBS -l place=excl
 #PBS -joe
 
 set -eu
@@ -17,6 +18,10 @@ case "$MODEL" in
     omp)
         "./$BENCHMARK_EXE" "${params[@]}"
         ;;
+    ocl)
+        "./$BENCHMARK_EXE" --help
+        "./$BENCHMARK_EXE" "${params[@]}" --device 1 --wgsize 16 --posesperwi 8
+    ;;
     kokkos)
         "./$BENCHMARK_EXE" "${params[@]}"
         ;;

@@ -85,7 +85,7 @@ export SCRIPT_DIR PLATFORM_DIR
 
 export COMPILERS="aocc-2.3 cce-10.0 gcc-9.3 gcc-10.2 intel-2019 intel-2020 llvm-11.0 oneapi-2021.1 hipsycl-cf71460 computecpp-2.1.1"
 export DEFAULT_COMPILER="cce-10.0"
-export MODELS="omp kokkos sycl kokkos"
+export MODELS="omp kokkos sycl kokkos ocl"
 export DEFAULT_MODEL="omp"
 export PLATFORM="cxl-isambard"
 
