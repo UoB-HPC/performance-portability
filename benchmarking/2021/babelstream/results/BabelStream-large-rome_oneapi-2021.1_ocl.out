@@ -1,0 +1,22 @@
+Tue 26 Jan 08:02:32 GMT 2021
+
+Devices:
+0: Intel(R) FPGA Emulation Device
+1: AMD EPYC 7742 64-Core Processor                
+
+BabelStream
+Version: 3.4
+Implementation: OpenCL
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using OpenCL device AMD EPYC 7742 64-Core Processor                
+Driver: 2020.11.11.0.13_160000
+Reduction kernel config: 256 groups of size 8
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        144470.924  0.05946     0.16021     0.06498     
+Mul         139282.004  0.06167     0.12282     0.06598     
+Add         154212.302  0.08355     0.16085     0.08889     
+Triad       154380.237  0.08346     0.14583     0.08837     
+Dot         112004.602  0.07669     4.97451     0.25980     

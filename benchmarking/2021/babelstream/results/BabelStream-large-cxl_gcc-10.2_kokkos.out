@@ -1,0 +1,17 @@
+Tue 26 Jan 08:06:26 GMT 2021
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 3.4
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Validation failed on sum. Error 4.40755e-08
+Sum was 636.656592390007 but should be 636.656592434083
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        140475.664  0.06115     0.06306     0.06258     
+Mul         140081.486  0.06132     0.06182     0.06163     
+Add         158171.886  0.08146     0.08397     0.08169     
+Triad       158181.772  0.08146     0.08493     0.08170     
+Dot         232052.139  0.03702     0.03798     0.03725     

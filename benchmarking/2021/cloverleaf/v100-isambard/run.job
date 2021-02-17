@@ -1,0 +1,39 @@
+#!/bin/bash
+#PBS -q voltaq
+#PBS -l select=1
+#PBS -l walltime=00:10:00
+#PBS -l place=excl
+#PBS -joe
+
+cd "$RUN_DIR" || exit 2
+
+if [ "$MODEL" != ocl ]; then
+    cp "$SRC_DIR/InputDecks/clover_bm16.in" clover.in
+fi   
+
+date
+
+case "$MODEL" in
+    ocl)
+        cp $SRC_DIR/clover_bm16.in clover.in
+
+        # sed -i 's/opencl_vendor=Nvidia/opencl_vendor=Intel/g' clover.in
+        # sed -i 's/opencl_type=GPU/opencl_type=CPU/g' clover.in
+
+
+        # cp "$SRC_DIR"/*.cl "$RUN_DIR"
+        # cp "$SRC_DIR"/ocl_knls.h "$RUN_DIR"
+        # Make sure OCL_SRC_PREFIX is set so the kernel source files can be found
+        export OCL_SRC_PREFIX=../CloverLeaf_OpenCL
+        echo $PWD
+        "./$BENCHMARK_EXE"
+        cat clover.out
+        ;;
+    kokkos|cuda|sycl|omp-target)
+        "./$BENCHMARK_EXE"
+        ;;
+    *)
+        echo "Unknown run configuration for model '$MODEL'"
+        exit 1
+        ;;
+esac

@@ -1,0 +1,22 @@
+Tue 26 Jan 08:04:51 GMT 2021
+
+Devices:
+0: Intel(R) FPGA Emulation Device
+1: Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+
+BabelStream
+Version: 3.4
+Implementation: OpenCL
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using OpenCL device Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz
+Driver: 2020.11.11.0.13_160000
+Reduction kernel config: 40 groups of size 16
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        88560.157   0.09700     0.11536     0.10582     
+Mul         91495.614   0.09388     0.11623     0.10638     
+Add         98959.297   0.13020     0.15470     0.14059     
+Triad       98256.380   0.13114     0.15210     0.14010     
+Dot         106013.635  0.08103     0.10476     0.08375     

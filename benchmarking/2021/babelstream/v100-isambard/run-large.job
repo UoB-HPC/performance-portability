@@ -1,0 +1,23 @@
+#!/bin/bash
+#PBS -q voltaq
+#PBS -l select=1
+#PBS -l walltime=00:10:00
+#PBS -l place=excl
+#PBS -joe
+
+set -eu
+
+cd $RUN_DIR || exit 2
+date
+
+./$BENCHMARK_EXE --list
+
+case "$MODEL" in
+    ocl|cuda|omp-target|kokkos)
+        ./$BENCHMARK_EXE --arraysize $((2 ** 29))
+        ;;
+    *)
+        echo "Unknown run configuration for model '$MODEL'"
+        exit 1
+        ;;
+esac

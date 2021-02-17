@@ -14,38 +14,24 @@ setup_env() {
   case "$COMPILER" in
     aocc-2.3)
       module load aocc/2.3
-      MAKE_OPTS='COMPILER=CLANG ARCH=znver2 WGSIZE=512'
+      echo "IMPL"
       ;;
     cce-10.0)
       module load PrgEnv-cray
       module swap cce cce/10.0.0
       module swap craype-{broadwell,x86-rome}
-      MAKE_OPTS='COMPILER=CLANG CC=cc ARCH=znver2'
-      MAKE_OPTS+=' WGSIZE=512'
-      ;;
-    gcc-9.3)
-      module load gcc/9.3.0
-      MAKE_OPTS='COMPILER=GNU ARCH=znver2'
-      MAKE_OPTS+=' WGSIZE=512'
+      echo "IMPL"
       ;;
     gcc-10.2)
-      module load gcc/10.2.0
-      MAKE_OPTS='COMPILER=GNU ARCH=znver2'
-      MAKE_OPTS+=' WGSIZE=512'
-      ;;
-    intel-2019)
-      module load intel-parallel-studio-xe/compilers/64/2019u4/19.0.4
-      MAKE_OPTS='COMPILER=INTEL ARCH=core-avx2'
-      MAKE_OPTS+=' WGSIZE=512'
-      ;;
-    intel-2020)
-      module load intel-parallel-studio-xe/compilers/64/2020u4/20.0.4
-      MAKE_OPTS='COMPILER=INTEL ARCH=core-avx2'
-      MAKE_OPTS+=' WGSIZE=512'
+      module load openmpi/4.0.4/gcc-9.3
+      module swap gcc/9.3.0 gcc/10.2.0
+      MAKE_OPTS='COMPILER=GNU MPI_COMPILER=mpif90 C_MPI_COMPILER=mpicc'
+      MAKE_OPTS+=' FLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -march=znver2 -funroll-loops"'
+      MAKE_OPTS+=' CFLAGS_GNU="-Ofast -ffast-math -ffp-contract=fast -march=znver2 -funroll-loops"'
       ;;
     llvm-11.0)
       module load llvm/11.0
-      MAKE_OPTS='COMPILER=GNU ARCH=znver2 WGSIZE=512'
+      echo "IMPL"
       ;;
     oneapi-2021.1)
       module load gcc/10.2.0
@@ -80,7 +66,23 @@ setup_env() {
       exit 1
       ;;
   esac
+
+  case "$MODEL" in 
+    ocl)
+      loadOneAPI /lustre/projects/bristol/modules/intel/oneapi/2021.1/setvars.sh
+      MAKE_OPTS+=" USE_OPENCL=1"
+      MAKE_OPTS+=' COPTIONS="-std=c++98 -DCL_TARGET_OPENCL_VERSION=110 -DOCL_IGNORE_PLATFORM"'
+      MAKE_OPTS+=' OPTIONS="-lstdc++ -cpp -lOpenCL"'
+      MAKE_OPTS+=" OCL_VENDOR=AMD" 
+      MAKE_OPTS+=" OCL_LIB_AMD_INC=$(fetchCLHeader)"
+      MAKE_OPTS+=" OCL_AMD_LIB=-L$(findOneAPIlibOpenCL)"
+      ;;
+    *)
+      ;;
+  esac
+
 }
+
 export -f setup_env
 
 script="$(realpath "$0")"
@@ -88,7 +90,7 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="aocc-2.3 cce-10.0 gcc-9.3 gcc-10.2 intel-2019 intel-2020 llvm-11.0 oneapi-2021.1 hipsycl-cf71460 computecpp-2.1.1"
+export COMPILERS="aocc-2.3 cce-10.0 gcc-10.2 llvm-11.0 oneapi-2021.1 hipsycl-cf71460 computecpp-2.1.1"
 export DEFAULT_COMPILER="cce-10.0"
 export MODELS="omp kokkos sycl kokkos ocl"
 export DEFAULT_MODEL="omp"
@@ -96,7 +98,6 @@ export PLATFORM="rome-isambard"
 
 export KOKKOS_BACKEND="OPENMP"
 export KOKKOS_ARCH="ZEN2"
-export KOKKOS_WGSIZE="512"
 export KOKKOS_EXTRA_FLAGS="-Ofast;-march=znver2"
 
 bash "$PLATFORM_DIR/../common.sh" "$@"
