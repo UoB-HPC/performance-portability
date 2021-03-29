@@ -30,6 +30,11 @@ setup_env() {
       KOKKOS_EXTRA_FLAGS="-Ofast -mcpu=a64fx"
       export CRAYPE_LINK_TYPE=dynamic
       ;;
+    fcc-4.3)
+      module load fujitsu-compiler/4.3.1
+      MAKE_OPTS='COMPILER=FUJITSU WGSIZE=512 ARCH=a64fx'
+      KOKKOS_EXTRA_FLAGS="-Ofast -mcpu=a64fx"
+      ;;
     gcc-8.1)
       module load gcc/8.1.0
       MAKE_OPTS='COMPILER=GNU WGSIZE=128'
@@ -64,8 +69,8 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="arm-20.3 cce-10.0 cce-sve-10.0 gcc-8.1 gcc-11.0 llvm-11.0 hipsycl-201124-gcc11.0"
-export DEFAULT_COMPILER="cce-sve-10.0"
+export COMPILERS="arm-20.3 cce-10.0 cce-sve-10.0 fcc-4.3 gcc-8.1 gcc-11.0 llvm-11.0 hipsycl-201124-gcc11.0"
+export DEFAULT_COMPILER="fcc-4.3"
 export MODELS="omp kokkos sycl"
 export DEFAULT_MODEL="omp"
 export PLATFORM="a64fx-isambard"
