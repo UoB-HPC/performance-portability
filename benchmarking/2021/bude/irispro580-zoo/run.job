@@ -1,0 +1,27 @@
+#!/bin/bash
+
+
+set -eu
+
+cd "$RUN_DIR" || exit 2
+
+date
+
+params=( -n 65536 -i 8 --deck ../data/bm1 )
+
+case "$MODEL" in
+    omp-target|kokkos)
+        "./$BENCHMARK_EXE" "${params[@]}"
+        ;;
+    ocl)
+        "./$BENCHMARK_EXE" "${params[@]}" --wgsize "$OCL_WGSIZE"
+        ;;
+    sycl)
+        "./$BENCHMARK_EXE" "${params[@]}" --device Graphics  --wgsize 32
+        ;;
+    *)
+        echo "Unknown run configuration for model '$MODEL'"
+        exit 1
+        ;;
+esac
+

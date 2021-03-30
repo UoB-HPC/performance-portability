@@ -1,0 +1,43 @@
+#!/bin/bash
+#PBS -q sk56
+#PBS -l select=1:ncpus=56
+#PBS -l walltime=00:10:00
+#PBS -joe
+set -eu
+
+cd "$RUN_DIR" || exit 2
+
+
+date
+
+params=( -n 65536 -i 8 --deck ../data/bm1 )
+
+case "$MODEL" in
+    omp)
+        export OMP_NUM_THREADS=56 OMP_PLACES=cores OMP_PROC_BIND=true
+        aprun -n 1 -d 56 -j 1 -cc depth "./$BENCHMARK_EXE" "${params[@]}"
+        ;;
+    kokkos)
+        if [[ "$COMPILER" =~ cce- ]];
+            # Binding through aprun seems to give better performance
+            export OMP_NUM_THREADS=56
+            aprun -n 1 -d 56 -j 1 -cc cpu  "./$BENCHMARK_EXE" "${params[@]}"
+        else
+            export OMP_NUM_THREADS=56 OMP_PLACES=cores OMP_PROC_BIND=true
+            aprun -n 1 -d 56 -j 1 -cc depth "./$BENCHMARK_EXE" "${params[@]}"
+        fi
+        ;;
+    sycl)
+        if [[ "$COMPILER" =~ hipsycl-* ]]; then
+            export OMP_NUM_THREADS=56 OMP_PLACES=cores OMP_PROC_BIND=true
+            aprun -n 1 -d 56 -j 1 -cc none  "./$BENCHMARK_EXE" "${params[@]}" --wgsize 16
+        else
+            aprun -n 1 -d 56 -j 1 -cc none  "./$BENCHMARK_EXE" "${params[@]}" --device "Platinum 8176"  --wgsize 32
+        fi
+        ;;
+    *)
+        echo "Unknown run configuration for model '$MODEL'"
+        exit 1
+        ;;
+esac
+
