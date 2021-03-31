@@ -167,10 +167,10 @@ class akde:
 def pp_cdf_raw_effs(theapp):
     """Returns sorted subsequences and harmonic means of same."""
     valid_effs = [x for x in theapp if x[1] > 0 and x[1] != float("inf")]
-    sorted_effs = sorted(valid_effs, key=lambda x: x[1])
+    sorted_effs = sorted(valid_effs, key=lambda x: x[1], reverse=True)
     res = []
     for i in range(len(sorted_effs)):
-        res.append((sorted_effs[i][1], harmean([x[1] for x in sorted_effs[i:]]), sorted_effs[i][0]))
+        res.append((sorted_effs[i][1], harmean([x[1] for x in sorted_effs[:i+1]]), sorted_effs[i][0]))
     return res
 
 
@@ -309,10 +309,10 @@ def plot_cascade(fig,
 
         effs, pps, plats = zip(*cascade)
 
-        ppl = list(enumerate(reversed(pps), 1))
+        ppl = list(enumerate(pps, 1))
         ppl = ppl + [(ppl[-1][0], 0.0)]
         data_pp = np.asarray(ppl)
-        effl = list(enumerate(reversed(effs), 1))
+        effl = list(enumerate(effs, 1))
         effl = effl + [(effl[-1][0], 0.0)]
         data_eff = np.asarray(effl)
 
