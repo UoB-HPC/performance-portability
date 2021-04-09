@@ -8,12 +8,20 @@ setup_env() {
   if ! grep -q bristol/modules-a64fx/ <<<"$MODULEPATH"; then
     module use /lustre/projects/bristol/modules-a64fx/modulefiles
   fi
+  if ! grep -q lustre/software/aarch64/ <<<"$MODULEPATH"; then
+    module use /lustre/software/aarch64/modulefiles
+  fi
 
   module load cmake
 
   case "$COMPILER" in
     arm-20.3)
       module load arm/20.3
+      MAKE_OPTS='COMPILER=CLANG CC=armclang WGSIZE=128'
+      KOKKOS_EXTRA_FLAGS="-Ofast -mcpu=a64fx"
+      ;;
+    arm-21.0)
+      module load tools/arm-compiler-a64fx/21.0
       MAKE_OPTS='COMPILER=CLANG CC=armclang WGSIZE=128'
       KOKKOS_EXTRA_FLAGS="-Ofast -mcpu=a64fx"
       ;;
@@ -41,7 +49,7 @@ setup_env() {
       KOKKOS_EXTRA_FLAGS="-Ofast -march=armv8.2-a+sve"
       ;;
     gcc-11.0)
-      module load gcc/11-20201025
+      module load gcc/11-20210321
       MAKE_OPTS='COMPILER=GNU WGSIZE=128'
       KOKKOS_EXTRA_FLAGS="-Ofast -mcpu=a64fx"
       ;;
@@ -69,14 +77,14 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="arm-20.3 cce-10.0 cce-sve-10.0 fcc-4.3 gcc-8.1 gcc-11.0 llvm-11.0 hipsycl-201124-gcc11.0"
+export COMPILERS="arm-20.3 arm-21.0 cce-10.0 cce-sve-10.0 fcc-4.3 gcc-8.1 gcc-11.0 llvm-11.0 hipsycl-201124-gcc11.0"
 export DEFAULT_COMPILER="fcc-4.3"
 export MODELS="omp kokkos sycl"
 export DEFAULT_MODEL="omp"
 export PLATFORM="a64fx-isambard"
 
 export KOKKOS_BACKEND="OPENMP"
-export KOKKOS_ARCH="ARMV81"
+export KOKKOS_ARCH="A64FX"
 export KOKKOS_WGSIZE="128"
 
 bash "$PLATFORM_DIR/../common.sh" "$@"

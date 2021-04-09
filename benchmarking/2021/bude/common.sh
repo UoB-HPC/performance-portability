@@ -65,6 +65,8 @@ function usage() {
   echo "Valid model and compiler options for BUDE:"
   echo "  omp"
   echo "    arm-20.0"
+  echo "    arm-20.3"
+  echo "    arm-21.0"
   echo "    cce-10.0"
   echo "    cce-sve-10.0"
   echo "    gcc-8.1"
@@ -92,6 +94,8 @@ function usage() {
   echo
   echo "  kokkos"
   echo "    arm-20.0"
+  echo "    arm-20.3"
+  echo "    arm-21.0"
   echo "    cce-10.0"
   echo "    gcc-9.3"
   echo "    gcc-10.2"
@@ -196,7 +200,7 @@ case "$MODEL" in
     RUN_DIR="$SRC_DIR"
     USE_CMAKE=true
 
-    KOKKOS_VER="3.2.01"
+    KOKKOS_VER="3.3.01"
     KOKKOS_DIR="$(realpath kokkos-$KOKKOS_VER)"
     echo "Using Kokkos src $KOKKOS_DIR"
 
