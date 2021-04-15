@@ -58,6 +58,15 @@ setup_env() {
       MAKE_OPTS+=" -DHIPSYCL_PLATFORM=cpu"
       MAKE_OPTS+=" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
       ;;
+    hipsycl-fe8465c) # 0.9.1
+      module load gcc/10.2.0 boost/1.73.0/gcc-10.2.0 hipsycl/fe8465c/gcc-10.2.0
+      export HIPSYCL_OMP_LINK_LINE="-fopenmp $BOOST_ROOT/lib/libboost_fiber.so $BOOST_ROOT/lib/libboost_context.so"
+      MAKE_OPTS=" -DSYCL_RUNTIME=HIPSYCL"
+      MAKE_OPTS+=" -DNUM_TD_PER_THREAD=16"
+      MAKE_OPTS+=" -DHIPSYCL_INSTALL_DIR=$(findhipSYCL)"
+      MAKE_OPTS+=" -DHIPSYCL_PLATFORM=cpu"
+      MAKE_OPTS+=" -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ "
+      ;;  
     computecpp-2.1.1)
       module load gcc/8.2.0
       loadOneAPI /lustre/projects/bristol/modules/intel/oneapi/2021.1/setvars.sh # for the Intel OpenCL libs
@@ -83,7 +92,7 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="aocc-2.3 cce-10.0 gcc-9.3 gcc-10.2 intel-2019 intel-2020 llvm-11.0 oneapi-2021.1 hipsycl-cf71460 computecpp-2.1.1"
+export COMPILERS="aocc-2.3 cce-10.0 gcc-9.3 gcc-10.2 intel-2019 intel-2020 llvm-11.0 oneapi-2021.1 hipsycl-cf71460 hipsycl-fe8465c computecpp-2.1.1"
 export DEFAULT_COMPILER="cce-10.0"
 export MODELS="omp kokkos sycl kokkos ocl"
 export DEFAULT_MODEL="omp"
