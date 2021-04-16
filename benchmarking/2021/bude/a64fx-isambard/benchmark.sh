@@ -40,7 +40,7 @@ setup_env() {
       ;;
     fcc-4.3)
       module load fujitsu-compiler/4.3.1
-      MAKE_OPTS='COMPILER=FUJITSU WGSIZE=512 ARCH=a64fx'
+      MAKE_OPTS='COMPILER=FUJITSU WGSIZE=128 ARCH=a64fx'
       KOKKOS_EXTRA_FLAGS="-Nclang -Ofast -mcpu=a64fx"
       ;;
     gcc-8.1)
