@@ -4,8 +4,11 @@
 set -eu
 
 setup_env() {
-  USE_QUEUE=false
+  USE_QUEUE=true
   case "$COMPILER" in
+    julia-1.6.2)
+      module load julia/1.6.2
+    ;;
     gcc-8.3)
       module load cmake/3.14.5 
       module load gcc/8.3.0
@@ -26,6 +29,16 @@ setup_env() {
       exit 1
       ;;
   esac
+
+  case "$MODEL" in
+    julia-ka)
+      JULIA_ENTRY="src/KernelAbstractions.jl"
+      ;;
+    julia-cuda)
+      JULIA_ENTRY="src/CUDA.jl"
+      ;;
+  esac
+
 }
 export -f setup_env
 
@@ -34,9 +47,9 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="gcc-10.1 gcc-8.3 icpx-2021.1-beta10 dpcpp-2021.1-beta10 computecpp-2.1.1"
+export COMPILERS="gcc-10.1 gcc-8.3 icpx-2021.1-beta10 dpcpp-2021.1-beta10 computecpp-2.1.1 julia-1.6.2"
 export DEFAULT_COMPILER="cce-10.0"
-export MODELS="kokkos omp-target sycl"
+export MODELS="kokkos omp-target sycl  julia-ka julia-cuda"
 export DEFAULT_MODEL="kokkos"
 export PLATFORM="gtx2080ti-zoo"
 

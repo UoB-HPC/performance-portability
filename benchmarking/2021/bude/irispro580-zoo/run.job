@@ -1,4 +1,9 @@
 #!/bin/bash
+#PBS -q workq
+#PBS -l select=1:ngpus=1:gputype=irispro580
+#PBS -l walltime=01:00:00
+#PBS -joe
+
 
 
 set -eu
@@ -10,6 +15,10 @@ date
 params=( -n 65536 -i 8 --deck ../data/bm1 )
 
 case "$MODEL" in
+    julia-*)
+        julia --project -e 'import Pkg; Pkg.instantiate()'
+        julia --project "./$BENCHMARK_EXE" "${params[@]}" --device Iris
+        ;;
     omp-target|kokkos)
         "./$BENCHMARK_EXE" "${params[@]}"
         ;;

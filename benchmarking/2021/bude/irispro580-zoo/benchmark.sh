@@ -7,8 +7,11 @@ module load cmake/3.14.5
 module load intel/neo/20.49.18626
 
 setup_env() {
-  USE_QUEUE=false
+  USE_QUEUE=true
   case "$COMPILER" in
+    julia-1.6.2)
+      module load julia/1.6.2
+      ;;
     gcc-10.1)
       module load gcc/10.1.0
       MAKE_OPTS='COMPILER=GNU ARCH=skylake-avx512'
@@ -41,6 +44,9 @@ setup_env() {
   esac
 
   case "$MODEL" in
+    julia-oneapi)
+      JULIA_ENTRY="src/oneAPI.jl"
+      ;;
       ocl)
           module load khronos/opencl/headers
           module load khronos/opencl/icd-loader
@@ -54,9 +60,9 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="gcc-10.1 icpx-2021.1 dpcpp-2021.1 computecpp-2.3.0"
+export COMPILERS="gcc-10.1 icpx-2021.1 dpcpp-2021.1 computecpp-2.3.0 julia-1.6.2"
 export DEFAULT_COMPILER="gcc-10.1"
-export MODELS="omp omp-target ocl sycl kokkos"
+export MODELS="omp omp-target ocl sycl kokkos julia-oneapi"
 export DEFAULT_MODEL="ocl"
 export PLATFORM="irispro580-zoo"
 

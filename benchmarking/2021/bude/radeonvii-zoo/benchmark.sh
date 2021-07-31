@@ -7,8 +7,11 @@ module load cmake/3.19.1 # cmake 3.14 misdetected C++11 support for hipcc
 module load rocm/node30/3.10.0
 
 setup_env() {
-USE_QUEUE=false
+USE_QUEUE=true
 case "$COMPILER" in
+  julia-1.6.2)
+    module load julia/1.6.2
+    ;;
   aomp-11.12)
     module load aomp/11.12
     MAKE_OPTS='CC=aomp'
@@ -49,6 +52,12 @@ case "$COMPILER" in
 esac
 
 case "$MODEL" in
+  julia-ka)
+    JULIA_ENTRY="src/KernelAbstractions.jl"
+    ;;
+  julia-amdgpu)
+    JULIA_ENTRY="src/AMDGPU.jl"
+    ;;
   cuda)
     MAKE_OPTS='USE_HIP=1'
     ;;
@@ -72,9 +81,9 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="aomp-11.12 gcc-10.1 hipcc-3.10 hipsycl-cff515c"
+export COMPILERS="aomp-11.12 gcc-10.1 hipcc-3.10 hipsycl-cff515c julia-1.6.2"
 export DEFAULT_COMPILER="gcc-10.1"
-export MODELS="ocl kokkos omp-target sycl cuda"
+export MODELS="ocl kokkos omp-target sycl cuda julia-ka julia-amdgpu"
 export DEFAULT_MODEL="kokkos"
 export PLATFORM="radeonvii-zoo"
 

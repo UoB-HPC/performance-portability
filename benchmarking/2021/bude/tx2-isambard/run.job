@@ -10,6 +10,12 @@ export OMP_NUM_THREADS=64
 date
 
 case "$MODEL" in
+    julia-*)
+        export JULIA_NUM_THREADS=64
+        params=( -n 65536 -i 8 --deck ../data/bm1 )
+        julia --project -e 'import Pkg; Pkg.instantiate()'
+        julia --project "./$BENCHMARK_EXE" "${params[@]}"
+        ;;
     omp)
         if [[ "$COMPILER" =~ (arm|llvm)- ]]; then
             OMP_PROC_BIND=true aprun -n 1 -d 64 -cc none "./$BENCHMARK_EXE"

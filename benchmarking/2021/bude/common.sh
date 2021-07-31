@@ -142,6 +142,10 @@ setup_env
 USE_CMAKE=false
 # Setup model
 case "$MODEL" in
+  julia-*)
+    SRC_DIR+="/miniBUDE.jl"
+    RUN_DIR="$SRC_DIR"
+    ;;
   omp)
     SRC_DIR+="/openmp"
     RUN_DIR="$SRC_DIR"
@@ -319,37 +323,58 @@ cd "$SRC_DIR"
 # Handle actions
 if [ "$action" == "build" ]; then
 
-  rm -f "$BENCHMARK_EXE"
-  if [ "$USE_CMAKE" = true ]; then
+  case "$MODEL" in
+    julia-*)
+      echo "Julia models don't require build or compilation, use \`run\` directly."
+      ;;
+    *)
+      rm -f "$BENCHMARK_EXE"
+      if [ "$USE_CMAKE" = true ]; then
 
-    read -ra CMAKE_OPTS <<<"${MAKE_OPTS}" # explicit word splitting
-    if [ "$MODEL" = kokkos ] && [ -n "$KOKKOS_EXTRA_FLAGS" ]; then
-      CMAKE_OPTS+=("-DCXX_EXTRA_FLAGS=$KOKKOS_EXTRA_FLAGS")
-    fi
-    echo "Using opts: ${CMAKE_OPTS[@]}"
+        read -ra CMAKE_OPTS <<<"${MAKE_OPTS}" # explicit word splitting
+        if [ "$MODEL" = kokkos ] && [ -n "$KOKKOS_EXTRA_FLAGS" ]; then
+          CMAKE_OPTS+=("-DCXX_EXTRA_FLAGS=$KOKKOS_EXTRA_FLAGS")
+        fi
+        echo "Using opts: ${CMAKE_OPTS[@]}"
 
-    rm -rf build
-    cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release "${CMAKE_OPTS[@]}"
-    cmake --build build --target bude --config Release -j "$(nproc)"
-    mv build/bude "$BENCHMARK_EXE"
+        rm -rf build
+        cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release "${CMAKE_OPTS[@]}"
+        cmake --build build --target bude --config Release -j "$(nproc)"
+        mv build/bude "$BENCHMARK_EXE"
 
-  else
-    make clean
-    if ! eval make -B "$MAKE_OPTS" -j; then
-      echo
-      echo "Build failed."
-      echo
-      exit 1
-    fi
-    mv bude "$BENCHMARK_EXE"
-  fi
+      else
+        make clean
+        if ! eval make -B "$MAKE_OPTS" -j; then
+          echo
+          echo "Build failed."
+          echo
+          exit 1
+        fi
+        mv bude "$BENCHMARK_EXE"
+      fi
+      ;;
+  esac
+
 elif [ "$action" == "run" ]; then
-  # Check binary exists
-  if [ ! -x "$BENCHMARK_EXE" ]; then
-    echo "Executable '$BENCHMARK_EXE' not found."
-    echo "Use the 'build' action first."
-    exit 1
-  fi
+
+  case "$MODEL" in
+    julia-*)
+      if [ -z ${JULIA_ENTRY+x} ]; then
+        echo "JULIA_ENTRY not set for $MODEL!"
+        exit 1
+      fi
+      BENCHMARK_EXE="$JULIA_ENTRY";
+      ;;
+    *)
+      # Check binary exists
+      if [ ! -x "$BENCHMARK_EXE" ]; then
+        echo "Executable '$BENCHMARK_EXE' not found."
+        echo "Use the 'build' action first."
+        exit 1
+      fi
+      ;;
+  esac
+
   if [ "$USE_QUEUE" = true ]; then
     qsub -o "bude-$CONFIG.out" -e "bude-$CONFIG.err" -N "bude-$CONFIG" -V "$SCRIPT_DIR/run.job"
   else

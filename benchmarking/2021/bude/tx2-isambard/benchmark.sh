@@ -6,6 +6,9 @@ set -eu
 setup_env() {
   USE_QUEUE=true
   case "$COMPILER" in
+    julia-1.6.2)
+      module load julia/1.6.2
+    ;;
     arm-20.0)
       module swap PrgEnv-{cray,allinea}
       module swap allinea allinea/20.0.0.0
@@ -50,9 +53,9 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="arm-20.0 cce-10.0 cce-11.0 gcc-9.3 llvm-11.0 hipsycl-201124-gcc9.3"
+export COMPILERS="arm-20.0 cce-10.0 cce-11.0 gcc-9.3 llvm-11.0 hipsycl-201124-gcc9.3 julia-1.6.2"
 export DEFAULT_COMPILER="cce-10.0"
-export MODELS="omp kokkos sycl"
+export MODELS="omp kokkos sycl julia-threaded julia-ka"
 export DEFAULT_MODEL="omp"
 export PLATFORM="tx2-isambard"
 
