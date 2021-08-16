@@ -46,6 +46,7 @@ setup_env() {
   case "$MODEL" in
     julia-oneapi)
       JULIA_ENTRY="src/oneAPI.jl"
+      JULIA_BACKEND="oneAPI"
       ;;
       ocl)
           module load khronos/opencl/headers

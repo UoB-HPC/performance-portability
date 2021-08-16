@@ -1,0 +1,15 @@
+Mon 16 Aug 14:06:41 GMT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB(=0.3 GB)
+Total size: 805.3 MB(=0.8 GB)
+Using max 128 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        288841.843  0.00186     0.03046     0.00228     
+Mul         238949.452  0.00225     0.02617     0.00261     
+Add         279583.28   0.00288     0.02962     0.00333     
+Triad       240719.279  0.00335     0.03072     0.00377     
+Dot         226650.508  0.00237     0.02235     0.0027      

@@ -33,9 +33,11 @@ setup_env() {
   case "$MODEL" in
     julia-ka)
       JULIA_ENTRY="src/KernelAbstractions.jl"
+      JULIA_BACKEND="KernelAbstractions"
       ;;
     julia-cuda)
       JULIA_ENTRY="src/CUDA.jl"
+      JULIA_BACKEND="CUDA"
       ;;
   esac
 

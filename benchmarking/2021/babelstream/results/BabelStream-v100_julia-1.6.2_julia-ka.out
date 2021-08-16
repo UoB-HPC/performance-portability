@@ -1,0 +1,36 @@
+Mon 16 Aug 14:38:26 GMT 2021
+┌ Warning: HSA runtime has not been built, runtime functionality will be unavailable.
+│ Please run Pkg.build("AMDGPU") and reload AMDGPU.
+└ @ AMDGPU ~/.julia/packages/AMDGPU/t1BEF/src/AMDGPU.jl:162
+┌ Warning: HIP library has not been built, runtime functionality will be unavailable.
+│ Please run Pkg.build("AMDGPU") and reload AMDGPU.
+└ @ AMDGPU ~/.julia/packages/AMDGPU/t1BEF/src/AMDGPU.jl:183
+┌ Warning: ROCm-Device-Libs were not found, device intrinsics will be unavailable.
+│ Please run Pkg.build("AMDGPU") and reload AMDGPU.
+└ @ AMDGPU ~/.julia/packages/AMDGPU/t1BEF/src/AMDGPU.jl:191
+[1] (cpu) Intel(R) Xeon(R) Gold 6230 CPU @ 2.10GHz (1T)
+[2] (cuda) Tesla V100-PCIE-16GB (CuDevice(0))
+┌ Warning: HSA runtime has not been built, runtime functionality will be unavailable.
+│ Please run Pkg.build("AMDGPU") and reload AMDGPU.
+└ @ AMDGPU ~/.julia/packages/AMDGPU/t1BEF/src/AMDGPU.jl:162
+┌ Warning: HIP library has not been built, runtime functionality will be unavailable.
+│ Please run Pkg.build("AMDGPU") and reload AMDGPU.
+└ @ AMDGPU ~/.julia/packages/AMDGPU/t1BEF/src/AMDGPU.jl:183
+┌ Warning: ROCm-Device-Libs were not found, device intrinsics will be unavailable.
+│ Please run Pkg.build("AMDGPU") and reload AMDGPU.
+└ @ AMDGPU ~/.julia/packages/AMDGPU/t1BEF/src/AMDGPU.jl:191
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/KernelAbstractionsStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB(=0.3 GB)
+Total size: 805.3 MB(=0.8 GB)
+Using CUDA device: Tesla V100-PCIE-16GB (CuDevice(0))
+Kernel parameters   : <<<33554432,1024>>>
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        658164.752  0.00082     4.43678     0.04528     
+Mul         656033.491  0.00082     0.83566     0.00927     
+Add         708686.215  0.00114     0.72174     0.00842     
+Triad       710000.201  0.00113     0.7902      0.00912     
+Dot         608496.417  0.00088     2.25641     0.02356     

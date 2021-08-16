@@ -1,5 +1,5 @@
 check_bin() {
-  if [ ! -x "$1" ]; then
+  if [ ! -f "$1" ]; then # we got Julia which is text, so no -x
     echo "Executable '$1' not found."
     echo "Use the 'build' action first."
     exit 1

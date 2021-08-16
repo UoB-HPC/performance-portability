@@ -1,6 +1,6 @@
 #!/bin/bash
 #PBS -q voltaq
-#PBS -l select=1
+#PBS -l select=1:ngpus=1
 #PBS -l walltime=00:10:00
 #PBS -l place=excl
 #PBS -joe
@@ -10,10 +10,21 @@ set -eu
 cd $RUN_DIR || exit 2
 date
 
-./$BENCHMARK_EXE --list
-
 case "$MODEL" in
+    julia-cuda)
+        export JULIA_EXCLUSIVE=1 # pin threads
+        julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()'
+        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" --list
+        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" --device 1
+        ;;
+    julia-ka)
+        export JULIA_EXCLUSIVE=1 # pin threads
+        julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()'
+        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" --list
+        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" --device 2
+        ;;
     ocl|cuda|omp-target|kokkos)
+        ./$BENCHMARK_EXE --list
         ./$BENCHMARK_EXE 
         ;;
     *)

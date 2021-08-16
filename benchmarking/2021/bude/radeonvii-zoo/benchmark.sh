@@ -54,9 +54,11 @@ esac
 case "$MODEL" in
   julia-ka)
     JULIA_ENTRY="src/KernelAbstractions.jl"
+    JULIA_BACKEND="KernelAbstractions"
     ;;
   julia-amdgpu)
     JULIA_ENTRY="src/AMDGPU.jl"
+    JULIA_BACKEND="AMDGPU"
     ;;
   cuda)
     MAKE_OPTS='USE_HIP=1'

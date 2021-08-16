@@ -1,0 +1,52 @@
+Mon 16 Aug 19:37:14 UTC 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB(=0.3 GB)
+Total size: 805.3 MB(=0.8 GB)
+Using max 64 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        157744.259  0.0034      0.05578     0.004       
+Mul         165933.462  0.00324     0.05792     0.00394     
+Add         176663.486  0.00456     0.06488     0.00528     
+Triad       165638.358  0.00486     0.06669     0.00565     
+Dot         87174.705   0.00616     0.0526      0.00696     
+Application 1833621 resources: utime ~145s, stime ~47s, Rss ~1569980, inblocks ~592954, outblocks ~0
+============================= PBS epilogue =============================
+
+End of Job Report
+Run at 2021-08-16 19:37:43 for job 136993.xci00
+Submitted              : 2021-08-16 19:37:11
+Queued                 : 2021-08-16 19:37:12
+Started                : 2021-08-16 19:37:14
+Completed              : 2021-08-16 19:37:43
+Queued Time            : 0:00:02 (2 seconds)
+Elapsed Time           : 0:00:24 (24 seconds, 3% of limit)
+Walltime Limit         : 0:15:00 (900 seconds)
+Node Time Limit        : 0:15:00 (900 seconds)
+Node Time              : 0:00:24 (24 seconds, 3% of limit)
+Job Name               : babelstream
+Queue                  : arm
+Owner                  : br-wlin
+Group                  : -default-
+Project                : bristol
+Subproject             : 
+Funding                : 
+Trustzone              : 
+STDOUT                 : /home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/BabelStream-tx2_julia-1.6.2_julia-threaded.out
+STDERR                 : /home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/babelstream.e136993
+Job Directory          : /home/br-wlin/pbs.136993.xci00.x8z
+Job Arch               : XT
+CPU Core Type          : arm
+Total Nodes            : 1
+Total Tasks            : 64
+Parent Node            : xcimom2
+Parent Node Memory     : 
+Parent Node CPU Time   : 
+Compute Nodes          : 24
+Electrical Groups      : 1
+Run Version            : 1
+
+For more information see https://gw4-isambard.github.io/docs/

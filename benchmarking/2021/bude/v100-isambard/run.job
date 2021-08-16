@@ -1,6 +1,6 @@
 #!/bin/bash
 #PBS -q voltaq
-#PBS -l select=1
+#PBS -l select=1:ngpus=1
 #PBS -l walltime=00:10:00
 #PBS -l place=excl
 #PBS -joe
@@ -10,6 +10,11 @@ cd "$RUN_DIR" || exit 2
 date
 
 case "$MODEL" in
+    julia-*)
+        params=( -n 65536 -i 8 --deck ../data/bm1 )
+        julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()'
+        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" "${params[@]}" --ppwi 2 --device V100
+        ;;
     omp-target|ocl|cuda|acc|kokkos)
         "./$BENCHMARK_EXE" -n 65536 -i 8
         ;;

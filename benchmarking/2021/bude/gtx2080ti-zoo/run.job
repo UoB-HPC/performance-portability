@@ -15,8 +15,9 @@ params=( -n 65536 -i 8 --deck ../data/bm1 )
 
 case "$MODEL" in
     julia-*)
-        julia --project -e 'import Pkg; Pkg.instantiate()'
-        julia --project "./$BENCHMARK_EXE" "${params[@]}" --device GeForce
+        export JULIA_EXCLUSIVE=1 # pin threads
+        julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()'
+        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" "${params[@]}" --device GeForce
         ;;
     omp-target|kokkos)
         "./$BENCHMARK_EXE" "${params[@]}"

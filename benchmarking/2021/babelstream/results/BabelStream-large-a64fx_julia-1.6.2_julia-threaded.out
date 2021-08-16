@@ -1,0 +1,16 @@
+WARNING: Did not unuse /opt/cray/pe/craype/2.7.0/modulefiles
+Mon Aug 16 15:43:59 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 48 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        531113.312  0.01617     0.10173     0.01743     
+Mul         530216.365  0.0162      0.10001     0.01723     
+Add         590443.58   0.02182     0.11411     0.0229      
+Triad       589434.198  0.02186     0.11482     0.02334     
+Dot         104865.752  0.08191     0.16486     0.09181     

@@ -12,6 +12,9 @@ setup_env() {
   module load cmake/3.18.3
 
   case "$COMPILER" in
+    julia-1.6.2)
+      module load julia/julia-1.6.2
+    ;;
     aocc-2.3)
       module load aocc/2.3
       MAKE_OPTS='COMPILER=CLANG ARCH=znver2 WGSIZE=512'
@@ -45,7 +48,7 @@ setup_env() {
       ;;
     llvm-11.0)
       module load llvm/11.0
-      MAKE_OPTS='COMPILER=GNU ARCH=znver2 WGSIZE=512'
+      MAKE_OPTS='COMPILER=CLANG ARCH=znver2 WGSIZE=512'
       ;;
     oneapi-2021.1)
       module load gcc/10.2.0
@@ -89,6 +92,16 @@ setup_env() {
       exit 1
       ;;
   esac
+  case "$MODEL" in
+    julia-ka)
+      JULIA_ENTRY="src/KernelAbstractions.jl"
+      JULIA_BACKEND="KernelAbstractions"
+      ;;
+    julia-threaded)
+      JULIA_ENTRY="src/Threaded.jl"
+      JULIA_BACKEND="Threaded"
+      ;;
+  esac
 }
 export -f setup_env
 
@@ -97,9 +110,9 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="aocc-2.3 cce-10.0 gcc-9.3 gcc-10.2 intel-2019 intel-2020 llvm-11.0 oneapi-2021.1 hipsycl-cf71460 hipsycl-fe8465c computecpp-2.1.1"
+export COMPILERS="aocc-2.3 cce-10.0 gcc-9.3 gcc-10.2 intel-2019 intel-2020 llvm-11.0 oneapi-2021.1 hipsycl-cf71460 hipsycl-fe8465c computecpp-2.1.1 julia-1.6.2"
 export DEFAULT_COMPILER="cce-10.0"
-export MODELS="omp kokkos sycl kokkos ocl"
+export MODELS="omp kokkos sycl kokkos ocl julia-threaded julia-ka"
 export DEFAULT_MODEL="omp"
 export PLATFORM="rome-isambard"
 

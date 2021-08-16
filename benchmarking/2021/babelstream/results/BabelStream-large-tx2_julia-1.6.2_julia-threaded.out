@@ -1,0 +1,52 @@
+Mon 16 Aug 19:50:23 UTC 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 64 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        158631.269  0.05415     0.10708     0.05492     
+Mul         187923.822  0.04571     0.10024     0.04687     
+Add         190434.793  0.06766     0.12845     0.06873     
+Triad       186363.458  0.06914     0.13123     0.07088     
+Dot         84837.065   0.10125     0.14539     0.10259     
+Application 1833648 resources: utime ~1848s, stime ~788s, Rss ~17030128, inblocks ~593042, outblocks ~0
+============================= PBS epilogue =============================
+
+End of Job Report
+Run at 2021-08-16 19:51:48 for job 137001.xci00
+Submitted              : 2021-08-16 19:50:19
+Queued                 : 2021-08-16 19:50:19
+Started                : 2021-08-16 19:50:22
+Completed              : 2021-08-16 19:51:48
+Queued Time            : 0:00:03 (3 seconds)
+Elapsed Time           : 0:01:21 (81 seconds, 2% of limit)
+Walltime Limit         : 1:00:00 (3600 seconds)
+Node Time Limit        : 1:00:00 (3600 seconds)
+Node Time              : 0:01:21 (81 seconds, 2% of limit)
+Job Name               : babelstream
+Queue                  : arm
+Owner                  : br-wlin
+Group                  : -default-
+Project                : bristol
+Subproject             : 
+Funding                : 
+Trustzone              : 
+STDOUT                 : /home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/BabelStream-large-tx2_julia-1.6.2_julia-threaded.out
+STDERR                 : /home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/babelstream.e137001
+Job Directory          : /home/br-wlin/pbs.137001.xci00.x8z
+Job Arch               : XT
+CPU Core Type          : arm
+Total Nodes            : 1
+Total Tasks            : 64
+Parent Node            : xcimom
+Parent Node Memory     : 
+Parent Node CPU Time   : 
+Compute Nodes          : 24
+Electrical Groups      : 1
+Run Version            : 1
+
+For more information see https://gw4-isambard.github.io/docs/

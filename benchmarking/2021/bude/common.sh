@@ -364,6 +364,7 @@ elif [ "$action" == "run" ]; then
         exit 1
       fi
       BENCHMARK_EXE="$JULIA_ENTRY";
+      export JULIA_BACKEND="$JULIA_BACKEND"
       ;;
     *)
       # Check binary exists

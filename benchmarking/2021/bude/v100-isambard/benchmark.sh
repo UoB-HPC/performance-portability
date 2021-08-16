@@ -12,6 +12,10 @@ setup_env() {
   module load cmake/3.18.3
 
   case "$COMPILER" in
+    julia-1.6.2)
+      # module load cuda11.1/toolkit/11.1.1
+      module load julia/julia-1.6.2
+    ;;
     cce-9.1-classic)
       module load PrgEnv-cray
       module swap cce cce/9.1.1-classic
@@ -27,8 +31,9 @@ setup_env() {
       ;;
     gcc-8.1)
       module load gcc/8.1.0
-      module load craype-accel-nvidia70
-      module load cuda10.2/toolkit/10.2.89
+      # module load craype-accel-nvidia70
+      module load cuda11.1/toolkit/11.1.1
+      # module load cuda10.2/toolkit/10.2.89
       MAKE_OPTS=''
       ;;
     gcc-9.3)
@@ -84,6 +89,14 @@ setup_env() {
   esac
 
   case "$MODEL" in
+      julia-ka)
+        JULIA_ENTRY="src/KernelAbstractions.jl"
+        JULIA_BACKEND="KernelAbstractions"
+      ;;
+      julia-cuda)
+        JULIA_ENTRY="src/CUDA.jl"
+        JULIA_BACKEND="CUDA"
+      ;;
       omp-target)
         MAKE_OPTS+=" TARGET=NVIDIA"
         ;;
@@ -96,9 +109,9 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="cce-9.1-classic cce-10.0 gcc-8.1 gcc-9.3 llvm-10.0 pgi-19.10 hipsycl-cf71460 oneapi-2021.1"
+export COMPILERS="cce-9.1-classic cce-10.0 gcc-8.1 gcc-9.3 llvm-10.0 pgi-19.10 hipsycl-cf71460 oneapi-2021.1 julia-1.6.2"
 export DEFAULT_COMPILER="gcc-9.3"
-export MODELS="ocl cuda omp-target acc kokkos sycl"
+export MODELS="ocl cuda omp-target acc kokkos sycl julia-cuda julia-ka"
 export DEFAULT_MODEL="ocl"
 export PLATFORM="v100-isambard"
 

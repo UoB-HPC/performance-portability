@@ -11,6 +11,7 @@ function usage() {
   echo "  llvm-trunk"
   echo "  pgi-19.10"
   echo "  hipsycl"
+  echo "  julia-1.6.2"
   echo
   echo "Valid models:"
   echo "  omp"
@@ -18,6 +19,8 @@ function usage() {
   echo "  cuda"
   echo "  acc"
   echo "  sycl"
+  echo "  julia-threaded"
+  echo "  julia-ka"
   echo
   echo "The default configuration is '$DEFAULT_COMPILER'."
   echo "The default programming model is '$DEFAULT_MODEL'."
@@ -48,6 +51,12 @@ export RUN_DIR=$PWD/BabelStream-$CONFIG
 
 
 case "$COMPILER" in
+julia-1.6.2)
+    # XXX don't load anything related to CUDA here, Julia needs a specific
+    # version of the toolkit which is fetched as part of `Pkg.instantiate()`
+    # module load cuda11.1/toolkit/11.1.1
+    module load julia/julia-1.6.2
+    ;;
 llvm-trunk)
   module load craype-accel-nvidia70
   module load cuda10.2/toolkit/10.2.89
@@ -92,6 +101,19 @@ hipsycl)
   ;;
 esac
 
+case "$MODEL" in
+  julia-ka)
+    export JULIA_BACKEND="KernelAbstractions"
+    JULIA_ENTRY="src/KernelAbstractionsStream.jl"
+    BENCHMARK_EXE=$JULIA_ENTRY
+    ;;
+  julia-cuda)
+    export JULIA_BACKEND="CUDA"
+    JULIA_ENTRY="src/CUDAStream.jl"
+    BENCHMARK_EXE=$JULIA_ENTRY
+    ;;
+esac
+
 # Handle actions
 if [ "$ACTION" == "build" ]; then
 
@@ -103,6 +125,9 @@ if [ "$ACTION" == "build" ]; then
 
   # Select Makefile to use
   case "$MODEL" in
+  julia-*)
+    # nothing to do
+    ;;
   omp)
     MAKE_FILE="OpenMP.make"
     BINARY="omp-stream"
@@ -125,7 +150,7 @@ if [ "$ACTION" == "build" ]; then
   cuda)
     MAKE_FILE="CUDA.make"
     BINARY="cuda-stream"
-    MAKE_OPTS+=' EXTRA_FLAGS="-arch=sm_70"'
+    MAKE_OPTS+=' NVARCH=sm_70'
     NVCC=`which nvcc`
     CUDA_PATH=`dirname $NVCC`/..
     export LD_LIBRARY_PATH=$CUDA_PATH/lib64
@@ -162,16 +187,20 @@ if [ "$ACTION" == "build" ]; then
     ;;
   esac
 
-  if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
-    echo
-    echo "Build failed."
-    echo
-    exit 1
-  fi
-
-  # Rename binary
   mkdir -p $RUN_DIR
-  mv $SRC_DIR/$BINARY $RUN_DIR/$BENCHMARK_EXE
+  
+  if [ -z ${JULIA_ENTRY+x} ]; then
+    if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
+      echo
+      echo "Build failed."
+      echo
+      exit 1
+    fi
+    # Rename binary
+    mv $SRC_DIR/$BINARY $RUN_DIR/$BENCHMARK_EXE
+  else 
+    cp -R "$SRC_DIR/JuliaStream.jl/." $RUN_DIR/
+  fi  
 
 elif [ "$ACTION" == "run" ]; then
   check_bin $RUN_DIR/$BENCHMARK_EXE

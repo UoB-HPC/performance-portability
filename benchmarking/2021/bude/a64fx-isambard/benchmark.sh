@@ -15,6 +15,9 @@ setup_env() {
   module load cmake
 
   case "$COMPILER" in
+    julia-1.6.2)
+      module load julia/1.6.2
+    ;;
     arm-20.3)
       module load arm/20.3
       MAKE_OPTS='COMPILER=CLANG CC=armclang WGSIZE=128'
@@ -69,6 +72,16 @@ setup_env() {
       exit 1
       ;;
   esac
+  case "$MODEL" in
+    julia-ka)
+      JULIA_ENTRY="src/KernelAbstractions.jl"
+      JULIA_BACKEND="KernelAbstractions"
+      ;;
+    julia-threaded)
+      JULIA_ENTRY="src/Threaded.jl"
+      JULIA_BACKEND="Threaded"
+      ;;
+  esac
 }
 export -f setup_env
 
@@ -77,9 +90,9 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="arm-20.3 arm-21.0 cce-10.0 cce-sve-10.0 fcc-4.3 gcc-8.1 gcc-11.0 llvm-11.0 hipsycl-201124-gcc11.0"
+export COMPILERS="arm-20.3 arm-21.0 cce-10.0 cce-sve-10.0 fcc-4.3 gcc-8.1 gcc-11.0 llvm-11.0 hipsycl-201124-gcc11.0 julia-1.6.2"
 export DEFAULT_COMPILER="fcc-4.3"
-export MODELS="omp kokkos sycl"
+export MODELS="omp kokkos sycl julia-threaded julia-ka"
 export DEFAULT_MODEL="omp"
 export PLATFORM="a64fx-isambard"
 

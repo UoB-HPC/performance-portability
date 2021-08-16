@@ -1,0 +1,17 @@
+Mon 16 Aug 14:42:27 GMT 2021
+[1] (CUDA.jl) Tesla V100-PCIE-16GB (CuDevice(0))
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/CUDAStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB(=0.3 GB)
+Total size: 805.3 MB(=0.8 GB)
+Using CUDA device: Tesla V100-PCIE-16GB (CuDevice(0))
+Kernel parameters: <<<32768,1024>>>
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        797980.508  0.00067     0.80338     0.0087      
+Mul         793467.046  0.00068     0.62728     0.00696     
+Add         836099.928  0.00096     0.61616     0.00712     
+Triad       837948.658  0.00096     0.66087     0.00756     
+Dot         829323.579  0.00065     2.16778     0.02233     

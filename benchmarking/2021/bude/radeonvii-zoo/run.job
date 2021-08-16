@@ -16,8 +16,8 @@ params=( -n 65536 -i 8 --deck ../data/bm1 )
 case "$MODEL" in
     julia-*)
     echo $PWD 
-        julia --project -e 'import Pkg; Pkg.instantiate()'
-        julia --project "./$BENCHMARK_EXE" "${params[@]}" --device Radeon
+        julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()'
+        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" "${params[@]}" --device Radeon
         ;;
     omp-target|kokkos)
         "./$BENCHMARK_EXE" "${params[@]}"

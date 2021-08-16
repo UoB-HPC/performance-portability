@@ -13,12 +13,15 @@ function usage() {
   echo "  aocc-2.1"
   echo "  pgi-19.10" 
   echo "  hipsycl"
+  echo "  julia-1.6.2"
   echo
   echo "Valid models:"
   echo "  omp"
   echo "  kokkos"
   echo "  sycl"
   echo "  ocl"
+  echo "  julia-threaded"
+  echo "  julia-ka"
   echo
   echo "The default configuration is '$DEFAULT_COMPILER'."
   echo "The default programming model is '$DEFAULT_MODEL'."
@@ -44,6 +47,9 @@ export RUN_DIR=$PWD/BabelStream-$CONFIG
 
 # Set up the environment
 case "$COMPILER" in
+  julia-1.6.2)
+    module load julia/julia-1.6.2
+    ;;
   cce-10.0)
     module load PrgEnv-cray
     module swap cce cce/10.0.0
@@ -69,6 +75,20 @@ case "$COMPILER" in
     exit 1
     ;;
 esac
+
+case "$MODEL" in
+  julia-ka)
+    export JULIA_BACKEND="KernelAbstractions"
+    JULIA_ENTRY="src/KernelAbstractionsStream.jl"
+    BENCHMARK_EXE=$JULIA_ENTRY
+    ;;
+  julia-threaded)
+    export JULIA_BACKEND="Threaded"
+    JULIA_ENTRY="src/ThreadedStream.jl"
+    BENCHMARK_EXE=$JULIA_ENTRY
+    ;;
+esac
+
 export MODEL="$MODEL"
 # Handle actions
 if [ "$ACTION" == "build" ]; then
@@ -81,6 +101,9 @@ if [ "$ACTION" == "build" ]; then
 
   # Select Makefile to use
   case "$MODEL" in
+  julia-*)
+    # nothing to do
+    ;;
   omp)
     MAKE_FILE="OpenMP.make"
     BINARY="omp-stream"
@@ -109,17 +132,21 @@ if [ "$ACTION" == "build" ]; then
     exit 1
     ;;
   esac
-
-  if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
-    echo
-    echo "Build failed."
-    echo
-    exit 1
-  fi
-
-  # Rename binary
+  
   mkdir -p $RUN_DIR
-  mv $SRC_DIR/$BINARY $RUN_DIR/$BENCHMARK_EXE
+  
+  if [ -z ${JULIA_ENTRY+x} ]; then
+    if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
+      echo
+      echo "Build failed."
+      echo
+      exit 1
+    fi
+    # Rename binary
+    mv $SRC_DIR/$BINARY $RUN_DIR/$BENCHMARK_EXE
+  else 
+    cp -R "$SRC_DIR/JuliaStream.jl/." $RUN_DIR/
+  fi  
 
 elif [ "$ACTION" == "run" ]; then
   check_bin $RUN_DIR/$BENCHMARK_EXE

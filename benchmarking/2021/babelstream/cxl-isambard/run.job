@@ -14,10 +14,13 @@ export OMP_PROC_BIND=true
 export OMP_PLACES=cores
 export ACC_NUM_CORES=40
 
- 
-./$BENCHMARK_EXE --list
-
 case "$MODEL" in
+    julia-*)
+        export JULIA_EXCLUSIVE=1 # pin threads
+        export JULIA_NUM_THREADS=40
+        julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()'
+        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE"
+        ;;
     ocl)
         ./$BENCHMARK_EXE --device 1
         ;;

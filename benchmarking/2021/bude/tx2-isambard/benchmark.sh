@@ -3,6 +3,12 @@
 
 set -eu
 
+if ! grep -q bristol/modules-arm-phase2/ <<<"$MODULEPATH"; then
+    module use /lustre/projects/bristol/modules-arm-phase2/modulefiles
+fi
+
+module load cmake
+
 setup_env() {
   USE_QUEUE=true
   case "$COMPILER" in
@@ -43,6 +49,16 @@ setup_env() {
       echo "Invalid compiler '$COMPILER'."
       usage
       exit 1
+      ;;
+  esac
+  case "$MODEL" in
+    julia-ka)
+      JULIA_ENTRY="src/KernelAbstractions.jl"
+      JULIA_BACKEND="KernelAbstractions"
+      ;;
+    julia-threaded)
+      JULIA_ENTRY="src/Threaded.jl"
+      JULIA_BACKEND="Threaded"
       ;;
   esac
 }
