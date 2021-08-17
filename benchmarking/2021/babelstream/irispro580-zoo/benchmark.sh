@@ -20,6 +20,25 @@ function usage() {
   echo
 }
 
+function loadOneAPI() {
+  if [ -z "${1:-}" ]; then
+    echo "${FUNCNAME[0]}: Usage: ${FUNCNAME[0]} /path/to/oneapi/source.sh"
+    echo "No OneAPI path provided. Stop."
+    exit 5
+  fi
+
+  local oneapi_env="${1}"
+
+  set +u # setvars can't handle unbound vars
+  CURRENT_SCRIPT_DIR="$SCRIPT_DIR" # save current script dir as the setvars overwrites it
+
+  # their script also terminates the shell for some reason so we short-circuit it first
+  source "$oneapi_env"  --force || true
+
+  set -u
+  SCRIPT_DIR="$CURRENT_SCRIPT_DIR" #recover script dir
+}
+
 # Process arguments
 if [ $# -lt 1 ]; then
   usage
@@ -39,14 +58,26 @@ export RUN_DIR=$PWD/BabelStream-$CONFIG
 
 # Set up the environment
 module purge
+module load intel/neo/20.49.18626
 #set -x
 case "$COMPILER" in
+julia-1.6.2)
+  module load julia/1.6.2
+  ;;
+dpcpp-2021.1)
+  module load gcc/8.3.0 # make sure the base compile isn't too old
+  loadOneAPI /nfs/software/x86_64/intel/oneapi/2021.1/setvars.sh
+  ;;  
 oneapi)
   # XXX oneapi changes SCRIPT_DIR, restore it after sourcing
   CURRENT_SCRIPT_DIR=$SCRIPT_DIR
   source /nfs/software/x86_64/inteloneapi-beta/2021.1.8/setvars.sh --force
   SCRIPT_DIR=$CURRENT_SCRIPT_DIR
   ;;
+gcc-8.3)
+  module load gcc/8.3.0
+  MAKE_OPTS='COMPILER=GNU'
+      ;;    
 gcc-10.1)
   module load gcc/10.1.0
   MAKE_OPTS="COMPILER=GNU"
@@ -60,30 +91,14 @@ gcc-10.1)
 esac
 
 case "$MODEL" in
-omp)
-  export OMP_TARGET_OFFLOAD="MANDATORY"
-  MAKE_OPTS='COMPILER=INTEL TARGET=INTEL_GPU'
-  MAKE_FILE="OpenMP.make"
-  BINARY="omp-stream"
-  export DEVICE_ARGS=""
-  ;;
-ocl)
-  module load intel/opencl/18.1
-  module load khronos/opencl/headers khronos/opencl/icd-loader
-  #  module load intel/opencl/experimental/2020.10.3.0.04
-  MAKE_FILE="OpenCL.make"
-  BINARY="ocl-stream"
-  MAKE_OPTS="$MAKE_OPTS TARGET=GPU"
-  export DEVICE_ARGS=""
-  ;;
-sycl)
-  MAKE_OPTS='COMPILER=DPCPP'
-  MAKE_FILE="SYCL.make"
-  BINARY="sycl-stream"
-  export DEVICE_ARGS="--device 1"
-  ;;
+  julia-oneapi)
+    export JULIA_BACKEND="oneAPI"
+    JULIA_ENTRY="src/oneAPIStream.jl"
+    BENCHMARK_EXE=$JULIA_ENTRY
+    ;;
 esac
 
+export MODEL="$MODEL"
 # Handle actions
 if [ "$ACTION" == "build" ]; then
   # Fetch source code
@@ -92,31 +107,58 @@ if [ "$ACTION" == "build" ]; then
   # Perform build
   rm -f $RUN_DIR/$BENCHMARK_EXE
 
-  # Perform build
-  if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
-    echo
-    echo "Build failed."
-    echo
-    exit 1
-  fi
+  case "$MODEL" in
+  julia-*)
+    # nothing to do
+    ;;
+  omp)
+    export OMP_TARGET_OFFLOAD="MANDATORY"
+    MAKE_OPTS='COMPILER=INTEL TARGET=INTEL_GPU'
+    MAKE_FILE="OpenMP.make"
+    BINARY="omp-stream"
+    export DEVICE_ARGS=""
+    ;;
+  ocl)
+    module load intel/opencl/18.1
+    module load khronos/opencl/headers khronos/opencl/icd-loader
+    #  module load intel/opencl/experimental/2020.10.3.0.04
+    MAKE_FILE="OpenCL.make"
+    BINARY="ocl-stream"
+    MAKE_OPTS="$MAKE_OPTS TARGET=GPU"
+    export DEVICE_ARGS=""
+    ;;
+  sycl)
+    MAKE_OPTS='COMPILER=DPCPP'
+    MAKE_FILE="SYCL.make"
+    BINARY="sycl-stream"
+    export DEVICE_ARGS="--device 1"
+    ;;
+  esac
 
   mkdir -p $RUN_DIR
-  # Rename binary
-  mv $SRC_DIR/$BINARY $RUN_DIR/$BENCHMARK_EXE
+
+  if [ -z ${JULIA_ENTRY+x} ]; then
+    if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
+      echo
+      echo "Build failed."
+      echo
+      exit 1
+    fi
+    # Rename binary
+    mv $SRC_DIR/$BINARY $RUN_DIR/$BENCHMARK_EXE
+  else 
+    cp -R "$SRC_DIR/JuliaStream.jl/." $RUN_DIR/
+  fi  
 
 elif [ "$ACTION" == "run" ]; then
   check_bin $RUN_DIR/$BENCHMARK_EXE
-  cd $RUN_DIR || exit
-  echo $SCRIPT_DIR
-
-  bash "$SCRIPT_DIR/run.sh" BabelStream-$CONFIG.out
+  qsub -o BabelStream-$CONFIG.out -N babelstream -V $SCRIPT_DIR/run.job
 elif [ "$ACTION" == "run-large" ]; then
   check_bin $RUN_DIR/$BENCHMARK_EXE
-  cd $RUN_DIR || exit
-  bash "$SCRIPT_DIR/run-large.sh" BabelStream-large-$CONFIG.out
+  qsub -o BabelStream-large-$CONFIG.out -N babelstream -V $SCRIPT_DIR/run-large.job
 else
   echo
-  echo "Invalid action (use 'build' or 'run')."
-  echo
+  echo "Invalid action"
+  usage
   exit 1
 fi

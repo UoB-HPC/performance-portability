@@ -1,0 +1,66 @@
+Tue 17 Aug 03:15:03 BST 2021
+┌ Warning: HSA initialization failed with code STATUS_ERROR_OUT_OF_RESOURCES
+└ @ AMDGPU ~/.julia/packages/AMDGPU/t1BEF/src/AMDGPU.jl:159
+┌ Warning: The NVIDIA driver on this system only supports up to CUDA 10.1.0.
+│ For performance reasons, it is recommended to upgrade to a driver that supports CUDA 11.2 or higher.
+└ @ CUDA ~/.julia/packages/CUDA/lwSps/src/initialization.jl:42
+ERROR: LoadError: TaskFailedException
+Stacktrace:
+ [1] wait
+   @ ./task.jl:322 [inlined]
+ [2] wait
+   @ ~/.julia/packages/KernelAbstractions/8W8KX/src/cpu.jl:65 [inlined]
+ [3] wait (repeats 2 times)
+   @ ~/.julia/packages/KernelAbstractions/8W8KX/src/cpu.jl:29 [inlined]
+ [4] dot(data::VectorData{Float64}, context::Context)
+   @ Main ~/performance-portability/benchmarking/2021/babelstream/results/BabelStream-gtx2080ti_julia-1.6.2_julia-ka/src/KernelAbstractionsStream.jl:236
+ [5] macro expansion
+   @ ./timing.jl:287 [inlined]
+ [6] run_all!(data::VectorData{Float64}, context::Context, times::Int64)
+   @ Main ~/performance-portability/benchmarking/2021/babelstream/results/BabelStream-gtx2080ti_julia-1.6.2_julia-ka/src/Stream.jl:31
+ [7] main()
+   @ Main ~/performance-portability/benchmarking/2021/babelstream/results/BabelStream-gtx2080ti_julia-1.6.2_julia-ka/src/Stream.jl:270
+ [8] top-level scope
+   @ ~/performance-portability/benchmarking/2021/babelstream/results/BabelStream-gtx2080ti_julia-1.6.2_julia-ka/src/KernelAbstractionsStream.jl:253
+
+    nested task error: MethodError: no method matching isless(::Int64, ::SubArray{Int64, 1, StaticArrays.MMatrix{1, 1024, Int64, 1024}, Tuple{Base.Slice{StaticArrays.SOneTo{1}}, Int64}, true})
+    Closest candidates are:
+      isless(!Matched::AbstractVector{T} where T, ::AbstractVector{T} where T) at abstractarray.jl:1989
+      isless(::Real, !Matched::AbstractFloat) at operators.jl:168
+      isless(::Real, !Matched::Real) at operators.jl:357
+      ...
+    Stacktrace:
+      [1] call
+        @ ~/.julia/packages/Cassette/N5kbV/src/context.jl:456 [inlined]
+      [2] fallback
+        @ ~/.julia/packages/Cassette/N5kbV/src/context.jl:454 [inlined]
+      [3] _overdub_fallback(::Any, ::Vararg{Any, N} where N)
+        @ ~/.julia/packages/Cassette/N5kbV/src/overdub.jl:582 [inlined]
+      [4] overdub
+        @ ~/.julia/packages/Cassette/N5kbV/src/overdub.jl:582 [inlined]
+      [5] <(::Int64, ::SubArray{Int64, 1, StaticArrays.MMatrix{1, 1024, Int64, 1024}, Tuple{Base.Slice{StaticArrays.SOneTo{1}}, Int64}, true})
+        @ ./operators.jl:279 [inlined]
+      [6] overdub
+        @ ./operators.jl:279 [inlined]
+      [7] >(::SubArray{Int64, 1, StaticArrays.MMatrix{1, 1024, Int64, 1024}, Tuple{Base.Slice{StaticArrays.SOneTo{1}}, Int64}, true}, ::Int64)
+        @ ./operators.jl:305 [inlined]
+      [8] overdub
+        @ ./operators.jl:305 [inlined]
+      [9] overdub
+        @ ~/.julia/packages/KernelAbstractions/8W8KX/src/KernelAbstractions.jl:266 [inlined]
+     [10] __thread_run(tid::Int64, len::Int64, rem::Int64, obj::KernelAbstractions.Kernel{CPU, KernelAbstractions.NDIteration.StaticSize{(1024,)}, KernelAbstractions.NDIteration.DynamicSize, var"#cpu_kernel#39"{Float64}}, ndrange::Tuple{Int64}, iterspace::KernelAbstractions.NDIteration.NDRange{1, KernelAbstractions.NDIteration.DynamicSize, KernelAbstractions.NDIteration.StaticSize{(1024,)}, CartesianIndices{1, Tuple{Base.OneTo{Int64}}}, Nothing}, args::Tuple{Vector{Float64}, Vector{Float64}, Int64, Vector{Float64}}, dynamic::KernelAbstractions.NDIteration.NoDynamicCheck)
+        @ KernelAbstractions ~/.julia/packages/KernelAbstractions/8W8KX/src/cpu.jl:157
+     [11] __run(obj::KernelAbstractions.Kernel{CPU, KernelAbstractions.NDIteration.StaticSize{(1024,)}, KernelAbstractions.NDIteration.DynamicSize, var"#cpu_kernel#39"{Float64}}, ndrange::Tuple{Int64}, iterspace::KernelAbstractions.NDIteration.NDRange{1, KernelAbstractions.NDIteration.DynamicSize, KernelAbstractions.NDIteration.StaticSize{(1024,)}, CartesianIndices{1, Tuple{Base.OneTo{Int64}}}, Nothing}, args::Tuple{Vector{Float64}, Vector{Float64}, Int64, Vector{Float64}}, dynamic::KernelAbstractions.NDIteration.NoDynamicCheck)
+        @ KernelAbstractions ~/.julia/packages/KernelAbstractions/8W8KX/src/cpu.jl:130
+     [12] (::KernelAbstractions.var"#33#34"{Nothing, Nothing, typeof(KernelAbstractions.__run), Tuple{KernelAbstractions.Kernel{CPU, KernelAbstractions.NDIteration.StaticSize{(1024,)}, KernelAbstractions.NDIteration.DynamicSize, var"#cpu_kernel#39"{Float64}}, Tuple{Int64}, KernelAbstractions.NDIteration.NDRange{1, KernelAbstractions.NDIteration.DynamicSize, KernelAbstractions.NDIteration.StaticSize{(1024,)}, CartesianIndices{1, Tuple{Base.OneTo{Int64}}}, Nothing}, Tuple{Vector{Float64}, Vector{Float64}, Int64, Vector{Float64}}, KernelAbstractions.NDIteration.NoDynamicCheck}})()
+        @ KernelAbstractions ~/.julia/packages/KernelAbstractions/8W8KX/src/cpu.jl:22
+in expression starting at /nfs/home/wl14928/performance-portability/benchmarking/2021/babelstream/results/BabelStream-gtx2080ti_julia-1.6.2_julia-ka/src/KernelAbstractionsStream.jl:253
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/KernelAbstractionsStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using CPU with max 1 threads
+Kernel parameters   : <<<536870912,1024>>>

@@ -1,0 +1,14 @@
+Tue 17 Aug 03:15:41 BST 2021
+BabelStream
+Version: 3.4
+Implementation: OpenCL
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using OpenCL device GeForce RTX 2080 Ti
+Driver: 418.39
+Reduction kernel config: 272 groups of size 1024
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Device cannot allocate a buffer big enough
+/var/spool/pbs/mom_priv/jobs/7117.zoo-mgmt.SC: line 14: 24600 Aborted                 "./$BENCHMARK_EXE" --arraysize $((2 ** 29))

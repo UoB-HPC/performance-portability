@@ -42,12 +42,16 @@ export RUN_DIR=$PWD/BabelStream-$CONFIG
 # Set up the environment
 module purge
 module load gcc/10.1.0
-module load rocm/node30-paths
+module load rocm/node30/3.10.0
+
 case "$COMPILER" in
+julia-1.6.2)
+  module load julia/1.6.2
+  ;;
 gcc-10.1)
   MAKE_OPTS='COMPILER=GNU'
   ;;
-hipcc)
+hipcc-3.10)
   MAKE_OPTS='COMPILER=HIPCC'
   ;;
 hipsycl)
@@ -62,56 +66,23 @@ hipsycl)
   ;;
 esac
 
+
+
+
 case "$MODEL" in
-ocl)
-  MAKE_FILE="OpenCL.make"
-  BINARY="ocl-stream"
-  ;;
-kokkos)
-
-  KOKKOS_PATH=$(pwd)/$(fetch_kokkos)
-  echo "Using KOKKOS_PATH=${KOKKOS_PATH}"
-  MAKE_FILE="Kokkos.make"
-  BINARY="kokkos-stream"
-  export CXX=hipcc
-  # XXX
-  # TARGET=AMD isn't a thing in BabelStream but TARGET=CPU is misleading and TARGET=GPU uses nvcc
-  # for CXX which is not what we want so we use a non-existent target
-  # CXX needs to be specified again as we can't export inside BabelStream's makefile
-  MAKE_OPTS+=" KOKKOS_PATH=${KOKKOS_PATH} TARGET=AMD ARCH=Vega906 DEVICE=HIP CXX=hipcc"
-  export OMP_PROC_BIND=spread
-  ;;
-omp)
-  MAKE_OPTS+=' TARGET=AMD'
-  MAKE_OPTS+=' EXTRA_FLAGS="-foffload=amdgcn-amdhsa="-march=gfx906""'
-  MAKE_FILE="OpenMP.make"
-  BINARY="omp-stream"
-  ;;
-acc)
-  MAKE_OPTS+=' EXTRA_FLAGS="-foffload=amdgcn-amdhsa="-march=gfx906""'
-  MAKE_FILE="OpenACC.make"
-  BINARY="acc-stream"
-  ;;
-sycl)
-#  module load gcc/8.3.0
-#  export HIPSYCL_CUDA_PATH=$(realpath $(dirname $(which nvcc))/..)
-
-#  HIPSYCL_PATH=$(realpath $(dirname $(which syclcc))/..)
-  #HIPSYCL_PATH="/nfs/home/wl14928/hipSYCL/build/x"
-  HIPSYCL_PATH="/nfs/software/x86_64/hipsycl/master"
-  echo "Using HIPSYCL_PATH=${HIPSYCL_PATH}"
-  MAKE_OPTS+=" SYCL_SDK_DIR=${HIPSYCL_PATH}"
-  MAKE_FILE="SYCL.make"
-  BINARY="sycl-stream"
-  ;;
-*)
-  echo
-  echo "Invalid model '$MODEL'."
-  usage
-  exit 1
-  ;;
+  julia-ka)
+    export JULIA_BACKEND="KernelAbstractions"
+    JULIA_ENTRY="src/KernelAbstractionsStream.jl"
+    BENCHMARK_EXE=$JULIA_ENTRY
+    ;;
+  julia-amdgpu)
+    export JULIA_BACKEND="AMDGPU"
+    JULIA_ENTRY="src/AMDGPUStream.jl"
+    BENCHMARK_EXE=$JULIA_ENTRY
+    ;;
 esac
 
+export MODEL="$MODEL"
 # Handle actions
 if [ "$ACTION" == "build" ]; then
   # Fetch source code
@@ -119,29 +90,88 @@ if [ "$ACTION" == "build" ]; then
 
   rm -f $BENCHMARK_EXE
 
-  # Perform build
-  if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
+  case "$MODEL" in
+  julia-*)
+    # nothing to do
+    ;;
+  ocl)
+    MAKE_FILE="OpenCL.make"
+    BINARY="ocl-stream"
+    ;;
+  hip)
+    MAKE_FILE="HIP.make"
+    BINARY="hip-stream"
+    ;;  
+  kokkos)
+
+    KOKKOS_PATH=$(pwd)/$(fetch_kokkos)
+    echo "Using KOKKOS_PATH=${KOKKOS_PATH}"
+    MAKE_FILE="Kokkos.make"
+    BINARY="kokkos-stream"
+    export CXX=hipcc
+    # XXX
+    # TARGET=AMD isn't a thing in BabelStream but TARGET=CPU is misleading and TARGET=GPU uses nvcc
+    # for CXX which is not what we want so we use a non-existent target
+    # CXX needs to be specified again as we can't export inside BabelStream's makefile
+    MAKE_OPTS+=" KOKKOS_PATH=${KOKKOS_PATH} TARGET=AMD ARCH=Vega906 DEVICE=HIP CXX=hipcc"
+    export OMP_PROC_BIND=spread
+    ;;
+  omp)
+    MAKE_OPTS+=' TARGET=AMD'
+    MAKE_OPTS+=' EXTRA_FLAGS="-foffload=amdgcn-amdhsa="-march=gfx906""'
+    MAKE_FILE="OpenMP.make"
+    BINARY="omp-stream"
+    ;;
+  acc)
+    MAKE_OPTS+=' EXTRA_FLAGS="-foffload=amdgcn-amdhsa="-march=gfx906""'
+    MAKE_FILE="OpenACC.make"
+    BINARY="acc-stream"
+    ;;
+  sycl)
+  #  module load gcc/8.3.0
+  #  export HIPSYCL_CUDA_PATH=$(realpath $(dirname $(which nvcc))/..)
+
+  #  HIPSYCL_PATH=$(realpath $(dirname $(which syclcc))/..)
+    #HIPSYCL_PATH="/nfs/home/wl14928/hipSYCL/build/x"
+    HIPSYCL_PATH="/nfs/software/x86_64/hipsycl/master"
+    echo "Using HIPSYCL_PATH=${HIPSYCL_PATH}"
+    MAKE_OPTS+=" SYCL_SDK_DIR=${HIPSYCL_PATH}"
+    MAKE_FILE="SYCL.make"
+    BINARY="sycl-stream"
+    ;;
+  *)
     echo
-    echo "Build failed."
-    echo
+    echo "Invalid model '$MODEL'."
+    usage
     exit 1
-  fi
+    ;;
+  esac
 
   mkdir -p $RUN_DIR
-  # Rename binary
-  mv $SRC_DIR/$BINARY $RUN_DIR/$BENCHMARK_EXE
+
+  if [ -z ${JULIA_ENTRY+x} ]; then
+    if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
+      echo
+      echo "Build failed."
+      echo
+      exit 1
+    fi
+    # Rename binary
+    mv $SRC_DIR/$BINARY $RUN_DIR/$BENCHMARK_EXE
+  else 
+    cp -R "$SRC_DIR/JuliaStream.jl/." $RUN_DIR/
+  fi  
 
 elif [ "$ACTION" == "run" ]; then
   check_bin $RUN_DIR/$BENCHMARK_EXE
-  cd $RUN_DIR || exit
-  bash "$SCRIPT_DIR/run.sh" BabelStream-$CONFIG.out
+  qsub -o BabelStream-$CONFIG.out -N babelstream -V $SCRIPT_DIR/run.job
 elif [ "$ACTION" == "run-large" ]; then
   check_bin $RUN_DIR/$BENCHMARK_EXE
-  cd $RUN_DIR || exit
-  bash "$SCRIPT_DIR/run-large.sh" BabelStream-large-$CONFIG.out
+  qsub -o BabelStream-large-$CONFIG.out -N babelstream -V $SCRIPT_DIR/run-large.job
 else
   echo
-  echo "Invalid action (use 'build' or 'run')."
-  echo
+  echo "Invalid action"
+  usage
   exit 1
 fi
+

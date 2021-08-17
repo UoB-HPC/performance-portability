@@ -1,0 +1,22 @@
+#!/bin/bash
+#PBS -q workq
+#PBS -l select=1:ngpus=1:gputype=irispro580
+#PBS -l walltime=01:00:00
+#PBS -joe
+
+set -eu
+
+cd $RUN_DIR || exit 2
+date
+
+case "$MODEL" in
+    julia-*)
+        export JULIA_EXCLUSIVE=1 # pin threads
+        julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()'
+        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE"  --arraysize $((2 ** 29))
+        ;;
+    *)
+        "./$BENCHMARK_EXE" --arraysize $((2 ** 29))
+        ;;
+esac
+

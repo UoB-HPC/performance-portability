@@ -16,13 +16,23 @@ setup_env() {
       module load gcc/10.1.0
       MAKE_OPTS='COMPILER=GNU ARCH=skylake-avx512'
       ;;
+    gcc-8.3)
+      module load gcc/8.3.0
+      MAKE_OPTS='COMPILER=GNU ARCH=skylake-avx512'
+      ;;  
     icpx-2021.1)
       loadOneAPI /nfs/software/x86_64/intel/oneapi/2021.1/setvars.sh
       MAKE_OPTS='TARGET=INTEL TD_PER_THREAD=4'
       ;;
     dpcpp-2021.1)
       loadOneAPI /nfs/software/x86_64/intel/oneapi/2021.1/setvars.sh
-      MAKE_OPTS=" -DSYCL_RUNTIME=DPCPP"
+
+      CL_HEADER_DIR="$PWD/OpenCL-Headers-2020.06.16"
+      if [ ! -d "$CL_HEADER_DIR" ]; then
+        wget https://github.com/KhronosGroup/OpenCL-Headers/archive/v2020.06.16.tar.gz
+        tar -xf v2020.06.16.tar.gz
+      fi
+      MAKE_OPTS=" -DSYCL_RUNTIME=DPCPP -DCXX_EXTRA_FLAGS=-I$CL_HEADER_DIR"
       MAKE_OPTS+=" -DNUM_TD_PER_THREAD=2"
       ;;
     computecpp-2.3.0)
@@ -61,7 +71,7 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="gcc-10.1 icpx-2021.1 dpcpp-2021.1 computecpp-2.3.0 julia-1.6.2"
+export COMPILERS="gcc-10.1 gcc-8.3 icpx-2021.1 dpcpp-2021.1 computecpp-2.3.0 julia-1.6.2"
 export DEFAULT_COMPILER="gcc-10.1"
 export MODELS="omp omp-target ocl sycl kokkos julia-oneapi"
 export DEFAULT_MODEL="ocl"
@@ -72,6 +82,6 @@ export OCL_WGSIZE=128
 export KOKKOS_BACKEND="OPENMPTARGET"
 export KOKKOS_ARCH="INTEL_GEN"
 export KOKKOS_WGSIZE="16"
-export KOKKOS_EXTRA_FLAGS="-Ofast"
+export KOKKOS_EXTRA_FLAGS="-Ofast -fiopenmp -fopenmp-targets=spir64"
 
 bash "$PLATFORM_DIR/../common.sh" "$@"

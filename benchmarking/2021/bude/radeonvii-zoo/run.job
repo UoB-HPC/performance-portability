@@ -15,14 +15,14 @@ params=( -n 65536 -i 8 --deck ../data/bm1 )
 
 case "$MODEL" in
     julia-*)
-    echo $PWD 
+        export JULIA_EXCLUSIVE=1 # pin threads
         julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()'
-        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" "${params[@]}" --device Radeon
+        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" "${params[@]}" --ppwi 2 --device Radeon
         ;;
     omp-target|kokkos)
         "./$BENCHMARK_EXE" "${params[@]}"
         ;;
-    ocl|cuda)
+    ocl|hip)
         "./$BENCHMARK_EXE" "${params[@]}" --wgsize 128
         ;;
     sycl)

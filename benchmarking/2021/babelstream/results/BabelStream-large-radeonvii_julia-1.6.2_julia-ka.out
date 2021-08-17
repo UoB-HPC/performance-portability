@@ -1,0 +1,16 @@
+Tue 17 Aug 02:58:51 BST 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/KernelAbstractionsStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using GPU HSA device: gfx906 (GPU: Vega 20 [Radeon VII] (gfx906))
+Kernel parameters   : <<<536870912,1024>>>
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        815259.283  0.01054     5.39776     0.06469     
+Mul         816357.708  0.01052     1.68858     0.02766     
+Add         804221.373  0.01602     1.47781     0.0309      
+Triad       804632.488  0.01601     1.60688     0.03221     
+Dot         610040.418  0.01408     4.20745     0.05649     

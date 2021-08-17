@@ -1,0 +1,29 @@
+#!/bin/bash
+#PBS -q workq
+#PBS -l select=1:ngpus=1:gputype=gtx2080ti
+#PBS -l walltime=01:00:00
+#PBS -joe
+
+set -eu
+
+cd "$RUN_DIR" || exit 2
+
+export  OMP_PROC_BIND=spread
+date
+
+case "$MODEL" in
+    julia-cuda)
+        export JULIA_EXCLUSIVE=1 # pin threads
+        julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()'
+        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" 
+        ;;
+    julia-ka)
+        export JULIA_EXCLUSIVE=1 # pin threads
+        julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()'
+        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" --device 2 
+        ;;
+    *)
+        "./$BENCHMARK_EXE" 
+        ;;
+esac
+

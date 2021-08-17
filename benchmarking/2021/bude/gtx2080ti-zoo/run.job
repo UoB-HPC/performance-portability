@@ -17,14 +17,17 @@ case "$MODEL" in
     julia-*)
         export JULIA_EXCLUSIVE=1 # pin threads
         julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()'
-        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" "${params[@]}" --device GeForce
+        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" "${params[@]}" --ppwi 2 --device GeForce
         ;;
     omp-target|kokkos)
         "./$BENCHMARK_EXE" "${params[@]}"
         ;;
+    cuda|ocl)
+        "./$BENCHMARK_EXE" "${params[@]}" --device 0 --wgsize 32
+        ;;
     sycl)
         "./$BENCHMARK_EXE" "${params[@]}" --device NEO  --wgsize 32
-        ;;
+        ;;    
     *)
         echo "Unknown run configuration for model '$MODEL'"
         exit 1

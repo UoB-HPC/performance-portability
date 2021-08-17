@@ -1,0 +1,42 @@
+Tue 17 Aug 03:14:41 BST 2021
+┌ Warning: The NVIDIA driver on this system only supports up to CUDA 10.1.0.
+│ For performance reasons, it is recommended to upgrade to a driver that supports CUDA 11.2 or higher.
+└ @ CUDA ~/.julia/packages/CUDA/zx5iI/src/initialization.jl:49
+ERROR: LoadError: Out of GPU memory trying to allocate 4.000 GiB
+Effective GPU memory usage: 76.05% (8.160 GiB/10.729 GiB)
+No memory pool is in use.
+Stacktrace:
+  [1] macro expansion
+    @ ~/.julia/packages/CUDA/zx5iI/src/pool.jl:249 [inlined]
+  [2] macro expansion
+    @ ./timing.jl:287 [inlined]
+  [3] #_alloc#174
+    @ ~/.julia/packages/CUDA/zx5iI/src/pool.jl:219 [inlined]
+  [4] #alloc#173
+    @ ~/.julia/packages/CUDA/zx5iI/src/pool.jl:206 [inlined]
+  [5] alloc
+    @ ~/.julia/packages/CUDA/zx5iI/src/pool.jl:202 [inlined]
+  [6] CuArray
+    @ ~/.julia/packages/CUDA/zx5iI/src/array.jl:44 [inlined]
+  [7] CuArray
+    @ ~/.julia/packages/CUDA/zx5iI/src/array.jl:125 [inlined]
+  [8] CuArray
+    @ ~/.julia/packages/CUDA/zx5iI/src/array.jl:136 [inlined]
+  [9] CuArray
+    @ ~/.julia/packages/CUDA/zx5iI/src/array.jl:138 [inlined]
+ [10] make_stream(arraysize::Int64, scalar::Float64, device::Tuple{CuDevice, String, String}, silent::Bool)
+    @ Main ~/performance-portability/benchmarking/2021/babelstream/results/BabelStream-gtx2080ti_julia-1.6.2_julia-cuda/src/CUDAStream.jl:36
+ [11] main()
+    @ Main ~/performance-portability/benchmarking/2021/babelstream/results/BabelStream-gtx2080ti_julia-1.6.2_julia-cuda/src/Stream.jl:266
+ [12] top-level scope
+    @ ~/performance-portability/benchmarking/2021/babelstream/results/BabelStream-gtx2080ti_julia-1.6.2_julia-cuda/src/CUDAStream.jl:154
+in expression starting at /nfs/home/wl14928/performance-portability/benchmarking/2021/babelstream/results/BabelStream-gtx2080ti_julia-1.6.2_julia-cuda/src/CUDAStream.jl:154
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/CUDAStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using CUDA device: GeForce RTX 2080 Ti (CuDevice(0))
+Kernel parameters: <<<524288,1024>>>

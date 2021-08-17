@@ -179,8 +179,8 @@ case "$MODEL" in
     if [[ "$PLATFORM" =~ isamabrd ]] && [ "$COMPILER" != gcc-8.1 ]; then
       echo "Model '$MODEL' can only be used with compiler 'gcc-8.1' on platform '$PLATFORM'."
       exit 3
-    elif [[ "$PLATFORM" =~ zoo ]] && [ "$COMPILER" != gcc-10.1 ]; then
-      echo "Model '$MODEL' can only be used with compiler 'gcc-10.1' on platform '$PLATFORM'."
+    elif [[ "$PLATFORM" =~ zoo ]] && [ "$COMPILER" != gcc-8.3 ]; then
+      echo "Model '$MODEL' can only be used with compiler 'gcc-8.3' on platform '$PLATFORM'."
       exit 3
     fi
 
@@ -188,7 +188,11 @@ case "$MODEL" in
     RUN_DIR="$SRC_DIR"
     MAKE_OPTS+=" COMPILER=GNU"
     ;;
-
+  hip)
+    SRC_DIR+="/cuda"
+    RUN_DIR="$SRC_DIR"
+    MAKE_OPTS+=" COMPILER=GNU"
+    ;;
   acc)
     if [[ ! "$COMPILER" =~ (cce-9.1-classic|pgi-19.10) ]]; then
       echo "Model '$MODEL' can only be used with compilers: cce-9.1-classic pgi-19.10."
@@ -296,6 +300,7 @@ case "$MODEL" in
     ;;
   sycl)
     SRC_DIR+="/sycl"
+
     RUN_DIR="$SRC_DIR"
     USE_CMAKE=true
     ;;

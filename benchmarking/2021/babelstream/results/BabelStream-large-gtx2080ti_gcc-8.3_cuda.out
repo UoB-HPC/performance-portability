@@ -1,0 +1,13 @@
+Tue 17 Aug 03:15:43 BST 2021
+BabelStream
+Version: 3.4
+Implementation: CUDA
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using CUDA device GeForce RTX 2080 Ti
+Driver: 10010
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Device does not have enough memory for all 3 buffers
+/var/spool/pbs/mom_priv/jobs/7118.zoo-mgmt.SC: line 14: 24639 Aborted                 "./$BENCHMARK_EXE" --arraysize $((2 ** 29))

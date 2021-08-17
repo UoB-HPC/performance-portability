@@ -1,0 +1,14 @@
+Tue 17 Aug 03:15:39 BST 2021
+BabelStream
+Version: 3.4
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Kokkos failed to allocate memory for label "d_c".  Allocation using MemorySpace named "Cuda" failed with the following error:  Allocation of size 4 G failed, likely due to insufficient memory.  (The allocation mechanism was cudaMalloc().  The Cuda allocation returned the error code ""cudaErrorMemoryAllocation".)
+
+Traceback functionality not available
+
+/var/spool/pbs/mom_priv/jobs/7116.zoo-mgmt.SC: line 14: 24566 Aborted                 "./$BENCHMARK_EXE" --arraysize $((2 ** 29))

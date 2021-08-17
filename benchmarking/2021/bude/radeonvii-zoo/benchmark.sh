@@ -60,7 +60,7 @@ case "$MODEL" in
     JULIA_ENTRY="src/AMDGPU.jl"
     JULIA_BACKEND="AMDGPU"
     ;;
-  cuda)
+  hip)
     MAKE_OPTS='USE_HIP=1'
     ;;
   omp-target)
@@ -85,7 +85,7 @@ export SCRIPT_DIR PLATFORM_DIR
 
 export COMPILERS="aomp-11.12 gcc-10.1 hipcc-3.10 hipsycl-cff515c julia-1.6.2"
 export DEFAULT_COMPILER="gcc-10.1"
-export MODELS="ocl kokkos omp-target sycl cuda julia-ka julia-amdgpu"
+export MODELS="ocl kokkos omp-target sycl hip julia-ka julia-amdgpu"
 export DEFAULT_MODEL="kokkos"
 export PLATFORM="radeonvii-zoo"
 

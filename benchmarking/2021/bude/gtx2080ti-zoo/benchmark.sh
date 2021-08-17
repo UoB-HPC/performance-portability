@@ -51,7 +51,7 @@ export SCRIPT_DIR PLATFORM_DIR
 
 export COMPILERS="gcc-10.1 gcc-8.3 icpx-2021.1-beta10 dpcpp-2021.1-beta10 computecpp-2.1.1 julia-1.6.2"
 export DEFAULT_COMPILER="cce-10.0"
-export MODELS="kokkos omp-target sycl  julia-ka julia-cuda"
+export MODELS="kokkos omp-target sycl ocl julia-ka julia-cuda"
 export DEFAULT_MODEL="kokkos"
 export PLATFORM="gtx2080ti-zoo"
 

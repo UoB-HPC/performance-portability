@@ -1,0 +1,17 @@
+Tue 17 Aug 04:01:43 BST 2021
+BabelStream
+Version: 3.4
+Implementation: OpenCL
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Using OpenCL device Intel(R) Graphics [0x193b]
+Driver: 20.49.0
+Reduction kernel config: 288 groups of size 256
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        31112.236   0.01726     0.01769     0.01737     
+Mul         26512.711   0.02025     0.02083     0.02039     
+Add         25070.739   0.03212     0.03306     0.03233     
+Triad       26329.376   0.03059     0.03127     0.03082     
+Dot         23911.192   0.02245     0.02293     0.02258     

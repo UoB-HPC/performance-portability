@@ -46,6 +46,9 @@ export RUN_DIR=$PWD/BabelStream-$CONFIG
 module purge
 module load cuda/10.1
 case "$COMPILER" in
+julia-1.6.2)
+  module load julia/1.6.2
+  ;;
 clang)
   module load llvm/omptarget/10.0.0
   MAKE_OPTS='\
@@ -53,7 +56,8 @@ clang)
       TARGET=NVIDIA \
       EXTRA_FLAGS="-Xopenmp-target -march=sm_75"'
   ;;
-gcc-4.8)
+gcc-8.3)
+  module load gcc/8.3.0
   MAKE_OPTS="COMPILER=GNU"
   ;;
 pgi-19.10)
@@ -74,60 +78,19 @@ hipsycl)
 esac
 
 case "$MODEL" in
-omp)
-  MAKE_FILE="OpenMP.make"
-  BINARY="omp-stream"
-  ;;
-cuda)
-  MAKE_FILE="CUDA.make"
-  BINARY="cuda-stream"
-  MAKE_OPTS='\
-      EXTRA_FLAGS="-arch=sm_75"'
-  ;;
-kokkos)
-
-  if [ "$COMPILER" != "gcc-4.8" ]; then
-    echo
-    echo " Must use NVCC with Kokkos module"
-    echo
-    exit 1
-  fi
-
-  # For libstd++6
-  module load gcc/8.3.0
-
-  NVCC=$(which nvcc)
-  echo "Using NVCC=${NVCC}"
-
-  KOKKOS_PATH=$(pwd)/$(fetch_kokkos)
-  echo "Using KOKKOS_PATH=${KOKKOS_PATH}"
-  MAKE_FILE="Kokkos.make"
-  BINARY="kokkos-stream"
-  MAKE_OPTS+=" TARGET=GPU KOKKOS_PATH=${KOKKOS_PATH} ARCH=Turing75 DEVICE=Cuda NVCC_WRAPPER=${KOKKOS_PATH}/bin/nvcc_wrapper "
-  MAKE_OPTS+=' KOKKOS_CUDA_OPTIONS="enable_lambda"'
-  export OMP_PROC_BIND=spread
-  ;;
-ocl)
-  MAKE_FILE="OpenCL.make"
-  BINARY="ocl-stream"
-  MAKE_OPTS="$MAKE_OPTS TARGET=GPU"
-  ;;
-acc)
-  MAKE_FILE="OpenACC.make"
-  BINARY="acc-stream"
-  MAKE_OPTS="$MAKE_OPTS TARGET=VOLTA"
-  ;;
-sycl)
-  export HIPSYCL_CUDA_PATH=$(realpath $(dirname $(which nvcc))/..)
-
-  HIPSYCL_PATH=$(realpath $(dirname $(which syclcc))/..)
-  echo "Using HIPSYCL_PATH=${HIPSYCL_PATH}"
-  MAKE_OPTS+=" SYCL_SDK_DIR=${HIPSYCL_PATH}"
-  MAKE_FILE="SYCL.make"
-  BINARY="sycl-stream"
-  ;;
+  julia-ka)
+    export JULIA_BACKEND="KernelAbstractions"
+    JULIA_ENTRY="src/KernelAbstractionsStream.jl"
+    BENCHMARK_EXE=$JULIA_ENTRY
+    ;;
+  julia-cuda)
+    export JULIA_BACKEND="CUDA"
+    JULIA_ENTRY="src/CUDAStream.jl"
+    BENCHMARK_EXE=$JULIA_ENTRY
+    ;;
 esac
 
+export MODEL="$MODEL"
 # Handle actions
 if [ "$ACTION" == "build" ]; then
   # Fetch source code
@@ -136,29 +99,85 @@ if [ "$ACTION" == "build" ]; then
   # Perform build
   rm -f $RUN_DIR/$BENCHMARK_EXE
 
-  # Perform build
-  if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
-    echo
-    echo "Build failed."
-    echo
-    exit 1
-  fi
+  case "$MODEL" in
+  omp)
+    MAKE_FILE="OpenMP.make"
+    BINARY="omp-stream"
+    ;;
+  cuda)
+    MAKE_FILE="CUDA.make"
+    BINARY="cuda-stream"
+    MAKE_OPTS='NVARCH=sm_75'
+    ;;
+  kokkos)
+
+    if [ "$COMPILER" != "gcc-8.3" ]; then
+      echo
+      echo " Must use NVCC with Kokkos module"
+      echo
+      exit 1
+    fi
+
+    # For libstd++6
+    module load gcc/8.3.0
+
+    NVCC=$(which nvcc)
+    echo "Using NVCC=${NVCC}"
+
+    KOKKOS_PATH=$(pwd)/$(fetch_kokkos)
+    echo "Using KOKKOS_PATH=${KOKKOS_PATH}"
+    MAKE_FILE="Kokkos.make"
+    BINARY="kokkos-stream"
+    MAKE_OPTS+=" TARGET=GPU KOKKOS_PATH=${KOKKOS_PATH} ARCH=Turing75 DEVICE=Cuda NVCC_WRAPPER=${KOKKOS_PATH}/bin/nvcc_wrapper "
+    MAKE_OPTS+=' KOKKOS_CUDA_OPTIONS="enable_lambda"'
+    export OMP_PROC_BIND=spread
+    ;;
+  ocl)
+    MAKE_FILE="OpenCL.make"
+    BINARY="ocl-stream"
+    MAKE_OPTS="$MAKE_OPTS TARGET=GPU"
+    ;;
+  acc)
+    MAKE_FILE="OpenACC.make"
+    BINARY="acc-stream"
+    MAKE_OPTS="$MAKE_OPTS TARGET=VOLTA"
+    ;;
+  sycl)
+    export HIPSYCL_CUDA_PATH=$(realpath $(dirname $(which nvcc))/..)
+
+    HIPSYCL_PATH=$(realpath $(dirname $(which syclcc))/..)
+    echo "Using HIPSYCL_PATH=${HIPSYCL_PATH}"
+    MAKE_OPTS+=" SYCL_SDK_DIR=${HIPSYCL_PATH}"
+    MAKE_FILE="SYCL.make"
+    BINARY="sycl-stream"
+    ;;
+  esac
 
   mkdir -p $RUN_DIR
-  # Rename binary
-  mv $SRC_DIR/$BINARY $RUN_DIR/$BENCHMARK_EXE
+
+  if [ -z ${JULIA_ENTRY+x} ]; then
+    if ! eval make -f $MAKE_FILE -C $SRC_DIR -B $MAKE_OPTS -j $(nproc); then
+      echo
+      echo "Build failed."
+      echo
+      exit 1
+    fi
+    # Rename binary
+    mv $SRC_DIR/$BINARY $RUN_DIR/$BENCHMARK_EXE
+  else 
+    cp -R "$SRC_DIR/JuliaStream.jl/." $RUN_DIR/
+  fi  
 
 elif [ "$ACTION" == "run" ]; then
   check_bin $RUN_DIR/$BENCHMARK_EXE
-  cd $RUN_DIR || exit
-  bash "$SCRIPT_DIR/run.sh" BabelStream-$CONFIG.out
+  qsub -o BabelStream-$CONFIG.out -N babelstream -V $SCRIPT_DIR/run.job
 elif [ "$ACTION" == "run-large" ]; then
   check_bin $RUN_DIR/$BENCHMARK_EXE
-  cd $RUN_DIR || exit
-  bash "$SCRIPT_DIR/run-large.sh" BabelStream-large-$CONFIG.out
+  qsub -o BabelStream-large-$CONFIG.out -N babelstream -V $SCRIPT_DIR/run-large.job
 else
   echo
-  echo "Invalid action (use 'build' or 'run')."
-  echo
+  echo "Invalid action"
+  usage
   exit 1
 fi
+

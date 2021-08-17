@@ -18,7 +18,7 @@ case "$MODEL" in
     julia-*)
         export JULIA_EXCLUSIVE=1 # pin threads
         julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()'
-        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" "${params[@]}" --device Iris
+        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" "${params[@]}" --ppwi 4 --device Iris
         ;;
     omp-target|kokkos)
         "./$BENCHMARK_EXE" "${params[@]}"
