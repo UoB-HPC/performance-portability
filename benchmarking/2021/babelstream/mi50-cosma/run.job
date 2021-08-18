@@ -1,8 +1,0 @@
-#!/bin/bash
-
-OUTPUT_DIR=$PWD
-cd $RUN_DIR
-date > $OUTPUT_DIR/BabelStream-$CONFIG.out
-
-./$BENCHMARK_EXE >> $OUTPUT_DIR/BabelStream-$CONFIG.out 2>&1
-
