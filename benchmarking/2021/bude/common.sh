@@ -360,7 +360,7 @@ if [ "$action" == "build" ]; then
       ;;
   esac
 
-elif [ "$action" == "run" ]; then
+elif [ "$action" == "run" ] || [ "$action" == "run-scale" ]; then
 
   case "$MODEL" in
     julia-*)
@@ -380,11 +380,19 @@ elif [ "$action" == "run" ]; then
       fi
       ;;
   esac
+    
+  if [ "$action" == "run" ]; then
+    NAME="bude-$CONFIG"
+    JOB="run.job"
+  elif [ "$action" == "run-scale" ]; then
+    NAME="bude-scale-$CONFIG"
+    JOB="run-scale.job"
+  fi
 
   if [ "$USE_QUEUE" = true ]; then
-    qsub -o "bude-$CONFIG.out" -e "bude-$CONFIG.err" -N "bude-$CONFIG" -V "$SCRIPT_DIR/run.job"
+    qsub -o "$NAME.out" -e "$NAME.err" -N "$NAME" -V "$SCRIPT_DIR/$JOB"
   else
-    bash $SCRIPT_DIR/run.job &> "bude-$CONFIG.out"
+    bash $SCRIPT_DIR/run.job &> "$NAME.out"
   fi
 
 

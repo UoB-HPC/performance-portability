@@ -154,6 +154,9 @@ elif [ "$ACTION" == "run" ]; then
 elif [ "$ACTION" == "run-large" ]; then
   check_bin $RUN_DIR/$BENCHMARK_EXE
   qsub -o BabelStream-large-$CONFIG.out -N babelstream -V $SCRIPT_DIR/run-large.job
+elif [ "$ACTION" == "run-large-scale" ]; then
+  check_bin $RUN_DIR/$BENCHMARK_EXE
+  qsub -o BabelStream-large-scale-$CONFIG.out -N babelstream -V $SCRIPT_DIR/run-large-scale.job
 else
   echo
   echo "Invalid action"

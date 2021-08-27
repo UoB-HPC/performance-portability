@@ -1,0 +1,48 @@
+#!/bin/bash
+#PBS -q arm
+#PBS -l select=1:ncpus=64
+#PBS -l walltime=08:00:00
+#PBS -joe
+
+cd $RUN_DIR
+date
+# Best performance observed when only running 16 cores per socket.
+case "$MODEL" in
+    julia-*)
+        julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()'
+        ;;
+    *)
+        if [ "$CONFIG" == "tx2_llvm-10.0_ocl" ]; then
+          aprun -n 1 -d 64 -j 1 -cc none taskset -c 0-63 ./$BENCHMARK_EXE --arraysize $((2 ** 29))
+        else
+          aprun -n 1 -d 64 -cc depth ./$BENCHMARK_EXE --arraysize $((2 ** 29))
+        fi
+        ;;
+esac
+
+MIN_CORE=1
+MAX_CORE=64
+for i in $(seq $MIN_CORE $MAX_CORE); do
+    echo ">>>$i>>>"
+    date
+    case "$MODEL" in
+        julia-*)
+            export JULIA_EXCLUSIVE=1 # pin threads
+            export JULIA_NUM_THREADS=$i
+            aprun -n 1 -d 64 -cc depth \
+              julia -H "$(dirname "$(which julia)")" --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" --arraysize $((2 ** 29))
+            ;;
+        *)
+            export OMP_NUM_THREADS=$i
+            export OMP_PROC_BIND=true
+            export OMP_PLACES=cores
+            if [ "$CONFIG" == "tx2_llvm-10.0_ocl" ]; then
+              aprun -n 1 -d 64 -j 1 -cc none taskset -c 0-63 ./$BENCHMARK_EXE --arraysize $((2 ** 29))
+            else
+              aprun -n 1 -d 64 -cc depth ./$BENCHMARK_EXE --arraysize $((2 ** 29))
+            fi
+            ;;
+    esac
+    echo "<<<$i<<<"
+done
+

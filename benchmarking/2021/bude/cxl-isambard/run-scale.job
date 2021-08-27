@@ -1,0 +1,70 @@
+#!/bin/bash
+#PBS -q clxq
+#PBS -l select=1:ncpus=40
+#PBS -l walltime=02:00:00
+#PBS -l place=excl
+#PBS -joe
+
+set -eu
+
+cd "$RUN_DIR" || exit 2
+
+date
+
+params=( -n 65536 -i 8 --deck ../data/bm1 )
+
+case "$MODEL" in
+    julia-*)
+        julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()'
+        ;;
+    omp|ocl|sycl|kokkos)
+        # no-op
+        ;;
+    *)
+        echo "Unknown run configuration for model '$MODEL'"
+        exit 1
+        ;;
+esac
+
+MIN_CORE=1
+MAX_CORE=40
+for i in $(seq $MIN_CORE $MAX_CORE); do
+    echo ">>>$i>>>"
+    date
+    case "$MODEL" in
+        julia-*)
+            export JULIA_EXCLUSIVE=1 # pin threads
+            export JULIA_NUM_THREADS=$i
+            params=( -n 65536 -i 8 --deck ../data/bm1 )
+            julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()'
+            julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" "${params[@]}" --wgsize 128
+            ;;
+        omp)
+            export OMP_NUM_THREADS=$i 
+            export OMP_PLACES=cores 
+            export OMP_PROC_BIND=spread
+
+            "./$BENCHMARK_EXE" "${params[@]}"
+            ;;
+        ocl)
+            "./$BENCHMARK_EXE" --help
+            "./$BENCHMARK_EXE" "${params[@]}" --device 1 --wgsize 16 --posesperwi 8
+        ;;
+        kokkos)
+            export OMP_NUM_THREADS=$i 
+            export OMP_PLACES=cores 
+            export OMP_PROC_BIND=spread
+            "./$BENCHMARK_EXE" "${params[@]}"
+            ;;
+        sycl)
+            "./$BENCHMARK_EXE" "${params[@]}" --device Xeon  --wgsize 32
+            ;;
+        *)
+            echo "Unknown run configuration for model '$MODEL'"
+            exit 1
+            ;;
+    esac
+    echo "<<<$i<<<"
+done
+
+ 

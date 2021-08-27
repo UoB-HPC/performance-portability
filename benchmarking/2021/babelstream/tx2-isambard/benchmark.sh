@@ -204,6 +204,12 @@ elif [ "$ACTION" == "run-large" ]; then
   fi
   check_bin $RUN_DIR/$BENCHMARK_EXE
   qsub -o BabelStream-large-$CONFIG.out -N babelstream -V $SCRIPT_DIR/run-large.job
+elif [ "$ACTION" == "run-large-scale" ]; then
+  if [ "$MODEL" == "ocl" ]; then
+    module load pocl/1.5
+  fi
+  check_bin $RUN_DIR/$BENCHMARK_EXE
+  qsub -o BabelStream-large-scale-$CONFIG.out -N babelstream -V $SCRIPT_DIR/run-large-scale.job
 else
   echo
   echo "Invalid action"

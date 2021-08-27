@@ -1,25 +1,52 @@
 #!/bin/bash
 #PBS -q a64fx
 #PBS -l select=1:ncpus=48
-#PBS -l walltime=01:00:00
+#PBS -l walltime=03:00:00
 #PBS -joe
 
 set -eu
 
 cd "$RUN_DIR" || exit 2
 
-export OMP_NUM_THREADS=48 OMP_PLACES=cores OMP_PROC_BIND=spread
 date
+
+if ! grep -q bristol/modules-a64fx/ <<<"$MODULEPATH"; then
+  module use /lustre/projects/bristol/modules-a64fx/modulefiles
+fi
+if ! grep -q lustre/software/aarch64/ <<<"$MODULEPATH"; then
+  module use /lustre/software/aarch64/modulefiles
+fi
+
+# Isambard 2 A64FX resets modules in PBS jobs, even when run with -V
+case "$COMPILER" in
+    gcc-11.1.0)
+        module load gcc/11.1.0
+        ;;
+    llvm-11.0)
+        module load llvm/11.0
+        ;;
+    julia-1.6.2)
+        module load julia/1.6.2 
+        ;;
+    fujitsu-4.3.1)
+        module load fujitsu-compiler/4.3.1
+        ;;
+    *)
+        ;;
+esac
+
 
 case "$MODEL" in
     julia-*)
-        module load julia/1.6.2 # Isambard 2 A64FX resets modules in PBS jobs, even when run with -V
         export JULIA_EXCLUSIVE=1 # pin threads
         export JULIA_NUM_THREADS=48
         julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()'
         julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" --arraysize $((2 ** 29))
         ;;
     omp|sycl|kokkos)
+        export OMP_NUM_THREADS=48 
+        export OMP_PLACES=cores 
+        export OMP_PROC_BIND=spread
         "./$BENCHMARK_EXE" --arraysize $((2 ** 29))
         ;;
     *)

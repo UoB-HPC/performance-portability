@@ -1,0 +1,818 @@
+WARNING: Did not unuse /opt/cray/pe/craype/2.7.0/modulefiles
+Fri Aug 20 22:09:10 CDT 2021
+>>>1>>>
+Fri Aug 20 22:09:18 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 1 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        21375.78    0.40185     0.48663     0.40287     
+Mul         21082.557   0.40744     0.49361     0.4085      
+Add         22922.598   0.5621      0.65598     0.56342     
+Triad       22674.488   0.56826     0.66404     0.5695      
+Dot         3108.507    2.76336     2.83775     2.76469     
+<<<1<<<
+>>>2>>>
+Fri Aug 20 22:17:32 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 2 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        42432.865   0.20244     0.28709     0.20338     
+Mul         41877.165   0.20512     0.28892     0.2061      
+Add         44954.61    0.28662     0.38059     0.28769     
+Triad       44778.644   0.28775     0.38313     0.28885     
+Dot         6013.035    1.42855     1.50401     1.43394     
+<<<2<<<
+>>>3>>>
+Fri Aug 20 22:21:56 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 3 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        62382.827   0.1377      0.22212     0.13862     
+Mul         61613.937   0.13942     0.22278     0.14029     
+Add         67082.602   0.19208     0.28602     0.19308     
+Triad       66188.63    0.19467     0.2877      0.19566     
+Dot         8986.739    0.95585     1.04546     0.97361     
+<<<3<<<
+>>>4>>>
+Fri Aug 20 22:25:01 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 4 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        81540.875   0.10535     0.18998     0.10626     
+Mul         80535.454   0.10666     0.19309     0.10758     
+Add         87081.668   0.14796     0.23923     0.14894     
+Triad       86812.119   0.14842     0.24064     0.14941     
+Dot         11981.998   0.7169      0.81923     0.74123     
+<<<4<<<
+>>>5>>>
+Fri Aug 20 22:27:28 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 5 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        98042.212   0.08761     0.17246     0.08851     
+Mul         97044.32    0.08852     0.17209     0.0894      
+Add         105465.995  0.12217     0.21329     0.12325     
+Triad       104385.605  0.12344     0.21636     0.12442     
+Dot         14289.373   0.60114     0.67664     0.60432     
+<<<5<<<
+>>>6>>>
+Fri Aug 20 22:29:33 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 6 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        110325.333  0.07786     0.16244     0.07881     
+Mul         109645.864  0.07834     0.16195     0.07931     
+Add         116347.146  0.11075     0.20214     0.1119      
+Triad       115453.092  0.1116      0.20451     0.11275     
+Dot         16882.321   0.50881     0.58495     0.51171     
+<<<6<<<
+>>>7>>>
+Fri Aug 20 22:31:23 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 7 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        117586.721  0.07305     0.15773     0.07403     
+Mul         117207.747  0.07329     0.15673     0.07427     
+Add         122586.428  0.10511     0.19631     0.10622     
+Triad       122017.526  0.1056      0.19849     0.10669     
+Dot         20219.867   0.42483     0.51647     0.44212     
+<<<7<<<
+>>>8>>>
+Fri Aug 20 22:33:05 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 8 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        118596.83   0.07243     0.15722     0.07336     
+Mul         118621.411  0.07241     0.15648     0.07334     
+Add         123709.189  0.10415     0.19526     0.10514     
+Triad       123798.24   0.10408     0.19729     0.10511     
+Dot         23115.086   0.37162     0.46535     0.39227     
+<<<8<<<
+>>>9>>>
+Fri Aug 20 22:34:41 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 9 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        119497.601  0.07188     0.15696     0.07286     
+Mul         118955.819  0.07221     0.15591     0.0732      
+Add         124880.346  0.10318     0.1943      0.10423     
+Triad       124491.441  0.1035      0.19654     0.10459     
+Dot         25197.861   0.3409      0.42935     0.35376     
+<<<9<<<
+>>>10>>>
+Fri Aug 20 22:36:13 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 10 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        121162.089  0.0709      0.15557     0.07183     
+Mul         120796.917  0.07111     0.15464     0.07206     
+Add         126384.879  0.10195     0.19306     0.10298     
+Triad       126207.359  0.10209     0.195       0.10314     
+Dot         27995.03    0.30684     0.37978     0.3221      
+<<<10<<<
+>>>11>>>
+Fri Aug 20 22:37:42 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 11 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        121171.13   0.07089     0.15543     0.07181     
+Mul         121065.795  0.07095     0.15441     0.07185     
+Add         126355.121  0.10197     0.19386     0.10298     
+Triad       126324.337  0.102       0.19479     0.10299     
+Dot         30768.755   0.27918     0.3524      0.29524     
+<<<11<<<
+>>>12>>>
+Fri Aug 20 22:39:07 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 12 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        120882.644  0.07106     0.15567     0.072       
+Mul         120528.267  0.07127     0.15471     0.0722      
+Add         126175.15   0.10212     0.19299     0.10311     
+Triad       126168.862  0.10212     0.19553     0.10317     
+Dot         33523.992   0.25623     0.32899     0.27422     
+<<<12<<<
+>>>13>>>
+Fri Aug 20 22:40:31 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 13 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        132422.748  0.06487     0.14988     0.0658      
+Mul         132278.513  0.06494     0.14838     0.06587     
+Add         139003.222  0.09269     0.18435     0.0937      
+Triad       138840.647  0.0928      0.18552     0.09382     
+Dot         34318.043   0.2503      0.33826     0.26292     
+<<<13<<<
+>>>14>>>
+Fri Aug 20 22:41:50 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 14 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        144076.781  0.05962     0.14442     0.06054     
+Mul         144064.699  0.05963     0.14379     0.06057     
+Add         152066.353  0.08473     0.17566     0.08572     
+Triad       151989.972  0.08477     0.1777      0.08579     
+Dot         38336.543   0.22407     0.33145     0.25164     
+<<<14<<<
+>>>15>>>
+Fri Aug 20 22:43:06 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 15 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        155350.24   0.05529     0.14019     0.05623     
+Mul         155295.866  0.05531     0.13943     0.05621     
+Add         164974.975  0.0781      0.16931     0.0791      
+Triad       164952.607  0.07811     0.17129     0.07912     
+Dot         40377.62    0.21274     0.3194      0.23638     
+<<<15<<<
+>>>16>>>
+Fri Aug 20 22:44:18 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 16 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        166794.623  0.0515      0.13615     0.0524      
+Mul         166956.428  0.05145     0.13506     0.05237     
+Add         178485.61   0.07219     0.16348     0.07319     
+Triad       178554.123  0.07216     0.16523     0.07317     
+Dot         43592.309   0.19705     0.29407     0.21812     
+<<<16<<<
+>>>17>>>
+Fri Aug 20 22:45:26 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 17 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        179507.757  0.04785     0.1326      0.04876     
+Mul         179630.623  0.04782     0.13125     0.04874     
+Add         193057.834  0.06674     0.15877     0.06775     
+Triad       192979.82   0.06677     0.15952     0.06778     
+Dot         45600.76    0.18837     0.28675     0.20502     
+<<<17<<<
+>>>18>>>
+Fri Aug 20 22:46:31 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 18 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        192590.129  0.0446      0.12954     0.04552     
+Mul         192664.038  0.04459     0.12805     0.04549     
+Add         208040.84   0.06193     0.15376     0.06293     
+Triad       208097.493  0.06192     0.15466     0.06291     
+Dot         48479.251   0.17719     0.275       0.19242     
+<<<18<<<
+>>>19>>>
+Fri Aug 20 22:47:33 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 19 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        206161.783  0.04167     0.12652     0.0426      
+Mul         205935.114  0.04171     0.12578     0.04262     
+Add         223871.295  0.05755     0.14859     0.05854     
+Triad       224036.773  0.05751     0.15077     0.05852     
+Dot         50899.912   0.16876     0.25529     0.18309     
+<<<19<<<
+>>>20>>>
+Fri Aug 20 22:48:32 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 20 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        219593.879  0.03912     0.12396     0.04013     
+Mul         219535.344  0.03913     0.12317     0.04024     
+Add         239981.723  0.05369     0.14457     0.05475     
+Triad       240032.952  0.05368     0.14671     0.05472     
+Dot         53100.521   0.16177     0.24713     0.17489     
+<<<20<<<
+>>>21>>>
+Fri Aug 20 22:49:30 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 21 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        233143.675  0.03684     0.12149     0.03775     
+Mul         233357.95   0.03681     0.12084     0.03774     
+Add         256732.257  0.05019     0.1412      0.05121     
+Triad       256647.063  0.0502      0.14341     0.05124     
+Dot         50830.756   0.16899     0.2419      0.17062     
+<<<21<<<
+>>>22>>>
+Fri Aug 20 22:50:26 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 22 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        254828.007  0.03371     0.11835     0.03463     
+Mul         254574.027  0.03374     0.11761     0.03465     
+Add         282531.828  0.04561     0.1367      0.0466      
+Triad       281802.931  0.04572     0.13859     0.04675     
+Dot         51901.521   0.1655      0.23977     0.16804     
+<<<22<<<
+>>>23>>>
+Fri Aug 20 22:51:20 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 23 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        260505.047  0.03297     0.11775     0.03389     
+Mul         260512.237  0.03297     0.11652     0.03388     
+Add         289621.745  0.04449     0.13692     0.04551     
+Triad       289762.69   0.04447     0.13712     0.04548     
+Dot         59166.581   0.14518     0.22209     0.15727     
+<<<23<<<
+>>>24>>>
+Fri Aug 20 22:52:13 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 24 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        271155.758  0.03168     0.11687     0.03259     
+Mul         270815.937  0.03172     0.11595     0.03262     
+Add         300983.294  0.04281     0.13392     0.04378     
+Triad       301075.425  0.0428      0.13617     0.04381     
+Dot         61709.816   0.1392      0.21805     0.15292     
+<<<24<<<
+>>>25>>>
+Fri Aug 20 22:53:04 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 25 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        282461.153  0.03041     0.11539     0.03132     
+Mul         282361.619  0.03042     0.11403     0.03132     
+Add         314117.062  0.04102     0.13266     0.04201     
+Triad       314109.243  0.04102     0.13399     0.04204     
+Dot         61449.293   0.13979     0.23814     0.1533      
+<<<25<<<
+>>>26>>>
+Fri Aug 20 22:53:55 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 26 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        293623.589  0.02925     0.11421     0.03016     
+Mul         293237.973  0.02929     0.11365     0.0302      
+Add         326080.966  0.03951     0.13057     0.04049     
+Triad       326119.509  0.03951     0.13285     0.04051     
+Dot         63900.335   0.13443     0.23365     0.14884     
+<<<26<<<
+>>>27>>>
+Fri Aug 20 22:54:45 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 27 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        304930.36   0.02817     0.11341     0.02909     
+Mul         304837.081  0.02818     0.11244     0.02909     
+Add         339371.413  0.03797     0.12905     0.03898     
+Triad       339491.152  0.03795     0.13141     0.03897     
+Dot         66278.019   0.1296      0.21039     0.14397     
+<<<27<<<
+>>>28>>>
+Fri Aug 20 22:55:34 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 28 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        316291.741  0.02716     0.11221     0.02808     
+Mul         315615.031  0.02722     0.11095     0.02811     
+Add         351105.307  0.0367      0.1287      0.03768     
+Triad       351216.516  0.03669     0.12976     0.03769     
+Dot         68747.933   0.12495     0.19868     0.1395      
+<<<28<<<
+>>>29>>>
+Fri Aug 20 22:56:22 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 29 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        327481.558  0.02623     0.11141     0.02717     
+Mul         327188.414  0.02625     0.11045     0.02716     
+Add         364175.113  0.03538     0.12662     0.03638     
+Triad       364242.029  0.03537     0.12811     0.03636     
+Dot         71238.197   0.12058     0.19258     0.13551     
+<<<29<<<
+>>>30>>>
+Fri Aug 20 22:57:09 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 30 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        338604.204  0.02537     0.11062     0.02628     
+Mul         338064.232  0.02541     0.10966     0.0263      
+Add         376264.991  0.03424     0.12561     0.03524     
+Triad       376145.593  0.03426     0.12765     0.03526     
+Dot         73963.121   0.11614     0.19969     0.13051     
+<<<30<<<
+>>>31>>>
+Fri Aug 20 22:57:56 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 31 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        349865.832  0.02455     0.10964     0.02548     
+Mul         349770.953  0.02456     0.10808     0.02546     
+Add         389001.27   0.03312     0.12507     0.0341      
+Triad       388968.988  0.03313     0.12589     0.03412     
+Dot         76532.003   0.11224     0.211       0.12777     
+<<<31<<<
+>>>32>>>
+Fri Aug 20 22:58:41 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 32 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        360873.95   0.0238      0.10893     0.02471     
+Mul         360905.927  0.0238      0.10796     0.02471     
+Add         401704.008  0.03208     0.12329     0.03305     
+Triad       401858.221  0.03206     0.12548     0.03306     
+Dot         78569.355   0.10933     0.20632     0.12304     
+<<<32<<<
+>>>33>>>
+Fri Aug 20 22:59:26 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 33 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        372033.303  0.02309     0.10833     0.02401     
+Mul         371420.894  0.02313     0.1074      0.02405     
+Add         413308.072  0.03118     0.12269     0.03219     
+Triad       413118.31   0.03119     0.12436     0.03227     
+Dot         81002.876   0.10604     0.18003     0.12245     
+<<<33<<<
+>>>34>>>
+Fri Aug 20 23:00:10 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 34 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        383064.795  0.02242     0.10771     0.02333     
+Mul         382979.418  0.02243     0.1068      0.02335     
+Add         425582.407  0.03028     0.1217      0.03124     
+Triad       425743.278  0.03026     0.12346     0.03126     
+Dot         82980.766   0.10352     0.20121     0.11875     
+<<<34<<<
+>>>35>>>
+Fri Aug 20 23:00:54 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 35 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        394106.769  0.0218      0.10714     0.02269     
+Mul         393600.772  0.02182     0.1059      0.02271     
+Add         438283.138  0.0294      0.12083     0.03038     
+Triad       438075.265  0.02941     0.12244     0.03044     
+Dot         85906.041   0.09999     0.19147     0.11754     
+<<<35<<<
+>>>36>>>
+Fri Aug 20 23:01:37 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 36 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        404146.366  0.02125     0.10637     0.02217     
+Mul         403853.734  0.02127     0.1054      0.02216     
+Add         449854.819  0.02864     0.11978     0.02961     
+Triad       449875.725  0.02864     0.12148     0.02966     
+Dot         88410.097   0.09716     0.18769     0.1149      
+<<<36<<<
+>>>37>>>
+Fri Aug 20 23:02:20 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 37 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        414795.145  0.02071     0.10611     0.02162     
+Mul         414658.587  0.02072     0.10437     0.02161     
+Add         462858.672  0.02784     0.11889     0.02881     
+Triad       462699.108  0.02785     0.12154     0.02884     
+Dot         86555.497   0.09924     0.16923     0.11203     
+<<<37<<<
+>>>38>>>
+Fri Aug 20 23:03:02 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 38 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        425237.466  0.0202      0.10551     0.02111     
+Mul         424011.819  0.02026     0.10401     0.02115     
+Add         472687.736  0.02726     0.11872     0.02824     
+Triad       472989.658  0.02724     0.12071     0.02827     
+Dot         88939.91    0.09658     0.18746     0.10998     
+<<<38<<<
+>>>39>>>
+Fri Aug 20 23:03:44 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 39 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        437234.001  0.01965     0.10481     0.02056     
+Mul         437352.009  0.01964     0.10408     0.02056     
+Add         486982.663  0.02646     0.11759     0.02745     
+Triad       487051.693  0.02645     0.12017     0.02747     
+Dot         91247.074   0.09414     0.18667     0.10815     
+<<<39<<<
+>>>40>>>
+Fri Aug 20 23:04:25 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 40 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        448378.954  0.01916     0.10434     0.02008     
+Mul         447659.484  0.01919     0.1029      0.02008     
+Add         499166.36   0.02581     0.11819     0.02679     
+Triad       498785.887  0.02583     0.11891     0.02682     
+Dot         93569.114   0.0918      0.18388     0.10653     
+<<<40<<<
+>>>41>>>
+Fri Aug 20 23:05:06 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 41 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        459337.547  0.0187      0.10396     0.01962     
+Mul         459069.701  0.01871     0.10321     0.01962     
+Add         512642.468  0.02513     0.11703     0.02613     
+Triad       512422.488  0.02515     0.11819     0.02613     
+Dot         93930.686   0.09145     0.17989     0.10337     
+<<<41<<<
+>>>42>>>
+Fri Aug 20 23:05:46 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 42 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        470590.35   0.01825     0.1036      0.01919     
+Mul         469806.375  0.01828     0.10275     0.01919     
+Add         524081.788  0.02459     0.11589     0.02557     
+Triad       523806.097  0.0246      0.11792     0.02559     
+Dot         84742.085   0.10137     0.17389     0.10231     
+<<<42<<<
+>>>43>>>
+Fri Aug 20 23:06:26 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 43 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        481964.168  0.01782     0.10307     0.01877     
+Mul         481278.008  0.01785     0.10225     0.01878     
+Add         536132.925  0.02403     0.11521     0.025       
+Triad       536883.327  0.024       0.11739     0.02499     
+Dot         94521.46    0.09088     0.1642      0.0995      
+<<<43<<<
+>>>44>>>
+Fri Aug 20 23:07:05 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 44 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        491621.965  0.01747     0.10289     0.01838     
+Mul         490527.919  0.01751     0.10139     0.01841     
+Add         547280.158  0.02354     0.1159      0.02454     
+Triad       547072.887  0.02355     0.11667     0.02456     
+Dot         88608.156   0.09694     0.17372     0.09917     
+<<<44<<<
+>>>45>>>
+Fri Aug 20 23:07:45 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 45 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        503753.88   0.01705     0.10259     0.01798     
+Mul         502793.81   0.01708     0.10146     0.01798     
+Add         561817.089  0.02293     0.11432     0.02395     
+Triad       560848.469  0.02297     0.11677     0.02398     
+Dot         98189.839   0.08748     0.16895     0.09561     
+<<<45<<<
+>>>46>>>
+Fri Aug 20 23:08:23 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 46 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        513954.146  0.01671     0.10204     0.01762     
+Mul         513769.092  0.01672     0.10114     0.01764     
+Add         572601.661  0.0225      0.11423     0.02348     
+Triad       572132.791  0.02252     0.11622     0.02352     
+Dot         90914.288   0.09448     0.16135     0.09588     
+<<<46<<<
+>>>47>>>
+Fri Aug 20 23:09:02 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 47 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        525084.312  0.01636     0.10201     0.0173      
+Mul         524644.274  0.01637     0.10021     0.01728     
+Add         584681.805  0.02204     0.11479     0.02302     
+Triad       584575.726  0.02204     0.1155      0.02305     
+Dot         103374.821  0.0831      0.16682     0.09291     
+<<<47<<<
+>>>48>>>
+Fri Aug 20 23:09:40 CDT 2021
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/ThreadedStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB(=4.3 GB)
+Total size: 12884.9 MB(=12.9 GB)
+Using max 48 threads
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        526735.113  0.01631     0.10168     0.01729     
+Mul         526702.815  0.01631     0.10074     0.01741     
+Add         589376.554  0.02186     0.11318     0.02347     
+Triad       588171.231  0.02191     0.1154      0.02319     
+Dot         104976.471  0.08183     0.1651      0.09175     
+<<<48<<<

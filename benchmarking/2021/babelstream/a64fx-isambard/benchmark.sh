@@ -59,16 +59,17 @@ case "$COMPILER" in
       julia-1.6.2)
         module load julia/1.6.2
         ;;
-    fujitsu-1.2.26)
-        module load fujitsu/1.2.26
+    fujitsu-4.3.1)
+        module load fujitsu-compiler/4.3.1
         MAKE_OPTS='COMPILER=FUJITSU COMPILER_FUJITSU=FCC FLAGS_FUJITSU="-Kfast,zfill,openmp,cmodel=large,restp -std=c++11" OMP_FUJITSU_CPU="-fopenmp"'
         ;;
-    gcc-8.3)
+    gcc-11.1.0)
+        module load gcc/11.1.0
         MAKE_OPTS='COMPILER=GNU'
         ;;
     llvm-11.0)
       module load llvm/11.0
-      MAKE_OPTS="COMPILER=CLANG TARGET=CPU OMP_CLANG_CPU=-fopenmp"
+      MAKE_OPTS='COMPILER=CLANG TARGET=CPU OMP_CLANG_CPU=-fopenmp EXTRA_FLAGS="-fno-signed-zeros -fassociative-math"'
         ;;    
     armclang-20.1)
         module load arm/20.1
@@ -100,6 +101,7 @@ case "$MODEL" in
 esac
 
 export MODEL="$MODEL"
+export COMPILER="$COMPILER"
 # Handle actions
 if [ "$ACTION" == "build" ]
 then
@@ -191,6 +193,12 @@ elif [ "$ACTION" == "run-large" ]; then
   fi
   check_bin $RUN_DIR/$BENCHMARK_EXE
   qsub -o BabelStream-large-$CONFIG.out -N babelstream -V $SCRIPT_DIR/run-large.job
+elif [ "$ACTION" == "run-large-scale" ]; then
+  if [ "$MODEL" == "ocl" ]; then
+    module load pocl/1.5
+  fi
+  check_bin $RUN_DIR/$BENCHMARK_EXE
+  qsub -o BabelStream-large-scale-$CONFIG.out -N babelstream -V $SCRIPT_DIR/run-large-scale.job  
 else
   echo
   echo "Invalid action"
