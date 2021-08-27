@@ -166,12 +166,12 @@ case "$MODEL" in
   ocl)
     SRC_DIR+="/opencl"
     # loadOneAPI /lustre/projects/bristol/modules/intel/oneapi/2021.1/setvars.sh
-    # CL_HEADER_DIR="$PWD/OpenCL-Headers-2020.06.16"
-    # if [ ! -d "$CL_HEADER_DIR" ]; then
-    #   wget https://github.com/KhronosGroup/OpenCL-Headers/archive/v2020.06.16.tar.gz
-    #   tar -xf v2020.06.16.tar.gz
-    # fi
-    # export C_INCLUDE_PATH="$CL_HEADER_DIR:${C_INCLUDE_PATH:-}"
+    CL_HEADER_DIR="$PWD/OpenCL-Headers-2020.06.16"
+    if [ ! -d "$CL_HEADER_DIR" ]; then
+      wget https://github.com/KhronosGroup/OpenCL-Headers/archive/v2020.06.16.tar.gz
+      tar -xf v2020.06.16.tar.gz
+    fi
+    export C_INCLUDE_PATH="$CL_HEADER_DIR:${C_INCLUDE_PATH:-}"
     RUN_DIR="$SRC_DIR"
     ;;
 
@@ -339,12 +339,15 @@ if [ "$action" == "build" ]; then
         read -ra CMAKE_OPTS <<<"${MAKE_OPTS}" # explicit word splitting
         if [ "$MODEL" = kokkos ] && [ -n "$KOKKOS_EXTRA_FLAGS" ]; then
           CMAKE_OPTS+=("-DCXX_EXTRA_FLAGS=$KOKKOS_EXTRA_FLAGS")
+          if  [ -n "$KOKKOS_CXX_EXTRA_FLAGS" ]; then
+            CMAKE_OPTS+=("-DKOKKOS_CXX_EXTRA_FLAGS=${KOKKOS_CXX_EXTRA_FLAGS:-}")
+          fi
         fi
         echo "Using opts: ${CMAKE_OPTS[@]}"
 
         rm -rf build
         cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release "${CMAKE_OPTS[@]}"
-        cmake --build build --target bude --config Release -j "$(nproc)"
+        cmake --build build --target bude --config Release  -j "$(nproc)"
         mv build/bude "$BENCHMARK_EXE"
 
       else

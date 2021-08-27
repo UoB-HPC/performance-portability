@@ -1,0 +1,36 @@
+#!/bin/bash
+#UNSUPPORTED PBS -q workq
+#UNSUPPORTED PBS -l select=1:ngpus=1:gputype=radeonvii
+#UNSUPPORTED PBS -l walltime=01:00:00
+#UNSUPPORTED PBS -joe
+
+set -eu
+
+cd "$RUN_DIR" || exit 2
+
+export OMP_NUM_THREADS=40 OMP_PLACES=cores OMP_PROC_BIND=spread
+date
+
+params=( -n 65536 -i 8 --deck ../data/bm1 )
+
+case "$MODEL" in
+    julia-*)
+        export JULIA_EXCLUSIVE=1 # pin threads
+        julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()'
+        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" "${params[@]}" --ppwi 2 --device gfx908
+        ;;
+    omp-target|kokkos)
+        "./$BENCHMARK_EXE" "${params[@]}"
+        ;;
+    ocl|hip)
+        "./$BENCHMARK_EXE" "${params[@]}" --wgsize 128
+        ;;
+    sycl)
+        "./$BENCHMARK_EXE" "${params[@]}" --device gfx908  --wgsize 128
+        ;;
+    *)
+        echo "Unknown run configuration for model '$MODEL'"
+        exit 1
+        ;;
+esac
+

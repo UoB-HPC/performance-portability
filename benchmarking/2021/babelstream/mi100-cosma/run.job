@@ -1,0 +1,23 @@
+#!/bin/bash
+
+OUTPUT_DIR=$PWD
+cd $RUN_DIR
+
+OUT="$OUTPUT_DIR/BabelStream-$CONFIG.out"
+date > $OUTPUT_DIR/BabelStream-$CONFIG.out
+
+case "$MODEL" in
+    julia-amdgpu)
+        export JULIA_EXCLUSIVE=1 # pin threads
+        julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()' 2>&1 | tee "$OUT" 
+        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE"                 2>&1 | tee "$OUT" 
+        ;;
+    julia-ka)
+        export JULIA_EXCLUSIVE=1 # pin threads
+        julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()' 2>&1 | tee "$OUT" 
+        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" --device 2      2>&1 | tee "$OUT" 
+        ;;
+    *)
+        ./$BENCHMARK_EXE 2>&1 | tee "$OUT" 
+        ;;
+esac
