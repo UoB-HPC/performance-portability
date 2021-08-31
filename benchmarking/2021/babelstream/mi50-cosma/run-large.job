@@ -1,0 +1,8 @@
+#!/bin/bash
+
+OUTPUT_DIR=$PWD
+cd $RUN_DIR
+date > $OUTPUT_DIR/BabelStream-large-$CONFIG.out
+
+./$BENCHMARK_EXE --arraysize $((2 ** 29)) >> $OUTPUT_DIR/BabelStream-large-$CONFIG.out 2>&1
+

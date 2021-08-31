@@ -395,7 +395,8 @@ elif [ "$action" == "run" ] || [ "$action" == "run-scale" ]; then
   if [ "$USE_QUEUE" = true ]; then
     qsub -o "$NAME.out" -e "$NAME.err" -N "$NAME" -V "$SCRIPT_DIR/$JOB"
   else
-    bash $SCRIPT_DIR/run.job &> "$NAME.out"
+    bash $SCRIPT_DIR/run.job 2>&1 | tee "$NAME.out"
+    # bash $SCRIPT_DIR/run.job &> "$NAME.out"
   fi
 
 

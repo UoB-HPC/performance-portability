@@ -96,12 +96,12 @@ export COMPILERS="aomp-11.12 gcc-10.2 hipcc hipsycl-cff515c julia-1.6.2"
 export DEFAULT_COMPILER="gcc-10.2"
 export MODELS="ocl kokkos omp-target sycl hip julia-ka julia-amdgpu"
 export DEFAULT_MODEL="kokkos"
-export PLATFORM="mi100-cosma"
+export PLATFORM="mi50-cosma"
 
 export OCL_WGSIZE=128
 
 export KOKKOS_BACKEND="HIP"
-export KOKKOS_ARCH="VEGA908"
+export KOKKOS_ARCH="VEGA906"
 export KOKKOS_WGSIZE="2"
 export KOKKOS_EXTRA_FLAGS="-Ofast;-march=native"
 

@@ -44,7 +44,7 @@ MODEL=${3:-$DEFAULT_MODEL}
 SCRIPT=$(realpath $0)
 SCRIPT_DIR=$(realpath $(dirname $SCRIPT))
 source ${SCRIPT_DIR}/../common.sh
-export CONFIG="mi100"_"$COMPILER"_"$MODEL"
+export CONFIG="mi50"_"$COMPILER"_"$MODEL"
 export BENCHMARK_EXE=BabelStream-$CONFIG
 export SRC_DIR=$PWD/BabelStream
 export RUN_DIR=$PWD/BabelStream-$CONFIG
@@ -116,7 +116,7 @@ if [ "$ACTION" == "build" ]; then
     MAKE_FILE="OpenMP.make"
     BINARY="omp-stream"
     if [ "$COMPILER" == "gcc-10.2" ]; then
-      MAKE_OPTS+=" EXTRA_FLAGS='-foffload=-march=gfx908' TARGET=AMD"
+      MAKE_OPTS+=" EXTRA_FLAGS='-foffload=-march=gfx906' TARGET=AMD"
     else
       MAKE_OPTS+=" TARGET=GPU"
     fi
@@ -136,7 +136,7 @@ if [ "$ACTION" == "build" ]; then
       echo "Using KOKKOS_PATH=${KOKKOS_PATH}"
       MAKE_FILE="Kokkos.make"
       BINARY="kokkos-stream"
-      MAKE_OPTS+=" KOKKOS_PATH=${KOKKOS_PATH} TARGET=GPU ARCH=VEGA908 DEVICE=HIP CXX=hipcc"
+      MAKE_OPTS+=" KOKKOS_PATH=${KOKKOS_PATH} TARGET=GPU ARCH=VEGA906 DEVICE=HIP CXX=hipcc"
       ;;
   acc)
     if [ "$COMPILER" != "gcc-10.2" ]; then
@@ -148,7 +148,7 @@ if [ "$ACTION" == "build" ]; then
 
     MAKE_FILE="OpenACC.make"
     BINARY="acc-stream"
-    MAKE_OPTS+=" EXTRA_FLAGS='-foffload=-march=gfx908' TARGET=AMD"
+    MAKE_OPTS+=" EXTRA_FLAGS='-foffload=-march=gfx906' TARGET=AMD"
     ;;
 
   ocl)
@@ -162,12 +162,12 @@ if [ "$ACTION" == "build" ]; then
   hip)
     MAKE_FILE="HIP.make"
     BINARY="hip-stream"
-    MAKE_OPTS+=' TARGET=AMD ARCH=gfx908'
+    MAKE_OPTS+=' TARGET=AMD ARCH=gfx906'
     ;;
   sycl)
     MAKE_FILE="SYCL.make"
     BINARY="sycl-stream"
-    MAKE_OPTS+=' TARGET=AMD ARCH=gfx908'
+    MAKE_OPTS+=' TARGET=AMD ARCH=gfx906'
     ;;
   esac
 
