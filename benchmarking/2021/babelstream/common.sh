@@ -27,7 +27,7 @@ loadOneAPI() {
 }
 
 
-KOKKOS_VERSION=3.3.01
+KOKKOS_VERSION=3.4.01
 fetch_kokkos() {
   KOKKOS_SRC_DIR="kokkos-${KOKKOS_VERSION}"
   KOKKOS_DIST="${KOKKOS_VERSION}.tar.gz"

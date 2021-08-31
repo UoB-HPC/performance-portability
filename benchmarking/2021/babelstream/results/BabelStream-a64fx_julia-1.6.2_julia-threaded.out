@@ -1,5 +1,30 @@
 WARNING: Did not unuse /opt/cray/pe/craype/2.7.0/modulefiles
-Mon Aug 16 15:38:41 CDT 2021
+Sat Aug 28 05:28:26 CDT 2021
+ERROR: LoadError: UndefVarError: g not defined
+Stacktrace:
+  [1] (::var"#26#29"{var"#31#32"{Float64, VectorData{Float64}, Vector{Float64}}, Vector{Tuple{Int64, Int64}}})(group::Int64)
+    @ Main /snx11273/home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/BabelStream-a64fx_julia-1.6.2_julia-threaded/src/ThreadedStream.jl:80
+  [2] iterate
+    @ ./generator.jl:47 [inlined]
+  [3] _collect(c::UnitRange{Int64}, itr::Base.Generator{UnitRange{Int64}, var"#26#29"{var"#31#32"{Float64, VectorData{Float64}, Vector{Float64}}, Vector{Tuple{Int64, Int64}}}}, #unused#::Base.EltypeUnknown, isz::Base.HasShape{1})
+    @ Base ./array.jl:691
+  [4] collect_similar
+    @ ./array.jl:606 [inlined]
+  [5] map
+    @ ./abstractarray.jl:2294 [inlined]
+  [6] par_ranged(f::var"#31#32"{Float64, VectorData{Float64}, Vector{Float64}}, range::Int64, n::Int64)
+    @ Main /snx11273/home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/BabelStream-a64fx_julia-1.6.2_julia-threaded/src/ThreadedStream.jl:76
+  [7] dot(data::VectorData{Float64}, #unused#::Nothing)
+    @ Main /snx11273/home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/BabelStream-a64fx_julia-1.6.2_julia-threaded/src/ThreadedStream.jl:90
+  [8] macro expansion
+    @ ./timing.jl:287 [inlined]
+  [9] run_all!(data::VectorData{Float64}, context::Nothing, times::Int64)
+    @ Main /snx11273/home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/BabelStream-a64fx_julia-1.6.2_julia-threaded/src/Stream.jl:31
+ [10] main()
+    @ Main /snx11273/home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/BabelStream-a64fx_julia-1.6.2_julia-threaded/src/Stream.jl:267
+ [11] top-level scope
+    @ /snx11273/home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/BabelStream-a64fx_julia-1.6.2_julia-threaded/src/ThreadedStream.jl:111
+in expression starting at /snx11273/home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/BabelStream-a64fx_julia-1.6.2_julia-threaded/src/ThreadedStream.jl:111
 BabelStream
 Version: 3.4.0
 Implementation: Julia; ./src/ThreadedStream.jl
@@ -8,9 +33,3 @@ Precision: double
 Array size: 268.4 MB(=0.3 GB)
 Total size: 805.3 MB(=0.8 GB)
 Using max 48 threads
-Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        417632.622  0.00129     0.08851     0.00236     
-Mul         413751.021  0.0013      0.08716     0.00238     
-Add         489009.885  0.00165     0.09437     0.00263     
-Triad       488571.099  0.00165     0.09621     0.00265     
-Dot         100066.897  0.00537     0.08243     0.00663     

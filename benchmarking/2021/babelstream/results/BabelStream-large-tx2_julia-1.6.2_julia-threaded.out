@@ -1,4 +1,11 @@
-Thu 26 Aug 09:33:17 UTC 2021
+Sat 28 Aug 12:17:25 UTC 2021
+Precompiling project...
+[32m  ✓ [39m[90mUnPack[39m
+[32m  ✓ [39m[90mTextWrap[39m
+[32m  ✓ [39m[90mOrderedCollections[39m
+[32m  ✓ [39mParameters
+[32m  ✓ [39mArgParse
+  5 dependencies successfully precompiled in 8 seconds
 BabelStream
 Version: 3.4.0
 Implementation: Julia; ./src/ThreadedStream.jl
@@ -8,28 +15,25 @@ Array size: 4295.0 MB(=4.3 GB)
 Total size: 12884.9 MB(=12.9 GB)
 Using max 64 threads
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        158545.464  0.05418     0.10587     0.05492     
-Mul         183963.735  0.04669     0.10125     0.04802     
-Add         188900.698  0.06821     0.12943     0.06967     
-Triad       188598.271  0.06832     0.13009     0.0697      
-Dot         184695.149  0.04651     0.08671     0.04755     
-
-
-
-Application 1846012 resources: utime ~1758s, stime ~782s, Rss ~17040552, inblocks ~595308, outblocks ~0
+Copy        159061.667  0.054       0.10623     0.05479     
+Mul         214001.681  0.04014     0.09486     0.04161     
+Add         224695.504  0.05734     0.1178      0.05922     
+Triad       213706.627  0.06029     0.12288     0.0617      
+Dot         225986.474  0.03801     0.08634     0.03949     
+Application 1848077 resources: utime ~1480s, stime ~781s, Rss ~25467152, inblocks ~554756, outblocks ~0
 ============================= PBS epilogue =============================
 
 End of Job Report
-Run at 2021-08-26 09:34:39 for job 138930.xci00
-Submitted              : 2021-08-26 09:13:33
-Queued                 : 2021-08-26 09:13:33
-Started                : 2021-08-26 09:33:16
-Completed              : 2021-08-26 09:34:39
-Queued Time            : 0:19:43 (1183 seconds)
-Elapsed Time           : 0:01:18 (78 seconds, 2% of limit)
+Run at 2021-08-28 12:18:53 for job 139326.xci00
+Submitted              : 2021-08-28 12:17:23
+Queued                 : 2021-08-28 12:17:23
+Started                : 2021-08-28 12:17:24
+Completed              : 2021-08-28 12:18:53
+Queued Time            : 0:00:01 (1 second)
+Elapsed Time           : 0:01:24 (84 seconds, 2% of limit)
 Walltime Limit         : 1:00:00 (3600 seconds)
 Node Time Limit        : 1:00:00 (3600 seconds)
-Node Time              : 0:01:18 (78 seconds, 2% of limit)
+Node Time              : 0:01:24 (84 seconds, 2% of limit)
 Job Name               : babelstream
 Queue                  : arm
 Owner                  : br-wlin
@@ -39,16 +43,16 @@ Subproject             :
 Funding                : 
 Trustzone              : 
 STDOUT                 : /home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/BabelStream-large-tx2_julia-1.6.2_julia-threaded.out
-STDERR                 : /home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/babelstream.e138930
-Job Directory          : /home/br-wlin/pbs.138930.xci00.x8z
+STDERR                 : /home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/babelstream.e139326
+Job Directory          : /home/br-wlin/pbs.139326.xci00.x8z
 Job Arch               : XT
 CPU Core Type          : arm
 Total Nodes            : 1
 Total Tasks            : 64
-Parent Node            : xcimom
+Parent Node            : xcimom2
 Parent Node Memory     : 
 Parent Node CPU Time   : 
-Compute Nodes          : 87
+Compute Nodes          : 44
 Electrical Groups      : 1
 Run Version            : 1
 

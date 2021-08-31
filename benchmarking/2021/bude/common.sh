@@ -208,7 +208,7 @@ case "$MODEL" in
     RUN_DIR="$SRC_DIR"
     USE_CMAKE=true
 
-    KOKKOS_VER="3.3.01"
+    KOKKOS_VER="3.4.01"
     KOKKOS_DIR="$(realpath kokkos-$KOKKOS_VER)"
     echo "Using Kokkos src $KOKKOS_DIR"
 

@@ -1,4 +1,5 @@
-Wed 18 Aug 01:43:50 GMT 2021
+Sat 28 Aug 12:10:11 GMT 2021
+Using>> KernelAbstractions
 ┌ Warning: HSA runtime has not been built, runtime functionality will be unavailable.
 │ Please run Pkg.build("AMDGPU") and reload AMDGPU.
 └ @ AMDGPU ~/.julia/packages/AMDGPU/Z873w/src/AMDGPU.jl:166
@@ -29,8 +30,8 @@ Total size: 805.3 MB(=0.8 GB)
 Using CUDA device: Tesla V100-PCIE-16GB (CuDevice(0))
 Kernel parameters   : <<<33554432,1024>>>
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        650992.501  0.00082     4.49723     0.04589     
-Mul         640772.874  0.00084     0.82936     0.00921     
-Add         729199.786  0.0011      0.73327     0.00854     
-Triad       684150.208  0.00118     0.75011     0.00872     
-Dot         635138.228  0.00085     2.29467     0.02394     
+Copy        653133.987  0.00082     4.2311      0.04322     
+Mul         658462.619  0.00082     0.76252     0.00854     
+Add         728640.953  0.00111     0.67903     0.008       
+Triad       729336.491  0.0011      0.70709     0.00828     
+Dot         613659.331  0.00087     2.123       0.02221     
