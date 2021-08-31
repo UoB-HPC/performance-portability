@@ -1,6 +1,6 @@
-Tue 17 Aug 03:22:19 BST 2021
+Sat 28 Aug 12:20:18 BST 2021
 ┌ Warning: HSA initialization failed with code STATUS_ERROR_OUT_OF_RESOURCES
-└ @ AMDGPU ~/.julia/packages/AMDGPU/t1BEF/src/AMDGPU.jl:159
+└ @ AMDGPU ~/.julia/packages/AMDGPU/Z873w/src/AMDGPU.jl:163
 ┌ Warning: The NVIDIA driver on this system only supports up to CUDA 10.1.0.
 │ For performance reasons, it is recommended to upgrade to a driver that supports CUDA 11.2 or higher.
 └ @ CUDA ~/.julia/packages/CUDA/lwSps/src/initialization.jl:42
@@ -14,8 +14,8 @@ Total size: 805.3 MB(=0.8 GB)
 Using CUDA device: GeForce RTX 2080 Ti (CuDevice(0))
 Kernel parameters   : <<<33554432,1024>>>
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        506880.802  0.00106     5.08728     0.05194     
-Mul         502375.781  0.00107     0.90777     0.01015     
-Add         526746.838  0.00153     0.79102     0.00951     
-Triad       526670.705  0.00153     0.81437     0.00975     
-Dot         506952.598  0.00106     2.53988     0.02646     
+Copy        506564.668  0.00106     4.86386     0.04985     
+Mul         502851.97   0.00107     0.84755     0.00963     
+Add         527143.705  0.00153     0.7436      0.00905     
+Triad       527178.213  0.00153     0.78168     0.00943     
+Dot         504342.818  0.00106     2.47203     0.02592     

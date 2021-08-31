@@ -1,7 +1,7 @@
-Tue 17 Aug 03:19:40 BST 2021
+Sat 28 Aug 12:19:42 BST 2021
 ┌ Warning: The NVIDIA driver on this system only supports up to CUDA 10.1.0.
 │ For performance reasons, it is recommended to upgrade to a driver that supports CUDA 11.2 or higher.
-└ @ CUDA ~/.julia/packages/CUDA/zx5iI/src/initialization.jl:49
+└ @ CUDA ~/.julia/packages/CUDA/VGl9W/src/initialization.jl:49
 BabelStream
 Version: 3.4.0
 Implementation: Julia; ./src/CUDAStream.jl
@@ -12,8 +12,8 @@ Total size: 805.3 MB(=0.8 GB)
 Using CUDA device: GeForce RTX 2080 Ti (CuDevice(0))
 Kernel parameters: <<<32768,1024>>>
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        543247.552  0.00099     0.897       0.0101      
-Mul         540023.026  0.00099     0.70619     0.00811     
-Add         553756.803  0.00145     0.69441     0.01503     
-Triad       553588.929  0.00145     0.72978     0.00875     
-Dot         549959.959  0.00098     2.48622     0.02584     
+Copy        543104.118  0.00099     0.85641     0.00956     
+Mul         540338.806  0.00099     0.65869     0.00759     
+Add         553825.352  0.00145     0.67547     0.00821     
+Triad       553725.961  0.00145     0.70748     0.0086      
+Dot         560546.139  0.00096     2.42292     0.02519     

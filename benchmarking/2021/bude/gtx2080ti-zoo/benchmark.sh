@@ -10,7 +10,7 @@ setup_env() {
       module load julia/1.6.2
     ;;
     gcc-8.3)
-      module load cmake/3.14.5 
+      module load cmake/3.19.1
       module load gcc/8.3.0
       module load cuda/10.1
       MAKE_OPTS=''
@@ -57,9 +57,9 @@ export PLATFORM="gtx2080ti-zoo"
 
 export KOKKOS_BACKEND="CUDA"
 export KOKKOS_ARCH="TURING75"
-export KOKKOS_WGSIZE="2"
+export KOKKOS_WGSIZE="8"
 # defaults to O3, don't add Ofast here as nvcc chokes
-export KOKKOS_EXTRA_FLAGS="-march=native"
+export KOKKOS_EXTRA_FLAGS="-march=native --use_fast_math"
 
 
 bash "$PLATFORM_DIR/../common.sh" "$@"

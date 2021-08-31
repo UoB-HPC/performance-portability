@@ -21,6 +21,7 @@ case "$COMPILER" in
     MAKE_OPTS='CC=gcc'
     ;;
   hipcc-3.10)
+    module load gcc/10.1.0
     # nothing to setup
     ;;
   hipsycl-cff515c)
