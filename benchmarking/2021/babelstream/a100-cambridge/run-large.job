@@ -1,0 +1,34 @@
+#!/bin/bash
+#SBATCH -p ampere
+#SBATCH -A MCINTOSH-SMITH-SL2-GPU
+#SBATCH --exclusive
+#SBATCH --reservation=test_mcs
+#SBATCH -t 00:10:00
+
+set -eu
+
+cd $RUN_DIR || exit 2
+date
+
+case "$MODEL" in
+    julia-cuda)
+        export JULIA_EXCLUSIVE=1 # pin threads
+        julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()'
+        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" --list
+        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" --device 1 --arraysize $((2 ** 29))
+        ;;
+    julia-ka)
+        export JULIA_EXCLUSIVE=1 # pin threads
+        julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()'
+        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" --list
+        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" --device 2 --arraysize $((2 ** 29))
+        ;;
+    ocl|cuda|omp-target|kokkos)
+        ./$BENCHMARK_EXE --list
+        ./$BENCHMARK_EXE --arraysize $((2 ** 29))
+        ;;
+    *)
+        echo "Unknown run configuration for model '$MODEL'"
+        exit 1
+        ;;
+esac

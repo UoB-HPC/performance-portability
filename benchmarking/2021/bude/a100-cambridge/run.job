@@ -1,0 +1,35 @@
+#!/bin/bash
+#SBATCH -p ampere
+#SBATCH -A MCINTOSH-SMITH-SL2-GPU
+#SBATCH --exclusive
+#SBATCH --reservation=test_mcs
+#SBATCH -t 00:10:00
+
+
+set -eu
+
+cd "$RUN_DIR" || exit 2
+
+export OMP_NUM_THREADS=40 OMP_PLACES=cores OMP_PROC_BIND=spread
+date
+
+params=( -n 65536 -i 8 --deck ../data/bm1 )
+
+case "$MODEL" in
+    julia-*)
+        export JULIA_EXCLUSIVE=1 # pin threads
+        julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()'
+        julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" "${params[@]}" --ppwi 2 --device A100-SXM
+        ;;
+    kokkos)
+        "./$BENCHMARK_EXE" "${params[@]}"
+        ;;
+    cuda|ocl)
+        "./$BENCHMARK_EXE" "${params[@]}" --device 0 --wgsize 32
+        ;;
+    *)
+        echo "Unknown run configuration for model '$MODEL'"
+        exit 1
+        ;;
+esac
+
