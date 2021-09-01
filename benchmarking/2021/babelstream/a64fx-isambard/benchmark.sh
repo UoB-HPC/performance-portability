@@ -69,11 +69,16 @@ case "$COMPILER" in
         ;;
     llvm-11.0)
       module load llvm/11.0
-      MAKE_OPTS='COMPILER=CLANG TARGET=CPU OMP_CLANG_CPU=-fopenmp EXTRA_FLAGS="-fno-signed-zeros -fassociative-math"'
+      MAKE_OPTS='COMPILER=CLANG TARGET=CPU OMP_CLANG_CPU=-fopenmp EXTRA_FLAGS=""'
         ;;    
-    armclang-20.1)
-        module load arm/20.1
-        MAKE_OPTS='COMPILER=ARMCLANG EXTRA_FLAGS="-mcpu=a64fx -O3"'
+    armclang-21.0)
+        # export ALLINEA_LICENSE_DIR=/software/licence/arm-forge
+        # export ARM_LICENSE_DIR=/software/licence/arm-forge
+        # module use /snx11273/home/br-wlin/arm-compiler-for-linux_21.0_RHEL-8_aarch64/install/modulefiles
+        # module load arm21/21.0
+        # # module load arm/20.3
+        module load tools/arm-compiler-a64fx/21.0
+        MAKE_OPTS='COMPILER=ARMCLANG CXXFLAGS="-fopenmp -mcpu=a64fx -O3 -msve-vector-bits=512"'
         ;;
     hipsycl-200902-gcc)
       module load hipsycl/200902-gcc

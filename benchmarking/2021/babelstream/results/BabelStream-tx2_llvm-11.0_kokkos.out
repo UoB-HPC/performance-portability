@@ -1,0 +1,51 @@
+Tue 31 Aug 21:11:14 UTC 2021
+BabelStream
+Version: 3.4
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        226994.443  0.00237     0.00252     0.00243     
+Mul         199600.373  0.00269     0.00294     0.00277     
+Add         209212.273  0.00385     0.00407     0.00397     
+Triad       208690.173  0.00386     0.00434     0.00417     
+Dot         205713.037  0.00261     0.00399     0.00306     
+Application 1850137 resources: utime ~132s, stime ~54s, Rss ~1568048, inblocks ~2504, outblocks ~0
+============================= PBS epilogue =============================
+
+End of Job Report
+Run at 2021-08-31 21:11:28 for job 139841.xci00
+Submitted              : 2021-08-31 21:08:23
+Queued                 : 2021-08-31 21:08:23
+Started                : 2021-08-31 21:11:13
+Completed              : 2021-08-31 21:11:28
+Queued Time            : 0:02:50 (170 seconds)
+Elapsed Time           : 0:00:10 (10 seconds, 1% of limit)
+Walltime Limit         : 0:15:00 (900 seconds)
+Node Time Limit        : 0:15:00 (900 seconds)
+Node Time              : 0:00:10 (10 seconds, 1% of limit)
+Job Name               : babelstream
+Queue                  : arm
+Owner                  : br-wlin
+Group                  : -default-
+Project                : GW03
+Subproject             : 
+Funding                : 
+Trustzone              : 
+STDOUT                 : /home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/BabelStream-tx2_llvm-11.0_kokkos.out
+STDERR                 : /home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/babelstream.e139841
+Job Directory          : /home/br-wlin/pbs.139841.xci00.x8z
+Job Arch               : XT
+CPU Core Type          : arm
+Total Nodes            : 1
+Total Tasks            : 64
+Parent Node            : xcimom
+Parent Node Memory     : 
+Parent Node CPU Time   : 
+Compute Nodes          : 247
+Electrical Groups      : 1
+Run Version            : 1
+
+For more information see https://gw4-isambard.github.io/docs/

@@ -257,7 +257,7 @@ case "$MODEL" in
         aocc-*|llvm-*)
           MAKE_OPTS+=" -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
           ;;
-        arm-*)
+        armclang-*)
           MAKE_OPTS+=" -DCMAKE_C_COMPILER=armclang -DCMAKE_CXX_COMPILER=armclang++"
           ;;
         cce-*)

@@ -23,7 +23,7 @@ setup_env() {
       MAKE_OPTS='COMPILER=CLANG CC=armclang WGSIZE=128'
       KOKKOS_EXTRA_FLAGS="-Ofast -mcpu=a64fx"
       ;;
-    arm-21.0)
+    armclang-21.0)
       module load tools/arm-compiler-a64fx/21.0
       MAKE_OPTS='COMPILER=CLANG CC=armclang WGSIZE=128'
       KOKKOS_EXTRA_FLAGS="-Ofast -mcpu=a64fx"
@@ -90,7 +90,7 @@ SCRIPT_DIR="$(realpath "$(dirname "$script")")"
 PLATFORM_DIR="$(realpath "$(dirname "$script")")"
 export SCRIPT_DIR PLATFORM_DIR
 
-export COMPILERS="arm-20.3 arm-21.0 cce-10.0 cce-sve-10.0 fcc-4.3 gcc-8.1 gcc-11.0 llvm-11.0 hipsycl-201124-gcc11.0 julia-1.6.2"
+export COMPILERS="armclang-21.0 arm-21.0 cce-10.0 cce-sve-10.0 fcc-4.3 gcc-8.1 gcc-11.0 llvm-11.0 hipsycl-201124-gcc11.0 julia-1.6.2"
 export DEFAULT_COMPILER="fcc-4.3"
 export MODELS="omp kokkos sycl julia-threaded julia-ka"
 export DEFAULT_MODEL="omp"

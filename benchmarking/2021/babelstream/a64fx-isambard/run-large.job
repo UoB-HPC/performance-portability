@@ -25,6 +25,13 @@ case "$COMPILER" in
     llvm-11.0)
         module load llvm/11.0
         ;;
+     armclang-21.0)
+        module load tools/arm-compiler-a64fx/21.0
+        # export ALLINEA_LICENSE_DIR=/software/licence/arm-forge
+        # export ARM_LICENSE_DIR=/software/licence/arm-forge
+        # module use /home/br-wlin/arm-compiler-for-linux_21.0_RHEL-8_aarch64/install/modulefiles
+        # module load arm21/21.0
+        ;;
     julia-1.6.2)
         module load julia/1.6.2 
         ;;

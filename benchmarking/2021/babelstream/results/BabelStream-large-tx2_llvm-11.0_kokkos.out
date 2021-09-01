@@ -1,4 +1,4 @@
-Mon 16 Aug 19:53:39 UTC 2021
+Wed  1 Sep 02:23:12 UTC 2021
 BabelStream
 Version: 3.4
 Implementation: Kokkos
@@ -7,36 +7,36 @@ Precision: double
 Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        190286.776  0.04514     0.04560     0.04543     
-Mul         187087.786  0.04591     0.04794     0.04744     
-Add         191030.043  0.06745     0.06954     0.06806     
-Triad       181682.488  0.07092     0.07367     0.07215     
-Dot         167154.586  0.05139     0.06337     0.05868     
-Application 1833658 resources: utime ~1932s, stime ~834s, Rss ~25157852, inblocks ~2494, outblocks ~0
+Copy        185211.821  0.04638     0.04689     0.04671     
+Mul         184183.247  0.04664     0.04877     0.04817     
+Add         186818.398  0.06897     0.07043     0.06950     
+Triad       178204.258  0.07230     0.07496     0.07330     
+Dot         155303.753  0.05531     0.06640     0.06096     
+Application 1850165 resources: utime ~1975s, stime ~824s, Rss ~25157980, inblocks ~2504, outblocks ~0
 ============================= PBS epilogue =============================
 
 End of Job Report
-Run at 2021-08-16 19:54:47 for job 137003.xci00
-Submitted              : 2021-08-16 19:53:36
-Queued                 : 2021-08-16 19:53:36
-Started                : 2021-08-16 19:53:38
-Completed              : 2021-08-16 19:54:47
+Run at 2021-09-01 02:24:21 for job 139951.xci00
+Submitted              : 2021-09-01 02:23:09
+Queued                 : 2021-09-01 02:23:09
+Started                : 2021-09-01 02:23:11
+Completed              : 2021-09-01 02:24:21
 Queued Time            : 0:00:02 (2 seconds)
-Elapsed Time           : 0:01:04 (64 seconds, 2% of limit)
+Elapsed Time           : 0:01:05 (65 seconds, 2% of limit)
 Walltime Limit         : 1:00:00 (3600 seconds)
 Node Time Limit        : 1:00:00 (3600 seconds)
-Node Time              : 0:01:04 (64 seconds, 2% of limit)
+Node Time              : 0:01:05 (65 seconds, 2% of limit)
 Job Name               : babelstream
 Queue                  : arm
 Owner                  : br-wlin
 Group                  : -default-
-Project                : bristol
+Project                : GW03
 Subproject             : 
 Funding                : 
 Trustzone              : 
 STDOUT                 : /home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/BabelStream-large-tx2_llvm-11.0_kokkos.out
-STDERR                 : /home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/babelstream.e137003
-Job Directory          : /home/br-wlin/pbs.137003.xci00.x8z
+STDERR                 : /home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/babelstream.e139951
+Job Directory          : /home/br-wlin/pbs.139951.xci00.x8z
 Job Arch               : XT
 CPU Core Type          : arm
 Total Nodes            : 1
