@@ -78,7 +78,8 @@ case "$COMPILER" in
         # module load arm21/21.0
         # # module load arm/20.3
         module load tools/arm-compiler-a64fx/21.0
-        MAKE_OPTS='COMPILER=ARMCLANG CXXFLAGS="-fopenmp -mcpu=a64fx -O3 -msve-vector-bits=512"'
+        # -fno-signed-zeros -fno-trapping-math -fassociative-math
+        MAKE_OPTS='COMPILER=ARMCLANG CXXFLAGS="-fopenmp -O3 -mcpu=a64fx "'
         ;;
     hipsycl-200902-gcc)
       module load hipsycl/200902-gcc

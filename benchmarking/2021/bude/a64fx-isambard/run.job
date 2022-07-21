@@ -16,7 +16,7 @@ case "$MODEL" in
         export JULIA_EXCLUSIVE=1 # pin threads
         export JULIA_NUM_THREADS=48
         params=( -n 65536 -i 8 --deck ../data/bm1 )
-        julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()'
+        # julia --project="$JULIA_BACKEND" -e 'import Pkg; Pkg.instantiate()'
         julia --project="$JULIA_BACKEND" "./$BENCHMARK_EXE" "${params[@]}" --wgsize 128
         ;;
     omp)

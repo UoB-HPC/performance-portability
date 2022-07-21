@@ -1,5 +1,7 @@
 WARNING: Did not unuse /opt/cray/pe/craype/2.7.0/modulefiles
-Sat Aug 28 07:18:07 CDT 2021
+Thu Sep  2 11:25:41 CDT 2021
+┌ Warning: The active manifest file is an older format with no julia version entry. Dependencies may have been resolved with a different julia version.
+└ @ /snx11273/home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/BabelStream-a64fx_julia-1.6.2_julia-threaded/Threaded/Manifest.toml:0
 BabelStream
 Version: 3.4.0
 Implementation: Julia; ./src/ThreadedStream.jl
@@ -9,8 +11,8 @@ Array size: 4295.0 MB(=4.3 GB)
 Total size: 12884.9 MB(=12.9 GB)
 Using max 48 threads
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        531706.711  0.01616     0.09937     0.01708     
-Mul         529546.294  0.01622     0.10139     0.01713     
-Add         590183.95   0.02183     0.11341     0.02282     
-Triad       589028.933  0.02187     0.11567     0.02392     
-Dot         553930.947  0.01551     0.08993     0.01707     
+Copy        528072.206  0.01627     0.10248     0.01721     
+Mul         526797.232  0.01631     0.10186     0.01723     
+Add         589295.768  0.02186     0.11719     0.02289     
+Triad       589657.142  0.02185     0.11944     0.02298     
+Dot         103919.932  0.08266     0.16188     0.09385     

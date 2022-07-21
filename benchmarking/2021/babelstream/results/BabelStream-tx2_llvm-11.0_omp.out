@@ -1,4 +1,4 @@
-Mon 16 Aug 18:59:33 UTC 2021
+Thu  2 Sep 15:23:26 UTC 2021
 BabelStream
 Version: 3.4
 Implementation: OpenMP
@@ -7,43 +7,44 @@ Precision: double
 Array size: 268.4 MB (=0.3 GB)
 Total size: 805.3 MB (=0.8 GB)
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        233524.582  0.00230     0.01634     0.01279     
-Mul         50639.313   0.01060     0.02104     0.01722     
-Add         66336.273   0.01214     0.02443     0.02036     
-Triad       63868.628   0.01261     0.02707     0.02439     
-Dot         50372.415   0.01066     0.07165     0.05557     
+Copy        204327.421  0.00263     0.00294     0.00273     
+Mul         192711.912  0.00279     0.00300     0.00287     
+Add         196222.836  0.00410     0.00443     0.00424     
+Triad       193977.745  0.00415     0.00464     0.00436     
+Dot         165744.637  0.00324     0.00479     0.00371     
+Application 1852445 resources: utime ~143s, stime ~49s, Rss ~1567512, inblocks ~2504, outblocks ~0
 ============================= PBS epilogue =============================
 
 End of Job Report
-Run at 2021-08-16 18:59:54 for job 136986.xci00
-Submitted              : 2021-08-16 18:59:30
-Queued                 : 2021-08-16 18:59:30
-Started                : 2021-08-16 18:59:32
-Completed              : 2021-08-16 18:59:54
-Queued Time            : 0:00:02 (2 seconds)
-Elapsed Time           : 0:00:17 (17 seconds, 2% of limit)
+Run at 2021-09-02 15:23:38 for job 140099.xci00
+Submitted              : 2021-09-02 15:23:20
+Queued                 : 2021-09-02 15:23:20
+Started                : 2021-09-02 15:23:25
+Completed              : 2021-09-02 15:23:38
+Queued Time            : 0:00:05 (5 seconds)
+Elapsed Time           : 0:00:08 (8 seconds, 1% of limit)
 Walltime Limit         : 0:15:00 (900 seconds)
 Node Time Limit        : 0:15:00 (900 seconds)
-Node Time              : 0:00:17 (17 seconds, 2% of limit)
+Node Time              : 0:00:08 (8 seconds, 1% of limit)
 Job Name               : babelstream
 Queue                  : arm
 Owner                  : br-wlin
 Group                  : -default-
-Project                : bristol
+Project                : GW03
 Subproject             : 
 Funding                : 
 Trustzone              : 
 STDOUT                 : /home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/BabelStream-tx2_llvm-11.0_omp.out
-STDERR                 : /home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/babelstream.e136986
-Job Directory          : /home/br-wlin/pbs.136986.xci00.x8z
+STDERR                 : /home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/babelstream.e140099
+Job Directory          : /home/br-wlin/pbs.140099.xci00.x8z
 Job Arch               : XT
 CPU Core Type          : arm
 Total Nodes            : 1
 Total Tasks            : 64
-Parent Node            : xcimom
+Parent Node            : xcimom2
 Parent Node Memory     : 
 Parent Node CPU Time   : 
-Compute Nodes          : 24
+Compute Nodes          : 11
 Electrical Groups      : 1
 Run Version            : 1
 

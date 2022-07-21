@@ -1,4 +1,5 @@
-Wed  1 Sep 02:23:16 UTC 2021
+Thu  2 Sep 15:53:26 UTC 2021
+xcimom
 BabelStream
 Version: 3.4
 Implementation: OpenMP
@@ -7,25 +8,25 @@ Precision: double
 Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        174061.780  0.04935     0.04984     0.04953     
-Mul         175460.349  0.04896     0.05019     0.04937     
-Add         176089.192  0.07317     0.07501     0.07410     
-Triad       174117.213  0.07400     0.07614     0.07509     
-Dot         151828.911  0.05658     0.06325     0.05976     
-Application 1850167 resources: utime ~2027s, stime ~823s, Rss ~25157524, inblocks ~2472, outblocks ~0
+Copy        225884.463  0.03803     0.03828     0.03817     
+Mul         217755.845  0.03945     0.04360     0.04103     
+Add         221502.546  0.05817     0.06122     0.05965     
+Triad       234294.232  0.05499     0.06434     0.06151     
+Dot         234974.288  0.03656     0.03862     0.03804     
+Application 1852522 resources: utime ~1596s, stime ~808s, Rss ~25157460, inblocks ~2504, outblocks ~0
 ============================= PBS epilogue =============================
 
 End of Job Report
-Run at 2021-09-01 02:24:22 for job 139952.xci00
-Submitted              : 2021-09-01 02:23:13
-Queued                 : 2021-09-01 02:23:13
-Started                : 2021-09-01 02:23:15
-Completed              : 2021-09-01 02:24:22
-Queued Time            : 0:00:02 (2 seconds)
-Elapsed Time           : 0:01:02 (62 seconds, 2% of limit)
-Walltime Limit         : 1:00:00 (3600 seconds)
-Node Time Limit        : 1:00:00 (3600 seconds)
-Node Time              : 0:01:02 (62 seconds, 2% of limit)
+Run at 2021-09-02 15:54:26 for job 140125.xci00
+Submitted              : 2021-09-02 15:53:20
+Queued                 : 2021-09-02 15:53:20
+Started                : 2021-09-02 15:53:25
+Completed              : 2021-09-02 15:54:26
+Queued Time            : 0:00:05 (5 seconds)
+Elapsed Time           : 0:00:56 (56 seconds, 3% of limit)
+Walltime Limit         : 0:30:00 (1800 seconds)
+Node Time Limit        : 0:30:00 (1800 seconds)
+Node Time              : 0:00:56 (56 seconds, 3% of limit)
 Job Name               : babelstream
 Queue                  : arm
 Owner                  : br-wlin
@@ -35,16 +36,16 @@ Subproject             :
 Funding                : 
 Trustzone              : 
 STDOUT                 : /home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/BabelStream-large-tx2_llvm-11.0_omp.out
-STDERR                 : /home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/babelstream.e139952
-Job Directory          : /home/br-wlin/pbs.139952.xci00.x8z
+STDERR                 : /home/br-wlin/performance-portability/benchmarking/2021/babelstream/results/babelstream.e140125
+Job Directory          : /home/br-wlin/pbs.140125.xci00.x8z
 Job Arch               : XT
 CPU Core Type          : arm
 Total Nodes            : 1
 Total Tasks            : 64
-Parent Node            : xcimom2
+Parent Node            : xcimom
 Parent Node Memory     : 
 Parent Node CPU Time   : 
-Compute Nodes          : 25
+Compute Nodes          : 148
 Electrical Groups      : 1
 Run Version            : 1
 

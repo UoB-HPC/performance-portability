@@ -82,7 +82,7 @@ arm-20.0)
   ;;
 llvm-11.0)
   module load llvm/11.0.0
-  MAKE_OPTS="COMPILER=CLANG TARGET=CPU OMP_CLANG_CPU=-fopenmp"
+  MAKE_OPTS="COMPILER=CLANG TARGET=CPU OMP_CLANG_CPU=-fopenmp EXTRA_FLAGS=-mcpu=thunderx2t99"
   ;;
 hipsycl-200527-gcc)
   module purge

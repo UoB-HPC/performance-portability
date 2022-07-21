@@ -2,6 +2,7 @@
 #PBS -q arm
 #PBS -l select=1:ncpus=64
 #PBS -l walltime=08:00:00
+#PBS -l place=excl
 #PBS -joe
 
 cd $RUN_DIR

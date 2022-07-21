@@ -16,7 +16,8 @@ setup_env() {
 
   case "$COMPILER" in
     julia-1.6.2)
-      module load julia/1.6.2
+      # module load julia/1.6.2
+      export PATH="$HOME/julia-1.7.0-beta4/bin:$PATH"
     ;;
     arm-20.3)
       module load arm/20.3
@@ -25,7 +26,7 @@ setup_env() {
       ;;
     armclang-21.0)
       module load tools/arm-compiler-a64fx/21.0
-      MAKE_OPTS='COMPILER=CLANG CC=armclang WGSIZE=128'
+      MAKE_OPTS='COMPILER=CLANG CC=armclang WGSIZE=64 ARCH=a64fx'
       KOKKOS_EXTRA_FLAGS="-Ofast -mcpu=a64fx"
       ;;
     cce-10.0)
