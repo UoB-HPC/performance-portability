@@ -1,0 +1,39 @@
+Wed  1 Sep 12:18:22 BST 2021
+┌ Warning: HSA runtime has not been built, runtime functionality will be unavailable.
+│ Please run Pkg.build("AMDGPU") and reload AMDGPU.
+└ @ AMDGPU ~/.julia/packages/AMDGPU/Z873w/src/AMDGPU.jl:166
+┌ Warning: HIP library has not been built, runtime functionality will be unavailable.
+│ Please run Pkg.build("AMDGPU") and reload AMDGPU.
+└ @ AMDGPU ~/.julia/packages/AMDGPU/Z873w/src/AMDGPU.jl:187
+┌ Warning: ROCm-Device-Libs were not found, device intrinsics will be unavailable.
+│ Please run Pkg.build("AMDGPU") and reload AMDGPU.
+└ @ AMDGPU ~/.julia/packages/AMDGPU/Z873w/src/AMDGPU.jl:195
+[1] (cpu) AMD EPYC 7763 64-Core Processor (1T)
+[2] (cuda) NVIDIA A100-SXM-80GB (CuDevice(0))
+[3] (cuda) NVIDIA A100-SXM-80GB (CuDevice(1))
+[4] (cuda) NVIDIA A100-SXM-80GB (CuDevice(2))
+[5] (cuda) NVIDIA A100-SXM-80GB (CuDevice(3))
+┌ Warning: HSA runtime has not been built, runtime functionality will be unavailable.
+│ Please run Pkg.build("AMDGPU") and reload AMDGPU.
+└ @ AMDGPU ~/.julia/packages/AMDGPU/Z873w/src/AMDGPU.jl:166
+┌ Warning: HIP library has not been built, runtime functionality will be unavailable.
+│ Please run Pkg.build("AMDGPU") and reload AMDGPU.
+└ @ AMDGPU ~/.julia/packages/AMDGPU/Z873w/src/AMDGPU.jl:187
+┌ Warning: ROCm-Device-Libs were not found, device intrinsics will be unavailable.
+│ Please run Pkg.build("AMDGPU") and reload AMDGPU.
+└ @ AMDGPU ~/.julia/packages/AMDGPU/Z873w/src/AMDGPU.jl:195
+BabelStream
+Version: 3.4.0
+Implementation: Julia; ./src/KernelAbstractionsStream.jl
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB(=0.3 GB)
+Total size: 805.3 MB(=0.8 GB)
+Using CUDA device: NVIDIA A100-SXM-80GB (CuDevice(0))
+Kernel parameters   : <<<33554432,1024>>>
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1447989.082 0.00037     4.14847     0.04186     
+Mul         1412011.856 0.00038     0.74272     0.00781     
+Add         1523562.471 0.00053     0.65655     0.00709     
+Triad       1524950.184 0.00053     0.68584     0.00739     
+Dot         1217996.452 0.00044     2.16572     0.02211     

@@ -220,7 +220,7 @@ case "$MODEL" in
 
     # We're using CMake with in-tree Kokkos here
     # So let's wipe out the existing make flags
-    MAKE_OPTS="-DKOKKOS_IN_TREE=$KOKKOS_DIR"
+    MAKE_OPTS="${BASE_CMAKE_FLAGS:-} -DKOKKOS_IN_TREE=$KOKKOS_DIR"
     MAKE_OPTS+=" -DWG_SIZE=$KOKKOS_WGSIZE"
 
     if [ -n "${KOKKOS_BACKEND:-}" ]; then
@@ -347,7 +347,7 @@ if [ "$action" == "build" ]; then
 
         rm -rf build
         cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release "${CMAKE_OPTS[@]}"
-        cmake --build build --target bude --config Release  -j "$(nproc)"
+        cmake --build build --target bude --config Release  -j 8 #"$(nproc)"
         mv build/bude "$BENCHMARK_EXE"
 
       else
@@ -393,7 +393,12 @@ elif [ "$action" == "run" ] || [ "$action" == "run-scale" ]; then
   fi
 
   if [ "$USE_QUEUE" = true ]; then
-    qsub -o "$NAME.out" -e "$NAME.err" -N "$NAME" -V "$SCRIPT_DIR/$JOB"
+
+    if [ "$USE_SLURM" = true ]; then
+      sbatch --output $"$NAME.out" -J "$NAME" "$SCRIPT_DIR/$JOB"
+    else
+      qsub -o "$NAME.out" -e "$NAME.err" -N "$NAME" -V "$SCRIPT_DIR/$JOB"
+    fi
   else
     bash $SCRIPT_DIR/run.job 2>&1 | tee "$NAME.out"
     # bash $SCRIPT_DIR/run.job &> "$NAME.out"

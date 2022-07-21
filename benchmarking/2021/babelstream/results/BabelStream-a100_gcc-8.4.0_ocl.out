@@ -1,0 +1,24 @@
+Wed  1 Sep 12:34:04 BST 2021
+
+Devices:
+0: NVIDIA A100-SXM-80GB
+1: NVIDIA A100-SXM-80GB
+2: NVIDIA A100-SXM-80GB
+3: NVIDIA A100-SXM-80GB
+
+BabelStream
+Version: 3.4
+Implementation: OpenCL
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Using OpenCL device NVIDIA A100-SXM-80GB
+Driver: 470.57.02
+Reduction kernel config: 432 groups of size 1024
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1727233.837 0.00031     0.00032     0.00032     
+Mul         1672099.167 0.00032     0.00033     0.00032     
+Add         1733982.094 0.00046     0.00066     0.00047     
+Triad       1736565.858 0.00046     0.00047     0.00047     
+Dot         1561129.611 0.00034     0.00036     0.00035     
