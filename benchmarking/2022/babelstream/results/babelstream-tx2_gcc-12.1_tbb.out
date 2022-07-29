@@ -1,0 +1,65 @@
+Wed 27 Jul 05:24:22 UTC 2022
+/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_gcc-12.1_tbb
+	linux-vdso.so.1 (0x000040003bbc4000)
+	libtbb.so.12 => /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_gcc-12.1_tbb/BabelStream/build/gnu_12.1_cxx11_64_release/libtbb.so.12 (0x000040003bbd5000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libstdc++.so.6 (0x000040003bc23000)
+	libm.so.6 => /lib64/libm.so.6 (0x000040003be6b000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libgcc_s.so.1 (0x000040003bf2c000)
+	libc.so.6 => /lib64/libc.so.6 (0x000040003bf5d000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000040003c0e3000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000040003c104000)
+	/lib/ld-linux-aarch64.so.1 (0x000040003bba3000)
+Listing devices is not supported by TBB
+Application 2277434 resources: utime ~0s, stime ~2s, Rss ~8632, inblocks ~36752, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        99910.919   0.08598     0.09174     0.08614     
+Mul         99687.985   0.08617     0.08666     0.08626     
+Add         99867.153   0.12902     0.12952     0.12910     
+Triad       99906.366   0.12897     0.12974     0.12909     
+Dot         97581.102   0.08803     0.09153     0.08816     
+Application 2277440 resources: utime ~2785s, stime ~743s, Rss ~25156416, inblocks ~37832, outblocks ~0
+============================= PBS epilogue =============================
+
+End of Job Report
+Run at 2022-07-27 05:25:54 for job 225462.xci00
+Submitted              : 2022-07-27 05:10:37
+Queued                 : 2022-07-27 05:10:37
+Started                : 2022-07-27 05:24:21
+Completed              : 2022-07-27 05:25:54
+Queued Time            : 0:13:44 (824 seconds)
+Elapsed Time           : 0:01:28 (88 seconds, 10% of limit)
+Walltime Limit         : 0:15:00 (900 seconds)
+Node Time Limit        : 0:15:00 (900 seconds)
+Node Time              : 0:01:28 (88 seconds, 10% of limit)
+Job Name               : babelstream-tx2_gcc-12.1_tbb
+Queue                  : arm
+Owner                  : br-wlin
+Group                  : -default-
+Project                : GW03
+Subproject             : 
+Funding                : 
+Trustzone              : 
+STDOUT                 : /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_gcc-12.1_tbb.out
+STDERR                 : /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_gcc-12.1_tbb.e225462
+Job Directory          : /home/br-wlin/pbs.225462.xci00.x8z
+Job Arch               : XT
+CPU Core Type          : arm
+Total Nodes            : 1
+Total Tasks            : 64
+Parent Node            : xcimom
+Parent Node Memory     : 
+Parent Node CPU Time   : 
+Compute Nodes          : 184
+Electrical Groups      : 1
+Run Version            : 1
+
+For more information see https://gw4-isambard.github.io/docs/

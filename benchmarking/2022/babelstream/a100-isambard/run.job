@@ -1,0 +1,33 @@
+#!/bin/bash
+#PBS -q ampereq
+#PBS -l select=1:ngpus=1
+#PBS -l walltime=00:10:00
+#PBS -l place=excl
+#PBS -joe
+
+: >"$OUT_FILE"
+exec &> >(tee -a "$OUT_FILE")
+
+set -eu
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+if [ "$LARGE" = true ]; then
+    opts=("--arraysize" "536870912")
+fi
+
+export OMP_TARGET_OFFLOAD=MANDATORY
+
+case "$MODEL" in
+omp | std-* | cuda)
+    "$BENCHMARK_EXE" --list
+    "$BENCHMARK_EXE" "${opts[@]:-}"
+    ;;
+*)
+    echo "Unknown run configuration for model '$MODEL'"
+    exit 1
+    ;;
+esac

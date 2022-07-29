@@ -1,0 +1,46 @@
+#!/bin/bash
+#PBS -q milanq
+#PBS -l select=1:ncpus=128
+#PBS -l walltime=00:10:00
+#PBS -l place=excl
+#PBS -joe
+
+: >$OUT_PREFIX.out0
+exec &>>$OUT_PREFIX.out0
+
+set -eu
+
+cd $RUN_DIR || exit 2
+date
+
+case "$MODEL" in
+
+tbb | omp | std-* | kokkos)
+    # nothing to do
+    ;;
+*)
+    echo "Unknown run configuration for model '$MODEL'"
+    exit 1
+    ;;
+esac
+
+MIN_CORE=1
+MAX_CORE=128
+for i in $(seq $MIN_CORE $MAX_CORE); do
+    echo ">>>$i>>>"
+    date
+    case "$MODEL" in
+    tbb | omp | std-* | kokkos)
+        export OMP_PROC_BIND=true
+        export OMP_PLACES=cores
+        export OMP_NUM_THREADS=$i
+        export ACC_NUM_CORES=$i
+        ./$BENCHMARK_EXE --arraysize $((2 ** 29))
+        ;;
+    *)
+        echo "Unknown run configuration for model '$MODEL'"
+        exit 1
+        ;;
+    esac
+    echo "<<<$i<<<"
+done

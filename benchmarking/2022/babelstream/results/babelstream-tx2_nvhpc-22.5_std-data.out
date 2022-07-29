@@ -1,0 +1,70 @@
+Wed 27 Jul 05:24:22 UTC 2022
+/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_nvhpc-22.5_std-data
+	linux-vdso.so.1 (0x000040002b017000)
+	libacchost.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libacchost.so (0x000040002b028000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000040002b0bc000)
+	libatomic.so.1 => /usr/lib64/gcc/aarch64-suse-linux/7/../../../../lib64/libatomic.so.1 (0x000040002b0dd000)
+	libnvhpcatm.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libnvhpcatm.so (0x000040002b0ff000)
+	libstdc++.so.6 => /usr/lib64/gcc/aarch64-suse-linux/7/../../../../lib64/libstdc++.so.6 (0x000040002b122000)
+	libnvomp.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libnvomp.so (0x000040002b308000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000040002b4f4000)
+	libnvcpumath-armv8.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libnvcpumath-armv8.so (0x000040002b529000)
+	libnvc.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libnvc.so (0x000040002b66e000)
+	librt.so.1 => /lib64/librt.so.1 (0x000040002b7c2000)
+	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x000040002b7e3000)
+	libc.so.6 => /lib64/libc.so.6 (0x000040002b814000)
+	libm.so.6 => /lib64/libm.so.6 (0x000040002b99a000)
+	/lib/ld-linux-aarch64.so.1 (0x000040002aff6000)
+Listing devices is not supported by the Parallel STL
+Application 2277432 resources: utime ~0s, stime ~2s, Rss ~8660, inblocks ~8662, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: STD (data-oriented)
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        155695.662  0.05517     0.05807     0.05640     
+Mul         144592.899  0.05941     0.07047     0.06342     
+Add         150943.877  0.08536     0.09577     0.09009     
+Triad       149739.935  0.08605     0.09395     0.08911     
+Dot         138241.662  0.06214     0.06817     0.06534     
+Application 2277443 resources: utime ~2328s, stime ~1031s, Rss ~25157420, inblocks ~9276, outblocks ~0
+============================= PBS epilogue =============================
+
+End of Job Report
+Run at 2022-07-27 05:25:41 for job 225459.xci00
+Submitted              : 2022-07-27 05:09:10
+Queued                 : 2022-07-27 05:09:10
+Started                : 2022-07-27 05:24:21
+Completed              : 2022-07-27 05:25:41
+Queued Time            : 0:15:11 (911 seconds)
+Elapsed Time           : 0:01:15 (75 seconds, 8% of limit)
+Walltime Limit         : 0:15:00 (900 seconds)
+Node Time Limit        : 0:15:00 (900 seconds)
+Node Time              : 0:01:15 (75 seconds, 8% of limit)
+Job Name               : babelstream-tx2_nvhpc-22.5_std-data
+Queue                  : arm
+Owner                  : br-wlin
+Group                  : -default-
+Project                : GW03
+Subproject             : 
+Funding                : 
+Trustzone              : 
+STDOUT                 : /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_nvhpc-22.5_std-data.out
+STDERR                 : /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_nvhpc-22.5_std-data.e225459
+Job Directory          : /home/br-wlin/pbs.225459.xci00.x8z
+Job Arch               : XT
+CPU Core Type          : arm
+Total Nodes            : 1
+Total Tasks            : 64
+Parent Node            : xcimom2
+Parent Node Memory     : 
+Parent Node CPU Time   : 
+Compute Nodes          : 138
+Electrical Groups      : 1
+Run Version            : 1
+
+For more information see https://gw4-isambard.github.io/docs/

@@ -1,0 +1,27 @@
+Wed 27 Jul 05:10:02 GMT 2022
+/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-icl_gcc-12.1_tbb
+	linux-vdso.so.1 (0x0000155555551000)
+	libtbb.so.12 => /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-icl_gcc-12.1_tbb/BabelStream/build/gnu_12.1_cxx11_64_release/libtbb.so.12 (0x00001555554f8000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libstdc++.so.6 (0x0000155555103000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000155554d81000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libgcc_s.so.1 (0x00001555554c0000)
+	libc.so.6 => /lib64/libc.so.6 (0x00001555549bf000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00001555547bb000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000015555459b000)
+	/lib64/ld-linux-x86-64.so.2 (0x000015555532b000)
+Listing devices is not supported by TBB
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        240230.799  0.03576     0.09745     0.04635     
+Mul         227610.926  0.03774     0.11423     0.05070     
+Add         273226.152  0.04716     0.12487     0.06325     
+Triad       267280.038  0.04821     0.13293     0.07185     
+Dot         309776.293  0.02773     0.08682     0.04247     

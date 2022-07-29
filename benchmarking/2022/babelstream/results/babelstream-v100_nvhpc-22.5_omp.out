@@ -1,0 +1,32 @@
+Wed 27 Jul 05:11:32 GMT 2022
+/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-v100_nvhpc-22.5_omp
+	linux-vdso.so.1 (0x0000155555551000)
+	libacchost.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libacchost.so (0x00001555550bc000)
+	libaccdevaux10.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libaccdevaux10.so (0x0000155554eae000)
+	libaccdevice.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libaccdevice.so (0x0000155554b7f000)
+	libdl.so.2 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libdl.so.2 (0x000015555497b000)
+	libcudadevice.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libcudadevice.so (0x0000155554764000)
+	libnvhpcatm.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libnvhpcatm.so (0x0000155554559000)
+	libstdc++.so.6 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libstdc++.so.6 (0x00001555541c4000)
+	libnvomp.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libnvomp.so (0x00001555534ba000)
+	libpthread.so.0 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libpthread.so.0 (0x000015555329a000)
+	libnvcpumath.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libnvcpumath.so (0x0000155552e94000)
+	libnvc.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libnvc.so (0x0000155552c31000)
+	libc.so.6 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libc.so.6 (0x000015555286f000)
+	libgcc_s.so.1 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libgcc_s.so.1 (0x0000155552657000)
+	libm.so.6 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libm.so.6 (0x00001555522d5000)
+	/lib64/ld-linux-x86-64.so.2 (0x000015555532b000)
+There are 1 devices.
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        813599.566  0.01056     0.01060     0.01056     
+Mul         813552.870  0.01056     0.01057     0.01056     
+Add         851144.994  0.01514     0.01520     0.01519     
+Triad       850062.084  0.01516     0.01520     0.01519     
+Dot         892064.058  0.00963     0.00992     0.00964     

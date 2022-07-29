@@ -1,0 +1,28 @@
+#!/bin/bash
+#PBS -q ilakeq
+#PBS -l select=1:ncpus=64
+#PBS -l walltime=00:20:00
+#PBS -l place=excl
+#PBS -joe
+
+set -eu
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+export OMP_NUM_THREADS=64
+export OMP_PROC_BIND=true
+export OMP_PLACES=cores
+export ACC_NUM_CORES=64
+
+case "$MODEL" in
+tbb | omp | std-*)
+    "$BENCHMARK_EXE" --file "$SRC_DIR/InputDecks/clover_bm16.in"
+    ;;
+*)
+    echo "Unknown run configuration for model '$MODEL'"
+    exit 1
+    ;;
+esac

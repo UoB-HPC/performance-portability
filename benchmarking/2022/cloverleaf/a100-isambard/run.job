@@ -1,0 +1,33 @@
+#!/bin/bash
+#PBS -q ampereq
+#PBS -l select=1:ngpus=1
+#PBS -l walltime=00:20:00
+#PBS -l place=excl
+#PBS -joe
+
+: >"$OUT_FILE"
+exec &> >(tee -a "$OUT_FILE")
+
+set -eu
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+export OMP_TARGET_OFFLOAD=MANDATORY
+
+case "$MODEL" in
+omp | std-*)
+    "$BENCHMARK_EXE" --file "$SRC_DIR/InputDecks/clover_bm16.in"
+    ;;
+cuda)
+    cp "CloverLeaf_CUDA/InputDecks/clover_bm16.in" "clover.in"
+    "$BENCHMARK_EXE"
+    tail -n 5 clover.out
+    ;;
+*)
+    echo "Unknown run configuration for model '$MODEL'"
+    exit 1
+    ;;
+esac

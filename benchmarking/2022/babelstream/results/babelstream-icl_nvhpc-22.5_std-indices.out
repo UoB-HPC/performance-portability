@@ -1,0 +1,31 @@
+Wed 27 Jul 05:09:34 GMT 2022
+/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-icl_nvhpc-22.5_std-indices
+	linux-vdso.so.1 (0x0000155555551000)
+	libacchost.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libacchost.so (0x00001555550bc000)
+	libdl.so.2 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libdl.so.2 (0x0000155554eb8000)
+	libnvhpcatm.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libnvhpcatm.so (0x0000155554cad000)
+	libstdc++.so.6 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libstdc++.so.6 (0x0000155554918000)
+	libnvomp.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libnvomp.so (0x0000155553c0e000)
+	libpthread.so.0 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libpthread.so.0 (0x00001555539ee000)
+	libnvcpumath-avx512.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libnvcpumath-avx512.so (0x00001555535e8000)
+	libnvc.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libnvc.so (0x0000155553385000)
+	librt.so.1 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/librt.so.1 (0x000015555317c000)
+	libc.so.6 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libc.so.6 (0x0000155552dba000)
+	libgcc_s.so.1 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libgcc_s.so.1 (0x0000155552ba2000)
+	libm.so.6 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libm.so.6 (0x0000155552820000)
+	/lib64/ld-linux-x86-64.so.2 (0x000015555532b000)
+Listing devices is not supported by the Parallel STL
+BabelStream
+Version: 4.0
+Implementation: STD (index-oriented)
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        228707.279  0.03756     0.03783     0.03769     
+Mul         215884.359  0.03979     0.04004     0.03991     
+Add         271675.137  0.04743     0.04824     0.04762     
+Triad       265757.758  0.04848     0.04925     0.04873     
+Dot         338700.826  0.02536     0.02576     0.02549     
