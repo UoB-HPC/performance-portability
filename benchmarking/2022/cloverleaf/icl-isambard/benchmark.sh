@@ -51,6 +51,15 @@ std-indices)
   *) ;;
   esac
   ;;
+
+std-indices-dplomp)
+  fetch_src "stdpar"
+  case "$COMPILER" in
+  nvhpc-*) echo "$COMPILER with dplomp is unsupported" && exit 1 ;;
+  *) append_opts "-DUSE_ONEDPL=OPENMP" ;;
+  esac
+  ;;
+
 *) unknown_model ;;
 esac
 

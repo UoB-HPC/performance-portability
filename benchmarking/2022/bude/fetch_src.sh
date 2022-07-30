@@ -15,7 +15,7 @@
 #   fi
 #   export TBB_PATH="$DIST_DIR"
 # }
- 
+
 fetch_src() {
   if [ ! -e miniBUDE/src/main.cpp ]; then
     if ! git clone -b v2 https://github.com/uob-hpc/miniBUDE; then
@@ -25,6 +25,11 @@ fetch_src() {
       exit 1
 
     fi
+  else
+    (
+      cd miniBUDE
+      git fetch && git pull
+    )
   fi
   export SRC_DIR="$PWD/miniBUDE"
 }

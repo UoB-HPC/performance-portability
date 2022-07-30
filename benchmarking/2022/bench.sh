@@ -7,16 +7,21 @@ NVHPC=nvhpc-22.5
 GCC=gcc-12.1
 
 cloverleaf=true
-bude=true
-babelstream=true
+bude=false
+babelstream=false
 
 declare -A models
 models["tbb"]=true
 models["omp"]=true
 models["cuda"]=true
+
 models["std-data"]=true
 models["std-indices"]=true
 models["std-ranges"]=true
+
+models["std-data-dplomp"]=true
+models["std-indices-dplomp"]=true
+models["std-ranges-dplomp"]=true
 
 export LARGE=true
 
@@ -46,27 +51,39 @@ p3)
 
     cd "$BASE/babelstream/results"
     bench milan $NVHPC run \
-        omp std-data std-indices
+        omp \
+        std-data std-indices
     bench milan $GCC run \
-        omp tbb std-data std-indices std-ranges
+        omp tbb \
+        std-data std-indices std-ranges \
+        std-data-dplomp std-indices-dplomp std-ranges-dplomp
     bench a100 $NVHPC run \
-        cuda omp std-data std-indices
+        cuda omp \
+        std-data std-indices
 
     cd "$BASE/bude/results"
     bench milan $NVHPC run \
-        omp std-indices
+        omp \
+        std-indices
     bench milan $GCC run \
-        omp tbb std-indices std-ranges
+        omp tbb \
+        std-indices std-ranges \
+        std-indices-dplomp std-ranges-dplomp
     bench a100 $NVHPC run \
-        cuda omp std-indices
+        cuda omp \
+        std-indices
 
     cd "$BASE/cloverleaf/results"
     bench milan $NVHPC run \
-        omp std-indices
+        omp \
+        std-indices
     bench milan $GCC run \
-        omp tbb std-indices
+        omp tbb \
+        std-indices \
+        std-indices-dplomp
     bench a100 $NVHPC run \
-        cuda omp std-indices
+        cuda omp \
+        std-indices
 
     ;;
 
@@ -74,51 +91,72 @@ p2)
 
     cd "$BASE/babelstream/results"
     bench icl $NVHPC run \
-        omp std-data std-indices
+        omp \
+        std-data std-indices
     bench icl $GCC run \
-        omp tbb std-data std-indices std-ranges
+        omp tbb \
+        std-data std-indices std-ranges \
+        std-data-dplomp std-indices-dplomp std-ranges-dplomp
     bench v100 $NVHPC run \
-        cuda omp std-data std-indices
+        cuda omp \
+        std-data std-indices
 
     cd "$BASE/bude/results"
     bench icl $NVHPC run \
-        omp std-indices
+        omp \
+        std-indices
     bench icl $GCC run \
-        omp tbb std-indices std-ranges
+        omp tbb \
+        std-indices std-ranges \
+        std-indices-dplomp std-ranges-dplomp
     bench v100 $NVHPC run \
-        cuda omp std-indices
+        cuda omp \
+        std-indices
 
     cd "$BASE/cloverleaf/results"
     bench icl $NVHPC run \
-        omp std-indices
+        omp \
+        std-indices
     bench icl $GCC run \
-        omp tbb std-indices
+        omp tbb \
+        std-indices \
+        std-indices-dplomp
     bench v100 $NVHPC run \
-        cuda omp std-indices
+        cuda omp \
+        std-indices
 
     ;;
-
 xci)
 
     cd "$BASE/babelstream/results"
     bench tx2 $NVHPC run \
-        omp std-data std-indices
+        omp \
+        std-data std-indices
     bench tx2 $GCC run \
-        omp tbb std-data std-indices std-ranges
+        omp tbb \
+        std-data std-indices std-ranges \
+        std-data-dplomp std-indices-dplomp std-ranges-dplomp
 
     cd "$BASE/bude/results"
     bench tx2 $NVHPC run \
-        omp std-indices
+        omp \
+        std-indices
     bench tx2 $GCC run \
-        omp tbb std-indices std-ranges
+        omp tbb \
+        std-indices std-ranges \
+        std-indices-dplomp std-ranges-dplomp
 
     cd "$BASE/cloverleaf/results"
     bench tx2 $NVHPC run \
-        omp std-indices
+        omp \
+        std-indices
     bench tx2 $GCC run \
-        omp tbb std-indices
+        omp tbb \
+        std-indices \
+        std-indices-dplomp
 
     ;;
+
 *)
     echo "Bad platform $1"
     ;;

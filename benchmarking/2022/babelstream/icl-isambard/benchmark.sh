@@ -49,6 +49,7 @@ tbb)
   append_opts "-DMODEL=tbb -DPARTITIONER=STATIC"
   BENCHMARK_EXE="tbb-stream"
   ;;
+  
 std-data)
   append_opts "-DMODEL=std-data"
   BENCHMARK_EXE="std-data-stream"
@@ -61,6 +62,21 @@ std-ranges)
   append_opts "-DMODEL=std-ranges"
   BENCHMARK_EXE="std-ranges-stream"
   ;;
+
+std-data-dplomp)
+  append_opts "-DMODEL=std-data -DUSE_ONEDPL=OPENMP"
+  BENCHMARK_EXE="std-data-stream"
+  ;;
+std-indices-dplomp)
+  append_opts "-DMODEL=std-indices -DUSE_ONEDPL=OPENMP"
+  BENCHMARK_EXE="std-indices-stream"
+  ;;
+std-ranges-dplomp)
+  append_opts "-DMODEL=std-ranges -DUSE_ONEDPL=OPENMP"
+  BENCHMARK_EXE="std-ranges-stream"
+  ;;
+
+  #
 *) unknown_model ;;
 esac
 

@@ -18,7 +18,6 @@ set -eu
 #   export TBB_PATH="$DIST_DIR"
 # }
 
-
 fetch_src() {
   if [ ! -e BabelStream/src/main.cpp ]; then
     if ! git clone -b option_for_vec https://github.com/uob-hpc/BabelStream; then
@@ -28,6 +27,11 @@ fetch_src() {
       exit 1
 
     fi
+  else
+    (
+      cd BabelStream
+      git fetch && git pull
+    )
   fi
   export SRC_DIR="$PWD/BabelStream"
 }

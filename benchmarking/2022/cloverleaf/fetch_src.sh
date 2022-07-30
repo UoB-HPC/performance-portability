@@ -50,6 +50,11 @@ fetch_src() {
       exit 1
 
     fi
+  else
+    (
+      cd "$REPO_DIR"
+      git fetch && git pull
+    )
   fi
 
   export SRC_DIR="$PWD/$REPO_DIR"

@@ -49,12 +49,22 @@ tbb)
   append_opts "-DMODEL=tbb"
   BENCHMARK_EXE="tbb-bude"
   ;;
+
 std-indices)
   append_opts "-DMODEL=std-indices"
   BENCHMARK_EXE="std-indices-bude"
   ;;
 std-ranges)
   append_opts "-DMODEL=std-ranges"
+  BENCHMARK_EXE="std-ranges-bude"
+  ;;
+
+std-indices-dplomp)
+  append_opts "-DMODEL=std-indices -DUSE_ONEDPL=OPENMP"
+  BENCHMARK_EXE="std-indices-bude"
+  ;;
+std-ranges-dplomp)
+  append_opts "-DMODEL=std-ranges -DUSE_ONEDPL=OPENMP"
   BENCHMARK_EXE="std-ranges-bude"
   ;;
 *) unknown_model ;;

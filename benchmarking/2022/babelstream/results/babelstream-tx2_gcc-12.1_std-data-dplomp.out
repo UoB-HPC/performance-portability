@@ -1,0 +1,66 @@
+Sat 30 Jul 04:24:22 UTC 2022
+/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_gcc-12.1_std-data-dplomp
+	linux-vdso.so.1 (0x00004000230a5000)
+	libtbb.so.12 => /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_gcc-12.1_std-data-dplomp/BabelStream/build/gnu_12.1_cxx11_64_release/libtbb.so.12 (0x00004000230b6000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libstdc++.so.6 (0x0000400023104000)
+	libm.so.6 => /lib64/libm.so.6 (0x000040002334c000)
+	libgomp.so.1 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libgomp.so.1 (0x000040002340d000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libgcc_s.so.1 (0x000040002346e000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000040002349f000)
+	libc.so.6 => /lib64/libc.so.6 (0x00004000234d4000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000040002365a000)
+	/lib/ld-linux-aarch64.so.1 (0x0000400023084000)
+Listing devices is not supported by the Parallel STL
+Application 2279427 resources: utime ~0s, stime ~3s, Rss ~8628, inblocks ~39504, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: STD (data-oriented)
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Backing storage typeid: Pd
+Using oneDPL backend: OpenMP
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        105692.982  0.08127     0.09539     0.08755     
+Mul         129086.375  0.06654     0.12214     0.06883     
+Add         118722.568  0.10853     0.13338     0.11410     
+Triad       105986.969  0.12157     0.15173     0.12589     
+Dot         104424.032  0.08226     0.09844     0.08518     
+Application 2279445 resources: utime ~2511s, stime ~784s, Rss ~25161944, inblocks ~40568, outblocks ~0
+============================= PBS epilogue =============================
+
+End of Job Report
+Run at 2022-07-30 04:25:53 for job 226679.xci00
+Submitted              : 2022-07-30 04:23:49
+Queued                 : 2022-07-30 04:23:49
+Started                : 2022-07-30 04:24:22
+Completed              : 2022-07-30 04:25:53
+Queued Time            : 0:00:33 (33 seconds)
+Elapsed Time           : 0:01:26 (86 seconds, 10% of limit)
+Walltime Limit         : 0:15:00 (900 seconds)
+Node Time Limit        : 0:15:00 (900 seconds)
+Node Time              : 0:01:26 (86 seconds, 10% of limit)
+Job Name               : babelstream-tx2_gcc-12.1_std-data-dplomp
+Queue                  : arm
+Owner                  : br-wlin
+Group                  : -default-
+Project                : GW03
+Subproject             : 
+Funding                : 
+Trustzone              : 
+STDOUT                 : /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_gcc-12.1_std-data-dplomp.out
+STDERR                 : /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_gcc-12.1_std-data-dplomp.e226679
+Job Directory          : /home/br-wlin/pbs.226679.xci00.x8z
+Job Arch               : XT
+CPU Core Type          : arm
+Total Nodes            : 1
+Total Tasks            : 64
+Parent Node            : xcimom
+Parent Node Memory     : 
+Parent Node CPU Time   : 
+Compute Nodes          : 222
+Electrical Groups      : 1
+Run Version            : 1
+
+For more information see https://gw4-isambard.github.io/docs/
