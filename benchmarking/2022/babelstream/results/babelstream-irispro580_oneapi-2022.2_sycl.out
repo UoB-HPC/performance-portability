@@ -1,0 +1,40 @@
+Sat 30 Jul 08:09:24 BST 2022
+/nfs/home/wl14928/performance-portability/benchmarking/2022/babelstream/results/babelstream-irispro580_oneapi-2022.2_sycl
+	linux-vdso.so.1 (0x00007ffd60784000)
+	libstdc++.so.6 => /nfs/software/x86_64/gcc/8.3.0/lib64/libstdc++.so.6 (0x000014de7e661000)
+	libm.so.6 => /lib64/libm.so.6 (0x000014de7e2df000)
+	libgcc_s.so.1 => /nfs/software/x86_64/gcc/8.3.0/lib64/libgcc_s.so.1 (0x000014de7e0c7000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000014de7dec3000)
+	libsycl.so.5 => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/lib/libsycl.so.5 (0x000014de7dbad000)
+	libc.so.6 => /lib64/libc.so.6 (0x000014de7d7eb000)
+	/lib64/ld-linux-x86-64.so.2 (0x000014de7e9e4000)
+	libOpenCL.so.1 => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/lib/libOpenCL.so.1 (0x000014de7ebee000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014de7d5cb000)
+	libsvml.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libsvml.so (0x000014de7b60d000)
+	libirng.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libirng.so (0x000014de7b2a3000)
+	libimf.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libimf.so (0x000014de7ac15000)
+	libintlc.so.5 => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x000014de7a99d000)
+
+Devices:
+0: Intel(R) FPGA Emulation Device
+1: Intel(R) Core(TM) i7-6770HQ CPU @ 2.60GHz
+2: Intel(R) Iris(TM) Pro Graphics 580 [0x193b]
+3: Intel(R) Iris(TM) Pro Graphics 580 [0x193b]
+4: SYCL host device
+
+BabelStream
+Version: 4.0
+Implementation: SYCL
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Using SYCL device Intel(R) Iris(TM) Pro Graphics 580 [0x193b]
+Driver: 21.38.21026
+Reduction kernel config: 288 groups of size 256
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        31230.224   0.01719     0.01787     0.01732     
+Mul         26529.167   0.02024     0.02058     0.02036     
+Add         25720.278   0.03131     0.03222     0.03150     
+Triad       26822.521   0.03002     0.03056     0.03022     
+Dot         23749.089   0.02261     0.02286     0.02270     

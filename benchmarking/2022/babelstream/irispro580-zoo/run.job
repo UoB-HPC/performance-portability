@@ -1,8 +1,7 @@
 #!/bin/bash
-#PBS -q voltaq
-#PBS -l select=1:ngpus=1
-#PBS -l walltime=00:10:00
-#PBS -l place=excl
+#PBS -q workq
+#PBS -l select=1:ngpus=1:gputype=irispro580
+#PBS -l walltime=01:00:00
 #PBS -joe
 
 set -eu
@@ -13,15 +12,20 @@ echo "$PWD"
 ldd "$BENCHMARK_EXE"
 
 if [ "${LARGE:-}" = true ]; then
-    opts=("--arraysize" "536870912")
+    echo "Large problem size not supported."
+    exit 1
 fi
 
 export OMP_TARGET_OFFLOAD=MANDATORY
 
 case "$MODEL" in
-omp | std-* | cuda)
+sycl)
     "$BENCHMARK_EXE" --list
-    "$BENCHMARK_EXE" "${opts[@]:-}"
+    "$BENCHMARK_EXE" --device 2
+    ;;
+omp | std-*)
+    "$BENCHMARK_EXE" --list
+    "$BENCHMARK_EXE"
     ;;
 *)
     echo "Unknown run configuration for model '$MODEL'"

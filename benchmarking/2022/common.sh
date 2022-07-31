@@ -11,6 +11,25 @@ load_nvhpc() {
   fi
 }
 
+load_oneapi() {
+  if [ -z "${1:-}" ]; then
+    echo "${FUNCNAME[0]}: Usage: ${FUNCNAME[0]} /path/to/oneapi/source.sh"
+    echo "No OneAPI path provided. Stop."
+    exit 5
+  fi
+
+  local oneapi_env="${1}"
+
+  set +u                           # setvars can't handle unbound vars
+  CURRENT_SCRIPT_DIR="$SCRIPT_DIR" # save current script dir as the setvars overwrites it
+
+  # their script also terminates the shell for some reason so we short-circuit it first
+  source "$oneapi_env" --force || true
+
+  set -u
+  SCRIPT_DIR="$CURRENT_SCRIPT_DIR" #recover script dir
+}
+
 check_vars() {
   local var_names=("$@")
   for var_name in "${var_names[@]}"; do

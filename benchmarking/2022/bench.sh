@@ -3,6 +3,7 @@
 set -eu
 
 BASE="$PWD"
+ONEAPI=oneapi-2022.2
 NVHPC=nvhpc-22.5
 GCC=gcc-12.1
 
@@ -12,8 +13,9 @@ babelstream=false
 
 declare -A models
 models["tbb"]=true
-models["omp"]=true
+models["omp"]=false
 models["cuda"]=true
+models["sycl"]=false
 
 models["std-data"]=true
 models["std-indices"]=true
@@ -28,9 +30,9 @@ export LARGE=true
 build_and_submit() {
 
     echo "[exec] build $1 $2 $3"
-    "../$1-isambard/benchmark.sh" build "$2" "$3"
+    "../$1/benchmark.sh" build "$2" "$3"
     echo "[exec] $4 $1 $2 $3"
-    "../$1-isambard/benchmark.sh" "$4" "$2" "$3"
+    "../$1/benchmark.sh" "$4" "$2" "$3"
 }
 
 bench() {
@@ -48,115 +50,124 @@ bench() {
 
 case "$1" in
 p3)
-
     cd "$BASE/babelstream/results"
-    bench milan $NVHPC run \
+    bench milan-isambard $NVHPC run \
         omp \
         std-data std-indices
-    bench milan $GCC run \
+    bench milan-isambard $GCC run \
         omp tbb \
         std-data std-indices std-ranges \
         std-data-dplomp std-indices-dplomp std-ranges-dplomp
-    bench a100 $NVHPC run \
+    bench a100-isambard $NVHPC run \
         cuda omp \
         std-data std-indices
 
     cd "$BASE/bude/results"
-    bench milan $NVHPC run \
+    bench milan-isambard $NVHPC run \
         omp \
         std-indices
-    bench milan $GCC run \
+    bench milan-isambard $GCC run \
         omp tbb \
         std-indices std-ranges \
         std-indices-dplomp std-ranges-dplomp
-    bench a100 $NVHPC run \
+    bench a100-isambard $NVHPC run \
         cuda omp \
         std-indices
 
     cd "$BASE/cloverleaf/results"
-    bench milan $NVHPC run \
+    bench milan-isambard $NVHPC run \
         omp \
         std-indices
-    bench milan $GCC run \
+    bench milan-isambard $GCC run \
         omp tbb \
         std-indices \
         std-indices-dplomp
-    bench a100 $NVHPC run \
+    bench a100-isambard $NVHPC run \
         cuda omp \
         std-indices
-
     ;;
-
 p2)
-
     cd "$BASE/babelstream/results"
-    bench icl $NVHPC run \
+    bench icl-isambard $NVHPC run \
         omp \
         std-data std-indices
-    bench icl $GCC run \
+    bench icl-isambard $GCC run \
         omp tbb \
         std-data std-indices std-ranges \
         std-data-dplomp std-indices-dplomp std-ranges-dplomp
-    bench v100 $NVHPC run \
+    bench v100-isambard $NVHPC run \
         cuda omp \
         std-data std-indices
 
     cd "$BASE/bude/results"
-    bench icl $NVHPC run \
+    bench icl-isambard $NVHPC run \
         omp \
         std-indices
-    bench icl $GCC run \
+    bench icl-isambard $GCC run \
         omp tbb \
         std-indices std-ranges \
         std-indices-dplomp std-ranges-dplomp
-    bench v100 $NVHPC run \
+    bench v100-isambard $NVHPC run \
         cuda omp \
         std-indices
 
     cd "$BASE/cloverleaf/results"
-    bench icl $NVHPC run \
+    bench icl-isambard $NVHPC run \
         omp \
         std-indices
-    bench icl $GCC run \
+    bench icl-isambard $GCC run \
         omp tbb \
         std-indices \
         std-indices-dplomp
-    bench v100 $NVHPC run \
+    bench v100-isambard $NVHPC run \
         cuda omp \
         std-indices
-
     ;;
 xci)
-
     cd "$BASE/babelstream/results"
-    bench tx2 $NVHPC run \
+    bench tx2-isambard $NVHPC run \
         omp \
         std-data std-indices
-    bench tx2 $GCC run \
+    bench tx2-isambard $GCC run \
         omp tbb \
         std-data std-indices std-ranges \
         std-data-dplomp std-indices-dplomp std-ranges-dplomp
 
     cd "$BASE/bude/results"
-    bench tx2 $NVHPC run \
+    bench tx2-isambard $NVHPC run \
         omp \
         std-indices
-    bench tx2 $GCC run \
+    bench tx2-isambard $GCC run \
         omp tbb \
         std-indices std-ranges \
         std-indices-dplomp std-ranges-dplomp
 
     cd "$BASE/cloverleaf/results"
-    bench tx2 $NVHPC run \
+    bench tx2-isambard $NVHPC run \
         omp \
         std-indices
-    bench tx2 $GCC run \
+    bench tx2-isambard $GCC run \
         omp tbb \
         std-indices \
         std-indices-dplomp
-
     ;;
+zoo)
+    export LARGE=false
+    cd "$BASE/babelstream/results"
+    bench irispro580-zoo $ONEAPI run \
+        omp \
+        std-data std-indices
 
+    cd "$BASE/bude/results"
+    bench irispro580-zoo $ONEAPI run \
+        omp \
+        std-indices
+
+    cd "$BASE/cloverleaf/results"
+    bench irispro580-zoo $ONEAPI run \
+        omp \
+        std-indices
+    ;;
 *)
     echo "Bad platform $1"
     ;;

@@ -1,0 +1,32 @@
+Sat 30 Jul 10:01:00 BST 2022
+/nfs/home/wl14928/performance-portability/benchmarking/2022/babelstream/results/babelstream-irispro580_oneapi-2022.2_std-indices
+	linux-vdso.so.1 (0x0000154cd5025000)
+	libstdc++.so.6 => /nfs/software/x86_64/gcc/8.3.0/lib64/libstdc++.so.6 (0x0000154cd4a7c000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000154cd46fa000)
+	libgcc_s.so.1 => /nfs/software/x86_64/gcc/8.3.0/lib64/libgcc_s.so.1 (0x0000154cd44e2000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000154cd42de000)
+	libsycl.so.5 => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/lib/libsycl.so.5 (0x0000154cd3fc8000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000154cd3c06000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000154cd4dff000)
+	libOpenCL.so.1 => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/lib/libOpenCL.so.1 (0x0000154cd5004000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000154cd39e6000)
+	libsvml.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libsvml.so (0x0000154cd1a28000)
+	libirng.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libirng.so (0x0000154cd16be000)
+	libimf.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libimf.so (0x0000154cd1030000)
+	libintlc.so.5 => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x0000154cd0db8000)
+Listing devices is not supported by the Parallel STL
+BabelStream
+Version: 4.0
+Implementation: STD (index-oriented)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Backing storage typeid: Pd
+Using oneDPL backend: SYCL USM (device=Intel(R) Iris(TM) Pro Graphics 580 [0x193b])
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        31010.037   0.01731     0.01912     0.01744     
+Mul         26419.161   0.02032     0.02237     0.02049     
+Add         26048.200   0.03092     0.03260     0.03115     
+Triad       26868.940   0.02997     0.03056     0.03014     
+Dot         23246.344   0.02309     0.02623     0.02343     

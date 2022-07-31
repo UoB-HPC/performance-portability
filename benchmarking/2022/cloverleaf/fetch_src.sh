@@ -29,6 +29,12 @@ fetch_src() {
     REPO_BRANCH="main"
     REPO_URL="https://github.com/UoB-HPC/cloverleaf_tbb"
     ;;
+  sycl)
+    REPO_DIR=cloverleaf_sycl
+    REPO_FILE="$REPO_DIR/src/clover_leaf.cpp"
+    REPO_BRANCH="master"
+    REPO_URL="https://github.com/UoB-HPC/cloverleaf_sycl"
+    ;;
   stdpar)
     REPO_DIR=cloverleaf_stdpar
     REPO_FILE="$REPO_DIR/src/clover_leaf.cpp"

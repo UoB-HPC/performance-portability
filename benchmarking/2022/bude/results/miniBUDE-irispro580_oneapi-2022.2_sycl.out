@@ -1,0 +1,236 @@
+Sat 30 Jul 08:33:18 BST 2022
+/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_sycl
+	linux-vdso.so.1 (0x00007ffec1dac000)
+	libstdc++.so.6 => /nfs/software/x86_64/gcc/8.3.0/lib64/libstdc++.so.6 (0x0000151f2dcca000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000151f2d948000)
+	libgcc_s.so.1 => /nfs/software/x86_64/gcc/8.3.0/lib64/libgcc_s.so.1 (0x0000151f2d730000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000151f2d52c000)
+	libsycl.so.5 => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/lib/libsycl.so.5 (0x0000151f2d216000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000151f2ce54000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000151f2e04d000)
+	libOpenCL.so.1 => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/lib/libOpenCL.so.1 (0x0000151f2e257000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000151f2cc34000)
+	libsvml.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libsvml.so (0x0000151f2ac76000)
+	libirng.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libirng.so (0x0000151f2a90c000)
+	libimf.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libimf.so (0x0000151f2a27e000)
+	libintlc.so.5 => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x0000151f2a006000)
+miniBUDE:  
+compile_commands:
+   - "dpcpp -DCL_TARGET_OPENCL_VERSION=220 -DSYCL -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/sycl -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_sycl/miniBUDE/build/generated  -DNDEBUG -O3 -march=native -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
+vcs:
+  commit:  0fd286dd7edd458a1e8058db2d04e970822b7577*
+  author:  "Tom Lin (tom91136@gmail.com)"
+  date:    "2022-07-30 07:24:20 +0100"
+  subject: "Add oneDPL+OMP configs"
+host_cpu:
+  ~
+time: { epoch_s:1659166399, formatted: "Sat Jul 30 07:33:19 2022 GMT" }
+devices:
+  0: "Intel(R) FPGA Emulation Device"
+  1: "Intel(R) Core(TM) i7-6770HQ CPU @ 2.60GHz"
+  2: "Intel(R) Iris(TM) Pro Graphics 580 [0x193b]"
+  3: "Intel(R) Iris(TM) Pro Graphics 580 [0x193b]"
+  4: "SYCL host device"
+miniBUDE:  
+compile_commands:
+   - "dpcpp -DCL_TARGET_OPENCL_VERSION=220 -DSYCL -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/sycl -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_sycl/miniBUDE/build/generated  -DNDEBUG -O3 -march=native -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
+vcs:
+  commit:  0fd286dd7edd458a1e8058db2d04e970822b7577*
+  author:  "Tom Lin (tom91136@gmail.com)"
+  date:    "2022-07-30 07:24:20 +0100"
+  subject: "Add oneDPL+OMP configs"
+host_cpu:
+  ~
+time: { epoch_s:1659166399, formatted: "Sat Jul 30 07:33:19 2022 GMT" }
+deck:
+  path:         "miniBUDE/data/bm1"
+  poses:        65536
+  proteins:     938
+  ligands:      26
+  forcefields:  34
+config:
+  iterations:   8
+  poses:        65536
+  ppwi:
+    available:  [1,2,4,8,16,32,64,128]
+    selected:   [1,2,4,8,16,32,64,128]
+  wgsize:       [1]
+device: { index: 2,  name: "Intel(R) Iris(TM) Pro Graphics 580 [0x193b]" }
+# (ppwi=1,wgsize=1,valid=1)
+# (ppwi=2,wgsize=1,valid=1)
+# (ppwi=4,wgsize=1,valid=1)
+# (ppwi=8,wgsize=1,valid=1)
+# (ppwi=16,wgsize=1,valid=1)
+# (ppwi=32,wgsize=1,valid=1)
+# (ppwi=64,wgsize=1,valid=1)
+# (ppwi=128,wgsize=1,valid=1)
+results:
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 1, wgsize: 1 }
+    raw_iterations:      [5496.69,2974.6,2975.15,2974.33,2974.3,2974.77,2975.35,2976.14,2974.86,2975.56]
+    context_ms:          0.849705
+    sum_ms:              23800.476
+    avg_ms:              2975.060
+    min_ms:              2974.300
+    max_ms:              2976.144
+    stddev_ms:           0.587
+    giga_interactions/s: 0.537
+    gflop/s:             21.501
+    gfinst/s:            13.431
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 2, wgsize: 1 }
+    raw_iterations:      [1867.74,1866.73,1867.5,1865.93,1867.63,1865.57,1866.81,1865.82,1867.43,1867.19]
+    context_ms:          0.011199
+    sum_ms:              14933.880
+    avg_ms:              1866.735
+    min_ms:              1865.573
+    max_ms:              1867.629
+    stddev_ms:           0.784
+    giga_interactions/s: 0.856
+    gflop/s:             29.985
+    gfinst/s:            21.405
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 4, wgsize: 1 }
+    raw_iterations:      [1260.8,1259.46,1258.83,1259.39,1259.07,1259.41,1259.4,1260.25,1260.36,1259.79]
+    context_ms:          0.011633
+    sum_ms:              10076.503
+    avg_ms:              1259.563
+    min_ms:              1258.831
+    max_ms:              1260.356
+    stddev_ms:           0.500
+    giga_interactions/s: 1.269
+    gflop/s:             41.267
+    gfinst/s:            31.723
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 8, wgsize: 1 }
+    raw_iterations:      [8684.31,8682.16,8682.74,8687.17,8682.66,8683.58,8683.72,8682.48,8680.8,8678.15]
+    context_ms:          0.011652
+    sum_ms:              69461.298
+    avg_ms:              8682.662
+    min_ms:              8678.150
+    max_ms:              8687.172
+    stddev_ms:           2.402
+    giga_interactions/s: 0.184
+    gflop/s:             5.756
+    gfinst/s:            4.602
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 16, wgsize: 1 }
+    raw_iterations:      [8545.66,8545.54,8545.26,8542.81,8540.78,8544.7,8546.82,8547.37,8548.61,8545.98]
+    context_ms:          0.011123
+    sum_ms:              68362.331
+    avg_ms:              8545.291
+    min_ms:              8540.779
+    max_ms:              8548.613
+    stddev_ms:           2.373
+    giga_interactions/s: 0.187
+    gflop/s:             5.732
+    gfinst/s:            4.676
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 32, wgsize: 1 }
+    raw_iterations:      [5729.5,5725.87,5728.51,5726.42,5729.69,5727.09,5727.37,5726.09,5728.19,5729.72]
+    context_ms:          0.010965
+    sum_ms:              45823.084
+    avg_ms:              5727.885
+    min_ms:              5726.088
+    max_ms:              5729.718
+    stddev_ms:           1.293
+    giga_interactions/s: 0.279
+    gflop/s:             8.464
+    gfinst/s:            6.976
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 64, wgsize: 1 }
+    raw_iterations:      [9194.43,9188.26,9192.81,9190.77,9188.65,9193.66,9194.06,9188.11,9193.27,9195.19]
+    context_ms:          0.011786
+    sum_ms:              73536.522
+    avg_ms:              9192.065
+    min_ms:              9188.111
+    max_ms:              9195.186
+    stddev_ms:           2.429
+    giga_interactions/s: 0.174
+    gflop/s:             5.247
+    gfinst/s:            4.347
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 128, wgsize: 1 }
+    raw_iterations:      [9132.82,9120.48,9122.49,9119.83,9120.15,9122.21,9121.84,9118.82,9122.09,9117.7]
+    context_ms:          0.012733
+    sum_ms:              72965.129
+    avg_ms:              9120.641
+    min_ms:              9117.700
+    max_ms:              9122.494
+    stddev_ms:           1.669
+    giga_interactions/s: 0.175
+    gflop/s:             5.274
+    gfinst/s:            4.381
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+best: { min_ms: 1258.83, max_ms: 1260.36, sum_ms: 10076.50, avg_ms: 1259.56, ppwi: 4, wgsize: 1 }

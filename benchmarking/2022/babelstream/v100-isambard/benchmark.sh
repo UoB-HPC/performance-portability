@@ -12,7 +12,7 @@ handle_cmd "${1}" "${2}" "${3}" "babelstream" "v100"
 
 export USE_MAKE=false
 
-append_opts "-DCMAKE_VERBOSE_MAKEFILE=ON -DUSE_CPU_FEATURES=OFF"
+append_opts "-DCMAKE_VERBOSE_MAKEFILE=ON"
 
 case "$COMPILER" in
 nvhpc-22.5)

@@ -1,0 +1,63 @@
+Sat 30 Jul 10:01:32 BST 2022
+/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_omp
+	linux-vdso.so.1 (0x00007fff64b8d000)
+	libiomp5.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libiomp5.so (0x00001520bf411000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00001520bf1f1000)
+	libstdc++.so.6 => /nfs/software/x86_64/gcc/8.3.0/lib64/libstdc++.so.6 (0x00001520bee6e000)
+	libm.so.6 => /lib64/libm.so.6 (0x00001520beaec000)
+	libgcc_s.so.1 => /nfs/software/x86_64/gcc/8.3.0/lib64/libgcc_s.so.1 (0x00001520be8d4000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00001520be6d0000)
+	libomptarget.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/lib/libomptarget.so (0x00001520bf9c0000)
+	libc.so.6 => /lib64/libc.so.6 (0x00001520be30e000)
+	librt.so.1 => /lib64/librt.so.1 (0x00001520be105000)
+	/lib64/ld-linux-x86-64.so.2 (0x00001520bf84a000)
+	libsvml.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libsvml.so (0x00001520bc147000)
+	libirng.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libirng.so (0x00001520bbddd000)
+	libimf.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libimf.so (0x00001520bb74f000)
+	libintlc.so.5 => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x00001520bb4d7000)
+miniBUDE:  
+compile_commands:
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/icpx -DOMP -DOMP_TARGET -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/omp -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_omp/miniBUDE/build/generated  -DNDEBUG -O3 -march=native -qnextgen -fiopenmp -fopenmp-targets=spir64 -Ofast -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
+vcs:
+  commit:  0fd286dd7edd458a1e8058db2d04e970822b7577*
+  author:  "Tom Lin (tom91136@gmail.com)"
+  date:    "2022-07-30 07:24:20 +0100"
+  subject: "Add oneDPL+OMP configs"
+host_cpu:
+  ~
+time: { epoch_s:1659171692, formatted: "Sat Jul 30 09:01:32 2022 GMT" }
+devices:
+  0: "OMP target device #0 (default)"
+  1: "OMP host device #1"
+miniBUDE:  
+compile_commands:
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/icpx -DOMP -DOMP_TARGET -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/omp -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_omp/miniBUDE/build/generated  -DNDEBUG -O3 -march=native -qnextgen -fiopenmp -fopenmp-targets=spir64 -Ofast -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
+vcs:
+  commit:  0fd286dd7edd458a1e8058db2d04e970822b7577*
+  author:  "Tom Lin (tom91136@gmail.com)"
+  date:    "2022-07-30 07:24:20 +0100"
+  subject: "Add oneDPL+OMP configs"
+host_cpu:
+  ~
+time: { epoch_s:1659171692, formatted: "Sat Jul 30 09:01:32 2022 GMT" }
+deck:
+  path:         "miniBUDE/data/bm1"
+  poses:        65536
+  proteins:     938
+  ligands:      26
+  forcefields:  34
+config:
+  iterations:   8
+  poses:        65536
+  ppwi:
+    available:  [1,2,4,8,16,32,64,128]
+    selected:   [1,2,4,8,16,32,64,128]
+  wgsize:       [4,8,16,32,64,128]
+device: { index: 0,  name: "OMP target device #0 (default)" }
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+=>> PBS: job killed: walltime 3621 exceeded limit 3600

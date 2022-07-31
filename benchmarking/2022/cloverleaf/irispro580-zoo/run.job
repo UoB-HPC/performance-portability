@@ -1,0 +1,24 @@
+#!/bin/bash
+#PBS -q workq
+#PBS -l select=1:ngpus=1:gputype=irispro580
+#PBS -l walltime=02:00:00
+#PBS -joe
+
+set -eu
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+export OMP_TARGET_OFFLOAD=MANDATORY
+
+case "$MODEL" in
+omp | std-* | sycl)
+    mpirun -np 1 "$BENCHMARK_EXE" --file "$SRC_DIR/InputDecks/clover_bm16.in"
+    ;;
+*)
+    echo "Unknown run configuration for model '$MODEL'"
+    exit 1
+    ;;
+esac
