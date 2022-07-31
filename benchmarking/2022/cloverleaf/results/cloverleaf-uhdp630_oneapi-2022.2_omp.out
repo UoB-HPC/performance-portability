@@ -1,0 +1,59 @@
+
+########################################################################
+#      Date:           Sat 30 Jul 2022 07:28:26 PM PDT
+#    Job ID:           1964167.v-qsvr-1.aidevcloud
+#      User:           u162741
+# Resources:           neednodes=1:batch:ppn=2,nodes=1:batch:ppn=2,walltime=02:00:00
+########################################################################
+
+Sat 30 Jul 2022 07:28:27 PM PDT
+/home/u162741/performance-portability/benchmarking/2022/cloverleaf/results/cloverleaf-uhdp630_oneapi-2022.2_omp
+	linux-vdso.so.1 (0x00007ffe4c352000)
+	libmpicxx.so.12 => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/mpi/2021.5.1/lib/libmpicxx.so.12 (0x00007fd52e395000)
+	libmpifort.so.12 => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/mpi/2021.5.1/lib/libmpifort.so.12 (0x00007fd52dfe1000)
+	libmpi.so.12 => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/mpi/2021.5.1/lib/release/libmpi.so.12 (0x00007fd52c7ac000)
+	libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fd52c796000)
+	librt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007fd52c78c000)
+	libiomp5.so => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/compiler/lib/intel64_lin/libiomp5.so (0x00007fd52c36b000)
+	libgomp.so.1 => /glob/development-tools/versions/gcc/11.2.0/lib64/libgomp.so.1 (0x00007fd52c128000)
+	libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fd52c105000)
+	libstdc++.so.6 => /glob/development-tools/versions/gcc/11.2.0/lib64/libstdc++.so.6 (0x00007fd52bcf3000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fd52bba2000)
+	libgcc_s.so.1 => /glob/development-tools/versions/gcc/11.2.0/lib64/libgcc_s.so.1 (0x00007fd52b989000)
+	libomptarget.so => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/lib/libomptarget.so (0x00007fd52b912000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fd52b720000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007fd52e5b9000)
+	libsvml.so => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/compiler/lib/intel64_lin/libsvml.so (0x00007fd529690000)
+	libirng.so => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/compiler/lib/intel64_lin/libirng.so (0x00007fd529326000)
+	libimf.so => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/compiler/lib/intel64_lin/libimf.so (0x00007fd528c98000)
+	libintlc.so.5 => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x00007fd528a20000)
+
+Clover Version 1.300
+Kokkos Version
+Task Count 1
+
+Output file clover.out opened. All output will go there.
+No OMP target devices available
+
+
+Using OMP device: #0
+Args: --file /home/u162741/performance-portability/benchmarking/2022/cloverleaf/results/cloverleaf_openmp_target/InputDecks/clover_bm16.in
+Using input: `/home/u162741/performance-portability/benchmarking/2022/cloverleaf/results/cloverleaf_openmp_target/InputDecks/clover_bm16.in`
+Libomptarget error: Run with
+Libomptarget error: LIBOMPTARGET_DEBUG=1 to display basic debug information.
+Libomptarget error: LIBOMPTARGET_DEBUG=2 to display calls to the compute runtime.
+Libomptarget error: LIBOMPTARGET_INFO=4 to dump host-target pointer mappings.
+Libomptarget error: Source location information not present. Compile with -g or -gline-tables-only.
+Libomptarget fatal error 1: failure of target construct while offloading is mandatory
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 0 PID 3348174 RUNNING AT s001-n058
+=   KILLED BY SIGNAL: 6 (Aborted)
+===================================================================================
+
+########################################################################
+# End of output for job 1964167.v-qsvr-1.aidevcloud
+# Date: Sat 30 Jul 2022 07:28:29 PM PDT
+########################################################################
+

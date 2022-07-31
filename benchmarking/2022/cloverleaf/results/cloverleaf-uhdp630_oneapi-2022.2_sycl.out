@@ -1,0 +1,56 @@
+
+########################################################################
+#      Date:           Sat 30 Jul 2022 07:28:01 PM PDT
+#    Job ID:           1964165.v-qsvr-1.aidevcloud
+#      User:           u162741
+# Resources:           neednodes=1:batch:ppn=2,nodes=1:batch:ppn=2,walltime=02:00:00
+########################################################################
+
+Sat 30 Jul 2022 07:28:01 PM PDT
+/home/u162741/performance-portability/benchmarking/2022/cloverleaf/results/cloverleaf-uhdp630_oneapi-2022.2_sycl
+	linux-vdso.so.1 (0x00007ffda4fa3000)
+	libmpi.so.12 => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/mpi/2021.5.1/lib/release/libmpi.so.12 (0x00007f6df35cb000)
+	librt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007f6df35b3000)
+	libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f6df3590000)
+	libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f6df358a000)
+	libstdc++.so.6 => /glob/development-tools/versions/gcc/11.2.0/lib64/libstdc++.so.6 (0x00007f6df3178000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f6df3027000)
+	libgcc_s.so.1 => /glob/development-tools/versions/gcc/11.2.0/lib64/libgcc_s.so.1 (0x00007f6df2e0e000)
+	libsycl.so.5 => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/lib/libsycl.so.5 (0x00007f6df2b2c000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f6df293a000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f6df4e04000)
+	libOpenCL.so.1 => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/lib/libOpenCL.so.1 (0x00007f6df292c000)
+	libsvml.so => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/compiler/lib/intel64_lin/libsvml.so (0x00007f6df089c000)
+	libirng.so => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/compiler/lib/intel64_lin/libirng.so (0x00007f6df0532000)
+	libimf.so => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/compiler/lib/intel64_lin/libimf.so (0x00007f6defea4000)
+	libintlc.so.5 => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x00007f6defc2c000)
+
+Clover Version 1.300
+Kokkos Version
+Task Count 1
+
+Output file clover.out opened. All output will go there.
+Detected SYCL devices:
+  0. Intel(R) FPGA Emulation Device(accelerator)
+  1. Intel(R) Xeon(R) E-2176G CPU @ 3.70GHz(cpu)
+  2. Intel(R) Xeon(R) E-2176G CPU @ 3.70GHz(cpu)
+  3. Intel(R) UHD Graphics P630 [0x3e96](gpu)
+  4. Intel(R) UHD Graphics P630 [0x3e96](gpu)
+  5. SYCL host device(host)
+Using SYCL device: Intel(R) FPGA Emulation Device(accelerator)
+Args: --file /home/u162741/performance-portability/benchmarking/2022/cloverleaf/results/cloverleaf_sycl/InputDecks/clover_bm16.in
+Using input: `/home/u162741/performance-portability/benchmarking/2022/cloverleaf/results/cloverleaf_sycl/InputDecks/clover_bm16.in`
+terminate called after throwing an instance of 'cl::sycl::runtime_error'
+  what():  Provided range is out of integer limits. Pass `-fno-sycl-id-queries-fit-in-int' to disable range check. -30 (CL_INVALID_VALUE)
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 0 PID 459519 RUNNING AT s001-n158
+=   KILLED BY SIGNAL: 6 (Aborted)
+===================================================================================
+
+########################################################################
+# End of output for job 1964165.v-qsvr-1.aidevcloud
+# Date: Sat 30 Jul 2022 07:28:10 PM PDT
+########################################################################
+

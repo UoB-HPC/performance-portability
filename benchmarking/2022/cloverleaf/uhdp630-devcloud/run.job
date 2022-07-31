@@ -1,0 +1,27 @@
+#!/bin/bash
+#PBS -q batch
+#PBS -l select=1:gen9:ppn=2
+#PBS -l walltime=02:00:00
+#PBS -joe
+
+set -eu
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+export OMP_TARGET_OFFLOAD=MANDATORY
+
+case "$MODEL" in
+sycl)
+    mpirun -np 1 "$BENCHMARK_EXE" --device 3 --file "$SRC_DIR/InputDecks/clover_bm16.in"
+    ;;
+omp | std-*)
+    mpirun -np 1 "$BENCHMARK_EXE" --file "$SRC_DIR/InputDecks/clover_bm16.in"
+    ;;
+*)
+    echo "Unknown run configuration for model '$MODEL'"
+    exit 1
+    ;;
+esac

@@ -1,0 +1,46 @@
+
+########################################################################
+#      Date:           Sat 30 Jul 2022 07:21:59 PM PDT
+#    Job ID:           1964158.v-qsvr-1.aidevcloud
+#      User:           u162741
+# Resources:           neednodes=1:batch:ppn=2,nodes=1:batch:ppn=2,walltime=00:10:00
+########################################################################
+
+Sat 30 Jul 2022 07:22:01 PM PDT
+/home/u162741/performance-portability/benchmarking/2022/babelstream/results/babelstream-uhdp630_oneapi-2022.2_std-data
+	linux-vdso.so.1 (0x00007ffff017e000)
+	libstdc++.so.6 => /glob/development-tools/versions/gcc/11.2.0/lib64/libstdc++.so.6 (0x00007ff659061000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007ff658f04000)
+	libgcc_s.so.1 => /glob/development-tools/versions/gcc/11.2.0/lib64/libgcc_s.so.1 (0x00007ff658ceb000)
+	libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007ff658ce5000)
+	libsycl.so.5 => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/lib/libsycl.so.5 (0x00007ff658a03000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007ff65880f000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007ff659477000)
+	libOpenCL.so.1 => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/lib/libOpenCL.so.1 (0x00007ff658801000)
+	libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007ff6587de000)
+	libsvml.so => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/compiler/lib/intel64_lin/libsvml.so (0x00007ff65674e000)
+	libirng.so => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/compiler/lib/intel64_lin/libirng.so (0x00007ff6563e4000)
+	libimf.so => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/compiler/lib/intel64_lin/libimf.so (0x00007ff655d56000)
+	libintlc.so.5 => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x00007ff655ade000)
+Listing devices is not supported by the Parallel STL
+BabelStream
+Version: 4.0
+Implementation: STD (data-oriented)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Backing storage typeid: Pd
+Using oneDPL backend: SYCL USM (device=Intel(R) UHD Graphics P630 [0x3e96])
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        37277.313   0.01440     0.01581     0.01503     
+Mul         37105.482   0.01447     0.01498     0.01469     
+Add         35722.352   0.02254     0.02541     0.02284     
+Triad       35784.002   0.02250     0.02562     0.02275     
+Dot         25058.226   0.02142     0.02255     0.02214     
+
+########################################################################
+# End of output for job 1964158.v-qsvr-1.aidevcloud
+# Date: Sat 30 Jul 2022 07:22:13 PM PDT
+########################################################################
+

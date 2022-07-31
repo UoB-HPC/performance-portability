@@ -1,0 +1,117 @@
+
+########################################################################
+#      Date:           Sat 30 Jul 2022 07:26:13 PM PDT
+#    Job ID:           1964162.v-qsvr-1.aidevcloud
+#      User:           u162741
+# Resources:           neednodes=1:batch:ppn=2,nodes=1:batch:ppn=2,walltime=01:00:00
+########################################################################
+
+Sat 30 Jul 2022 07:26:14 PM PDT
+/home/u162741/performance-portability/benchmarking/2022/bude/results/miniBUDE-uhdp630_oneapi-2022.2_sycl
+	linux-vdso.so.1 (0x00007ffdf49f2000)
+	libstdc++.so.6 => /glob/development-tools/versions/gcc/11.2.0/lib64/libstdc++.so.6 (0x00007fbe1c052000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fbe1bef5000)
+	libgcc_s.so.1 => /glob/development-tools/versions/gcc/11.2.0/lib64/libgcc_s.so.1 (0x00007fbe1bcdc000)
+	libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fbe1bcd6000)
+	libsycl.so.5 => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/lib/libsycl.so.5 (0x00007fbe1b9f4000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fbe1b800000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007fbe1c468000)
+	libOpenCL.so.1 => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/lib/libOpenCL.so.1 (0x00007fbe1b7f2000)
+	libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fbe1b7cf000)
+	libsvml.so => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/compiler/lib/intel64_lin/libsvml.so (0x00007fbe1973f000)
+	libirng.so => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/compiler/lib/intel64_lin/libirng.so (0x00007fbe193d5000)
+	libimf.so => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/compiler/lib/intel64_lin/libimf.so (0x00007fbe18d47000)
+	libintlc.so.5 => /glob/development-tools/versions/oneapi/2022.1.2/oneapi/compiler/2022.0.2/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x00007fbe18acf000)
+miniBUDE:  
+compile_commands:
+   - "dpcpp -DCL_TARGET_OPENCL_VERSION=220 -DSYCL -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/sycl -I/home/u162741/performance-portability/benchmarking/2022/bude/results/miniBUDE-uhdp630_oneapi-2022.2_sycl/miniBUDE/build/generated  -DNDEBUG -O3 -march=native -march=skylake -Ofast -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
+vcs:
+  commit:  9e01f12d15b41c027184f3dc291cb34dc7986641*
+  author:  "Tom Lin (tom91136@gmail.com)"
+  date:    "2022-07-31 02:37:22 +0100"
+  subject: "Add IrisPro580 config"
+host_cpu:
+  ~
+time: { epoch_s:1659234374, formatted: "Sun Jul 31 02:26:14 2022 GMT" }
+devices:
+  0: "Intel(R) FPGA Emulation Device"
+  1: "Intel(R) Xeon(R) E-2176G CPU @ 3.70GHz"
+  2: "Intel(R) Xeon(R) E-2176G CPU @ 3.70GHz"
+  3: "Intel(R) UHD Graphics P630 [0x3e96]"
+  4: "Intel(R) UHD Graphics P630 [0x3e96]"
+  5: "SYCL host device"
+miniBUDE:  
+compile_commands:
+   - "dpcpp -DCL_TARGET_OPENCL_VERSION=220 -DSYCL -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/sycl -I/home/u162741/performance-portability/benchmarking/2022/bude/results/miniBUDE-uhdp630_oneapi-2022.2_sycl/miniBUDE/build/generated  -DNDEBUG -O3 -march=native -march=skylake -Ofast -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
+vcs:
+  commit:  9e01f12d15b41c027184f3dc291cb34dc7986641*
+  author:  "Tom Lin (tom91136@gmail.com)"
+  date:    "2022-07-31 02:37:22 +0100"
+  subject: "Add IrisPro580 config"
+host_cpu:
+  ~
+time: { epoch_s:1659234375, formatted: "Sun Jul 31 02:26:15 2022 GMT" }
+deck:
+  path:         "miniBUDE/data/bm1"
+  poses:        65536
+  proteins:     938
+  ligands:      26
+  forcefields:  34
+config:
+  iterations:   8
+  poses:        65536
+  ppwi:
+    available:  [1,2,4,8,16,32,64,128]
+    selected:   [1,2,4,8,16,32,64,128]
+  wgsize:       [4,8,16,32,64,128]
+device: { index: 2,  name: "Intel(R) Xeon(R) E-2176G CPU @ 3.70GHz" }
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=2,wgsize=4,valid=1)
+# (ppwi=2,wgsize=8,valid=1)
+# (ppwi=2,wgsize=16,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=4,wgsize=4,valid=1)
+# (ppwi=4,wgsize=8,valid=1)
+# (ppwi=4,wgsize=16,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=8,wgsize=4,valid=1)
+# (ppwi=8,wgsize=8,valid=1)
+# (ppwi=8,wgsize=16,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=16,wgsize=4,valid=1)
+# (ppwi=16,wgsize=8,valid=1)
+# (ppwi=16,wgsize=16,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=32,wgsize=4,valid=1)
+# (ppwi=32,wgsize=8,valid=1)
+# (ppwi=32,wgsize=16,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=64,wgsize=4,valid=1)
+# (ppwi=64,wgsize=8,valid=1)
+# (ppwi=64,wgsize=16,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+terminate called after throwing an instance of 'cl::sycl::runtime_error'
+  what():  Native API failed. Native API returns: -5 (CL_OUT_OF_RESOURCES) -5 (CL_OUT_OF_RESOURCES)
+/var/spool/torque/mom_priv/jobs/1964162.v-qsvr-1.aidevcloud.SC: line 17: 3474640 Aborted                 "$BENCHMARK_EXE" --device 2 --deck miniBUDE/data/bm1 --wgsize 4,8,16,32,64,128 --ppwi all
+
+########################################################################
+# End of output for job 1964162.v-qsvr-1.aidevcloud
+# Date: Sat 30 Jul 2022 07:30:23 PM PDT
+########################################################################
+

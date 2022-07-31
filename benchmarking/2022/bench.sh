@@ -13,17 +13,15 @@ babelstream=false
 
 declare -A models
 models["tbb"]=true
-models["omp"]=false
+models["omp"]=true
 models["cuda"]=true
-models["sycl"]=false
+models["sycl"]=true
 
 models["std-data"]=true
-models["std-indices"]=true
-models["std-ranges"]=true
+models["std-indices"]=false
 
 models["std-data-dplomp"]=true
 models["std-indices-dplomp"]=true
-models["std-ranges-dplomp"]=true
 
 export LARGE=true
 
@@ -56,8 +54,8 @@ p3)
         std-data std-indices
     bench milan-isambard $GCC run \
         omp tbb \
-        std-data std-indices std-ranges \
-        std-data-dplomp std-indices-dplomp std-ranges-dplomp
+        std-data std-indices \
+        std-data-dplomp std-indices-dplomp
     bench a100-isambard $NVHPC run \
         cuda omp \
         std-data std-indices
@@ -68,8 +66,7 @@ p3)
         std-indices
     bench milan-isambard $GCC run \
         omp tbb \
-        std-indices std-ranges \
-        std-indices-dplomp std-ranges-dplomp
+        std-indices std-indices-dplomp
     bench a100-isambard $NVHPC run \
         cuda omp \
         std-indices
@@ -80,8 +77,7 @@ p3)
         std-indices
     bench milan-isambard $GCC run \
         omp tbb \
-        std-indices \
-        std-indices-dplomp
+        std-indices std-indices-dplomp
     bench a100-isambard $NVHPC run \
         cuda omp \
         std-indices
@@ -93,8 +89,8 @@ p2)
         std-data std-indices
     bench icl-isambard $GCC run \
         omp tbb \
-        std-data std-indices std-ranges \
-        std-data-dplomp std-indices-dplomp std-ranges-dplomp
+        std-data std-indices \
+        std-data-dplomp std-indices-dplomp
     bench v100-isambard $NVHPC run \
         cuda omp \
         std-data std-indices
@@ -105,8 +101,7 @@ p2)
         std-indices
     bench icl-isambard $GCC run \
         omp tbb \
-        std-indices std-ranges \
-        std-indices-dplomp std-ranges-dplomp
+        std-indices std-indices-dplomp
     bench v100-isambard $NVHPC run \
         cuda omp \
         std-indices
@@ -117,8 +112,7 @@ p2)
         std-indices
     bench icl-isambard $GCC run \
         omp tbb \
-        std-indices \
-        std-indices-dplomp
+        std-indices std-indices-dplomp
     bench v100-isambard $NVHPC run \
         cuda omp \
         std-indices
@@ -130,8 +124,8 @@ xci)
         std-data std-indices
     bench tx2-isambard $GCC run \
         omp tbb \
-        std-data std-indices std-ranges \
-        std-data-dplomp std-indices-dplomp std-ranges-dplomp
+        std-data std-indices \
+        std-data-dplomp std-indices-dplomp
 
     cd "$BASE/bude/results"
     bench tx2-isambard $NVHPC run \
@@ -139,8 +133,7 @@ xci)
         std-indices
     bench tx2-isambard $GCC run \
         omp tbb \
-        std-indices std-ranges \
-        std-indices-dplomp std-ranges-dplomp
+        std-indices std-indices-dplomp
 
     cd "$BASE/cloverleaf/results"
     bench tx2-isambard $NVHPC run \
@@ -148,24 +141,43 @@ xci)
         std-indices
     bench tx2-isambard $GCC run \
         omp tbb \
-        std-indices \
-        std-indices-dplomp
+        std-indices std-indices-dplomp
     ;;
 zoo)
     export LARGE=false
     cd "$BASE/babelstream/results"
     bench irispro580-zoo $ONEAPI run \
-        omp \
+        sycl omp \
         std-data std-indices
 
     cd "$BASE/bude/results"
     bench irispro580-zoo $ONEAPI run \
-        omp \
+        sycl omp \
         std-indices
 
     cd "$BASE/cloverleaf/results"
     bench irispro580-zoo $ONEAPI run \
-        omp \
+        sycl omp \
+        std-indices
+    ;;
+
+devcloud)
+    export PAGER='cat' # don't page anything
+    export LESS="-F -X ${LESS:-}"
+    export LARGE=false
+    cd "$BASE/babelstream/results"
+    bench uhdp630-devcloud $ONEAPI run \
+        sycl omp \
+        std-data std-indices
+
+    cd "$BASE/bude/results"
+    bench uhdp630-devcloud $ONEAPI run \
+        sycl omp \
+        std-indices
+
+    cd "$BASE/cloverleaf/results"
+    bench uhdp630-devcloud $ONEAPI run \
+        sycl omp \
         std-indices
     ;;
 *)

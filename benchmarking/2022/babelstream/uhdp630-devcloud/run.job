@@ -1,6 +1,6 @@
 #!/bin/bash
-#PBS -q workq
-#PBS -l select=1:ngpus=1:gputype=irispro580
+#PBS -q batch
+#PBS -l select=1:gen9:ppn=2
 #PBS -l walltime=00:10:00
 #PBS -joe
 

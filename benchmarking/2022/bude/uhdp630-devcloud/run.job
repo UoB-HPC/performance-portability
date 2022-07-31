@@ -1,0 +1,33 @@
+#!/bin/bash
+#PBS -q batch
+#PBS -l select=1:gen9:ppn=2
+#PBS -l walltime=00:30:00
+#PBS -joe
+
+set -eu
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+export OMP_TARGET_OFFLOAD=MANDATORY
+
+case "$MODEL" in
+sycl)
+    "$BENCHMARK_EXE" --list
+    "$BENCHMARK_EXE" --device 2 --deck miniBUDE/data/bm1 --wgsize 4,8,16,32,64,128 --ppwi all # wgsize < 4 is too slow
+    ;;
+omp)
+    "$BENCHMARK_EXE" --list
+    "$BENCHMARK_EXE" --deck miniBUDE/data/bm1 --wgsize 4,8,16,32,64,128 --ppwi all # wgsize < 4 is too slow
+    ;;
+std-*)
+    "$BENCHMARK_EXE" --list
+    "$BENCHMARK_EXE" --deck miniBUDE/data/bm1 --wgsize 1 --ppwi all
+    ;;
+*)
+    echo "Unknown run configuration for model '$MODEL'"
+    exit 1
+    ;;
+esac
