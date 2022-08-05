@@ -1,0 +1,38 @@
+#!/bin/bash
+#SBATCH -p graviton3
+#SBATCH --exclusive
+#SBATCH --nodes=1
+#SBATCH -t 00:10:00
+
+set -eu
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+spack load numactl
+
+if [ "${LARGE:-}" = true ]; then
+  opts=("--arraysize" "536870912")
+fi
+
+# Best performance observed when only running 16 cores per socket.
+export OMP_NUM_THREADS=64
+export OMP_PROC_BIND=true
+export OMP_PLACES=cores
+
+case "$MODEL" in
+omp)
+  "$BENCHMARK_EXE" --list
+  "$BENCHMARK_EXE" "${opts[@]:-}"
+  ;;
+tbb | std-*)
+  "$BENCHMARK_EXE" --list
+  numactl --physcpubind=all --localalloc "$BENCHMARK_EXE" "${opts[@]:-}"
+  ;;
+*)
+  "$BENCHMARK_EXE" --list
+  "$BENCHMARK_EXE" "${opts[@]:-}"
+  ;;
+esac

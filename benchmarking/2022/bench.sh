@@ -4,12 +4,12 @@ set -eu
 
 BASE="$PWD"
 ONEAPI=oneapi-2022.2
-NVHPC=nvhpc-22.5
+NVHPC=nvhpc-22.7
 GCC=gcc-12.1
 
 cloverleaf=true
-bude=false
-babelstream=false
+bude=true
+babelstream=true
 
 declare -A models
 models["tbb"]=true
@@ -18,7 +18,7 @@ models["cuda"]=true
 models["sycl"]=true
 
 models["std-data"]=true
-models["std-indices"]=false
+models["std-indices"]=true
 
 models["std-data-dplomp"]=true
 models["std-indices-dplomp"]=true
@@ -117,6 +117,58 @@ p2)
         cuda omp \
         std-indices
     ;;
+
+aws)
+    cd "$BASE/babelstream/results"
+    bench graviton2-aws $NVHPC run \
+        omp \
+        std-data std-indices
+    bench graviton2-aws $GCC run \
+        omp tbb \
+        std-data std-indices \
+        std-data-dplomp std-indices-dplomp
+
+    bench graviton3-aws $NVHPC run \
+        omp \
+        std-data std-indices
+    bench graviton3-aws $GCC run \
+        omp tbb \
+        std-data std-indices \
+        std-data-dplomp std-indices-dplomp
+
+    cd "$BASE/bude/results"
+
+    bench graviton2-aws $NVHPC run \
+        omp \
+        std-indices
+    bench graviton2-aws $GCC run \
+        omp tbb \
+        std-indices std-indices-dplomp
+
+    bench graviton3-aws $NVHPC run \
+        omp \
+        std-indices
+    bench graviton3-aws $GCC run \
+        omp tbb \
+        std-indices std-indices-dplomp
+
+    cd "$BASE/cloverleaf/results"
+    bench graviton2-aws $NVHPC run \
+        omp \
+        std-indices
+    bench graviton2-aws $GCC run \
+        omp tbb \
+        std-indices std-indices-dplomp
+
+    bench graviton3-aws $NVHPC run \
+        omp \
+        std-indices
+    bench graviton3-aws $GCC run \
+        omp tbb \
+        std-indices std-indices-dplomp
+
+    ;;
+
 xci)
     cd "$BASE/babelstream/results"
     bench tx2-isambard $NVHPC run \

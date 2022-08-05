@@ -1,0 +1,25 @@
+Mon Aug  1 23:01:10 UTC 2022
+/home/tomlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-graviton3_gcc-12.1_omp
+	linux-vdso.so.1 (0x0000ffffa1605000)
+	libgomp.so.1 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libgomp.so.1 (0x0000ffffa1566000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffffa1531000)
+	libstdc++.so.6 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libstdc++.so.6 (0x0000ffffa130b000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000ffffa124a000)
+	libgcc_s.so.1 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libgcc_s.so.1 (0x0000ffffa1217000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000ffffa1091000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffffa1070000)
+	/lib/ld-linux-aarch64.so.1 (0x0000ffffa15c7000)
+0: CPU
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        209030.553  0.04109     0.04236     0.04145     
+Mul         196966.428  0.04361     0.04814     0.04401     
+Add         220995.180  0.05830     0.07318     0.05882     
+Triad       224875.620  0.05730     0.05943     0.05752     
+Dot         275693.412  0.03116     0.03165     0.03133     

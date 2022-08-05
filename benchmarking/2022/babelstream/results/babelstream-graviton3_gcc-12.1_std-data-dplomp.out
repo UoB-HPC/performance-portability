@@ -1,0 +1,28 @@
+Mon Aug  1 22:59:27 UTC 2022
+/home/tomlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-graviton3_gcc-12.1_std-data-dplomp
+	linux-vdso.so.1 (0x0000ffffa3be2000)
+	libtbb.so.12 => /home/tomlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-graviton3_gcc-12.1_std-data-dplomp/BabelStream/build/gnu_12.1_cxx11_64_release/libtbb.so.12 (0x0000ffffa3b4e000)
+	libstdc++.so.6 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libstdc++.so.6 (0x0000ffffa3928000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000ffffa3867000)
+	libgomp.so.1 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libgomp.so.1 (0x0000ffffa3804000)
+	libgcc_s.so.1 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libgcc_s.so.1 (0x0000ffffa37d3000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffffa379e000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000ffffa3618000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffffa35f7000)
+	/lib/ld-linux-aarch64.so.1 (0x0000ffffa3ba4000)
+Listing devices is not supported by the Parallel STL
+BabelStream
+Version: 4.0
+Implementation: STD (data-oriented)
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Backing storage typeid: Pd
+Using oneDPL backend: OpenMP
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        159955.879  0.05370     0.05557     0.05392     
+Mul         148162.334  0.05798     0.05866     0.05824     
+Add         193272.692  0.06667     0.06757     0.06707     
+Triad       191400.118  0.06732     0.06805     0.06760     
+Dot         204337.176  0.04204     0.06389     0.04329     

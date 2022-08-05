@@ -1,0 +1,27 @@
+Tue Aug  2 01:54:26 UTC 2022
+/home/tomlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-graviton2_gcc-12.1_tbb
+	linux-vdso.so.1 (0x0000ffffa2f3e000)
+	libtbb.so.12 => /home/tomlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-graviton2_gcc-12.1_tbb/BabelStream/build/gnu_12.1_cxx11_64_release/libtbb.so.12 (0x0000ffffa2eaa000)
+	libstdc++.so.6 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libstdc++.so.6 (0x0000ffffa2c84000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000ffffa2bc3000)
+	libgcc_s.so.1 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libgcc_s.so.1 (0x0000ffffa2b90000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000ffffa2a0a000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffffa29e9000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffffa29b4000)
+	/lib/ld-linux-aarch64.so.1 (0x0000ffffa2f00000)
+Listing devices is not supported by TBB
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        159114.047  0.05399     0.05421     0.05410     
+Mul         159684.992  0.05379     0.05404     0.05390     
+Add         163999.672  0.07857     0.07893     0.07870     
+Triad       164241.035  0.07845     0.08078     0.07855     
+Dot         168611.629  0.05095     0.05314     0.05107     

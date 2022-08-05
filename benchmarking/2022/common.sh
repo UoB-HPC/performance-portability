@@ -3,11 +3,19 @@
 set -eu
 
 load_nvhpc() {
-  export NVHPC_PATH
-  NVHPC_PATH="/lustre/home/br-wlin/nvhpc_sdk/Linux_$(uname -m)/22.5"
-  if [ ! -d "$NVHPC_PATH" ]; then
-    echo "NVHPC dir '$NVHPC_PATH' is not a directory"
-    exit 2
+
+  if grep -q "Amazon Linux" "/etc/os-release"; then
+    # use spack
+    export NVHPC_PATH
+    spack load nvhpc@22.7
+    NVHPC_PATH=$(realpath "$(dirname "$(which nvc++)")/../../")
+  else
+    export NVHPC_PATH
+    NVHPC_PATH="/lustre/home/br-wlin/nvhpc_sdk/Linux_$(uname -m)/22.5"
+    if [ ! -d "$NVHPC_PATH" ]; then
+      echo "NVHPC dir '$NVHPC_PATH' is not a directory"
+      exit 2
+    fi
   fi
 }
 
@@ -117,8 +125,8 @@ handle_exec() {
       read -ra CMAKE_OPTS <<<"${MAKE_OPTS}" # explicit word splitting
       echo "[$ACTION] Using cmake opts:" "${CMAKE_OPTS[@]}"
       rm -rf build
-      cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=Release "${CMAKE_OPTS[@]}"
-      cmake --build build --config Release -j "$(nproc)"
+      cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=RELEASE "${CMAKE_OPTS[@]}"
+      cmake --build build --config RELEASE -j "$(nproc)"
       ldd "$src/build/$BENCHMARK_EXE"
     fi
 
@@ -133,7 +141,13 @@ handle_exec() {
     check_bin "$BENCHMARK_EXE"
     export OUT_FILE="$PWD/$BENCHMARK_NAME".out0
     echo "[$ACTION] Submitting '$SCRIPT_DIR/run.job'"
-    qsub -o "$BENCHMARK_NAME".out -N "$BENCHMARK_NAME" -V "$SCRIPT_DIR/run.job"
+
+    if [ "${USE_SLURM:-}" = true ]; then
+      sbatch --output "$BENCHMARK_NAME".out -J "$BENCHMARK_NAME" "$SCRIPT_DIR/run.job"
+    else
+      qsub -o "$BENCHMARK_NAME".out -N "$BENCHMARK_NAME" -V "$SCRIPT_DIR/run.job"
+    fi
+
   else
     echo
     echo "Invalid action: $ACTION"
