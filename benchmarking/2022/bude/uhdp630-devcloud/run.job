@@ -14,7 +14,7 @@ ldd "$BENCHMARK_EXE"
 export OMP_TARGET_OFFLOAD=MANDATORY
 
 case "$MODEL" in
-sycl)
+sycl | kokkos)
     "$BENCHMARK_EXE" --list
     "$BENCHMARK_EXE" --device 2 --deck miniBUDE/data/bm1 --wgsize 4,8,16,32,64,128 --ppwi all # wgsize < 4 is too slow
     ;;

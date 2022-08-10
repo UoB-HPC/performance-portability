@@ -12,16 +12,17 @@ bude=true
 babelstream=true
 
 declare -A models
-models["tbb"]=true
-models["omp"]=true
-models["cuda"]=true
-models["sycl"]=true
+models["tbb"]=false
+models["omp"]=false
+models["cuda"]=false
+models["sycl"]=false
+models["kokkos"]=true
 
-models["std-data"]=true
-models["std-indices"]=true
+models["std-data"]=false
+models["std-indices"]=false
 
-models["std-data-dplomp"]=true
-models["std-indices-dplomp"]=true
+models["std-data-dplomp"]=false
+models["std-indices-dplomp"]=false
 
 export LARGE=true
 
@@ -199,17 +200,17 @@ zoo)
     export LARGE=false
     cd "$BASE/babelstream/results"
     bench irispro580-zoo $ONEAPI run \
-        sycl omp \
+        kokkos sycl omp \
         std-data std-indices
 
     cd "$BASE/bude/results"
     bench irispro580-zoo $ONEAPI run \
-        sycl omp \
+        kokkos sycl omp \
         std-indices
 
     cd "$BASE/cloverleaf/results"
     bench irispro580-zoo $ONEAPI run \
-        sycl omp \
+        kokkos sycl omp \
         std-indices
     ;;
 

@@ -14,6 +14,10 @@ ldd "$BENCHMARK_EXE"
 export OMP_TARGET_OFFLOAD=MANDATORY
 
 case "$MODEL" in
+kokkos)
+    cp "$SRC_DIR/InputDecks/clover_bm16.in" "clover.in"
+    mpirun -np 1 "$BENCHMARK_EXE"
+    ;;
 sycl)
     mpirun -np 1 "$BENCHMARK_EXE" --device 3 --file "$SRC_DIR/InputDecks/clover_bm16.in"
     ;;

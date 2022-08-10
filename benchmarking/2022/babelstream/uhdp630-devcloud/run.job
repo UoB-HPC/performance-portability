@@ -19,7 +19,7 @@ fi
 export OMP_TARGET_OFFLOAD=MANDATORY
 
 case "$MODEL" in
-sycl)
+sycl | kokkos)
     "$BENCHMARK_EXE" --list
     "$BENCHMARK_EXE" --device 2
     ;;

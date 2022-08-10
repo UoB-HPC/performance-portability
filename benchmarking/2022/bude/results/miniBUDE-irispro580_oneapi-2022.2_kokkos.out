@@ -1,0 +1,1165 @@
+Wed 10 Aug 05:53:49 BST 2022
+/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos
+	linux-vdso.so.1 (0x00007fffe1120000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000154cc0f70000)
+	libstdc++.so.6 => /nfs/software/x86_64/gcc/8.3.0/lib64/libstdc++.so.6 (0x0000154cc0bed000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000154cc086b000)
+	libgcc_s.so.1 => /nfs/software/x86_64/gcc/8.3.0/lib64/libgcc_s.so.1 (0x0000154cc0653000)
+	libsycl.so.5 => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/lib/libsycl.so.5 (0x0000154cc033d000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000154cbff7b000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000154cc1174000)
+	libOpenCL.so.1 => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/lib/libOpenCL.so.1 (0x0000154cc137e000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000154cbfd5b000)
+	libsvml.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libsvml.so (0x0000154cbdd9d000)
+	libirng.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libirng.so (0x0000154cbda33000)
+	libimf.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libimf.so (0x0000154cbd3a5000)
+	libintlc.so.5 => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x0000154cbd12d000)
+miniBUDE:  
+compile_commands:
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS -DKOKKOS_DEPENDENCE -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/generated -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/containers/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/containers/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/algorithms/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/algorithms/src  -DNDEBUG -O3 -march=native -march=skylake -Ofast -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_CPUDiscovery.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_CPUDiscovery.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Command_Line_Parsing.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Command_Line_Parsing.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Core.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Core.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Error.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Error.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_ExecPolicy.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_ExecPolicy.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_HostBarrier.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_HostBarrier.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_HostSpace.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_HostSpace.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_HostSpace_deepcopy.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_HostSpace_deepcopy.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_HostThreadTeam.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_HostThreadTeam.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_MemoryPool.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_MemoryPool.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_MemorySpace.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_MemorySpace.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_NumericTraits.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_NumericTraits.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Profiling.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Profiling.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Serial.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Serial.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Serial_Task.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Serial_Task.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_SharedAlloc.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_SharedAlloc.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Spinwait.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Spinwait.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Stacktrace.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Stacktrace.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_hwloc.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_hwloc.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/SYCL/Kokkos_SYCL.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/SYCL/Kokkos_SYCL.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/SYCL/Kokkos_SYCL_Instance.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/SYCL/Kokkos_SYCL_Instance.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/SYCL/Kokkos_SYCL_Space.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/SYCL/Kokkos_SYCL_Space.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/desul/src/Lock_Array_CUDA.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/desul/src/Lock_Array_CUDA.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/desul/src/Lock_Array_HIP.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/desul/src/Lock_Array_HIP.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/containers/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/containers/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscontainers.dir/impl/Kokkos_UnorderedMap_impl.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/containers/src/impl/Kokkos_UnorderedMap_impl.cpp"
+vcs:
+  commit:  1164069a25cf7c69438cd23fbe3616354316c4ea*
+  author:  "tomlin (tomlin@ip-10-0-45-117.ec2.internal)"
+  date:    "2022-08-05 13:26:06 +0000"
+  subject: "Add AWS configs"
+host_cpu:
+  ~
+time: { epoch_s:1660107229, formatted: "Wed Aug 10 04:53:49 2022 GMT" }
+devices:
+  0: "N6Kokkos12Experimental4SYCLE (specify backend at compile-time)"
+miniBUDE:  
+compile_commands:
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS -DKOKKOS_DEPENDENCE -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/generated -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/containers/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/containers/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/algorithms/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/algorithms/src  -DNDEBUG -O3 -march=native -march=skylake -Ofast -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_CPUDiscovery.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_CPUDiscovery.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Command_Line_Parsing.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Command_Line_Parsing.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Core.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Core.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Error.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Error.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_ExecPolicy.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_ExecPolicy.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_HostBarrier.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_HostBarrier.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_HostSpace.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_HostSpace.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_HostSpace_deepcopy.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_HostSpace_deepcopy.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_HostThreadTeam.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_HostThreadTeam.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_MemoryPool.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_MemoryPool.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_MemorySpace.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_MemorySpace.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_NumericTraits.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_NumericTraits.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Profiling.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Profiling.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Serial.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Serial.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Serial_Task.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Serial_Task.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_SharedAlloc.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_SharedAlloc.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Spinwait.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Spinwait.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Stacktrace.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Stacktrace.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_hwloc.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_hwloc.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/SYCL/Kokkos_SYCL.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/SYCL/Kokkos_SYCL.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/SYCL/Kokkos_SYCL_Instance.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/SYCL/Kokkos_SYCL_Instance.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/SYCL/Kokkos_SYCL_Space.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/SYCL/Kokkos_SYCL_Space.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/desul/src/Lock_Array_CUDA.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/desul/src/Lock_Array_CUDA.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscore.dir/desul/src/Lock_Array_HIP.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/desul/src/Lock_Array_HIP.cpp"
+   - "/nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/bin/dpcpp -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/containers/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/containers/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE-irispro580_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -O3 -DNDEBUG -fsycl -fno-sycl-id-queries-fit-in-int -fsycl-dead-args-optimization -fsycl-unnamed-lambda -std=c++17 -o CMakeFiles/kokkoscontainers.dir/impl/Kokkos_UnorderedMap_impl.cpp.o -c /nfs/home/wl14928/performance-portability/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/containers/src/impl/Kokkos_UnorderedMap_impl.cpp"
+vcs:
+  commit:  1164069a25cf7c69438cd23fbe3616354316c4ea*
+  author:  "tomlin (tomlin@ip-10-0-45-117.ec2.internal)"
+  date:    "2022-08-05 13:26:06 +0000"
+  subject: "Add AWS configs"
+host_cpu:
+  ~
+time: { epoch_s:1660107229, formatted: "Wed Aug 10 04:53:49 2022 GMT" }
+deck:
+  path:         "miniBUDE/data/bm1"
+  poses:        65536
+  proteins:     938
+  ligands:      26
+  forcefields:  34
+config:
+  iterations:   8
+  poses:        65536
+  ppwi:
+    available:  [1,2,4,8,16,32,64,128]
+    selected:   [1,2,4,8,16,32,64,128]
+  wgsize:       [4,8,16,32,64,128]
+# Unable to parse/select device index `2`:vector::_M_range_check: __n (which is 2) >= this->size() (which is 1)
+# Attempting to match device with substring  `2`
+device: { index: 0,  name: "N6Kokkos12Experimental4SYCLE (specify backend at compile-time)" }
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=2,wgsize=4,valid=1)
+# (ppwi=2,wgsize=8,valid=1)
+# (ppwi=2,wgsize=16,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=4,wgsize=4,valid=1)
+# (ppwi=4,wgsize=8,valid=1)
+# (ppwi=4,wgsize=16,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=8,wgsize=4,valid=1)
+# (ppwi=8,wgsize=8,valid=1)
+# (ppwi=8,wgsize=16,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=16,wgsize=4,valid=1)
+# (ppwi=16,wgsize=8,valid=1)
+# (ppwi=16,wgsize=16,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=32,wgsize=4,valid=1)
+# (ppwi=32,wgsize=8,valid=1)
+# (ppwi=32,wgsize=16,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=64,wgsize=4,valid=1)
+# (ppwi=64,wgsize=8,valid=1)
+# (ppwi=64,wgsize=16,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+# (ppwi=64,wgsize=128,valid=1)
+# (ppwi=128,wgsize=4,valid=1)
+# (ppwi=128,wgsize=8,valid=1)
+# (ppwi=128,wgsize=16,valid=1)
+# (ppwi=128,wgsize=32,valid=1)
+# (ppwi=128,wgsize=64,valid=1)
+# (ppwi=128,wgsize=128,valid=1)
+results:
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 1, wgsize: 4 }
+    raw_iterations:      [10544.2,2282.81,2282.81,2284.87,2282.33,2284.56,2282.52,2283.85,2283.25,2284.15]
+    context_ms:          3.582655
+    sum_ms:              18268.338
+    avg_ms:              2283.542
+    min_ms:              2282.332
+    max_ms:              2284.867
+    stddev_ms:           0.894
+    giga_interactions/s: 0.700
+    gflop/s:             28.012
+    gfinst/s:            17.498
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 1, wgsize: 8 }
+    raw_iterations:      [1160.55,1160.01,1158.88,1159.67,1161.33,1159.62,1159.07,1159.23,1160.06,1159.4]
+    context_ms:          3.971674
+    sum_ms:              9277.257
+    avg_ms:              1159.657
+    min_ms:              1158.882
+    max_ms:              1161.335
+    stddev_ms:           0.723
+    giga_interactions/s: 1.378
+    gflop/s:             55.161
+    gfinst/s:            34.456
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 1, wgsize: 16 }
+    raw_iterations:      [615.54,614.074,613.834,613.884,614.411,615.234,613.51,614.51,616.747,613.378]
+    context_ms:          4.149618
+    sum_ms:              4915.508
+    avg_ms:              614.438
+    min_ms:              613.378
+    max_ms:              616.747
+    stddev_ms:           1.038
+    giga_interactions/s: 2.601
+    gflop/s:             104.107
+    gfinst/s:            65.031
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 1, wgsize: 32 }
+    raw_iterations:      [347.937,345.103,345.666,345.647,345.716,346.144,345.611,344.704,345.045,345.188]
+    context_ms:          4.097194
+    sum_ms:              2763.722
+    avg_ms:              345.465
+    min_ms:              344.704
+    max_ms:              346.144
+    stddev_ms:           0.426
+    giga_interactions/s: 4.626
+    gflop/s:             185.164
+    gfinst/s:            115.662
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 1, wgsize: 64 }
+    raw_iterations:      [261.95,260.643,261.018,258.397,260.561,260.832,260.941,260.637,260.743,260.725]
+    context_ms:          4.209861
+    sum_ms:              2083.857
+    avg_ms:              260.482
+    min_ms:              258.397
+    max_ms:              261.018
+    stddev_ms:           0.800
+    giga_interactions/s: 6.136
+    gflop/s:             245.574
+    gfinst/s:            153.398
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 1, wgsize: 128 }
+    raw_iterations:      [261.636,262.176,261.301,261.811,258.166,261.525,268.104,314.875,296.94,261.47]
+    context_ms:          4.061586
+    sum_ms:              2184.192
+    avg_ms:              273.024
+    min_ms:              258.166
+    max_ms:              314.875
+    stddev_ms:           19.677
+    giga_interactions/s: 5.854
+    gflop/s:             234.293
+    gfinst/s:            146.351
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 2, wgsize: 4 }
+    raw_iterations:      [1072,1078.34,1068.93,1068.58,1069.26,1068.5,1069.4,1069.38,1068.87,1068.53]
+    context_ms:          4.429787
+    sum_ms:              8551.442
+    avg_ms:              1068.930
+    min_ms:              1068.503
+    max_ms:              1069.399
+    stddev_ms:           0.353
+    giga_interactions/s: 1.495
+    gflop/s:             52.365
+    gfinst/s:            37.381
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 2, wgsize: 8 }
+    raw_iterations:      [553.728,552.578,552.17,552.48,552.983,552.312,553.929,553.157,552.464,553.416]
+    context_ms:          3.869874
+    sum_ms:              4422.911
+    avg_ms:              552.864
+    min_ms:              552.170
+    max_ms:              553.929
+    stddev_ms:           0.574
+    giga_interactions/s: 2.891
+    gflop/s:             101.245
+    gfinst/s:            72.273
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 2, wgsize: 16 }
+    raw_iterations:      [313.074,312.243,311.9,312.291,314.502,312.076,312.054,312.286,311.652,313.552]
+    context_ms:          3.271649
+    sum_ms:              2500.312
+    avg_ms:              312.539
+    min_ms:              311.652
+    max_ms:              314.502
+    stddev_ms:           0.912
+    giga_interactions/s: 5.114
+    gflop/s:             179.096
+    gfinst/s:            127.847
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 2, wgsize: 32 }
+    raw_iterations:      [225.852,223.827,222.051,223.873,223.948,224.561,223.728,224.439,222.113,221.925]
+    context_ms:          3.597397
+    sum_ms:              1786.638
+    avg_ms:              223.330
+    min_ms:              221.925
+    max_ms:              224.561
+    stddev_ms:           1.041
+    giga_interactions/s: 7.157
+    gflop/s:             250.636
+    gfinst/s:            178.916
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 2, wgsize: 64 }
+    raw_iterations:      [229.738,227.466,228.306,227.807,227.953,227.473,227.531,227.791,227.331,228.113]
+    context_ms:          3.334552
+    sum_ms:              1822.304
+    avg_ms:              227.788
+    min_ms:              227.331
+    max_ms:              228.306
+    stddev_ms:           0.311
+    giga_interactions/s: 7.017
+    gflop/s:             245.730
+    gfinst/s:            175.414
+    energies:            
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 2, wgsize: 128 }
+    raw_iterations:      [228.803,227.474,227.833,227.866,227.814,228.252,228.091,227.768,227.397,227.715]
+    context_ms:          3.254372
+    sum_ms:              1822.735
+    avg_ms:              227.842
+    min_ms:              227.397
+    max_ms:              228.252
+    stddev_ms:           0.237
+    giga_interactions/s: 7.015
+    gflop/s:             245.672
+    gfinst/s:            175.373
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 4, wgsize: 4 }
+    raw_iterations:      [606.449,604.167,603.977,603.349,604.348,604.171,602.908,603.297,604.792,604.287]
+    context_ms:          3.482759
+    sum_ms:              4831.129
+    avg_ms:              603.891
+    min_ms:              602.908
+    max_ms:              604.792
+    stddev_ms:           0.600
+    giga_interactions/s: 2.647
+    gflop/s:             86.072
+    gfinst/s:            66.166
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 4, wgsize: 8 }
+    raw_iterations:      [322.363,321.029,322.286,320.987,320.971,321.583,321.62,322.395,321.426,321.558]
+    context_ms:          3.680047
+    sum_ms:              2572.826
+    avg_ms:              321.603
+    min_ms:              320.971
+    max_ms:              322.395
+    stddev_ms:           0.488
+    giga_interactions/s: 4.970
+    gflop/s:             161.621
+    gfinst/s:            124.244
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 4, wgsize: 16 }
+    raw_iterations:      [224.283,223.343,223.235,223.199,223.321,223.516,223.19,223.258,223.221,224.748]
+    context_ms:          3.536795
+    sum_ms:              1787.688
+    avg_ms:              223.461
+    min_ms:              223.190
+    max_ms:              224.748
+    stddev_ms:           0.497
+    giga_interactions/s: 7.152
+    gflop/s:             232.604
+    gfinst/s:            178.811
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 4, wgsize: 32 }
+    raw_iterations:      [224.623,223.646,224.718,223.342,223.798,223.111,223.39,223.213,223.271,223.326]
+    context_ms:          3.135619
+    sum_ms:              1788.169
+    avg_ms:              223.521
+    min_ms:              223.111
+    max_ms:              224.718
+    stddev_ms:           0.490
+    giga_interactions/s: 7.151
+    gflop/s:             232.541
+    gfinst/s:            178.763
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 4, wgsize: 64 }
+    raw_iterations:      [230.629,230.911,227.296,228.453,227.204,229.48,227.174,229.068,228.448,228.571]
+    context_ms:          3.390593
+    sum_ms:              1825.694
+    avg_ms:              228.212
+    min_ms:              227.174
+    max_ms:              229.480
+    stddev_ms:           0.830
+    giga_interactions/s: 7.004
+    gflop/s:             227.762
+    gfinst/s:            175.089
+    energies:            
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 4, wgsize: 128 }
+    raw_iterations:      [253.231,254.41,251.553,251.561,251.795,251.95,251.533,253.205,251.313,251.726]
+    context_ms:          3.444316
+    sum_ms:              2014.637
+    avg_ms:              251.830
+    min_ms:              251.313
+    max_ms:              253.205
+    stddev_ms:           0.550
+    giga_interactions/s: 6.347
+    gflop/s:             206.401
+    gfinst/s:            158.668
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 8, wgsize: 4 }
+    raw_iterations:      [1497.96,1500.74,1498.54,1503.13,1497.7,1500.68,1495.88,1498.97,1500.37,1498.96]
+    context_ms:          3.280481
+    sum_ms:              11994.240
+    avg_ms:              1499.280
+    min_ms:              1495.880
+    max_ms:              1503.132
+    stddev_ms:           2.024
+    giga_interactions/s: 1.066
+    gflop/s:             33.336
+    gfinst/s:            26.651
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 8, wgsize: 8 }
+    raw_iterations:      [857.074,859.813,858.007,860.66,857.5,855.856,861.61,859.339,858.425,856.28]
+    context_ms:          3.615476
+    sum_ms:              6867.678
+    avg_ms:              858.460
+    min_ms:              855.856
+    max_ms:              861.610
+    stddev_ms:           1.877
+    giga_interactions/s: 1.862
+    gflop/s:             58.220
+    gfinst/s:            46.545
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 8, wgsize: 16 }
+    raw_iterations:      [761.136,759.637,759.701,760.267,758.401,760.415,759.596,760.018,757.82,760.318]
+    context_ms:          3.475953
+    sum_ms:              6076.536
+    avg_ms:              759.567
+    min_ms:              757.820
+    max_ms:              760.415
+    stddev_ms:           0.895
+    giga_interactions/s: 2.104
+    gflop/s:             65.800
+    gfinst/s:            52.605
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 8, wgsize: 32 }
+    raw_iterations:      [779.232,777.38,778.108,778.418,778.031,777.452,778.665,778.148,778.271,777.819]
+    context_ms:          3.690360
+    sum_ms:              6224.913
+    avg_ms:              778.114
+    min_ms:              777.452
+    max_ms:              778.665
+    stddev_ms:           0.345
+    giga_interactions/s: 2.054
+    gflop/s:             64.232
+    gfinst/s:            51.351
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.000 }
+    param:               { ppwi: 8, wgsize: 64 }
+    raw_iterations:      [783.35,782.944,784.202,783.84,782.481,783.236,783.981,783.78,783.488,782.754]
+    context_ms:          3.401271
+    sum_ms:              6267.763
+    avg_ms:              783.470
+    min_ms:              782.481
+    max_ms:              784.202
+    stddev_ms:           0.567
+    giga_interactions/s: 2.040
+    gflop/s:             63.793
+    gfinst/s:            51.000
+    energies:            
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+  - outcome:             { valid: true, max_diff_%: 0.000 }
+    param:               { ppwi: 8, wgsize: 128 }
+    raw_iterations:      [782.748,782.075,781.483,781.162,781.314,781.162,782.474,781.726,781.023,781.167]
+    context_ms:          3.500107
+    sum_ms:              6251.512
+    avg_ms:              781.439
+    min_ms:              781.023
+    max_ms:              782.474
+    stddev_ms:           0.443
+    giga_interactions/s: 2.045
+    gflop/s:             63.958
+    gfinst/s:            51.133
+    energies:            
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 16, wgsize: 4 }
+    raw_iterations:      [1476.31,1485.27,1479.77,1491.94,1494.6,1500.63,1499.58,1496.36,1501.11,1497.21]
+    context_ms:          3.231222
+    sum_ms:              11961.207
+    avg_ms:              1495.151
+    min_ms:              1479.766
+    max_ms:              1501.114
+    stddev_ms:           6.502
+    giga_interactions/s: 1.069
+    gflop/s:             32.760
+    gfinst/s:            26.725
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 16, wgsize: 8 }
+    raw_iterations:      [1380.01,1376.69,1373.23,1375.84,1375.49,1376.16,1374.44,1373.88,1372.25,1372.35]
+    context_ms:          3.703178
+    sum_ms:              10993.626
+    avg_ms:              1374.203
+    min_ms:              1372.251
+    max_ms:              1376.157
+    stddev_ms:           1.437
+    giga_interactions/s: 1.163
+    gflop/s:             35.643
+    gfinst/s:            29.077
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 16, wgsize: 16 }
+    raw_iterations:      [1404.24,1403.12,1403.49,1404.02,1404.12,1402.51,1404.35,1402.79,1404.03,1402.7]
+    context_ms:          3.420367
+    sum_ms:              11228.013
+    avg_ms:              1403.502
+    min_ms:              1402.512
+    max_ms:              1404.347
+    stddev_ms:           0.686
+    giga_interactions/s: 1.139
+    gflop/s:             34.899
+    gfinst/s:            28.470
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 16, wgsize: 32 }
+    raw_iterations:      [1603.54,1601.62,1601.95,1604.25,1601.74,1602.46,1607.01,1602.36,1601.84,1602.6]
+    context_ms:          3.404982
+    sum_ms:              12824.216
+    avg_ms:              1603.027
+    min_ms:              1601.742
+    max_ms:              1607.014
+    stddev_ms:           1.680
+    giga_interactions/s: 0.997
+    gflop/s:             30.555
+    gfinst/s:            24.926
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.000 }
+    param:               { ppwi: 16, wgsize: 64 }
+    raw_iterations:      [1626.51,1623.9,1623.51,1626.05,1625.41,1625.11,1623.36,1624.36,1623.32,1623.14]
+    context_ms:          3.535493
+    sum_ms:              12994.259
+    avg_ms:              1624.282
+    min_ms:              1623.143
+    max_ms:              1626.046
+    stddev_ms:           1.046
+    giga_interactions/s: 0.984
+    gflop/s:             30.155
+    gfinst/s:            24.600
+    energies:            
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+  - outcome:             { valid: true, max_diff_%: 0.000 }
+    param:               { ppwi: 16, wgsize: 128 }
+    raw_iterations:      [1592.12,1590.74,1592,1592.38,1590.8,1591.43,1591.06,1590.98,1593.34,1591.13]
+    context_ms:          3.518819
+    sum_ms:              12733.129
+    avg_ms:              1591.641
+    min_ms:              1590.802
+    max_ms:              1593.339
+    stddev_ms:           0.816
+    giga_interactions/s: 1.004
+    gflop/s:             30.774
+    gfinst/s:            25.104
+    energies:            
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 32, wgsize: 4 }
+    raw_iterations:      [1171.69,1169.8,1169.81,1168.88,1170.62,1168.63,1169.44,1169.29,1168.71,1168.64]
+    context_ms:          3.596920
+    sum_ms:              9354.018
+    avg_ms:              1169.252
+    min_ms:              1168.633
+    max_ms:              1170.620
+    stddev_ms:           0.652
+    giga_interactions/s: 1.367
+    gflop/s:             41.463
+    gfinst/s:            34.173
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 32, wgsize: 8 }
+    raw_iterations:      [900.264,899.518,899.145,898.933,899.128,900.754,899.806,899.089,899.355,899.275]
+    context_ms:          3.404327
+    sum_ms:              7195.484
+    avg_ms:              899.435
+    min_ms:              898.933
+    max_ms:              900.754
+    stddev_ms:           0.555
+    giga_interactions/s: 1.777
+    gflop/s:             53.901
+    gfinst/s:            44.425
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 32, wgsize: 16 }
+    raw_iterations:      [837.179,838.708,837.977,839.358,836.602,836.991,837.378,838.111,837.158,837.055]
+    context_ms:          3.707709
+    sum_ms:              6700.629
+    avg_ms:              837.579
+    min_ms:              836.602
+    max_ms:              839.358
+    stddev_ms:           0.822
+    giga_interactions/s: 1.908
+    gflop/s:             57.882
+    gfinst/s:            47.706
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 32, wgsize: 32 }
+    raw_iterations:      [873.93,876.739,873.182,873.047,872.662,874.09,873.488,872.057,873.715,872.663]
+    context_ms:          3.386002
+    sum_ms:              6984.904
+    avg_ms:              873.113
+    min_ms:              872.057
+    max_ms:              874.090
+    stddev_ms:           0.611
+    giga_interactions/s: 1.831
+    gflop/s:             55.526
+    gfinst/s:            45.764
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.000 }
+    param:               { ppwi: 32, wgsize: 64 }
+    raw_iterations:      [901.4,900.693,899.372,899.075,899.02,898.98,899.401,899.937,898.849,898.255]
+    context_ms:          3.454754
+    sum_ms:              7192.889
+    avg_ms:              899.111
+    min_ms:              898.255
+    max_ms:              899.937
+    stddev_ms:           0.456
+    giga_interactions/s: 1.778
+    gflop/s:             53.921
+    gfinst/s:            44.441
+    energies:            
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+  - outcome:             { valid: true, max_diff_%: 0.000 }
+    param:               { ppwi: 32, wgsize: 128 }
+    raw_iterations:      [931.681,930.132,930.043,929.87,930.152,930.678,930.912,930.788,929.605,929.177]
+    context_ms:          3.360906
+    sum_ms:              7441.224
+    avg_ms:              930.153
+    min_ms:              929.177
+    max_ms:              930.912
+    stddev_ms:           0.570
+    giga_interactions/s: 1.718
+    gflop/s:             52.121
+    gfinst/s:            42.958
+    energies:            
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 64, wgsize: 4 }
+    raw_iterations:      [1563.7,1557.93,1560.9,1556.34,1559.05,1557.01,1557.45,1558.83,1560.87,1646.47]
+    context_ms:          3.574200
+    sum_ms:              12556.925
+    avg_ms:              1569.616
+    min_ms:              1556.339
+    max_ms:              1646.473
+    stddev_ms:           29.092
+    giga_interactions/s: 1.018
+    gflop/s:             30.728
+    gfinst/s:            25.457
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 64, wgsize: 8 }
+    raw_iterations:      [1523.68,1519.62,1516.13,1516.4,1515.51,1513.14,1510.89,1513.15,1510.48,1510.97]
+    context_ms:          4.124122
+    sum_ms:              12106.683
+    avg_ms:              1513.335
+    min_ms:              1510.481
+    max_ms:              1516.404
+    stddev_ms:           2.285
+    giga_interactions/s: 1.056
+    gflop/s:             31.871
+    gfinst/s:            26.403
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 64, wgsize: 16 }
+    raw_iterations:      [1479.77,1480.94,1485.77,1500.35,1495.86,1481.81,1493.64,1482.4,1486.4,1487.45]
+    context_ms:          3.972576
+    sum_ms:              11913.687
+    avg_ms:              1489.211
+    min_ms:              1481.807
+    max_ms:              1500.351
+    stddev_ms:           6.244
+    giga_interactions/s: 1.073
+    gflop/s:             32.387
+    gfinst/s:            26.831
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 64, wgsize: 32 }
+    raw_iterations:      [1480.67,1481.99,1488.01,1486.06,1484.19,1484.96,1484.88,1477.85,1487.19,1484.86]
+    context_ms:          3.565286
+    sum_ms:              11878.013
+    avg_ms:              1484.752
+    min_ms:              1477.854
+    max_ms:              1488.010
+    stddev_ms:           2.877
+    giga_interactions/s: 1.076
+    gflop/s:             32.484
+    gfinst/s:            26.912
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.000 }
+    param:               { ppwi: 64, wgsize: 64 }
+    raw_iterations:      [1516.42,1512.65,1522.97,1525.28,1520.52,1514.14,1517.83,1523.22,1514.41,1513.69]
+    context_ms:          3.412961
+    sum_ms:              12152.050
+    avg_ms:              1519.006
+    min_ms:              1513.686
+    max_ms:              1525.276
+    stddev_ms:           4.325
+    giga_interactions/s: 1.052
+    gflop/s:             31.752
+    gfinst/s:            26.305
+    energies:            
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+  - outcome:             { valid: true, max_diff_%: 0.000 }
+    param:               { ppwi: 64, wgsize: 128 }
+    raw_iterations:      [1496.22,1499.86,1509.32,1504.38,1494.31,1509.07,1499.86,1498.84,1502.09,1507.71]
+    context_ms:          3.477735
+    sum_ms:              12025.578
+    avg_ms:              1503.197
+    min_ms:              1494.312
+    max_ms:              1509.320
+    stddev_ms:           5.051
+    giga_interactions/s: 1.063
+    gflop/s:             32.086
+    gfinst/s:            26.582
+    energies:            
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 128, wgsize: 4 }
+    raw_iterations:      [1554.99,1547.63,1548.92,1549.47,1547.79,1548.5,1547.66,1547.84,1548.75,1547.42]
+    context_ms:          3.928506
+    sum_ms:              12386.350
+    avg_ms:              1548.294
+    min_ms:              1547.423
+    max_ms:              1549.467
+    stddev_ms:           0.674
+    giga_interactions/s: 1.032
+    gflop/s:             31.070
+    gfinst/s:            25.807
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 128, wgsize: 8 }
+    raw_iterations:      [1553.63,1552.99,1553.39,1556.17,1551.78,1552.5,1553.63,1553.64,1553.42,1553.55]
+    context_ms:          3.493231
+    sum_ms:              12428.090
+    avg_ms:              1553.511
+    min_ms:              1551.785
+    max_ms:              1556.170
+    stddev_ms:           1.180
+    giga_interactions/s: 1.029
+    gflop/s:             30.966
+    gfinst/s:            25.721
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 128, wgsize: 16 }
+    raw_iterations:      [1681.58,1681.02,1680.66,1687.55,1681.98,1681.93,1681.23,1680.66,1681.23,1680.85]
+    context_ms:          3.528107
+    sum_ms:              13456.100
+    avg_ms:              1682.012
+    min_ms:              1680.661
+    max_ms:              1687.550
+    stddev_ms:           2.147
+    giga_interactions/s: 0.950
+    gflop/s:             28.600
+    gfinst/s:            23.756
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 128, wgsize: 32 }
+    raw_iterations:      [1696.59,1692.07,1688.98,1692.68,1692.63,1692.21,1695.91,1693.39,1694.63,1694.52]
+    context_ms:          3.431229
+    sum_ms:              13544.957
+    avg_ms:              1693.120
+    min_ms:              1688.981
+    max_ms:              1695.913
+    stddev_ms:           1.953
+    giga_interactions/s: 0.944
+    gflop/s:             28.413
+    gfinst/s:            23.600
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.000 }
+    param:               { ppwi: 128, wgsize: 64 }
+    raw_iterations:      [1688.91,1689.1,1687.27,1692.17,1688.03,1688.67,1692.56,1685.09,1686.89,1689.11]
+    context_ms:          3.488722
+    sum_ms:              13509.793
+    avg_ms:              1688.724
+    min_ms:              1685.087
+    max_ms:              1692.559
+    stddev_ms:           2.397
+    giga_interactions/s: 0.946
+    gflop/s:             28.487
+    gfinst/s:            23.661
+    energies:            
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+  - outcome:             { valid: true, max_diff_%: 0.000 }
+    param:               { ppwi: 128, wgsize: 128 }
+    raw_iterations:      [2363.92,2362.8,2371.11,2362.03,2364.17,2365.49,2368.16,2363.79,2363.2,2362.32]
+    context_ms:          3.690212
+    sum_ms:              18920.263
+    avg_ms:              2365.033
+    min_ms:              2362.031
+    max_ms:              2371.107
+    stddev_ms:           2.934
+    giga_interactions/s: 0.676
+    gflop/s:             20.341
+    gfinst/s:            16.895
+    energies:            
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+      - -nan
+best: { min_ms: 221.93, max_ms: 224.56, sum_ms: 1786.64, avg_ms: 223.33, ppwi: 2, wgsize: 32 }
+Kokkos::Experimental::SYCL ERROR: Failed to call Kokkos::Experimental::SYCL::finalize()

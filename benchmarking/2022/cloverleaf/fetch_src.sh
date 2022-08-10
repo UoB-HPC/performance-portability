@@ -11,6 +11,12 @@ fetch_src() {
     REPO_BRANCH="master"
     REPO_URL="https://github.com/UK-MAC/CloverLeaf_CUDA"
     ;;
+  kokkos)
+    REPO_DIR=CloverLeaf_kokkos
+    REPO_FILE="$REPO_DIR/clover_leaf.cpp"
+    REPO_BRANCH="master"
+    REPO_URL="https://github.com/UoB-HPC/cloverleaf_kokkos"
+    ;;
   omp-plain)
     REPO_DIR=cloverleaf_openmp_plain
     REPO_FILE="$REPO_DIR/src/clover_leaf.cpp"

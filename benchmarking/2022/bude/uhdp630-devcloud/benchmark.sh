@@ -18,7 +18,7 @@ append_opts "-DCXX_EXTRA_FLAGS=-march=skylake;-Ofast"
 case "$COMPILER" in
 oneapi-2022.2)
   module load gcc/11.2.0
-  module load compiler/latest 
+  module load compiler/latest
   ;;
 *) unknown_compiler ;;
 esac
@@ -26,6 +26,13 @@ esac
 fetch_src
 
 case "$MODEL" in
+kokkos)
+  prime_kokkos
+  append_opts "-DMODEL=kokkos"
+  append_opts "-DCMAKE_CXX_COMPILER=dpcpp -DKOKKOS_IN_TREE=$KOKKOS_DIR -DKokkos_ENABLE_SYCL=ON"
+  append_opts "-DKokkos_ARCH_INTEL_GEN=OFF" # XXX ENABLE_SYCL adds -fsycl which is sufficient, INTEL_GEN breaks it by adding -X backend flags
+  BENCHMARK_EXE="kokkos-bude"
+  ;;
 sycl)
   append_opts "-DMODEL=sycl"
   append_opts "-DSYCL_COMPILER=ONEAPI-DPCPP"
@@ -48,6 +55,5 @@ std-ranges)
   ;;
 *) unknown_model ;;
 esac
-
 
 handle_exec

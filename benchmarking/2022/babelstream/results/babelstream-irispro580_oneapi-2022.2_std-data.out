@@ -1,19 +1,19 @@
-Sat 30 Jul 10:00:24 BST 2022
+Mon  1 Aug 17:21:53 BST 2022
 /nfs/home/wl14928/performance-portability/benchmarking/2022/babelstream/results/babelstream-irispro580_oneapi-2022.2_std-data
-	linux-vdso.so.1 (0x00007ffdccbb7000)
-	libstdc++.so.6 => /nfs/software/x86_64/gcc/8.3.0/lib64/libstdc++.so.6 (0x000014bcd04e5000)
-	libm.so.6 => /lib64/libm.so.6 (0x000014bcd0163000)
-	libgcc_s.so.1 => /nfs/software/x86_64/gcc/8.3.0/lib64/libgcc_s.so.1 (0x000014bccff4b000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x000014bccfd47000)
-	libsycl.so.5 => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/lib/libsycl.so.5 (0x000014bccfa31000)
-	libc.so.6 => /lib64/libc.so.6 (0x000014bccf66f000)
-	/lib64/ld-linux-x86-64.so.2 (0x000014bcd0868000)
-	libOpenCL.so.1 => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/lib/libOpenCL.so.1 (0x000014bcd0a72000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014bccf44f000)
-	libsvml.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libsvml.so (0x000014bccd491000)
-	libirng.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libirng.so (0x000014bccd127000)
-	libimf.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libimf.so (0x000014bccca99000)
-	libintlc.so.5 => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x000014bccc821000)
+	linux-vdso.so.1 (0x00007ffe85f88000)
+	libstdc++.so.6 => /nfs/software/x86_64/gcc/8.3.0/lib64/libstdc++.so.6 (0x0000149d37a2f000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000149d376ad000)
+	libgcc_s.so.1 => /nfs/software/x86_64/gcc/8.3.0/lib64/libgcc_s.so.1 (0x0000149d37495000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000149d37291000)
+	libsycl.so.5 => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/lib/libsycl.so.5 (0x0000149d36f7b000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000149d36bb9000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000149d37db2000)
+	libOpenCL.so.1 => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/lib/libOpenCL.so.1 (0x0000149d37fbc000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000149d36999000)
+	libsvml.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libsvml.so (0x0000149d349db000)
+	libirng.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libirng.so (0x0000149d34671000)
+	libimf.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libimf.so (0x0000149d33fe3000)
+	libintlc.so.5 => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x0000149d33d6b000)
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -25,8 +25,8 @@ Total size: 805.3 MB (=0.8 GB)
 Backing storage typeid: Pd
 Using oneDPL backend: SYCL USM (device=Intel(R) Iris(TM) Pro Graphics 580 [0x193b])
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        31286.920   0.01716     0.01757     0.01730     
-Mul         26604.233   0.02018     0.02075     0.02046     
-Add         26049.693   0.03091     0.03169     0.03103     
-Triad       26740.958   0.03012     0.03094     0.03026     
-Dot         23427.838   0.02292     0.02361     0.02311     
+Copy        31484.848   0.01705     0.01770     0.01724     
+Mul         26612.012   0.02017     0.02097     0.02045     
+Add         25937.114   0.03105     0.03170     0.03124     
+Triad       27390.265   0.02940     0.03035     0.02962     
+Dot         23638.931   0.02271     0.02364     0.02304     

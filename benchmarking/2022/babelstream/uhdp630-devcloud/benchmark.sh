@@ -26,6 +26,13 @@ esac
 fetch_src
 
 case "$MODEL" in
+kokkos)
+  prime_kokkos
+  append_opts "-DMODEL=kokkos"
+  append_opts "-DCMAKE_CXX_COMPILER=dpcpp -DKOKKOS_IN_TREE=$KOKKOS_DIR -DKokkos_ENABLE_SYCL=ON -DKokkos_CXX_STANDARD=17"
+  append_opts "-DKokkos_ARCH_INTEL_GEN=OFF" # XXX ENABLE_SYCL adds -fsycl which is sufficient, INTEL_GEN breaks it by adding -X backend flags
+  BENCHMARK_EXE="kokkos-stream"
+  ;;
 sycl)
   append_opts "-DMODEL=sycl"
   append_opts "-DSYCL_COMPILER=ONEAPI-DPCPP"

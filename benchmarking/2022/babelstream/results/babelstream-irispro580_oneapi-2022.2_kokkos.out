@@ -1,0 +1,30 @@
+Wed 10 Aug 06:22:46 BST 2022
+/nfs/home/wl14928/performance-portability/benchmarking/2022/babelstream/results/babelstream-irispro580_oneapi-2022.2_kokkos
+	linux-vdso.so.1 (0x00007ffd28be4000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000014b64083a000)
+	libstdc++.so.6 => /nfs/software/x86_64/gcc/8.3.0/lib64/libstdc++.so.6 (0x000014b6404b7000)
+	libm.so.6 => /lib64/libm.so.6 (0x000014b640135000)
+	libgcc_s.so.1 => /nfs/software/x86_64/gcc/8.3.0/lib64/libgcc_s.so.1 (0x000014b63ff1d000)
+	libsycl.so.5 => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/lib/libsycl.so.5 (0x000014b63fc07000)
+	libc.so.6 => /lib64/libc.so.6 (0x000014b63f845000)
+	/lib64/ld-linux-x86-64.so.2 (0x000014b640a3e000)
+	libOpenCL.so.1 => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/lib/libOpenCL.so.1 (0x000014b640c48000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014b63f625000)
+	libsvml.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libsvml.so (0x000014b63d667000)
+	libirng.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libirng.so (0x000014b63d2fd000)
+	libimf.so => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libimf.so (0x000014b63cc6f000)
+	libintlc.so.5 => /nfs/software/x86_64/intel/oneapi/2022.2/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x000014b63c9f7000)
+Kokkos library for N6Kokkos12Experimental4SYCLE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        30931.950   0.01736     0.01833     0.01769     
+Mul         26633.881   0.02016     0.02128     0.02034     
+Add         26054.292   0.03091     0.03228     0.03120     
+Triad       26948.576   0.02988     0.03065     0.03006     
+Dot         22505.028   0.02386     0.02471     0.02408     

@@ -2,6 +2,21 @@
 
 set -eu
 
+prime_kokkos() {
+  KOKKOS_VER="3.6.01"
+  KOKKOS_DIR="$SRC_DIR/kokkos-$KOKKOS_VER"
+
+  echo "Using Kokkos src $KOKKOS_DIR"
+
+  if [ ! -e "$KOKKOS_DIR" ]; then
+    wget "https://github.com/kokkos/kokkos/archive/$KOKKOS_VER.tar.gz"
+
+    tar -xf "$KOKKOS_VER.tar.gz" -C "$SRC_DIR"
+    rm "$KOKKOS_VER.tar.gz"
+  fi
+  export KOKKOS_DIR="$KOKKOS_DIR"
+}
+
 load_nvhpc() {
 
   if grep -q "Amazon Linux" "/etc/os-release"; then
@@ -124,7 +139,7 @@ handle_exec() {
     else
       read -ra CMAKE_OPTS <<<"${MAKE_OPTS}" # explicit word splitting
       echo "[$ACTION] Using cmake opts:" "${CMAKE_OPTS[@]}"
-      rm -rf build
+      # rm -rf build
       cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=RELEASE "${CMAKE_OPTS[@]}"
       cmake --build build --config RELEASE -j "$(nproc)"
       ldd "$src/build/$BENCHMARK_EXE"
