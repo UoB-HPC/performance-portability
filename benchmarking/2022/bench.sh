@@ -8,8 +8,8 @@ NVHPC=nvhpc-22.7
 GCC=gcc-12.1
 
 cloverleaf=true
-bude=false
-babelstream=false
+bude=true
+babelstream=true
 
 declare -A models
 models["tbb"]=true
@@ -136,11 +136,11 @@ aws-g2)
     bench_scale graviton2-aws $GCC "${babelstream_gcc_cpu_models[@]}"
 
     cd "$BASE/bude/results"
-    bench_scale graviton2-aws $NVHPC "${generic_nvhpc_gpu_models[@]}"
+    bench_scale graviton2-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"
     bench_scale graviton2-aws $GCC "${generic_gcc_cpu_models[@]}"
 
     cd "$BASE/cloverleaf/results"
-    bench_scale graviton2-aws $NVHPC "${generic_nvhpc_gpu_models[@]}"
+    bench_scale graviton2-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"
     bench_scale graviton2-aws $GCC "${generic_gcc_cpu_models[@]}"
 
     ;;
