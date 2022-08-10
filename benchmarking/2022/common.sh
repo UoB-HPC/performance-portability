@@ -138,7 +138,7 @@ handle_exec() {
     else
       read -ra CMAKE_OPTS <<<"${MAKE_OPTS}" # explicit word splitting
       echo "[$ACTION] Using cmake opts:" "${CMAKE_OPTS[@]}"
-       rm -rf build
+      rm -rf build
       cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=RELEASE "${CMAKE_OPTS[@]}"
       cmake --build build --config RELEASE -j "$(nproc)"
       ldd "$src/build/$BENCHMARK_EXE"
@@ -169,12 +169,28 @@ handle_exec() {
     echo "[$ACTION] Submitting '$job'"
 
     if [ "${USE_SLURM:-}" = true ]; then
-      sbatch --output "$name".out -J "$name" "$job"
+      queue_cmd="sbatch"
     else
-      qsub -o "$name".out -N "$name" -V "$job"
+      queue_cmd="qsub"
+    fi
+
+    if [ -x "$(command -v $queue_cmd)" ]; then
+      if [ "${USE_SLURM:-}" = true ]; then
+        sbatch --output "$name".out -J "$name" "$job"
+      else
+        qsub -o "$name".out -N "$name" -V "$job"
+      fi
+    else
+      echo "No queue, starting local exec: $name"
+      : >"$OUT_FILE"
+      set +e # don't fail on non-zero exit
+      bash "$job" &> >(tee -a "$OUT_FILE")
+      set -e # restore
+      echo "$name complete."
     fi
 
   else
+
     echo
     echo "Invalid action: $ACTION"
     exit 1

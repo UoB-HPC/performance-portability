@@ -36,6 +36,12 @@ nvhpc-22.7)
 esac
 
 case "$MODEL" in
+kokkos)
+  fetch_src "kokkos"
+  prime_kokkos
+  append_opts "-DKOKKOS_IN_TREE=$KOKKOS_DIR -DKokkos_ENABLE_OPENMP=ON -DKokkos_CXX_STANDARD=17"
+  append_opts "-DKokkos_ARCH_NATIVE=ON"
+  ;;
 omp)
   fetch_src "omp-plain"
   case "$COMPILER" in

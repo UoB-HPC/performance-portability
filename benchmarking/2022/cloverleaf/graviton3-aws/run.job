@@ -17,10 +17,16 @@ export OMP_PLACES=cores
 export PMI_NO_FORK=1
 
 case "$MODEL" in
-tbb | omp | std-*)
+kokkos)
+  cp "$SRC_DIR/InputDecks/clover_bm16.in" "clover.in"
+  "$BENCHMARK_EXE"
+  ;;
+omp)
   "$BENCHMARK_EXE" --file "$SRC_DIR/InputDecks/clover_bm16.in"
   ;;
-
+tbb | std-*)
+  numactl --physcpubind=all --localalloc "$BENCHMARK_EXE" --file "$SRC_DIR/InputDecks/clover_bm16.in"
+  ;;
 *)
   echo "Unknown run configuration for model '$MODEL'"
   exit 1

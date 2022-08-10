@@ -21,8 +21,8 @@ gcc-12.1)
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=g++"
   # See https://github.com/aws/aws-graviton-getting-started/blob/main/c-c%2B%2B.md
-  # Nuke the entire flag because the default `-march=native` is broken
-  append_opts "-DRELEASE_FLAGS='' -DCXX_EXTRA_FLAGS=-mcpu=neoverse-v1+norng+nossbs+noi8mm+nobf16;-Ofast"
+  # Nuke the entire flag because the default `-march=native` is broken and -mcpu=neoverse-v1 is broken too
+  append_opts "-DRELEASE_FLAGS='' -DCXX_EXTRA_FLAGS=-march=armv8.4-a+rcpc+sve+profile;-Ofast"
   append_opts "-DUSE_TBB=ON"
   ;;
 nvhpc-22.7)
@@ -45,6 +45,13 @@ esac
 fetch_src
 
 case "$MODEL" in
+kokkos)
+  prime_kokkos
+  append_opts "-DMODEL=kokkos"
+  append_opts "-DKOKKOS_IN_TREE=$KOKKOS_DIR -DKokkos_ENABLE_OPENMP=ON -DKokkos_CXX_STANDARD=17"
+  append_opts "-DKokkos_ARCH_NATIVE=ON"
+  BENCHMARK_EXE="kokkos-stream"
+  ;;
 omp)
   append_opts "-DMODEL=omp"
   BENCHMARK_EXE="omp-stream"

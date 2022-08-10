@@ -17,15 +17,16 @@ export USE_SLURM=true
 case "$COMPILER" in
 gcc-12.1)
   spack load gcc@12.1.0
-  module load openmpi
+  spack load openmpi
   append_opts "-DCMAKE_VERBOSE_MAKEFILE=ON"
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=g++"
   append_opts "-DUSE_TBB=ON"
-  cxx_extra_flags="-mcpu=neoverse-v1+norng+nossbs+noi8mm+nobf16;-Ofast"
+   # Nuke the entire flag because the default `-march=native` is broken and -mcpu=neoverse-v1 is broken too
+  cxx_extra_flags="-march=armv8.4-a+rcpc+sve+profile;-O3;-ffast-math" # -Ofast fails with small timestep 
   ;;
 nvhpc-22.7)
-  module load openmpi
+  spack load openmpi
   load_nvhpc
   append_opts "-DCMAKE_VERBOSE_MAKEFILE=ON"
   append_opts "-DCMAKE_C_COMPILER=$NVHPC_PATH/compilers/bin/nvc"
@@ -36,6 +37,12 @@ nvhpc-22.7)
 esac
 
 case "$MODEL" in
+kokkos)
+  fetch_src "kokkos"
+  prime_kokkos
+  append_opts "-DKOKKOS_IN_TREE=$KOKKOS_DIR -DKokkos_ENABLE_OPENMP=ON -DKokkos_CXX_STANDARD=17"
+  append_opts "-DKokkos_ARCH_NATIVE=ON"
+  ;;
 omp)
   fetch_src "omp-plain"
   case "$COMPILER" in

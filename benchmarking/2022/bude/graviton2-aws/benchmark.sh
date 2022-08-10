@@ -42,6 +42,13 @@ esac
 fetch_src
 
 case "$MODEL" in
+kokkos)
+  prime_kokkos
+  append_opts "-DMODEL=kokkos"
+  append_opts "-DKOKKOS_IN_TREE=$KOKKOS_DIR -DKokkos_ENABLE_OPENMP=ON -DKokkos_CXX_STANDARD=17"
+  append_opts "-DKokkos_ARCH_NATIVE=ON"
+  BENCHMARK_EXE="kokkos-bude"
+  ;;
 omp)
   append_opts "-DMODEL=omp"
   BENCHMARK_EXE="omp-bude"
