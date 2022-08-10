@@ -11,7 +11,7 @@ module load cmake/3.23.2
 handle_cmd "${1}" "${2}" "${3}" "cloverleaf" "a100"
 
 case "$COMPILER" in
-nvhpc-22.5)
+nvhpc-22.7)
   module load openmpi
   load_nvhpc
   ;;
@@ -19,6 +19,17 @@ nvhpc-22.5)
 esac
 
 case "$MODEL" in
+kokkos)
+  export USE_MAKE=false
+  fetch_src "kokkos"
+  prime_kokkos
+  export CUDA_ROOT="$NVHPC_PATH/cuda"
+  append_opts "-DKOKKOS_IN_TREE=$KOKKOS_DIR -DKokkos_ENABLE_CUDA=ON -DKokkos_CXX_STANDARD=17 -DKokkos_ENABLE_CUDA_LAMBDA=ON"
+  append_opts "-DKokkos_ARCH_AMPERE80=ON"
+  append_opts "-DCMAKE_C_COMPILER=gcc"
+  append_opts "-DCMAKE_CXX_COMPILER=$KOKKOS_DIR/bin/nvcc_wrapper"
+  append_opts "-DCXX_EXTRA_FLAGS=-O3;--use_fast_math"
+  ;;
 cuda)
   export USE_MAKE=true
   module load gcc/9.3.0
@@ -26,7 +37,7 @@ cuda)
   export PATH="$NVHPC_PATH/compilers/bin/:$PATH"
   export LD_LIBRARY_PATH="$NVHPC_PATH/cuda/lib64:$LD_LIBRARY_PATH"
 
-  append_opts 'COMPILER=GNU NV_ARCH=VOLTA CODE_GEN_VOLTA="-gencode arch=compute_80,code=sm_80"'
+  append_opts 'COMPILER=GNU NV_ARCH=VOLTA CODE_GEN_VOLTA="-gencode arch=compute_80,code=sm_80 -O3 --use_fast_math"'
   append_opts "CUDA_HOME=$NVHPC_PATH/cuda"
   ;;
 omp)
@@ -35,7 +46,7 @@ omp)
   append_opts "-DCMAKE_VERBOSE_MAKEFILE=ON"
   append_opts "-DCMAKE_C_COMPILER=$NVHPC_PATH/compilers/bin/nvc"
   append_opts "-DCMAKE_CXX_COMPILER=$NVHPC_PATH/compilers/bin/nvc++"
-  append_opts "-DOMP_OFFLOAD_FLAGS=-target=gpu;-gpu=cc80;--restrict;-fast;-Mllvm-fast;-Ktrap=none;-Minfo=accel;-Minfo=mp"
+  append_opts "-DOMP_OFFLOAD_FLAGS=-target=gpu;-gpu=cc80,fastmath;--restrict;-fast;-Mllvm-fast;-Ktrap=none;-Minfo=accel;-Minfo=mp"
   ;;
 std-indices)
   export USE_MAKE=false
@@ -43,7 +54,7 @@ std-indices)
   append_opts "-DCMAKE_VERBOSE_MAKEFILE=ON"
   append_opts "-DCMAKE_C_COMPILER=$NVHPC_PATH/compilers/bin/nvc"
   append_opts "-DCMAKE_CXX_COMPILER=$NVHPC_PATH/compilers/bin/nvc++"
-  append_opts "-DNVHPC_OFFLOAD=cc80 -DCXX_EXTRA_FLAGS=-fast -DSERIAL_COPY_CTOR=ON"
+  append_opts "-DNVHPC_OFFLOAD=cc80,fastmath -DCXX_EXTRA_FLAGS=-fast -DSERIAL_COPY_CTOR=ON"
   ;;
 *) unknown_model ;;
 esac

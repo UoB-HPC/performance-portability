@@ -18,7 +18,6 @@ prime_kokkos() {
 }
 
 load_nvhpc() {
-
   if grep -q "Amazon Linux" "/etc/os-release"; then
     # use spack
     export NVHPC_PATH
@@ -26,7 +25,7 @@ load_nvhpc() {
     NVHPC_PATH=$(realpath "$(dirname "$(which nvc++)")/../../")
   else
     export NVHPC_PATH
-    NVHPC_PATH="/lustre/home/br-wlin/nvhpc_sdk/Linux_$(uname -m)/22.5"
+    NVHPC_PATH="/lustre/home/br-wlin/nvhpc_sdk/Linux_$(uname -m)/22.7"
     if [ ! -d "$NVHPC_PATH" ]; then
       echo "NVHPC dir '$NVHPC_PATH' is not a directory"
       exit 2
@@ -139,28 +138,40 @@ handle_exec() {
     else
       read -ra CMAKE_OPTS <<<"${MAKE_OPTS}" # explicit word splitting
       echo "[$ACTION] Using cmake opts:" "${CMAKE_OPTS[@]}"
-      # rm -rf build
+       rm -rf build
       cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=RELEASE "${CMAKE_OPTS[@]}"
       cmake --build build --config RELEASE -j "$(nproc)"
       ldd "$src/build/$BENCHMARK_EXE"
     fi
 
-  elif [ "$ACTION" == "run" ]; then
+  elif [ "$ACTION" == "run" ] || [ "$ACTION" == "run-scale" ]; then
 
     if [ "$USE_MAKE" = true ]; then
       export BENCHMARK_EXE="$src/$BENCHMARK_EXE"
     else
       export BENCHMARK_EXE="$src/build/$BENCHMARK_EXE"
     fi
-
     check_bin "$BENCHMARK_EXE"
-    export OUT_FILE="$PWD/$BENCHMARK_NAME".out0
-    echo "[$ACTION] Submitting '$SCRIPT_DIR/run.job'"
+
+    if [ "$ACTION" == "run" ]; then
+      local job="$SCRIPT_DIR/run.job"
+      local name="$BENCHMARK_NAME"
+    elif [ "$ACTION" == "run-scale" ]; then
+      local job="$SCRIPT_DIR/run-scale.job"
+      local name="scale_$BENCHMARK_NAME"
+    else
+      echo
+      echo "Invalid action: $ACTION"
+      exit 1
+    fi
+
+    export OUT_FILE="$PWD/$name".out0
+    echo "[$ACTION] Submitting '$job'"
 
     if [ "${USE_SLURM:-}" = true ]; then
-      sbatch --output "$BENCHMARK_NAME".out -J "$BENCHMARK_NAME" "$SCRIPT_DIR/run.job"
+      sbatch --output "$name".out -J "$name" "$job"
     else
-      qsub -o "$BENCHMARK_NAME".out -N "$BENCHMARK_NAME" -V "$SCRIPT_DIR/run.job"
+      qsub -o "$name".out -N "$name" -V "$job"
     fi
 
   else

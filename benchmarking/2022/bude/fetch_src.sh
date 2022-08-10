@@ -28,7 +28,7 @@ fetch_src() {
   else
     (
       cd miniBUDE
-      git fetch && git pull
+      # git fetch && git pull
     )
   fi
   export SRC_DIR="$PWD/miniBUDE"

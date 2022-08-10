@@ -22,7 +22,7 @@ gcc-12.1)
   append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast"
   append_opts "-DUSE_TBB=ON"
   ;;
-nvhpc-22.5)
+nvhpc-22.7)
   load_nvhpc
   append_opts "-DCMAKE_C_COMPILER=$NVHPC_PATH/compilers/bin/nvc"
   append_opts "-DCMAKE_CXX_COMPILER=$NVHPC_PATH/compilers/bin/nvc++"
@@ -41,6 +41,13 @@ esac
 fetch_src
 
 case "$MODEL" in
+kokkos)
+  prime_kokkos
+  append_opts "-DMODEL=kokkos"
+  append_opts "-DKOKKOS_IN_TREE=$KOKKOS_DIR -DKokkos_ENABLE_OPENMP=ON -DKokkos_CXX_STANDARD=17"
+  append_opts "-DKokkos_ARCH_ZEN3=ON"
+  BENCHMARK_EXE="kokkos-bude"
+  ;;
 omp)
   append_opts "-DMODEL=omp"
   BENCHMARK_EXE="omp-bude"

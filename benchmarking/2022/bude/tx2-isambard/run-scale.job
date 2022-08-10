@@ -1,0 +1,38 @@
+#!/bin/bash
+#PBS -q arm
+#PBS -l select=1:ncpus=64
+#PBS -l walltime=03:00:00
+#PBS -joe
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+# Best performance observed when only running 16 cores per socket.
+
+aprun -n 1 -d 64 -cc depth "$BENCHMARK_EXE" --list
+
+MIN_CORE=1
+MAX_CORE=64
+for i in $(seq $MIN_CORE $MAX_CORE); do
+  echo ">>>$i>>>"
+  date
+  export OMP_NUM_THREADS=$i
+  export OMP_PROC_BIND=true
+  export OMP_PLACES=cores
+
+  case "$MODEL" in
+  omp)
+    aprun -n 1 -d 64 -cc depth "$BENCHMARK_EXE" --deck miniBUDE/data/bm1 --wgsize 1 --ppwi all
+    ;;
+  tbb | std-*)
+    aprun -n 1 -d 64 -cc depth numactl --physcpubind=0-$(("$i" - 1)) --localalloc "$BENCHMARK_EXE" --deck miniBUDE/data/bm1 --wgsize 1 --ppwi all
+    ;;
+  *)
+    echo "Unknown run configuration for model '$MODEL'"
+    exit 1
+    ;;
+  esac
+  echo "<<<$i<<<"
+done

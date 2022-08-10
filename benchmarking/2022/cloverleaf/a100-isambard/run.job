@@ -18,6 +18,10 @@ ldd "$BENCHMARK_EXE"
 export OMP_TARGET_OFFLOAD=MANDATORY
 
 case "$MODEL" in
+kokkos)
+    cp "$SRC_DIR/InputDecks/clover_bm16.in" "clover.in"
+    "$BENCHMARK_EXE"
+    ;;
 omp | std-*)
     "$BENCHMARK_EXE" --file "$SRC_DIR/InputDecks/clover_bm16.in"
     ;;

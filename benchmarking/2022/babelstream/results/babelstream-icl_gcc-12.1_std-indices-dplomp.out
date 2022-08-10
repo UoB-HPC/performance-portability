@@ -1,4 +1,4 @@
-Sat 30 Jul 04:22:37 GMT 2022
+Wed 10 Aug 09:08:38 GMT 2022
 /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-icl_gcc-12.1_std-indices-dplomp
 	linux-vdso.so.1 (0x0000155555551000)
 	libtbb.so.12 => /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-icl_gcc-12.1_std-indices-dplomp/BabelStream/build/gnu_12.1_cxx11_64_release/libtbb.so.12 (0x00001555554f8000)
@@ -21,8 +21,8 @@ Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Using oneDPL backend: OpenMP
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        91390.292   0.09399     0.26847     0.13735     
-Mul         101691.238  0.08447     0.17819     0.12306     
-Add         80087.271   0.16089     0.34944     0.20824     
-Triad       77904.282   0.16539     0.35384     0.21036     
-Dot         101776.486  0.08440     0.15590     0.12389     
+Copy        161783.138  0.05310     0.07804     0.06167     
+Mul         183626.995  0.04678     0.06776     0.05412     
+Add         187857.834  0.06859     0.09009     0.07691     
+Triad       186417.117  0.06912     0.09603     0.08004     
+Dot         213914.036  0.04016     0.05797     0.05013     

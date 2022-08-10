@@ -1,16 +1,17 @@
-Sat 30 Jul 04:24:22 UTC 2022
+Tue  9 Aug 08:09:26 UTC 2022
+xcimom2
 /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_gcc-12.1_std-data
-	linux-vdso.so.1 (0x0000400036a10000)
-	libtbb.so.12 => /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_gcc-12.1_std-data/BabelStream/build/gnu_12.1_cxx11_64_release/libtbb.so.12 (0x0000400036a21000)
-	libstdc++.so.6 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libstdc++.so.6 (0x0000400036a6f000)
-	libm.so.6 => /lib64/libm.so.6 (0x0000400036cb7000)
-	libgcc_s.so.1 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libgcc_s.so.1 (0x0000400036d78000)
-	libc.so.6 => /lib64/libc.so.6 (0x0000400036da9000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x0000400036f2f000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000400036f50000)
-	/lib/ld-linux-aarch64.so.1 (0x00004000369ef000)
+	linux-vdso.so.1 (0x0000400039ff3000)
+	libtbb.so.12 => /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_gcc-12.1_std-data/BabelStream/build/gnu_12.1_cxx11_64_release/libtbb.so.12 (0x000040003a004000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libstdc++.so.6 (0x000040003a052000)
+	libm.so.6 => /lib64/libm.so.6 (0x000040003a29a000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libgcc_s.so.1 (0x000040003a35b000)
+	libc.so.6 => /lib64/libc.so.6 (0x000040003a38c000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000040003a512000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000040003a533000)
+	/lib/ld-linux-aarch64.so.1 (0x0000400039fd2000)
 Listing devices is not supported by the Parallel STL
-Application 2279426 resources: utime ~0s, stime ~3s, Rss ~8632, inblocks ~36752, outblocks ~0
+Application 2283911 resources: utime ~0s, stime ~2s, Rss ~8632, inblocks ~36720, outblocks ~0
 BabelStream
 Version: 4.0
 Implementation: STD (data-oriented)
@@ -20,25 +21,25 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        87612.426   0.09804     0.10800     0.10329     
-Mul         106090.214  0.08097     0.09696     0.08562     
-Add         93616.070   0.13764     0.15655     0.14514     
-Triad       95687.176   0.13466     0.15174     0.14405     
-Dot         86897.621   0.09885     0.10939     0.10384     
-Application 2279444 resources: utime ~3764s, stime ~1043s, Rss ~25165976, inblocks ~38104, outblocks ~0
+Copy        86016.344   0.09986     0.11128     0.10426     
+Mul         89369.390   0.09612     0.10536     0.10087     
+Add         85819.008   0.15014     0.16286     0.15473     
+Triad       86586.600   0.14881     0.15992     0.15414     
+Dot         84755.139   0.10135     0.10973     0.10513     
+Application 2283912 resources: utime ~4000s, stime ~1053s, Rss ~25164568, inblocks ~38104, outblocks ~0
 ============================= PBS epilogue =============================
 
 End of Job Report
-Run at 2022-07-30 04:26:07 for job 226676.xci00
-Submitted              : 2022-07-30 04:21:30
-Queued                 : 2022-07-30 04:21:30
-Started                : 2022-07-30 04:24:22
-Completed              : 2022-07-30 04:26:07
-Queued Time            : 0:02:52 (172 seconds)
-Elapsed Time           : 0:01:40 (100 seconds, 11% of limit)
+Run at 2022-08-09 08:11:11 for job 228425.xci00
+Submitted              : 2022-08-09 08:09:25
+Queued                 : 2022-08-09 08:09:25
+Started                : 2022-08-09 08:09:25
+Completed              : 2022-08-09 08:11:11
+Queued Time            : 0:00:00 (0 seconds)
+Elapsed Time           : 0:01:41 (101 seconds, 11% of limit)
 Walltime Limit         : 0:15:00 (900 seconds)
 Node Time Limit        : 0:15:00 (900 seconds)
-Node Time              : 0:01:40 (100 seconds, 11% of limit)
+Node Time              : 0:01:41 (101 seconds, 11% of limit)
 Job Name               : babelstream-tx2_gcc-12.1_std-data
 Queue                  : arm
 Owner                  : br-wlin
@@ -48,8 +49,8 @@ Subproject             :
 Funding                : 
 Trustzone              : 
 STDOUT                 : /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_gcc-12.1_std-data.out
-STDERR                 : /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_gcc-12.1_std-data.e226676
-Job Directory          : /home/br-wlin/pbs.226676.xci00.x8z
+STDERR                 : /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_gcc-12.1_std-data.e228425
+Job Directory          : /home/br-wlin/pbs.228425.xci00.x8z
 Job Arch               : XT
 CPU Core Type          : arm
 Total Nodes            : 1
@@ -57,7 +58,7 @@ Total Tasks            : 64
 Parent Node            : xcimom2
 Parent Node Memory     : 
 Parent Node CPU Time   : 
-Compute Nodes          : 194
+Compute Nodes          : 168
 Electrical Groups      : 1
 Run Version            : 1
 

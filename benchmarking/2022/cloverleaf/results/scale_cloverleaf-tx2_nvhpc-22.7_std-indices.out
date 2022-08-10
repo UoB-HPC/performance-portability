@@ -1,0 +1,637 @@
+Tue  9 Aug 08:35:34 UTC 2022
+/home/br-wlin/performance-portability/benchmarking/2022/cloverleaf/results/cloverleaf-tx2_nvhpc-22.7_std-indices
+	linux-vdso.so.1 (0x000040000c50d000)
+	libmpi.so.40 => /lustre/projects/bristol/modules-arm-phase2/openmpi/3.1.6/arm-20.0/lib/libmpi.so.40 (0x000040000c51e000)
+	libatomic.so.1 => /usr/lib64/gcc/aarch64-suse-linux/7/../../../../lib64/libatomic.so.1 (0x000040000c620000)
+	libnvhpcatm.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.7/compilers/lib/libnvhpcatm.so (0x000040000c642000)
+	libstdc++.so.6 => /usr/lib64/gcc/aarch64-suse-linux/7/../../../../lib64/libstdc++.so.6 (0x000040000c665000)
+	libnvomp.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.7/compilers/lib/libnvomp.so (0x000040000c84b000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000040000ca59000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000040000ca7a000)
+	libnvcpumath.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.7/compilers/lib/libnvcpumath.so (0x000040000caaf000)
+	libnvc.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.7/compilers/lib/libnvc.so (0x000040000cbf4000)
+	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x000040000cd48000)
+	libc.so.6 => /lib64/libc.so.6 (0x000040000cd79000)
+	libm.so.6 => /lib64/libm.so.6 (0x000040000ceff000)
+	libamath_generic.so => /opt/allinea/20.0.0.0/arm-linux-compiler-20.0_Generic-AArch64_SUSE-12_aarch64-linux/lib/clang/9.0.1/armpl_links/lib/libamath_generic.so (0x000040000cfc0000)
+	libastring_generic.so => /opt/allinea/20.0.0.0/arm-linux-compiler-20.0_Generic-AArch64_SUSE-12_aarch64-linux/lib/clang/9.0.1/armpl_links/lib/libastring_generic.so (0x000040000d0f0000)
+	libopen-rte.so.40 => /lustre/projects/bristol/modules-arm-phase2/openmpi/3.1.6/arm-20.0/lib/libopen-rte.so.40 (0x000040000d111000)
+	libopen-pal.so.40 => /lustre/projects/bristol/modules-arm-phase2/openmpi/3.1.6/arm-20.0/lib/libopen-pal.so.40 (0x000040000d1d7000)
+	libnuma.so.1 => /usr/lib64/libnuma.so.1 (0x000040000d2d4000)
+	libpciaccess.so.0 => /usr/lib64/libpciaccess.so.0 (0x000040000d2f9000)
+	librt.so.1 => /lib64/librt.so.1 (0x000040000d31a000)
+	libutil.so.1 => /lib64/libutil.so.1 (0x000040000d33b000)
+	libz.so.1 => /lib64/libz.so.1 (0x000040000d35c000)
+	/lib/ld-linux-aarch64.so.1 (0x000040000c4ec000)
+>>>1>>>
+Tue  9 Aug 08:35:34 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284012 exit codes: 255
+Application 2284012 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17670, outblocks ~0
+<<<1<<<
+>>>2>>>
+Tue  9 Aug 08:35:38 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284017 exit codes: 255
+Application 2284017 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17662, outblocks ~0
+<<<2<<<
+>>>3>>>
+Tue  9 Aug 08:35:47 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284022 exit codes: 255
+Application 2284022 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17658, outblocks ~0
+<<<3<<<
+>>>4>>>
+Tue  9 Aug 08:35:55 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284025 exit codes: 255
+Application 2284025 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17658, outblocks ~0
+<<<4<<<
+>>>5>>>
+Tue  9 Aug 08:36:03 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284030 exit codes: 255
+Application 2284030 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17650, outblocks ~0
+<<<5<<<
+>>>6>>>
+Tue  9 Aug 08:36:11 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284033 exit codes: 255
+Application 2284033 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17650, outblocks ~0
+<<<6<<<
+>>>7>>>
+Tue  9 Aug 08:36:20 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284036 exit codes: 255
+Application 2284036 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17658, outblocks ~0
+<<<7<<<
+>>>8>>>
+Tue  9 Aug 08:36:28 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284041 exit codes: 255
+Application 2284041 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17658, outblocks ~0
+<<<8<<<
+>>>9>>>
+Tue  9 Aug 08:36:37 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284044 exit codes: 255
+Application 2284044 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17656, outblocks ~0
+<<<9<<<
+>>>10>>>
+Tue  9 Aug 08:36:45 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284047 exit codes: 255
+Application 2284047 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17658, outblocks ~0
+<<<10<<<
+>>>11>>>
+Tue  9 Aug 08:36:53 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284052 exit codes: 255
+Application 2284052 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17658, outblocks ~0
+<<<11<<<
+>>>12>>>
+Tue  9 Aug 08:37:02 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284058 exit codes: 255
+Application 2284058 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17658, outblocks ~0
+<<<12<<<
+>>>13>>>
+Tue  9 Aug 08:37:10 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284062 exit codes: 255
+Application 2284062 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17658, outblocks ~0
+<<<13<<<
+>>>14>>>
+Tue  9 Aug 08:37:18 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284067 exit codes: 255
+Application 2284067 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17658, outblocks ~0
+<<<14<<<
+>>>15>>>
+Tue  9 Aug 08:37:27 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284071 exit codes: 255
+Application 2284071 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17658, outblocks ~0
+<<<15<<<
+>>>16>>>
+Tue  9 Aug 08:37:35 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284075 exit codes: 255
+Application 2284075 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17658, outblocks ~0
+<<<16<<<
+>>>17>>>
+Tue  9 Aug 08:37:43 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284079 exit codes: 255
+Application 2284079 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17650, outblocks ~0
+<<<17<<<
+>>>18>>>
+Tue  9 Aug 08:37:52 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284085 exit codes: 255
+Application 2284085 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17658, outblocks ~0
+<<<18<<<
+>>>19>>>
+Tue  9 Aug 08:38:00 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284090 exit codes: 255
+Application 2284090 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17658, outblocks ~0
+<<<19<<<
+>>>20>>>
+Tue  9 Aug 08:38:09 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284095 exit codes: 255
+Application 2284095 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17658, outblocks ~0
+<<<20<<<
+>>>21>>>
+Tue  9 Aug 08:38:17 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284100 exit codes: 255
+Application 2284100 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17658, outblocks ~0
+<<<21<<<
+>>>22>>>
+Tue  9 Aug 08:38:25 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284105 exit codes: 255
+Application 2284105 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17658, outblocks ~0
+<<<22<<<
+>>>23>>>
+Tue  9 Aug 08:38:34 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284111 exit codes: 255
+Application 2284111 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17658, outblocks ~0
+<<<23<<<
+>>>24>>>
+Tue  9 Aug 08:38:42 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284116 exit codes: 255
+Application 2284116 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17658, outblocks ~0
+<<<24<<<
+>>>25>>>
+Tue  9 Aug 08:38:51 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284127 exit codes: 255
+Application 2284127 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17644, outblocks ~0
+<<<25<<<
+>>>26>>>
+Tue  9 Aug 08:38:59 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284133 exit codes: 255
+Application 2284133 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17644, outblocks ~0
+<<<26<<<
+>>>27>>>
+Tue  9 Aug 08:39:07 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284139 exit codes: 255
+Application 2284139 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<27<<<
+>>>28>>>
+Tue  9 Aug 08:39:16 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284145 exit codes: 255
+Application 2284145 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17644, outblocks ~0
+<<<28<<<
+>>>29>>>
+Tue  9 Aug 08:39:24 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284154 exit codes: 255
+Application 2284154 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17658, outblocks ~0
+<<<29<<<
+>>>30>>>
+Tue  9 Aug 08:39:33 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284162 exit codes: 255
+Application 2284162 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<30<<<
+>>>31>>>
+Tue  9 Aug 08:39:41 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284169 exit codes: 255
+Application 2284169 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<31<<<
+>>>32>>>
+Tue  9 Aug 08:39:49 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284175 exit codes: 255
+Application 2284175 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<32<<<
+>>>33>>>
+Tue  9 Aug 08:39:58 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284183 exit codes: 255
+Application 2284183 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<33<<<
+>>>34>>>
+Tue  9 Aug 08:40:06 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284189 exit codes: 255
+Application 2284189 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<34<<<
+>>>35>>>
+Tue  9 Aug 08:40:14 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284195 exit codes: 255
+Application 2284195 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17634, outblocks ~0
+<<<35<<<
+>>>36>>>
+Tue  9 Aug 08:40:23 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284203 exit codes: 255
+Application 2284203 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17656, outblocks ~0
+<<<36<<<
+>>>37>>>
+Tue  9 Aug 08:40:31 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284209 exit codes: 255
+Application 2284209 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<37<<<
+>>>38>>>
+Tue  9 Aug 08:40:40 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284216 exit codes: 255
+Application 2284216 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<38<<<
+>>>39>>>
+Tue  9 Aug 08:40:48 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284223 exit codes: 255
+Application 2284223 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<39<<<
+>>>40>>>
+Tue  9 Aug 08:40:56 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284230 exit codes: 255
+Application 2284230 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<40<<<
+>>>41>>>
+Tue  9 Aug 08:41:05 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284238 exit codes: 255
+Application 2284238 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<41<<<
+>>>42>>>
+Tue  9 Aug 08:41:13 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284244 exit codes: 255
+Application 2284244 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<42<<<
+>>>43>>>
+Tue  9 Aug 08:41:21 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284251 exit codes: 255
+Application 2284251 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<43<<<
+>>>44>>>
+Tue  9 Aug 08:41:30 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284257 exit codes: 255
+Application 2284257 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<44<<<
+>>>45>>>
+Tue  9 Aug 08:41:38 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284263 exit codes: 255
+Application 2284263 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<45<<<
+>>>46>>>
+Tue  9 Aug 08:41:46 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284269 exit codes: 255
+Application 2284269 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<46<<<
+>>>47>>>
+Tue  9 Aug 08:41:55 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284276 exit codes: 255
+Application 2284276 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<47<<<
+>>>48>>>
+Tue  9 Aug 08:42:03 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284282 exit codes: 255
+Application 2284282 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<48<<<
+>>>49>>>
+Tue  9 Aug 08:42:12 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284288 exit codes: 255
+Application 2284288 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<49<<<
+>>>50>>>
+Tue  9 Aug 08:42:20 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284295 exit codes: 255
+Application 2284295 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<50<<<
+>>>51>>>
+Tue  9 Aug 08:42:28 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284304 exit codes: 255
+Application 2284304 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<51<<<
+>>>52>>>
+Tue  9 Aug 08:42:37 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284312 exit codes: 255
+Application 2284312 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<52<<<
+>>>53>>>
+Tue  9 Aug 08:42:45 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284320 exit codes: 255
+Application 2284320 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<53<<<
+>>>54>>>
+Tue  9 Aug 08:42:53 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284327 exit codes: 255
+Application 2284327 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<54<<<
+>>>55>>>
+Tue  9 Aug 08:43:02 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284334 exit codes: 255
+Application 2284334 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<55<<<
+>>>56>>>
+Tue  9 Aug 08:43:10 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284341 exit codes: 255
+Application 2284341 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<56<<<
+>>>57>>>
+Tue  9 Aug 08:43:18 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284348 exit codes: 255
+Application 2284348 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<57<<<
+>>>58>>>
+Tue  9 Aug 08:43:27 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284355 exit codes: 255
+Application 2284355 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<58<<<
+>>>59>>>
+Tue  9 Aug 08:43:35 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284362 exit codes: 255
+Application 2284362 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<59<<<
+>>>60>>>
+Tue  9 Aug 08:43:44 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284369 exit codes: 255
+Application 2284369 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<60<<<
+>>>61>>>
+Tue  9 Aug 08:43:52 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284376 exit codes: 255
+Application 2284376 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<61<<<
+>>>62>>>
+Tue  9 Aug 08:44:00 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284382 exit codes: 255
+Application 2284382 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<62<<<
+>>>63>>>
+Tue  9 Aug 08:44:09 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284390 exit codes: 255
+Application 2284390 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<63<<<
+>>>64>>>
+Tue  9 Aug 08:44:17 UTC 2022
+--------------------------------------------------------------------------
+Direct launch with aprun only works when either the PMI_NO_FORK environment
+variable is set, or Open MPI is built with dlopen support disabled.
+--------------------------------------------------------------------------
+Application 2284395 exit codes: 255
+Application 2284395 resources: utime ~0s, stime ~3s, Rss ~8668, inblocks ~17666, outblocks ~0
+<<<64<<<
+============================= PBS epilogue =============================
+
+End of Job Report
+Run at 2022-08-09 08:44:31 for job 228457.xci00
+Submitted              : 2022-08-09 08:35:33
+Queued                 : 2022-08-09 08:35:33
+Started                : 2022-08-09 08:35:33
+Completed              : 2022-08-09 08:44:31
+Queued Time            : 0:00:00 (0 seconds)
+Elapsed Time           : 0:08:53 (533 seconds, 7% of limit)
+Walltime Limit         : 2:00:00 (7200 seconds)
+Node Time Limit        : 2:00:00 (7200 seconds)
+Node Time              : 0:08:53 (533 seconds, 7% of limit)
+Job Name               : scale_cloverleaf-tx2_nvhpc-22.7_std-indices
+Queue                  : arm
+Owner                  : br-wlin
+Group                  : -default-
+Project                : GW03
+Subproject             : 
+Funding                : 
+Trustzone              : 
+STDOUT                 : /home/br-wlin/performance-portability/benchmarking/2022/cloverleaf/results/scale_cloverleaf-tx2_nvhpc-22.7_std-indices.out
+STDERR                 : /home/br-wlin/performance-portability/benchmarking/2022/cloverleaf/results/scale_cloverleaf-tx2_nvhpc-22.7_std-indices.e228457
+Job Directory          : /home/br-wlin/pbs.228457.xci00.x8z
+Job Arch               : XT
+CPU Core Type          : arm
+Total Nodes            : 1
+Total Tasks            : 64
+Parent Node            : xcimom
+Parent Node Memory     : 
+Parent Node CPU Time   : 
+Compute Nodes          : 285
+Electrical Groups      : 1
+Run Version            : 1
+
+For more information see https://gw4-isambard.github.io/docs/

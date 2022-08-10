@@ -1,45 +1,45 @@
-Sat 30 Jul 05:39:10 UTC 2022
+Sun 31 Jul 02:59:55 UTC 2022
 /home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_nvhpc-22.5_std-indices
-	linux-vdso.so.1 (0x0000400033c0f000)
-	libacchost.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libacchost.so (0x0000400033c20000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x0000400033cb4000)
-	libatomic.so.1 => /usr/lib64/gcc/aarch64-suse-linux/7/../../../../lib64/libatomic.so.1 (0x0000400033cd5000)
-	libnvhpcatm.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libnvhpcatm.so (0x0000400033cf7000)
-	libstdc++.so.6 => /usr/lib64/gcc/aarch64-suse-linux/7/../../../../lib64/libstdc++.so.6 (0x0000400033d1a000)
-	libnvomp.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libnvomp.so (0x0000400033f00000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x00004000340ec000)
-	libnvcpumath-armv8.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libnvcpumath-armv8.so (0x0000400034121000)
-	libnvc.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libnvc.so (0x0000400034266000)
-	librt.so.1 => /lib64/librt.so.1 (0x00004000343ba000)
-	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x00004000343db000)
-	libc.so.6 => /lib64/libc.so.6 (0x000040003440c000)
-	libm.so.6 => /lib64/libm.so.6 (0x0000400034592000)
-	/lib/ld-linux-aarch64.so.1 (0x0000400033bee000)
+	linux-vdso.so.1 (0x0000400033933000)
+	libacchost.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libacchost.so (0x0000400033944000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00004000339d8000)
+	libatomic.so.1 => /usr/lib64/gcc/aarch64-suse-linux/7/../../../../lib64/libatomic.so.1 (0x00004000339f9000)
+	libnvhpcatm.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libnvhpcatm.so (0x0000400033a1b000)
+	libstdc++.so.6 => /usr/lib64/gcc/aarch64-suse-linux/7/../../../../lib64/libstdc++.so.6 (0x0000400033a3e000)
+	libnvomp.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libnvomp.so (0x0000400033c24000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000400033e10000)
+	libnvcpumath-armv8.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libnvcpumath-armv8.so (0x0000400033e45000)
+	libnvc.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libnvc.so (0x0000400033f8a000)
+	librt.so.1 => /lib64/librt.so.1 (0x00004000340de000)
+	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x00004000340ff000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000400034130000)
+	libm.so.6 => /lib64/libm.so.6 (0x00004000342b6000)
+	/lib/ld-linux-aarch64.so.1 (0x0000400033912000)
 miniBUDE:  
 compile_commands:
    - "/lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/bin/nvc++ -DSTD_INDICES -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/std-indices -I/home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_nvhpc-22.5_std-indices/miniBUDE/build/generated -fast  -DNDEBUG -O3 -march=native -target=multicore -stdpar -march=host -fast --c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
 vcs:
-  commit:  653fef1ecd463ecb51371ac45e89dcb87fe7400c*
-  author:  "Tom Lin (tom91136@gmail.com)"
-  date:    "2022-07-29 20:51:42 +0000"
-  subject: "Initial 2022 results"
+  commit:  29c6cc0861aef6c564d956bdd5176e4b0d80362e*
+  author:  "u162741 (u162741@s001-n015.aidevcloud)"
+  date:    "2022-07-30 19:52:09 -0700"
+  subject: "Add UHD P630 config"
 host_cpu:
   ~
-time: { epoch_s:1659159553, formatted: "Sat Jul 30 05:39:13 2022 GMT" }
+time: { epoch_s:1659236398, formatted: "Sun Jul 31 02:59:58 2022 GMT" }
 devices:
   0: "(not exposed)"
-Application 2279535 resources: utime ~0s, stime ~3s, Rss ~8664, inblocks ~8630, outblocks ~0
+Application 2279852 resources: utime ~0s, stime ~3s, Rss ~8640, inblocks ~8630, outblocks ~0
 miniBUDE:  
 compile_commands:
    - "/lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/bin/nvc++ -DSTD_INDICES -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/std-indices -I/home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_nvhpc-22.5_std-indices/miniBUDE/build/generated -fast  -DNDEBUG -O3 -march=native -target=multicore -stdpar -march=host -fast --c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
 vcs:
-  commit:  653fef1ecd463ecb51371ac45e89dcb87fe7400c*
-  author:  "Tom Lin (tom91136@gmail.com)"
-  date:    "2022-07-29 20:51:42 +0000"
-  subject: "Initial 2022 results"
+  commit:  29c6cc0861aef6c564d956bdd5176e4b0d80362e*
+  author:  "u162741 (u162741@s001-n015.aidevcloud)"
+  date:    "2022-07-30 19:52:09 -0700"
+  subject: "Add UHD P630 config"
 host_cpu:
   ~
-time: { epoch_s:1659159559, formatted: "Sat Jul 30 05:39:19 2022 GMT" }
+time: { epoch_s:1659236404, formatted: "Sun Jul 31 03:00:04 2022 GMT" }
 deck:
   path:         "miniBUDE/data/bm1"
   poses:        65536
@@ -87,16 +87,16 @@ device: { index: 0,  name: "(not exposed)" }
 results:
   - outcome:             { valid: true, max_diff_%: 0.003 }
     param:               { ppwi: 1, wgsize: 1 }
-    raw_iterations:      [649.374,544.374,543.98,543.698,543.948,544.295,543.998,544.412,543.517,544.199]
-    context_ms:          0.561834
-    sum_ms:              4352.048
-    avg_ms:              544.006
-    min_ms:              543.517
-    max_ms:              544.412
-    stddev_ms:           0.279
-    giga_interactions/s: 2.938
-    gflop/s:             117.586
-    gfinst/s:            73.450
+    raw_iterations:      [609.725,542.587,542.899,542.841,543.169,542.899,542.959,543.121,542.991,543.258]
+    context_ms:          0.557260
+    sum_ms:              4344.137
+    avg_ms:              543.017
+    min_ms:              542.841
+    max_ms:              543.258
+    stddev_ms:           0.139
+    giga_interactions/s: 2.943
+    gflop/s:             117.800
+    gfinst/s:            73.584
     energies:            
       - 865.52
       - 25.07
@@ -108,16 +108,16 @@ results:
       - 135.59
   - outcome:             { valid: false, max_diff_%: 6220083.681 }
     param:               { ppwi: 2, wgsize: 1 }
-    raw_iterations:      [391.312,392.222,391.815,391.966,392.285,391.564,392.064,391.785,391.783,392.022]
-    context_ms:          0.653363
-    sum_ms:              3135.284
-    avg_ms:              391.911
-    min_ms:              391.564
-    max_ms:              392.285
-    stddev_ms:           0.206
-    giga_interactions/s: 4.078
-    gflop/s:             142.825
-    gfinst/s:            101.955
+    raw_iterations:      [390.642,391.224,390.85,390.762,391.188,390.735,390.622,391.224,390.385,391.162]
+    context_ms:          0.634000
+    sum_ms:              3126.929
+    avg_ms:              390.866
+    min_ms:              390.385
+    max_ms:              391.224
+    stddev_ms:           0.283
+    giga_interactions/s: 4.089
+    gflop/s:             143.206
+    gfinst/s:            102.228
     energies:            
       - 865.52
       - 247.66
@@ -129,16 +129,16 @@ results:
       - -26.51
   - outcome:             { valid: false, max_diff_%: 5838863.370 }
     param:               { ppwi: 4, wgsize: 1 }
-    raw_iterations:      [280.771,280.542,280.797,280.718,280.531,280.633,280.948,280.5,280.482,280.903]
-    context_ms:          0.632778
-    sum_ms:              2245.513
-    avg_ms:              280.689
-    min_ms:              280.482
-    max_ms:              280.948
-    stddev_ms:           0.170
-    giga_interactions/s: 5.694
-    gflop/s:             185.179
-    gfinst/s:            142.354
+    raw_iterations:      [280.607,280.117,280.388,280.458,280.167,280.248,280.367,280.438,280.246,280.391]
+    context_ms:          0.640710
+    sum_ms:              2242.704
+    avg_ms:              280.338
+    min_ms:              280.167
+    max_ms:              280.458
+    stddev_ms:           0.098
+    giga_interactions/s: 5.701
+    gflop/s:             185.411
+    gfinst/s:            142.533
     energies:            
       - 865.52
       - 247.66
@@ -150,16 +150,16 @@ results:
       - 51.98
   - outcome:             { valid: true, max_diff_%: 0.003 }
     param:               { ppwi: 8, wgsize: 1 }
-    raw_iterations:      [326.281,325.681,326.265,326.37,326.041,326.215,326.559,326.019,326.355,326.56]
-    context_ms:          0.614279
-    sum_ms:              2610.385
-    avg_ms:              326.298
-    min_ms:              326.019
-    max_ms:              326.560
-    stddev_ms:           0.193
-    giga_interactions/s: 4.898
-    gflop/s:             153.171
-    gfinst/s:            122.456
+    raw_iterations:      [325.016,324.356,324.855,324.872,324.536,325.17,324.947,324.517,324.647,325.254]
+    context_ms:          0.600590
+    sum_ms:              2598.797
+    avg_ms:              324.850
+    min_ms:              324.517
+    max_ms:              325.254
+    stddev_ms:           0.257
+    giga_interactions/s: 4.920
+    gflop/s:             153.854
+    gfinst/s:            123.002
     energies:            
       - 865.52
       - 25.07
@@ -171,16 +171,16 @@ results:
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.003 }
     param:               { ppwi: 16, wgsize: 1 }
-    raw_iterations:      [306.596,306.597,307.418,306.663,306.725,307.173,306.959,306.88,307.087,307.004]
-    context_ms:          0.651228
-    sum_ms:              2455.908
-    avg_ms:              306.989
-    min_ms:              306.663
-    max_ms:              307.418
-    stddev_ms:           0.228
-    giga_interactions/s: 5.206
-    gflop/s:             159.551
-    gfinst/s:            130.159
+    raw_iterations:      [306.175,306.296,306.691,306.202,306.476,306.659,306.378,306.221,306.621,306.719]
+    context_ms:          0.642570
+    sum_ms:              2451.967
+    avg_ms:              306.496
+    min_ms:              306.202
+    max_ms:              306.719
+    stddev_ms:           0.196
+    giga_interactions/s: 5.215
+    gflop/s:             159.808
+    gfinst/s:            130.368
     energies:            
       - 865.52
       - 25.07
@@ -192,16 +192,16 @@ results:
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.003 }
     param:               { ppwi: 32, wgsize: 1 }
-    raw_iterations:      [292.329,292.586,292.623,292.717,294.335,292.937,292.795,292.281,292.953,292.736]
-    context_ms:          0.606724
-    sum_ms:              2343.377
-    avg_ms:              292.922
-    min_ms:              292.281
-    max_ms:              294.335
-    stddev_ms:           0.569
-    giga_interactions/s: 5.456
-    gflop/s:             165.508
-    gfinst/s:            136.409
+    raw_iterations:      [290.548,290.744,291.294,290.704,290.63,291.342,291.301,290.526,290.908,291.283]
+    context_ms:          0.593767
+    sum_ms:              2327.988
+    avg_ms:              290.998
+    min_ms:              290.526
+    max_ms:              291.342
+    stddev_ms:           0.323
+    giga_interactions/s: 5.492
+    gflop/s:             166.602
+    gfinst/s:            137.311
     energies:            
       - 865.52
       - 25.07
@@ -213,16 +213,16 @@ results:
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.003 }
     param:               { ppwi: 64, wgsize: 1 }
-    raw_iterations:      [290.439,290.206,290.651,290.343,290.087,290.717,290.389,290.249,290.304,290.75]
-    context_ms:          0.640103
-    sum_ms:              2323.491
-    avg_ms:              290.436
-    min_ms:              290.087
-    max_ms:              290.750
-    stddev_ms:           0.226
-    giga_interactions/s: 5.503
-    gflop/s:             166.064
-    gfinst/s:            137.577
+    raw_iterations:      [288.677,288.661,288.921,288.984,288.574,288.621,288.943,288.404,288.661,288.907]
+    context_ms:          0.621000
+    sum_ms:              2310.017
+    avg_ms:              288.752
+    min_ms:              288.404
+    max_ms:              288.984
+    stddev_ms:           0.200
+    giga_interactions/s: 5.535
+    gflop/s:             167.033
+    gfinst/s:            138.379
     energies:            
       - 865.52
       - 25.07
@@ -234,16 +234,16 @@ results:
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.003 }
     param:               { ppwi: 128, wgsize: 1 }
-    raw_iterations:      [286.572,286.39,286.807,286.571,286.505,286.636,286.909,286.395,286.465,286.644]
-    context_ms:          0.627403
-    sum_ms:              2292.932
-    avg_ms:              286.617
-    min_ms:              286.395
-    max_ms:              286.909
-    stddev_ms:           0.162
-    giga_interactions/s: 5.576
-    gflop/s:             167.842
-    gfinst/s:            139.410
+    raw_iterations:      [285.437,285.306,285.327,285.531,285.074,285.246,285.61,285.418,285.09,285.404]
+    context_ms:          0.647014
+    sum_ms:              2282.700
+    avg_ms:              285.338
+    min_ms:              285.074
+    max_ms:              285.610
+    stddev_ms:           0.181
+    giga_interactions/s: 5.601
+    gflop/s:             168.594
+    gfinst/s:            140.035
     energies:            
       - 865.52
       - 25.07
@@ -253,18 +253,18 @@ results:
       - 707.35
       - 33.95
       - 135.59
-best: { min_ms: 280.48, max_ms: 280.95, sum_ms: 2245.51, avg_ms: 280.69, ppwi: 4, wgsize: 1 }
-Application 2279536 exit codes: 1
-Application 2279536 resources: utime ~1732s, stime ~12s, Rss ~13428, inblocks ~13212, outblocks ~0
+best: { min_ms: 280.17, max_ms: 280.46, sum_ms: 2242.70, avg_ms: 280.34, ppwi: 4, wgsize: 1 }
+Application 2279853 exit codes: 1
+Application 2279853 resources: utime ~1727s, stime ~12s, Rss ~13432, inblocks ~13212, outblocks ~0
 ============================= PBS epilogue =============================
 
 End of Job Report
-Run at 2022-07-30 05:39:54 for job 226696.xci00
-Submitted              : 2022-07-30 05:39:09
-Queued                 : 2022-07-30 05:39:09
-Started                : 2022-07-30 05:39:09
-Completed              : 2022-07-30 05:39:54
-Queued Time            : 0:00:00 (0 seconds)
+Run at 2022-07-31 03:00:39 for job 226832.xci00
+Submitted              : 2022-07-31 02:59:53
+Queued                 : 2022-07-31 02:59:53
+Started                : 2022-07-31 02:59:54
+Completed              : 2022-07-31 03:00:39
+Queued Time            : 0:00:01 (1 second)
 Elapsed Time           : 0:00:40 (40 seconds, 4% of limit)
 Walltime Limit         : 0:15:00 (900 seconds)
 Node Time Limit        : 0:15:00 (900 seconds)
@@ -278,16 +278,16 @@ Subproject             :
 Funding                : 
 Trustzone              : 
 STDOUT                 : /home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_nvhpc-22.5_std-indices.out
-STDERR                 : /home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_nvhpc-22.5_std-indices.e226696
-Job Directory          : /home/br-wlin/pbs.226696.xci00.x8z
+STDERR                 : /home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_nvhpc-22.5_std-indices.e226832
+Job Directory          : /home/br-wlin/pbs.226832.xci00.x8z
 Job Arch               : XT
 CPU Core Type          : arm
 Total Nodes            : 1
 Total Tasks            : 64
-Parent Node            : xcimom2
+Parent Node            : xcimom
 Parent Node Memory     : 
 Parent Node CPU Time   : 
-Compute Nodes          : 303
+Compute Nodes          : 320
 Electrical Groups      : 1
 Run Version            : 1
 

@@ -1,0 +1,1263 @@
+Tue  9 Aug 08:25:16 UTC 2022
+/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_gcc-12.1_omp
+	linux-vdso.so.1 (0x000040000640d000)
+	libgomp.so.1 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libgomp.so.1 (0x000040000641e000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00004000064a1000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libstdc++.so.6 (0x00004000064d6000)
+	libm.so.6 => /lib64/libm.so.6 (0x00004000066fc000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libgcc_s.so.1 (0x00004000067bd000)
+	libc.so.6 => /lib64/libc.so.6 (0x00004000067ee000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000400006974000)
+	/lib/ld-linux-aarch64.so.1 (0x00004000063ec000)
+>>>1>>>
+Tue  9 Aug 08:25:16 UTC 2022
+0: CPU
+Application 2283962 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39056, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        13297.945   0.64596     0.64824     0.64699     
+Mul         12648.476   0.67913     0.68111     0.68008     
+Add         14922.859   0.86343     0.86568     0.86455     
+Triad       14930.817   0.86297     0.86534     0.86403     
+Dot         9523.824    0.90194     0.90345     0.90268     
+Application 2283963 resources: utime ~402s, stime ~9s, Rss ~25168180, inblocks ~39904, outblocks ~0
+<<<1<<<
+>>>2>>>
+Tue  9 Aug 08:32:14 UTC 2022
+0: CPU
+Application 2283988 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        25898.654   0.33167     0.33277     0.33230     
+Mul         24547.004   0.34994     0.35135     0.35073     
+Add         29324.452   0.43939     0.44133     0.44043     
+Triad       29367.523   0.43875     0.44064     0.43996     
+Dot         18921.215   0.45398     0.45484     0.45454     
+Application 2283989 resources: utime ~410s, stime ~10s, Rss ~25168168, inblocks ~39904, outblocks ~0
+<<<2<<<
+>>>3>>>
+Tue  9 Aug 08:35:58 UTC 2022
+0: CPU
+Application 2284026 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        34742.498   0.24725     0.24768     0.24748     
+Mul         33709.428   0.25482     0.25526     0.25501     
+Add         39117.719   0.32939     0.33002     0.32973     
+Triad       39126.857   0.32931     0.32988     0.32965     
+Dot         28367.253   0.30281     0.30326     0.30303     
+Application 2284029 resources: utime ~425s, stime ~10s, Rss ~25167884, inblocks ~39904, outblocks ~0
+<<<3<<<
+>>>4>>>
+Tue  9 Aug 08:38:46 UTC 2022
+0: CPU
+Application 2284118 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        48329.149   0.17774     0.17820     0.17797     
+Mul         46215.137   0.18587     0.18690     0.18647     
+Add         55280.845   0.23308     0.23391     0.23347     
+Triad       55390.081   0.23262     0.23427     0.23296     
+Dot         37420.584   0.22955     0.23000     0.22976     
+Application 2284126 resources: utime ~431s, stime ~12s, Rss ~25167876, inblocks ~39904, outblocks ~0
+<<<4<<<
+>>>5>>>
+Tue  9 Aug 08:40:53 UTC 2022
+0: CPU
+Application 2284227 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        54757.125   0.15687     0.15708     0.15698     
+Mul         53156.715   0.16160     0.16196     0.16175     
+Add         61393.968   0.20987     0.21018     0.20999     
+Triad       61394.224   0.20987     0.21028     0.21001     
+Dot         46420.415   0.18505     0.18535     0.18516     
+Application 2284231 resources: utime ~447s, stime ~12s, Rss ~25167588, inblocks ~39904, outblocks ~0
+<<<5<<<
+>>>6>>>
+Tue  9 Aug 08:42:46 UTC 2022
+0: CPU
+Application 2284318 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        64160.086   0.13388     0.13424     0.13406     
+Mul         62233.142   0.13803     0.13846     0.13823     
+Add         71705.952   0.17969     0.18025     0.17997     
+Triad       71668.995   0.17978     0.18027     0.18002     
+Dot         55687.690   0.15425     0.15466     0.15443     
+Application 2284322 resources: utime ~459s, stime ~13s, Rss ~25167300, inblocks ~39904, outblocks ~0
+<<<6<<<
+>>>7>>>
+Tue  9 Aug 08:44:26 UTC 2022
+0: CPU
+Application 2284400 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        72260.505   0.11887     0.11913     0.11898     
+Mul         70311.255   0.12217     0.12243     0.12232     
+Add         80732.917   0.15960     0.16000     0.15980     
+Triad       80768.833   0.15953     0.15997     0.15977     
+Dot         64241.855   0.13371     0.13388     0.13379     
+Application 2284402 resources: utime ~473s, stime ~19s, Rss ~25167820, inblocks ~39904, outblocks ~0
+<<<7<<<
+>>>8>>>
+Tue  9 Aug 08:45:56 UTC 2022
+0: CPU
+Application 2284437 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        86298.536   0.09954     0.09993     0.09973     
+Mul         82804.731   0.10374     0.10403     0.10389     
+Add         96910.960   0.13296     0.13330     0.13313     
+Triad       96851.702   0.13304     0.13341     0.13325     
+Dot         72570.013   0.11837     0.11857     0.11847     
+Application 2284440 resources: utime ~479s, stime ~19s, Rss ~25166764, inblocks ~39904, outblocks ~0
+<<<8<<<
+>>>9>>>
+Tue  9 Aug 08:47:16 UTC 2022
+0: CPU
+Application 2284459 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        86901.923   0.09885     0.09903     0.09895     
+Mul         84901.727   0.10118     0.10134     0.10124     
+Add         95703.361   0.13463     0.13484     0.13472     
+Triad       95753.480   0.13456     0.13484     0.13468     
+Dot         80735.407   0.10640     0.10659     0.10648     
+Application 2284460 resources: utime ~510s, stime ~36s, Rss ~25166492, inblocks ~39904, outblocks ~0
+<<<9<<<
+>>>10>>>
+Tue  9 Aug 08:48:37 UTC 2022
+0: CPU
+Application 2284473 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        89245.429   0.09625     0.09647     0.09637     
+Mul         87781.870   0.09786     0.09805     0.09797     
+Add         98064.881   0.13139     0.13172     0.13155     
+Triad       98164.946   0.13126     0.13158     0.13143     
+Dot         88093.841   0.09751     0.09770     0.09760     
+Application 2284475 resources: utime ~547s, stime ~23s, Rss ~25167532, inblocks ~39904, outblocks ~0
+<<<10<<<
+>>>11>>>
+Tue  9 Aug 08:49:54 UTC 2022
+0: CPU
+Application 2284483 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        94703.941   0.09070     0.09091     0.09080     
+Mul         93348.401   0.09202     0.09217     0.09209     
+Add         103274.793  0.12476     0.12503     0.12491     
+Triad       103349.618  0.12467     0.12493     0.12479     
+Dot         95732.435   0.08973     0.08990     0.08981     
+Application 2284486 resources: utime ~568s, stime ~31s, Rss ~25168328, inblocks ~39904, outblocks ~0
+<<<11<<<
+>>>12>>>
+Tue  9 Aug 08:51:08 UTC 2022
+0: CPU
+Application 2284498 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        96200.419   0.08929     0.08951     0.08939     
+Mul         95083.964   0.09034     0.09054     0.09043     
+Add         105045.149  0.12266     0.13169     0.12367     
+Triad       105054.532  0.12265     0.13208     0.12378     
+Dot         102218.152  0.08404     0.08421     0.08413     
+Application 2284500 resources: utime ~608s, stime ~47s, Rss ~25165648, inblocks ~39904, outblocks ~0
+<<<12<<<
+>>>13>>>
+Tue  9 Aug 08:52:23 UTC 2022
+0: CPU
+Application 2284510 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        100656.759  0.08534     0.09381     0.08570     
+Mul         99618.242   0.08623     0.08643     0.08632     
+Add         108568.946  0.11868     0.13810     0.12495     
+Triad       108737.438  0.11850     0.13704     0.12389     
+Dot         108693.790  0.07903     0.08040     0.07915     
+Application 2284511 resources: utime ~631s, stime ~55s, Rss ~25166948, inblocks ~39904, outblocks ~0
+<<<13<<<
+>>>14>>>
+Tue  9 Aug 08:53:36 UTC 2022
+0: CPU
+Application 2284523 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        104887.797  0.08190     0.08783     0.08213     
+Mul         103914.918  0.08266     0.09090     0.08286     
+Add         106410.326  0.12109     0.14677     0.13397     
+Triad       110682.140  0.11641     0.13798     0.12650     
+Dot         114896.536  0.07476     0.07499     0.07489     
+Application 2284524 resources: utime ~650s, stime ~40s, Rss ~25166708, inblocks ~39904, outblocks ~0
+<<<14<<<
+>>>15>>>
+Tue  9 Aug 08:54:48 UTC 2022
+0: CPU
+Application 2284537 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        108710.267  0.07902     0.08431     0.07945     
+Mul         107819.333  0.07967     0.08486     0.07990     
+Add         98379.868   0.13097     0.14238     0.13963     
+Triad       102654.699  0.12552     0.14179     0.13502     
+Dot         118487.939  0.07250     0.07267     0.07257     
+Application 2284538 resources: utime ~678s, stime ~52s, Rss ~25166448, inblocks ~39904, outblocks ~0
+<<<15<<<
+>>>16>>>
+Tue  9 Aug 08:56:02 UTC 2022
+0: CPU
+Application 2284550 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        113596.572  0.07562     0.07573     0.07567     
+Mul         112954.673  0.07605     0.07621     0.07611     
+Add         120802.295  0.10666     0.10738     0.10681     
+Triad       120879.250  0.10659     0.10858     0.10679     
+Dot         119883.831  0.07165     0.07181     0.07173     
+Application 2284552 resources: utime ~718s, stime ~124s, Rss ~25164584, inblocks ~39904, outblocks ~0
+<<<16<<<
+>>>17>>>
+Tue  9 Aug 08:57:13 UTC 2022
+0: CPU
+Application 2284563 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        104204.183  0.08243     0.09502     0.09120     
+Mul         106737.717  0.08048     0.09529     0.08921     
+Add         93983.332   0.13710     0.13741     0.13724     
+Triad       94108.113   0.13692     0.13861     0.13720     
+Dot         122243.689  0.07027     0.07493     0.07114     
+Application 2284566 resources: utime ~754s, stime ~133s, Rss ~25165384, inblocks ~39904, outblocks ~0
+<<<17<<<
+>>>18>>>
+Tue  9 Aug 08:58:33 UTC 2022
+0: CPU
+Application 2284577 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        92983.549   0.09238     0.09373     0.09315     
+Mul         92357.386   0.09301     0.09707     0.09512     
+Add         96837.373   0.13306     0.13331     0.13315     
+Triad       96889.676   0.13299     0.13324     0.13312     
+Dot         124863.693  0.06879     0.08236     0.07208     
+Application 2284580 resources: utime ~781s, stime ~79s, Rss ~25165048, inblocks ~39904, outblocks ~0
+<<<18<<<
+>>>19>>>
+Tue  9 Aug 08:59:50 UTC 2022
+0: CPU
+Application 2284594 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        93518.468   0.09185     0.09228     0.09207     
+Mul         91324.941   0.09406     0.09469     0.09436     
+Add         98089.818   0.13136     0.13198     0.13185     
+Triad       97875.897   0.13165     0.13190     0.13176     
+Dot         122931.722  0.06988     0.08488     0.07505     
+Application 2284596 resources: utime ~817s, stime ~78s, Rss ~25165632, inblocks ~39904, outblocks ~0
+<<<19<<<
+>>>20>>>
+Tue  9 Aug 09:01:06 UTC 2022
+0: CPU
+Application 2284610 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        95582.283   0.08987     0.09010     0.08999     
+Mul         93625.067   0.09175     0.09201     0.09186     
+Add         101345.239  0.12714     0.12737     0.12725     
+Triad       101375.538  0.12710     0.12812     0.12719     
+Dot         119226.410  0.07205     0.08951     0.08017     
+Application 2284611 resources: utime ~853s, stime ~179s, Rss ~25167504, inblocks ~39904, outblocks ~0
+<<<20<<<
+>>>21>>>
+Tue  9 Aug 09:02:26 UTC 2022
+0: CPU
+Application 2284631 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        97119.226   0.08845     0.08866     0.08854     
+Mul         95326.480   0.09011     0.09034     0.09020     
+Add         103409.688  0.12460     0.12491     0.12479     
+Triad       103398.798  0.12461     0.12481     0.12473     
+Dot         118221.866  0.07266     0.08491     0.08082     
+Application 2284632 resources: utime ~888s, stime ~189s, Rss ~25164844, inblocks ~39904, outblocks ~0
+<<<21<<<
+>>>22>>>
+Tue  9 Aug 09:03:46 UTC 2022
+0: CPU
+Application 2284643 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        98272.822   0.08741     0.08779     0.08754     
+Mul         97039.538   0.08852     0.08884     0.08863     
+Add         106480.170  0.12101     0.12124     0.12108     
+Triad       106578.258  0.12090     0.12114     0.12098     
+Dot         122568.572  0.07008     0.08245     0.07805     
+Application 2284644 resources: utime ~913s, stime ~107s, Rss ~25165568, inblocks ~39904, outblocks ~0
+<<<22<<<
+>>>23>>>
+Tue  9 Aug 09:05:00 UTC 2022
+0: CPU
+Application 2284660 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        99224.359   0.08657     0.08677     0.08669     
+Mul         97612.208   0.08800     0.08813     0.08807     
+Add         106350.557  0.12116     0.12275     0.12243     
+Triad       106810.164  0.12063     0.12267     0.12234     
+Dot         119924.713  0.07163     0.08069     0.07635     
+Application 2284661 resources: utime ~953s, stime ~117s, Rss ~25166720, inblocks ~39904, outblocks ~0
+<<<23<<<
+>>>24>>>
+Tue  9 Aug 09:06:14 UTC 2022
+0: CPU
+Application 2284675 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        99782.566   0.08609     0.08653     0.08622     
+Mul         98823.496   0.08692     0.08898     0.08703     
+Add         108109.388  0.11918     0.12023     0.11991     
+Triad       107678.757  0.11966     0.12021     0.11983     
+Dot         118843.676  0.07228     0.07884     0.07599     
+Application 2284677 resources: utime ~992s, stime ~244s, Rss ~25163792, inblocks ~39904, outblocks ~0
+<<<24<<<
+>>>25>>>
+Tue  9 Aug 09:07:33 UTC 2022
+0: CPU
+Application 2284693 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        100537.482  0.08544     0.08569     0.08554     
+Mul         99292.284   0.08651     0.08672     0.08661     
+Add         109208.585  0.11798     0.12081     0.11940     
+Triad       109586.328  0.11758     0.12064     0.11928     
+Dot         118356.487  0.07258     0.07744     0.07526     
+Application 2284694 resources: utime ~1029s, stime ~250s, Rss ~25164984, inblocks ~39904, outblocks ~0
+<<<25<<<
+>>>26>>>
+Tue  9 Aug 09:08:52 UTC 2022
+0: CPU
+Application 2284711 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        98054.681   0.08760     0.09260     0.08989     
+Mul         98008.739   0.08764     0.09427     0.09104     
+Add         107004.570  0.12041     0.13064     0.12484     
+Triad       106372.562  0.12113     0.13137     0.12447     
+Dot         119450.586  0.07191     0.07683     0.07407     
+Application 2284712 resources: utime ~1066s, stime ~157s, Rss ~25166976, inblocks ~39904, outblocks ~0
+<<<26<<<
+>>>27>>>
+Tue  9 Aug 09:10:08 UTC 2022
+0: CPU
+Application 2284728 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        100012.587  0.08589     0.08613     0.08600     
+Mul         103020.788  0.08338     0.08658     0.08526     
+Add         112009.673  0.11503     0.11937     0.11689     
+Triad       112055.075  0.11499     0.11979     0.11693     
+Dot         122022.576  0.07040     0.07543     0.07283     
+Application 2284729 resources: utime ~1091s, stime ~167s, Rss ~25166432, inblocks ~39904, outblocks ~0
+<<<27<<<
+>>>28>>>
+Tue  9 Aug 09:11:22 UTC 2022
+0: CPU
+Application 2284745 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        96119.532   0.08937     0.09243     0.09099     
+Mul         95136.209   0.09029     0.09374     0.09221     
+Add         104186.444  0.12367     0.12996     0.12664     
+Triad       104502.326  0.12330     0.12910     0.12668     
+Dot         122012.976  0.07040     0.07439     0.07220     
+Application 2284746 resources: utime ~1154s, stime ~316s, Rss ~25166684, inblocks ~39904, outblocks ~0
+<<<28<<<
+>>>29>>>
+Tue  9 Aug 09:12:44 UTC 2022
+0: CPU
+Application 2284764 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        101825.979  0.08436     0.08516     0.08478     
+Mul         105764.974  0.08122     0.08428     0.08242     
+Add         112949.573  0.11408     0.11888     0.11738     
+Triad       113318.151  0.11371     0.11938     0.11714     
+Dot         124206.640  0.06916     0.07347     0.07150     
+Application 2284766 resources: utime ~1155s, stime ~339s, Rss ~25164268, inblocks ~39904, outblocks ~0
+<<<29<<<
+>>>30>>>
+Tue  9 Aug 09:14:03 UTC 2022
+0: CPU
+Application 2284781 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        94578.950   0.09082     0.09249     0.09160     
+Mul         94740.122   0.09067     0.09433     0.09297     
+Add         103061.120  0.12502     0.12841     0.12662     
+Triad       103169.001  0.12489     0.12852     0.12657     
+Dot         125290.257  0.06856     0.07296     0.07043     
+Application 2284782 resources: utime ~1232s, stime ~202s, Rss ~25162444, inblocks ~39904, outblocks ~0
+<<<30<<<
+>>>31>>>
+Tue  9 Aug 09:15:20 UTC 2022
+0: CPU
+Application 2284797 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        103274.127  0.08318     0.08356     0.08332     
+Mul         101893.326  0.08430     0.08796     0.08568     
+Add         110477.800  0.11663     0.12052     0.11801     
+Triad       109847.276  0.11730     0.12015     0.11850     
+Dot         124990.120  0.06872     0.07266     0.07048     
+Application 2284800 resources: utime ~1239s, stime ~379s, Rss ~25164292, inblocks ~39904, outblocks ~0
+<<<31<<<
+>>>32>>>
+Tue  9 Aug 09:16:40 UTC 2022
+0: CPU
+Application 2284818 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        115913.729  0.07411     0.07680     0.07534     
+Mul         113520.997  0.07567     0.07907     0.07695     
+Add         118577.295  0.10866     0.11356     0.11017     
+Triad       118588.732  0.10865     0.11186     0.10994     
+Dot         124627.239  0.06893     0.07275     0.07082     
+Application 2284820 resources: utime ~1238s, stime ~398s, Rss ~25164528, inblocks ~39904, outblocks ~0
+<<<32<<<
+>>>33>>>
+Tue  9 Aug 09:17:57 UTC 2022
+0: CPU
+Application 2284837 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        107803.690  0.07968     0.08053     0.07995     
+Mul         107271.742  0.08008     0.08213     0.08086     
+Add         115240.455  0.11181     0.11501     0.11286     
+Triad       115585.463  0.11148     0.11450     0.11258     
+Dot         130488.006  0.06583     0.07032     0.06807     
+Application 2284838 resources: utime ~1260s, stime ~389s, Rss ~25165632, inblocks ~39904, outblocks ~0
+<<<33<<<
+>>>34>>>
+Tue  9 Aug 09:19:15 UTC 2022
+0: CPU
+Application 2284856 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        99929.178   0.08596     0.08699     0.08648     
+Mul         98898.512   0.08686     0.08979     0.08781     
+Add         109363.068  0.11782     0.12028     0.11905     
+Triad       109329.606  0.11785     0.12018     0.11905     
+Dot         133340.895  0.06442     0.06956     0.06680     
+Application 2284859 resources: utime ~1287s, stime ~221s, Rss ~25160904, inblocks ~39904, outblocks ~0
+<<<34<<<
+>>>35>>>
+Tue  9 Aug 09:20:29 UTC 2022
+0: CPU
+Application 2284908 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        102811.840  0.08355     0.08473     0.08404     
+Mul         101840.347  0.08435     0.08627     0.08525     
+Add         112757.863  0.11427     0.11658     0.11550     
+Triad       112585.813  0.11445     0.11699     0.11565     
+Dot         136418.348  0.06297     0.06841     0.06604     
+Application 2284912 resources: utime ~1274s, stime ~217s, Rss ~25161160, inblocks ~39904, outblocks ~0
+<<<35<<<
+>>>36>>>
+Tue  9 Aug 09:21:42 UTC 2022
+0: CPU
+Application 2284926 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        105648.144  0.08131     0.08225     0.08178     
+Mul         104730.075  0.08202     0.08364     0.08293     
+Add         115919.394  0.11115     0.11348     0.11255     
+Triad       115452.243  0.11160     0.11385     0.11259     
+Dot         135577.280  0.06336     0.06826     0.06565     
+Application 2284928 resources: utime ~1277s, stime ~369s, Rss ~25161128, inblocks ~39904, outblocks ~0
+<<<36<<<
+>>>37>>>
+Tue  9 Aug 09:22:59 UTC 2022
+0: CPU
+Application 2284946 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        113899.878  0.07542     0.07743     0.07661     
+Mul         112794.063  0.07616     0.07868     0.07752     
+Add         121057.413  0.10644     0.10925     0.10811     
+Triad       121830.177  0.10576     0.10945     0.10794     
+Dot         136627.787  0.06287     0.06685     0.06497     
+Application 2284947 resources: utime ~1251s, stime ~366s, Rss ~25166684, inblocks ~39904, outblocks ~0
+<<<37<<<
+>>>38>>>
+Tue  9 Aug 09:24:14 UTC 2022
+0: CPU
+Application 2284965 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        131243.013  0.06545     0.06670     0.06605     
+Mul         130676.018  0.06573     0.07101     0.06980     
+Add         134021.652  0.09614     0.09937     0.09801     
+Triad       133969.691  0.09618     0.10019     0.09848     
+Dot         136714.757  0.06283     0.06645     0.06457     
+Application 2284967 resources: utime ~1237s, stime ~216s, Rss ~25165636, inblocks ~39904, outblocks ~0
+<<<38<<<
+>>>39>>>
+Tue  9 Aug 09:25:20 UTC 2022
+0: CPU
+Application 2284982 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        113616.796  0.07560     0.07642     0.07602     
+Mul         112459.484  0.07638     0.07765     0.07707     
+Add         120238.461  0.10716     0.10883     0.10796     
+Triad       120354.579  0.10706     0.10857     0.10774     
+Dot         138747.359  0.06191     0.06551     0.06369     
+Application 2284984 resources: utime ~1294s, stime ~226s, Rss ~25167216, inblocks ~39904, outblocks ~0
+<<<39<<<
+>>>40>>>
+Tue  9 Aug 09:26:29 UTC 2022
+0: CPU
+Application 2284998 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        115471.540  0.07439     0.07510     0.07473     
+Mul         114210.004  0.07521     0.07638     0.07577     
+Add         121506.211  0.10604     0.10746     0.10677     
+Triad       121781.299  0.10580     0.10710     0.10648     
+Dot         140408.276  0.06118     0.06483     0.06317     
+Application 2285002 resources: utime ~1315s, stime ~373s, Rss ~25162432, inblocks ~39904, outblocks ~0
+<<<40<<<
+>>>41>>>
+Tue  9 Aug 09:27:43 UTC 2022
+0: CPU
+Application 2285017 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        123194.291  0.06973     0.07164     0.07075     
+Mul         121209.339  0.07087     0.07298     0.07176     
+Add         128053.991  0.10062     0.10292     0.10183     
+Triad       127840.851  0.10079     0.10300     0.10180     
+Dot         140908.627  0.06096     0.06375     0.06236     
+Application 2285018 resources: utime ~1292s, stime ~232s, Rss ~25162984, inblocks ~39904, outblocks ~0
+<<<41<<<
+>>>42>>>
+Tue  9 Aug 09:28:51 UTC 2022
+0: CPU
+Application 2285035 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        118853.737  0.07227     0.07306     0.07268     
+Mul         117400.069  0.07317     0.07456     0.07402     
+Add         126078.309  0.10220     0.10393     0.10308     
+Triad       125895.931  0.10235     0.10351     0.10288     
+Dot         142409.125  0.06032     0.06349     0.06176     
+Application 2285038 resources: utime ~1341s, stime ~239s, Rss ~25159284, inblocks ~39904, outblocks ~0
+<<<42<<<
+>>>43>>>
+Tue  9 Aug 09:29:58 UTC 2022
+0: CPU
+Application 2285055 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        129552.039  0.06630     0.06710     0.06669     
+Mul         130206.659  0.06597     0.06750     0.06688     
+Add         136851.204  0.09415     0.09645     0.09520     
+Triad       137165.661  0.09394     0.09628     0.09529     
+Dot         143625.883  0.05981     0.06227     0.06106     
+Application 2285056 resources: utime ~1313s, stime ~271s, Rss ~25163504, inblocks ~39904, outblocks ~0
+<<<43<<<
+>>>44>>>
+Tue  9 Aug 09:31:04 UTC 2022
+0: CPU
+Application 2285070 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        135081.842  0.06359     0.06408     0.06384     
+Mul         136792.670  0.06280     0.06450     0.06366     
+Add         140774.426  0.09153     0.09349     0.09252     
+Triad       141492.649  0.09106     0.09330     0.09251     
+Dot         145074.082  0.05921     0.06180     0.06058     
+Application 2285073 resources: utime ~1337s, stime ~399s, Rss ~25165584, inblocks ~39904, outblocks ~0
+<<<44<<<
+>>>45>>>
+Tue  9 Aug 09:32:13 UTC 2022
+0: CPU
+Application 2285091 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        125697.875  0.06834     0.06906     0.06868     
+Mul         123903.149  0.06933     0.07046     0.07000     
+Add         133233.459  0.09671     0.09854     0.09771     
+Triad       133417.049  0.09658     0.09831     0.09753     
+Dot         146082.001  0.05880     0.06199     0.06009     
+Application 2285092 resources: utime ~1404s, stime ~413s, Rss ~25166376, inblocks ~39904, outblocks ~0
+<<<45<<<
+>>>46>>>
+Tue  9 Aug 09:33:24 UTC 2022
+0: CPU
+Application 2285112 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        128147.491  0.06703     0.06767     0.06728     
+Mul         126320.387  0.06800     0.06901     0.06849     
+Add         135663.945  0.09498     0.09627     0.09562     
+Triad       135671.095  0.09497     0.09624     0.09553     
+Dot         147252.279  0.05833     0.06244     0.05977     
+Application 2285114 resources: utime ~1414s, stime ~330s, Rss ~25166660, inblocks ~39904, outblocks ~0
+<<<46<<<
+>>>47>>>
+Tue  9 Aug 09:34:30 UTC 2022
+0: CPU
+Application 2285126 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        140003.269  0.06136     0.06197     0.06159     
+Mul         140167.977  0.06128     0.06282     0.06196     
+Add         144502.078  0.08917     0.09061     0.08981     
+Triad       144923.129  0.08891     0.09059     0.08980     
+Dot         147968.710  0.05805     0.06150     0.05929     
+Application 2285129 resources: utime ~1409s, stime ~342s, Rss ~25167184, inblocks ~39904, outblocks ~0
+<<<47<<<
+>>>48>>>
+Tue  9 Aug 09:35:35 UTC 2022
+0: CPU
+Application 2285145 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        131998.933  0.06508     0.06558     0.06534     
+Mul         131133.803  0.06551     0.06664     0.06612     
+Add         138562.261  0.09299     0.09416     0.09364     
+Triad       138445.650  0.09307     0.09418     0.09360     
+Dot         149037.862  0.05764     0.06169     0.05893     
+Application 2285147 resources: utime ~1480s, stime ~439s, Rss ~25161080, inblocks ~39904, outblocks ~0
+<<<48<<<
+>>>49>>>
+Tue  9 Aug 09:36:44 UTC 2022
+0: CPU
+Application 2285165 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        140988.188  0.06093     0.06206     0.06151     
+Mul         140718.641  0.06104     0.06267     0.06195     
+Add         146058.684  0.08822     0.09010     0.08903     
+Triad       145874.540  0.08833     0.08981     0.08900     
+Dot         149854.246  0.05732     0.06237     0.05900     
+Application 2285166 resources: utime ~1479s, stime ~464s, Rss ~25159228, inblocks ~39904, outblocks ~0
+<<<49<<<
+>>>50>>>
+Tue  9 Aug 09:37:52 UTC 2022
+0: CPU
+Application 2285187 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        141823.044  0.06057     0.06092     0.06077     
+Mul         143974.543  0.05966     0.06141     0.06046     
+Add         146058.447  0.08822     0.08954     0.08890     
+Triad       145760.156  0.08840     0.08942     0.08893     
+Dot         149621.946  0.05741     0.06169     0.05921     
+Application 2285189 resources: utime ~1510s, stime ~422s, Rss ~25165060, inblocks ~39904, outblocks ~0
+<<<50<<<
+>>>51>>>
+Tue  9 Aug 09:38:58 UTC 2022
+0: CPU
+Application 2285205 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        137932.002  0.06228     0.06281     0.06255     
+Mul         137772.853  0.06235     0.06349     0.06292     
+Add         143818.498  0.08959     0.09074     0.09019     
+Triad       143324.125  0.08990     0.09099     0.09034     
+Dot         149229.012  0.05756     0.06228     0.05940     
+Application 2285208 resources: utime ~1569s, stime ~439s, Rss ~25160832, inblocks ~39904, outblocks ~0
+<<<51<<<
+>>>52>>>
+Tue  9 Aug 09:40:04 UTC 2022
+0: CPU
+Application 2285224 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        139824.646  0.06143     0.06376     0.06169     
+Mul         141686.142  0.06063     0.06249     0.06190     
+Add         145268.269  0.08870     0.08966     0.08920     
+Triad       145180.513  0.08875     0.09125     0.08936     
+Dot         148356.317  0.05790     0.06396     0.05987     
+Application 2285227 resources: utime ~1608s, stime ~505s, Rss ~25160240, inblocks ~39904, outblocks ~0
+<<<52<<<
+>>>53>>>
+Tue  9 Aug 09:41:13 UTC 2022
+0: CPU
+Application 2285241 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        151911.708  0.05655     0.05736     0.05686     
+Mul         149078.450  0.05762     0.05940     0.05877     
+Add         153464.799  0.08396     0.08554     0.08492     
+Triad       153600.295  0.08389     0.08667     0.08491     
+Dot         149616.611  0.05741     0.06151     0.05942     
+Application 2285244 resources: utime ~1626s, stime ~512s, Rss ~25164232, inblocks ~39904, outblocks ~0
+<<<53<<<
+>>>54>>>
+Tue  9 Aug 09:42:20 UTC 2022
+0: CPU
+Application 2285262 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        152226.331  0.05643     0.05693     0.05661     
+Mul         150694.785  0.05700     0.05879     0.05790     
+Add         153856.960  0.08375     0.08541     0.08466     
+Triad       153254.116  0.08408     0.08526     0.08474     
+Dot         146992.841  0.05844     0.06144     0.05964     
+Application 2285264 resources: utime ~1672s, stime ~566s, Rss ~25159236, inblocks ~39904, outblocks ~0
+<<<54<<<
+>>>55>>>
+Tue  9 Aug 09:43:25 UTC 2022
+0: CPU
+Application 2285283 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        149858.604  0.05732     0.05955     0.05749     
+Mul         150273.737  0.05716     0.05775     0.05751     
+Add         153349.887  0.08402     0.08478     0.08433     
+Triad       153513.533  0.08393     0.08483     0.08431     
+Dot         147847.325  0.05810     0.06190     0.05991     
+Application 2285286 resources: utime ~1703s, stime ~616s, Rss ~25159760, inblocks ~39904, outblocks ~0
+<<<55<<<
+>>>56>>>
+Tue  9 Aug 09:44:32 UTC 2022
+0: CPU
+Application 2285303 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        146621.484  0.05859     0.06077     0.05879     
+Mul         147616.464  0.05819     0.05913     0.05868     
+Add         150873.750  0.08540     0.08618     0.08572     
+Triad       150952.252  0.08536     0.08621     0.08576     
+Dot         147481.191  0.05824     0.06038     0.05943     
+Application 2285305 resources: utime ~1760s, stime ~577s, Rss ~25166592, inblocks ~39904, outblocks ~0
+<<<56<<<
+>>>57>>>
+Tue  9 Aug 09:45:40 UTC 2022
+0: CPU
+Application 2285326 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        154676.730  0.05553     0.05590     0.05570     
+Mul         151816.957  0.05658     0.05730     0.05700     
+Add         156127.362  0.08253     0.08385     0.08324     
+Triad       156035.977  0.08258     0.08394     0.08327     
+Dot         146979.541  0.05844     0.06033     0.05938     
+Application 2285329 resources: utime ~1801s, stime ~593s, Rss ~25165536, inblocks ~39904, outblocks ~0
+<<<57<<<
+>>>58>>>
+Tue  9 Aug 09:46:47 UTC 2022
+0: CPU
+Application 2285346 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        150615.876  0.05703     0.05937     0.05727     
+Mul         153298.651  0.05603     0.05714     0.05669     
+Add         154331.655  0.08349     0.08399     0.08375     
+Triad       154623.755  0.08333     0.08399     0.08365     
+Dot         146338.049  0.05870     0.06101     0.05985     
+Application 2285348 resources: utime ~1839s, stime ~843s, Rss ~25156844, inblocks ~39904, outblocks ~0
+<<<58<<<
+>>>59>>>
+Tue  9 Aug 09:47:56 UTC 2022
+0: CPU
+Application 2285368 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        151712.961  0.05662     0.05693     0.05676     
+Mul         153713.601  0.05588     0.05935     0.05623     
+Add         155403.221  0.08291     0.08339     0.08317     
+Triad       155659.425  0.08278     0.08339     0.08310     
+Dot         146480.813  0.05864     0.06057     0.05976     
+Application 2285371 resources: utime ~1874s, stime ~866s, Rss ~25155520, inblocks ~39904, outblocks ~0
+<<<59<<<
+>>>60>>>
+Tue  9 Aug 09:49:05 UTC 2022
+0: CPU
+Application 2285390 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        153041.634  0.05613     0.06200     0.05633     
+Mul         154559.644  0.05558     0.05618     0.05585     
+Add         155548.183  0.08284     0.08461     0.08305     
+Triad       155666.093  0.08277     0.08320     0.08298     
+Dot         147016.532  0.05843     0.05912     0.05880     
+Application 2285393 resources: utime ~1908s, stime ~669s, Rss ~25162352, inblocks ~39904, outblocks ~0
+<<<60<<<
+>>>61>>>
+Tue  9 Aug 09:50:13 UTC 2022
+0: CPU
+Application 2285414 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        154887.996  0.05546     0.05575     0.05561     
+Mul         156371.035  0.05493     0.05558     0.05518     
+Add         156867.286  0.08214     0.08253     0.08230     
+Triad       156927.849  0.08211     0.08248     0.08228     
+Dot         146923.872  0.05847     0.06119     0.05874     
+Application 2285415 resources: utime ~1943s, stime ~692s, Rss ~25162612, inblocks ~39904, outblocks ~0
+<<<61<<<
+>>>62>>>
+Tue  9 Aug 09:51:21 UTC 2022
+0: CPU
+Application 2285434 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        157583.711  0.05451     0.05479     0.05461     
+Mul         154515.775  0.05559     0.05584     0.05571     
+Add         158498.273  0.08129     0.08173     0.08142     
+Triad       158603.303  0.08124     0.08181     0.08140     
+Dot         146893.619  0.05848     0.05881     0.05865     
+Application 2285437 resources: utime ~1975s, stime ~805s, Rss ~25156300, inblocks ~39904, outblocks ~0
+<<<62<<<
+>>>63>>>
+Tue  9 Aug 09:52:29 UTC 2022
+0: CPU
+Application 2285457 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39024, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        158003.556  0.05437     0.05455     0.05444     
+Mul         155001.381  0.05542     0.05567     0.05555     
+Add         157629.820  0.08174     0.08261     0.08187     
+Triad       157807.639  0.08165     0.08194     0.08175     
+Dot         146833.457  0.05850     0.06416     0.05879     
+Application 2285461 resources: utime ~2010s, stime ~749s, Rss ~25159192, inblocks ~39904, outblocks ~0
+<<<63<<<
+>>>64>>>
+Tue  9 Aug 09:53:36 UTC 2022
+0: CPU
+Application 2285479 resources: utime ~0s, stime ~2s, Rss ~8652, inblocks ~39046, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        154380.813  0.05564     0.05578     0.05570     
+Mul         150956.367  0.05690     0.05713     0.05698     
+Add         154688.166  0.08330     0.08350     0.08339     
+Triad       154720.980  0.08328     0.08349     0.08340     
+Dot         146387.150  0.05868     0.05896     0.05879     
+Application 2285483 resources: utime ~2051s, stime ~795s, Rss ~25156264, inblocks ~39904, outblocks ~0
+<<<64<<<
+============================= PBS epilogue =============================
+
+End of Job Report
+Run at 2022-08-09 09:54:51 for job 228444.xci00
+Submitted              : 2022-08-09 08:25:15
+Queued                 : 2022-08-09 08:25:15
+Started                : 2022-08-09 08:25:15
+Completed              : 2022-08-09 09:54:51
+Queued Time            : 0:00:00 (0 seconds)
+Elapsed Time           : 1:29:31 (5371 seconds, 60% of limit)
+Walltime Limit         : 2:30:00 (9000 seconds)
+Node Time Limit        : 2:30:00 (9000 seconds)
+Node Time              : 1:29:31 (5371 seconds, 60% of limit)
+Job Name               : scale_babelstream-tx2_gcc-12.1_omp
+Queue                  : arm
+Owner                  : br-wlin
+Group                  : -default-
+Project                : GW03
+Subproject             : 
+Funding                : 
+Trustzone              : 
+STDOUT                 : /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/scale_babelstream-tx2_gcc-12.1_omp.out
+STDERR                 : /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/scale_babelstream-tx2_gcc-12.1_omp.e228444
+Job Directory          : /home/br-wlin/pbs.228444.xci00.x8z
+Job Arch               : XT
+CPU Core Type          : arm
+Total Nodes            : 1
+Total Tasks            : 64
+Parent Node            : xcimom2
+Parent Node Memory     : 
+Parent Node CPU Time   : 
+Compute Nodes          : 174
+Electrical Groups      : 1
+Run Version            : 1
+
+For more information see https://gw4-isambard.github.io/docs/

@@ -1,0 +1,64 @@
+Tue  9 Aug 08:07:52 UTC 2022
+xcimom2
+/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_gcc-12.1_omp
+	linux-vdso.so.1 (0x000040000193b000)
+	libgomp.so.1 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libgomp.so.1 (0x000040000194c000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00004000019cf000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libstdc++.so.6 (0x0000400001a04000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000400001c2a000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libgcc_s.so.1 (0x0000400001ceb000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000400001d1c000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000400001ea2000)
+	/lib/ld-linux-aarch64.so.1 (0x000040000191a000)
+0: CPU
+Application 2283905 resources: utime ~0s, stime ~2s, Rss ~8632, inblocks ~39056, outblocks ~0
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        156542.270  0.05487     0.05503     0.05495     
+Mul         153109.751  0.05610     0.05640     0.05626     
+Add         156925.959  0.08211     0.08235     0.08223     
+Triad       156926.589  0.08211     0.08243     0.08222     
+Dot         147929.694  0.05807     0.05835     0.05819     
+Application 2283906 resources: utime ~2026s, stime ~801s, Rss ~25156264, inblocks ~39904, outblocks ~0
+============================= PBS epilogue =============================
+
+End of Job Report
+Run at 2022-08-09 08:09:04 for job 228423.xci00
+Submitted              : 2022-08-09 08:07:51
+Queued                 : 2022-08-09 08:07:51
+Started                : 2022-08-09 08:07:51
+Completed              : 2022-08-09 08:09:04
+Queued Time            : 0:00:00 (0 seconds)
+Elapsed Time           : 0:01:08 (68 seconds, 8% of limit)
+Walltime Limit         : 0:15:00 (900 seconds)
+Node Time Limit        : 0:15:00 (900 seconds)
+Node Time              : 0:01:08 (68 seconds, 8% of limit)
+Job Name               : babelstream-tx2_gcc-12.1_omp
+Queue                  : arm
+Owner                  : br-wlin
+Group                  : -default-
+Project                : GW03
+Subproject             : 
+Funding                : 
+Trustzone              : 
+STDOUT                 : /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_gcc-12.1_omp.out
+STDERR                 : /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_gcc-12.1_omp.e228423
+Job Directory          : /home/br-wlin/pbs.228423.xci00.x8z
+Job Arch               : XT
+CPU Core Type          : arm
+Total Nodes            : 1
+Total Tasks            : 64
+Parent Node            : xcimom2
+Parent Node Memory     : 
+Parent Node CPU Time   : 
+Compute Nodes          : 168
+Electrical Groups      : 1
+Run Version            : 1
+
+For more information see https://gw4-isambard.github.io/docs/

@@ -22,7 +22,7 @@ gcc-12.1)
   append_opts "-DUSE_TBB=ON"
   cxx_extra_flags="-march=icelake-server;-Ofast"
   ;;
-nvhpc-22.5)
+nvhpc-22.7)
   module load openmpi
   load_nvhpc
   append_opts "-DCMAKE_VERBOSE_MAKEFILE=ON"
@@ -34,6 +34,12 @@ nvhpc-22.5)
 esac
 
 case "$MODEL" in
+kokkos)
+  fetch_src "kokkos"
+  prime_kokkos
+  append_opts "-DKOKKOS_IN_TREE=$KOKKOS_DIR -DKokkos_ENABLE_OPENMP=ON -DKokkos_CXX_STANDARD=17"
+  append_opts "-DKokkos_ARCH_ICX=ON"
+  ;;
 omp)
   fetch_src "omp-plain"
   case "$COMPILER" in

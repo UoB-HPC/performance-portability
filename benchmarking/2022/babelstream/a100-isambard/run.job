@@ -22,7 +22,7 @@ fi
 export OMP_TARGET_OFFLOAD=MANDATORY
 
 case "$MODEL" in
-omp | std-* | cuda)
+omp | std-* | cuda | kokkos)
     "$BENCHMARK_EXE" --list
     "$BENCHMARK_EXE" "${opts[@]:-}"
     ;;

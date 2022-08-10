@@ -18,7 +18,7 @@ export OMP_PLACES=cores
 export ACC_NUM_CORES=64
 
 case "$MODEL" in
-tbb | omp | std-*)
+tbb | omp | std-* | kokkos)
     "$BENCHMARK_EXE" --list
     "$BENCHMARK_EXE" --deck miniBUDE/data/bm1 --wgsize 1 --ppwi all
     ;;

@@ -22,7 +22,7 @@ export OMP_PLACES=cores
 export ACC_NUM_CORES=64
 
 case "$MODEL" in
-omp)
+omp | kokkos)
     "$BENCHMARK_EXE" --list
     "$BENCHMARK_EXE" "${opts[@]:-}"
     ;;

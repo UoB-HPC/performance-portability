@@ -30,7 +30,7 @@ fetch_src() {
   else
     (
       cd BabelStream
-      git fetch && git pull
+      # git fetch && git pull
     )
   fi
   export SRC_DIR="$PWD/BabelStream"

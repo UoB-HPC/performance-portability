@@ -23,7 +23,7 @@ gcc-12.1)
   append_opts "-DUSE_TBB=ON"
   cxx_extra_flags="-mcpu=thunderx2t99;-Ofast"
   ;;
-nvhpc-22.5)
+nvhpc-22.7)
   module load openmpi
   load_nvhpc
   append_opts "-DCMAKE_VERBOSE_MAKEFILE=ON"

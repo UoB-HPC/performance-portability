@@ -27,7 +27,6 @@ case "$MODEL" in
 kokkos)
   fetch_src "kokkos"
   prime_kokkos
-  append_opts "-DMODEL=kokkos"
   append_opts "-DCMAKE_CXX_COMPILER=dpcpp -DCXX_EXTRA_FLAGS=-march=skylake;-Ofast -DKOKKOS_IN_TREE=$KOKKOS_DIR -DKokkos_ENABLE_SYCL=ON -DKokkos_CXX_STANDARD=17"
   append_opts "-DKokkos_ARCH_INTEL_GEN=OFF" # XXX ENABLE_SYCL adds -fsycl which is sufficient, INTEL_GEN breaks it by adding -X backend flags
   ;;

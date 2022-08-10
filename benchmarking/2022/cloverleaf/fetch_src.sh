@@ -12,9 +12,9 @@ fetch_src() {
     REPO_URL="https://github.com/UK-MAC/CloverLeaf_CUDA"
     ;;
   kokkos)
-    REPO_DIR=CloverLeaf_kokkos
+    REPO_DIR=cloverleaf_kokkos
     REPO_FILE="$REPO_DIR/clover_leaf.cpp"
-    REPO_BRANCH="master"
+    REPO_BRANCH="nvcpp_fix"
     REPO_URL="https://github.com/UoB-HPC/cloverleaf_kokkos"
     ;;
   omp-plain)
@@ -65,7 +65,7 @@ fetch_src() {
   else
     (
       cd "$REPO_DIR"
-      git fetch && git pull
+      # git fetch && git pull
     )
   fi
 

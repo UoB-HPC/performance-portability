@@ -1,22 +1,22 @@
-Sat 30 Jul 04:24:22 UTC 2022
+Sun 31 Jul 02:53:31 UTC 2022
 /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_nvhpc-22.5_std-data
-	linux-vdso.so.1 (0x000040001d710000)
-	libacchost.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libacchost.so (0x000040001d721000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x000040001d7b5000)
-	libatomic.so.1 => /usr/lib64/gcc/aarch64-suse-linux/7/../../../../lib64/libatomic.so.1 (0x000040001d7d6000)
-	libnvhpcatm.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libnvhpcatm.so (0x000040001d7f8000)
-	libstdc++.so.6 => /usr/lib64/gcc/aarch64-suse-linux/7/../../../../lib64/libstdc++.so.6 (0x000040001d81b000)
-	libnvomp.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libnvomp.so (0x000040001da01000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x000040001dbed000)
-	libnvcpumath-armv8.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libnvcpumath-armv8.so (0x000040001dc22000)
-	libnvc.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libnvc.so (0x000040001dd67000)
-	librt.so.1 => /lib64/librt.so.1 (0x000040001debb000)
-	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x000040001dedc000)
-	libc.so.6 => /lib64/libc.so.6 (0x000040001df0d000)
-	libm.so.6 => /lib64/libm.so.6 (0x000040001e093000)
-	/lib/ld-linux-aarch64.so.1 (0x000040001d6ef000)
+	linux-vdso.so.1 (0x00004000024d9000)
+	libacchost.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libacchost.so (0x00004000024ea000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000040000257e000)
+	libatomic.so.1 => /usr/lib64/gcc/aarch64-suse-linux/7/../../../../lib64/libatomic.so.1 (0x000040000259f000)
+	libnvhpcatm.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libnvhpcatm.so (0x00004000025c1000)
+	libstdc++.so.6 => /usr/lib64/gcc/aarch64-suse-linux/7/../../../../lib64/libstdc++.so.6 (0x00004000025e4000)
+	libnvomp.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libnvomp.so (0x00004000027ca000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00004000029b6000)
+	libnvcpumath-armv8.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libnvcpumath-armv8.so (0x00004000029eb000)
+	libnvc.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_aarch64/22.5/compilers/lib/libnvc.so (0x0000400002b30000)
+	librt.so.1 => /lib64/librt.so.1 (0x0000400002c84000)
+	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x0000400002ca5000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000400002cd6000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000400002e5c000)
+	/lib/ld-linux-aarch64.so.1 (0x00004000024b8000)
 Listing devices is not supported by the Parallel STL
-Application 2279431 resources: utime ~0s, stime ~2s, Rss ~8632, inblocks ~8662, outblocks ~0
+Application 2279825 resources: utime ~0s, stime ~3s, Rss ~8640, inblocks ~8630, outblocks ~0
 BabelStream
 Version: 4.0
 Implementation: STD (data-oriented)
@@ -26,25 +26,25 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        219394.174  0.03915     0.04142     0.04021     
-Mul         198541.823  0.04327     0.05076     0.04895     
-Add         200294.173  0.06433     0.06773     0.06622     
-Triad       207957.348  0.06196     0.06740     0.06572     
-Dot         215742.989  0.03982     0.04761     0.04355     
-Application 2279438 resources: utime ~1740s, stime ~992s, Rss ~25157384, inblocks ~9276, outblocks ~0
+Copy        146633.518  0.05858     0.06445     0.06000     
+Mul         135889.173  0.06321     0.07611     0.06870     
+Add         137938.101  0.09341     0.10577     0.09837     
+Triad       141270.300  0.09121     0.10210     0.09549     
+Dot         125231.704  0.06859     0.07631     0.07222     
+Application 2279826 resources: utime ~2493s, stime ~1062s, Rss ~25157480, inblocks ~9276, outblocks ~0
 ============================= PBS epilogue =============================
 
 End of Job Report
-Run at 2022-07-30 04:25:32 for job 226672.xci00
-Submitted              : 2022-07-30 04:18:59
-Queued                 : 2022-07-30 04:18:59
-Started                : 2022-07-30 04:24:22
-Completed              : 2022-07-30 04:25:32
-Queued Time            : 0:05:23 (323 seconds)
-Elapsed Time           : 0:01:05 (65 seconds, 7% of limit)
+Run at 2022-07-31 02:54:56 for job 226823.xci00
+Submitted              : 2022-07-31 02:53:30
+Queued                 : 2022-07-31 02:53:30
+Started                : 2022-07-31 02:53:30
+Completed              : 2022-07-31 02:54:56
+Queued Time            : 0:00:00 (0 seconds)
+Elapsed Time           : 0:01:21 (81 seconds, 9% of limit)
 Walltime Limit         : 0:15:00 (900 seconds)
 Node Time Limit        : 0:15:00 (900 seconds)
-Node Time              : 0:01:05 (65 seconds, 7% of limit)
+Node Time              : 0:01:21 (81 seconds, 9% of limit)
 Job Name               : babelstream-tx2_nvhpc-22.5_std-data
 Queue                  : arm
 Owner                  : br-wlin
@@ -54,8 +54,8 @@ Subproject             :
 Funding                : 
 Trustzone              : 
 STDOUT                 : /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_nvhpc-22.5_std-data.out
-STDERR                 : /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_nvhpc-22.5_std-data.e226672
-Job Directory          : /home/br-wlin/pbs.226672.xci00.x8z
+STDERR                 : /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-tx2_nvhpc-22.5_std-data.e226823
+Job Directory          : /home/br-wlin/pbs.226823.xci00.x8z
 Job Arch               : XT
 CPU Core Type          : arm
 Total Nodes            : 1
@@ -63,7 +63,7 @@ Total Tasks            : 64
 Parent Node            : xcimom2
 Parent Node Memory     : 
 Parent Node CPU Time   : 
-Compute Nodes          : 184
+Compute Nodes          : 320
 Electrical Groups      : 1
 Run Version            : 1
 

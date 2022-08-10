@@ -22,7 +22,7 @@ gcc-12.1)
   append_opts "-DCXX_EXTRA_FLAGS=-mcpu=thunderx2t99;-Ofast"
   append_opts "-DUSE_TBB=ON"
   ;;
-nvhpc-22.5)
+nvhpc-22.7)
   load_nvhpc
   append_opts "-DCMAKE_C_COMPILER=$NVHPC_PATH/compilers/bin/nvc"
   append_opts "-DCMAKE_CXX_COMPILER=$NVHPC_PATH/compilers/bin/nvc++"

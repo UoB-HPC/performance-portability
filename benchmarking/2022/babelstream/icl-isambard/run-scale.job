@@ -1,0 +1,43 @@
+#!/bin/bash
+#PBS -q ilakeq
+#PBS -l select=1:ncpus=64
+#PBS -l walltime=02:00:00
+#PBS -l place=excl
+#PBS -joe
+
+set -eu
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+if [ "${LARGE:-}" = true ]; then
+    opts=("--arraysize" "536870912")
+fi
+
+MIN_CORE=1
+MAX_CORE=64
+for i in $(seq $MIN_CORE $MAX_CORE); do
+    echo ">>>$i>>>"
+    date
+    export OMP_PROC_BIND=true
+    export OMP_PLACES=cores
+    export OMP_NUM_THREADS=$i
+    export ACC_NUM_CORES=$i
+    case "$MODEL" in
+    omp | kokkos)
+        "$BENCHMARK_EXE" --list
+        "$BENCHMARK_EXE" "${opts[@]:-}"
+        ;;
+    tbb | std-*)
+        "$BENCHMARK_EXE" --list
+        numactl --physcpubind=0-$(("$i" - 1)) --localalloc "$BENCHMARK_EXE" "${opts[@]:-}"
+        ;;
+    *)
+        echo "Unknown run configuration for model '$MODEL'"
+        exit 1
+        ;;
+    esac
+    echo "<<<$i<<<"
+done

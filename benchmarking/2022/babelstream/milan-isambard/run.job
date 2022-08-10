@@ -25,11 +25,11 @@ export OMP_PLACES=cores
 export ACC_NUM_CORES=128
 
 case "$MODEL" in
-omp)
+omp )
     "$BENCHMARK_EXE" --list
     "$BENCHMARK_EXE" "${opts[@]:-}"
     ;;
-tbb | std-*)
+tbb | std-* | kokkos)
     "$BENCHMARK_EXE" --list
     numactl --physcpubind=all --localalloc "$BENCHMARK_EXE" "${opts[@]:-}"
     ;;

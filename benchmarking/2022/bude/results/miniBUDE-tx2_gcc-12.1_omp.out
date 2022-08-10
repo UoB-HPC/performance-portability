@@ -1,14 +1,14 @@
-Sat 30 Jul 05:40:04 UTC 2022
+Tue  9 Aug 08:14:15 UTC 2022
 /home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp
-	linux-vdso.so.1 (0x0000400030c36000)
-	libgomp.so.1 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libgomp.so.1 (0x0000400030c47000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000400030cca000)
-	libstdc++.so.6 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libstdc++.so.6 (0x0000400030cff000)
-	libm.so.6 => /lib64/libm.so.6 (0x0000400030f25000)
-	libgcc_s.so.1 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libgcc_s.so.1 (0x0000400030fe6000)
-	libc.so.6 => /lib64/libc.so.6 (0x0000400031017000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x000040003119d000)
-	/lib/ld-linux-aarch64.so.1 (0x0000400030c15000)
+	linux-vdso.so.1 (0x000040000476a000)
+	libgomp.so.1 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libgomp.so.1 (0x000040000477b000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00004000047fe000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libstdc++.so.6 (0x0000400004833000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000400004a59000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libgcc_s.so.1 (0x0000400004b1a000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000400004b4b000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000400004cd1000)
+	/lib/ld-linux-aarch64.so.1 (0x0000400004749000)
 miniBUDE:  
 compile_commands:
    - "/lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/bin/g++ -DOMP -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/omp -I/home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp/miniBUDE/build/generated  -DNDEBUG -O3 -march=native -mcpu=thunderx2t99 -Ofast -fopenmp -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
@@ -190,16 +190,16 @@ compile_commands:
    - "/lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/bin/g++  -I/home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp/miniBUDE/build/_deps/tbb-src/test/.. -I/home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp/miniBUDE/build/_deps/tbb-src/test -I/home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp/miniBUDE/build/_deps/tbb-src/src/tbbmalloc_proxy/../../include -I/home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp/miniBUDE/build/_deps/tbb-src/src/tbbmalloc/../../include -O3 -DNDEBUG -Wall -Wextra -Wfatal-errors -Wshadow -Wcast-qual -Woverloaded-virtual -Wnon-virtual-dtor -pthread -std=c++17 -o CMakeFiles/test_malloc_overload_disable.dir/tbbmalloc/test_malloc_overload_disable.cpp.o -c /home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp/miniBUDE/build/_deps/tbb-src/test/tbbmalloc/test_malloc_overload_disable.cpp"
    - "/lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/bin/g++  -I/home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp/miniBUDE/build/_deps/tbb-src/test/.. -I/home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp/miniBUDE/build/_deps/tbb-src/test -I/home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp/miniBUDE/build/_deps/tbb-src/src/tbbmalloc_proxy/../../include -O3 -DNDEBUG -Wall -Wextra -Wfatal-errors -Wshadow -Wcast-qual -Woverloaded-virtual -Wnon-virtual-dtor -pthread -std=c++17 -o CMakeFiles/test_malloc_new_handler.dir/tbbmalloc/test_malloc_new_handler.cpp.o -c /home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp/miniBUDE/build/_deps/tbb-src/test/tbbmalloc/test_malloc_new_handler.cpp"
 vcs:
-  commit:  653fef1ecd463ecb51371ac45e89dcb87fe7400c*
-  author:  "Tom Lin (tom91136@gmail.com)"
-  date:    "2022-07-29 20:51:42 +0000"
-  subject: "Initial 2022 results"
+  commit:  30fb38bb96d98e45acb2714a62305f719729c19e*
+  author:  "u162741 (u162741@s001-n015.aidevcloud)"
+  date:    "2022-07-30 21:35:12 -0700"
+  subject: "Add missing P630 results"
 host_cpu:
   ~
-time: { epoch_s:1659159607, formatted: "Sat Jul 30 05:40:07 2022 GMT" }
+time: { epoch_s:1660032858, formatted: "Tue Aug  9 08:14:18 2022 GMT" }
 devices:
   0: "OMP CPU"
-Application 2279538 resources: utime ~0s, stime ~2s, Rss ~8624, inblocks ~39046, outblocks ~0
+Application 2283929 resources: utime ~0s, stime ~2s, Rss ~8664, inblocks ~39046, outblocks ~0
 miniBUDE:  
 compile_commands:
    - "/lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/bin/g++ -DOMP -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/omp -I/home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp/miniBUDE/build/generated  -DNDEBUG -O3 -march=native -mcpu=thunderx2t99 -Ofast -fopenmp -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
@@ -381,13 +381,13 @@ compile_commands:
    - "/lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/bin/g++  -I/home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp/miniBUDE/build/_deps/tbb-src/test/.. -I/home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp/miniBUDE/build/_deps/tbb-src/test -I/home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp/miniBUDE/build/_deps/tbb-src/src/tbbmalloc_proxy/../../include -I/home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp/miniBUDE/build/_deps/tbb-src/src/tbbmalloc/../../include -O3 -DNDEBUG -Wall -Wextra -Wfatal-errors -Wshadow -Wcast-qual -Woverloaded-virtual -Wnon-virtual-dtor -pthread -std=c++17 -o CMakeFiles/test_malloc_overload_disable.dir/tbbmalloc/test_malloc_overload_disable.cpp.o -c /home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp/miniBUDE/build/_deps/tbb-src/test/tbbmalloc/test_malloc_overload_disable.cpp"
    - "/lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/bin/g++  -I/home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp/miniBUDE/build/_deps/tbb-src/test/.. -I/home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp/miniBUDE/build/_deps/tbb-src/test -I/home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp/miniBUDE/build/_deps/tbb-src/src/tbbmalloc_proxy/../../include -O3 -DNDEBUG -Wall -Wextra -Wfatal-errors -Wshadow -Wcast-qual -Woverloaded-virtual -Wnon-virtual-dtor -pthread -std=c++17 -o CMakeFiles/test_malloc_new_handler.dir/tbbmalloc/test_malloc_new_handler.cpp.o -c /home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp/miniBUDE/build/_deps/tbb-src/test/tbbmalloc/test_malloc_new_handler.cpp"
 vcs:
-  commit:  653fef1ecd463ecb51371ac45e89dcb87fe7400c*
-  author:  "Tom Lin (tom91136@gmail.com)"
-  date:    "2022-07-29 20:51:42 +0000"
-  subject: "Initial 2022 results"
+  commit:  30fb38bb96d98e45acb2714a62305f719729c19e*
+  author:  "u162741 (u162741@s001-n015.aidevcloud)"
+  date:    "2022-07-30 21:35:12 -0700"
+  subject: "Add missing P630 results"
 host_cpu:
   ~
-time: { epoch_s:1659159612, formatted: "Sat Jul 30 05:40:12 2022 GMT" }
+time: { epoch_s:1660032863, formatted: "Tue Aug  9 08:14:23 2022 GMT" }
 deck:
   path:         "miniBUDE/data/bm1"
   poses:        65536
@@ -413,16 +413,16 @@ device: { index: 0,  name: "OMP CPU" }
 results:
   - outcome:             { valid: true, max_diff_%: 0.004 }
     param:               { ppwi: 1, wgsize: 1 }
-    raw_iterations:      [431.352,431.613,431.739,430.633,431.555,430.285,430.585,430.725,430.804,431.46]
-    context_ms:          6.498694
-    sum_ms:              3447.785
-    avg_ms:              430.973
-    min_ms:              430.285
-    max_ms:              431.739
-    stddev_ms:           0.499
-    giga_interactions/s: 3.709
-    gflop/s:             148.426
-    gfinst/s:            92.714
+    raw_iterations:      [432.464,431.204,430.985,431.587,430.918,432.291,431.609,432.635,431.629,431.695]
+    context_ms:          6.719007
+    sum_ms:              3453.351
+    avg_ms:              431.669
+    min_ms:              430.918
+    max_ms:              432.635
+    stddev_ms:           0.544
+    giga_interactions/s: 3.703
+    gflop/s:             148.187
+    gfinst/s:            92.565
     energies:            
       - 865.52
       - 25.07
@@ -434,16 +434,16 @@ results:
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.002 }
     param:               { ppwi: 2, wgsize: 1 }
-    raw_iterations:      [408.394,409.078,408.076,408.754,408.537,408.326,409.143,408.109,408.615,408.328]
-    context_ms:          2.387695
-    sum_ms:              3267.887
-    avg_ms:              408.486
-    min_ms:              408.076
-    max_ms:              409.143
-    stddev_ms:           0.332
-    giga_interactions/s: 3.913
-    gflop/s:             137.029
-    gfinst/s:            97.818
+    raw_iterations:      [409.38,408.764,409.164,408.738,408.97,409.083,408.699,409.4,408.937,409.224]
+    context_ms:          2.242454
+    sum_ms:              3272.216
+    avg_ms:              409.027
+    min_ms:              408.699
+    max_ms:              409.400
+    stddev_ms:           0.224
+    giga_interactions/s: 3.908
+    gflop/s:             136.848
+    gfinst/s:            97.689
     energies:            
       - 865.52
       - 25.07
@@ -455,16 +455,16 @@ results:
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.002 }
     param:               { ppwi: 4, wgsize: 1 }
-    raw_iterations:      [185.225,184.853,185.189,185.064,185.174,184.76,184.843,185.01,185.179,185.16]
-    context_ms:          2.325377
-    sum_ms:              1480.379
-    avg_ms:              185.047
-    min_ms:              184.760
-    max_ms:              185.189
-    stddev_ms:           0.155
-    giga_interactions/s: 8.637
-    gflop/s:             280.889
-    gfinst/s:            215.930
+    raw_iterations:      [186.269,185.426,185.747,185.593,185.887,185.989,185.514,185.6,185.58,185.637]
+    context_ms:          2.210769
+    sum_ms:              1485.547
+    avg_ms:              185.693
+    min_ms:              185.514
+    max_ms:              185.989
+    stddev_ms:           0.156
+    giga_interactions/s: 8.607
+    gflop/s:             279.912
+    gfinst/s:            215.179
     energies:            
       - 865.52
       - 25.07
@@ -476,16 +476,16 @@ results:
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.002 }
     param:               { ppwi: 8, wgsize: 1 }
-    raw_iterations:      [114.572,114.29,114.889,114.36,114.819,114.689,114.89,114.7,114.786,114.513]
-    context_ms:          2.365966
-    sum_ms:              917.647
-    avg_ms:              114.706
-    min_ms:              114.360
-    max_ms:              114.890
-    stddev_ms:           0.175
-    giga_interactions/s: 13.934
-    gflop/s:             435.719
-    gfinst/s:            348.346
+    raw_iterations:      [115.083,114.851,115.181,114.536,114.741,114.725,114.921,114.708,114.897,114.554]
+    context_ms:          1.587543
+    sum_ms:              918.264
+    avg_ms:              114.783
+    min_ms:              114.536
+    max_ms:              115.181
+    stddev_ms:           0.198
+    giga_interactions/s: 13.924
+    gflop/s:             435.427
+    gfinst/s:            348.112
     energies:            
       - 865.52
       - 25.07
@@ -497,16 +497,16 @@ results:
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.002 }
     param:               { ppwi: 16, wgsize: 1 }
-    raw_iterations:      [87.8779,88.0992,87.7727,87.8081,88.1674,88.0313,87.8156,88.0446,87.9743,87.9164]
-    context_ms:          1.885065
-    sum_ms:              703.530
-    avg_ms:              87.941
-    min_ms:              87.773
-    max_ms:              88.167
-    stddev_ms:           0.129
-    giga_interactions/s: 18.175
-    gflop/s:             556.967
-    gfinst/s:            454.363
+    raw_iterations:      [88.1287,88.1464,87.7488,87.7117,87.7581,87.7605,87.7249,87.838,87.9555,87.9172]
+    context_ms:          2.082415
+    sum_ms:              702.415
+    avg_ms:              87.802
+    min_ms:              87.712
+    max_ms:              87.956
+    stddev_ms:           0.086
+    giga_interactions/s: 18.203
+    gflop/s:             557.852
+    gfinst/s:            455.085
     energies:            
       - 865.52
       - 25.07
@@ -518,16 +518,16 @@ results:
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.002 }
     param:               { ppwi: 32, wgsize: 1 }
-    raw_iterations:      [115.904,115.849,116.061,115.835,116.188,116.124,116.101,116.088,115.927,115.8]
-    context_ms:          1.967880
-    sum_ms:              928.124
-    avg_ms:              116.016
-    min_ms:              115.800
-    max_ms:              116.188
-    stddev_ms:           0.134
-    giga_interactions/s: 13.777
-    gflop/s:             417.882
-    gfinst/s:            344.413
+    raw_iterations:      [116.036,116.038,116.109,115.688,116.114,115.937,116.18,116.13,116.056,116.018]
+    context_ms:          2.134979
+    sum_ms:              928.233
+    avg_ms:              116.029
+    min_ms:              115.688
+    max_ms:              116.180
+    stddev_ms:           0.147
+    giga_interactions/s: 13.775
+    gflop/s:             417.833
+    gfinst/s:            344.373
     energies:            
       - 865.52
       - 25.07
@@ -539,16 +539,16 @@ results:
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.002 }
     param:               { ppwi: 64, wgsize: 1 }
-    raw_iterations:      [108.952,108.941,108.764,109.06,108.862,109.013,108.989,108.817,108.86,108.707]
-    context_ms:          2.271767
-    sum_ms:              871.071
+    raw_iterations:      [109.125,108.756,108.656,108.951,108.795,108.991,108.88,108.944,108.993,108.862]
+    context_ms:          2.163309
+    sum_ms:              871.073
     avg_ms:              108.884
-    min_ms:              108.707
-    max_ms:              109.060
-    stddev_ms:           0.117
+    min_ms:              108.656
+    max_ms:              108.993
+    stddev_ms:           0.107
     giga_interactions/s: 14.679
     gflop/s:             442.958
-    gfinst/s:            366.972
+    gfinst/s:            366.971
     energies:            
       - 865.52
       - 25.07
@@ -560,16 +560,16 @@ results:
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.002 }
     param:               { ppwi: 128, wgsize: 1 }
-    raw_iterations:      [104.682,104.695,104.72,104.629,104.741,104.768,104.552,104.568,104.499,104.506]
-    context_ms:          2.270152
-    sum_ms:              836.983
-    avg_ms:              104.623
-    min_ms:              104.499
-    max_ms:              104.768
-    stddev_ms:           0.101
-    giga_interactions/s: 15.277
-    gflop/s:             459.805
-    gfinst/s:            381.917
+    raw_iterations:      [104.702,104.378,104.561,104.621,104.546,104.758,104.657,104.73,104.641,104.62]
+    context_ms:          2.233509
+    sum_ms:              837.135
+    avg_ms:              104.642
+    min_ms:              104.546
+    max_ms:              104.758
+    stddev_ms:           0.069
+    giga_interactions/s: 15.274
+    gflop/s:             459.722
+    gfinst/s:            381.848
     energies:            
       - 865.52
       - 25.07
@@ -579,17 +579,17 @@ results:
       - 707.35
       - 33.95
       - 135.59
-best: { min_ms: 87.77, max_ms: 88.17, sum_ms: 703.53, avg_ms: 87.94, ppwi: 16, wgsize: 1 }
-Application 2279539 resources: utime ~982s, stime ~3s, Rss ~8624, inblocks ~43568, outblocks ~0
+best: { min_ms: 87.71, max_ms: 87.96, sum_ms: 702.41, avg_ms: 87.80, ppwi: 16, wgsize: 1 }
+Application 2283930 resources: utime ~983s, stime ~3s, Rss ~8668, inblocks ~43568, outblocks ~0
 ============================= PBS epilogue =============================
 
 End of Job Report
-Run at 2022-07-30 05:40:34 for job 226697.xci00
-Submitted              : 2022-07-30 05:40:03
-Queued                 : 2022-07-30 05:40:03
-Started                : 2022-07-30 05:40:03
-Completed              : 2022-07-30 05:40:34
-Queued Time            : 0:00:00 (0 seconds)
+Run at 2022-08-09 08:14:46 for job 228431.xci00
+Submitted              : 2022-08-09 08:14:14
+Queued                 : 2022-08-09 08:14:14
+Started                : 2022-08-09 08:14:15
+Completed              : 2022-08-09 08:14:46
+Queued Time            : 0:00:01 (1 second)
 Elapsed Time           : 0:00:26 (26 seconds, 3% of limit)
 Walltime Limit         : 0:15:00 (900 seconds)
 Node Time Limit        : 0:15:00 (900 seconds)
@@ -603,8 +603,8 @@ Subproject             :
 Funding                : 
 Trustzone              : 
 STDOUT                 : /home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp.out
-STDERR                 : /home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp.e226697
-Job Directory          : /home/br-wlin/pbs.226697.xci00.x8z
+STDERR                 : /home/br-wlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-tx2_gcc-12.1_omp.e228431
+Job Directory          : /home/br-wlin/pbs.228431.xci00.x8z
 Job Arch               : XT
 CPU Core Type          : arm
 Total Nodes            : 1
@@ -612,7 +612,7 @@ Total Tasks            : 64
 Parent Node            : xcimom2
 Parent Node Memory     : 
 Parent Node CPU Time   : 
-Compute Nodes          : 63
+Compute Nodes          : 36
 Electrical Groups      : 1
 Run Version            : 1
 
