@@ -1,15 +1,15 @@
-Tue Aug  2 01:55:18 UTC 2022
+Wed Aug 10 19:02:23 UTC 2022
 /home/tomlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-graviton2_gcc-12.1_std-data-dplomp
-	linux-vdso.so.1 (0x0000ffffab1d2000)
-	libtbb.so.12 => /home/tomlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-graviton2_gcc-12.1_std-data-dplomp/BabelStream/build/gnu_12.1_cxx11_64_release/libtbb.so.12 (0x0000ffffab13e000)
-	libstdc++.so.6 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libstdc++.so.6 (0x0000ffffaaf18000)
-	libm.so.6 => /lib64/libm.so.6 (0x0000ffffaae57000)
-	libgomp.so.1 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libgomp.so.1 (0x0000ffffaadf4000)
-	libgcc_s.so.1 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libgcc_s.so.1 (0x0000ffffaadc3000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffffaad8e000)
-	libc.so.6 => /lib64/libc.so.6 (0x0000ffffaac08000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffffaabe7000)
-	/lib/ld-linux-aarch64.so.1 (0x0000ffffab194000)
+	linux-vdso.so.1 (0x0000ffff907b6000)
+	libtbb.so.12 => /home/tomlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-graviton2_gcc-12.1_std-data-dplomp/BabelStream/build/gnu_12.1_cxx11_64_release/libtbb.so.12 (0x0000ffff90722000)
+	libstdc++.so.6 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libstdc++.so.6 (0x0000ffff904fc000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000ffff9043b000)
+	libgomp.so.1 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libgomp.so.1 (0x0000ffff903d8000)
+	libgcc_s.so.1 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libgcc_s.so.1 (0x0000ffff903a7000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffff90372000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000ffff901ec000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffff901cb000)
+	/lib/ld-linux-aarch64.so.1 (0x0000ffff90778000)
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -21,8 +21,8 @@ Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Using oneDPL backend: OpenMP
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        161786.813  0.05309     0.05477     0.05325     
-Mul         161542.163  0.05317     0.05378     0.05331     
-Add         164445.528  0.07835     0.07911     0.07855     
-Triad       164947.340  0.07812     0.07919     0.07835     
-Dot         169871.432  0.05057     0.06172     0.05092     
+Copy        162335.306  0.05291     0.05332     0.05306     
+Mul         161899.270  0.05306     0.05441     0.05324     
+Add         164351.488  0.07840     0.07902     0.07871     
+Triad       164784.174  0.07819     0.07977     0.07845     
+Dot         169259.565  0.05075     0.05138     0.05099     

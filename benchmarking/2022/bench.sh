@@ -12,17 +12,17 @@ bude=true
 babelstream=true
 
 declare -A models
-models["tbb"]=true
-models["omp"]=true
-models["cuda"]=true
-models["sycl"]=true
+models["tbb"]=false
+models["omp"]=false
+models["cuda"]=false
+models["sycl"]=false
 models["kokkos"]=true
 
-models["std-data"]=true
-models["std-indices"]=true
+models["std-data"]=false
+models["std-indices"]=false
 
-models["std-data-dplomp"]=true
-models["std-indices-dplomp"]=true
+models["std-data-dplomp"]=false
+models["std-indices-dplomp"]=false
 
 export LARGE=true
 
@@ -133,15 +133,15 @@ p2)
 aws-g2)
     cd "$BASE/babelstream/results"
     bench_scale graviton2-aws $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
-    bench_scale graviton2-aws $GCC "${babelstream_gcc_cpu_models[@]}"
+    # bench_scale graviton2-aws $GCC "${babelstream_gcc_cpu_models[@]}"
 
     cd "$BASE/bude/results"
     bench_scale graviton2-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"
-    bench_scale graviton2-aws $GCC "${generic_gcc_cpu_models[@]}"
+    # bench_scale graviton2-aws $GCC "${generic_gcc_cpu_models[@]}"
 
     cd "$BASE/cloverleaf/results"
     bench_scale graviton2-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"
-    bench_scale graviton2-aws $GCC "${generic_gcc_cpu_models[@]}"
+    # bench_scale graviton2-aws $GCC "${generic_gcc_cpu_models[@]}"
 
     ;;
 aws-g3)

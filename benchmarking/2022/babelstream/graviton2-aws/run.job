@@ -11,7 +11,7 @@ date
 echo "$PWD"
 ldd "$BENCHMARK_EXE"
 
-spack load numactl
+spack load numactl%gcc@12.1.0
 
 if [ "${LARGE:-}" = true ]; then
   opts=("--arraysize" "536870912")

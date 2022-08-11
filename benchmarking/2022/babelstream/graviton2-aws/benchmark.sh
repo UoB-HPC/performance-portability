@@ -30,11 +30,11 @@ nvhpc-22.7)
   append_opts "-DCMAKE_C_COMPILER=$NVHPC_PATH/compilers/bin/nvc"
   append_opts "-DCMAKE_CXX_COMPILER=$NVHPC_PATH/compilers/bin/nvc++"
   case "$MODEL" in
-  omp)
-    append_opts "-DCXX_EXTRA_FLAGS=-target=multicore;-mp;-march=neoverse-n1;-fast"
+  omp | kokkos)
+    append_opts "-DCXX_EXTRA_FLAGS=-target=multicore;-mp;-tp=neoverse-n1;-fast"
     ;;
   std-*)
-    append_opts "-DCXX_EXTRA_FLAGS=-target=multicore;-stdpar;-march=neoverse-n1;-fast"
+    append_opts "-DCXX_EXTRA_FLAGS=-target=multicore;-stdpar;-tp=neoverse-n1;-fast"
     ;;
   esac
   ;;
@@ -48,7 +48,7 @@ kokkos)
   prime_kokkos
   append_opts "-DMODEL=kokkos"
   append_opts "-DKOKKOS_IN_TREE=$KOKKOS_DIR -DKokkos_ENABLE_OPENMP=ON -DKokkos_CXX_STANDARD=17"
-  append_opts "-DKokkos_ARCH_NATIVE=ON"
+  append_opts "-DCMAKE_CXX_FLAGS=-tp=neoverse-n1" # apparently this appears before CXX_EXTRA_FLAGS
   BENCHMARK_EXE="kokkos-stream"
   ;;
 omp)

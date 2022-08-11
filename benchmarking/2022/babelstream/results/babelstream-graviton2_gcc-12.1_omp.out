@@ -1,14 +1,14 @@
-Tue Aug  2 01:54:09 UTC 2022
+Wed Aug 10 19:02:09 UTC 2022
 /home/tomlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-graviton2_gcc-12.1_omp
-	linux-vdso.so.1 (0x0000ffff8a28a000)
-	libgomp.so.1 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libgomp.so.1 (0x0000ffff8a1eb000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffff8a1b6000)
-	libstdc++.so.6 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libstdc++.so.6 (0x0000ffff89f90000)
-	libm.so.6 => /lib64/libm.so.6 (0x0000ffff89ecf000)
-	libgcc_s.so.1 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libgcc_s.so.1 (0x0000ffff89e9c000)
-	libc.so.6 => /lib64/libc.so.6 (0x0000ffff89d16000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffff89cf5000)
-	/lib/ld-linux-aarch64.so.1 (0x0000ffff8a24c000)
+	linux-vdso.so.1 (0x0000ffffa03c5000)
+	libgomp.so.1 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libgomp.so.1 (0x0000ffffa0326000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffffa02f1000)
+	libstdc++.so.6 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libstdc++.so.6 (0x0000ffffa00cb000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000ffffa000a000)
+	libgcc_s.so.1 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libgcc_s.so.1 (0x0000ffff9ffd7000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000ffff9fe51000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffff9fe30000)
+	/lib/ld-linux-aarch64.so.1 (0x0000ffffa0387000)
 0: CPU
 BabelStream
 Version: 4.0
@@ -18,8 +18,8 @@ Precision: double
 Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        159325.512  0.05391     0.05423     0.05404     
-Mul         160030.807  0.05368     0.05408     0.05378     
-Add         163999.010  0.07857     0.07971     0.07869     
-Triad       164207.315  0.07847     0.07879     0.07860     
-Dot         168693.460  0.05092     0.05123     0.05108     
+Copy        159276.377  0.05393     0.05438     0.05405     
+Mul         159975.039  0.05370     0.05427     0.05383     
+Add         164000.263  0.07857     0.07976     0.07871     
+Triad       164237.047  0.07845     0.07963     0.07863     
+Dot         167412.994  0.05131     0.05176     0.05143     
