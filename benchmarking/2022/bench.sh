@@ -12,17 +12,17 @@ bude=true
 babelstream=true
 
 declare -A models
-models["tbb"]=false
-models["omp"]=false
-models["cuda"]=false
-models["sycl"]=false
+models["tbb"]=true
+models["omp"]=true
+models["cuda"]=true
+models["sycl"]=true
 models["kokkos"]=true
 
-models["std-data"]=false
-models["std-indices"]=false
+models["std-data"]=true
+models["std-indices"]=true
 
-models["std-data-dplomp"]=false
-models["std-indices-dplomp"]=false
+models["std-data-dplomp"]=true
+models["std-indices-dplomp"]=true
 
 export LARGE=true
 
@@ -46,12 +46,13 @@ bench() { # platform, compiler,  action, models...
 }
 
 bench_once() {
-    bench "$1" "$2" "run" "${@:3}"
+    echo "No"
+    # bench "$1" "$2" "run" "${@:3}"
 }
 
 bench_scale() {
     # echo "No"
-    bench "$1" "$2" "run" "${@:3}"
+    bench "$1" "$2" "run-scale" "${@:3}"
     # bench "$1" "$2" "run-scale" "${@:3}"
 }
 

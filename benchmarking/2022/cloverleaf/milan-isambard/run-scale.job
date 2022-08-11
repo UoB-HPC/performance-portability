@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -q milanq
 #PBS -l select=1:ncpus=128
-#PBS -l walltime=03:00:00
+#PBS -l walltime=12:00:00
 #PBS -l place=excl
 #PBS -joe
 
@@ -27,14 +27,14 @@ for i in $(seq $MIN_CORE $MAX_CORE); do
 
     case "$MODEL" in
     kokkos)
-        cp "$SRC_DIR/InputDecks/clover_bm16_short.in" "clover.in"
+        cp "$SRC_DIR/InputDecks/clover_bm16.in" "clover.in"
         "$BENCHMARK_EXE"
         ;;
     omp)
-        "$BENCHMARK_EXE" --file "$SRC_DIR/InputDecks/clover_bm16_short.in"
+        "$BENCHMARK_EXE" --file "$SRC_DIR/InputDecks/clover_bm16.in"
         ;;
     tbb | std-*)
-        numactl --physcpubind=0-$(("$i" - 1)) --localalloc "$BENCHMARK_EXE" --file "$SRC_DIR/InputDecks/clover_bm16_short.in"
+        numactl --physcpubind=0-$(("$i" - 1)) --localalloc "$BENCHMARK_EXE" --file "$SRC_DIR/InputDecks/clover_bm16.in"
         ;;
     *)
         echo "Unknown run configuration for model '$MODEL'"
