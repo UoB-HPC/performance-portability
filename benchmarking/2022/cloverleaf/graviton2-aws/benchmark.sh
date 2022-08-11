@@ -41,7 +41,11 @@ kokkos)
   fetch_src "kokkos"
   prime_kokkos
   append_opts "-DKOKKOS_IN_TREE=$KOKKOS_DIR -DKokkos_ENABLE_OPENMP=ON -DKokkos_CXX_STANDARD=17"
-  append_opts "-DCMAKE_CXX_FLAGS=-tp=neoverse-n1" # apparently this appears before CXX_EXTRA_FLAGS
+  case "$COMPILER" in
+  nvhpc-*)
+    append_opts "-DCMAKE_CXX_FLAGS=-tp=neoverse-n1" # apparently this appears before CXX_EXTRA_FLAGS
+    ;;
+  esac
   ;;
 omp)
   fetch_src "omp-plain"
