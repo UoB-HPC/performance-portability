@@ -30,7 +30,7 @@ for i in $(seq $MIN_CORE $MAX_CORE); do
     "$BENCHMARK_EXE" --file "$SRC_DIR/InputDecks/clover_bm16.in"
     ;;
   tbb | std-*)
-    numactl --physcpubind=0-$(("$i" - 1)) --localalloc "$BENCHMARK_EXE" --file "$SRC_DIR/InputDecks/clover_bm16.in"
+    numactl --physcpubind=0-$(($i - 1)) --localalloc "$BENCHMARK_EXE" --file "$SRC_DIR/InputDecks/clover_bm16.in"
     ;;
   *)
     echo "Unknown run configuration for model '$MODEL'"

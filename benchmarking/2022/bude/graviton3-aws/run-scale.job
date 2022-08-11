@@ -28,7 +28,7 @@ for i in $(seq $MIN_CORE $MAX_CORE); do
     "$BENCHMARK_EXE" --deck miniBUDE/data/bm1 --wgsize 1 --ppwi all
     ;;
   tbb | std-*)
-    numactl --physcpubind=0-$(("$i" - 1)) --localalloc "$BENCHMARK_EXE" --deck miniBUDE/data/bm1 --wgsize 1 --ppwi all
+    numactl --physcpubind=0-$(($i - 1)) --localalloc "$BENCHMARK_EXE" --deck miniBUDE/data/bm1 --wgsize 1 --ppwi all
     ;;
   *)
     echo "Unknown run configuration for model '$MODEL'"

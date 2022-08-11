@@ -33,7 +33,7 @@ for i in $(seq $MIN_CORE $MAX_CORE); do
     "$BENCHMARK_EXE" "${opts[@]:-}"
     ;;
   tbb | std-*)
-    numactl --physcpubind=0-$(("$i" - 1)) --localalloc "$BENCHMARK_EXE" "${opts[@]:-}"
+    numactl --physcpubind=0-$(($i - 1)) --localalloc "$BENCHMARK_EXE" "${opts[@]:-}"
     ;;
   *)
     echo "Unknown run configuration for model '$MODEL'"
