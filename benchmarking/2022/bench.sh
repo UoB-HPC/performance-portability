@@ -134,15 +134,15 @@ p2)
 aws-g2)
     cd "$BASE/babelstream/results"
     bench_scale graviton2-aws $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
-    # bench_scale graviton2-aws $GCC "${babelstream_gcc_cpu_models[@]}"
+    bench_scale graviton2-aws $GCC "${babelstream_gcc_cpu_models[@]}"
 
     cd "$BASE/bude/results"
     bench_scale graviton2-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"
-    # bench_scale graviton2-aws $GCC "${generic_gcc_cpu_models[@]}"
+    bench_scale graviton2-aws $GCC "${generic_gcc_cpu_models[@]}"
 
     cd "$BASE/cloverleaf/results"
     bench_scale graviton2-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"
-    # bench_scale graviton2-aws $GCC "${generic_gcc_cpu_models[@]}"
+    bench_scale graviton2-aws $GCC "${generic_gcc_cpu_models[@]}"
 
     ;;
 aws-g3)
@@ -155,7 +155,7 @@ aws-g3)
     bench_scale graviton3-aws $GCC "${generic_gcc_cpu_models[@]}"
 
     cd "$BASE/cloverleaf/results"
-    # bench_scale graviton3-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"
+    bench_scale graviton3-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"
     bench_scale graviton3-aws $GCC "${generic_gcc_cpu_models[@]}"
 
     ;;
