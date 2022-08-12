@@ -1,0 +1,273 @@
+Fri 12 Aug 01:50:33 GMT 2022
+/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos
+	linux-vdso.so.1 (0x0000155555551000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000155555127000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libstdc++.so.6 (0x0000155554eff000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000155554b7d000)
+	libgomp.so.1 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libgomp.so.1 (0x00001555554ea000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libgcc_s.so.1 (0x00001555554c9000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000015555495d000)
+	libc.so.6 => /lib64/libc.so.6 (0x000015555459b000)
+	/lib64/ld-linux-x86-64.so.2 (0x000015555532b000)
+miniBUDE:  
+compile_commands:
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS -DKOKKOS_DEPENDENCE -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/generated -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/containers/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/containers/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/algorithms/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/algorithms/src  -DNDEBUG -O3 -march=native -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_CPUDiscovery.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_CPUDiscovery.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Command_Line_Parsing.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Command_Line_Parsing.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Core.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Core.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Error.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Error.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_ExecPolicy.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_ExecPolicy.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_HostBarrier.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_HostBarrier.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_HostSpace.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_HostSpace.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_HostSpace_deepcopy.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_HostSpace_deepcopy.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_HostThreadTeam.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_HostThreadTeam.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_MemoryPool.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_MemoryPool.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_MemorySpace.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_MemorySpace.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_NumericTraits.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_NumericTraits.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Profiling.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Profiling.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Serial_Task.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Serial_Task.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_SharedAlloc.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_SharedAlloc.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Spinwait.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Spinwait.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Stacktrace.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Stacktrace.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_hwloc.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_hwloc.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/OpenMP/Kokkos_OpenMP_Exec.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/OpenMP/Kokkos_OpenMP_Exec.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/OpenMP/Kokkos_OpenMP_Task.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/OpenMP/Kokkos_OpenMP_Task.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/desul/src/Lock_Array_CUDA.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/desul/src/Lock_Array_CUDA.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/desul/src/Lock_Array_HIP.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/desul/src/Lock_Array_HIP.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/containers/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/containers/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscontainers.dir/impl/Kokkos_UnorderedMap_impl.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/containers/src/impl/Kokkos_UnorderedMap_impl.cpp"
+vcs:
+  commit:  e7bcdd38b0ccc55b4a0b6fd87c02cf28da02f7d9*
+  author:  "Tom Lin (tom91136@gmail.com)"
+  date:    "2022-08-11 10:19:23 +0000"
+  subject: "Fix quoting for math expr on slurm"
+host_cpu:
+  ~
+time: { epoch_s:1660269033, formatted: "Fri Aug 12 01:50:33 2022 GMT" }
+devices:
+  0: "N6Kokkos6OpenMPE (specify backend at compile-time)"
+miniBUDE:  
+compile_commands:
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS -DKOKKOS_DEPENDENCE -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/generated -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/containers/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/containers/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/algorithms/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/algorithms/src  -DNDEBUG -O3 -march=native -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_CPUDiscovery.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_CPUDiscovery.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Command_Line_Parsing.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Command_Line_Parsing.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Core.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Core.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Error.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Error.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_ExecPolicy.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_ExecPolicy.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_HostBarrier.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_HostBarrier.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_HostSpace.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_HostSpace.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_HostSpace_deepcopy.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_HostSpace_deepcopy.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_HostThreadTeam.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_HostThreadTeam.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_MemoryPool.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_MemoryPool.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_MemorySpace.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_MemorySpace.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_NumericTraits.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_NumericTraits.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Profiling.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Profiling.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Serial_Task.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Serial_Task.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_SharedAlloc.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_SharedAlloc.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Spinwait.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Spinwait.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_Stacktrace.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_Stacktrace.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/impl/Kokkos_hwloc.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/impl/Kokkos_hwloc.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/OpenMP/Kokkos_OpenMP_Exec.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/OpenMP/Kokkos_OpenMP_Exec.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/OpenMP/Kokkos_OpenMP_Task.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/OpenMP/Kokkos_OpenMP_Task.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/desul/src/Lock_Array_CUDA.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/desul/src/Lock_Array_CUDA.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscore.dir/desul/src/Lock_Array_HIP.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src/desul/src/Lock_Array_HIP.cpp"
+   - "/lustre/projects/bristol/modules/gcc/12.1.0/bin/c++ -DKOKKOS_DEPENDENCE -I<SRC>/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/containers/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/containers/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_kokkos/miniBUDE/build/kokkos/core/src -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/core/src -O3 -DNDEBUG -fopenmp -march=skylake-avx512 -mtune=skylake-avx512 -mrtm -std=c++17 -o CMakeFiles/kokkoscontainers.dir/impl/Kokkos_UnorderedMap_impl.cpp.o -c /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE/kokkos-3.6.01/containers/src/impl/Kokkos_UnorderedMap_impl.cpp"
+vcs:
+  commit:  e7bcdd38b0ccc55b4a0b6fd87c02cf28da02f7d9*
+  author:  "Tom Lin (tom91136@gmail.com)"
+  date:    "2022-08-11 10:19:23 +0000"
+  subject: "Fix quoting for math expr on slurm"
+host_cpu:
+  ~
+time: { epoch_s:1660269033, formatted: "Fri Aug 12 01:50:33 2022 GMT" }
+deck:
+  path:         "miniBUDE/data/bm1"
+  poses:        65536
+  proteins:     938
+  ligands:      26
+  forcefields:  34
+config:
+  iterations:   8
+  poses:        65536
+  ppwi:
+    available:  [1,2,4,8,16,32,64,128]
+    selected:   [1,2,4,8,16,32,64,128]
+  wgsize:       [1]
+device: { index: 0,  name: "N6Kokkos6OpenMPE (specify backend at compile-time)" }
+# (ppwi=1,wgsize=1,valid=1)
+# (ppwi=2,wgsize=1,valid=1)
+# (ppwi=4,wgsize=1,valid=1)
+# (ppwi=8,wgsize=1,valid=1)
+# (ppwi=16,wgsize=1,valid=1)
+# (ppwi=32,wgsize=1,valid=1)
+# (ppwi=64,wgsize=1,valid=1)
+# (ppwi=128,wgsize=1,valid=1)
+results:
+  - outcome:             { valid: true, max_diff_%: 0.002 }
+    param:               { ppwi: 1, wgsize: 1 }
+    raw_iterations:      [449.983,449.966,451.501,450.031,450.051,450.29,450.133,452.091,450.258,450.764]
+    context_ms:          0.889596
+    sum_ms:              3605.119
+    avg_ms:              450.640
+    min_ms:              450.031
+    max_ms:              452.091
+    stddev_ms:           0.716
+    giga_interactions/s: 3.547
+    gflop/s:             141.948
+    gfinst/s:            88.668
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.002 }
+    param:               { ppwi: 2, wgsize: 1 }
+    raw_iterations:      [407.069,405.14,405.447,404.225,404.204,404.352,404.383,405.348,404.152,403.972]
+    context_ms:          0.719135
+    sum_ms:              3236.082
+    avg_ms:              404.510
+    min_ms:              403.972
+    max_ms:              405.447
+    stddev_ms:           0.526
+    giga_interactions/s: 3.951
+    gflop/s:             138.376
+    gfinst/s:            98.779
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.002 }
+    param:               { ppwi: 4, wgsize: 1 }
+    raw_iterations:      [373.207,373.87,372.399,372.889,372.943,372.443,372.709,372.714,372.678,372.872]
+    context_ms:          0.562688
+    sum_ms:              2981.647
+    avg_ms:              372.706
+    min_ms:              372.399
+    max_ms:              372.943
+    stddev_ms:           0.188
+    giga_interactions/s: 4.288
+    gflop/s:             139.461
+    gfinst/s:            107.209
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.002 }
+    param:               { ppwi: 8, wgsize: 1 }
+    raw_iterations:      [359.621,359.598,359.537,359.783,359.855,359.768,359.718,360.458,359.786,360.28]
+    context_ms:          0.338730
+    sum_ms:              2879.185
+    avg_ms:              359.898
+    min_ms:              359.537
+    max_ms:              360.458
+    stddev_ms:           0.289
+    giga_interactions/s: 4.441
+    gflop/s:             138.871
+    gfinst/s:            111.024
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.002 }
+    param:               { ppwi: 16, wgsize: 1 }
+    raw_iterations:      [341.88,341.914,341.855,341.75,341.831,341.918,341.913,341.861,341.881,341.901]
+    context_ms:          0.377885
+    sum_ms:              2734.910
+    avg_ms:              341.864
+    min_ms:              341.750
+    max_ms:              341.918
+    stddev_ms:           0.051
+    giga_interactions/s: 4.675
+    gflop/s:             143.275
+    gfinst/s:            116.881
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.002 }
+    param:               { ppwi: 32, wgsize: 1 }
+    raw_iterations:      [347.615,347.249,347.682,347.731,346.372,346.891,346.246,346.938,346.658,347.307]
+    context_ms:          0.347065
+    sum_ms:              2775.826
+    avg_ms:              346.978
+    min_ms:              346.246
+    max_ms:              347.731
+    stddev_ms:           0.523
+    giga_interactions/s: 4.606
+    gflop/s:             139.723
+    gfinst/s:            115.158
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.002 }
+    param:               { ppwi: 64, wgsize: 1 }
+    raw_iterations:      [339.962,338.821,338.411,338.649,338.21,338.056,338.973,338.718,338.669,338.867]
+    context_ms:          0.377999
+    sum_ms:              2708.553
+    avg_ms:              338.569
+    min_ms:              338.056
+    max_ms:              338.973
+    stddev_ms:           0.298
+    giga_interactions/s: 4.721
+    gflop/s:             142.456
+    gfinst/s:            118.018
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.002 }
+    param:               { ppwi: 128, wgsize: 1 }
+    raw_iterations:      [341.918,341.834,341.713,341.673,342.24,341.807,341.952,342.138,341.688,342.013]
+    context_ms:          0.351380
+    sum_ms:              2735.225
+    avg_ms:              341.903
+    min_ms:              341.673
+    max_ms:              342.240
+    stddev_ms:           0.203
+    giga_interactions/s: 4.675
+    gflop/s:             140.701
+    gfinst/s:            116.867
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+best: { min_ms: 338.06, max_ms: 338.97, sum_ms: 2708.55, avg_ms: 338.57, ppwi: 64, wgsize: 1 }

@@ -1,0 +1,233 @@
+Fri 12 Aug 01:50:40 GMT 2022
+/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_hipsycl-llvm_sycl
+	linux-vdso.so.1 (0x0000155555551000)
+	libhipSYCL-rt.so => /home/br-tdeakin/codes/babelstream/src/hipSYCL/build-ilake-llvm/install/lib/libhipSYCL-rt.so (0x00001555554d5000)
+	libboost_context.so.1.66.0 => /usr/lib64/libboost_context.so.1.66.0 (0x0000155555128000)
+	libboost_fiber.so.1.66.0 => /usr/lib64/libboost_fiber.so.1.66.0 (0x0000155554ec5000)
+	libstdc++.so.6 => /usr/lib64/libstdc++.so.6 (0x0000155554b30000)
+	libm.so.6 => /usr/lib64/libm.so.6 (0x00001555547ae000)
+	libomp.so => /lustre/home/br-jcownie/software/clang-14.x/x86_64/lib/libomp.so (0x00001555553c5000)
+	libgcc_s.so.1 => /usr/lib64/libgcc_s.so.1 (0x0000155554596000)
+	libpthread.so.0 => /usr/lib64/libpthread.so.0 (0x0000155554376000)
+	libc.so.6 => /usr/lib64/libc.so.6 (0x0000155553fb4000)
+	libdl.so.2 => /usr/lib64/libdl.so.2 (0x0000155553db0000)
+	/lib64/ld-linux-x86-64.so.2 (0x000015555532b000)
+	librt.so.1 => /usr/lib64/librt.so.1 (0x0000155553ba7000)
+	libboost_filesystem.so.1.66.0 => /usr/lib64/libboost_filesystem.so.1.66.0 (0x000015555398c000)
+	libboost_system.so.1.66.0 => /usr/lib64/libboost_system.so.1.66.0 (0x0000155553787000)
+miniBUDE:  
+compile_commands:
+   - "/home/br-jcownie/software/clang-14.x/x86_64/bin/clang++ -DSYCL -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/sycl -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_hipsycl-llvm_sycl/miniBUDE/build/generated -isystem /home/br-tdeakin/codes/babelstream/src/hipSYCL/build-ilake-llvm/install/include  -DNDEBUG -O3 -march=native -march=icelake-server -Ofast -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
+vcs:
+  commit:  e7bcdd38b0ccc55b4a0b6fd87c02cf28da02f7d9*
+  author:  "Tom Lin (tom91136@gmail.com)"
+  date:    "2022-08-11 10:19:23 +0000"
+  subject: "Fix quoting for math expr on slurm"
+host_cpu:
+  ~
+time: { epoch_s:1660269040, formatted: "Fri Aug 12 01:50:40 2022 GMT" }
+devices:
+  0: "hipSYCL OpenMP host device"
+miniBUDE:  
+compile_commands:
+   - "/home/br-jcownie/software/clang-14.x/x86_64/bin/clang++ -DSYCL -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/sycl -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_hipsycl-llvm_sycl/miniBUDE/build/generated -isystem /home/br-tdeakin/codes/babelstream/src/hipSYCL/build-ilake-llvm/install/include  -DNDEBUG -O3 -march=native -march=icelake-server -Ofast -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
+vcs:
+  commit:  e7bcdd38b0ccc55b4a0b6fd87c02cf28da02f7d9*
+  author:  "Tom Lin (tom91136@gmail.com)"
+  date:    "2022-08-11 10:19:23 +0000"
+  subject: "Fix quoting for math expr on slurm"
+host_cpu:
+  ~
+time: { epoch_s:1660269040, formatted: "Fri Aug 12 01:50:40 2022 GMT" }
+deck:
+  path:         "miniBUDE/data/bm1"
+  poses:        65536
+  proteins:     938
+  ligands:      26
+  forcefields:  34
+config:
+  iterations:   8
+  poses:        65536
+  ppwi:
+    available:  [1,2,4,8,16,32,64,128]
+    selected:   [1,2,4,8,16,32,64,128]
+  wgsize:       [1]
+device: { index: 0,  name: "hipSYCL OpenMP host device" }
+# (ppwi=1,wgsize=1,valid=1)
+# (ppwi=2,wgsize=1,valid=1)
+# (ppwi=4,wgsize=1,valid=1)
+# (ppwi=8,wgsize=1,valid=1)
+# (ppwi=16,wgsize=1,valid=1)
+# (ppwi=32,wgsize=1,valid=1)
+# (ppwi=64,wgsize=1,valid=1)
+# (ppwi=128,wgsize=1,valid=1)
+results:
+  - outcome:             { valid: true, max_diff_%: 0.005 }
+    param:               { ppwi: 1, wgsize: 1 }
+    raw_iterations:      [110.969,61.8619,60.6039,60.8439,60.5534,60.8663,60.8242,60.512,60.8311,60.6057]
+    context_ms:          0.566653
+    sum_ms:              485.641
+    avg_ms:              60.705
+    min_ms:              60.512
+    max_ms:              60.866
+    stddev_ms:           0.140
+    giga_interactions/s: 26.329
+    gflop/s:             1053.744
+    gfinst/s:            658.220
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.005 }
+    param:               { ppwi: 2, wgsize: 1 }
+    raw_iterations:      [41.8929,37.7373,37.7598,37.8437,37.723,37.8559,37.536,38.1376,37.7434,37.9405]
+    context_ms:          0.228901
+    sum_ms:              302.540
+    avg_ms:              37.817
+    min_ms:              37.536
+    max_ms:              38.138
+    stddev_ms:           0.165
+    giga_interactions/s: 42.263
+    gflop/s:             1480.120
+    gfinst/s:            1056.583
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.005 }
+    param:               { ppwi: 4, wgsize: 1 }
+    raw_iterations:      [34.3455,30.7861,30.7605,30.9028,31.1498,30.5915,31.1232,30.7129,30.739,30.6287]
+    context_ms:          0.600042
+    sum_ms:              246.608
+    avg_ms:              30.826
+    min_ms:              30.592
+    max_ms:              31.150
+    stddev_ms:           0.199
+    giga_interactions/s: 51.849
+    gflop/s:             1686.166
+    gfinst/s:            1296.218
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.002 }
+    param:               { ppwi: 8, wgsize: 1 }
+    raw_iterations:      [46.4866,42.8406,42.8919,43.3604,42.7807,43.1316,42.9334,43.1056,42.9721,42.7553]
+    context_ms:          0.254812
+    sum_ms:              343.931
+    avg_ms:              42.991
+    min_ms:              42.755
+    max_ms:              43.360
+    stddev_ms:           0.188
+    giga_interactions/s: 37.177
+    gflop/s:             1162.548
+    gfinst/s:            929.426
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.002 }
+    param:               { ppwi: 16, wgsize: 1 }
+    raw_iterations:      [95.3221,90.2736,90.7328,92.0055,91.8843,91.7266,91.4551,91.7216,91.6003,91.5529]
+    context_ms:          0.226916
+    sum_ms:              732.679
+    avg_ms:              91.585
+    min_ms:              90.733
+    max_ms:              92.005
+    stddev_ms:           0.362
+    giga_interactions/s: 17.451
+    gflop/s:             534.809
+    gfinst/s:            436.287
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.002 }
+    param:               { ppwi: 32, wgsize: 1 }
+    raw_iterations:      [58.5575,54.7296,54.6229,54.5442,54.7446,54.4449,54.362,54.6327,54.5003,54.7113]
+    context_ms:          0.319321
+    sum_ms:              436.563
+    avg_ms:              54.570
+    min_ms:              54.362
+    max_ms:              54.745
+    stddev_ms:           0.123
+    giga_interactions/s: 29.289
+    gflop/s:             888.410
+    gfinst/s:            732.216
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.002 }
+    param:               { ppwi: 64, wgsize: 1 }
+    raw_iterations:      [46.8029,43.3581,42.5044,43.5442,43.6787,43.4908,43.0704,42.6361,43.5375,43.1946]
+    context_ms:          0.210114
+    sum_ms:              345.657
+    avg_ms:              43.207
+    min_ms:              42.504
+    max_ms:              43.679
+    stddev_ms:           0.413
+    giga_interactions/s: 36.991
+    gflop/s:             1116.276
+    gfinst/s:            924.786
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.002 }
+    param:               { ppwi: 128, wgsize: 1 }
+    raw_iterations:      [37.5298,34.6929,34.4635,34.3991,34.5385,34.2923,34.3672,34.1067,33.7583,33.5702]
+    context_ms:          0.229458
+    sum_ms:              273.496
+    avg_ms:              34.187
+    min_ms:              33.570
+    max_ms:              34.538
+    stddev_ms:           0.328
+    giga_interactions/s: 46.752
+    gflop/s:             1407.149
+    gfinst/s:            1168.788
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+best: { min_ms: 30.59, max_ms: 31.15, sum_ms: 246.61, avg_ms: 30.83, ppwi: 4, wgsize: 1 }

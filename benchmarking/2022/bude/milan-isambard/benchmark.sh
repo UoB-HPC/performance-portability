@@ -15,25 +15,50 @@ export USE_MAKE=false
 append_opts "-DCMAKE_VERBOSE_MAKEFILE=ON -DUSE_CPU_FEATURES=OFF"
 
 case "$COMPILER" in
+cce)
+  module load cce
+  module load craype-x86-milan
+  append_opts "-DCMAKE_C_COMPILER=cc"
+  append_opts "-DCMAKE_CXX_COMPILER=CC"
+  append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast"
+  ;;
+oneapi-2022.2)
+  module load gcc/12.1.0
+  load_oneapi "$HOME/intel/oneapi/setvars.sh"
+  ;;
+aocc-3.2.0)
+
+  export PATH="/lustre/home/br-wlin/aocc-compiler-3.2.0/bin:$PATH"
+  export LD_LIBRARY_PATH="/lustre/home/br-wlin/aocc-compiler-3.2.0/lib:$LD_LIBRARY_PATH"
+
+  append_opts "-DCMAKE_C_COMPILER=clang"
+  append_opts "-DCMAKE_CXX_COMPILER=clang++"
+  append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast"
+  ;;
+llvm-14)
+
+  export PATH="/lustre/home/br-jcownie/software/clang-14.x/x86_64/bin:$PATH"
+  export LD_LIBRARY_PATH="/lustre/home/br-jcownie/software/clang-14.x/x86_64/lib:$LD_LIBRARY_PATH"
+
+  module load gcc/12.1.0
+
+  append_opts "-DCMAKE_C_COMPILER=clang"
+  append_opts "-DCMAKE_CXX_COMPILER=clang++"
+  append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast"
+  ;;
+hipsycl-gcc)
+  module load gcc/12.1.0
+  ;;
+hipsycl-llvm)
+  module load gcc/12.1.0
+  export PATH="/lustre/home/br-jcownie/software/clang-14.x/x86_64/bin:$PATH"
+  export LD_LIBRARY_PATH="/lustre/home/br-jcownie/software/clang-14.x/x86_64/lib:$LD_LIBRARY_PATH"
+  ;;
 gcc-12.1)
   module load gcc/12.1.0
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=g++"
   append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast"
-  append_opts "-DUSE_TBB=ON"
-  ;;
-nvhpc-22.7)
-  load_nvhpc
-  append_opts "-DCMAKE_C_COMPILER=$NVHPC_PATH/compilers/bin/nvc"
-  append_opts "-DCMAKE_CXX_COMPILER=$NVHPC_PATH/compilers/bin/nvc++"
-  case "$MODEL" in
-  omp)
-    append_opts "-DCXX_EXTRA_FLAGS=-target=multicore;-mp;-march=zen3;-fast"
-    ;;
-  std-*)
-    append_opts "-DCXX_EXTRA_FLAGS=-target=multicore;-stdpar;-march=zen3;-fast"
-    ;;
-  esac
   ;;
 *) unknown_compiler ;;
 esac
@@ -52,27 +77,33 @@ omp)
   append_opts "-DMODEL=omp"
   BENCHMARK_EXE="omp-bude"
   ;;
-tbb)
-  append_opts "-DMODEL=tbb"
-  BENCHMARK_EXE="tbb-bude"
+omp-target)
+  append_opts "-DMODEL=omp"
+  BENCHMARK_EXE="omp-bude"
+  append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast -DOFFLOAD=ON"
   ;;
+sycl)
+  append_opts "-DMODEL=sycl"
+  BENCHMARK_EXE="sycl-bude"
 
-std-indices)
-  append_opts "-DMODEL=std-indices"
-  BENCHMARK_EXE="std-indices-bude"
-  ;;
-std-ranges)
-  append_opts "-DMODEL=std-ranges"
-  BENCHMARK_EXE="std-ranges-bude"
-  ;;
-
-std-indices-dplomp)
-  append_opts "-DMODEL=std-indices -DUSE_ONEDPL=OPENMP"
-  BENCHMARK_EXE="std-indices-bude"
-  ;;
-std-ranges-dplomp)
-  append_opts "-DMODEL=std-ranges -DUSE_ONEDPL=OPENMP"
-  BENCHMARK_EXE="std-ranges-bude"
+  append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast"
+  case "$COMPILER" in
+  oneapi-*)
+    append_opts "-DSYCL_COMPILER=ONEAPI-DPCPP"
+    ;;
+  hipsycl-gcc)
+    append_opts "-DCMAKE_C_COMPILER=gcc"
+    append_opts "-DCMAKE_CXX_COMPILER=g++"
+    append_opts "-DCXX_EXTRA_LIBRARIES=stdc++fs"
+    append_opts "-DSYCL_COMPILER=HIPSYCL -DSYCL_COMPILER_DIR=/home/br-tdeakin/codes/babelstream/src/hipSYCL/build-milan-gcc/install"
+    ;;
+  hipsycl-llvm)
+    append_opts "-DCMAKE_C_COMPILER=clang"
+    append_opts "-DCMAKE_CXX_COMPILER=clang++"
+    append_opts "-DCXX_EXTRA_LIBRARIES=stdc++fs"
+    append_opts "-DSYCL_COMPILER=HIPSYCL -DSYCL_COMPILER_DIR=/home/br-tdeakin/codes/babelstream/src/hipSYCL/build-milan-llvm/install"
+    ;;
+  esac
   ;;
 *) unknown_model ;;
 esac

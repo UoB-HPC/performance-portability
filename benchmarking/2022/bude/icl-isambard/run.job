@@ -17,10 +17,12 @@ export OMP_PROC_BIND=true
 export OMP_PLACES=cores
 export ACC_NUM_CORES=64
 
+export OMP_TARGET_OFFLOAD=DISABLED
+
 case "$MODEL" in
-tbb | omp | std-* | kokkos)
+sycl | omp | omp-target | kokkos)
     "$BENCHMARK_EXE" --list
-    "$BENCHMARK_EXE" --deck miniBUDE/data/bm1 --wgsize 1 --ppwi all
+    "$BENCHMARK_EXE" --device "Xeon" --deck miniBUDE/data/bm1 --wgsize 1 --ppwi all
     ;;
 *)
     echo "Unknown run configuration for model '$MODEL'"

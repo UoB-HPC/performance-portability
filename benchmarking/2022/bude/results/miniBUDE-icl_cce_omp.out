@@ -1,0 +1,249 @@
+Fri 12 Aug 01:51:30 GMT 2022
+/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_cce_omp
+	linux-vdso.so.1 (0x0000155555551000)
+	libcraymp.so.1 => /opt/cray/pe/cce/11.0.4/cce/x86_64/lib/libcraymp.so.1 (0x0000155555069000)
+	libmpi.so.12 => /opt/cray/pe/cray-mvapich2_noslurm_nogpu/2.3.5/infiniband/cray/11.0/lib/libmpi.so.12 (0x0000155554840000)
+	libmpicxx.so.12 => /opt/cray/pe/cray-mvapich2_noslurm_nogpu/2.3.5/infiniband/cray/11.0/lib/libmpicxx.so.12 (0x0000155555522000)
+	libquadmath.so.0 => /opt/cray/pe/cce/11.0.4/cce/x86_64/lib/libquadmath.so.0 (0x0000155554600000)
+	libmodules.so.1 => /opt/cray/pe/cce/11.0.4/cce/x86_64/lib/libmodules.so.1 (0x00001555543e4000)
+	libfi.so.1 => /opt/cray/pe/cce/11.0.4/cce/x86_64/lib/libfi.so.1 (0x0000155553cc1000)
+	libcraymath.so.1 => /opt/cray/pe/cce/11.0.4/cce/x86_64/lib/libcraymath.so.1 (0x00001555539e0000)
+	libf.so.1 => /opt/cray/pe/cce/11.0.4/cce/x86_64/lib/libf.so.1 (0x000015555374c000)
+	libu.so.1 => /opt/cray/pe/cce/11.0.4/cce/x86_64/lib/libu.so.1 (0x0000155553438000)
+	libcsup.so.1 => /opt/cray/pe/cce/11.0.4/cce/x86_64/lib/libcsup.so.1 (0x0000155553232000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000155553012000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000155552c90000)
+	libstdc++.so.6 => /opt/cray/pe/gcc-libs/libstdc++.so.6 (0x0000155552904000)
+	libunwind.so.1 => /opt/cray/pe/cce/11.0.4/cce-clang/x86_64/lib/libunwind.so.1 (0x00001555554f3000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000155552542000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000015555233e000)
+	librt.so.1 => /lib64/librt.so.1 (0x0000155552135000)
+	/lib64/ld-linux-x86-64.so.2 (0x000015555532b000)
+	libgcc_s.so.1 => /opt/cray/pe/gcc-libs/libgcc_s.so.1 (0x0000155551f1d000)
+	libxml2.so.2 => /lib64/libxml2.so.2 (0x0000155551bb5000)
+	libatomic.so.1 => /opt/cray/pe/gcc-libs/libatomic.so.1 (0x00001555519ad000)
+	libgfortran.so.5 => /opt/cray/pe/gcc-libs/libgfortran.so.5 (0x000015555156d000)
+	libz.so.1 => /lib64/libz.so.1 (0x0000155551356000)
+	liblzma.so.5 => /lib64/liblzma.so.5 (0x000015555112f000)
+CCE libu memcpy: WARNING: Intel cpuid detection failed
+Using generic mem* routines instead of tuned routines
+This message can be disabled by exporting RFE_811452_DISABLE to your environment
+miniBUDE:  
+compile_commands:
+   - "/opt/cray/pe/craype/2.7.7/bin/CC -DOMP -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/omp -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_cce_omp/miniBUDE/build/generated  -DNDEBUG -O3 -march=native -march=icelake-server -Ofast -fopenmp -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
+vcs:
+  commit:  e7bcdd38b0ccc55b4a0b6fd87c02cf28da02f7d9*
+  author:  "Tom Lin (tom91136@gmail.com)"
+  date:    "2022-08-11 10:19:23 +0000"
+  subject: "Fix quoting for math expr on slurm"
+host_cpu:
+  ~
+time: { epoch_s:1660269090, formatted: "Fri Aug 12 01:51:30 2022 GMT" }
+devices:
+  0: "OMP CPU"
+CCE libu memcpy: WARNING: Intel cpuid detection failed
+Using generic mem* routines instead of tuned routines
+This message can be disabled by exporting RFE_811452_DISABLE to your environment
+miniBUDE:  
+compile_commands:
+   - "/opt/cray/pe/craype/2.7.7/bin/CC -DOMP -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/omp -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_cce_omp/miniBUDE/build/generated  -DNDEBUG -O3 -march=native -march=icelake-server -Ofast -fopenmp -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
+vcs:
+  commit:  e7bcdd38b0ccc55b4a0b6fd87c02cf28da02f7d9*
+  author:  "Tom Lin (tom91136@gmail.com)"
+  date:    "2022-08-11 10:19:23 +0000"
+  subject: "Fix quoting for math expr on slurm"
+host_cpu:
+  ~
+time: { epoch_s:1660269090, formatted: "Fri Aug 12 01:51:30 2022 GMT" }
+deck:
+  path:         "miniBUDE/data/bm1"
+  poses:        65536
+  proteins:     938
+  ligands:      26
+  forcefields:  34
+config:
+  iterations:   8
+  poses:        65536
+  ppwi:
+    available:  [1,2,4,8,16,32,64,128]
+    selected:   [1,2,4,8,16,32,64,128]
+  wgsize:       [1]
+device: { index: 0,  name: "OMP CPU" }
+# (ppwi=1,wgsize=1,valid=1)
+# (ppwi=2,wgsize=1,valid=1)
+# (ppwi=4,wgsize=1,valid=1)
+# (ppwi=8,wgsize=1,valid=1)
+# (ppwi=16,wgsize=1,valid=1)
+# (ppwi=32,wgsize=1,valid=1)
+# (ppwi=64,wgsize=1,valid=1)
+# (ppwi=128,wgsize=1,valid=1)
+results:
+  - outcome:             { valid: true, max_diff_%: 0.006 }
+    param:               { ppwi: 1, wgsize: 1 }
+    raw_iterations:      [67.5347,67.3181,67.2008,67.3485,67.2495,67.2465,67.1782,67.3473,67.2268,67.3324]
+    context_ms:          20.687439
+    sum_ms:              538.130
+    avg_ms:              67.266
+    min_ms:              67.178
+    max_ms:              67.349
+    stddev_ms:           0.063
+    giga_interactions/s: 23.761
+    gflop/s:             950.961
+    gfinst/s:            594.017
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 2, wgsize: 1 }
+    raw_iterations:      [207.192,208.919,207.083,206.914,207.231,207.165,206.99,207.212,207.185,207.439]
+    context_ms:          0.144193
+    sum_ms:              1657.220
+    avg_ms:              207.153
+    min_ms:              206.914
+    max_ms:              207.439
+    stddev_ms:           0.150
+    giga_interactions/s: 7.716
+    gflop/s:             270.209
+    gfinst/s:            192.888
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.002 }
+    param:               { ppwi: 4, wgsize: 1 }
+    raw_iterations:      [200.686,200.489,200.532,200.514,200.686,200.588,201.461,200.639,200.531,200.684]
+    context_ms:          0.081219
+    sum_ms:              1605.636
+    avg_ms:              200.705
+    min_ms:              200.514
+    max_ms:              201.461
+    stddev_ms:           0.293
+    giga_interactions/s: 7.963
+    gflop/s:             258.977
+    gfinst/s:            199.085
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.004 }
+    param:               { ppwi: 8, wgsize: 1 }
+    raw_iterations:      [32.0168,31.9509,32.0941,31.8524,31.8486,32.0489,32.1006,32.0098,31.9147,32.0185]
+    context_ms:          0.080605
+    sum_ms:              255.888
+    avg_ms:              31.986
+    min_ms:              31.849
+    max_ms:              32.101
+    stddev_ms:           0.095
+    giga_interactions/s: 49.969
+    gflop/s:             1562.547
+    gfinst/s:            1249.214
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.004 }
+    param:               { ppwi: 16, wgsize: 1 }
+    raw_iterations:      [28.0099,27.8776,27.8572,27.7697,27.8444,27.7239,27.7779,27.7857,27.733,27.6705]
+    context_ms:          0.086173
+    sum_ms:              222.162
+    avg_ms:              27.770
+    min_ms:              27.671
+    max_ms:              27.857
+    stddev_ms:           0.058
+    giga_interactions/s: 57.554
+    gflop/s:             1763.771
+    gfinst/s:            1438.851
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.004 }
+    param:               { ppwi: 32, wgsize: 1 }
+    raw_iterations:      [23.4199,23.0545,23.0682,23.0392,23.0836,23.1506,22.9902,23.0302,23.0484,23.0106]
+    context_ms:          0.071738
+    sum_ms:              184.421
+    avg_ms:              23.053
+    min_ms:              22.990
+    max_ms:              23.151
+    stddev_ms:           0.046
+    giga_interactions/s: 69.332
+    gflop/s:             2103.051
+    gfinst/s:            1733.308
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.004 }
+    param:               { ppwi: 64, wgsize: 1 }
+    raw_iterations:      [21.0371,21.1419,21.4848,21.1643,22.4249,21.1333,21.0556,20.9001,21.5265,20.7976]
+    context_ms:          0.106893
+    sum_ms:              170.487
+    avg_ms:              21.311
+    min_ms:              20.798
+    max_ms:              22.425
+    stddev_ms:           0.483
+    giga_interactions/s: 74.999
+    gflop/s:             2263.212
+    gfinst/s:            1874.971
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.004 }
+    param:               { ppwi: 128, wgsize: 1 }
+    raw_iterations:      [22.8632,21.1043,21.1137,21.0474,20.8039,21.3416,20.3434,20.6458,20.4897,21.4739]
+    context_ms:          0.085521
+    sum_ms:              167.259
+    avg_ms:              20.907
+    min_ms:              20.343
+    max_ms:              21.474
+    stddev_ms:           0.378
+    giga_interactions/s: 76.446
+    gflop/s:             2300.911
+    gfinst/s:            1911.153
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+best: { min_ms: 20.34, max_ms: 21.47, sum_ms: 167.26, avg_ms: 20.91, ppwi: 128, wgsize: 1 }
