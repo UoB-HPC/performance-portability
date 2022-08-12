@@ -22,8 +22,20 @@ gcc-12.1)
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=g++"
   append_opts "-DUSE_TBB=ON"
-   # Nuke the entire flag because the default `-march=native` is broken and -mcpu=neoverse-v1 is broken too
-  cxx_extra_flags="-march=armv8.4-a+rcpc+sve+profile;-O3;-ffast-math" # -Ofast fails with small timestep 
+  # Nuke the entire flag because the default `-march=native` is broken and -mcpu=neoverse-v1 is broken too
+  cxx_extra_flags="-march=armv8.4-a+rcpc+sve+profile;-O3;-ffast-math" # -Ofast fails with small timestep
+  ;;
+arm-22.0.1)
+  spack load gcc@12.1.0
+  spack load openmpi
+  spack load arm@22.0.1
+  append_opts "-DCMAKE_C_COMPILER=armclang"
+  append_opts "-DCMAKE_CXX_COMPILER=armclang++"
+  append_opts "-DUSE_TBB=ON -DTBB_ENABLE_IPO=OFF" # IPO is broken in armclang
+  cxx_extra_flags="-mcpu=neoverse-v1;-Ofast"
+
+  export CXXFLAGS="--gcc-toolchain=$(dirname "$(which gcc)")/.."
+  export LDFLAGS="--gcc-toolchain=$(dirname "$(which gcc)")/.."
   ;;
 nvhpc-22.7)
   spack load openmpi
@@ -60,7 +72,6 @@ std-indices)
   *) ;;
   esac
   ;;
-
 std-indices-dplomp)
   fetch_src "stdpar"
   case "$COMPILER" in

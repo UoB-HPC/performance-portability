@@ -7,6 +7,7 @@ ONEAPI=oneapi-2022.2
 NVHPC=nvhpc-22.7
 GCC=gcc-12.1
 AOCC=aocc-3.2.0
+ARM=arm-22.0.1
 
 cloverleaf=true
 bude=true
@@ -29,7 +30,7 @@ export LARGE=true
 
 build_and_submit() { # platform, compiler, model, action, impl
     echo "[exec] build $5 $1 $2 $3 "
-    "../$1/benchmark.sh" build "$2" "$3"
+    # "../$1/benchmark.sh" build "$2" "$3"
     echo "[exec] $5 $4 $1 $2 $3"
     "../$1/benchmark.sh" "$4" "$2" "$3"
 }
@@ -154,17 +155,19 @@ aws-g2)
     ;;
 aws-g3)
     cd "$BASE/babelstream/results"
-    bench_scale graviton3-aws $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
-    bench_scale graviton3-aws $GCC "${babelstream_gcc_cpu_models[@]}"
+    # bench_scale graviton3-aws $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
+    # bench_scale graviton3-aws $GCC "${babelstream_gcc_cpu_models[@]}"
+    # bench_scale graviton3-aws $ARM "${babelstream_gcc_cpu_models[@]}"
 
     cd "$BASE/bude/results"
-    bench_scale graviton3-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"
-    bench_scale graviton3-aws $GCC "${generic_gcc_cpu_models[@]}"
+    # bench_scale graviton3-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"
+    # bench_scale graviton3-aws $GCC "${generic_gcc_cpu_models[@]}"
+    # bench_scale graviton3-aws $ARM "${generic_gcc_cpu_models[@]}"
 
     cd "$BASE/cloverleaf/results"
-    bench_scale graviton3-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"
-    bench_scale graviton3-aws $GCC "${generic_gcc_cpu_models[@]}"
-
+    # bench_scale graviton3-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"
+    # bench_scale graviton3-aws $GCC "${generic_gcc_cpu_models[@]}"
+    bench_scale graviton3-aws $ARM "${generic_gcc_cpu_models[@]}"
     ;;
 xci)
     cd "$BASE/babelstream/results"
