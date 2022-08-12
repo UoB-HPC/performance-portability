@@ -22,6 +22,15 @@ gcc-12.1)
   append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast"
   append_opts "-DUSE_TBB=ON"
   ;;
+aocc-3.2.0)
+  module load gcc/12.1.0
+  export PATH="/lustre/home/br-wlin/aocc-compiler-3.2.0/bin:$PATH"
+  export LD_LIBRARY_PATH="/lustre/home/br-wlin/aocc-compiler-3.2.0/lib:$LD_LIBRARY_PATH"
+  append_opts "-DCMAKE_C_COMPILER=clang"
+  append_opts "-DCMAKE_CXX_COMPILER=clang++"
+  append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast;--gcc-toolchain=$(dirname "$(which gcc)")/.."
+  append_opts "-DUSE_TBB=ON"
+  ;;
 nvhpc-22.7)
   load_nvhpc
   append_opts "-DCMAKE_C_COMPILER=$NVHPC_PATH/compilers/bin/nvc"

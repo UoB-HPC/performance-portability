@@ -22,6 +22,21 @@ gcc-12.1)
   append_opts "-DUSE_TBB=ON"
   cxx_extra_flags="-march=znver3;-Ofast"
   ;;
+aocc-3.2.0)
+  module load openmpi
+  module load gcc/12.1.0
+  export PATH="/lustre/home/br-wlin/aocc-compiler-3.2.0/bin:$PATH"
+  export LD_LIBRARY_PATH="/lustre/home/br-wlin/aocc-compiler-3.2.0/lib:$LD_LIBRARY_PATH"
+  append_opts "-DCMAKE_VERBOSE_MAKEFILE=ON"
+  append_opts "-DCMAKE_C_COMPILER=clang"
+  append_opts "-DCMAKE_CXX_COMPILER=clang++"
+  append_opts "-DUSE_TBB=ON"
+
+  gcc_path="$(dirname "$(which gcc)")/.."
+  cxx_extra_flags="-march=znver3;-Ofast;--gcc-toolchain=$gcc_path"
+  export CXXFLAGS="--gcc-toolchain=$gcc_path"
+  export LDFLAGS="--gcc-toolchain=$gcc_path"
+  ;;
 nvhpc-22.7)
   module load openmpi
   load_nvhpc

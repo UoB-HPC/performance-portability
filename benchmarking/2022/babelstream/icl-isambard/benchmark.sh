@@ -22,6 +22,14 @@ gcc-12.1)
   append_opts "-DCXX_EXTRA_FLAGS=-march=icelake-server;-Ofast"
   append_opts "-DUSE_TBB=ON"
   ;;
+oneapi-2022.2)
+  module load gcc/12.1.0
+  load_oneapi "$HOME/intel/oneapi/setvars.sh"
+  append_opts "-DCMAKE_C_COMPILER=icx"
+  append_opts "-DCMAKE_CXX_COMPILER=icpx"
+  append_opts "-DCXX_EXTRA_FLAGS=-march=icelake-server;-Ofast"
+  append_opts "-DUSE_TBB=ON"
+  ;;
 nvhpc-22.7)
   load_nvhpc
   append_opts "-DCMAKE_C_COMPILER=$NVHPC_PATH/compilers/bin/nvc"
@@ -45,7 +53,16 @@ kokkos)
   prime_kokkos
   append_opts "-DMODEL=kokkos"
   append_opts "-DKOKKOS_IN_TREE=$KOKKOS_DIR -DKokkos_ENABLE_OPENMP=ON -DKokkos_CXX_STANDARD=17"
-  append_opts "-DKokkos_ARCH_ICX=ON"
+  case "$COMPILER" in
+  nvhpc-*)
+    #append_opts "-DKokkos_ARCH_ICX=ON"           # Kokkos needs a patch from master for ICX/ICL
+    export CXXFLAGS="-march=skylake-avx512 -fast"
+    ;;
+  *)
+    #append_opts "-DKokkos_ARCH_ICX=ON"            # Kokkos needs a patch from master for ICX/ICL
+    export CXXFLAGS="-march=icelake-server -Ofast"
+    ;;
+  esac
   BENCHMARK_EXE="kokkos-stream"
   ;;
 omp)
@@ -56,7 +73,6 @@ tbb)
   append_opts "-DMODEL=tbb -DPARTITIONER=STATIC"
   BENCHMARK_EXE="tbb-stream"
   ;;
-
 std-data)
   append_opts "-DMODEL=std-data"
   BENCHMARK_EXE="std-data-stream"
@@ -69,7 +85,6 @@ std-ranges)
   append_opts "-DMODEL=std-ranges"
   BENCHMARK_EXE="std-ranges-stream"
   ;;
-
 std-data-dplomp)
   append_opts "-DMODEL=std-data -DUSE_ONEDPL=OPENMP"
   BENCHMARK_EXE="std-data-stream"
@@ -82,8 +97,6 @@ std-ranges-dplomp)
   append_opts "-DMODEL=std-ranges -DUSE_ONEDPL=OPENMP"
   BENCHMARK_EXE="std-ranges-stream"
   ;;
-
-  #
 *) unknown_model ;;
 esac
 

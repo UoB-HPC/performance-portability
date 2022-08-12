@@ -22,6 +22,14 @@ gcc-12.1)
   append_opts "-DUSE_TBB=ON"
   cxx_extra_flags="-march=icelake-server;-Ofast"
   ;;
+oneapi-2022.2)
+  module load gcc/12.1.0
+  load_oneapi "$HOME/intel/oneapi/setvars.sh"
+  append_opts "-DCMAKE_C_COMPILER=icx"
+  append_opts "-DCMAKE_CXX_COMPILER=icpx"
+  append_opts "-DUSE_TBB=ON"
+  cxx_extra_flags="-march=icelake-server;-Ofast"
+  ;;
 nvhpc-22.7)
   module load openmpi
   load_nvhpc
@@ -38,7 +46,16 @@ kokkos)
   fetch_src "kokkos"
   prime_kokkos
   append_opts "-DKOKKOS_IN_TREE=$KOKKOS_DIR -DKokkos_ENABLE_OPENMP=ON -DKokkos_CXX_STANDARD=17"
-  append_opts "-DKokkos_ARCH_ICX=ON"
+  case "$COMPILER" in
+  nvhpc-*)
+    #append_opts "-DKokkos_ARCH_ICX=ON"           # Kokkos needs a patch from master for ICX/ICL
+    export CXXFLAGS="-march=skylake-avx512 -fast"
+    ;;
+  *)
+    #append_opts "-DKokkos_ARCH_ICX=ON"            # Kokkos needs a patch from master for ICX/ICL
+    export CXXFLAGS="-march=icelake-server -Ofast"
+    ;;
+  esac
   ;;
 omp)
   fetch_src "omp-plain"
@@ -57,7 +74,6 @@ std-indices)
   *) ;;
   esac
   ;;
-
 std-indices-dplomp)
   fetch_src "stdpar"
   case "$COMPILER" in
@@ -65,7 +81,6 @@ std-indices-dplomp)
   *) append_opts "-DUSE_ONEDPL=OPENMP" ;;
   esac
   ;;
-
 *) unknown_model ;;
 esac
 

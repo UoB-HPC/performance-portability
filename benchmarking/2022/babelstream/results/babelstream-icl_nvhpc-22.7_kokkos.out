@@ -1,4 +1,4 @@
-Wed 10 Aug 09:04:36 GMT 2022
+Fri 12 Aug 07:21:18 GMT 2022
 /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-icl_nvhpc-22.7_kokkos
 	linux-vdso.so.1 (0x0000155555551000)
 	libdl.so.2 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libdl.so.2 (0x0000155555127000)
@@ -8,7 +8,7 @@ Wed 10 Aug 09:04:36 GMT 2022
 	libstdc++.so.6 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libstdc++.so.6 (0x000015555470e000)
 	libnvomp.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.7/compilers/lib/libnvomp.so (0x0000155553a04000)
 	libpthread.so.0 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libpthread.so.0 (0x00001555537e4000)
-	libnvcpumath.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.7/compilers/lib/libnvcpumath.so (0x00001555533dd000)
+	libnvcpumath-avx512.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.7/compilers/lib/libnvcpumath-avx512.so (0x00001555533dd000)
 	libnvc.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.7/compilers/lib/libnvc.so (0x000015555317a000)
 	libc.so.6 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libc.so.6 (0x0000155552db8000)
 	libgcc_s.so.1 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libgcc_s.so.1 (0x0000155552ba0000)
@@ -23,8 +23,8 @@ Precision: double
 Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        209640.915  0.04097     0.11314     0.08844     
-Mul         243880.528  0.03522     0.08216     0.05872     
-Add         266914.792  0.04827     0.12343     0.09355     
-Triad       263464.744  0.04891     0.12537     0.08324     
-Dot         336340.211  0.02554     0.05320     0.03274     
+Copy        272745.534  0.03149     0.11854     0.08836     
+Mul         241429.879  0.03558     0.06631     0.05807     
+Add         270178.841  0.04769     0.11956     0.09185     
+Triad       268228.384  0.04804     0.12639     0.08097     
+Dot         336646.601  0.02552     0.05379     0.03207     

@@ -1,4 +1,4 @@
-Tue  9 Aug 10:02:00 GMT 2022
+Thu 11 Aug 11:50:01 GMT 2022
 /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-icl_gcc-12.1_tbb
 	linux-vdso.so.1 (0x0000155555551000)
 	libtbb.so.12 => /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-icl_gcc-12.1_tbb/BabelStream/build/gnu_12.1_cxx11_64_release/libtbb.so.12 (0x00001555554f8000)
@@ -10,7 +10,7 @@ Tue  9 Aug 10:02:00 GMT 2022
 	libpthread.so.0 => /lib64/libpthread.so.0 (0x000015555459b000)
 	/lib64/ld-linux-x86-64.so.2 (0x000015555532b000)
 >>>1>>>
-Tue  9 Aug 10:02:00 GMT 2022
+Thu 11 Aug 11:50:01 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -22,14 +22,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        13414.986   0.64032     0.64426     0.64077     
-Mul         13489.064   0.63681     0.63932     0.63726     
-Add         14186.127   0.90827     0.91363     0.90893     
-Triad       14185.294   0.90833     0.91381     0.90907     
-Dot         15388.012   0.55822     0.56502     0.55859     
+Copy        13412.870   0.64042     0.64276     0.64090     
+Mul         13506.428   0.63599     0.63830     0.63647     
+Add         14193.960   0.90777     0.91434     0.90854     
+Triad       14196.276   0.90763     0.91810     0.90834     
+Dot         15395.894   0.55794     0.56402     0.55838     
 <<<1<<<
 >>>2>>>
-Tue  9 Aug 10:08:13 GMT 2022
+Thu 11 Aug 11:56:13 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -41,14 +41,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        25353.773   0.33880     0.34002     0.33943     
-Mul         25296.600   0.33957     0.34151     0.34029     
-Add         26817.646   0.48046     0.48289     0.48111     
-Triad       26845.139   0.47997     0.48143     0.48069     
-Dot         29400.231   0.29217     0.29335     0.29255     
+Copy        25353.109   0.33881     0.34058     0.33926     
+Mul         25411.413   0.33803     0.33956     0.33853     
+Add         26922.620   0.47859     0.48113     0.47949     
+Triad       26913.462   0.47875     0.48058     0.47922     
+Dot         29488.221   0.29130     0.29308     0.29193     
 <<<2<<<
 >>>3>>>
-Tue  9 Aug 10:11:31 GMT 2022
+Thu 11 Aug 11:59:31 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -60,14 +60,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        35676.718   0.24077     0.24241     0.24113     
-Mul         35829.566   0.23974     0.24215     0.24078     
-Add         38006.636   0.33902     0.34076     0.33971     
-Triad       38026.025   0.33884     0.34061     0.33954     
-Dot         42018.660   0.20443     0.20665     0.20510     
+Copy        35824.267   0.23978     0.24204     0.24073     
+Mul         35735.196   0.24038     0.24199     0.24085     
+Add         38126.378   0.33795     0.33948     0.33855     
+Triad       38202.768   0.33728     0.33966     0.33805     
+Dot         42072.800   0.20417     0.20563     0.20485     
 <<<3<<<
 >>>4>>>
-Tue  9 Aug 10:13:53 GMT 2022
+Thu 11 Aug 12:01:52 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -79,14 +79,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        45102.800   0.19045     0.19133     0.19090     
-Mul         45068.589   0.19060     0.19308     0.19151     
-Add         48046.269   0.26818     0.26989     0.26883     
-Triad       48004.782   0.26841     0.27064     0.26968     
-Dot         54206.027   0.15847     0.15960     0.15890     
+Copy        45107.325   0.19043     0.19152     0.19087     
+Mul         45127.668   0.19035     0.19170     0.19084     
+Add         47962.547   0.26865     0.27023     0.26937     
+Triad       47951.304   0.26871     0.26991     0.26917     
+Dot         54120.786   0.15872     0.15958     0.15901     
 <<<4<<<
 >>>5>>>
-Tue  9 Aug 10:15:46 GMT 2022
+Thu 11 Aug 12:03:45 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -98,14 +98,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        53966.520   0.15917     0.16026     0.15986     
-Mul         53867.833   0.15946     0.16070     0.15999     
-Add         57119.490   0.22558     0.22757     0.22652     
-Triad       57131.739   0.22553     0.22716     0.22664     
-Dot         65698.409   0.13075     0.13193     0.13127     
+Copy        54150.334   0.15863     0.15966     0.15912     
+Mul         53837.128   0.15955     0.16039     0.15983     
+Add         57232.005   0.22513     0.22697     0.22577     
+Triad       57210.114   0.22522     0.22734     0.22635     
+Dot         66036.844   0.13008     0.13129     0.13062     
 <<<5<<<
 >>>6>>>
-Tue  9 Aug 10:17:21 GMT 2022
+Thu 11 Aug 12:05:20 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -117,14 +117,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        62492.270   0.13746     0.13830     0.13788     
-Mul         62091.581   0.13834     0.13917     0.13875     
-Add         65972.317   0.19531     0.19644     0.19573     
-Triad       65993.761   0.19524     0.19675     0.19600     
-Dot         76688.693   0.11201     0.11288     0.11237     
+Copy        62591.953   0.13724     0.13813     0.13766     
+Mul         62143.726   0.13823     0.13920     0.13862     
+Add         65988.455   0.19526     0.19616     0.19566     
+Triad       65986.002   0.19527     0.19625     0.19559     
+Dot         76830.508   0.11180     0.11284     0.11228     
 <<<6<<<
 >>>7>>>
-Tue  9 Aug 10:18:44 GMT 2022
+Thu 11 Aug 12:06:43 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -136,14 +136,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        69174.537   0.12418     0.12534     0.12473     
-Mul         69384.349   0.12380     0.12450     0.12409     
-Add         74082.465   0.17393     0.17483     0.17441     
-Triad       73966.552   0.17420     0.17521     0.17469     
-Dot         86190.325   0.09966     0.10034     0.10011     
+Copy        69194.705   0.12414     0.12518     0.12459     
+Mul         69267.817   0.12401     0.12520     0.12441     
+Add         73986.990   0.17415     0.17488     0.17449     
+Triad       73889.735   0.17438     0.17521     0.17475     
+Dot         85959.546   0.09993     0.10064     0.10021     
 <<<7<<<
 >>>8>>>
-Tue  9 Aug 10:19:58 GMT 2022
+Thu 11 Aug 12:07:57 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -155,14 +155,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        74583.317   0.11517     0.11618     0.11556     
-Mul         74713.119   0.11497     0.11605     0.11548     
-Add         81396.312   0.15830     0.16018     0.15876     
-Triad       81488.633   0.15812     0.15912     0.15844     
-Dot         95089.541   0.09034     0.09122     0.09069     
+Copy        74707.363   0.11498     0.11584     0.11528     
+Mul         74454.172   0.11537     0.11630     0.11587     
+Add         81302.868   0.15848     0.15964     0.15886     
+Triad       81437.495   0.15822     0.15911     0.15859     
+Dot         94694.108   0.09071     0.09139     0.09093     
 <<<8<<<
 >>>9>>>
-Tue  9 Aug 10:21:07 GMT 2022
+Thu 11 Aug 12:09:05 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -174,14 +174,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        79364.322   0.10823     0.10898     0.10858     
-Mul         79477.656   0.10808     0.10895     0.10846     
-Add         87975.091   0.14646     0.14856     0.14690     
-Triad       88217.663   0.14606     0.14684     0.14639     
-Dot         103719.008  0.08282     0.08401     0.08343     
+Copy        79378.927   0.10821     0.10907     0.10867     
+Mul         78925.910   0.10884     0.10966     0.10921     
+Add         88049.446   0.14634     0.14760     0.14701     
+Triad       87670.928   0.14697     0.14792     0.14730     
+Dot         103874.634  0.08270     0.08348     0.08310     
 <<<9<<<
 >>>10>>>
-Tue  9 Aug 10:22:10 GMT 2022
+Thu 11 Aug 12:10:10 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -193,14 +193,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        82893.390   0.10363     0.10421     0.10388     
-Mul         83451.940   0.10293     0.10384     0.10343     
-Add         93340.336   0.13804     0.13890     0.13840     
-Triad       93759.730   0.13742     0.13858     0.13780     
-Dot         112432.065  0.07640     0.07673     0.07655     
+Copy        83553.010   0.10281     0.10399     0.10340     
+Mul         83232.982   0.10320     0.10430     0.10368     
+Add         93567.322   0.13771     0.13853     0.13819     
+Triad       93528.306   0.13776     0.13883     0.13823     
+Dot         111922.254  0.07675     0.07713     0.07690     
 <<<10<<<
 >>>11>>>
-Tue  9 Aug 10:23:11 GMT 2022
+Thu 11 Aug 12:11:10 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -212,14 +212,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        86632.122   0.09915     0.10012     0.09960     
-Mul         86991.603   0.09874     0.10101     0.09945     
-Add         98195.356   0.13122     0.13202     0.13169     
-Triad       97872.947   0.13165     0.13243     0.13206     
-Dot         121758.392  0.07055     0.07088     0.07072     
+Copy        86972.984   0.09877     0.09950     0.09910     
+Mul         86240.571   0.09960     0.10073     0.09999     
+Add         98431.749   0.13090     0.13234     0.13142     
+Triad       97953.818   0.13154     0.13224     0.13192     
+Dot         122132.882  0.07033     0.07101     0.07067     
 <<<11<<<
 >>>12>>>
-Tue  9 Aug 10:24:09 GMT 2022
+Thu 11 Aug 12:12:08 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -231,14 +231,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        89150.015   0.09635     0.09741     0.09683     
-Mul         89421.031   0.09606     0.09715     0.09655     
-Add         101962.572  0.12637     0.12756     0.12710     
-Triad       101805.241  0.12656     0.12763     0.12702     
-Dot         130486.680  0.06583     0.06638     0.06613     
+Copy        89531.220   0.09594     0.09728     0.09665     
+Mul         89082.113   0.09643     0.09718     0.09670     
+Add         102134.056  0.12616     0.12714     0.12646     
+Triad       102059.922  0.12625     0.12704     0.12661     
+Dot         130118.736  0.06602     0.06669     0.06634     
 <<<12<<<
 >>>13>>>
-Tue  9 Aug 10:25:04 GMT 2022
+Thu 11 Aug 12:13:03 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -250,14 +250,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        91615.628   0.09376     0.09445     0.09404     
-Mul         91678.714   0.09370     0.09470     0.09410     
-Add         105152.317  0.12254     0.12351     0.12289     
-Triad       105101.689  0.12259     0.12376     0.12332     
-Dot         138078.027  0.06221     0.06282     0.06249     
+Copy        91811.712   0.09356     0.09473     0.09424     
+Mul         91709.873   0.09366     0.09440     0.09403     
+Add         105314.956  0.12235     0.12359     0.12297     
+Triad       105134.205  0.12256     0.12357     0.12302     
+Dot         137747.751  0.06236     0.06306     0.06278     
 <<<13<<<
 >>>14>>>
-Tue  9 Aug 10:25:58 GMT 2022
+Thu 11 Aug 12:13:57 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -269,14 +269,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        93562.601   0.09181     0.09272     0.09213     
-Mul         93577.311   0.09180     0.09262     0.09214     
-Add         108033.265  0.11927     0.12140     0.11966     
-Triad       108185.370  0.11910     0.12004     0.11947     
-Dot         145404.643  0.05908     0.06051     0.05935     
+Copy        93885.447   0.09149     0.09236     0.09186     
+Mul         93337.507   0.09203     0.09332     0.09237     
+Add         107700.950  0.11964     0.12055     0.12014     
+Triad       108179.081  0.11911     0.12030     0.11952     
+Dot         145441.038  0.05906     0.05971     0.05928     
 <<<14<<<
 >>>15>>>
-Tue  9 Aug 10:26:51 GMT 2022
+Thu 11 Aug 12:14:50 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -288,14 +288,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        95618.053   0.08984     0.09080     0.09036     
-Mul         95235.160   0.09020     0.09158     0.09059     
-Add         110159.717  0.11697     0.11785     0.11744     
-Triad       110445.849  0.11666     0.11770     0.11711     
-Dot         151293.982  0.05678     0.05744     0.05703     
+Copy        95320.388   0.09012     0.09106     0.09056     
+Mul         95703.567   0.08976     0.09065     0.09028     
+Add         110547.485  0.11656     0.11762     0.11695     
+Triad       110880.722  0.11621     0.11756     0.11684     
+Dot         152377.876  0.05637     0.05690     0.05662     
 <<<15<<<
 >>>16>>>
-Tue  9 Aug 10:27:42 GMT 2022
+Thu 11 Aug 12:15:41 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -307,14 +307,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        97239.684   0.08834     0.09004     0.08906     
-Mul         97257.310   0.08832     0.08952     0.08868     
-Add         112620.735  0.11441     0.11571     0.11492     
-Triad       112789.404  0.11424     0.11526     0.11487     
-Dot         157080.767  0.05468     0.05591     0.05506     
+Copy        97640.120   0.08798     0.08924     0.08866     
+Mul         97269.952   0.08831     0.08969     0.08885     
+Add         112815.808  0.11421     0.11656     0.11453     
+Triad       112918.993  0.11411     0.11523     0.11454     
+Dot         156210.397  0.05499     0.05591     0.05557     
 <<<16<<<
 >>>17>>>
-Tue  9 Aug 10:28:33 GMT 2022
+Thu 11 Aug 12:16:31 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -326,14 +326,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        97667.927   0.08795     0.08879     0.08829     
-Mul         96590.115   0.08893     0.09005     0.08967     
-Add         113706.921  0.11332     0.11407     0.11374     
-Triad       113964.736  0.11306     0.11431     0.11380     
-Dot         159060.265  0.05400     0.05468     0.05423     
+Copy        98198.911   0.08747     0.08828     0.08789     
+Mul         96923.296   0.08863     0.08962     0.08903     
+Add         114327.783  0.11270     0.11360     0.11314     
+Triad       113986.533  0.11304     0.11384     0.11339     
+Dot         158659.980  0.05414     0.05507     0.05480     
 <<<17<<<
 >>>18>>>
-Tue  9 Aug 10:29:23 GMT 2022
+Thu 11 Aug 12:17:21 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -345,14 +345,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        98404.161   0.08729     0.08949     0.08779     
-Mul         98465.119   0.08724     0.08862     0.08757     
-Add         115049.458  0.11199     0.11260     0.11229     
-Triad       115213.877  0.11183     0.11241     0.11211     
-Dot         160238.623  0.05361     0.05491     0.05390     
+Copy        98913.829   0.08684     0.08779     0.08730     
+Mul         98906.264   0.08685     0.08790     0.08714     
+Add         115446.429  0.11161     0.11217     0.11192     
+Triad       115355.058  0.11170     0.11264     0.11222     
+Dot         161661.184  0.05314     0.05473     0.05420     
 <<<18<<<
 >>>19>>>
-Tue  9 Aug 10:30:13 GMT 2022
+Thu 11 Aug 12:18:11 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -364,14 +364,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        99773.075   0.08609     0.08714     0.08663     
-Mul         99894.418   0.08599     0.08694     0.08648     
-Add         116856.627  0.11026     0.11145     0.11074     
-Triad       117032.683  0.11010     0.11075     0.11039     
-Dot         160202.988  0.05362     0.05427     0.05389     
+Copy        99443.242   0.08638     0.08728     0.08677     
+Mul         99902.251   0.08598     0.08713     0.08637     
+Add         116762.159  0.11035     0.11141     0.11078     
+Triad       116600.463  0.11050     0.11144     0.11090     
+Dot         159264.251  0.05394     0.05548     0.05515     
 <<<19<<<
 >>>20>>>
-Tue  9 Aug 10:31:02 GMT 2022
+Thu 11 Aug 12:19:00 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -383,14 +383,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        101311.993  0.08479     0.08561     0.08523     
-Mul         100470.343  0.08550     0.08625     0.08582     
-Add         118948.620  0.10832     0.10902     0.10865     
-Triad       118751.022  0.10850     0.10920     0.10881     
-Dot         161184.508  0.05329     0.05397     0.05368     
+Copy        101117.771  0.08495     0.08604     0.08530     
+Mul         101034.777  0.08502     0.08625     0.08562     
+Add         118043.272  0.10915     0.11007     0.10975     
+Triad       118233.733  0.10898     0.11000     0.10952     
+Dot         158072.358  0.05434     0.05614     0.05578     
 <<<20<<<
 >>>21>>>
-Tue  9 Aug 10:31:51 GMT 2022
+Thu 11 Aug 12:19:49 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -402,14 +402,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        101833.841  0.08435     0.08514     0.08471     
-Mul         101862.790  0.08433     0.08572     0.08499     
-Add         119390.390  0.10792     0.11111     0.10822     
-Triad       120364.516  0.10705     0.10830     0.10759     
-Dot         159272.936  0.05393     0.05447     0.05416     
+Copy        102039.519  0.08418     0.08500     0.08456     
+Mul         100771.643  0.08524     0.08645     0.08594     
+Add         119876.713  0.10748     0.10878     0.10811     
+Triad       120306.228  0.10710     0.10814     0.10759     
+Dot         157758.779  0.05445     0.05709     0.05625     
 <<<21<<<
 >>>22>>>
-Tue  9 Aug 10:32:39 GMT 2022
+Thu 11 Aug 12:20:38 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -421,14 +421,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        102999.862  0.08340     0.08411     0.08374     
-Mul         103027.559  0.08338     0.08413     0.08371     
-Add         122347.593  0.10531     0.10600     0.10567     
-Triad       123116.717  0.10466     0.10557     0.10503     
-Dot         162919.980  0.05272     0.05352     0.05309     
+Copy        103184.114  0.08325     0.08436     0.08392     
+Mul         103160.426  0.08327     0.08401     0.08367     
+Add         122536.180  0.10515     0.10594     0.10549     
+Triad       121916.963  0.10569     0.10668     0.10639     
+Dot         158773.346  0.05410     0.05622     0.05585     
 <<<22<<<
 >>>23>>>
-Tue  9 Aug 10:33:26 GMT 2022
+Thu 11 Aug 12:21:25 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -440,14 +440,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        104295.407  0.08236     0.08316     0.08274     
-Mul         103548.504  0.08296     0.08378     0.08331     
-Add         125388.116  0.10276     0.10374     0.10317     
-Triad       125216.127  0.10290     0.10553     0.10328     
-Dot         164459.017  0.05223     0.05516     0.05249     
+Copy        103963.013  0.08262     0.08375     0.08300     
+Mul         103195.683  0.08324     0.08400     0.08358     
+Add         125182.468  0.10293     0.10406     0.10351     
+Triad       124948.179  0.10312     0.10428     0.10374     
+Dot         163349.998  0.05259     0.05685     0.05524     
 <<<23<<<
 >>>24>>>
-Tue  9 Aug 10:34:13 GMT 2022
+Thu 11 Aug 12:22:12 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -459,14 +459,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        104725.126  0.08202     0.08272     0.08244     
-Mul         105038.608  0.08178     0.08241     0.08206     
-Add         129501.425  0.09950     0.10008     0.09977     
-Triad       130282.952  0.09890     0.09972     0.09926     
-Dot         168528.038  0.05097     0.05146     0.05115     
+Copy        105767.852  0.08121     0.08233     0.08172     
+Mul         105051.780  0.08177     0.08284     0.08235     
+Add         130701.470  0.09858     0.09909     0.09881     
+Triad       130052.490  0.09907     0.09979     0.09940     
+Dot         165735.689  0.05183     0.05457     0.05417     
 <<<24<<<
 >>>25>>>
-Tue  9 Aug 10:34:59 GMT 2022
+Thu 11 Aug 12:22:59 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -478,14 +478,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        107247.021  0.08009     0.08064     0.08037     
-Mul         106935.340  0.08033     0.08109     0.08070     
-Add         138480.855  0.09304     0.09396     0.09344     
-Triad       137985.244  0.09338     0.09446     0.09393     
-Dot         171683.204  0.05003     0.05049     0.05029     
+Copy        106723.723  0.08049     0.08124     0.08087     
+Mul         106662.382  0.08053     0.08193     0.08100     
+Add         139746.859  0.09220     0.09310     0.09264     
+Triad       139512.446  0.09236     0.09339     0.09264     
+Dot         168704.009  0.05092     0.05364     0.05319     
 <<<25<<<
 >>>26>>>
-Tue  9 Aug 10:35:43 GMT 2022
+Thu 11 Aug 12:23:43 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -497,14 +497,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        108687.545  0.07903     0.07972     0.07936     
-Mul         107765.821  0.07971     0.08092     0.08001     
-Add         145089.842  0.08881     0.09219     0.08924     
-Triad       146136.832  0.08817     0.09054     0.08867     
-Dot         171712.207  0.05003     0.05123     0.05030     
+Copy        108807.386  0.07895     0.07964     0.07923     
+Mul         108173.385  0.07941     0.08057     0.07988     
+Add         145959.689  0.08828     0.08917     0.08875     
+Triad       146819.321  0.08776     0.08901     0.08835     
+Dot         170453.710  0.05039     0.05273     0.05232     
 <<<26<<<
 >>>27>>>
-Tue  9 Aug 10:36:26 GMT 2022
+Thu 11 Aug 12:24:26 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -516,14 +516,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        111368.270  0.07713     0.07807     0.07746     
-Mul         111510.540  0.07703     0.07763     0.07726     
-Add         154533.986  0.08338     0.08392     0.08369     
-Triad       153852.656  0.08375     0.08430     0.08399     
-Dot         175283.049  0.04901     0.04941     0.04920     
+Copy        112064.768  0.07665     0.07726     0.07696     
+Mul         111332.840  0.07716     0.07882     0.07806     
+Add         154588.432  0.08335     0.08393     0.08359     
+Triad       154768.521  0.08325     0.08394     0.08360     
+Dot         172248.011  0.04987     0.05182     0.05150     
 <<<27<<<
 >>>28>>>
-Tue  9 Aug 10:37:07 GMT 2022
+Thu 11 Aug 12:25:07 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -535,14 +535,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        115754.597  0.07421     0.07503     0.07461     
-Mul         114718.213  0.07488     0.07582     0.07533     
-Add         154918.624  0.08317     0.08360     0.08333     
-Triad       155027.762  0.08311     0.08378     0.08344     
-Dot         175296.202  0.04900     0.04953     0.04920     
+Copy        117002.568  0.07342     0.07511     0.07400     
+Mul         116254.087  0.07389     0.07525     0.07436     
+Add         154451.034  0.08342     0.08413     0.08379     
+Triad       154804.909  0.08323     0.08423     0.08363     
+Dot         173065.155  0.04963     0.05121     0.05091     
 <<<28<<<
 >>>29>>>
-Tue  9 Aug 10:37:48 GMT 2022
+Thu 11 Aug 12:25:49 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -554,14 +554,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        124288.686  0.06911     0.07270     0.06965     
-Mul         124093.785  0.06922     0.07279     0.06968     
-Add         155991.767  0.08260     0.08660     0.08298     
-Triad       156206.482  0.08249     0.08504     0.08294     
-Dot         175869.886  0.04884     0.04961     0.04899     
+Copy        128641.526  0.06677     0.06982     0.06755     
+Mul         129542.628  0.06631     0.06953     0.06689     
+Add         155750.892  0.08273     0.09723     0.08324     
+Triad       155810.682  0.08270     0.08386     0.08329     
+Dot         174207.554  0.04931     0.05111     0.05034     
 <<<29<<<
 >>>30>>>
-Tue  9 Aug 10:38:27 GMT 2022
+Thu 11 Aug 12:26:28 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -573,14 +573,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        140207.790  0.06127     0.06212     0.06165     
-Mul         138820.737  0.06188     0.06345     0.06234     
-Add         155831.408  0.08268     0.08327     0.08292     
-Triad       156161.021  0.08251     0.08350     0.08284     
-Dot         176164.239  0.04876     0.04916     0.04895     
+Copy        144706.042  0.05936     0.06143     0.05981     
+Mul         142609.203  0.06023     0.06205     0.06063     
+Add         155665.277  0.08277     0.08368     0.08312     
+Triad       154748.184  0.08326     0.08398     0.08362     
+Dot         174750.806  0.04916     0.05053     0.05025     
 <<<30<<<
 >>>31>>>
-Tue  9 Aug 10:39:06 GMT 2022
+Thu 11 Aug 12:27:06 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -592,14 +592,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        148610.880  0.05780     0.05871     0.05814     
-Mul         147178.635  0.05836     0.05928     0.05867     
-Add         156599.313  0.08228     0.08285     0.08253     
-Triad       157328.891  0.08190     0.08253     0.08213     
-Dot         175970.823  0.04881     0.04921     0.04902     
+Copy        148953.655  0.05767     0.05843     0.05801     
+Mul         148721.963  0.05776     0.05841     0.05801     
+Add         155682.517  0.08276     0.08350     0.08324     
+Triad       155539.238  0.08284     0.08360     0.08324     
+Dot         175293.648  0.04900     0.05020     0.04999     
 <<<31<<<
 >>>32>>>
-Tue  9 Aug 10:39:43 GMT 2022
+Thu 11 Aug 12:27:43 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -611,14 +611,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        150966.761  0.05690     0.05841     0.05730     
-Mul         150785.793  0.05697     0.06649     0.05743     
-Add         157972.045  0.08156     0.08427     0.08194     
-Triad       157783.232  0.08166     0.08341     0.08195     
-Dot         175911.049  0.04883     0.05066     0.04908     
+Copy        151835.296  0.05657     0.06080     0.05696     
+Mul         150033.618  0.05725     0.06034     0.05763     
+Add         158379.927  0.08135     0.08486     0.08185     
+Triad       157759.994  0.08167     0.09621     0.08230     
+Dot         174763.218  0.04915     0.05787     0.05005     
 <<<32<<<
 >>>33>>>
-Tue  9 Aug 10:40:20 GMT 2022
+Thu 11 Aug 12:28:20 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -630,14 +630,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        154747.376  0.05551     0.08836     0.06744     
-Mul         150418.116  0.05711     0.09070     0.06541     
-Add         162426.849  0.07933     0.12198     0.09201     
-Triad       162907.107  0.07909     0.11120     0.08984     
-Dot         182927.656  0.04696     0.07059     0.05269     
+Copy        152880.345  0.05619     0.07841     0.06447     
+Mul         150585.977  0.05704     0.07512     0.06156     
+Add         159384.619  0.08084     0.11592     0.08701     
+Triad       159218.731  0.08093     0.12352     0.08702     
+Dot         179944.284  0.04774     0.07096     0.05285     
 <<<33<<<
 >>>34>>>
-Tue  9 Aug 10:41:01 GMT 2022
+Thu 11 Aug 12:29:00 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -649,14 +649,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        152895.573  0.05618     0.08183     0.06571     
-Mul         151556.724  0.05668     0.08190     0.06632     
-Add         165408.938  0.07790     0.11336     0.08918     
-Triad       162637.243  0.07922     0.10692     0.08817     
-Dot         185182.090  0.04639     0.06888     0.05288     
+Copy        151423.740  0.05673     0.08055     0.06625     
+Mul         159766.807  0.05377     0.07822     0.06716     
+Add         169443.593  0.07604     0.10530     0.09078     
+Triad       160531.982  0.08026     0.11438     0.09163     
+Dot         186117.367  0.04615     0.06559     0.05429     
 <<<34<<<
 >>>35>>>
-Tue  9 Aug 10:41:41 GMT 2022
+Thu 11 Aug 12:29:41 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -668,14 +668,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        160283.535  0.05359     0.07858     0.06636     
-Mul         158841.707  0.05408     0.07664     0.06631     
-Add         175718.807  0.07333     0.12308     0.08726     
-Triad       173264.321  0.07437     0.09971     0.08745     
-Dot         200849.072  0.04277     0.06704     0.05197     
+Copy        163276.008  0.05261     0.07907     0.06475     
+Mul         160432.367  0.05354     0.08471     0.06789     
+Add         170599.062  0.07553     0.10668     0.08841     
+Triad       170987.380  0.07536     0.10882     0.08815     
+Dot         192217.018  0.04469     0.07722     0.05302     
 <<<35<<<
 >>>36>>>
-Tue  9 Aug 10:42:22 GMT 2022
+Thu 11 Aug 12:30:22 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -687,14 +687,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        152770.565  0.05623     0.09016     0.06567     
-Mul         157629.754  0.05449     0.08631     0.06611     
-Add         172918.902  0.07451     0.10643     0.08890     
-Triad       172073.348  0.07488     0.10644     0.08862     
-Dot         202526.914  0.04241     0.06709     0.05224     
+Copy        164225.348  0.05231     0.07590     0.06263     
+Mul         155202.918  0.05535     0.07487     0.06488     
+Add         180956.284  0.07120     0.11448     0.08336     
+Triad       182531.562  0.07059     0.10597     0.08418     
+Dot         210628.405  0.04078     0.06190     0.05113     
 <<<36<<<
 >>>37>>>
-Tue  9 Aug 10:43:02 GMT 2022
+Thu 11 Aug 12:31:01 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -706,14 +706,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        151689.696  0.05663     0.07709     0.06481     
-Mul         157531.022  0.05453     0.07963     0.06748     
-Add         178047.723  0.07237     0.10473     0.08640     
-Triad       185831.915  0.06934     0.10324     0.08667     
-Dot         215210.405  0.03991     0.06617     0.05280     
+Copy        163224.043  0.05263     0.07789     0.06233     
+Mul         157430.801  0.05456     0.08754     0.06379     
+Add         179124.138  0.07193     0.10426     0.08525     
+Triad       188292.992  0.06843     0.10173     0.08587     
+Dot         198952.377  0.04318     0.06757     0.05307     
 <<<37<<<
 >>>38>>>
-Tue  9 Aug 10:43:43 GMT 2022
+Thu 11 Aug 12:31:40 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -725,14 +725,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        159160.944  0.05397     0.08736     0.06604     
-Mul         155094.841  0.05539     0.09140     0.06765     
-Add         192004.721  0.06711     0.10739     0.08657     
-Triad       191867.303  0.06716     0.10827     0.08791     
-Dot         200639.861  0.04281     0.06339     0.05128     
+Copy        162686.605  0.05280     0.07976     0.06071     
+Mul         165855.662  0.05179     0.08232     0.06307     
+Add         216196.648  0.05960     0.09947     0.07835     
+Triad       208408.785  0.06183     0.09912     0.07847     
+Dot         249061.304  0.03449     0.06529     0.04738     
 <<<38<<<
 >>>39>>>
-Tue  9 Aug 10:44:24 GMT 2022
+Thu 11 Aug 12:32:18 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -744,14 +744,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        148966.219  0.05766     0.07624     0.06525     
-Mul         160696.351  0.05345     0.08074     0.06594     
-Add         183066.160  0.07038     0.09961     0.08436     
-Triad       199464.729  0.06460     0.10420     0.08620     
-Dot         247620.357  0.03469     0.06535     0.05064     
+Copy        177245.704  0.04846     0.08189     0.06120     
+Mul         165231.478  0.05199     0.07885     0.06283     
+Add         206070.354  0.06253     0.09968     0.08201     
+Triad       198892.358  0.06478     0.09946     0.08333     
+Dot         220668.475  0.03893     0.07642     0.05212     
 <<<39<<<
 >>>40>>>
-Tue  9 Aug 10:45:05 GMT 2022
+Thu 11 Aug 12:32:56 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -763,14 +763,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        171127.738  0.05020     0.08282     0.06340     
-Mul         172134.364  0.04990     0.08851     0.06474     
-Add         206494.954  0.06240     0.11409     0.08312     
-Triad       205443.474  0.06272     0.10603     0.08389     
-Dot         241877.687  0.03551     0.06546     0.04979     
+Copy        171146.241  0.05019     0.07150     0.05936     
+Mul         166787.488  0.05150     0.07745     0.06135     
+Add         201498.691  0.06395     0.09863     0.08038     
+Triad       211683.213  0.06087     0.10384     0.08117     
+Dot         244424.242  0.03514     0.07356     0.05124     
 <<<40<<<
 >>>41>>>
-Tue  9 Aug 10:45:44 GMT 2022
+Thu 11 Aug 12:33:34 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -782,14 +782,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        166950.263  0.05145     0.07342     0.06141     
-Mul         177815.289  0.04831     0.08072     0.06370     
-Add         202976.659  0.06348     0.10455     0.08071     
-Triad       219180.412  0.05879     0.10263     0.08257     
-Dot         253608.325  0.03387     0.06689     0.05044     
+Copy        176071.478  0.04879     0.07186     0.06047     
+Mul         189064.455  0.04543     0.08195     0.06149     
+Add         203993.801  0.06316     0.10378     0.08073     
+Triad       201724.083  0.06387     0.10184     0.08226     
+Dot         223575.221  0.03842     0.06986     0.05007     
 <<<41<<<
 >>>42>>>
-Tue  9 Aug 10:46:22 GMT 2022
+Thu 11 Aug 12:34:13 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -801,14 +801,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        166299.864  0.05165     0.08265     0.06112     
-Mul         171365.613  0.05013     0.08675     0.06275     
-Add         208803.205  0.06171     0.10022     0.08023     
-Triad       205656.795  0.06265     0.10479     0.08179     
-Dot         247663.536  0.03468     0.06651     0.04881     
+Copy        165279.834  0.05197     0.07165     0.06013     
+Mul         174209.023  0.04931     0.07356     0.06117     
+Add         215782.174  0.05971     0.10283     0.08098     
+Triad       203344.378  0.06336     0.10404     0.08184     
+Dot         222597.561  0.03859     0.06760     0.05063     
 <<<42<<<
 >>>43>>>
-Tue  9 Aug 10:47:00 GMT 2022
+Thu 11 Aug 12:34:51 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -820,14 +820,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        172144.096  0.04990     0.07507     0.05983     
-Mul         171501.634  0.05009     0.08603     0.06368     
-Add         202900.568  0.06350     0.10259     0.07944     
-Triad       200880.800  0.06414     0.10838     0.08282     
-Dot         245721.351  0.03496     0.07341     0.05224     
+Copy        172108.635  0.04991     0.07268     0.05946     
+Mul         158755.085  0.05411     0.07684     0.06243     
+Add         205714.071  0.06264     0.10555     0.08258     
+Triad       207243.964  0.06217     0.10628     0.08340     
+Dot         238736.090  0.03598     0.06909     0.05195     
 <<<43<<<
 >>>44>>>
-Tue  9 Aug 10:47:39 GMT 2022
+Thu 11 Aug 12:35:29 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -839,14 +839,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        183246.762  0.04688     0.07611     0.05825     
-Mul         181501.432  0.04733     0.09682     0.06054     
-Add         236337.699  0.05452     0.13582     0.07766     
-Triad       237515.723  0.05425     0.10610     0.08014     
-Dot         280317.209  0.03064     0.06869     0.04879     
+Copy        182591.997  0.04704     0.07487     0.05760     
+Mul         177053.202  0.04852     0.07739     0.05958     
+Add         214987.955  0.05993     0.10260     0.07777     
+Triad       212791.471  0.06055     0.10531     0.08000     
+Dot         260052.722  0.03303     0.06840     0.04957     
 <<<44<<<
 >>>45>>>
-Tue  9 Aug 10:48:16 GMT 2022
+Thu 11 Aug 12:36:06 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -858,14 +858,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        174678.586  0.04918     0.07789     0.05747     
-Mul         181695.051  0.04728     0.09218     0.06327     
-Add         207542.804  0.06208     0.11068     0.07831     
-Triad       203791.214  0.06323     0.11232     0.08437     
-Dot         242741.825  0.03539     0.06766     0.05064     
+Copy        179606.510  0.04783     0.07344     0.05683     
+Mul         175525.287  0.04894     0.07812     0.05782     
+Add         214606.102  0.06004     0.10688     0.07620     
+Triad       226434.013  0.05690     0.11720     0.07761     
+Dot         244941.690  0.03507     0.06758     0.04826     
 <<<45<<<
 >>>46>>>
-Tue  9 Aug 10:48:54 GMT 2022
+Thu 11 Aug 12:36:43 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -877,14 +877,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        187337.743  0.04585     0.07920     0.05496     
-Mul         210579.383  0.04079     0.08582     0.05611     
-Add         230839.626  0.05582     0.11056     0.07078     
-Triad       230911.558  0.05580     0.10780     0.07225     
-Dot         266557.930  0.03223     0.06498     0.04433     
+Copy        195537.566  0.04393     0.07613     0.05607     
+Mul         194056.968  0.04427     0.08258     0.05750     
+Add         224271.337  0.05745     0.11167     0.07675     
+Triad       229518.022  0.05614     0.10936     0.07764     
+Dot         280664.325  0.03061     0.06741     0.04880     
 <<<46<<<
 >>>47>>>
-Tue  9 Aug 10:49:28 GMT 2022
+Thu 11 Aug 12:37:19 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -896,14 +896,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        193524.569  0.04439     0.08372     0.05706     
-Mul         189234.118  0.04539     0.08683     0.06010     
-Add         218977.823  0.05884     0.11128     0.07791     
-Triad       219285.167  0.05876     0.11022     0.08149     
-Dot         251916.068  0.03410     0.06921     0.04888     
+Copy        192559.140  0.04461     0.07253     0.05358     
+Mul         189591.117  0.04531     0.07445     0.05480     
+Add         220325.576  0.05848     0.10106     0.07304     
+Triad       228193.180  0.05646     0.10401     0.07409     
+Dot         252592.900  0.03401     0.06656     0.04760     
 <<<47<<<
 >>>48>>>
-Tue  9 Aug 10:50:06 GMT 2022
+Thu 11 Aug 12:37:54 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -915,14 +915,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        198893.652  0.04319     0.08365     0.05458     
-Mul         183740.391  0.04675     0.09067     0.05949     
-Add         239129.276  0.05388     0.11222     0.07540     
-Triad       232370.248  0.05545     0.11380     0.07741     
-Dot         284185.468  0.03023     0.07003     0.04868     
+Copy        202921.386  0.04233     0.07399     0.05295     
+Mul         206217.106  0.04165     0.08115     0.05397     
+Add         236614.237  0.05446     0.10698     0.07078     
+Triad       234080.772  0.05504     0.10684     0.07172     
+Dot         283985.340  0.03025     0.06616     0.04448     
 <<<48<<<
 >>>49>>>
-Tue  9 Aug 10:50:42 GMT 2022
+Thu 11 Aug 12:38:28 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -934,14 +934,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        199504.514  0.04306     0.08516     0.05331     
-Mul         199891.643  0.04297     0.09689     0.05962     
-Add         230440.103  0.05591     0.11543     0.07549     
-Triad       229035.793  0.05626     0.11358     0.07772     
-Dot         277954.278  0.03090     0.07270     0.04798     
+Copy        200335.830  0.04288     0.07219     0.05318     
+Mul         196567.745  0.04370     0.08643     0.05433     
+Add         238564.731  0.05401     0.11622     0.07248     
+Triad       238738.956  0.05397     0.10998     0.07423     
+Dot         284961.117  0.03014     0.07007     0.04718     
 <<<49<<<
 >>>50>>>
-Tue  9 Aug 10:51:18 GMT 2022
+Thu 11 Aug 12:39:03 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -953,14 +953,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        186093.473  0.04616     0.08716     0.05557     
-Mul         197848.935  0.04342     0.09312     0.05789     
-Add         234765.111  0.05488     0.11434     0.07466     
-Triad       237525.768  0.05425     0.12023     0.07983     
-Dot         269276.617  0.03190     0.06974     0.04815     
+Copy        208091.946  0.04128     0.07257     0.05198     
+Mul         201686.492  0.04259     0.08197     0.05328     
+Add         241809.150  0.05329     0.11277     0.07345     
+Triad       233767.879  0.05512     0.11565     0.07571     
+Dot         270595.919  0.03174     0.06961     0.04969     
 <<<50<<<
 >>>51>>>
-Tue  9 Aug 10:51:54 GMT 2022
+Thu 11 Aug 12:39:38 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -972,14 +972,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        206546.467  0.04159     0.08752     0.05512     
-Mul         197882.804  0.04341     0.09851     0.05695     
-Add         238382.778  0.05405     0.11876     0.07300     
-Triad       232994.511  0.05530     0.12227     0.08027     
-Dot         272037.298  0.03158     0.07157     0.04659     
+Copy        203607.975  0.04219     0.05576     0.04816     
+Mul         200221.737  0.04290     0.06946     0.05076     
+Add         230022.819  0.05602     0.08583     0.06636     
+Triad       230118.476  0.05599     0.08883     0.06722     
+Dot         285689.380  0.03007     0.06035     0.04239     
 <<<51<<<
 >>>52>>>
-Tue  9 Aug 10:52:30 GMT 2022
+Thu 11 Aug 12:40:10 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -991,14 +991,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        191506.350  0.04485     0.06836     0.05177     
-Mul         194199.820  0.04423     0.07647     0.05583     
-Add         232303.988  0.05547     0.09183     0.06957     
-Triad       234016.618  0.05506     0.11236     0.07810     
-Dot         259884.422  0.03305     0.06236     0.04417     
+Copy        207571.256  0.04138     0.05669     0.04622     
+Mul         201432.201  0.04264     0.05807     0.04903     
+Add         238606.320  0.05400     0.07362     0.06258     
+Triad       232223.178  0.05548     0.07457     0.06382     
+Dot         286446.515  0.02999     0.04926     0.03943     
 <<<52<<<
 >>>53>>>
-Tue  9 Aug 10:53:04 GMT 2022
+Thu 11 Aug 12:40:41 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -1010,14 +1010,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        213756.917  0.04019     0.09148     0.05225     
-Mul         204909.761  0.04192     0.09899     0.05449     
-Add         238449.626  0.05404     0.11905     0.07013     
-Triad       236992.902  0.05437     0.11911     0.07458     
-Dot         279980.641  0.03068     0.07220     0.04471     
+Copy        211357.545  0.04064     0.07756     0.05004     
+Mul         210296.292  0.04085     0.08118     0.04972     
+Add         245374.702  0.05251     0.10993     0.06820     
+Triad       243597.181  0.05289     0.11465     0.07037     
+Dot         279170.041  0.03077     0.07675     0.04581     
 <<<53<<<
 >>>54>>>
-Tue  9 Aug 10:53:39 GMT 2022
+Thu 11 Aug 12:41:14 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -1029,14 +1029,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        210010.301  0.04090     0.09463     0.05219     
-Mul         208050.678  0.04129     0.10048     0.05708     
-Add         239347.566  0.05383     0.12440     0.07247     
-Triad       238886.513  0.05394     0.12408     0.07861     
-Dot         273052.483  0.03146     0.07539     0.04762     
+Copy        205829.312  0.04173     0.07021     0.05036     
+Mul         203158.805  0.04228     0.08022     0.05136     
+Add         227848.269  0.05655     0.10803     0.07163     
+Triad       229943.257  0.05604     0.10548     0.07244     
+Dot         270005.088  0.03181     0.06836     0.04822     
 <<<54<<<
 >>>55>>>
-Tue  9 Aug 10:54:16 GMT 2022
+Thu 11 Aug 12:41:48 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -1048,14 +1048,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        214258.319  0.04009     0.09184     0.04987     
-Mul         211781.763  0.04056     0.10240     0.05501     
-Add         242962.168  0.05303     0.12806     0.06821     
-Triad       242660.013  0.05310     0.12524     0.07356     
-Dot         283797.635  0.03027     0.07852     0.04467     
+Copy        214673.433  0.04001     0.07754     0.05036     
+Mul         212263.035  0.04047     0.08508     0.05086     
+Add         246026.276  0.05237     0.11932     0.07003     
+Triad       244701.905  0.05266     0.12416     0.07109     
+Dot         300532.790  0.02858     0.07666     0.04483     
 <<<55<<<
 >>>56>>>
-Tue  9 Aug 10:54:53 GMT 2022
+Thu 11 Aug 12:42:22 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -1067,14 +1067,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        215076.405  0.03994     0.09811     0.05302     
-Mul         218507.141  0.03931     0.10207     0.05711     
-Add         240959.240  0.05347     0.12921     0.07314     
-Triad       238772.358  0.05396     0.12784     0.07884     
-Dot         275867.658  0.03114     0.07477     0.04700     
+Copy        213461.135  0.04024     0.08097     0.05042     
+Mul         232029.994  0.03702     0.08986     0.04998     
+Add         245406.238  0.05250     0.11955     0.07098     
+Triad       240648.730  0.05354     0.12314     0.07322     
+Dot         293429.236  0.02927     0.07947     0.04783     
 <<<56<<<
 >>>57>>>
-Tue  9 Aug 10:55:30 GMT 2022
+Thu 11 Aug 12:42:56 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -1086,14 +1086,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        215387.403  0.03988     0.09985     0.04979     
-Mul         232219.755  0.03699     0.10251     0.05119     
-Add         253293.611  0.05087     0.12636     0.06659     
-Triad       254175.907  0.05069     0.12641     0.07037     
-Dot         288823.226  0.02974     0.07505     0.04252     
+Copy        224627.464  0.03824     0.07737     0.04742     
+Mul         215609.866  0.03984     0.08687     0.04826     
+Add         255678.307  0.05039     0.12173     0.06546     
+Triad       259946.948  0.04957     0.12411     0.06670     
+Dot         309190.092  0.02778     0.07825     0.04179     
 <<<57<<<
 >>>58>>>
-Tue  9 Aug 10:56:04 GMT 2022
+Thu 11 Aug 12:43:27 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -1105,14 +1105,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        233689.475  0.03676     0.09830     0.04924     
-Mul         212098.104  0.04050     0.10482     0.05517     
-Add         280525.851  0.04593     0.12747     0.06695     
-Triad       255874.675  0.05036     0.13702     0.07656     
-Dot         312201.411  0.02751     0.07777     0.04564     
+Copy        215881.511  0.03979     0.08288     0.04793     
+Mul         213404.970  0.04025     0.08968     0.04949     
+Add         255916.404  0.05035     0.12693     0.06653     
+Triad       252794.343  0.05097     0.12995     0.06750     
+Dot         300388.357  0.02860     0.07947     0.04389     
 <<<58<<<
 >>>59>>>
-Tue  9 Aug 10:56:38 GMT 2022
+Thu 11 Aug 12:44:00 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -1124,14 +1124,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        228469.531  0.03760     0.09824     0.05089     
-Mul         234796.088  0.03658     0.10674     0.05255     
-Add         279337.008  0.04613     0.13033     0.06787     
-Triad       253044.534  0.05092     0.13861     0.07556     
-Dot         301684.109  0.02847     0.08729     0.04393     
+Copy        212719.499  0.04038     0.05759     0.04667     
+Mul         205619.812  0.04178     0.06588     0.04847     
+Add         253277.948  0.05087     0.08617     0.06352     
+Triad       256869.459  0.05016     0.08811     0.06459     
+Dot         287367.073  0.02989     0.05582     0.04040     
 <<<59<<<
 >>>60>>>
-Tue  9 Aug 10:57:12 GMT 2022
+Thu 11 Aug 12:44:31 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -1143,14 +1143,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        230571.600  0.03725     0.10271     0.05029     
-Mul         219018.592  0.03922     0.11003     0.05502     
-Add         282469.915  0.04562     0.13532     0.06854     
-Triad       255674.603  0.05040     0.13198     0.07446     
-Dot         301517.187  0.02849     0.08242     0.04426     
+Copy        220137.659  0.03902     0.08351     0.04983     
+Mul         214687.490  0.04001     0.09084     0.04891     
+Add         250901.825  0.05135     0.12560     0.07045     
+Triad       249484.282  0.05165     0.12935     0.07233     
+Dot         295710.203  0.02905     0.08246     0.05000     
 <<<60<<<
 >>>61>>>
-Tue  9 Aug 10:57:45 GMT 2022
+Thu 11 Aug 12:45:05 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -1162,14 +1162,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        238457.509  0.03602     0.10059     0.04790     
-Mul         238071.280  0.03608     0.11070     0.05021     
-Add         290641.686  0.04433     0.13012     0.06300     
-Triad       264121.163  0.04878     0.13522     0.07271     
-Dot         322604.914  0.02663     0.08381     0.04167     
+Copy        258784.508  0.03319     0.08384     0.04284     
+Mul         251048.599  0.03422     0.09079     0.04389     
+Add         290900.403  0.04429     0.12609     0.06023     
+Triad       264245.432  0.04876     0.12642     0.06292     
+Dot         309809.855  0.02773     0.08594     0.03993     
 <<<61<<<
 >>>62>>>
-Tue  9 Aug 10:58:18 GMT 2022
+Thu 11 Aug 12:45:34 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -1181,14 +1181,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        220939.424  0.03888     0.09318     0.04729     
-Mul         214266.244  0.04009     0.10059     0.05365     
-Add         267421.472  0.04818     0.11884     0.06408     
-Triad       257233.808  0.05009     0.12251     0.07464     
-Dot         302387.538  0.02841     0.07031     0.04258     
+Copy        235503.584  0.03647     0.06871     0.04583     
+Mul         217816.274  0.03944     0.07434     0.04716     
+Add         258419.794  0.04986     0.10323     0.06368     
+Triad       254780.994  0.05057     0.10596     0.06543     
+Dot         295268.315  0.02909     0.06697     0.04189     
 <<<62<<<
 >>>63>>>
-Tue  9 Aug 10:58:51 GMT 2022
+Thu 11 Aug 12:46:06 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -1200,14 +1200,14 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        245878.796  0.03494     0.09902     0.04775     
-Mul         221901.636  0.03871     0.11345     0.05107     
-Add         288549.573  0.04465     0.13044     0.06336     
-Triad       263848.613  0.04883     0.13510     0.07169     
-Dot         311417.595  0.02758     0.08487     0.04097     
+Copy        287486.946  0.02988     0.08227     0.04977     
+Mul         226664.025  0.03790     0.08863     0.05028     
+Add         292243.552  0.04409     0.12305     0.07268     
+Triad       272098.348  0.04735     0.12343     0.07459     
+Dot         322088.289  0.02667     0.08307     0.05206     
 <<<63<<<
 >>>64>>>
-Tue  9 Aug 10:59:24 GMT 2022
+Thu 11 Aug 12:46:41 GMT 2022
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -1219,9 +1219,9 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: static_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        284259.903  0.03022     0.10212     0.04647     
-Mul         288131.968  0.02981     0.10926     0.04974     
-Add         306135.741  0.04209     0.13139     0.06215     
-Triad       276703.144  0.04657     0.13412     0.07185     
-Dot         325971.888  0.02635     0.08814     0.04274     
+Copy        283075.147  0.03035     0.07728     0.04458     
+Mul         291763.448  0.02944     0.08427     0.04514     
+Add         302350.729  0.04262     0.11263     0.06455     
+Triad       265277.586  0.04857     0.11452     0.06721     
+Dot         295672.400  0.02905     0.07459     0.04620     
 <<<64<<<

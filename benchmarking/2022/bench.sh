@@ -6,6 +6,7 @@ BASE="$PWD"
 ONEAPI=oneapi-2022.2
 NVHPC=nvhpc-22.7
 GCC=gcc-12.1
+AOCC=aocc-3.2.0
 
 cloverleaf=true
 bude=true
@@ -26,10 +27,10 @@ models["std-indices-dplomp"]=true
 
 export LARGE=true
 
-build_and_submit() { # platform, compiler, model, action
-    echo "[exec] build $1 $2 $3"
+build_and_submit() { # platform, compiler, model, action, impl
+    echo "[exec] build $5 $1 $2 $3 "
     "../$1/benchmark.sh" build "$2" "$3"
-    echo "[exec] $4 $1 $2 $3"
+    echo "[exec] $5 $4 $1 $2 $3"
     "../$1/benchmark.sh" "$4" "$2" "$3"
 }
 
@@ -39,7 +40,7 @@ bench() { # platform, compiler,  action, models...
     if [ "${!impl}" = true ]; then
         for m in "${@:4}"; do
             if [ "${models[$m]}" = true ]; then
-                build_and_submit "$1" "$2" "$m" "$3"
+                build_and_submit "$1" "$2" "$m" "$3" "$impl"
             fi
         done
     fi
@@ -52,7 +53,7 @@ bench_once() {
 
 bench_scale() {
     # echo "No"
-    bench "$1" "$2" "run-scale" "${@:3}"
+    bench "$1" "$2" "run" "${@:3}"
     # bench "$1" "$2" "run-scale" "${@:3}"
 }
 
@@ -89,46 +90,52 @@ case "$1" in
 p3)
     cd "$BASE/babelstream/results"
     module unload cce
-    bench_scale milan-isambard $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
+    # bench_scale milan-isambard $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
     module load cce
-    bench_scale milan-isambard $GCC "${babelstream_gcc_cpu_models[@]}"
+    # bench_scale milan-isambard $GCC "${babelstream_gcc_cpu_models[@]}"
+    # bench_scale milan-isambard $AOCC "${babelstream_gcc_cpu_models[@]}"
 
-    bench_once a100-isambard $NVHPC "${babelstream_nvhpc_gpu_models[@]}"
+    # bench_once a100-isambard $NVHPC "${babelstream_nvhpc_gpu_models[@]}"
 
     cd "$BASE/bude/results"
     module unload cce
-    bench_scale milan-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
+    # bench_scale milan-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
     module load cce
-    bench_scale milan-isambard $GCC "${generic_gcc_cpu_models[@]}"
+    # bench_scale milan-isambard $GCC "${generic_gcc_cpu_models[@]}"
+    # bench_scale milan-isambard $AOCC "${generic_gcc_cpu_models[@]}"
 
-    bench_once a100-isambard $NVHPC "${generic_nvhpc_gpu_models[@]}"
+    # bench_once a100-isambard $NVHPC "${generic_nvhpc_gpu_models[@]}"
 
     cd "$BASE/cloverleaf/results"
     module unload cce
-    bench_scale milan-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
+    # bench_scale milan-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
     module load cce
-    bench_scale milan-isambard $GCC "${generic_gcc_cpu_models[@]}"
+    # bench_scale milan-isambard $GCC "${generic_gcc_cpu_models[@]}"
+    bench_scale milan-isambard $AOCC "${generic_gcc_cpu_models[@]}"
 
-    bench_once a100-isambard $NVHPC "${generic_nvhpc_gpu_models[@]}"
+    # bench_once a100-isambard $NVHPC "${generic_nvhpc_gpu_models[@]}"
     ;;
 p2)
     cd "$BASE/babelstream/results"
-    bench_scale icl-isambard $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
-    bench_scale icl-isambard $GCC "${babelstream_gcc_cpu_models[@]}"
+    bench_scale icl-isambard $ONEAPI "${babelstream_gcc_cpu_models[@]}"
+    # bench_scale icl-isambard $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
+    # bench_scale icl-isambard $GCC "${babelstream_gcc_cpu_models[@]}"
 
-    bench_once v100-isambard $NVHPC "${babelstream_nvhpc_gpu_models[@]}"
+    # bench_once v100-isambard $NVHPC "${babelstream_nvhpc_gpu_models[@]}"
 
     cd "$BASE/bude/results"
-    bench_scale icl-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
-    bench_scale icl-isambard $GCC "${generic_gcc_cpu_models[@]}"
+    bench_scale icl-isambard $ONEAPI "${generic_gcc_cpu_models[@]}"
+    # bench_scale icl-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
+    # bench_scale icl-isambard $GCC "${generic_gcc_cpu_models[@]}"
 
-    bench_once v100-isambard $NVHPC "${generic_nvhpc_gpu_models[@]}"
+    # bench_once v100-isambard $NVHPC "${generic_nvhpc_gpu_models[@]}"
 
     cd "$BASE/cloverleaf/results"
-    bench_scale icl-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
-    bench_scale icl-isambard $GCC "${generic_gcc_cpu_models[@]}"
+    bench_scale icl-isambard $ONEAPI "${generic_gcc_cpu_models[@]}"
+    # bench_scale icl-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
+    # bench_scale icl-isambard $GCC "${generic_gcc_cpu_models[@]}"
 
-    bench_once v100-isambard $NVHPC "${generic_nvhpc_gpu_models[@]}"
+    # bench_once v100-isambard $NVHPC "${generic_nvhpc_gpu_models[@]}"
     ;;
 
 aws-g2)
