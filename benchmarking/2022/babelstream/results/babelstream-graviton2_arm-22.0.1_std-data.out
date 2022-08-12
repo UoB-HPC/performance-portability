@@ -1,0 +1,29 @@
+Fri Aug 12 15:31:13 UTC 2022
+/home/tomlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-graviton2_arm-22.0.1_std-data
+	linux-vdso.so.1 (0x0000ffffb01c6000)
+	libamath_neoverse-n1.so => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/arm-22.0.1-o73735a7cvkcdppypla62m3jdnnijnmk/arm-linux-compiler-22.0.1_Generic-AArch64_RHEL-7_aarch64-linux/llvm-bin/../lib/libamath_neoverse-n1.so (0x0000ffffafff9000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000ffffaff38000)
+	libtbb.so.12 => /home/tomlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-graviton2_arm-22.0.1_std-data/BabelStream/build/clang_13.0_cxx11_64_release/libtbb.so.12 (0x0000ffffafec0000)
+	libstdc++.so.6 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libstdc++.so.6 (0x0000ffffafc9a000)
+	libastring_neoverse-n1.so => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/arm-22.0.1-o73735a7cvkcdppypla62m3jdnnijnmk/arm-linux-compiler-22.0.1_Generic-AArch64_RHEL-7_aarch64-linux/llvm-bin/../lib/libastring_neoverse-n1.so (0x0000ffffafc87000)
+	libgcc_s.so.1 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libgcc_s.so.1 (0x0000ffffafc56000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000ffffafad0000)
+	/lib/ld-linux-aarch64.so.1 (0x0000ffffb0188000)
+	libamath_aarch64.so => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/arm-22.0.1-o73735a7cvkcdppypla62m3jdnnijnmk/arm-linux-compiler-22.0.1_Generic-AArch64_RHEL-7_aarch64-linux/llvm-bin/../lib/libamath_aarch64.so (0x0000ffffaf93f000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffffaf91e000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffffaf8e9000)
+Listing devices is not supported by the Parallel STL
+BabelStream
+Version: 4.0
+Implementation: STD (data-oriented)
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        159589.543  0.05383     0.05455     0.05407     
+Mul         159449.832  0.05387     0.05457     0.05419     
+Add         161150.372  0.07996     0.08071     0.08032     
+Triad       161083.366  0.07999     0.08093     0.08034     
+Dot         167960.666  0.05114     0.05182     0.05140     

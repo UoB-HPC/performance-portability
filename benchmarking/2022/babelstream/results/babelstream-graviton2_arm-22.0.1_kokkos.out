@@ -1,0 +1,28 @@
+Fri Aug 12 15:31:13 UTC 2022
+/home/tomlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-graviton2_arm-22.0.1_kokkos
+	linux-vdso.so.1 (0x0000ffff99d95000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffff99d36000)
+	libstdc++.so.6 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libstdc++.so.6 (0x0000ffff99b10000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000ffff99a4f000)
+	libastring_neoverse-n1.so => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/arm-22.0.1-o73735a7cvkcdppypla62m3jdnnijnmk/arm-linux-compiler-22.0.1_Generic-AArch64_RHEL-7_aarch64-linux/llvm-bin/../lib/libastring_neoverse-n1.so (0x0000ffff99a3a000)
+	libomp_with_lse.so => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/arm-22.0.1-o73735a7cvkcdppypla62m3jdnnijnmk/arm-linux-compiler-22.0.1_Generic-AArch64_RHEL-7_aarch64-linux/llvm-bin/../lib/libomp_with_lse.so (0x0000ffff9995d000)
+	libgcc_s.so.1 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libgcc_s.so.1 (0x0000ffff9992c000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffff998f7000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000ffff99771000)
+	/lib/ld-linux-aarch64.so.1 (0x0000ffff99d57000)
+	libamath_aarch64.so => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/arm-22.0.1-o73735a7cvkcdppypla62m3jdnnijnmk/arm-linux-compiler-22.0.1_Generic-AArch64_RHEL-7_aarch64-linux/llvm-bin/../lib/../lib/libamath_aarch64.so (0x0000ffff995e0000)
+	librt.so.1 => /lib64/librt.so.1 (0x0000ffff995bf000)
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        159020.922  0.05402     0.06674     0.05454     
+Mul         159166.031  0.05397     0.05455     0.05429     
+Add         163543.270  0.07879     0.08035     0.07906     
+Triad       162736.156  0.07918     0.07976     0.07941     
+Dot         168951.694  0.05084     0.05486     0.05104     

@@ -25,6 +25,18 @@ gcc-12.1)
   append_opts "-DUSE_TBB=ON"
   cxx_extra_flags="-mcpu=neoverse-n1;-Ofast"
   ;;
+arm-22.0.1)
+  spack load gcc@12.1.0
+  module load openmpi
+  spack load arm@22.0.1
+  append_opts "-DCMAKE_C_COMPILER=armclang"
+  append_opts "-DCMAKE_CXX_COMPILER=armclang++"
+  append_opts "-DUSE_TBB=ON -DTBB_ENABLE_IPO=OFF" # IPO is broken in armclang
+  cxx_extra_flags="-mcpu=neoverse-n1;-Ofast"
+
+  export CXXFLAGS="--gcc-toolchain=$(dirname "$(which gcc)")/.."
+  export LDFLAGS="--gcc-toolchain=$(dirname "$(which gcc)")/.."
+  ;;
 nvhpc-22.7)
   module load openmpi
   load_nvhpc
