@@ -61,8 +61,13 @@ kokkos)
   prime_kokkos
   append_opts "-DMODEL=kokkos"
   append_opts "-DKOKKOS_IN_TREE=$KOKKOS_DIR -DKokkos_ENABLE_OPENMP=ON -DKokkos_CXX_STANDARD=17"
-  append_opts "-DKokkos_ARCH_SKX=ON"
+  # append_opts "-DKokkos_ARCH_SKX=ON"           #  Kokkos needs a patch from master for ICX/ICL
+  export CXXFLAGS="-march=icelake-server -Ofast" # and because Kokkos *append* arch flags, we just set it up ourselves
   BENCHMARK_EXE="kokkos-bude"
+  case "$COMPILER" in
+  oneapi-*) append_opts "-DCMAKE_CXX_COMPILER=icpx" ;;
+  *) ;; # don't change anything otherwise
+  esac
   ;;
 omp)
   append_opts "-DMODEL=omp"
