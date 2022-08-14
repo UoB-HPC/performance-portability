@@ -128,6 +128,8 @@ handle_exec() {
 
     echo "[$ACTION] Copied '$SRC_DIR' source to '$src'"
 
+    local replacement="$PWD/../../parallel_for.h"
+
     cd "$src"
 
     if [ "$USE_MAKE" = true ]; then
@@ -140,6 +142,21 @@ handle_exec() {
       echo "[$ACTION] Using cmake opts:" "${CMAKE_OPTS[@]}"
       rm -rf build
       cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=RELEASE "${CMAKE_OPTS[@]}"
+
+      local victim="$PWD/build/_deps/onedpl-src/include/oneapi/dpl/pstl/omp/parallel_for.h"
+
+      if [ ! -f "$victim" ]; then
+        echo "oneDPL impl. $victim is missing, stopping..."
+        exit 1
+      fi
+
+      if [ ! -f "$replacement" ]; then
+        echo "oneDPL replacement. $replacement is missing, stopping..."
+        exit 1
+      fi
+
+      cp "$replacement" "$victim"
+
       cmake --build build --config RELEASE -j "$(nproc)"
       ldd "$src/build/$BENCHMARK_EXE"
     fi

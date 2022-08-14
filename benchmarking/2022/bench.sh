@@ -13,14 +13,14 @@ bude=true
 babelstream=true
 
 declare -A models
-models["tbb"]=true
-models["omp"]=true
-models["cuda"]=true
-models["sycl"]=true
-models["kokkos"]=true
+models["tbb"]=false
+models["omp"]=false
+models["cuda"]=false
+models["sycl"]=false
+models["kokkos"]=false
 
-models["std-data"]=true
-models["std-indices"]=true
+models["std-data"]=false
+models["std-indices"]=false
 
 models["std-data-dplomp"]=true
 models["std-indices-dplomp"]=true
@@ -90,27 +90,27 @@ case "$1" in
 p3)
     cd "$BASE/babelstream/results"
     module unload cce
-    # bench_scale milan-isambard $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
+    bench_scale milan-isambard $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
     module load cce
-    # bench_scale milan-isambard $GCC "${babelstream_gcc_cpu_models[@]}"
-    # bench_scale milan-isambard $AOCC "${babelstream_gcc_cpu_models[@]}"
+    bench_scale milan-isambard $GCC "${babelstream_gcc_cpu_models[@]}"
+    bench_scale milan-isambard $AOCC "${babelstream_gcc_cpu_models[@]}"
 
     # bench_once a100-isambard $NVHPC "${babelstream_nvhpc_gpu_models[@]}"
 
     cd "$BASE/bude/results"
     module unload cce
-    # bench_scale milan-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
+    bench_scale milan-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
     module load cce
-    # bench_scale milan-isambard $GCC "${generic_gcc_cpu_models[@]}"
-    # bench_scale milan-isambard $AOCC "${generic_gcc_cpu_models[@]}"
+    bench_scale milan-isambard $GCC "${generic_gcc_cpu_models[@]}"
+    bench_scale milan-isambard $AOCC "${generic_gcc_cpu_models[@]}"
 
     # bench_once a100-isambard $NVHPC "${generic_nvhpc_gpu_models[@]}"
 
     cd "$BASE/cloverleaf/results"
     module unload cce
-    # bench_scale milan-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
+    bench_scale milan-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
     module load cce
-    # bench_scale milan-isambard $GCC "${generic_gcc_cpu_models[@]}"
+    bench_scale milan-isambard $GCC "${generic_gcc_cpu_models[@]}"
     bench_scale milan-isambard $AOCC "${generic_gcc_cpu_models[@]}"
 
     # bench_once a100-isambard $NVHPC "${generic_nvhpc_gpu_models[@]}"
@@ -118,22 +118,22 @@ p3)
 p2)
     cd "$BASE/babelstream/results"
     bench_scale icl-isambard $ONEAPI "${babelstream_gcc_cpu_models[@]}"
-    # bench_scale icl-isambard $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
-    # bench_scale icl-isambard $GCC "${babelstream_gcc_cpu_models[@]}"
+    bench_scale icl-isambard $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
+    bench_scale icl-isambard $GCC "${babelstream_gcc_cpu_models[@]}"
 
     # bench_once v100-isambard $NVHPC "${babelstream_nvhpc_gpu_models[@]}"
 
     cd "$BASE/bude/results"
     bench_scale icl-isambard $ONEAPI "${generic_gcc_cpu_models[@]}"
-    # bench_scale icl-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
-    # bench_scale icl-isambard $GCC "${generic_gcc_cpu_models[@]}"
+    bench_scale icl-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
+    bench_scale icl-isambard $GCC "${generic_gcc_cpu_models[@]}"
 
     # bench_once v100-isambard $NVHPC "${generic_nvhpc_gpu_models[@]}"
 
     cd "$BASE/cloverleaf/results"
     bench_scale icl-isambard $ONEAPI "${generic_gcc_cpu_models[@]}"
-    # bench_scale icl-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
-    # bench_scale icl-isambard $GCC "${generic_gcc_cpu_models[@]}"
+    bench_scale icl-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
+    bench_scale icl-isambard $GCC "${generic_gcc_cpu_models[@]}"
 
     # bench_once v100-isambard $NVHPC "${generic_nvhpc_gpu_models[@]}"
     ;;
