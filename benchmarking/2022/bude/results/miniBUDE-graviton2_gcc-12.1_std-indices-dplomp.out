@@ -1,15 +1,15 @@
-Wed Aug 10 19:04:36 UTC 2022
+Sun Aug 14 21:46:47 UTC 2022
 /home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp
-	linux-vdso.so.1 (0x0000ffff8d909000)
-	libtbb.so.12 => /home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/gnu_12.1_cxx17_64_release/libtbb.so.12 (0x0000ffff8d875000)
-	libstdc++.so.6 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libstdc++.so.6 (0x0000ffff8d64f000)
-	libm.so.6 => /lib64/libm.so.6 (0x0000ffff8d58e000)
-	libgomp.so.1 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libgomp.so.1 (0x0000ffff8d52b000)
-	libgcc_s.so.1 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libgcc_s.so.1 (0x0000ffff8d4fa000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffff8d4c5000)
-	libc.so.6 => /lib64/libc.so.6 (0x0000ffff8d33f000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffff8d31e000)
-	/lib/ld-linux-aarch64.so.1 (0x0000ffff8d8cb000)
+	linux-vdso.so.1 (0x0000ffffb28cf000)
+	libtbb.so.12 => /home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/gnu_12.1_cxx17_64_release/libtbb.so.12 (0x0000ffffb283b000)
+	libstdc++.so.6 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libstdc++.so.6 (0x0000ffffb2615000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000ffffb2554000)
+	libgomp.so.1 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libgomp.so.1 (0x0000ffffb24f1000)
+	libgcc_s.so.1 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libgcc_s.so.1 (0x0000ffffb24c0000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffffb248b000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000ffffb2305000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffffb22e4000)
+	/lib/ld-linux-aarch64.so.1 (0x0000ffffb2891000)
 miniBUDE:  
 compile_commands:
    - "/lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/bin/g++ -DONEDPL_USE_DPCPP_BACKEND=0 -DONEDPL_USE_OPENMP_BACKEND=1 -DONEDPL_USE_TBB_BACKEND=0 -DSTD_INDICES -DUSE_ONEDPL -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/std-indices -I/home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/generated -I/home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/_deps/tbb-src/src/tbb/../../include -I/home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/_deps/onedpl-src/include  -DNDEBUG -mcpu=neoverse-n1 -Ofast -fopenmp-simd -fopenmp -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
@@ -190,13 +190,13 @@ compile_commands:
    - "/lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/bin/g++  -I/home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/_deps/tbb-src/test/.. -I/home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/_deps/tbb-src/test -I/home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/_deps/tbb-src/src/tbbmalloc_proxy/../../include -I/home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/_deps/tbb-src/src/tbbmalloc/../../include -O3 -DNDEBUG -Wall -Wextra -Wfatal-errors -Wshadow -Wcast-qual -Woverloaded-virtual -Wnon-virtual-dtor -pthread -std=c++17 -o CMakeFiles/test_malloc_overload_disable.dir/tbbmalloc/test_malloc_overload_disable.cpp.o -c /home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/_deps/tbb-src/test/tbbmalloc/test_malloc_overload_disable.cpp"
    - "/lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/bin/g++  -I/home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/_deps/tbb-src/test/.. -I/home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/_deps/tbb-src/test -I/home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/_deps/tbb-src/src/tbbmalloc_proxy/../../include -O3 -DNDEBUG -Wall -Wextra -Wfatal-errors -Wshadow -Wcast-qual -Woverloaded-virtual -Wnon-virtual-dtor -pthread -std=c++17 -o CMakeFiles/test_malloc_new_handler.dir/tbbmalloc/test_malloc_new_handler.cpp.o -c /home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/_deps/tbb-src/test/tbbmalloc/test_malloc_new_handler.cpp"
 vcs:
-  commit:  09abfd91ee85b4ef249b5b9b1515e96d6c822f42*
-  author:  "tomlin (tomlin@ip-10-0-45-117.ec2.internal)"
-  date:    "2022-08-10 15:20:18 +0000"
-  subject: "Fixup bench for graviton2"
+  commit:  e88f0e53dd70ee10610ef85bbac26b337b4465a4
+  author:  "Tom Lin (tom91136@gmail.com)"
+  date:    "2022-08-14 21:39:53 +0000"
+  subject: "Rerun on Isambard with dplomp patch"
 host_cpu:
   ~
-time: { epoch_s:1660158276, formatted: "Wed Aug 10 19:04:36 2022 GMT" }
+time: { epoch_s:1660513607, formatted: "Sun Aug 14 21:46:47 2022 GMT" }
 devices:
   0: "(not exposed)"
 miniBUDE:  
@@ -379,13 +379,13 @@ compile_commands:
    - "/lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/bin/g++  -I/home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/_deps/tbb-src/test/.. -I/home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/_deps/tbb-src/test -I/home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/_deps/tbb-src/src/tbbmalloc_proxy/../../include -I/home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/_deps/tbb-src/src/tbbmalloc/../../include -O3 -DNDEBUG -Wall -Wextra -Wfatal-errors -Wshadow -Wcast-qual -Woverloaded-virtual -Wnon-virtual-dtor -pthread -std=c++17 -o CMakeFiles/test_malloc_overload_disable.dir/tbbmalloc/test_malloc_overload_disable.cpp.o -c /home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/_deps/tbb-src/test/tbbmalloc/test_malloc_overload_disable.cpp"
    - "/lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/bin/g++  -I/home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/_deps/tbb-src/test/.. -I/home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/_deps/tbb-src/test -I/home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/_deps/tbb-src/src/tbbmalloc_proxy/../../include -O3 -DNDEBUG -Wall -Wextra -Wfatal-errors -Wshadow -Wcast-qual -Woverloaded-virtual -Wnon-virtual-dtor -pthread -std=c++17 -o CMakeFiles/test_malloc_new_handler.dir/tbbmalloc/test_malloc_new_handler.cpp.o -c /home/tomlin/performance-portability/benchmarking/2022/bude/results/miniBUDE-graviton2_gcc-12.1_std-indices-dplomp/miniBUDE/build/_deps/tbb-src/test/tbbmalloc/test_malloc_new_handler.cpp"
 vcs:
-  commit:  09abfd91ee85b4ef249b5b9b1515e96d6c822f42*
-  author:  "tomlin (tomlin@ip-10-0-45-117.ec2.internal)"
-  date:    "2022-08-10 15:20:18 +0000"
-  subject: "Fixup bench for graviton2"
+  commit:  e88f0e53dd70ee10610ef85bbac26b337b4465a4
+  author:  "Tom Lin (tom91136@gmail.com)"
+  date:    "2022-08-14 21:39:53 +0000"
+  subject: "Rerun on Isambard with dplomp patch"
 host_cpu:
   ~
-time: { epoch_s:1660158276, formatted: "Wed Aug 10 19:04:36 2022 GMT" }
+time: { epoch_s:1660513607, formatted: "Sun Aug 14 21:46:47 2022 GMT" }
 deck:
   path:         "miniBUDE/data/bm1"
   poses:        65536
@@ -411,16 +411,16 @@ device: { index: 0,  name: "(not exposed)" }
 results:
   - outcome:             { valid: true, max_diff_%: 0.004 }
     param:               { ppwi: 1, wgsize: 1 }
-    raw_iterations:      [629.685,586.792,587.238,587.17,586.971,587.332,586.906,581.112,586.792,580.26]
-    context_ms:          0.514637
-    sum_ms:              4683.782
-    avg_ms:              585.473
-    min_ms:              580.260
-    max_ms:              587.332
-    stddev_ms:           2.777
-    giga_interactions/s: 2.730
-    gflop/s:             109.258
-    gfinst/s:            68.248
+    raw_iterations:      [299.672,296.008,296.283,296.153,296.167,296.065,295.754,295.959,295.807,296.352]
+    context_ms:          0.533970
+    sum_ms:              2368.538
+    avg_ms:              296.067
+    min_ms:              295.754
+    max_ms:              296.352
+    stddev_ms:           0.201
+    giga_interactions/s: 5.398
+    gflop/s:             216.058
+    gfinst/s:            134.960
     energies:            
       - 865.52
       - 25.07
@@ -432,16 +432,16 @@ results:
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.002 }
     param:               { ppwi: 2, wgsize: 1 }
-    raw_iterations:      [920.701,919.137,918.981,918.843,918.704,918.917,918.286,921.313,917.964,920.538]
-    context_ms:          0.536299
-    sum_ms:              7353.547
-    avg_ms:              919.193
-    min_ms:              917.964
-    max_ms:              921.313
-    stddev_ms:           1.068
-    giga_interactions/s: 1.739
-    gflop/s:             60.895
-    gfinst/s:            43.470
+    raw_iterations:      [244.477,244.447,244.4,244.372,244.352,244.272,246.369,244.37,244.398,244.404]
+    context_ms:          0.518199
+    sum_ms:              1956.939
+    avg_ms:              244.617
+    min_ms:              244.272
+    max_ms:              246.369
+    stddev_ms:           0.663
+    giga_interactions/s: 6.534
+    gflop/s:             228.824
+    gfinst/s:            163.346
     energies:            
       - 865.52
       - 25.07
@@ -453,16 +453,16 @@ results:
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.002 }
     param:               { ppwi: 4, wgsize: 1 }
-    raw_iterations:      [793.724,793.429,793.042,793.711,793.614,793.005,794.033,793.446,793.966,793.163]
-    context_ms:          0.518560
-    sum_ms:              6347.980
-    avg_ms:              793.497
-    min_ms:              793.005
-    max_ms:              794.033
-    stddev_ms:           0.376
-    giga_interactions/s: 2.014
-    gflop/s:             65.505
-    gfinst/s:            50.356
+    raw_iterations:      [110.848,111.038,110.673,110.999,110.675,111.093,110.635,110.801,110.798,110.78]
+    context_ms:          0.517757
+    sum_ms:              886.454
+    avg_ms:              110.807
+    min_ms:              110.635
+    max_ms:              111.093
+    stddev_ms:           0.152
+    giga_interactions/s: 14.424
+    gflop/s:             469.086
+    gfinst/s:            360.604
     energies:            
       - 865.52
       - 25.07
@@ -474,16 +474,16 @@ results:
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.002 }
     param:               { ppwi: 8, wgsize: 1 }
-    raw_iterations:      [1069.9,1071.37,1069.74,1070.18,1068.68,1069.74,1070.02,1066.89,1071.07,1066.84]
-    context_ms:          0.530473
-    sum_ms:              8553.165
-    avg_ms:              1069.146
-    min_ms:              1066.837
-    max_ms:              1071.070
-    stddev_ms:           1.453
-    giga_interactions/s: 1.495
-    gflop/s:             46.747
-    gfinst/s:            37.373
+    raw_iterations:      [85.2184,84.6049,84.6099,84.8486,84.6469,84.5993,84.7012,84.9983,84.6887,84.6498]
+    context_ms:          0.537834
+    sum_ms:              677.743
+    avg_ms:              84.718
+    min_ms:              84.599
+    max_ms:              84.998
+    stddev_ms:           0.129
+    giga_interactions/s: 18.866
+    gflop/s:             589.953
+    gfinst/s:            471.652
     energies:            
       - 865.52
       - 25.07
@@ -495,16 +495,16 @@ results:
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.002 }
     param:               { ppwi: 16, wgsize: 1 }
-    raw_iterations:      [1317.44,1317.79,1317.12,1317.23,1317.42,1317.21,1317.07,1317.57,1317.02,1317.72]
-    context_ms:          0.509599
-    sum_ms:              10538.372
-    avg_ms:              1317.296
-    min_ms:              1317.023
-    max_ms:              1317.721
-    stddev_ms:           0.235
-    giga_interactions/s: 1.213
-    gflop/s:             37.183
-    gfinst/s:            30.333
+    raw_iterations:      [61.924,61.8231,61.7407,61.8187,61.7733,61.7656,61.7379,61.7676,61.7351,61.7234]
+    context_ms:          0.497113
+    sum_ms:              494.062
+    avg_ms:              61.758
+    min_ms:              61.723
+    max_ms:              61.819
+    stddev_ms:           0.028
+    giga_interactions/s: 25.880
+    gflop/s:             793.105
+    gfinst/s:            647.000
     energies:            
       - 865.52
       - 25.07
@@ -516,16 +516,16 @@ results:
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.002 }
     param:               { ppwi: 32, wgsize: 1 }
-    raw_iterations:      [2303.24,2302.46,2302.95,2304.67,2302.91,2303.32,2303.18,2303.2,2305.78,2303.04]
-    context_ms:          0.530506
-    sum_ms:              18429.046
-    avg_ms:              2303.631
-    min_ms:              2302.914
-    max_ms:              2305.779
-    stddev_ms:           0.968
-    giga_interactions/s: 0.694
-    gflop/s:             21.045
-    gfinst/s:            17.345
+    raw_iterations:      [72.287,72.1102,72.4103,72.2355,72.0937,72.1266,72.1226,72.6121,72.1359,72.1054]
+    context_ms:          0.539254
+    sum_ms:              577.842
+    avg_ms:              72.230
+    min_ms:              72.094
+    max_ms:              72.612
+    stddev_ms:           0.175
+    giga_interactions/s: 22.128
+    gflop/s:             671.198
+    gfinst/s:            553.193
     energies:            
       - 865.52
       - 25.07
@@ -537,16 +537,16 @@ results:
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.002 }
     param:               { ppwi: 64, wgsize: 1 }
-    raw_iterations:      [4456.48,4454.27,4456.01,4454.62,4454.32,4454.37,4453.88,4453.56,4454.1,4454.77]
-    context_ms:          0.501058
-    sum_ms:              35635.632
-    avg_ms:              4454.454
-    min_ms:              4453.563
-    max_ms:              4456.011
-    stddev_ms:           0.692
-    giga_interactions/s: 0.359
-    gflop/s:             10.828
-    gfinst/s:            8.970
+    raw_iterations:      [70.0453,69.8505,69.8575,69.8584,69.8836,69.8627,69.8733,70.3276,69.8746,69.8475]
+    context_ms:          0.511061
+    sum_ms:              559.385
+    avg_ms:              69.923
+    min_ms:              69.847
+    max_ms:              70.328
+    stddev_ms:           0.153
+    giga_interactions/s: 22.858
+    gflop/s:             689.772
+    gfinst/s:            571.446
     energies:            
       - 865.52
       - 25.07
@@ -558,16 +558,16 @@ results:
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.004 }
     param:               { ppwi: 128, wgsize: 1 }
-    raw_iterations:      [4360.63,4361.22,4361.18,4361.31,4361.66,4361.32,4360.92,4360.75,4361.08,4361.87]
-    context_ms:          0.524934
-    sum_ms:              34890.076
-    avg_ms:              4361.259
-    min_ms:              4360.748
-    max_ms:              4361.866
-    stddev_ms:           0.345
-    giga_interactions/s: 0.366
-    gflop/s:             11.030
-    gfinst/s:            9.162
+    raw_iterations:      [69.4201,68.2626,68.5393,68.3222,68.2771,68.2826,68.3007,68.258,68.2553,68.3483]
+    context_ms:          0.548763
+    sum_ms:              546.584
+    avg_ms:              68.323
+    min_ms:              68.255
+    max_ms:              68.539
+    stddev_ms:           0.087
+    giga_interactions/s: 23.393
+    gflop/s:             704.100
+    gfinst/s:            584.830
     energies:            
       - 865.52
       - 25.07
@@ -577,4 +577,4 @@ results:
       - 707.35
       - 33.95
       - 135.59
-best: { min_ms: 580.26, max_ms: 587.33, sum_ms: 4683.78, avg_ms: 585.47, ppwi: 1, wgsize: 1 }
+best: { min_ms: 61.72, max_ms: 61.82, sum_ms: 494.06, avg_ms: 61.76, ppwi: 16, wgsize: 1 }
