@@ -20,9 +20,20 @@ gcc-12.1)
   spack load gcc@12.1.0
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=g++"
-    # Nuke the entire flag because the default `-march=native` is broken and -mcpu=neoverse-v1 is broken too
+  # Nuke the entire flag because the default `-march=native` is broken and -mcpu=neoverse-v1 is broken too
   append_opts "-DRELEASE_FLAGS='' -DCXX_EXTRA_FLAGS=-march=armv8.4-a+rcpc+sve+profile;-Ofast"
   append_opts "-DUSE_TBB=ON"
+  ;;
+arm-22.0.1)
+  spack load gcc@12.1.0
+  spack load arm@22.0.1
+  append_opts "-DCMAKE_C_COMPILER=armclang"
+  append_opts "-DCMAKE_CXX_COMPILER=armclang++"
+  append_opts "-DRELEASE_FLAGS='' -DCXX_EXTRA_FLAGS=-mcpu=neoverse-v1;-Ofast"
+  append_opts "-DUSE_TBB=ON -DTBB_ENABLE_IPO=OFF" # IPO is broken in armclang
+
+  export CXXFLAGS="--gcc-toolchain=$(dirname "$(which gcc)")/.."
+  export LDFLAGS="--gcc-toolchain=$(dirname "$(which gcc)")/.."
   ;;
 nvhpc-22.7)
   load_nvhpc
@@ -58,7 +69,6 @@ tbb)
   append_opts "-DMODEL=tbb"
   BENCHMARK_EXE="tbb-bude"
   ;;
-
 std-indices)
   append_opts "-DMODEL=std-indices"
   BENCHMARK_EXE="std-indices-bude"
@@ -67,7 +77,6 @@ std-ranges)
   append_opts "-DMODEL=std-ranges"
   BENCHMARK_EXE="std-ranges-bude"
   ;;
-
 std-indices-dplomp)
   append_opts "-DMODEL=std-indices -DUSE_ONEDPL=OPENMP"
   BENCHMARK_EXE="std-indices-bude"

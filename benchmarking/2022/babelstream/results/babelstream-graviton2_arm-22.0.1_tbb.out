@@ -1,0 +1,30 @@
+Fri Aug 12 15:33:13 UTC 2022
+/home/tomlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-graviton2_arm-22.0.1_tbb
+	linux-vdso.so.1 (0x0000ffffb1108000)
+	libamath_neoverse-n1.so => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/arm-22.0.1-o73735a7cvkcdppypla62m3jdnnijnmk/arm-linux-compiler-22.0.1_Generic-AArch64_RHEL-7_aarch64-linux/llvm-bin/../lib/libamath_neoverse-n1.so (0x0000ffffb0f3b000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000ffffb0e7a000)
+	libtbb.so.12 => /home/tomlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-graviton2_arm-22.0.1_tbb/BabelStream/build/clang_13.0_cxx11_64_release/libtbb.so.12 (0x0000ffffb0e02000)
+	libstdc++.so.6 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libstdc++.so.6 (0x0000ffffb0bdc000)
+	libastring_neoverse-n1.so => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/arm-22.0.1-o73735a7cvkcdppypla62m3jdnnijnmk/arm-linux-compiler-22.0.1_Generic-AArch64_RHEL-7_aarch64-linux/llvm-bin/../lib/libastring_neoverse-n1.so (0x0000ffffb0bc9000)
+	libgcc_s.so.1 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libgcc_s.so.1 (0x0000ffffb0b98000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000ffffb0a12000)
+	/lib/ld-linux-aarch64.so.1 (0x0000ffffb10ca000)
+	libamath_aarch64.so => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/arm-22.0.1-o73735a7cvkcdppypla62m3jdnnijnmk/arm-linux-compiler-22.0.1_Generic-AArch64_RHEL-7_aarch64-linux/llvm-bin/../lib/libamath_aarch64.so (0x0000ffffb0881000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffffb0860000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffffb082b000)
+Listing devices is not supported by TBB
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        158804.128  0.05409     0.05607     0.05426     
+Mul         159969.563  0.05370     0.05538     0.05390     
+Add         164180.418  0.07848     0.08034     0.07867     
+Triad       163985.640  0.07857     0.07954     0.07875     
+Dot         169145.543  0.05078     0.05334     0.05101     
