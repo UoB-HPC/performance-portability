@@ -17,6 +17,7 @@ append_opts "-DCMAKE_VERBOSE_MAKEFILE=ON -DUSE_CPU_FEATURES=OFF"
 case "$COMPILER" in
 cce)
   module load cce
+  module rm cray-libsci # otherwise we get segfaults 
   module load craype-x86-milan
   append_opts "-DCMAKE_C_COMPILER=cc"
   append_opts "-DCMAKE_CXX_COMPILER=CC"
