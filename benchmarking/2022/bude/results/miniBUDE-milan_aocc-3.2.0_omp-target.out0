@@ -1,0 +1,231 @@
+Fri 12 Aug 02:21:18 BST 2022
+/lustre/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-milan_aocc-3.2.0_omp-target
+	linux-vdso.so.1 (0x00007ffe69ace000)
+	libomp.so => /lustre/home/br-wlin/aocc-compiler-3.2.0/lib/libomp.so (0x000014663ce5e000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014663cc3e000)
+	libstdc++.so.6 => /lib64/libstdc++.so.6 (0x000014663c8a9000)
+	libm.so.6 => /lib64/libm.so.6 (0x000014663c527000)
+	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x000014663c30f000)
+	libc.so.6 => /lib64/libc.so.6 (0x000014663bf4c000)
+	librt.so.1 => /lib64/librt.so.1 (0x000014663bd44000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000014663bb40000)
+	/lib64/ld-linux-x86-64.so.2 (0x000014663d141000)
+miniBUDE:  
+compile_commands:
+   - "/lustre/home/br-wlin/aocc-compiler-3.2.0/bin/clang++ -DOMP -DOMP_TARGET -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/omp -I/lustre/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-milan_aocc-3.2.0_omp-target/miniBUDE/build/generated  -DNDEBUG -O3 -march=native -march=znver3 -Ofast -fopenmp=libomp -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
+vcs:
+  commit:  e7bcdd38b0ccc55b4a0b6fd87c02cf28da02f7d9*
+  author:  "Tom Lin (tom91136@gmail.com)"
+  date:    "2022-08-11 10:19:23 +0000"
+  subject: "Fix quoting for math expr on slurm"
+host_cpu:
+  ~
+time: { epoch_s:1660267278, formatted: "Fri Aug 12 01:21:18 2022 GMT" }
+devices:
+  0: "OMP host device #0"
+miniBUDE:  
+compile_commands:
+   - "/lustre/home/br-wlin/aocc-compiler-3.2.0/bin/clang++ -DOMP -DOMP_TARGET -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/omp -I/lustre/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-milan_aocc-3.2.0_omp-target/miniBUDE/build/generated  -DNDEBUG -O3 -march=native -march=znver3 -Ofast -fopenmp=libomp -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
+vcs:
+  commit:  e7bcdd38b0ccc55b4a0b6fd87c02cf28da02f7d9*
+  author:  "Tom Lin (tom91136@gmail.com)"
+  date:    "2022-08-11 10:19:23 +0000"
+  subject: "Fix quoting for math expr on slurm"
+host_cpu:
+  ~
+time: { epoch_s:1660267278, formatted: "Fri Aug 12 01:21:18 2022 GMT" }
+deck:
+  path:         "miniBUDE/data/bm1"
+  poses:        65536
+  proteins:     938
+  ligands:      26
+  forcefields:  34
+config:
+  iterations:   8
+  poses:        65536
+  ppwi:
+    available:  [1,2,4,8,16,32,64,128]
+    selected:   [1,2,4,8,16,32,64,128]
+  wgsize:       [1]
+# Unable to parse/select device index `EPYC`:stoul
+# Attempting to match device with substring  `EPYC`
+# No matching device but there's only one device, using it anyway
+device: { index: 0,  name: "OMP host device #0" }
+# (ppwi=1,wgsize=1,valid=1)
+# (ppwi=2,wgsize=1,valid=1)
+# (ppwi=4,wgsize=1,valid=1)
+# (ppwi=8,wgsize=1,valid=1)
+# (ppwi=16,wgsize=1,valid=1)
+# (ppwi=32,wgsize=1,valid=1)
+# (ppwi=64,wgsize=1,valid=1)
+# (ppwi=128,wgsize=1,valid=1)
+results:
+  - outcome:             { valid: true, max_diff_%: 0.006 }
+    param:               { ppwi: 1, wgsize: 1 }
+    raw_iterations:      [58.4988,59.2207,59.1429,59.0854,59.0744,59.1211,60.0043,60.0798,59.8578,59.7902]
+    context_ms:          29.362887
+    sum_ms:              476.156
+    avg_ms:              59.519
+    min_ms:              59.074
+    max_ms:              60.080
+    stddev_ms:           0.422
+    giga_interactions/s: 26.853
+    gflop/s:             1074.733
+    gfinst/s:            671.331
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 2, wgsize: 1 }
+    raw_iterations:      [106.122,105.907,105.92,105.909,105.871,106.428,105.962,105.688,105.621,105.733]
+    context_ms:          0.307105
+    sum_ms:              847.132
+    avg_ms:              105.891
+    min_ms:              105.621
+    max_ms:              106.428
+    stddev_ms:           0.233
+    giga_interactions/s: 15.094
+    gflop/s:             528.602
+    gfinst/s:            377.342
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.002 }
+    param:               { ppwi: 4, wgsize: 1 }
+    raw_iterations:      [122.133,110.372,103.507,104.021,104.047,103.801,103.855,103.972,103.937,103.959]
+    context_ms:          0.326492
+    sum_ms:              831.098
+    avg_ms:              103.887
+    min_ms:              103.507
+    max_ms:              104.047
+    stddev_ms:           0.162
+    giga_interactions/s: 15.385
+    gflop/s:             500.329
+    gfinst/s:            384.622
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 8, wgsize: 1 }
+    raw_iterations:      [20.519,20.8698,20.8728,20.8719,20.7672,20.752,20.8378,20.7578,20.7681,20.7414]
+    context_ms:          0.194144
+    sum_ms:              166.369
+    avg_ms:              20.796
+    min_ms:              20.741
+    max_ms:              20.873
+    stddev_ms:           0.052
+    giga_interactions/s: 76.855
+    gflop/s:             2403.312
+    gfinst/s:            1921.382
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 16, wgsize: 1 }
+    raw_iterations:      [17.3711,17.4715,17.4618,17.4478,17.4667,17.4538,17.4712,17.452,17.463,17.4598]
+    context_ms:          0.327053
+    sum_ms:              139.676
+    avg_ms:              17.460
+    min_ms:              17.448
+    max_ms:              17.471
+    stddev_ms:           0.007
+    giga_interactions/s: 91.543
+    gflop/s:             2805.372
+    gfinst/s:            2288.570
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 32, wgsize: 1 }
+    raw_iterations:      [15.6192,15.8481,15.7824,15.8012,15.7926,15.751,15.784,15.7609,15.7641,15.747]
+    context_ms:          0.165890
+    sum_ms:              126.183
+    avg_ms:              15.773
+    min_ms:              15.747
+    max_ms:              15.801
+    stddev_ms:           0.019
+    giga_interactions/s: 101.331
+    gflop/s:             3073.678
+    gfinst/s:            2533.287
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 64, wgsize: 1 }
+    raw_iterations:      [14.9268,14.9971,14.9613,14.9369,14.9859,14.9802,14.9617,15.1185,14.9555,15.0055]
+    context_ms:          0.148648
+    sum_ms:              119.906
+    avg_ms:              14.988
+    min_ms:              14.937
+    max_ms:              15.119
+    stddev_ms:           0.053
+    giga_interactions/s: 106.637
+    gflop/s:             3217.937
+    gfinst/s:            2665.919
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.003 }
+    param:               { ppwi: 128, wgsize: 1 }
+    raw_iterations:      [14.2454,14.3913,14.3665,14.3722,14.4017,14.3643,14.4045,14.3789,14.3993,14.3648]
+    context_ms:          0.101841
+    sum_ms:              115.052
+    avg_ms:              14.382
+    min_ms:              14.364
+    max_ms:              14.404
+    stddev_ms:           0.016
+    giga_interactions/s: 111.135
+    gflop/s:             3344.999
+    gfinst/s:            2778.379
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+best: { min_ms: 14.36, max_ms: 14.40, sum_ms: 115.05, avg_ms: 14.38, ppwi: 128, wgsize: 1 }
