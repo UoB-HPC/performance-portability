@@ -20,22 +20,29 @@ gcc-12.1)
   spack load gcc@12.1.0
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=g++"
-    # Nuke the entire flag because the default `-march=native` is broken and -mcpu=neoverse-v1 is broken too
+  # Nuke the entire flag because the default `-march=native` is broken and -mcpu=neoverse-v1 is broken too
   append_opts "-DRELEASE_FLAGS='' -DCXX_EXTRA_FLAGS=-march=armv8.4-a+rcpc+sve+profile;-Ofast"
   append_opts "-DUSE_TBB=ON"
+  ;;
+arm-22.0.1)
+  spack load gcc@12.1.0
+  spack load arm@22.0.1
+  append_opts "-DCMAKE_C_COMPILER=armclang"
+  append_opts "-DCMAKE_CXX_COMPILER=armclang++"
+  append_opts "-DRELEASE_FLAGS='' -DCXX_EXTRA_FLAGS=-mcpu=neoverse-v1;-Ofast"
+  append_opts "-DUSE_TBB=ON -DTBB_ENABLE_IPO=OFF" # IPO is broken in armclang
+
+  export CXXFLAGS="--gcc-toolchain=$(dirname "$(which gcc)")/.."
+  export LDFLAGS="--gcc-toolchain=$(dirname "$(which gcc)")/.."
+  ;;
+hipsycl-gcc)
+  spack load gcc@12.1.0
   ;;
 nvhpc-22.7)
   load_nvhpc
   append_opts "-DCMAKE_C_COMPILER=$NVHPC_PATH/compilers/bin/nvc"
   append_opts "-DCMAKE_CXX_COMPILER=$NVHPC_PATH/compilers/bin/nvc++"
-  case "$MODEL" in
-  omp)
-    append_opts "-DCXX_EXTRA_FLAGS=-target=multicore;-mp;-march=neoverse-v1;-fast"
-    ;;
-  std-*)
-    append_opts "-DCXX_EXTRA_FLAGS=-target=multicore;-stdpar;-march=neoverse-v1;-fast"
-    ;;
-  esac
+  append_opts "-DCXX_EXTRA_FLAGS=-target=multicore;-mp;-march=neoverse-v1;-fast"
   ;;
 *) unknown_compiler ;;
 esac
@@ -54,28 +61,34 @@ omp)
   append_opts "-DMODEL=omp"
   BENCHMARK_EXE="omp-bude"
   ;;
-tbb)
-  append_opts "-DMODEL=tbb"
-  BENCHMARK_EXE="tbb-bude"
+omp-target)
+  append_opts "-DMODEL=omp"
+  BENCHMARK_EXE="omp-bude"
+  case "$COMPILER" in
+  nvhpc-*)
+    # cc isn't important here, so just pick the latest one
+    append_opts "-DOFFLOAD=ON -DOFFLOAD_FLAGS=-mp=gpu;-gpu=cc80,fastmath"
+    ;;
+  *)
+    append_opts "-DOFFLOAD=ON "
+    ;;
+  esac
+  ;;
+sycl)
+  append_opts "-DMODEL=sycl"
+  BENCHMARK_EXE="sycl-bude"
+
+  append_opts "-DCXX_EXTRA_FLAGS=-march=armv8.4-a+rcpc+sve+profile;-Ofast;-I$HOME/boost_1_80_0/install/include"
+  case "$COMPILER" in
+  hipsycl-gcc)
+    append_opts "-DCMAKE_C_COMPILER=gcc"
+    append_opts "-DCMAKE_CXX_COMPILER=g++"
+    # append_opts "-DCXX_EXTRA_LIBRARIES=stdc++fs"
+    append_opts "-DSYCL_COMPILER=HIPSYCL -DSYCL_COMPILER_DIR=$HOME/hipSYCL/install"
+    ;;
+  esac
   ;;
 
-std-indices)
-  append_opts "-DMODEL=std-indices"
-  BENCHMARK_EXE="std-indices-bude"
-  ;;
-std-ranges)
-  append_opts "-DMODEL=std-ranges"
-  BENCHMARK_EXE="std-ranges-bude"
-  ;;
-
-std-indices-dplomp)
-  append_opts "-DMODEL=std-indices -DUSE_ONEDPL=OPENMP"
-  BENCHMARK_EXE="std-indices-bude"
-  ;;
-std-ranges-dplomp)
-  append_opts "-DMODEL=std-ranges -DUSE_ONEDPL=OPENMP"
-  BENCHMARK_EXE="std-ranges-bude"
-  ;;
 *) unknown_model ;;
 esac
 

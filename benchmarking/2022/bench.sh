@@ -52,9 +52,7 @@ p3)
         bench milan-isambard oneapi-2022.2 run sycl &
         wait
     )
-
     ;;
-
 p2)
 
     cd "$BASE/bude/results"
@@ -69,7 +67,15 @@ p2)
         bench icl-isambard oneapi-2022.2 run sycl &
         wait
     )
+    ;;
+aws-g3)
 
+    cd "$BASE/bude/results"
+    bench graviton3-aws nvhpc-22.7 run kokkos omp omp-target
+    bench graviton3-aws arm-22.0.1 run kokkos omp omp-target
+    bench graviton3-aws gcc-12.1 run kokkos omp omp-target
+
+    bench graviton3-aws hipsycl-gcc run sycl
     ;;
 *)
     echo "Bad platform $1"
