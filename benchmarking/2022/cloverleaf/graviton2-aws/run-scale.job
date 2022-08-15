@@ -25,19 +25,20 @@ for i in $(seq $MIN_CORE $MAX_CORE); do
 
   case "$MODEL" in
   kokkos)
-    cp "$SRC_DIR/InputDecks/clover_bm16.in" "clover.in"
+    cp "$RUN_DIR/../../clover_bm16_300.in" "clover.in"
     "$BENCHMARK_EXE"
     ;;
   omp)
-    "$BENCHMARK_EXE" --file "$SRC_DIR/InputDecks/clover_bm16.in"
+    "$BENCHMARK_EXE" --file "$RUN_DIR/../../clover_bm16_300.in"
     ;;
   tbb | std-*)
-    numactl --physcpubind=0-$(($i - 1)) --localalloc "$BENCHMARK_EXE" --file "$SRC_DIR/InputDecks/clover_bm16.in"
+    numactl --physcpubind=0-$(($i - 1)) --localalloc "$BENCHMARK_EXE" --file "$RUN_DIR/../../clover_bm16_300.in"
     ;;
   *)
     echo "Unknown run configuration for model '$MODEL'"
     exit 1
     ;;
   esac
+  tail -n 20 "clover.out"
   echo "<<<$i<<<"
 done
