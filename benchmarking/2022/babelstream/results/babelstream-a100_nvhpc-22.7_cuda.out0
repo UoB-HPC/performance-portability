@@ -1,0 +1,33 @@
+Wed 10 Aug 10:08:49 BST 2022
+/lustre/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-a100_nvhpc-22.7_cuda
+	linux-vdso.so.1 (0x00007ffd8efb6000)
+	librt.so.1 => /lib64/librt.so.1 (0x000014e894e74000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014e894c54000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000014e894a50000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/9.3.0/lib64/libstdc++.so.6 (0x000014e894676000)
+	libm.so.6 => /lib64/libm.so.6 (0x000014e8942f4000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/9.3.0/lib64/libgcc_s.so.1 (0x000014e8940dc000)
+	libc.so.6 => /lib64/libc.so.6 (0x000014e893d19000)
+	/lib64/ld-linux-x86-64.so.2 (0x000014e89507c000)
+
+Devices:
+0: NVIDIA A100-SXM4-40GB
+1: NVIDIA A100-SXM4-40GB
+2: NVIDIA A100-SXM4-40GB
+3: NVIDIA A100-SXM4-40GB
+
+BabelStream
+Version: 4.0
+Implementation: CUDA
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using CUDA device NVIDIA A100-SXM4-40GB
+Driver: 11040
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1391471.236 0.00617     0.00619     0.00618     
+Mul         1389295.452 0.00618     0.00620     0.00619     
+Add         1398372.784 0.00921     0.00949     0.00945     
+Triad       1398552.190 0.00921     0.00948     0.00946     
+Dot         1326669.959 0.00647     0.00681     0.00651     

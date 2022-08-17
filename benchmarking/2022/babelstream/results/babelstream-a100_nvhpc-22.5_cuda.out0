@@ -1,0 +1,37 @@
+Sun 31 Jul 06:31:05 BST 2022
+/lustre/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-a100_nvhpc-22.5_cuda
+	linux-vdso.so.1 (0x00007ffeb53c1000)
+	librt.so.1 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/librt.so.1 (0x000014e9864ce000)
+	libnvhpcatm.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libnvhpcatm.so (0x000014e9862c3000)
+	libstdc++.so.6 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libstdc++.so.6 (0x000014e985f2e000)
+	libnvomp.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libnvomp.so (0x000014e985224000)
+	libdl.so.2 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libdl.so.2 (0x000014e985020000)
+	libpthread.so.0 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libpthread.so.0 (0x000014e984e00000)
+	libnvcpumath.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libnvcpumath.so (0x000014e9849fa000)
+	libnvc.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libnvc.so (0x000014e984797000)
+	libc.so.6 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libc.so.6 (0x000014e9843d4000)
+	/lib64/ld-linux-x86-64.so.2 (0x000014e9866d6000)
+	libgcc_s.so.1 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libgcc_s.so.1 (0x000014e9841bc000)
+	libm.so.6 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libm.so.6 (0x000014e983e3a000)
+
+Devices:
+0: NVIDIA A100-SXM4-40GB
+1: NVIDIA A100-SXM4-40GB
+2: NVIDIA A100-SXM4-40GB
+3: NVIDIA A100-SXM4-40GB
+
+BabelStream
+Version: 4.0
+Implementation: CUDA
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using CUDA device NVIDIA A100-SXM4-40GB
+Driver: 11040
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1391511.584 0.00617     0.00619     0.00618     
+Mul         1389160.197 0.00618     0.00620     0.00619     
+Add         1398311.778 0.00921     0.00948     0.00946     
+Triad       1398825.790 0.00921     0.00949     0.00946     
+Dot         1327271.400 0.00647     0.00674     0.00651     

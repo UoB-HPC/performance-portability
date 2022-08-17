@@ -1,0 +1,29 @@
+Sun 14 Aug 22:26:06 BST 2022
+/lustre/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-milan_aocc-3.2.0_std-data-dplomp
+	linux-vdso.so.1 (0x00007ffc5a79e000)
+	libtbb.so.12 => /lustre/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-milan_aocc-3.2.0_std-data-dplomp/BabelStream/build/clang_13.0_cxx11_64_release/libtbb.so.12 (0x0000150f19284000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libstdc++.so.6 (0x0000150f18ea6000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000150f18b24000)
+	libomp.so => /lustre/home/br-wlin/aocc-compiler-3.2.0/lib/libomp.so (0x0000150f18841000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libgcc_s.so.1 (0x0000150f1924f000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000150f18621000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000150f1825e000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000150f1805a000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000150f190ce000)
+	librt.so.1 => /lib64/librt.so.1 (0x0000150f17e52000)
+Listing devices is not supported by the Parallel STL
+BabelStream
+Version: 4.0
+Implementation: STD (data-oriented)
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Backing storage typeid: Pd
+Using oneDPL backend: OpenMP
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        225281.237  0.03813     0.03937     0.03842     
+Mul         220456.275  0.03896     0.03925     0.03912     
+Add         246847.746  0.05220     0.05257     0.05233     
+Triad       247825.688  0.05199     0.05228     0.05212     
+Dot         175102.865  0.04906     0.08255     0.06180     

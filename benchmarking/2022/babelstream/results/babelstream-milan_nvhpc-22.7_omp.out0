@@ -1,0 +1,30 @@
+Wed 10 Aug 10:04:23 BST 2022
+/lustre/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-milan_nvhpc-22.7_omp
+	linux-vdso.so.1 (0x00007ffed4be6000)
+	libacchost.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.7/compilers/lib/libacchost.so (0x000014f90edd2000)
+	libdl.so.2 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libdl.so.2 (0x000014f90ebce000)
+	libatomic.so.1 => /lustre/projects/bristol/modules/gcc/9.3.0/lib64/libatomic.so.1 (0x000014f90e9c6000)
+	libnvhpcatm.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.7/compilers/lib/libnvhpcatm.so (0x000014f90e7bb000)
+	libstdc++.so.6 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libstdc++.so.6 (0x000014f90e426000)
+	libnvomp.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.7/compilers/lib/libnvomp.so (0x000014f90d71c000)
+	libpthread.so.0 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libpthread.so.0 (0x000014f90d4fc000)
+	libnvcpumath.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.7/compilers/lib/libnvcpumath.so (0x000014f90d0f5000)
+	libnvc.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.7/compilers/lib/libnvc.so (0x000014f90ce92000)
+	libc.so.6 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libc.so.6 (0x000014f90cacf000)
+	libgcc_s.so.1 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libgcc_s.so.1 (0x000014f90c8b7000)
+	libm.so.6 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libm.so.6 (0x000014f90c535000)
+	/lib64/ld-linux-x86-64.so.2 (0x000014f90f043000)
+0: CPU
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        336677.094  0.02551     0.02572     0.02559     
+Mul         225531.914  0.03809     0.03835     0.03819     
+Add         245891.555  0.05240     0.05260     0.05251     
+Triad       247286.334  0.05211     0.05234     0.05219     
+Dot         347928.284  0.02469     0.02481     0.02474     

@@ -1,0 +1,38 @@
+Sun 31 Jul 06:32:48 BST 2022
+/lustre/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-a100_nvhpc-22.5_std-data
+	linux-vdso.so.1 (0x00007ffc386b6000)
+	libacchost.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libacchost.so (0x000014ae7b23c000)
+	libaccdevaux.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libaccdevaux.so (0x000014ae7b029000)
+	libacccuda.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libacccuda.so (0x000014ae7acf5000)
+	libnvhpcman.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libnvhpcman.so (0x000014ae7aaef000)
+	libnvhpcmanaux.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libnvhpcmanaux.so (0x000014ae7a8ed000)
+	libcudart.so.11.0 => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/cuda/11.0/lib64/libcudart.so.11.0 (0x000014ae7a66f000)
+	libdl.so.2 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libdl.so.2 (0x000014ae7a46b000)
+	libcudadevice.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libcudadevice.so (0x000014ae7a254000)
+	libcudanvhpc.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libcudanvhpc.so (0x000014ae7a050000)
+	libnvhpcatm.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libnvhpcatm.so (0x000014ae79e45000)
+	libstdc++.so.6 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libstdc++.so.6 (0x000014ae79ab0000)
+	libnvomp.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libnvomp.so (0x000014ae78da6000)
+	libpthread.so.0 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libpthread.so.0 (0x000014ae78b86000)
+	libnvcpumath.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libnvcpumath.so (0x000014ae78780000)
+	libnvc.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.5/compilers/lib/libnvc.so (0x000014ae7851d000)
+	librt.so.1 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/librt.so.1 (0x000014ae78315000)
+	libc.so.6 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libc.so.6 (0x000014ae77f52000)
+	libgcc_s.so.1 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libgcc_s.so.1 (0x000014ae77d3a000)
+	libm.so.6 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libm.so.6 (0x000014ae779b8000)
+	/lib64/ld-linux-x86-64.so.2 (0x000014ae7b4ab000)
+Listing devices is not supported by the Parallel STL
+BabelStream
+Version: 4.0
+Implementation: STD (data-oriented)
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1388048.599 0.00619     0.00619     0.00619     
+Mul         1385242.969 0.00620     0.00621     0.00620     
+Add         1363894.602 0.00945     0.00952     0.00947     
+Triad       1364101.373 0.00945     0.00951     0.00948     
+Dot         1484528.998 0.00579     0.00582     0.00580     

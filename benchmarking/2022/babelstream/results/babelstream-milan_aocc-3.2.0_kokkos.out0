@@ -1,0 +1,26 @@
+Fri 12 Aug 09:40:23 BST 2022
+/lustre/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-milan_aocc-3.2.0_kokkos
+	linux-vdso.so.1 (0x00007fff341ba000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000149a03279000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libstdc++.so.6 (0x0000149a03051000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000149a02ccf000)
+	libomp.so => /lustre/home/br-wlin/aocc-compiler-3.2.0/lib/libomp.so (0x0000149a029ec000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libgcc_s.so.1 (0x0000149a03670000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000149a027cc000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000149a02409000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000149a0347d000)
+	librt.so.1 => /lib64/librt.so.1 (0x0000149a02201000)
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        24275.820   0.35385     0.39112     0.36632     
+Mul         23266.420   0.36920     0.41532     0.38990     
+Add         25302.772   0.50923     0.57666     0.53837     
+Triad       26214.547   0.49152     0.55480     0.51736     
+Dot         35126.170   0.24455     0.28779     0.26154     

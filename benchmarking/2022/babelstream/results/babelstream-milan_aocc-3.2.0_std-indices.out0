@@ -1,0 +1,26 @@
+Fri 12 Aug 09:41:13 BST 2022
+/lustre/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-milan_aocc-3.2.0_std-indices
+	linux-vdso.so.1 (0x00007ffc325c1000)
+	libtbb.so.12 => /lustre/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-milan_aocc-3.2.0_std-indices/BabelStream/build/clang_13.0_cxx11_64_release/libtbb.so.12 (0x0000153894101000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libstdc++.so.6 (0x0000153893d23000)
+	libm.so.6 => /lib64/libm.so.6 (0x00001538939a1000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libgcc_s.so.1 (0x00001538940ce000)
+	libc.so.6 => /lib64/libc.so.6 (0x00001538935de000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00001538933da000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00001538931ba000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000153893f4b000)
+Listing devices is not supported by the Parallel STL
+BabelStream
+Version: 4.0
+Implementation: STD (index-oriented)
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        119904.878  0.07164     0.08446     0.07702     
+Mul         107931.062  0.07959     0.09371     0.08458     
+Add         127480.233  0.10107     0.12370     0.10758     
+Triad       117828.796  0.10935     0.12190     0.11420     
+Dot         145469.929  0.05905     0.06554     0.06197     

@@ -1,0 +1,1551 @@
+Mon 15 Aug 22:52:57 BST 2022
+/lustre/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-milan_gcc-12.1_kokkos
+	linux-vdso.so.1 (0x00007fff2df6b000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000155151a4a000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libstdc++.so.6 (0x0000155151822000)
+	libm.so.6 => /lib64/libm.so.6 (0x00001551514a0000)
+	libgomp.so.1 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libgomp.so.1 (0x0000155151e19000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libgcc_s.so.1 (0x0000155151df8000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000155151280000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000155150ebd000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000155151c4e000)
+>>>1>>>
+Mon 15 Aug 22:52:57 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26327.187   0.32628     0.33273     0.33150     
+Mul         26347.012   0.32603     0.33238     0.33076     
+Add         29002.601   0.44427     0.45151     0.45052     
+Triad       28973.867   0.44471     0.45070     0.44964     
+Dot         19001.188   0.45207     0.45399     0.45281     
+<<<1<<<
+>>>2>>>
+Mon 15 Aug 22:56:22 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        28192.426   0.30469     0.30904     0.30642     
+Mul         28219.462   0.30440     0.30901     0.30654     
+Add         30415.622   0.42363     0.43651     0.42894     
+Triad       31361.971   0.41084     0.41620     0.41311     
+Dot         38153.442   0.22514     0.22917     0.22579     
+<<<2<<<
+>>>3>>>
+Mon 15 Aug 22:59:15 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27570.356   0.31156     0.31349     0.31252     
+Mul         27588.961   0.31135     0.31359     0.31246     
+Add         30725.135   0.41936     0.43116     0.42483     
+Triad       30585.358   0.42128     0.42217     0.42175     
+Dot         43472.676   0.19759     0.20029     0.19796     
+<<<3<<<
+>>>4>>>
+Mon 15 Aug 23:02:06 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27190.438   0.31592     0.31689     0.31629     
+Mul         27127.001   0.31666     0.31779     0.31730     
+Add         30270.630   0.42566     0.42943     0.42715     
+Triad       30122.917   0.42774     0.42848     0.42809     
+Dot         42897.629   0.20024     0.20121     0.20055     
+<<<4<<<
+>>>5>>>
+Mon 15 Aug 23:04:59 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26904.543   0.31927     0.32002     0.31961     
+Mul         26922.274   0.31906     0.31967     0.31939     
+Add         30040.179   0.42892     0.43130     0.43014     
+Triad       29865.170   0.43144     0.43279     0.43206     
+Dot         42242.626   0.20335     0.20478     0.20383     
+<<<5<<<
+>>>6>>>
+Mon 15 Aug 23:07:54 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26639.243   0.32245     0.32316     0.32278     
+Mul         26653.577   0.32228     0.32307     0.32266     
+Add         29646.255   0.43462     0.43642     0.43540     
+Triad       29544.342   0.43612     0.43730     0.43661     
+Dot         42053.007   0.20426     0.20538     0.20464     
+<<<6<<<
+>>>7>>>
+Mon 15 Aug 23:10:50 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26454.220   0.32471     0.32534     0.32496     
+Mul         26454.241   0.32471     0.32550     0.32512     
+Add         29379.444   0.43857     0.43972     0.43907     
+Triad       29352.084   0.43898     0.44025     0.43946     
+Dot         41150.380   0.20874     0.21030     0.20926     
+<<<7<<<
+>>>8>>>
+Mon 15 Aug 23:13:49 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26313.159   0.32645     0.32720     0.32680     
+Mul         26300.320   0.32661     0.32720     0.32692     
+Add         29178.046   0.44160     0.44248     0.44203     
+Triad       29154.608   0.44195     0.44396     0.44261     
+Dot         41316.519   0.20791     0.20972     0.20825     
+<<<8<<<
+>>>9>>>
+Mon 15 Aug 23:16:48 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26764.667   0.32094     0.32193     0.32142     
+Mul         26694.515   0.32179     0.32285     0.32212     
+Add         30074.760   0.42843     0.43331     0.42952     
+Triad       29747.342   0.43314     0.43457     0.43366     
+Dot         42433.551   0.20243     0.20514     0.20307     
+<<<9<<<
+>>>10>>>
+Mon 15 Aug 23:19:43 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27001.989   0.31812     0.31871     0.31844     
+Mul         26947.514   0.31877     0.32013     0.31953     
+Add         30241.723   0.42606     0.42786     0.42699     
+Triad       30039.686   0.42893     0.43008     0.42956     
+Dot         42812.116   0.20064     0.20228     0.20163     
+<<<10<<<
+>>>11>>>
+Mon 15 Aug 23:22:37 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27195.463   0.31586     0.31671     0.31616     
+Mul         27156.954   0.31631     0.31720     0.31673     
+Add         30499.044   0.42247     0.42441     0.42333     
+Triad       30369.274   0.42427     0.42534     0.42482     
+Dot         43248.559   0.19862     0.19922     0.19890     
+<<<11<<<
+>>>12>>>
+Mon 15 Aug 23:25:29 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27318.935   0.31443     0.31509     0.31477     
+Mul         27261.965   0.31509     0.31583     0.31540     
+Add         30611.174   0.42092     0.42192     0.42144     
+Triad       30548.458   0.42179     0.42305     0.42243     
+Dot         43945.623   0.19547     0.19675     0.19585     
+<<<12<<<
+>>>13>>>
+Mon 15 Aug 23:28:20 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27387.334   0.31365     0.31451     0.31413     
+Mul         27329.056   0.31432     0.31500     0.31465     
+Add         30761.003   0.41887     0.42000     0.41956     
+Triad       30685.554   0.41990     0.42073     0.42029     
+Dot         44320.335   0.19381     0.19437     0.19404     
+<<<13<<<
+>>>14>>>
+Mon 15 Aug 23:31:11 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27419.090   0.31328     0.31408     0.31356     
+Mul         27368.542   0.31386     0.31473     0.31418     
+Add         30810.954   0.41819     0.41917     0.41862     
+Triad       30762.907   0.41885     0.41978     0.41933     
+Dot         44577.708   0.19270     0.19323     0.19297     
+<<<14<<<
+>>>15>>>
+Mon 15 Aug 23:34:01 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27462.786   0.31278     0.31356     0.31306     
+Mul         27413.730   0.31334     0.31401     0.31366     
+Add         30910.276   0.41685     0.41777     0.41732     
+Triad       30869.268   0.41740     0.41850     0.41796     
+Dot         44719.277   0.19209     0.19271     0.19233     
+<<<15<<<
+>>>16>>>
+Mon 15 Aug 23:36:51 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27490.831   0.31247     0.31320     0.31280     
+Mul         27438.469   0.31306     0.31403     0.31348     
+Add         30985.228   0.41584     0.41706     0.41638     
+Triad       30919.939   0.41672     0.41771     0.41720     
+Dot         44964.604   0.19104     0.19168     0.19147     
+<<<16<<<
+>>>17>>>
+Mon 15 Aug 23:39:40 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27555.939   0.31173     0.31251     0.31215     
+Mul         27454.879   0.31287     0.31356     0.31319     
+Add         31001.126   0.41563     0.41665     0.41606     
+Triad       30974.937   0.41598     0.41724     0.41659     
+Dot         44861.198   0.19148     0.19192     0.19165     
+<<<17<<<
+>>>18>>>
+Mon 15 Aug 23:42:30 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27592.192   0.31132     0.31202     0.31170     
+Mul         27497.109   0.31239     0.31304     0.31272     
+Add         31069.021   0.41472     0.41584     0.41530     
+Triad       31035.376   0.41517     0.41630     0.41571     
+Dot         44904.396   0.19129     0.19189     0.19156     
+<<<18<<<
+>>>19>>>
+Mon 15 Aug 23:45:19 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27559.971   0.31168     0.31251     0.31206     
+Mul         27464.725   0.31276     0.31385     0.31310     
+Add         31047.310   0.41501     0.41614     0.41556     
+Triad       30994.781   0.41571     0.41648     0.41609     
+Dot         44839.727   0.19157     0.19235     0.19191     
+<<<19<<<
+>>>20>>>
+Mon 15 Aug 23:48:08 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27544.429   0.31186     0.31256     0.31221     
+Mul         27456.612   0.31285     0.31382     0.31336     
+Add         31030.418   0.41523     0.41620     0.41573     
+Triad       31002.743   0.41561     0.41680     0.41624     
+Dot         44742.796   0.19198     0.19266     0.19228     
+<<<20<<<
+>>>21>>>
+Mon 15 Aug 23:50:57 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27497.886   0.31239     0.31328     0.31270     
+Mul         27417.943   0.31330     0.31420     0.31382     
+Add         30975.113   0.41598     0.41689     0.41639     
+Triad       30970.855   0.41603     0.41704     0.41670     
+Dot         44675.013   0.19228     0.19270     0.19247     
+<<<21<<<
+>>>22>>>
+Mon 15 Aug 23:53:46 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27468.484   0.31272     0.31372     0.31306     
+Mul         27375.446   0.31378     0.31444     0.31414     
+Add         30906.916   0.41689     0.41769     0.41727     
+Triad       30915.525   0.41678     0.41764     0.41720     
+Dot         44587.240   0.19265     0.19318     0.19289     
+<<<22<<<
+>>>23>>>
+Mon 15 Aug 23:56:36 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27418.331   0.31329     0.31399     0.31362     
+Mul         27313.223   0.31450     0.31509     0.31477     
+Add         30858.676   0.41755     0.41826     0.41789     
+Triad       30852.764   0.41763     0.41845     0.41804     
+Dot         44473.728   0.19315     0.19367     0.19331     
+<<<23<<<
+>>>24>>>
+Mon 15 Aug 23:59:26 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27398.541   0.31352     0.31418     0.31387     
+Mul         27292.551   0.31474     0.31549     0.31515     
+Add         30824.607   0.41801     0.41899     0.41849     
+Triad       30817.581   0.41810     0.41885     0.41846     
+Dot         44214.093   0.19428     0.19500     0.19460     
+<<<24<<<
+>>>25>>>
+Tue 16 Aug 00:02:17 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27424.384   0.31322     0.31392     0.31352     
+Mul         27286.718   0.31480     0.31549     0.31518     
+Add         30824.833   0.41800     0.41902     0.41855     
+Triad       30819.363   0.41808     0.41901     0.41848     
+Dot         44297.649   0.19391     0.19535     0.19492     
+<<<25<<<
+>>>26>>>
+Tue 16 Aug 00:05:07 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27360.859   0.31395     0.31463     0.31421     
+Mul         27227.057   0.31549     0.31608     0.31577     
+Add         30776.542   0.41866     0.41964     0.41910     
+Triad       30789.493   0.41848     0.41932     0.41890     
+Dot         44121.780   0.19469     0.19511     0.19488     
+<<<26<<<
+>>>27>>>
+Tue 16 Aug 00:07:58 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27298.385   0.31467     0.31532     0.31499     
+Mul         27169.725   0.31616     0.31683     0.31654     
+Add         30650.206   0.42039     0.42146     0.42087     
+Triad       30675.044   0.42005     0.42125     0.42047     
+Dot         43924.724   0.19556     0.19643     0.19588     
+<<<27<<<
+>>>28>>>
+Tue 16 Aug 00:10:49 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27241.928   0.31532     0.31611     0.31569     
+Mul         27101.742   0.31695     0.31767     0.31724     
+Add         30593.069   0.42117     0.42261     0.42189     
+Triad       30608.093   0.42096     0.42241     0.42144     
+Dot         43767.282   0.19626     0.19720     0.19652     
+<<<28<<<
+>>>29>>>
+Tue 16 Aug 00:13:40 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27140.811   0.31650     0.31700     0.31677     
+Mul         27006.726   0.31807     0.31881     0.31839     
+Add         30443.721   0.42324     0.42460     0.42376     
+Triad       30480.129   0.42273     0.42410     0.42339     
+Dot         43641.584   0.19683     0.19792     0.19726     
+<<<29<<<
+>>>30>>>
+Tue 16 Aug 00:16:33 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27126.012   0.31667     0.31736     0.31703     
+Mul         26980.651   0.31837     0.31922     0.31884     
+Add         30495.466   0.42252     0.42411     0.42308     
+Triad       30507.081   0.42236     0.42352     0.42296     
+Dot         43818.493   0.19603     0.19752     0.19677     
+<<<30<<<
+>>>31>>>
+Tue 16 Aug 00:19:25 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27145.941   0.31644     0.31715     0.31680     
+Mul         27000.086   0.31814     0.31891     0.31856     
+Add         30526.601   0.42209     0.42310     0.42250     
+Triad       30545.930   0.42182     0.42312     0.42231     
+Dot         43791.062   0.19616     0.19692     0.19645     
+<<<31<<<
+>>>32>>>
+Tue 16 Aug 00:22:17 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27200.627   0.31580     0.31635     0.31609     
+Mul         27064.236   0.31739     0.31829     0.31787     
+Add         30593.771   0.42116     0.42204     0.42159     
+Triad       30616.722   0.42085     0.42168     0.42121     
+Dot         43934.797   0.19552     0.19614     0.19585     
+<<<32<<<
+>>>33>>>
+Tue 16 Aug 00:25:08 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27266.074   0.31504     0.31565     0.31532     
+Mul         27101.521   0.31695     0.31804     0.31730     
+Add         30646.781   0.42043     0.42172     0.42095     
+Triad       30684.372   0.41992     0.42095     0.42039     
+Dot         43955.615   0.19542     0.19632     0.19579     
+<<<33<<<
+>>>34>>>
+Tue 16 Aug 00:28:00 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27258.407   0.31513     0.31577     0.31541     
+Mul         27085.765   0.31714     0.31762     0.31738     
+Add         30626.831   0.42071     0.42171     0.42119     
+Triad       30659.830   0.42025     0.42146     0.42078     
+Dot         43958.873   0.19541     0.19612     0.19590     
+<<<34<<<
+>>>35>>>
+Tue 16 Aug 00:30:51 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27273.373   0.31496     0.31541     0.31513     
+Mul         27088.582   0.31711     0.31777     0.31743     
+Add         30629.267   0.42067     0.42154     0.42104     
+Triad       30673.990   0.42006     0.42118     0.42048     
+Dot         43931.585   0.19553     0.19650     0.19608     
+<<<35<<<
+>>>36>>>
+Tue 16 Aug 00:33:42 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27245.642   0.31528     0.31591     0.31562     
+Mul         27073.037   0.31729     0.31787     0.31755     
+Add         30627.288   0.42070     0.42177     0.42124     
+Triad       30673.496   0.42007     0.42152     0.42071     
+Dot         43929.379   0.19554     0.19675     0.19613     
+<<<36<<<
+>>>37>>>
+Tue 16 Aug 00:36:34 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27252.739   0.31520     0.31624     0.31553     
+Mul         27068.843   0.31734     0.31834     0.31776     
+Add         30621.296   0.42078     0.42184     0.42127     
+Triad       30665.960   0.42017     0.42136     0.42078     
+Dot         43898.223   0.19568     0.19652     0.19620     
+<<<37<<<
+>>>38>>>
+Tue 16 Aug 00:39:25 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27251.579   0.31521     0.32018     0.31599     
+Mul         27068.867   0.31734     0.32192     0.31794     
+Add         30582.073   0.42132     0.43026     0.42281     
+Triad       30627.698   0.42069     0.42892     0.42230     
+Dot         43854.960   0.19587     0.20331     0.19648     
+<<<38<<<
+>>>39>>>
+Tue 16 Aug 00:42:17 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27253.504   0.31519     0.31607     0.31565     
+Mul         27040.281   0.31767     0.31857     0.31795     
+Add         30578.891   0.42137     0.42229     0.42169     
+Triad       30630.149   0.42066     0.42154     0.42112     
+Dot         43853.720   0.19588     0.19698     0.19638     
+<<<39<<<
+>>>40>>>
+Tue 16 Aug 00:45:09 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27229.706   0.31546     0.32004     0.31620     
+Mul         27056.895   0.31748     0.32193     0.31823     
+Add         30559.223   0.42164     0.43012     0.42304     
+Triad       30610.201   0.42093     0.42898     0.42251     
+Dot         43829.233   0.19599     0.20310     0.19691     
+<<<40<<<
+>>>41>>>
+Tue 16 Aug 00:48:01 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27313.132   0.31450     0.31568     0.31522     
+Mul         27078.944   0.31722     0.31815     0.31777     
+Add         30593.734   0.42116     0.42223     0.42167     
+Triad       30632.634   0.42063     0.42176     0.42112     
+Dot         43780.038   0.19621     0.19731     0.19675     
+<<<41<<<
+>>>42>>>
+Tue 16 Aug 00:50:52 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27238.966   0.31535     0.31637     0.31578     
+Mul         27033.958   0.31775     0.31868     0.31823     
+Add         30564.318   0.42157     0.42259     0.42215     
+Triad       30606.317   0.42099     0.42208     0.42144     
+Dot         43762.511   0.19629     0.19728     0.19688     
+<<<42<<<
+>>>43>>>
+Tue 16 Aug 00:53:44 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27246.718   0.31526     0.31641     0.31579     
+Mul         27036.173   0.31772     0.31881     0.31824     
+Add         30545.492   0.42183     0.42276     0.42222     
+Triad       30615.612   0.42086     0.42202     0.42157     
+Dot         43698.183   0.19657     0.19743     0.19703     
+<<<43<<<
+>>>44>>>
+Tue 16 Aug 00:56:36 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27232.596   0.31543     0.31657     0.31591     
+Mul         27034.030   0.31775     0.31892     0.31846     
+Add         30543.290   0.42186     0.42289     0.42241     
+Triad       30590.120   0.42121     0.42272     0.42167     
+Dot         43664.704   0.19672     0.20127     0.19725     
+<<<44<<<
+>>>45>>>
+Tue 16 Aug 00:59:28 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27248.647   0.31524     0.31632     0.31575     
+Mul         27010.862   0.31802     0.31884     0.31846     
+Add         30518.375   0.42220     0.42326     0.42263     
+Triad       30578.251   0.42137     0.42251     0.42184     
+Dot         43657.685   0.19676     0.19773     0.19726     
+<<<45<<<
+>>>46>>>
+Tue 16 Aug 01:02:19 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27218.489   0.31559     0.31932     0.31623     
+Mul         27005.475   0.31808     0.32047     0.31844     
+Add         30510.879   0.42231     0.42371     0.42289     
+Triad       30555.739   0.42169     0.42534     0.42253     
+Dot         43547.593   0.19725     0.20827     0.19833     
+<<<46<<<
+>>>47>>>
+Tue 16 Aug 01:05:12 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27216.251   0.31562     0.31690     0.31614     
+Mul         26967.087   0.31853     0.31927     0.31886     
+Add         30468.330   0.42289     0.42410     0.42334     
+Triad       30527.982   0.42207     0.42465     0.42266     
+Dot         43479.325   0.19756     0.19992     0.19813     
+<<<47<<<
+>>>48>>>
+Tue 16 Aug 01:08:04 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27190.898   0.31591     0.32010     0.31676     
+Mul         26955.952   0.31867     0.32004     0.31917     
+Add         30437.365   0.42333     0.42605     0.42390     
+Triad       30495.222   0.42252     0.43326     0.42347     
+Dot         43472.183   0.19760     0.20508     0.19839     
+<<<48<<<
+>>>49>>>
+Tue 16 Aug 01:10:56 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27190.724   0.31591     0.34263     0.31851     
+Mul         26944.132   0.31881     0.32956     0.31995     
+Add         30446.724   0.42320     0.45654     0.42559     
+Triad       30500.939   0.42244     0.46362     0.42999     
+Dot         43206.454   0.19881     0.23681     0.20431     
+<<<49<<<
+>>>50>>>
+Tue 16 Aug 01:13:50 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27165.613   0.31621     0.34937     0.32115     
+Mul         26937.123   0.31889     0.35318     0.32196     
+Add         30427.106   0.42347     0.44207     0.42732     
+Triad       30486.267   0.42265     0.46982     0.43177     
+Dot         43245.056   0.19863     0.23743     0.20805     
+<<<50<<<
+>>>51>>>
+Tue 16 Aug 01:16:46 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27144.441   0.31645     0.33376     0.32150     
+Mul         26920.011   0.31909     0.33104     0.32203     
+Add         30443.788   0.42324     0.45701     0.43009     
+Triad       30485.000   0.42266     0.47345     0.44029     
+Dot         43256.707   0.19858     0.23863     0.21532     
+<<<51<<<
+>>>52>>>
+Tue 16 Aug 01:19:43 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27046.693   0.31760     0.34797     0.32921     
+Mul         26883.718   0.31952     0.34992     0.32638     
+Add         30344.867   0.42462     0.47427     0.44112     
+Triad       30312.387   0.42507     0.47271     0.45607     
+Dot         41274.161   0.20812     0.23824     0.22681     
+<<<52<<<
+>>>53>>>
+Tue 16 Aug 01:22:45 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27078.001   0.31723     0.35001     0.33049     
+Mul         26923.020   0.31906     0.35198     0.32801     
+Add         30418.278   0.42359     0.46331     0.43478     
+Triad       30306.732   0.42515     0.47429     0.44852     
+Dot         42663.264   0.20134     0.23728     0.22198     
+<<<53<<<
+>>>54>>>
+Tue 16 Aug 01:25:46 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27015.320   0.31797     0.34612     0.33087     
+Mul         26913.736   0.31917     0.35078     0.32949     
+Add         30384.315   0.42406     0.47050     0.44135     
+Triad       30237.829   0.42612     0.46846     0.45314     
+Dot         42351.297   0.20283     0.23409     0.22602     
+<<<54<<<
+>>>55>>>
+Tue 16 Aug 01:28:48 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27042.141   0.31765     0.34538     0.32777     
+Mul         26882.932   0.31953     0.34892     0.32705     
+Add         30385.278   0.42405     0.46729     0.43486     
+Triad       30235.821   0.42615     0.46746     0.44653     
+Dot         42583.969   0.20172     0.23334     0.21998     
+<<<55<<<
+>>>56>>>
+Tue 16 Aug 01:31:48 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27057.283   0.31747     0.34445     0.33042     
+Mul         26772.525   0.32085     0.34793     0.32818     
+Add         30327.002   0.42487     0.46638     0.44072     
+Triad       30269.449   0.42567     0.46520     0.45128     
+Dot         41292.241   0.20803     0.23139     0.22246     
+<<<56<<<
+>>>57>>>
+Tue 16 Aug 01:34:50 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        27053.356   0.31752     0.34863     0.32928     
+Mul         26885.428   0.31950     0.35256     0.32799     
+Add         30292.674   0.42535     0.46220     0.43461     
+Triad       30343.152   0.42464     0.46964     0.44095     
+Dot         42859.645   0.20042     0.23884     0.21788     
+<<<57<<<
+>>>58>>>
+Tue 16 Aug 01:37:49 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26857.105   0.31984     0.35916     0.33405     
+Mul         26794.013   0.32059     0.36359     0.33338     
+Add         30151.638   0.42734     0.49531     0.44477     
+Triad       30169.493   0.42708     0.48260     0.45350     
+Dot         42452.831   0.20234     0.24357     0.22796     
+<<<58<<<
+>>>59>>>
+Tue 16 Aug 01:40:53 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26572.007   0.32327     0.35765     0.33984     
+Mul         26673.236   0.32204     0.36571     0.33955     
+Add         30221.703   0.42635     0.49969     0.45001     
+Triad       30060.807   0.42863     0.49195     0.45515     
+Dot         41343.443   0.20777     0.24699     0.22868     
+<<<59<<<
+>>>60>>>
+Tue 16 Aug 01:43:59 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26784.055   0.32071     0.36091     0.34204     
+Mul         26612.397   0.32278     0.36715     0.34318     
+Add         30053.526   0.42873     0.50742     0.45858     
+Triad       29821.992   0.43206     0.49678     0.46495     
+Dot         42305.229   0.20305     0.25071     0.23402     
+<<<60<<<
+>>>61>>>
+Tue 16 Aug 01:47:07 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26965.047   0.31856     0.36191     0.34057     
+Mul         26613.688   0.32276     0.36618     0.34269     
+Add         29969.669   0.42993     0.49999     0.45645     
+Triad       30107.236   0.42797     0.49010     0.46152     
+Dot         41884.618   0.20509     0.24982     0.23072     
+<<<61<<<
+>>>62>>>
+Tue 16 Aug 01:50:15 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26968.293   0.31852     0.35993     0.34102     
+Mul         26660.646   0.32220     0.36316     0.34260     
+Add         29852.434   0.43162     0.49678     0.45605     
+Triad       29956.617   0.43012     0.49308     0.46162     
+Dot         41084.136   0.20908     0.24632     0.23142     
+<<<62<<<
+>>>63>>>
+Tue 16 Aug 01:53:22 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26846.880   0.31996     0.35778     0.34170     
+Mul         26608.323   0.32283     0.36573     0.34394     
+Add         29615.777   0.43507     0.49281     0.45481     
+Triad       29740.095   0.43325     0.48674     0.46541     
+Dot         40976.960   0.20963     0.24926     0.23019     
+<<<63<<<
+>>>64>>>
+Tue 16 Aug 01:56:30 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26502.309   0.32412     0.35162     0.34068     
+Mul         26584.165   0.32312     0.35941     0.34151     
+Add         29979.114   0.42980     0.48731     0.45987     
+Triad       29663.776   0.43436     0.48106     0.46348     
+Dot         41083.172   0.20909     0.24206     0.22837     
+<<<64<<<
+>>>65>>>
+Tue 16 Aug 01:59:38 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26626.989   0.32260     0.35267     0.34015     
+Mul         26613.265   0.32277     0.35697     0.34100     
+Add         29830.185   0.43194     0.48877     0.45721     
+Triad       29554.737   0.43597     0.48212     0.46198     
+Dot         40857.588   0.21024     0.24644     0.23058     
+<<<65<<<
+>>>66>>>
+Tue 16 Aug 02:02:45 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26563.297   0.32338     0.35193     0.33909     
+Mul         26479.814   0.32440     0.35689     0.34183     
+Add         29297.949   0.43979     0.48200     0.45791     
+Triad       29796.310   0.43243     0.47675     0.46211     
+Dot         41100.990   0.20900     0.23925     0.22775     
+<<<66<<<
+>>>67>>>
+Tue 16 Aug 02:05:52 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26672.729   0.32205     0.35294     0.33765     
+Mul         26338.467   0.32614     0.35816     0.34242     
+Add         29445.283   0.43759     0.48562     0.45640     
+Triad       29792.803   0.43248     0.47992     0.46097     
+Dot         39134.239   0.21950     0.23959     0.22728     
+<<<67<<<
+>>>68>>>
+Tue 16 Aug 02:08:59 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26673.493   0.32204     0.35051     0.33861     
+Mul         26286.191   0.32679     0.35767     0.34131     
+Add         29386.615   0.43846     0.48234     0.45609     
+Triad       29483.680   0.43702     0.47319     0.45958     
+Dot         40663.924   0.21124     0.23766     0.22443     
+<<<68<<<
+>>>69>>>
+Tue 16 Aug 02:12:05 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26538.539   0.32368     0.35056     0.33773     
+Mul         26082.482   0.32934     0.35576     0.34292     
+Add         29372.720   0.43867     0.48375     0.45599     
+Triad       29834.378   0.43188     0.47609     0.45924     
+Dot         40617.730   0.21148     0.23844     0.22654     
+<<<69<<<
+>>>70>>>
+Tue 16 Aug 02:15:12 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26550.736   0.32353     0.34901     0.33742     
+Mul         26270.729   0.32698     0.35490     0.34206     
+Add         29501.077   0.43676     0.48337     0.45435     
+Triad       29955.683   0.43013     0.47261     0.45711     
+Dot         41666.406   0.20616     0.23996     0.22305     
+<<<70<<<
+>>>71>>>
+Tue 16 Aug 02:18:18 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26544.477   0.32361     0.35044     0.33567     
+Mul         26220.699   0.32760     0.35473     0.34111     
+Add         29501.431   0.43676     0.47569     0.45321     
+Triad       29712.235   0.43366     0.47461     0.45730     
+Dot         40802.192   0.21053     0.23770     0.22390     
+<<<71<<<
+>>>72>>>
+Tue 16 Aug 02:21:23 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26549.683   0.32354     0.34995     0.33496     
+Mul         26374.896   0.32569     0.35464     0.34016     
+Add         29358.173   0.43889     0.47910     0.45461     
+Triad       29447.414   0.43756     0.47457     0.45774     
+Dot         40813.368   0.21047     0.23725     0.22193     
+<<<72<<<
+>>>73>>>
+Tue 16 Aug 02:24:28 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26543.622   0.32362     0.35065     0.33848     
+Mul         26212.892   0.32770     0.35607     0.34139     
+Add         29633.710   0.43481     0.48224     0.45448     
+Triad       29652.201   0.43453     0.47477     0.45911     
+Dot         40782.090   0.21063     0.23902     0.22725     
+<<<73<<<
+>>>74>>>
+Tue 16 Aug 02:27:35 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26498.649   0.32417     0.34993     0.33649     
+Mul         26108.249   0.32901     0.39117     0.34180     
+Add         29463.093   0.43732     0.53918     0.45770     
+Triad       29493.166   0.43688     0.52682     0.45790     
+Dot         40210.752   0.21362     0.24053     0.22602     
+<<<74<<<
+>>>75>>>
+Tue 16 Aug 02:30:41 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26530.974   0.32377     0.35972     0.33505     
+Mul         26242.372   0.32733     0.36503     0.34075     
+Add         29318.833   0.43948     0.47973     0.45466     
+Triad       29345.272   0.43908     0.47637     0.45226     
+Dot         40658.272   0.21127     0.25642     0.22102     
+<<<75<<<
+>>>76>>>
+Tue 16 Aug 02:33:46 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26632.797   0.32253     0.37031     0.33924     
+Mul         26340.086   0.32612     0.37358     0.34213     
+Add         29572.850   0.43570     0.50283     0.45392     
+Triad       29351.724   0.43898     0.49590     0.45405     
+Dot         40307.235   0.21311     0.26168     0.22409     
+<<<76<<<
+>>>77>>>
+Tue 16 Aug 02:36:52 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26315.604   0.32642     0.36824     0.33969     
+Mul         26039.205   0.32988     0.37458     0.34536     
+Add         29500.612   0.43677     0.50777     0.45620     
+Triad       29725.416   0.43346     0.49930     0.45345     
+Dot         40503.447   0.21208     0.26564     0.22400     
+<<<77<<<
+>>>78>>>
+Tue 16 Aug 02:39:58 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26531.591   0.32376     0.39026     0.34632     
+Mul         26203.349   0.32782     0.39556     0.35023     
+Add         29418.585   0.43799     0.54611     0.46515     
+Triad       29614.908   0.43508     0.52059     0.46432     
+Dot         40599.114   0.21158     0.27296     0.23177     
+<<<78<<<
+>>>79>>>
+Tue 16 Aug 02:43:08 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26557.409   0.32345     0.38443     0.34554     
+Mul         26344.004   0.32607     0.38824     0.34830     
+Add         29457.786   0.43740     0.53022     0.45851     
+Triad       29635.386   0.43478     0.48541     0.45349     
+Dot         40492.063   0.21214     0.27400     0.22928     
+<<<79<<<
+>>>80>>>
+Tue 16 Aug 02:46:16 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26703.595   0.32168     0.38489     0.34584     
+Mul         26332.170   0.32621     0.38939     0.34895     
+Add         29544.401   0.43612     0.52953     0.45985     
+Triad       29786.221   0.43258     0.49593     0.45246     
+Dot         40868.661   0.21018     0.27065     0.22620     
+<<<80<<<
+>>>81>>>
+Tue 16 Aug 02:49:23 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26280.256   0.32686     0.37535     0.34779     
+Mul         26043.751   0.32983     0.37867     0.34967     
+Add         29197.945   0.44129     0.52355     0.47240     
+Triad       29037.742   0.44373     0.51897     0.47120     
+Dot         40967.521   0.20968     0.27012     0.23847     
+<<<81<<<
+>>>82>>>
+Tue 16 Aug 02:52:35 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26057.885   0.32965     0.38558     0.35105     
+Mul         26164.857   0.32830     0.38433     0.35352     
+Add         28600.365   0.45052     0.53182     0.48260     
+Triad       28814.814   0.44716     0.51767     0.47775     
+Dot         40124.190   0.21408     0.27279     0.24426     
+<<<82<<<
+>>>83>>>
+Tue 16 Aug 02:55:51 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26325.218   0.32630     0.38057     0.35460     
+Mul         25747.793   0.33362     0.37807     0.36190     
+Add         28901.103   0.44583     0.52633     0.48603     
+Triad       28583.464   0.45078     0.51496     0.48588     
+Dot         39737.360   0.21617     0.26413     0.24918     
+<<<83<<<
+>>>84>>>
+Tue 16 Aug 02:59:09 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        25566.287   0.33599     0.37725     0.35820     
+Mul         25336.188   0.33904     0.38447     0.36371     
+Add         28012.235   0.45997     0.51863     0.49688     
+Triad       28539.946   0.45147     0.50923     0.49223     
+Dot         38462.383   0.22333     0.26707     0.25443     
+<<<84<<<
+>>>85>>>
+Tue 16 Aug 03:02:30 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        25603.074   0.33550     0.37583     0.36019     
+Mul         25221.082   0.34059     0.37859     0.36488     
+Add         27861.438   0.46246     0.52902     0.50068     
+Triad       28641.194   0.44987     0.51368     0.49517     
+Dot         38012.321   0.22598     0.27073     0.25745     
+<<<85<<<
+>>>86>>>
+Tue 16 Aug 03:05:52 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        25602.368   0.33551     0.37667     0.36076     
+Mul         25505.950   0.33678     0.38579     0.36453     
+Add         27721.397   0.46480     0.52945     0.50492     
+Triad       27810.841   0.46331     0.52161     0.49908     
+Dot         39115.348   0.21961     0.27174     0.25557     
+<<<86<<<
+>>>87>>>
+Tue 16 Aug 03:09:15 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        25891.066   0.33177     0.37603     0.35812     
+Mul         25167.945   0.34130     0.37955     0.36295     
+Add         28118.597   0.45823     0.53017     0.49797     
+Triad       28293.050   0.45541     0.51151     0.49041     
+Dot         38903.433   0.22080     0.26526     0.25213     
+<<<87<<<
+>>>88>>>
+Tue 16 Aug 03:12:35 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        25897.275   0.33169     0.37632     0.35574     
+Mul         25554.980   0.33614     0.37841     0.36199     
+Add         28346.101   0.45456     0.53145     0.50107     
+Triad       28509.098   0.45196     0.51349     0.49263     
+Dot         39043.326   0.22001     0.26757     0.25366     
+<<<88<<<
+>>>89>>>
+Tue 16 Aug 03:15:56 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        25820.429   0.33268     0.37154     0.35417     
+Mul         25482.355   0.33709     0.37622     0.35983     
+Add         28021.168   0.45983     0.52780     0.49862     
+Triad       28376.849   0.45406     0.51368     0.49339     
+Dot         38830.733   0.22121     0.26914     0.25283     
+<<<89<<<
+>>>90>>>
+Tue 16 Aug 03:19:16 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        25814.627   0.33275     0.37655     0.35780     
+Mul         25331.171   0.33911     0.38073     0.36361     
+Add         27590.915   0.46700     0.53866     0.50555     
+Triad       27753.676   0.46426     0.52442     0.49935     
+Dot         38483.996   0.22321     0.27198     0.25666     
+<<<90<<<
+>>>91>>>
+Tue 16 Aug 03:22:39 BST 2022
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)

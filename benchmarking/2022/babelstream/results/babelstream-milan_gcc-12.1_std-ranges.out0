@@ -1,0 +1,26 @@
+Sat 30 Jul 05:20:35 BST 2022
+/lustre/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-milan_gcc-12.1_std-ranges
+	linux-vdso.so.1 (0x00007ffc999fe000)
+	libtbb.so.12 => /lustre/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-milan_gcc-12.1_std-ranges/BabelStream/build/gnu_12.1_cxx11_64_release/libtbb.so.12 (0x0000150e93222000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libstdc++.so.6 (0x0000150e92e28000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000150e92aa6000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libgcc_s.so.1 (0x0000150e931ef000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000150e926e3000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000150e924df000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000150e922bf000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000150e93050000)
+C++20 does not expose devices
+BabelStream
+Version: 4.0
+Implementation: STD C++ ranges
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        26002.534   0.33035     2.92562     0.56108     
+Mul         25999.037   0.33039     4.14627     0.92590     
+Add         28834.687   0.44685     3.75652     1.21215     
+Triad       28782.711   0.44766     1.98617     0.92471     
+Dot         43087.348   0.19936     0.22739     0.20528     

@@ -1,0 +1,25 @@
+Wed 10 Aug 10:05:36 BST 2022
+/lustre/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-milan_gcc-12.1_omp
+	linux-vdso.so.1 (0x00007ffee12a8000)
+	libgomp.so.1 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libgomp.so.1 (0x000014edc1ed0000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014edc1ad3000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libstdc++.so.6 (0x000014edc18ab000)
+	libm.so.6 => /lib64/libm.so.6 (0x000014edc1529000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libgcc_s.so.1 (0x000014edc1e9d000)
+	libc.so.6 => /lib64/libc.so.6 (0x000014edc1166000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000014edc0f62000)
+	/lib64/ld-linux-x86-64.so.2 (0x000014edc1cf3000)
+0: CPU
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        224958.865  0.03818     0.03838     0.03828     
+Mul         219249.267  0.03918     0.03938     0.03925     
+Add         245444.562  0.05250     0.05273     0.05261     
+Triad       247116.632  0.05214     0.05246     0.05227     
+Dot         342372.962  0.02509     0.02547     0.02528     

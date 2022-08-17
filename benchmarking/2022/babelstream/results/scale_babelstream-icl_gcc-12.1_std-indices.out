@@ -1,4 +1,4 @@
-Thu 11 Aug 12:47:15 GMT 2022
+Tue 16 Aug 12:43:48 GMT 2022
 /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-icl_gcc-12.1_std-indices
 	linux-vdso.so.1 (0x0000155555551000)
 	libtbb.so.12 => /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-icl_gcc-12.1_std-indices/BabelStream/build/gnu_12.1_cxx11_64_release/libtbb.so.12 (0x00001555554f8000)
@@ -10,7 +10,7 @@ Thu 11 Aug 12:47:15 GMT 2022
 	libpthread.so.0 => /lib64/libpthread.so.0 (0x000015555459b000)
 	/lib64/ld-linux-x86-64.so.2 (0x000015555532b000)
 >>>1>>>
-Thu 11 Aug 12:47:15 GMT 2022
+Tue 16 Aug 12:43:48 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -21,14 +21,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        13412.655   0.64044     0.64286     0.64092     
-Mul         13398.719   0.64110     0.64350     0.64163     
-Add         14036.378   0.91796     0.92111     0.91852     
-Triad       14022.825   0.91885     0.92238     0.91952     
-Dot         15138.788   0.56741     0.57187     0.56785     
+Copy        13388.006   0.64161     0.64637     0.64222     
+Mul         13388.181   0.64161     0.64431     0.64212     
+Add         14062.285   0.91627     0.96757     0.91746     
+Triad       14064.572   0.91612     0.92161     0.91698     
+Dot         15253.971   0.56313     0.56475     0.56352     
 <<<1<<<
 >>>2>>>
-Thu 11 Aug 12:53:30 GMT 2022
+Tue 16 Aug 12:50:03 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -39,14 +39,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        25522.701   0.33656     0.34241     0.33796     
-Mul         25477.506   0.33716     0.35998     0.33860     
-Add         26884.056   0.47928     0.48315     0.48039     
-Triad       26827.740   0.48028     0.48259     0.48102     
-Dot         29502.780   0.29116     0.29274     0.29167     
+Copy        25383.356   0.33841     0.34003     0.33892     
+Mul         25392.492   0.33829     0.34050     0.33922     
+Add         26804.087   0.48071     0.48251     0.48152     
+Triad       26829.577   0.48025     0.48336     0.48209     
+Dot         29460.984   0.29157     0.29476     0.29204     
 <<<2<<<
 >>>3>>>
-Thu 11 Aug 12:56:48 GMT 2022
+Tue 16 Aug 12:53:21 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -57,14 +57,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        36137.988   0.23770     0.23939     0.23848     
-Mul         36101.473   0.23794     0.23929     0.23844     
-Add         38495.542   0.33471     0.33616     0.33538     
-Triad       38436.172   0.33523     0.33658     0.33581     
-Dot         42750.756   0.20093     0.20211     0.20148     
+Copy        36098.300   0.23796     0.23934     0.23853     
+Mul         36061.352   0.23820     0.23961     0.23878     
+Add         38452.127   0.33509     0.33661     0.33565     
+Triad       38482.708   0.33482     0.33649     0.33559     
+Dot         42775.957   0.20081     0.20219     0.20148     
 <<<3<<<
 >>>4>>>
-Thu 11 Aug 12:59:08 GMT 2022
+Tue 16 Aug 12:55:41 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -75,14 +75,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        45577.696   0.18847     0.19094     0.18916     
-Mul         45526.667   0.18868     0.19031     0.18928     
-Add         48611.651   0.26506     0.26736     0.26589     
-Triad       48645.729   0.26487     0.26744     0.26591     
-Dot         55296.457   0.15534     0.15672     0.15597     
+Copy        45656.352   0.18814     0.19001     0.18902     
+Mul         45570.138   0.18850     0.19048     0.18931     
+Add         48642.043   0.26489     0.26750     0.26581     
+Triad       48631.049   0.26495     0.26813     0.26604     
+Dot         55343.897   0.15521     0.15675     0.15586     
 <<<4<<<
 >>>5>>>
-Thu 11 Aug 13:00:59 GMT 2022
+Tue 16 Aug 12:57:32 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -93,14 +93,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        54502.929   0.15761     0.15879     0.15822     
-Mul         54384.086   0.15795     0.15906     0.15838     
-Add         57764.240   0.22306     0.22439     0.22369     
-Triad       57738.115   0.22316     0.22460     0.22365     
-Dot         66763.478   0.12866     0.12939     0.12902     
+Copy        54498.868   0.15762     0.15901     0.15814     
+Mul         54558.690   0.15744     0.15865     0.15807     
+Add         57823.041   0.22283     0.22427     0.22354     
+Triad       57692.840   0.22334     0.22422     0.22376     
+Dot         66801.986   0.12859     0.12978     0.12905     
 <<<5<<<
 >>>6>>>
-Thu 11 Aug 13:02:33 GMT 2022
+Tue 16 Aug 12:59:06 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -111,14 +111,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        62794.930   0.13679     0.13791     0.13742     
-Mul         62639.774   0.13713     0.13827     0.13759     
-Add         66406.611   0.19403     0.19494     0.19446     
-Triad       66479.946   0.19382     0.19485     0.19441     
-Dot         77538.654   0.11078     0.11157     0.11118     
+Copy        62885.843   0.13660     0.13778     0.13724     
+Mul         62795.186   0.13679     0.13903     0.13746     
+Add         66442.739   0.19392     0.19506     0.19434     
+Triad       66453.710   0.19389     0.19500     0.19437     
+Dot         77589.829   0.11071     0.11151     0.11116     
 <<<6<<<
 >>>7>>>
-Thu 11 Aug 13:03:55 GMT 2022
+Tue 16 Aug 13:00:28 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -129,14 +129,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        70196.807   0.12237     0.12363     0.12306     
-Mul         69999.058   0.12272     0.12400     0.12334     
-Add         74907.978   0.17201     0.17298     0.17255     
-Triad       74858.166   0.17212     0.17354     0.17271     
-Dot         87446.357   0.09823     0.09905     0.09846     
+Copy        69908.411   0.12287     0.12380     0.12326     
+Mul         69929.692   0.12284     0.12414     0.12330     
+Add         74946.087   0.17192     0.17311     0.17257     
+Triad       74812.740   0.17223     0.17315     0.17273     
+Dot         87397.302   0.09829     0.09887     0.09854     
 <<<7<<<
 >>>8>>>
-Thu 11 Aug 13:05:09 GMT 2022
+Tue 16 Aug 13:01:42 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -147,14 +147,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        75616.121   0.11360     0.11523     0.11418     
-Mul         75669.926   0.11352     0.11504     0.11421     
-Add         82316.660   0.15653     0.15770     0.15702     
-Triad       82266.582   0.15662     0.15778     0.15703     
-Dot         95997.797   0.08948     0.09045     0.08971     
+Copy        75663.275   0.11353     0.11489     0.11414     
+Mul         75636.792   0.11357     0.11502     0.11423     
+Add         82295.878   0.15657     0.15801     0.15700     
+Triad       82358.002   0.15645     0.15887     0.15707     
+Dot         95910.364   0.08956     0.09024     0.08985     
 <<<8<<<
 >>>9>>>
-Thu 11 Aug 13:06:16 GMT 2022
+Tue 16 Aug 13:02:49 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -165,14 +165,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        80498.368   0.10671     0.10793     0.10739     
-Mul         80433.558   0.10680     0.10822     0.10756     
-Add         89182.626   0.14448     0.14590     0.14512     
-Triad       89275.597   0.14433     0.14569     0.14502     
-Dot         105485.731  0.08143     0.08221     0.08162     
+Copy        80513.343   0.10669     0.10854     0.10763     
+Mul         80459.951   0.10676     0.10843     0.10751     
+Add         89136.195   0.14455     0.14587     0.14508     
+Triad       89116.272   0.14459     0.14592     0.14506     
+Dot         105635.290  0.08132     0.08216     0.08154     
 <<<9<<<
 >>>10>>>
-Thu 11 Aug 13:07:19 GMT 2022
+Tue 16 Aug 13:03:52 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -183,14 +183,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        84396.724   0.10178     0.10310     0.10241     
-Mul         84351.412   0.10184     0.10317     0.10251     
-Add         94756.244   0.13598     0.13723     0.13656     
-Triad       94619.268   0.13618     0.13752     0.13676     
-Dot         114378.659  0.07510     0.07623     0.07532     
+Copy        84327.809   0.10186     0.10348     0.10257     
+Mul         84126.284   0.10211     0.10319     0.10267     
+Add         94719.421   0.13603     0.13734     0.13674     
+Triad       94479.134   0.13638     0.13781     0.13698     
+Dot         114464.073  0.07504     0.07737     0.07522     
 <<<10<<<
 >>>11>>>
-Thu 11 Aug 13:08:19 GMT 2022
+Tue 16 Aug 13:04:52 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -201,14 +201,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        87201.219   0.09851     0.09961     0.09900     
-Mul         87517.931   0.09815     0.09941     0.09871     
-Add         99377.345   0.12966     0.13165     0.13051     
-Triad       99181.735   0.12991     0.13132     0.13047     
-Dot         124153.252  0.06919     0.07011     0.06938     
+Copy        87945.550   0.09767     0.09925     0.09855     
+Mul         87389.139   0.09830     0.09972     0.09900     
+Add         99355.540   0.12968     0.13116     0.13030     
+Triad       99340.605   0.12970     0.13123     0.13040     
+Dot         124058.706  0.06924     0.06989     0.06943     
 <<<11<<<
 >>>12>>>
-Thu 11 Aug 13:09:16 GMT 2022
+Tue 16 Aug 13:05:49 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -219,14 +219,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        90250.131   0.09518     0.09647     0.09586     
-Mul         90359.913   0.09506     0.09645     0.09570     
-Add         103284.048  0.12475     0.12616     0.12548     
-Triad       103133.261  0.12493     0.12625     0.12547     
-Dot         132758.498  0.06470     0.06526     0.06490     
+Copy        90360.942   0.09506     0.09645     0.09563     
+Mul         90655.189   0.09475     0.09637     0.09556     
+Add         103327.657  0.12470     0.12691     0.12524     
+Triad       103479.588  0.12452     0.12572     0.12531     
+Dot         132971.620  0.06460     0.06528     0.06476     
 <<<12<<<
 >>>13>>>
-Thu 11 Aug 13:10:12 GMT 2022
+Tue 16 Aug 13:06:44 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -237,14 +237,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        93136.818   0.09223     0.09389     0.09306     
-Mul         92666.434   0.09270     0.09401     0.09325     
-Add         106755.704  0.12070     0.12227     0.12143     
-Triad       106756.963  0.12069     0.12227     0.12141     
-Dot         140884.192  0.06097     0.06154     0.06114     
+Copy        92633.911   0.09273     0.09375     0.09314     
+Mul         92658.263   0.09271     0.09387     0.09328     
+Add         106695.483  0.12076     0.12189     0.12138     
+Triad       106611.121  0.12086     0.12213     0.12147     
+Dot         140973.317  0.06093     0.06135     0.06110     
 <<<13<<<
 >>>14>>>
-Thu 11 Aug 13:11:05 GMT 2022
+Tue 16 Aug 13:07:37 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -255,14 +255,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        94953.071   0.09047     0.09183     0.09115     
-Mul         94721.269   0.09069     0.09198     0.09122     
-Add         109490.807  0.11768     0.11902     0.11833     
-Triad       109474.083  0.11770     0.11898     0.11838     
-Dot         147703.026  0.05816     0.05856     0.05831     
+Copy        95008.966   0.09041     0.09180     0.09100     
+Mul         94903.226   0.09051     0.09189     0.09125     
+Add         109444.397  0.11773     0.11916     0.11826     
+Triad       109577.924  0.11759     0.11929     0.11819     
+Dot         148076.558  0.05801     0.05909     0.05817     
 <<<14<<<
 >>>15>>>
-Thu 11 Aug 13:11:57 GMT 2022
+Tue 16 Aug 13:08:29 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -273,14 +273,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        96594.732   0.08893     0.09010     0.08949     
-Mul         96735.503   0.08880     0.08984     0.08937     
-Add         111892.736  0.11515     0.11648     0.11571     
-Triad       111816.002  0.11523     0.11683     0.11580     
-Dot         153445.329  0.05598     0.05708     0.05636     
+Copy        96748.469   0.08879     0.09007     0.08938     
+Mul         96529.480   0.08899     0.08996     0.08950     
+Add         111803.570  0.11525     0.11631     0.11575     
+Triad       111938.428  0.11511     0.11618     0.11570     
+Dot         153838.331  0.05584     0.05630     0.05608     
 <<<15<<<
 >>>16>>>
-Thu 11 Aug 13:12:48 GMT 2022
+Tue 16 Aug 13:09:20 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -291,14 +291,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        98278.319   0.08740     0.08856     0.08798     
-Mul         97977.904   0.08767     0.08884     0.08813     
-Add         113761.108  0.11326     0.11437     0.11373     
-Triad       114029.246  0.11300     0.11444     0.11381     
-Dot         158060.817  0.05435     0.05515     0.05483     
+Copy        98148.492   0.08752     0.08926     0.08813     
+Mul         98198.229   0.08748     0.08889     0.08805     
+Add         113924.175  0.11310     0.11434     0.11371     
+Triad       114075.236  0.11295     0.11452     0.11375     
+Dot         158585.202  0.05417     0.05492     0.05439     
 <<<16<<<
 >>>17>>>
-Thu 11 Aug 13:13:38 GMT 2022
+Tue 16 Aug 13:10:10 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -309,14 +309,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        99536.893   0.08630     0.08754     0.08690     
-Mul         99484.452   0.08634     0.08755     0.08700     
-Add         115543.005  0.11152     0.11347     0.11224     
-Triad       115596.070  0.11146     0.11308     0.11222     
-Dot         161553.517  0.05317     0.05448     0.05386     
+Copy        99620.690   0.08623     0.08729     0.08676     
+Mul         99203.693   0.08659     0.08780     0.08711     
+Add         115738.680  0.11133     0.11252     0.11187     
+Triad       115619.510  0.11144     0.11241     0.11190     
+Dot         161775.268  0.05310     0.05345     0.05329     
 <<<17<<<
 >>>18>>>
-Thu 11 Aug 13:14:28 GMT 2022
+Tue 16 Aug 13:10:59 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -327,14 +327,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        100775.076  0.08524     0.08630     0.08579     
-Mul         100389.125  0.08557     0.08680     0.08604     
-Add         117205.566  0.10993     0.11103     0.11050     
-Triad       117175.685  0.10996     0.11114     0.11055     
-Dot         163216.603  0.05263     0.05365     0.05337     
+Copy        100644.578  0.08535     0.08673     0.08577     
+Mul         100901.111  0.08513     0.08643     0.08578     
+Add         117352.038  0.10980     0.11120     0.11043     
+Triad       117319.858  0.10983     0.11123     0.11048     
+Dot         163920.349  0.05240     0.05277     0.05256     
 <<<18<<<
 >>>19>>>
-Thu 11 Aug 13:15:17 GMT 2022
+Tue 16 Aug 13:11:48 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -345,14 +345,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        101448.579  0.08467     0.08583     0.08522     
-Mul         101528.236  0.08461     0.08580     0.08516     
-Add         118232.246  0.10898     0.11016     0.10952     
-Triad       118435.362  0.10879     0.11035     0.10934     
-Dot         163178.224  0.05264     0.05402     0.05376     
+Copy        102091.495  0.08414     0.08541     0.08479     
+Mul         101760.097  0.08441     0.08600     0.08510     
+Add         118792.235  0.10847     0.10959     0.10899     
+Triad       118652.467  0.10859     0.11107     0.10906     
+Dot         164659.270  0.05217     0.05284     0.05238     
 <<<19<<<
 >>>20>>>
-Thu 11 Aug 13:16:05 GMT 2022
+Tue 16 Aug 13:12:36 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -363,14 +363,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        102588.087  0.08373     0.08485     0.08422     
-Mul         102614.811  0.08371     0.08497     0.08424     
-Add         120233.885  0.10717     0.10859     0.10787     
-Triad       119870.105  0.10749     0.10888     0.10804     
-Dot         161681.766  0.05313     0.05549     0.05435     
+Copy        102562.924  0.08375     0.08487     0.08411     
+Mul         102910.838  0.08347     0.08476     0.08403     
+Add         120431.036  0.10699     0.10816     0.10762     
+Triad       120340.932  0.10707     0.10826     0.10766     
+Dot         164943.004  0.05208     0.05263     0.05228     
 <<<20<<<
 >>>21>>>
-Thu 11 Aug 13:16:54 GMT 2022
+Tue 16 Aug 13:13:24 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -381,14 +381,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        103743.032  0.08280     0.08383     0.08335     
-Mul         103463.550  0.08302     0.08427     0.08360     
-Add         121705.976  0.10587     0.10673     0.10629     
-Triad       121811.927  0.10578     0.10717     0.10652     
-Dot         161037.545  0.05334     0.05544     0.05514     
+Copy        103710.331  0.08283     0.08404     0.08335     
+Mul         103663.566  0.08286     0.08417     0.08353     
+Add         122069.020  0.10555     0.10662     0.10598     
+Triad       122069.442  0.10555     0.10681     0.10608     
+Dot         163764.897  0.05245     0.05426     0.05267     
 <<<21<<<
 >>>22>>>
-Thu 11 Aug 13:17:42 GMT 2022
+Tue 16 Aug 13:14:11 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -399,14 +399,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        104585.717  0.08213     0.08326     0.08268     
-Mul         104257.638  0.08239     0.08365     0.08281     
-Add         124368.534  0.10360     0.10476     0.10417     
-Triad       123985.183  0.10392     0.10521     0.10441     
-Dot         162399.088  0.05289     0.05531     0.05481     
+Copy        104906.324  0.08188     0.08299     0.08239     
+Mul         104618.379  0.08211     0.08323     0.08275     
+Add         124785.026  0.10326     0.10427     0.10376     
+Triad       124623.401  0.10339     0.10445     0.10385     
+Dot         166273.510  0.05166     0.05216     0.05186     
 <<<22<<<
 >>>23>>>
-Thu 11 Aug 13:18:29 GMT 2022
+Tue 16 Aug 13:14:58 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -417,14 +417,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        105336.422  0.08155     0.08246     0.08203     
-Mul         105257.425  0.08161     0.08292     0.08211     
-Add         127443.154  0.10110     0.10204     0.10148     
-Triad       128001.746  0.10066     0.10195     0.10119     
-Dot         166977.786  0.05144     0.05504     0.05461     
+Copy        105967.819  0.08106     0.08224     0.08167     
+Mul         105762.205  0.08122     0.08232     0.08186     
+Add         128205.054  0.10050     0.10200     0.10114     
+Triad       128156.463  0.10054     0.10263     0.10129     
+Dot         168085.873  0.05110     0.05154     0.05130     
 <<<23<<<
 >>>24>>>
-Thu 11 Aug 13:19:15 GMT 2022
+Tue 16 Aug 13:15:44 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -435,14 +435,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        106992.799  0.08029     0.08134     0.08078     
-Mul         106763.960  0.08046     0.08162     0.08104     
-Add         133749.883  0.09634     0.09760     0.09689     
-Triad       133689.410  0.09638     0.09802     0.09701     
-Dot         169656.926  0.05063     0.05379     0.05343     
+Copy        107100.004  0.08020     0.08141     0.08074     
+Mul         106657.044  0.08054     0.08177     0.08109     
+Add         133172.547  0.09675     0.09783     0.09727     
+Triad       133336.220  0.09663     0.09816     0.09733     
+Dot         171856.119  0.04998     0.05219     0.05020     
 <<<24<<<
 >>>25>>>
-Thu 11 Aug 13:20:00 GMT 2022
+Tue 16 Aug 13:16:29 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -453,14 +453,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        108820.028  0.07894     0.08004     0.07947     
-Mul         108045.284  0.07950     0.08037     0.07989     
-Add         143043.722  0.09008     0.09160     0.09085     
-Triad       141570.315  0.09101     0.09228     0.09157     
-Dot         170710.559  0.05032     0.05296     0.05251     
+Copy        108372.705  0.07926     0.08021     0.07970     
+Mul         108541.159  0.07914     0.08030     0.07965     
+Add         140846.090  0.09148     0.09277     0.09212     
+Triad       141358.918  0.09115     0.09253     0.09189     
+Dot         175222.551  0.04902     0.04946     0.04924     
 <<<25<<<
 >>>26>>>
-Thu 11 Aug 13:20:44 GMT 2022
+Tue 16 Aug 13:17:12 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -471,14 +471,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        110796.336  0.07753     0.07863     0.07807     
-Mul         110381.651  0.07782     0.07914     0.07837     
-Add         151843.314  0.08486     0.08606     0.08539     
-Triad       152221.713  0.08465     0.08602     0.08534     
-Dot         173538.611  0.04950     0.05189     0.05138     
+Copy        110266.492  0.07790     0.07881     0.07836     
+Mul         109903.963  0.07816     0.07948     0.07880     
+Add         150176.521  0.08580     0.08711     0.08631     
+Triad       150916.870  0.08538     0.08701     0.08598     
+Dot         176585.955  0.04864     0.04914     0.04894     
 <<<26<<<
 >>>27>>>
-Thu 11 Aug 13:21:26 GMT 2022
+Tue 16 Aug 13:17:54 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -489,14 +489,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        113285.197  0.07583     0.07689     0.07633     
-Mul         114033.290  0.07533     0.07682     0.07596     
-Add         157356.173  0.08188     0.08277     0.08221     
-Triad       157527.514  0.08179     0.08311     0.08212     
-Dot         175925.997  0.04883     0.05069     0.05032     
+Copy        113549.172  0.07565     0.07693     0.07630     
+Mul         112638.338  0.07626     0.07779     0.07674     
+Add         158046.437  0.08153     0.08317     0.08207     
+Triad       157891.925  0.08161     0.08271     0.08209     
+Dot         178767.150  0.04805     0.04889     0.04834     
 <<<27<<<
 >>>28>>>
-Thu 11 Aug 13:22:07 GMT 2022
+Tue 16 Aug 13:18:35 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -507,14 +507,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        119938.500  0.07162     0.07357     0.07227     
-Mul         120044.951  0.07156     0.07361     0.07217     
-Add         159262.493  0.08090     0.08188     0.08131     
-Triad       159705.506  0.08068     0.08176     0.08118     
-Dot         177512.181  0.04839     0.05050     0.04986     
+Copy        118400.976  0.07255     0.07388     0.07324     
+Mul         117562.014  0.07307     0.07433     0.07365     
+Add         160079.890  0.08049     0.08158     0.08098     
+Triad       160253.478  0.08040     0.08148     0.08100     
+Dot         179353.664  0.04789     0.04832     0.04810     
 <<<28<<<
 >>>29>>>
-Thu 11 Aug 13:22:47 GMT 2022
+Tue 16 Aug 13:19:15 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -525,14 +525,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        134746.380  0.06375     0.06729     0.06485     
-Mul         135070.852  0.06360     0.06803     0.06461     
-Add         159733.335  0.08067     0.08186     0.08118     
-Triad       159617.638  0.08072     0.08163     0.08114     
-Dot         178565.206  0.04811     0.04982     0.04956     
+Copy        128483.248  0.06686     0.06847     0.06760     
+Mul         127067.704  0.06760     0.06902     0.06821     
+Add         160310.944  0.08037     0.08162     0.08084     
+Triad       160604.755  0.08023     0.08116     0.08067     
+Dot         179533.250  0.04785     0.04831     0.04798     
 <<<29<<<
 >>>30>>>
-Thu 11 Aug 13:23:26 GMT 2022
+Tue 16 Aug 13:19:54 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -543,14 +543,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        149819.539  0.05734     0.05943     0.05788     
-Mul         149752.257  0.05736     0.05946     0.05790     
-Add         159990.342  0.08054     0.08184     0.08114     
-Triad       160090.759  0.08048     0.08164     0.08099     
-Dot         178578.964  0.04810     0.04949     0.04925     
+Copy        145192.252  0.05916     0.06120     0.05971     
+Mul         145336.775  0.05910     0.06066     0.05989     
+Add         160330.226  0.08036     0.08142     0.08076     
+Triad       160200.476  0.08043     0.08258     0.08082     
+Dot         179739.685  0.04779     0.05090     0.04798     
 <<<30<<<
 >>>31>>>
-Thu 11 Aug 13:24:03 GMT 2022
+Tue 16 Aug 13:20:31 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -561,14 +561,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        152586.447  0.05630     0.05743     0.05667     
-Mul         152940.185  0.05617     0.05693     0.05654     
-Add         159373.400  0.08085     0.08215     0.08123     
-Triad       160009.755  0.08053     0.08168     0.08102     
-Dot         178395.849  0.04815     0.04971     0.04903     
+Copy        152837.574  0.05620     0.05720     0.05659     
+Mul         152576.741  0.05630     0.05736     0.05677     
+Add         160382.237  0.08034     0.08124     0.08072     
+Triad       160244.161  0.08041     0.08153     0.08082     
+Dot         179678.349  0.04781     0.04819     0.04798     
 <<<31<<<
 >>>32>>>
-Thu 11 Aug 13:24:40 GMT 2022
+Tue 16 Aug 13:21:07 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -579,14 +579,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        154508.257  0.05560     0.05683     0.05615     
-Mul         153358.785  0.05601     0.05700     0.05652     
-Add         159635.899  0.08071     0.08154     0.08111     
-Triad       159593.127  0.08074     0.08168     0.08109     
-Dot         177956.838  0.04827     0.04913     0.04881     
+Copy        154461.928  0.05561     0.05662     0.05609     
+Mul         153970.903  0.05579     0.05679     0.05630     
+Add         160396.704  0.08033     0.08149     0.08074     
+Triad       160327.736  0.08037     0.08157     0.08097     
+Dot         179337.892  0.04790     0.04821     0.04805     
 <<<32<<<
 >>>33>>>
-Thu 11 Aug 13:25:16 GMT 2022
+Tue 16 Aug 13:21:44 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -597,14 +597,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        148901.186  0.05769     0.06012     0.05920     
-Mul         150674.218  0.05701     0.06093     0.05836     
-Add         155822.083  0.08269     0.08460     0.08382     
-Triad       156299.811  0.08244     0.08481     0.08381     
-Dot         168603.504  0.05095     0.05300     0.05233     
+Copy        145777.687  0.05892     0.06165     0.06051     
+Mul         150980.575  0.05689     0.06044     0.05836     
+Add         155996.413  0.08260     0.08543     0.08371     
+Triad       157689.571  0.08171     0.08513     0.08378     
+Dot         171720.830  0.05002     0.05331     0.05219     
 <<<33<<<
 >>>34>>>
-Thu 11 Aug 13:25:54 GMT 2022
+Tue 16 Aug 13:22:22 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -615,14 +615,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        140443.305  0.06116     0.06395     0.06270     
-Mul         150009.233  0.05726     0.06253     0.05941     
-Add         155699.747  0.08275     0.08782     0.08641     
-Triad       154920.086  0.08317     0.08820     0.08582     
-Dot         166892.166  0.05147     0.05513     0.05385     
+Copy        140591.436  0.06110     0.06458     0.06288     
+Mul         147072.335  0.05841     0.06258     0.05992     
+Add         150372.413  0.08569     0.08883     0.08700     
+Triad       151285.263  0.08517     0.08929     0.08744     
+Dot         162144.443  0.05298     0.05490     0.05422     
 <<<34<<<
 >>>35>>>
-Thu 11 Aug 13:26:34 GMT 2022
+Tue 16 Aug 13:23:01 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -633,14 +633,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        138619.121  0.06197     0.06622     0.06462     
-Mul         146959.656  0.05845     0.06204     0.06015     
-Add         147791.954  0.08718     0.09180     0.08979     
-Triad       150936.074  0.08537     0.09192     0.08906     
-Dot         158457.970  0.05421     0.05767     0.05638     
+Copy        137085.403  0.06266     0.06919     0.06618     
+Mul         145817.137  0.05891     0.07507     0.06276     
+Add         148494.392  0.08677     0.09729     0.09063     
+Triad       148701.051  0.08665     0.10206     0.09359     
+Dot         156578.738  0.05486     0.05789     0.05662     
 <<<35<<<
 >>>36>>>
-Thu 11 Aug 13:27:14 GMT 2022
+Tue 16 Aug 13:23:43 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -651,14 +651,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        133518.992  0.06433     0.06722     0.06594     
-Mul         145778.283  0.05892     0.06312     0.06160     
-Add         143684.483  0.08967     0.09340     0.09177     
-Triad       147860.046  0.08714     0.09290     0.09090     
-Dot         152380.373  0.05637     0.05843     0.05760     
+Copy        132775.580  0.06470     0.07980     0.06970     
+Mul         141112.637  0.06087     0.09100     0.07077     
+Add         143141.817  0.09001     0.11423     0.09626     
+Triad       143938.525  0.08952     0.11857     0.10186     
+Dot         153246.617  0.05605     0.06171     0.05909     
 <<<36<<<
 >>>37>>>
-Thu 11 Aug 13:27:55 GMT 2022
+Tue 16 Aug 13:24:27 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -669,14 +669,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        132330.788  0.06491     0.06867     0.06726     
-Mul         144277.894  0.05954     0.06337     0.06126     
-Add         144908.256  0.08892     0.09738     0.09454     
-Triad       144203.363  0.08935     0.09713     0.09346     
-Dot         153847.071  0.05583     0.06209     0.06011     
+Copy        128201.659  0.06700     0.09220     0.07318     
+Mul         138983.102  0.06181     0.09819     0.07702     
+Add         141261.212  0.09121     0.12003     0.10062     
+Triad       135146.236  0.09534     0.12265     0.10761     
+Dot         145257.141  0.05914     0.06381     0.06110     
 <<<37<<<
 >>>38>>>
-Thu 11 Aug 13:28:37 GMT 2022
+Tue 16 Aug 13:25:13 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -687,14 +687,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        134181.761  0.06402     0.07024     0.06705     
-Mul         144569.491  0.05942     0.06447     0.06246     
-Add         145052.480  0.08883     0.09895     0.09321     
-Triad       144894.514  0.08893     0.09940     0.09280     
-Dot         157791.870  0.05444     0.06302     0.05773     
+Copy        124396.105  0.06905     0.11780     0.08382     
+Mul         128372.794  0.06691     0.12681     0.09783     
+Add         135015.859  0.09543     0.15911     0.11165     
+Triad       129324.238  0.09963     0.15155     0.12388     
+Dot         142593.960  0.06024     0.08039     0.06477     
 <<<38<<<
 >>>39>>>
-Thu 11 Aug 13:29:19 GMT 2022
+Tue 16 Aug 13:26:05 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -705,14 +705,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        133551.797  0.06432     0.07166     0.06945     
-Mul         139509.443  0.06157     0.06550     0.06369     
-Add         145256.967  0.08870     0.10287     0.09794     
-Triad       143793.773  0.08961     0.10278     0.09713     
-Dot         162103.566  0.05299     0.06585     0.06143     
+Copy        131177.341  0.06548     0.13778     0.10992     
+Mul         141624.891  0.06065     0.12596     0.10769     
+Add         131216.264  0.09820     0.17483     0.14027     
+Triad       125962.511  0.10229     0.16370     0.14059     
+Dot         136756.399  0.06281     0.09127     0.07714     
 <<<39<<<
 >>>40>>>
-Thu 11 Aug 13:30:02 GMT 2022
+Tue 16 Aug 13:27:07 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -723,14 +723,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        135244.091  0.06351     0.07217     0.06916     
-Mul         143352.668  0.05992     0.06530     0.06297     
-Add         140959.350  0.09141     0.10146     0.09751     
-Triad       141641.710  0.09097     0.10113     0.09623     
-Dot         155831.863  0.05512     0.06656     0.06184     
+Copy        119755.500  0.07173     0.13813     0.10590     
+Mul         115596.941  0.07431     0.14036     0.11857     
+Add         133644.539  0.09641     0.17558     0.13376     
+Triad       117787.258  0.10939     0.17309     0.14723     
+Dot         140574.749  0.06111     0.08766     0.07201     
 <<<40<<<
 >>>41>>>
-Thu 11 Aug 13:30:46 GMT 2022
+Tue 16 Aug 13:28:09 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -741,14 +741,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        134902.970  0.06367     0.07397     0.07040     
-Mul         142773.428  0.06016     0.06708     0.06320     
-Add         142353.180  0.09051     0.10462     0.09826     
-Triad       147154.221  0.08756     0.10338     0.09650     
-Dot         152685.600  0.05626     0.06615     0.06177     
+Copy        130176.530  0.06599     0.15459     0.12819     
+Mul         129669.488  0.06624     0.15130     0.13314     
+Add         140648.550  0.09161     0.19767     0.16207     
+Triad       123998.005  0.10391     0.19823     0.16981     
+Dot         138372.307  0.06208     0.10536     0.08698     
 <<<41<<<
 >>>42>>>
-Thu 11 Aug 13:31:29 GMT 2022
+Tue 16 Aug 13:29:21 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -759,14 +759,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        135773.355  0.06327     0.07664     0.06986     
-Mul         141200.088  0.06084     0.06923     0.06473     
-Add         146145.418  0.08816     0.10922     0.09845     
-Triad       145360.655  0.08864     0.11030     0.09789     
-Dot         165602.151  0.05187     0.07029     0.06120     
+Copy        123547.722  0.06953     0.15032     0.10440     
+Mul         127953.983  0.06713     0.14335     0.11643     
+Add         127715.126  0.10089     0.18500     0.13149     
+Triad       118866.585  0.10840     0.18354     0.14274     
+Dot         133832.479  0.06418     0.10429     0.07403     
 <<<42<<<
 >>>43>>>
-Thu 11 Aug 13:32:12 GMT 2022
+Tue 16 Aug 13:30:22 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -777,14 +777,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        137010.612  0.06270     0.07733     0.06972     
-Mul         142392.317  0.06033     0.07194     0.06419     
-Add         146597.741  0.08789     0.11186     0.09773     
-Triad       147181.894  0.08754     0.11123     0.09694     
-Dot         166262.767  0.05166     0.07147     0.06045     
+Copy        133637.491  0.06428     0.14954     0.12306     
+Mul         138475.613  0.06203     0.15889     0.13221     
+Add         134488.097  0.09581     0.18932     0.15383     
+Triad       132522.960  0.09723     0.19385     0.16606     
+Dot         139921.670  0.06139     0.09656     0.08187     
 <<<43<<<
 >>>44>>>
-Thu 11 Aug 13:32:56 GMT 2022
+Tue 16 Aug 13:31:32 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -795,14 +795,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        135488.135  0.06340     0.07832     0.07158     
-Mul         143978.629  0.05966     0.07196     0.06378     
-Add         145200.687  0.08874     0.11173     0.10010     
-Triad       146654.866  0.08786     0.11203     0.09845     
-Dot         159486.796  0.05386     0.07181     0.06375     
+Copy        95829.170   0.08964     0.15678     0.12019     
+Mul         79355.504   0.10825     0.15682     0.13787     
+Add         119745.262  0.10760     0.20394     0.15074     
+Triad       98549.711   0.13075     0.20433     0.17059     
+Dot         132148.577  0.06500     0.10674     0.08097     
 <<<44<<<
 >>>45>>>
-Thu 11 Aug 13:33:40 GMT 2022
+Tue 16 Aug 13:32:43 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -813,14 +813,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        135929.079  0.06319     0.07853     0.06931     
-Mul         141592.416  0.06067     0.07291     0.06485     
-Add         145807.480  0.08837     0.11387     0.09564     
-Triad       147941.797  0.08709     0.11204     0.09499     
-Dot         171080.210  0.05021     0.07250     0.05689     
+Copy        124444.131  0.06903     0.17688     0.13408     
+Mul         129739.351  0.06621     0.16651     0.14152     
+Add         134001.767  0.09615     0.22162     0.16872     
+Triad       129291.501  0.09966     0.22082     0.17828     
+Dot         135995.601  0.06316     0.12769     0.09400     
 <<<45<<<
 >>>46>>>
-Thu 11 Aug 13:34:23 GMT 2022
+Tue 16 Aug 13:33:59 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -831,14 +831,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        152555.397  0.05631     0.08805     0.06406     
-Mul         157262.529  0.05462     0.09682     0.06228     
-Add         168937.107  0.07627     0.12364     0.08573     
-Triad       168310.139  0.07655     0.13289     0.08780     
-Dot         196252.889  0.04377     0.07900     0.05222     
+Copy        114145.819  0.07525     0.15660     0.12957     
+Mul         118849.395  0.07228     0.15404     0.13666     
+Add         127534.883  0.10103     0.19284     0.15668     
+Triad       121007.063  0.10648     0.18937     0.16808     
+Dot         132022.195  0.06506     0.10150     0.08448     
 <<<46<<<
 >>>47>>>
-Thu 11 Aug 13:35:03 GMT 2022
+Tue 16 Aug 13:35:12 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -849,14 +849,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        132782.109  0.06469     0.08060     0.07345     
-Mul         136766.348  0.06281     0.07390     0.06771     
-Add         139608.071  0.09229     0.11481     0.10497     
-Triad       141424.726  0.09111     0.11492     0.10401     
-Dot         159517.044  0.05385     0.07319     0.06631     
+Copy        126259.061  0.06803     0.15483     0.13365     
+Mul         125507.535  0.06844     0.16328     0.14477     
+Add         140909.443  0.09144     0.20138     0.17358     
+Triad       126110.974  0.10217     0.20445     0.18475     
+Dot         143685.748  0.05978     0.10404     0.09286     
 <<<47<<<
 >>>48>>>
-Thu 11 Aug 13:35:49 GMT 2022
+Tue 16 Aug 13:36:29 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -867,14 +867,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        134044.894  0.06408     0.07962     0.06821     
-Mul         139095.017  0.06176     0.07368     0.06461     
-Add         144805.852  0.08898     0.11277     0.09452     
-Triad       143098.563  0.09004     0.11362     0.09436     
-Dot         164216.140  0.05231     0.07244     0.05660     
+Copy        95434.522   0.09001     0.16036     0.13576     
+Mul         82446.129   0.10419     0.16338     0.14756     
+Add         130068.208  0.09906     0.20363     0.17378     
+Triad       100517.347  0.12819     0.20937     0.18633     
+Dot         131943.873  0.06510     0.11482     0.09485     
 <<<48<<<
 >>>49>>>
-Thu 11 Aug 13:36:31 GMT 2022
+Tue 16 Aug 13:37:47 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -885,14 +885,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        136017.897  0.06315     0.07864     0.06883     
-Mul         144722.379  0.05935     0.07274     0.06361     
-Add         147510.517  0.08735     0.11286     0.09610     
-Triad       147676.564  0.08725     0.11224     0.09519     
-Dot         167736.071  0.05121     0.07278     0.05947     
+Copy        103722.454  0.08282     0.15677     0.12863     
+Mul         98531.360   0.08718     0.16623     0.14355     
+Add         119164.299  0.10813     0.20460     0.16560     
+Triad       103178.596  0.12488     0.21817     0.18159     
+Dot         131148.280  0.06550     0.11369     0.09030     
 <<<49<<<
 >>>50>>>
-Thu 11 Aug 13:37:14 GMT 2022
+Tue 16 Aug 13:39:02 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -903,14 +903,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        140322.771  0.06122     0.08000     0.07113     
-Mul         140843.585  0.06099     0.07428     0.06544     
-Add         149970.021  0.08592     0.11628     0.09952     
-Triad       151969.248  0.08479     0.11547     0.09876     
-Dot         172738.545  0.04973     0.07294     0.06262     
+Copy        67459.127   0.12734     0.16410     0.14933     
+Mul         60350.029   0.14234     0.16824     0.15751     
+Add         71800.348   0.17945     0.21395     0.19827     
+Triad       67918.688   0.18971     0.22167     0.20622     
+Dot         94737.437   0.09067     0.12023     0.10781     
 <<<50<<<
 >>>51>>>
-Thu 11 Aug 13:37:59 GMT 2022
+Tue 16 Aug 13:40:29 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -921,14 +921,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        136810.272  0.06279     0.07637     0.07005     
-Mul         146934.372  0.05846     0.06960     0.06362     
-Add         151555.962  0.08502     0.10614     0.09680     
-Triad       153566.049  0.08390     0.10608     0.09620     
-Dot         169162.637  0.05078     0.06789     0.06165     
+Copy        99931.312   0.08596     0.15294     0.11535     
+Mul         68602.913   0.12521     0.16016     0.14244     
+Add         123144.068  0.10463     0.19236     0.13755     
+Triad       92543.621   0.13923     0.19737     0.16784     
+Dot         132792.471  0.06469     0.09823     0.07868     
 <<<51<<<
 >>>52>>>
-Thu 11 Aug 13:38:42 GMT 2022
+Tue 16 Aug 13:41:37 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -939,14 +939,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        146930.959  0.05846     0.06730     0.06224     
-Mul         157057.561  0.05469     0.06250     0.05788     
-Add         162619.219  0.07923     0.08652     0.08261     
-Triad       161104.903  0.07998     0.08626     0.08259     
-Dot         178860.218  0.04803     0.05728     0.05040     
+Copy        132258.757  0.06495     0.16424     0.13140     
+Mul         136940.326  0.06273     0.15848     0.13944     
+Add         134719.101  0.09564     0.22129     0.16768     
+Triad       133739.510  0.09634     0.20940     0.17500     
+Dot         140018.644  0.06135     0.12155     0.09311     
 <<<52<<<
 >>>53>>>
-Thu 11 Aug 13:39:20 GMT 2022
+Tue 16 Aug 13:42:52 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -957,14 +957,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        136551.504  0.06291     0.07924     0.07094     
-Mul         139664.972  0.06150     0.07143     0.06549     
-Add         145885.272  0.08832     0.11321     0.09959     
-Triad       146573.457  0.08791     0.11261     0.09892     
-Dot         169289.450  0.05074     0.07420     0.06207     
+Copy        98542.926   0.08717     0.16114     0.12116     
+Mul         59522.703   0.14431     0.16676     0.15647     
+Add         103262.547  0.12478     0.20521     0.16549     
+Triad       72540.089   0.17762     0.21330     0.19690     
+Dot         129276.970  0.06645     0.11493     0.08767     
 <<<53<<<
 >>>54>>>
-Thu 11 Aug 13:40:04 GMT 2022
+Tue 16 Aug 13:44:09 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -975,14 +975,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        137091.227  0.06266     0.08053     0.06856     
-Mul         139605.318  0.06153     0.07381     0.06504     
-Add         147236.697  0.08751     0.11389     0.09566     
-Triad       149035.238  0.08646     0.11325     0.09525     
-Dot         165717.905  0.05183     0.07842     0.05850     
+Copy        115066.206  0.07465     0.16405     0.13587     
+Mul         128260.418  0.06697     0.15154     0.13709     
+Add         128331.819  0.10040     0.20764     0.17191     
+Triad       117768.624  0.10941     0.20198     0.17426     
+Dot         130644.392  0.06575     0.11206     0.09404     
 <<<54<<<
 >>>55>>>
-Thu 11 Aug 13:40:47 GMT 2022
+Tue 16 Aug 13:45:25 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -993,14 +993,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        140961.156  0.06094     0.08109     0.06789     
-Mul         142183.362  0.06041     0.07751     0.06457     
-Add         153356.961  0.08402     0.11736     0.09440     
-Triad       150461.936  0.08564     0.11836     0.09406     
-Dot         173839.945  0.04941     0.07404     0.05721     
+Copy        66150.570   0.12985     0.16383     0.14761     
+Mul         59758.000   0.14375     0.17170     0.15433     
+Add         78034.066   0.16512     0.21030     0.19339     
+Triad       69475.039   0.18546     0.21303     0.20057     
+Dot         97281.455   0.08830     0.12255     0.10514     
 <<<55<<<
 >>>56>>>
-Thu 11 Aug 13:41:30 GMT 2022
+Tue 16 Aug 13:46:49 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -1011,14 +1011,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        138637.279  0.06196     0.07805     0.07200     
-Mul         141253.336  0.06081     0.07243     0.06668     
-Add         145466.376  0.08858     0.11342     0.10312     
-Triad       145632.736  0.08848     0.11440     0.10327     
-Dot         165772.913  0.05182     0.07440     0.06686     
+Copy        97858.469   0.08778     0.16118     0.13295     
+Mul         73745.935   0.11648     0.16019     0.14494     
+Add         119355.602  0.10795     0.20843     0.17034     
+Triad       98064.485   0.13139     0.20687     0.18312     
+Dot         128782.499  0.06670     0.11671     0.09346     
 <<<56<<<
 >>>57>>>
-Thu 11 Aug 13:42:16 GMT 2022
+Tue 16 Aug 13:48:06 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -1029,14 +1029,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        143038.582  0.06005     0.08110     0.06670     
-Mul         141750.528  0.06060     0.07840     0.06380     
-Add         152637.599  0.08441     0.11724     0.09210     
-Triad       154148.942  0.08359     0.11707     0.09182     
-Dot         177474.460  0.04840     0.07442     0.05485     
+Copy        141706.881  0.06062     0.16160     0.13259     
+Mul         141948.304  0.06051     0.15378     0.13812     
+Add         138099.057  0.09330     0.21238     0.16912     
+Triad       121801.570  0.10579     0.20180     0.17792     
+Dot         129370.134  0.06640     0.11616     0.09409     
 <<<57<<<
 >>>58>>>
-Thu 11 Aug 13:42:57 GMT 2022
+Tue 16 Aug 13:49:24 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -1047,14 +1047,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        139493.560  0.06158     0.08201     0.06848     
-Mul         137453.537  0.06249     0.07904     0.06686     
-Add         147843.779  0.08715     0.11971     0.09727     
-Triad       146861.074  0.08774     0.11923     0.09751     
-Dot         167184.676  0.05138     0.07494     0.05974     
+Copy        89720.889   0.09574     0.15675     0.13328     
+Mul         78051.564   0.11005     0.15611     0.13755     
+Add         118244.245  0.10897     0.19965     0.16760     
+Triad       103311.237  0.12472     0.19741     0.17175     
+Dot         129691.967  0.06623     0.10821     0.08769     
 <<<58<<<
 >>>59>>>
-Thu 11 Aug 13:43:40 GMT 2022
+Tue 16 Aug 13:50:38 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -1065,14 +1065,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        142825.941  0.06014     0.08455     0.06822     
-Mul         141478.754  0.06072     0.08033     0.06564     
-Add         152654.770  0.08441     0.11934     0.09533     
-Triad       154826.885  0.08322     0.12052     0.09552     
-Dot         176280.052  0.04873     0.07338     0.05830     
+Copy        97466.410   0.08813     0.16406     0.14146     
+Mul         86044.773   0.09983     0.17094     0.15141     
+Add         121384.690  0.10615     0.21147     0.17920     
+Triad       96972.023   0.13287     0.22151     0.19248     
+Dot         127155.652  0.06755     0.12898     0.10126     
 <<<59<<<
 >>>60>>>
-Thu 11 Aug 13:44:25 GMT 2022
+Tue 16 Aug 13:52:01 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -1083,14 +1083,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        153605.456  0.05592     0.07303     0.06524     
-Mul         146609.400  0.05859     0.07331     0.06408     
-Add         164567.083  0.07830     0.10425     0.09109     
-Triad       165318.750  0.07794     0.10517     0.09224     
-Dot         185460.499  0.04632     0.07022     0.05859     
+Copy        67656.978   0.12696     0.16493     0.14736     
+Mul         60674.166   0.14157     0.16852     0.15633     
+Add         73193.117   0.17604     0.20758     0.19337     
+Triad       67979.204   0.18954     0.22181     0.20563     
+Dot         89447.298   0.09603     0.12723     0.10975     
 <<<60<<<
 >>>61>>>
-Thu 11 Aug 13:45:07 GMT 2022
+Tue 16 Aug 13:53:26 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -1101,14 +1101,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        134309.010  0.06396     0.08018     0.07040     
-Mul         140943.339  0.06095     0.08063     0.06664     
-Add         150177.475  0.08580     0.11455     0.09541     
-Triad       151619.990  0.08498     0.11554     0.09570     
-Dot         174924.854  0.04911     0.07465     0.05839     
+Copy        109316.869  0.07858     0.16352     0.13643     
+Mul         110088.828  0.07803     0.15707     0.14202     
+Add         126450.499  0.10190     0.20595     0.17281     
+Triad       115278.724  0.11177     0.20340     0.17834     
+Dot         128972.989  0.06660     0.11748     0.09567     
 <<<61<<<
 >>>62>>>
-Thu 11 Aug 13:45:51 GMT 2022
+Tue 16 Aug 13:54:44 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -1119,14 +1119,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        139400.936  0.06162     0.08326     0.06813     
-Mul         141265.427  0.06081     0.08138     0.06653     
-Add         153056.621  0.08418     0.11633     0.09380     
-Triad       154169.090  0.08358     0.11664     0.09409     
-Dot         174682.071  0.04917     0.07479     0.05775     
+Copy        105465.647  0.08145     0.16265     0.13140     
+Mul         67265.180   0.12770     0.16414     0.15401     
+Add         118135.156  0.10907     0.20919     0.16766     
+Triad       79230.338   0.16263     0.21255     0.19235     
+Dot         131311.659  0.06542     0.11960     0.09368     
 <<<62<<<
 >>>63>>>
-Thu 11 Aug 13:46:34 GMT 2022
+Tue 16 Aug 13:56:02 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -1137,14 +1137,14 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        137043.684  0.06268     0.08002     0.06919     
-Mul         140768.731  0.06102     0.08055     0.06661     
-Add         150723.226  0.08549     0.11504     0.09566     
-Triad       151130.463  0.08526     0.11481     0.09609     
-Dot         172325.470  0.04985     0.07476     0.05925     
+Copy        87785.523   0.09785     0.16399     0.13026     
+Mul         68403.371   0.12558     0.16465     0.14899     
+Add         116401.666  0.11069     0.20874     0.16489     
+Triad       84983.038   0.15162     0.22019     0.18730     
+Dot         130921.667  0.06561     0.12259     0.09244     
 <<<63<<<
 >>>64>>>
-Thu 11 Aug 13:47:18 GMT 2022
+Tue 16 Aug 13:57:19 GMT 2022
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -1155,9 +1155,9 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        144872.034  0.05929     0.06450     0.06198     
-Mul         162080.332  0.05300     0.05902     0.05571     
-Add         164742.903  0.07821     0.08693     0.08264     
-Triad       160475.662  0.08029     0.08788     0.08382     
-Dot         186062.693  0.04617     0.05257     0.05022     
+Copy        100745.108  0.08526     0.16038     0.13387     
+Mul         75988.697   0.11304     0.16878     0.14447     
+Add         122140.902  0.10549     0.21132     0.17060     
+Triad       98587.848   0.13069     0.21007     0.18221     
+Dot         128128.595  0.06704     0.11744     0.09837     
 <<<64<<<

@@ -1,0 +1,27 @@
+Wed 10 Aug 10:08:40 BST 2022
+/lustre/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-a100_nvhpc-22.7_kokkos
+	linux-vdso.so.1 (0x00007fff919fc000)
+	libcuda.so.1 => /lib64/libcuda.so.1 (0x0000146394af7000)
+	libcudart.so.11.0 => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.7/cuda/lib64/libcudart.so.11.0 (0x0000146394852000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000014639464e000)
+	librt.so.1 => /lib64/librt.so.1 (0x0000146394446000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000146394226000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/9.3.0/lib64/libstdc++.so.6 (0x0000146393e4c000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000146393aca000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/9.3.0/lib64/libgcc_s.so.1 (0x00001463938b2000)
+	libc.so.6 => /lib64/libc.so.6 (0x00001463934ef000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000146396253000)
+Kokkos library for N6Kokkos4CudaE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1388366.947 0.00619     0.00621     0.00619     
+Mul         1386539.391 0.00620     0.00621     0.00620     
+Add         1394900.902 0.00924     0.00947     0.00944     
+Triad       1394294.558 0.00924     0.00947     0.00944     
+Dot         1193352.102 0.00720     0.00751     0.00724     

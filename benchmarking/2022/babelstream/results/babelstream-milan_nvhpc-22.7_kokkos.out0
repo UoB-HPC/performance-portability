@@ -1,0 +1,30 @@
+Wed 10 Aug 10:04:15 BST 2022
+/lustre/home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-milan_nvhpc-22.7_kokkos
+	linux-vdso.so.1 (0x00007fffe9fc8000)
+	libdl.so.2 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libdl.so.2 (0x0000148bb67e7000)
+	libacchost.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.7/compilers/lib/libacchost.so (0x0000148bb6576000)
+	libatomic.so.1 => /lustre/projects/bristol/modules/gcc/9.3.0/lib64/libatomic.so.1 (0x0000148bb636e000)
+	libnvhpcatm.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.7/compilers/lib/libnvhpcatm.so (0x0000148bb6163000)
+	libstdc++.so.6 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libstdc++.so.6 (0x0000148bb5dce000)
+	libnvomp.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.7/compilers/lib/libnvomp.so (0x0000148bb50c4000)
+	libpthread.so.0 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libpthread.so.0 (0x0000148bb4ea4000)
+	libnvcpumath-avx2.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.7/compilers/lib/libnvcpumath-avx2.so (0x0000148bb4a9d000)
+	libnvc.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.7/compilers/lib/libnvc.so (0x0000148bb483a000)
+	libc.so.6 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libc.so.6 (0x0000148bb4477000)
+	libgcc_s.so.1 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libgcc_s.so.1 (0x0000148bb425f000)
+	libm.so.6 => /usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/libm.so.6 (0x0000148bb3edd000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000148bb69eb000)
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        24124.159   0.35607     0.38810     0.36958     
+Mul         24047.053   0.35721     0.40122     0.37381     
+Add         25732.486   0.50073     0.54739     0.52143     
+Triad       26734.275   0.48196     0.53429     0.50910     
+Dot         34243.627   0.25085     0.29033     0.26686     
