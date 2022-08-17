@@ -1,0 +1,1036 @@
+Mon Aug 15 18:19:18 UTC 2022
+/home/tomlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-graviton2_gcc-12.1_kokkos
+	linux-vdso.so.1 (0x0000ffff9df11000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffff9deb2000)
+	libstdc++.so.6 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libstdc++.so.6 (0x0000ffff9dc8c000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000ffff9dbcb000)
+	libgomp.so.1 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libgomp.so.1 (0x0000ffff9db6a000)
+	libgcc_s.so.1 => /lustre/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-24ohqeaxrtjf5d7t5oph2eva7tguampu/lib64/libgcc_s.so.1 (0x0000ffff9db37000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffff9db02000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000ffff9d97c000)
+	/lib/ld-linux-aarch64.so.1 (0x0000ffff9ded3000)
+Kokkos library for N6Kokkos6OpenMPE
+>>>1>>>
+Mon Aug 15 18:19:21 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        30631.587   0.28043     0.28077     0.28052     
+Mul         30678.063   0.28000     0.28042     0.28008     
+Add         25353.246   0.50822     0.50857     0.50836     
+Triad       25351.746   0.50825     0.50866     0.50835     
+Dot         16724.476   0.51361     0.51405     0.51369     
+<<<1<<<
+>>>2>>>
+Mon Aug 15 18:23:01 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        58445.556   0.14697     0.14730     0.14701     
+Mul         58298.178   0.14734     0.14772     0.14739     
+Add         49457.409   0.26053     0.26551     0.26068     
+Triad       49518.346   0.26020     0.26044     0.26032     
+Dot         33426.543   0.25698     0.26050     0.25709     
+<<<2<<<
+>>>3>>>
+Mon Aug 15 18:24:59 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        86820.254   0.09894     0.09906     0.09899     
+Mul         86820.555   0.09894     0.09902     0.09898     
+Add         71861.569   0.17930     0.17957     0.17945     
+Triad       72166.185   0.17854     0.17896     0.17866     
+Dot         49443.563   0.17373     0.17691     0.17383     
+<<<3<<<
+>>>4>>>
+Mon Aug 15 18:26:22 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        110895.255  0.07746     0.07770     0.07757     
+Mul         111083.544  0.07733     0.07793     0.07754     
+Add         91627.458   0.14062     0.14426     0.14079     
+Triad       92249.902   0.13967     0.14284     0.13984     
+Dot         66265.345   0.12963     0.13007     0.12973     
+<<<4<<<
+>>>5>>>
+Mon Aug 15 18:27:29 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        123155.946  0.06975     0.06996     0.06987     
+Mul         125269.966  0.06857     0.06881     0.06865     
+Add         107457.371  0.11991     0.12014     0.12003     
+Triad       108200.130  0.11908     0.11940     0.11919     
+Dot         81125.920   0.10588     0.10982     0.10601     
+<<<5<<<
+>>>6>>>
+Mon Aug 15 18:28:28 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        132976.548  0.06460     0.06481     0.06470     
+Mul         131654.354  0.06525     0.06554     0.06542     
+Add         120474.489  0.10695     0.10721     0.10708     
+Triad       120833.742  0.10663     0.10779     0.10675     
+Dot         97267.059   0.08831     0.09228     0.08843     
+<<<6<<<
+>>>7>>>
+Mon Aug 15 18:29:22 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        143387.943  0.05991     0.06005     0.05997     
+Mul         143894.165  0.05970     0.05991     0.05975     
+Add         131367.982  0.09808     0.10137     0.09826     
+Triad       131331.704  0.09811     0.09834     0.09820     
+Dot         112104.498  0.07662     0.08058     0.07671     
+<<<7<<<
+>>>8>>>
+Mon Aug 15 18:30:12 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        148219.938  0.05795     0.05816     0.05807     
+Mul         149054.468  0.05763     0.05783     0.05772     
+Add         142311.302  0.09054     0.09094     0.09065     
+Triad       143740.455  0.08964     0.08986     0.08974     
+Dot         127197.433  0.06753     0.07150     0.06763     
+<<<8<<<
+>>>9>>>
+Mon Aug 15 18:30:59 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        153606.805  0.05592     0.05608     0.05598     
+Mul         153256.465  0.05605     0.05624     0.05613     
+Add         148622.460  0.08670     0.08690     0.08678     
+Triad       151277.720  0.08517     0.08540     0.08529     
+Dot         132347.601  0.06490     0.06510     0.06505     
+<<<9<<<
+>>>10>>>
+Mon Aug 15 18:31:44 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        156066.502  0.05504     0.05528     0.05511     
+Mul         153983.975  0.05578     0.05602     0.05592     
+Add         153589.393  0.08389     0.08412     0.08398     
+Triad       153391.234  0.08400     0.08427     0.08411     
+Dot         132253.428  0.06495     0.06533     0.06530     
+<<<10<<<
+>>>11>>>
+Mon Aug 15 18:32:29 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        160495.309  0.05352     0.05366     0.05359     
+Mul         158257.788  0.05428     0.05451     0.05442     
+Add         159465.311  0.08080     0.08277     0.08091     
+Triad       160953.318  0.08005     0.08124     0.08016     
+Dot         143152.595  0.06001     0.06025     0.06023     
+<<<11<<<
+>>>12>>>
+Mon Aug 15 18:33:12 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        163174.300  0.05264     0.05441     0.05274     
+Mul         158416.622  0.05422     0.05437     0.05429     
+Add         164634.107  0.07826     0.07854     0.07837     
+Triad       165263.155  0.07797     0.07818     0.07806     
+Dot         157694.597  0.05447     0.05467     0.05460     
+<<<12<<<
+>>>13>>>
+Mon Aug 15 18:33:54 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        166714.302  0.05152     0.05165     0.05158     
+Mul         163451.511  0.05255     0.05272     0.05260     
+Add         167208.419  0.07706     0.07728     0.07716     
+Triad       168758.941  0.07635     0.07725     0.07649     
+Dot         169206.636  0.05077     0.05219     0.05088     
+<<<13<<<
+>>>14>>>
+Mon Aug 15 18:34:35 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        169952.703  0.05054     0.05064     0.05059     
+Mul         168657.834  0.05093     0.05124     0.05100     
+Add         169116.320  0.07619     0.07651     0.07631     
+Triad       169900.260  0.07584     0.07871     0.07602     
+Dot         176003.110  0.04881     0.04894     0.04888     
+<<<14<<<
+>>>15>>>
+Mon Aug 15 18:35:16 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        171938.585  0.04996     0.05011     0.05003     
+Mul         171702.779  0.05003     0.05017     0.05009     
+Add         170512.911  0.07557     0.07586     0.07571     
+Triad       171541.775  0.07511     0.07772     0.07522     
+Dot         181373.516  0.04736     0.04758     0.04748     
+<<<15<<<
+>>>16>>>
+Mon Aug 15 18:35:56 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        172390.031  0.04983     0.04998     0.04988     
+Mul         172414.391  0.04982     0.05000     0.04991     
+Add         170491.874  0.07557     0.07584     0.07571     
+Triad       171462.878  0.07515     0.07541     0.07526     
+Dot         173700.030  0.04945     0.04963     0.04954     
+<<<16<<<
+>>>17>>>
+Mon Aug 15 18:36:37 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        172061.998  0.04992     0.05209     0.05005     
+Mul         170341.029  0.05043     0.05057     0.05049     
+Add         171111.619  0.07530     0.07561     0.07546     
+Triad       171395.332  0.07518     0.07537     0.07526     
+Dot         172290.122  0.04986     0.05087     0.04997     
+<<<17<<<
+>>>18>>>
+Mon Aug 15 18:37:17 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        170652.314  0.05034     0.05059     0.05046     
+Mul         169168.114  0.05078     0.05107     0.05091     
+Add         170829.424  0.07543     0.07660     0.07560     
+Triad       171083.699  0.07531     0.07792     0.07548     
+Dot         171564.167  0.05007     0.05022     0.05014     
+<<<18<<<
+>>>19>>>
+Mon Aug 15 18:37:58 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        169419.577  0.05070     0.05101     0.05079     
+Mul         167838.394  0.05118     0.05244     0.05128     
+Add         170786.708  0.07544     0.07574     0.07558     
+Triad       170706.636  0.07548     0.07579     0.07561     
+Dot         171508.253  0.05008     0.05036     0.05015     
+<<<19<<<
+>>>20>>>
+Mon Aug 15 18:38:39 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        168805.676  0.05089     0.05288     0.05105     
+Mul         166785.827  0.05150     0.05171     0.05159     
+Add         170619.522  0.07552     0.07600     0.07568     
+Triad       170512.441  0.07557     0.07589     0.07570     
+Dot         170998.440  0.05023     0.05037     0.05032     
+<<<20<<<
+>>>21>>>
+Mon Aug 15 18:39:20 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        167504.585  0.05128     0.05156     0.05137     
+Mul         167780.179  0.05120     0.05137     0.05128     
+Add         170016.953  0.07579     0.07599     0.07586     
+Triad       170485.797  0.07558     0.07584     0.07567     
+Dot         170791.375  0.05029     0.05322     0.05038     
+<<<21<<<
+>>>22>>>
+Mon Aug 15 18:40:00 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        166965.281  0.05145     0.05173     0.05159     
+Mul         166913.417  0.05146     0.05172     0.05155     
+Add         169693.227  0.07593     0.07617     0.07602     
+Triad       170078.518  0.07576     0.07604     0.07591     
+Dot         170657.088  0.05033     0.05060     0.05042     
+<<<22<<<
+>>>23>>>
+Mon Aug 15 18:40:41 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        166114.394  0.05171     0.05249     0.05183     
+Mul         166102.708  0.05171     0.05203     0.05181     
+Add         169604.795  0.07597     0.07628     0.07608     
+Triad       169614.527  0.07597     0.07621     0.07607     
+Dot         170054.416  0.05051     0.05081     0.05061     
+<<<23<<<
+>>>24>>>
+Mon Aug 15 18:41:23 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        165441.149  0.05192     0.05211     0.05201     
+Mul         165577.157  0.05188     0.05216     0.05198     
+Add         169092.295  0.07620     0.07767     0.07635     
+Triad       169336.904  0.07609     0.07809     0.07624     
+Dot         170270.700  0.05045     0.05066     0.05053     
+<<<24<<<
+>>>25>>>
+Mon Aug 15 18:42:04 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        165583.467  0.05188     0.05210     0.05198     
+Mul         165229.285  0.05199     0.05301     0.05212     
+Add         168896.835  0.07629     0.07654     0.07638     
+Triad       169083.783  0.07620     0.07642     0.07631     
+Dot         169957.569  0.05054     0.05071     0.05066     
+<<<25<<<
+>>>26>>>
+Mon Aug 15 18:42:45 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        164868.475  0.05210     0.05240     0.05223     
+Mul         164426.014  0.05224     0.05245     0.05235     
+Add         168842.642  0.07631     0.07668     0.07645     
+Triad       168842.481  0.07631     0.07653     0.07642     
+Dot         169915.293  0.05055     0.05080     0.05067     
+<<<26<<<
+>>>27>>>
+Mon Aug 15 18:43:26 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        164221.527  0.05231     0.05255     0.05242     
+Mul         163647.766  0.05249     0.05274     0.05261     
+Add         168857.770  0.07631     0.07736     0.07645     
+Triad       168860.459  0.07631     0.07799     0.07641     
+Dot         169537.188  0.05067     0.05084     0.05075     
+<<<27<<<
+>>>28>>>
+Mon Aug 15 18:44:07 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        164194.186  0.05232     0.05257     0.05241     
+Mul         163960.304  0.05239     0.05258     0.05248     
+Add         168735.212  0.07636     0.07671     0.07655     
+Triad       169303.283  0.07611     0.07631     0.07620     
+Dot         169187.946  0.05077     0.05277     0.05088     
+<<<28<<<
+>>>29>>>
+Mon Aug 15 18:44:49 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        164023.054  0.05237     0.05333     0.05248     
+Mul         163148.481  0.05265     0.05287     0.05274     
+Add         168936.639  0.07627     0.07651     0.07636     
+Triad       169106.956  0.07619     0.07645     0.07631     
+Dot         168700.924  0.05092     0.05115     0.05104     
+<<<29<<<
+>>>30>>>
+Mon Aug 15 18:45:30 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        163564.673  0.05252     0.05391     0.05261     
+Mul         160276.510  0.05359     0.05462     0.05372     
+Add         169021.566  0.07623     0.07657     0.07636     
+Triad       169038.434  0.07622     0.07645     0.07634     
+Dot         169067.534  0.05081     0.05105     0.05091     
+<<<30<<<
+>>>31>>>
+Mon Aug 15 18:46:11 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        162937.425  0.05272     0.05291     0.05282     
+Mul         159950.511  0.05370     0.05397     0.05384     
+Add         168743.642  0.07636     0.07666     0.07648     
+Triad       168848.747  0.07631     0.07742     0.07642     
+Dot         168793.635  0.05089     0.05288     0.05103     
+<<<31<<<
+>>>32>>>
+Mon Aug 15 18:46:53 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        162920.348  0.05272     0.05294     0.05284     
+Mul         160955.159  0.05337     0.05367     0.05351     
+Add         168575.327  0.07643     0.07675     0.07655     
+Triad       168849.198  0.07631     0.07654     0.07642     
+Dot         168824.086  0.05088     0.05112     0.05101     
+<<<32<<<
+>>>33>>>
+Mon Aug 15 18:47:34 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        162301.573  0.05293     0.05315     0.05303     
+Mul         159444.833  0.05387     0.05422     0.05406     
+Add         168708.821  0.07637     0.07666     0.07647     
+Triad       168327.791  0.07655     0.07674     0.07666     
+Dot         168664.299  0.05093     0.05306     0.05108     
+<<<33<<<
+>>>34>>>
+Mon Aug 15 18:48:16 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        162324.711  0.05292     0.05315     0.05301     
+Mul         158886.645  0.05406     0.05458     0.05432     
+Add         168637.973  0.07641     0.07766     0.07658     
+Triad       168545.357  0.07645     0.07825     0.07658     
+Dot         168343.380  0.05103     0.05127     0.05116     
+<<<34<<<
+>>>35>>>
+Mon Aug 15 18:48:58 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        161711.019  0.05312     0.05341     0.05325     
+Mul         160228.260  0.05361     0.05395     0.05381     
+Add         168303.957  0.07656     0.07767     0.07673     
+Triad       168743.063  0.07636     0.07670     0.07648     
+Dot         167940.859  0.05115     0.05153     0.05133     
+<<<35<<<
+>>>36>>>
+Mon Aug 15 18:49:39 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        161082.166  0.05333     0.05357     0.05344     
+Mul         160437.446  0.05354     0.05437     0.05366     
+Add         168013.053  0.07669     0.07704     0.07689     
+Triad       168355.567  0.07653     0.07679     0.07663     
+Dot         167647.210  0.05124     0.05152     0.05136     
+<<<36<<<
+>>>37>>>
+Mon Aug 15 18:50:21 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        160533.834  0.05351     0.05485     0.05363     
+Mul         160328.607  0.05358     0.05379     0.05367     
+Add         167937.447  0.07672     0.07717     0.07693     
+Triad       168055.487  0.07667     0.07694     0.07678     
+Dot         167720.131  0.05122     0.05260     0.05141     
+<<<37<<<
+>>>38>>>
+Mon Aug 15 18:51:03 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        161821.652  0.05308     0.05321     0.05314     
+Mul         161780.792  0.05310     0.05332     0.05316     
+Add         167999.802  0.07670     0.07702     0.07686     
+Triad       168167.821  0.07662     0.07684     0.07671     
+Dot         166613.458  0.05156     0.05197     0.05179     
+<<<38<<<
+>>>39>>>
+Mon Aug 15 18:51:44 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        163147.232  0.05265     0.05283     0.05273     
+Mul         163090.222  0.05267     0.05346     0.05279     
+Add         167701.481  0.07683     0.07726     0.07708     
+Triad       168296.285  0.07656     0.07696     0.07669     
+Dot         168311.457  0.05104     0.05149     0.05132     
+<<<39<<<
+>>>40>>>
+Mon Aug 15 18:52:26 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        163456.568  0.05255     0.05278     0.05265     
+Mul         163242.323  0.05262     0.05394     0.05270     
+Add         167495.528  0.07693     0.07732     0.07706     
+Triad       167984.098  0.07670     0.07696     0.07682     
+Dot         168202.449  0.05107     0.05234     0.05131     
+<<<40<<<
+>>>41>>>
+Mon Aug 15 18:53:07 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        163075.515  0.05267     0.05289     0.05277     
+Mul         162889.833  0.05273     0.05297     0.05285     
+Add         167284.558  0.07702     0.07788     0.07721     
+Triad       167991.325  0.07670     0.07702     0.07683     
+Dot         170710.671  0.05032     0.05073     0.05054     
+<<<41<<<
+>>>42>>>
+Mon Aug 15 18:53:48 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        163090.699  0.05267     0.05301     0.05277     
+Mul         162591.663  0.05283     0.05363     0.05294     
+Add         166838.993  0.07723     0.07761     0.07742     
+Triad       167722.171  0.07682     0.07708     0.07694     
+Dot         170778.923  0.05030     0.05076     0.05056     
+<<<42<<<
+>>>43>>>
+Mon Aug 15 18:54:30 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        163227.433  0.05263     0.05292     0.05280     
+Mul         163122.524  0.05266     0.05520     0.05284     
+Add         166436.432  0.07742     0.07826     0.07760     
+Triad       166795.561  0.07725     0.07755     0.07737     
+Dot         171000.826  0.05023     0.05074     0.05047     
+<<<43<<<
+>>>44>>>
+Mon Aug 15 18:55:11 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        163006.827  0.05270     0.05295     0.05281     
+Mul         162321.021  0.05292     0.05320     0.05304     
+Add         166645.842  0.07732     0.07766     0.07751     
+Triad       167671.856  0.07685     0.07712     0.07699     
+Dot         170696.915  0.05032     0.05351     0.05056     
+<<<44<<<
+>>>45>>>
+Mon Aug 15 18:55:53 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        162467.175  0.05287     0.05313     0.05298     
+Mul         162374.928  0.05290     0.05315     0.05301     
+Add         166741.457  0.07727     0.07766     0.07748     
+Triad       167503.755  0.07692     0.07723     0.07707     
+Dot         170761.846  0.05030     0.05071     0.05052     
+<<<45<<<
+>>>46>>>
+Mon Aug 15 18:56:34 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        162265.788  0.05294     0.05315     0.05305     
+Mul         161694.177  0.05312     0.05349     0.05331     
+Add         166330.271  0.07747     0.07784     0.07765     
+Triad       166886.756  0.07721     0.07858     0.07740     
+Dot         170598.270  0.05035     0.05077     0.05056     
+<<<46<<<
+>>>47>>>
+Mon Aug 15 18:57:16 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        162472.725  0.05287     0.05312     0.05300     
+Mul         161946.502  0.05304     0.05330     0.05316     
+Add         166449.663  0.07741     0.07838     0.07765     
+Triad       167297.651  0.07702     0.08010     0.07721     
+Dot         170953.926  0.05025     0.05076     0.05054     
+<<<47<<<
+>>>48>>>
+Mon Aug 15 18:57:58 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        162562.640  0.05284     0.05309     0.05297     
+Mul         161830.338  0.05308     0.05342     0.05325     
+Add         165694.730  0.07776     0.07893     0.07792     
+Triad       166668.582  0.07731     0.07768     0.07745     
+Dot         170400.883  0.05041     0.05082     0.05060     
+<<<48<<<
+>>>49>>>
+Mon Aug 15 18:58:39 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        162225.769  0.05295     0.05347     0.05307     
+Mul         161449.665  0.05321     0.05353     0.05336     
+Add         166202.449  0.07753     0.07787     0.07772     
+Triad       166834.049  0.07723     0.07771     0.07747     
+Dot         170900.109  0.05026     0.05195     0.05053     
+<<<49<<<
+>>>50>>>
+Mon Aug 15 18:59:21 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        162333.972  0.05292     0.05422     0.05306     
+Mul         161710.082  0.05312     0.05357     0.05332     
+Add         165742.590  0.07774     0.07835     0.07806     
+Triad       166264.483  0.07750     0.07804     0.07782     
+Dot         170816.504  0.05029     0.05071     0.05050     
+<<<50<<<
+>>>51>>>
+Mon Aug 15 19:00:03 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        161885.339  0.05306     0.05338     0.05321     
+Mul         161371.289  0.05323     0.05362     0.05340     
+Add         165337.303  0.07793     0.07838     0.07813     
+Triad       166157.162  0.07755     0.07813     0.07786     
+Dot         170413.537  0.05041     0.05085     0.05064     
+<<<51<<<
+>>>52>>>
+Mon Aug 15 19:00:44 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        162170.031  0.05297     0.05332     0.05317     
+Mul         161066.149  0.05333     0.05379     0.05351     
+Add         165146.822  0.07802     0.07848     0.07821     
+Triad       165910.698  0.07766     0.07803     0.07783     
+Dot         170793.215  0.05029     0.05144     0.05050     
+<<<52<<<
+>>>53>>>
+Mon Aug 15 19:01:26 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        161789.439  0.05309     0.05339     0.05322     
+Mul         161556.048  0.05317     0.05403     0.05337     
+Add         165362.446  0.07792     0.07891     0.07814     
+Triad       166707.751  0.07729     0.07786     0.07759     
+Dot         170258.273  0.05045     0.05123     0.05066     
+<<<53<<<
+>>>54>>>
+Mon Aug 15 19:02:08 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        161723.475  0.05311     0.05344     0.05327     
+Mul         160795.302  0.05342     0.05378     0.05359     
+Add         165247.779  0.07797     0.07932     0.07822     
+Triad       165812.039  0.07771     0.07832     0.07808     
+Dot         170539.236  0.05037     0.05070     0.05055     
+<<<54<<<
+>>>55>>>
+Mon Aug 15 19:02:50 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        161918.182  0.05305     0.05336     0.05321     
+Mul         160727.228  0.05344     0.05413     0.05368     
+Add         164689.307  0.07824     0.07898     0.07845     
+Triad       165366.417  0.07792     0.07860     0.07817     
+Dot         170325.779  0.05043     0.05081     0.05062     
+<<<55<<<
+>>>56>>>
+Mon Aug 15 19:03:31 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        161457.133  0.05320     0.05357     0.05341     
+Mul         160809.197  0.05342     0.05470     0.05365     
+Add         164245.968  0.07845     0.07893     0.07867     
+Triad       165609.173  0.07780     0.07834     0.07802     
+Dot         170096.219  0.05050     0.05101     0.05080     
+<<<56<<<
+>>>57>>>
+Mon Aug 15 19:04:13 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        161572.290  0.05316     0.05357     0.05334     
+Mul         160417.266  0.05355     0.05402     0.05379     
+Add         164212.880  0.07846     0.07962     0.07873     
+Triad       165008.673  0.07809     0.07860     0.07838     
+Dot         170231.132  0.05046     0.05133     0.05068     
+<<<57<<<
+>>>58>>>
+Mon Aug 15 19:04:55 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        161462.663  0.05320     0.05354     0.05335     
+Mul         160009.031  0.05368     0.05417     0.05392     
+Add         164432.069  0.07836     0.07892     0.07865     
+Triad       165167.014  0.07801     0.07870     0.07816     
+Dot         170362.167  0.05042     0.05083     0.05065     
+<<<58<<<
+>>>59>>>
+Mon Aug 15 19:05:37 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        161536.504  0.05318     0.05690     0.05342     
+Mul         160672.615  0.05346     0.05394     0.05371     
+Add         164126.095  0.07851     0.07891     0.07871     
+Triad       165130.358  0.07803     0.07876     0.07827     
+Dot         170216.553  0.05046     0.05106     0.05067     
+<<<59<<<
+>>>60>>>
+Mon Aug 15 19:06:19 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        161201.807  0.05329     0.05397     0.05348     
+Mul         159956.322  0.05370     0.05608     0.05396     
+Add         163907.507  0.07861     0.07899     0.07881     
+Triad       164382.771  0.07838     0.07892     0.07858     
+Dot         170286.517  0.05044     0.05085     0.05064     
+<<<60<<<
+>>>61>>>
+Mon Aug 15 19:07:01 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        160386.853  0.05356     0.05421     0.05382     
+Mul         159333.875  0.05391     0.05501     0.05423     
+Add         163576.630  0.07877     0.07924     0.07895     
+Triad       164662.553  0.07825     0.07865     0.07843     
+Dot         169550.878  0.05066     0.05100     0.05084     
+<<<61<<<
+>>>62>>>
+Mon Aug 15 19:07:43 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        160907.757  0.05338     0.05403     0.05368     
+Mul         159991.713  0.05369     0.05421     0.05395     
+Add         163698.077  0.07871     0.07937     0.07907     
+Triad       164354.020  0.07840     0.07888     0.07860     
+Dot         169963.084  0.05054     0.05108     0.05074     
+<<<62<<<
+>>>63>>>
+Mon Aug 15 19:08:25 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        161357.548  0.05324     0.05372     0.05343     
+Mul         160136.836  0.05364     0.05414     0.05387     
+Add         163589.359  0.07876     0.07917     0.07898     
+Triad       164498.232  0.07833     0.07875     0.07855     
+Dot         169579.510  0.05065     0.05731     0.05092     
+<<<63<<<
+>>>64>>>
+Mon Aug 15 19:09:07 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        160292.307  0.05359     0.05416     0.05387     
+Mul         158539.021  0.05418     0.05467     0.05442     
+Add         162955.454  0.07907     0.07955     0.07931     
+Triad       163711.661  0.07870     0.07959     0.07890     
+Dot         169381.730  0.05071     0.05106     0.05090     
+<<<64<<<

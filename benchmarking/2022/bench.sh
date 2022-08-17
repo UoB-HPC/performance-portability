@@ -9,9 +9,9 @@ GCC=gcc-12.1
 AOCC=aocc-3.2.0
 ARM=arm-22.0.1
 
-cloverleaf=false
-bude=true
-babelstream=true
+cloverleaf=true
+bude=false
+babelstream=false
 
 declare -A models
 models["tbb"]=true
