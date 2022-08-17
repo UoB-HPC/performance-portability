@@ -1,0 +1,1040 @@
+Tue 16 Aug 01:19:54 UTC 2022
+/home/tomlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-graviton3_arm-22.0.1_omp
+	linux-vdso.so.1 (0x0000ffff8ecd3000)
+	libomp.so => /home/tomlin/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/arm-22.0.1-5xha4zoteearvmjxs2edwnrlao3gtk5p/arm-linux-compiler-22.0.1_Generic-AArch64_RHEL-7_aarch64-linux/llvm-bin/../lib/libomp.so (0x0000ffff8ebc6000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffff8eb9c000)
+	libamath_aarch64-sve.so => /home/tomlin/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/arm-22.0.1-5xha4zoteearvmjxs2edwnrlao3gtk5p/arm-linux-compiler-22.0.1_Generic-AArch64_RHEL-7_aarch64-linux/llvm-bin/../lib/libamath_aarch64-sve.so (0x0000ffff8ea0d000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000ffff8e94c000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffff8e917000)
+	libstdc++.so.6 => /home/tomlin/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-2wt4bvnu6tcnkx7nrfji47qyy3b5zb2s/lib64/libstdc++.so.6 (0x0000ffff8e6f1000)
+	libastring_aarch64-sve.so => /home/tomlin/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/arm-22.0.1-5xha4zoteearvmjxs2edwnrlao3gtk5p/arm-linux-compiler-22.0.1_Generic-AArch64_RHEL-7_aarch64-linux/llvm-bin/../lib/libastring_aarch64-sve.so (0x0000ffff8e6de000)
+	libgcc_s.so.1 => /home/tomlin/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-2wt4bvnu6tcnkx7nrfji47qyy3b5zb2s/lib64/libgcc_s.so.1 (0x0000ffff8e6ad000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000ffff8e527000)
+	libamath_aarch64.so => /home/tomlin/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/arm-22.0.1-5xha4zoteearvmjxs2edwnrlao3gtk5p/arm-linux-compiler-22.0.1_Generic-AArch64_RHEL-7_aarch64-linux/llvm-bin/../lib/../lib/libamath_aarch64.so (0x0000ffff8e398000)
+	librt.so.1 => /lib64/librt.so.1 (0x0000ffff8e377000)
+	/lib/ld-linux-aarch64.so.1 (0x0000ffff8eca5000)
+0: CPU
+>>>1>>>
+Tue 16 Aug 01:19:54 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        51779.984   0.16589     0.16949     0.16622     
+Mul         51438.301   0.16699     0.16855     0.16730     
+Add         46395.581   0.27772     0.28098     0.27805     
+Triad       46387.518   0.27777     0.28100     0.27816     
+Dot         32728.790   0.26246     0.26341     0.26263     
+<<<1<<<
+>>>2>>>
+Tue 16 Aug 01:21:57 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        96584.540   0.08894     0.09060     0.08903     
+Mul         95146.731   0.09028     0.09134     0.09036     
+Add         89308.719   0.14427     0.14559     0.14438     
+Triad       89279.038   0.14432     0.14968     0.14449     
+Dot         64137.248   0.13393     0.13471     0.13399     
+<<<2<<<
+>>>3>>>
+Tue 16 Aug 01:23:04 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        132292.981  0.06493     0.06632     0.06502     
+Mul         129227.003  0.06647     0.06760     0.06656     
+Add         128582.379  0.10021     0.10209     0.10030     
+Triad       128608.307  0.10019     0.10137     0.10027     
+Dot         94026.138   0.09136     0.09170     0.09140     
+<<<3<<<
+>>>4>>>
+Tue 16 Aug 01:23:53 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        160024.913  0.05368     0.05479     0.05375     
+Mul         159127.727  0.05398     0.05479     0.05403     
+Add         161395.787  0.07983     0.08120     0.07990     
+Triad       161258.943  0.07990     0.08156     0.07999     
+Dot         121881.455  0.07048     0.07081     0.07052     
+<<<4<<<
+>>>5>>>
+Tue 16 Aug 01:24:33 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        178081.611  0.04824     0.04837     0.04830     
+Mul         176835.250  0.04858     0.04872     0.04867     
+Add         186659.320  0.06903     0.07023     0.06909     
+Triad       186577.166  0.06906     0.07122     0.06914     
+Dot         147781.357  0.05813     0.05823     0.05815     
+<<<5<<<
+>>>6>>>
+Tue 16 Aug 01:25:08 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        190035.578  0.04520     0.04641     0.04528     
+Mul         189575.706  0.04531     0.04638     0.04540     
+Add         204479.396  0.06301     0.06431     0.06309     
+Triad       204287.383  0.06307     0.06403     0.06314     
+Dot         170758.883  0.05030     0.05088     0.05034     
+<<<6<<<
+>>>7>>>
+Tue 16 Aug 01:25:41 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        198903.029  0.04319     0.04422     0.04328     
+Mul         198874.975  0.04319     0.04436     0.04331     
+Add         217629.088  0.05921     0.06013     0.05929     
+Triad       217465.928  0.05925     0.06139     0.05937     
+Dot         191471.457  0.04486     0.04507     0.04489     
+<<<7<<<
+>>>8>>>
+Tue 16 Aug 01:26:12 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        209599.102  0.04098     0.04195     0.04105     
+Mul         210248.176  0.04086     0.04128     0.04092     
+Add         218854.762  0.05887     0.06185     0.06033     
+Triad       218698.872  0.05892     0.06143     0.06001     
+Dot         209613.899  0.04098     0.04164     0.04103     
+<<<8<<<
+>>>9>>>
+Tue 16 Aug 01:26:42 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        215591.527  0.03984     0.04089     0.03991     
+Mul         214917.672  0.03997     0.04188     0.04003     
+Add         216750.186  0.05945     0.06402     0.06095     
+Triad       217474.105  0.05925     0.06236     0.06068     
+Dot         207080.415  0.04148     0.05056     0.04499     
+<<<9<<<
+>>>10>>>
+Tue 16 Aug 01:27:13 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        219350.766  0.03916     0.04073     0.03929     
+Mul         218917.769  0.03924     0.03999     0.03937     
+Add         215445.936  0.05981     0.06340     0.06160     
+Triad       216923.632  0.05940     0.06209     0.06074     
+Dot         205150.021  0.04187     0.05019     0.04682     
+<<<10<<<
+>>>11>>>
+Tue 16 Aug 01:27:43 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        222397.113  0.03862     0.03980     0.03873     
+Mul         222051.770  0.03868     0.03907     0.03879     
+Add         216216.667  0.05959     0.06274     0.06111     
+Triad       215788.982  0.05971     0.06254     0.06088     
+Dot         198781.485  0.04321     0.04765     0.04520     
+<<<11<<<
+>>>12>>>
+Tue 16 Aug 01:28:13 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        225030.863  0.03817     0.03885     0.03827     
+Mul         224799.558  0.03821     0.03967     0.03832     
+Add         213936.249  0.06023     0.06235     0.06132     
+Triad       214987.004  0.05993     0.06227     0.06089     
+Dot         204188.467  0.04207     0.04675     0.04442     
+<<<12<<<
+>>>13>>>
+Tue 16 Aug 01:28:43 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        228105.268  0.03766     0.03922     0.03778     
+Mul         227289.242  0.03779     0.03947     0.03792     
+Add         215483.346  0.05980     0.06224     0.06064     
+Triad       215142.682  0.05989     0.06157     0.06040     
+Dot         204805.083  0.04194     0.04603     0.04367     
+<<<13<<<
+>>>14>>>
+Tue 16 Aug 01:29:13 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        229073.365  0.03750     0.03828     0.03764     
+Mul         228164.221  0.03765     0.03862     0.03780     
+Add         214447.324  0.06008     0.06122     0.06043     
+Triad       213887.915  0.06024     0.06217     0.06085     
+Dot         203590.718  0.04219     0.04545     0.04364     
+<<<14<<<
+>>>15>>>
+Tue 16 Aug 01:29:43 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        231084.049  0.03717     0.03893     0.03734     
+Mul         229879.714  0.03737     0.03831     0.03752     
+Add         213835.210  0.06026     0.06178     0.06077     
+Triad       214150.083  0.06017     0.06177     0.06053     
+Dot         204712.801  0.04196     0.04446     0.04286     
+<<<15<<<
+>>>16>>>
+Tue 16 Aug 01:30:13 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        234102.885  0.03669     0.03701     0.03681     
+Mul         233527.807  0.03678     0.03718     0.03694     
+Add         213244.331  0.06042     0.06126     0.06086     
+Triad       213442.972  0.06037     0.06171     0.06069     
+Dot         205436.405  0.04181     0.04418     0.04273     
+<<<16<<<
+>>>17>>>
+Tue 16 Aug 01:30:42 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        233093.651  0.03685     0.03713     0.03696     
+Mul         232192.663  0.03699     0.03773     0.03715     
+Add         212692.227  0.06058     0.06209     0.06099     
+Triad       212970.459  0.06050     0.06231     0.06080     
+Dot         204651.538  0.04197     0.04341     0.04260     
+<<<17<<<
+>>>18>>>
+Tue 16 Aug 01:31:12 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        233726.157  0.03675     0.03859     0.03687     
+Mul         232762.438  0.03690     0.03778     0.03704     
+Add         211987.022  0.06078     0.06161     0.06101     
+Triad       212003.192  0.06078     0.06117     0.06094     
+Dot         203832.991  0.04214     0.04304     0.04249     
+<<<18<<<
+>>>19>>>
+Tue 16 Aug 01:31:41 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        235018.885  0.03655     0.03709     0.03664     
+Mul         233913.252  0.03672     0.03881     0.03684     
+Add         211251.363  0.06099     0.06202     0.06119     
+Triad       211498.531  0.06092     0.06241     0.06106     
+Dot         202936.108  0.04233     0.04322     0.04256     
+<<<19<<<
+>>>20>>>
+Tue 16 Aug 01:32:11 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        234891.991  0.03657     0.03681     0.03666     
+Mul         233755.771  0.03675     0.03697     0.03685     
+Add         211295.109  0.06098     0.06227     0.06117     
+Triad       211417.878  0.06095     0.06183     0.06112     
+Dot         203053.379  0.04230     0.04257     0.04243     
+<<<20<<<
+>>>21>>>
+Tue 16 Aug 01:32:41 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        235596.196  0.03646     0.03737     0.03658     
+Mul         234017.596  0.03671     0.03888     0.03683     
+Add         211128.424  0.06103     0.06193     0.06117     
+Triad       211678.880  0.06087     0.06136     0.06105     
+Dot         203149.253  0.04228     0.04556     0.04247     
+<<<21<<<
+>>>22>>>
+Tue 16 Aug 01:33:10 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        235737.637  0.03644     0.03856     0.03656     
+Mul         234436.775  0.03664     0.03777     0.03676     
+Add         211612.792  0.06089     0.06171     0.06102     
+Triad       211783.234  0.06084     0.06106     0.06095     
+Dot         204162.950  0.04207     0.04264     0.04221     
+<<<22<<<
+>>>23>>>
+Tue 16 Aug 01:33:40 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        236239.835  0.03636     0.03769     0.03646     
+Mul         235000.342  0.03655     0.03800     0.03667     
+Add         212682.400  0.06058     0.06173     0.06074     
+Triad       212792.634  0.06055     0.06227     0.06072     
+Dot         205482.462  0.04180     0.04211     0.04189     
+<<<23<<<
+>>>24>>>
+Tue 16 Aug 01:34:09 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        236645.687  0.03630     0.03842     0.03640     
+Mul         235342.163  0.03650     0.03748     0.03660     
+Add         214086.324  0.06019     0.06085     0.06031     
+Triad       213983.993  0.06021     0.06155     0.06034     
+Dot         207921.909  0.04131     0.04161     0.04142     
+<<<24<<<
+>>>25>>>
+Tue 16 Aug 01:34:38 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        237478.435  0.03617     0.03662     0.03626     
+Mul         236220.677  0.03636     0.03652     0.03645     
+Add         215564.903  0.05977     0.06111     0.05987     
+Triad       215314.955  0.05984     0.06097     0.05995     
+Dot         210579.398  0.04079     0.04109     0.04090     
+<<<25<<<
+>>>26>>>
+Tue 16 Aug 01:35:08 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        238419.393  0.03603     0.03670     0.03615     
+Mul         237299.762  0.03620     0.03745     0.03633     
+Add         217788.544  0.05916     0.05937     0.05927     
+Triad       217513.527  0.05924     0.06029     0.05933     
+Dot         213728.782  0.04019     0.04057     0.04030     
+<<<26<<<
+>>>27>>>
+Tue 16 Aug 01:35:36 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        239872.396  0.03581     0.03612     0.03596     
+Mul         238778.582  0.03597     0.03733     0.03615     
+Add         219629.128  0.05867     0.05961     0.05877     
+Triad       219320.227  0.05875     0.05995     0.05888     
+Dot         217110.752  0.03956     0.03984     0.03964     
+<<<27<<<
+>>>28>>>
+Tue 16 Aug 01:36:05 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        241464.674  0.03557     0.03588     0.03577     
+Mul         240201.745  0.03576     0.03604     0.03593     
+Add         222038.396  0.05803     0.05821     0.05812     
+Triad       221829.946  0.05808     0.05947     0.05821     
+Dot         220982.440  0.03887     0.03912     0.03895     
+<<<28<<<
+>>>29>>>
+Tue 16 Aug 01:36:34 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        242809.432  0.03538     0.03718     0.03558     
+Mul         241644.415  0.03555     0.03633     0.03573     
+Add         223919.308  0.05754     0.05820     0.05762     
+Triad       223562.770  0.05763     0.05873     0.05769     
+Dot         224808.806  0.03821     0.03848     0.03828     
+<<<29<<<
+>>>30>>>
+Tue 16 Aug 01:37:02 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        244207.695  0.03517     0.03692     0.03538     
+Mul         243064.429  0.03534     0.03651     0.03553     
+Add         226104.620  0.05699     0.05853     0.05707     
+Triad       225893.423  0.05704     0.05822     0.05713     
+Dot         228338.550  0.03762     0.03787     0.03768     
+<<<30<<<
+>>>31>>>
+Tue 16 Aug 01:37:30 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        245475.426  0.03499     0.03672     0.03521     
+Mul         244501.314  0.03513     0.03668     0.03534     
+Add         227959.390  0.05652     0.05739     0.05661     
+Triad       227644.827  0.05660     0.05777     0.05668     
+Dot         231788.512  0.03706     0.03727     0.03711     
+<<<31<<<
+>>>32>>>
+Tue 16 Aug 01:37:58 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        246536.313  0.03484     0.03552     0.03503     
+Mul         245633.863  0.03497     0.03696     0.03519     
+Add         229675.234  0.05610     0.05694     0.05620     
+Triad       229319.681  0.05619     0.05782     0.05630     
+Dot         235068.124  0.03654     0.03686     0.03661     
+<<<32<<<
+>>>33>>>
+Tue 16 Aug 01:38:25 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        247498.313  0.03471     0.03510     0.03491     
+Mul         246435.702  0.03486     0.03746     0.03506     
+Add         231335.195  0.05570     0.05656     0.05578     
+Triad       231070.914  0.05576     0.05665     0.05586     
+Dot         238148.873  0.03607     0.03617     0.03613     
+<<<33<<<
+>>>34>>>
+Tue 16 Aug 01:38:53 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        248500.390  0.03457     0.03681     0.03480     
+Mul         247363.424  0.03473     0.03554     0.03492     
+Add         233280.912  0.05523     0.05682     0.05533     
+Triad       233067.657  0.05528     0.05624     0.05540     
+Dot         241231.860  0.03561     0.03581     0.03567     
+<<<34<<<
+>>>35>>>
+Tue 16 Aug 01:39:20 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        249069.508  0.03449     0.03587     0.03468     
+Mul         248124.740  0.03462     0.03593     0.03481     
+Add         234824.065  0.05487     0.05596     0.05496     
+Triad       234533.378  0.05494     0.05611     0.05504     
+Dot         244148.141  0.03518     0.03557     0.03524     
+<<<35<<<
+>>>36>>>
+Tue 16 Aug 01:39:48 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        249796.398  0.03439     0.03539     0.03453     
+Mul         248522.153  0.03456     0.03497     0.03477     
+Add         236061.150  0.05458     0.05555     0.05466     
+Triad       235629.351  0.05468     0.05627     0.05479     
+Dot         246672.682  0.03482     0.03506     0.03487     
+<<<36<<<
+>>>37>>>
+Tue 16 Aug 01:40:15 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        250199.348  0.03433     0.03486     0.03449     
+Mul         248923.761  0.03451     0.03491     0.03465     
+Add         237170.905  0.05433     0.05556     0.05443     
+Triad       236780.450  0.05442     0.05531     0.05452     
+Dot         249052.270  0.03449     0.03459     0.03454     
+<<<37<<<
+>>>38>>>
+Tue 16 Aug 01:40:42 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        250539.483  0.03429     0.03527     0.03445     
+Mul         249381.878  0.03444     0.03485     0.03460     
+Add         237935.786  0.05415     0.05494     0.05424     
+Triad       237506.945  0.05425     0.05578     0.05434     
+Dot         251005.493  0.03422     0.03440     0.03426     
+<<<38<<<
+>>>39>>>
+Tue 16 Aug 01:41:09 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        250785.641  0.03425     0.03605     0.03442     
+Mul         249622.254  0.03441     0.03561     0.03457     
+Add         238920.249  0.05393     0.05479     0.05400     
+Triad       238552.744  0.05401     0.05520     0.05410     
+Dot         252881.095  0.03397     0.03418     0.03400     
+<<<39<<<
+>>>40>>>
+Tue 16 Aug 01:41:36 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        251035.341  0.03422     0.03477     0.03437     
+Mul         249670.589  0.03441     0.03708     0.03454     
+Add         239902.900  0.05371     0.05447     0.05379     
+Triad       239434.381  0.05381     0.05504     0.05390     
+Dot         255057.370  0.03368     0.03399     0.03372     
+<<<40<<<
+>>>41>>>
+Tue 16 Aug 01:42:02 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        251375.909  0.03417     0.03584     0.03430     
+Mul         249960.377  0.03437     0.03593     0.03446     
+Add         240359.369  0.05361     0.05519     0.05370     
+Triad       239682.406  0.05376     0.05499     0.05385     
+Dot         256785.292  0.03345     0.03375     0.03350     
+<<<41<<<
+>>>42>>>
+Tue 16 Aug 01:42:29 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        251273.389  0.03419     0.03550     0.03431     
+Mul         249938.856  0.03437     0.03479     0.03448     
+Add         241025.688  0.05346     0.05359     0.05352     
+Triad       240526.832  0.05357     0.05480     0.05365     
+Dot         258394.139  0.03324     0.03353     0.03327     
+<<<42<<<
+>>>43>>>
+Tue 16 Aug 01:42:56 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        251366.588  0.03417     0.03545     0.03429     
+Mul         249888.577  0.03438     0.03779     0.03451     
+Add         241036.050  0.05346     0.05421     0.05353     
+Triad       240331.989  0.05361     0.05514     0.05369     
+Dot         259987.684  0.03304     0.03321     0.03307     
+<<<43<<<
+>>>44>>>
+Tue 16 Aug 01:43:22 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        251789.495  0.03412     0.03585     0.03424     
+Mul         250215.739  0.03433     0.03520     0.03444     
+Add         241494.324  0.05335     0.05348     0.05341     
+Triad       240692.061  0.05353     0.05482     0.05360     
+Dot         261324.633  0.03287     0.03385     0.03291     
+<<<44<<<
+>>>45>>>
+Tue 16 Aug 01:43:49 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        251559.589  0.03415     0.03567     0.03430     
+Mul         249765.072  0.03439     0.03624     0.03450     
+Add         242074.774  0.05323     0.05391     0.05329     
+Triad       241264.870  0.05341     0.05388     0.05346     
+Dot         262917.355  0.03267     0.03306     0.03271     
+<<<45<<<
+>>>46>>>
+Tue 16 Aug 01:44:16 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        250982.120  0.03423     0.03442     0.03432     
+Mul         249535.236  0.03442     0.03648     0.03454     
+Add         242390.633  0.05316     0.05424     0.05324     
+Triad       241674.896  0.05332     0.05416     0.05338     
+Dot         264149.839  0.03252     0.03259     0.03255     
+<<<46<<<
+>>>47>>>
+Tue 16 Aug 01:44:42 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        250960.196  0.03423     0.03554     0.03435     
+Mul         249154.878  0.03448     0.03569     0.03457     
+Add         242334.523  0.05317     0.05338     0.05322     
+Triad       241468.623  0.05336     0.05382     0.05340     
+Dot         265341.704  0.03237     0.03282     0.03241     
+<<<47<<<
+>>>48>>>
+Tue 16 Aug 01:45:09 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        250587.356  0.03428     0.03471     0.03438     
+Mul         249335.688  0.03445     0.03603     0.03461     
+Add         242479.291  0.05314     0.05438     0.05322     
+Triad       241613.109  0.05333     0.05421     0.05341     
+Dot         266413.370  0.03224     0.03232     0.03227     
+<<<48<<<
+>>>49>>>
+Tue 16 Aug 01:45:35 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        250281.841  0.03432     0.03740     0.03446     
+Mul         248554.728  0.03456     0.03576     0.03468     
+Add         242692.291  0.05309     0.05357     0.05315     
+Triad       241761.012  0.05330     0.05342     0.05335     
+Dot         267488.671  0.03211     0.03248     0.03215     
+<<<49<<<
+>>>50>>>
+Tue 16 Aug 01:46:02 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        250530.035  0.03429     0.03706     0.03445     
+Mul         248629.282  0.03455     0.03629     0.03471     
+Add         241874.016  0.05327     0.05455     0.05333     
+Triad       240743.215  0.05352     0.05434     0.05359     
+Dot         268399.616  0.03200     0.03231     0.03204     
+<<<50<<<
+>>>51>>>
+Tue 16 Aug 01:46:28 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        250659.440  0.03427     0.03718     0.03444     
+Mul         248628.246  0.03455     0.03561     0.03471     
+Add         242566.538  0.05312     0.05406     0.05320     
+Triad       241404.427  0.05337     0.05360     0.05346     
+Dot         269175.714  0.03191     0.03284     0.03196     
+<<<51<<<
+>>>52>>>
+Tue 16 Aug 01:46:55 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        250767.389  0.03425     0.03539     0.03444     
+Mul         248538.691  0.03456     0.03512     0.03475     
+Add         242339.450  0.05317     0.05470     0.05325     
+Triad       241027.451  0.05346     0.05504     0.05355     
+Dot         269993.691  0.03182     0.03212     0.03185     
+<<<52<<<
+>>>53>>>
+Tue 16 Aug 01:47:22 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        252498.240  0.03402     0.03670     0.03428     
+Mul         250237.475  0.03433     0.03759     0.03459     
+Add         241391.230  0.05338     0.05444     0.05346     
+Triad       239740.858  0.05375     0.05407     0.05381     
+Dot         270702.257  0.03173     0.03182     0.03177     
+<<<53<<<
+>>>54>>>
+Tue 16 Aug 01:47:48 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        250001.225  0.03436     0.03524     0.03464     
+Mul         246735.741  0.03481     0.03629     0.03508     
+Add         241170.643  0.05343     0.05503     0.05350     
+Triad       239798.745  0.05373     0.05444     0.05381     
+Dot         271699.888  0.03162     0.03203     0.03167     
+<<<54<<<
+>>>55>>>
+Tue 16 Aug 01:48:15 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        248208.223  0.03461     0.03572     0.03485     
+Mul         244765.235  0.03509     0.03555     0.03533     
+Add         242110.080  0.05322     0.05369     0.05328     
+Triad       240950.503  0.05348     0.05471     0.05358     
+Dot         272282.640  0.03155     0.03186     0.03159     
+<<<55<<<
+>>>56>>>
+Tue 16 Aug 01:48:41 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        250200.820  0.03433     0.03588     0.03465     
+Mul         245566.240  0.03498     0.03600     0.03521     
+Add         241743.422  0.05330     0.05351     0.05336     
+Triad       240220.811  0.05364     0.05426     0.05371     
+Dot         272870.653  0.03148     0.03185     0.03153     
+<<<56<<<
+>>>57>>>
+Tue 16 Aug 01:49:08 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        252315.225  0.03404     0.03728     0.03440     
+Mul         248191.012  0.03461     0.03702     0.03495     
+Add         240458.352  0.05358     0.05460     0.05369     
+Triad       238424.930  0.05404     0.05422     0.05410     
+Dot         273186.259  0.03144     0.03152     0.03148     
+<<<57<<<
+>>>58>>>
+Tue 16 Aug 01:49:35 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        246520.528  0.03484     0.03626     0.03516     
+Mul         241154.330  0.03562     0.03773     0.03584     
+Add         242347.504  0.05317     0.05383     0.05325     
+Triad       241046.191  0.05345     0.05428     0.05355     
+Dot         273950.447  0.03136     0.03170     0.03140     
+<<<58<<<
+>>>59>>>
+Tue 16 Aug 01:50:01 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        245902.630  0.03493     0.03612     0.03525     
+Mul         240894.750  0.03566     0.03715     0.03595     
+Add         242350.486  0.05317     0.05463     0.05326     
+Triad       241022.370  0.05346     0.05477     0.05355     
+Dot         274509.388  0.03129     0.03165     0.03134     
+<<<59<<<
+>>>60>>>
+Tue 16 Aug 01:50:28 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        248317.143  0.03459     0.03584     0.03491     
+Mul         243268.129  0.03531     0.03695     0.03553     
+Add         241082.438  0.05345     0.05487     0.05355     
+Triad       239335.514  0.05384     0.05503     0.05393     
+Dot         274835.604  0.03125     0.03215     0.03131     
+<<<60<<<
+>>>61>>>
+Tue 16 Aug 01:50:55 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        246078.121  0.03491     0.03688     0.03527     
+Mul         240894.561  0.03566     0.03822     0.03594     
+Add         240887.897  0.05349     0.05455     0.05358     
+Triad       239375.922  0.05383     0.06995     0.05408     
+Dot         275297.081  0.03120     0.03154     0.03125     
+<<<61<<<
+>>>62>>>
+Tue 16 Aug 01:51:22 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        249278.880  0.03446     0.04103     0.03492     
+Mul         244481.126  0.03514     0.03747     0.03540     
+Add         239870.913  0.05372     0.05665     0.05386     
+Triad       237908.082  0.05416     0.06295     0.05433     
+Dot         275519.687  0.03118     0.04555     0.03137     
+<<<62<<<
+>>>63>>>
+Tue 16 Aug 01:51:48 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        246553.558  0.03484     0.04997     0.03552     
+Mul         242320.541  0.03545     0.05382     0.03600     
+Add         240475.392  0.05358     0.06164     0.05382     
+Triad       238717.791  0.05398     0.06740     0.05428     
+Dot         275894.993  0.03113     0.04517     0.03157     
+<<<63<<<
+>>>64>>>
+Tue 16 Aug 01:52:15 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        248512.274  0.03457     0.04800     0.03757     
+Mul         245724.366  0.03496     0.05227     0.03825     
+Add         237073.597  0.05435     0.06358     0.05732     
+Triad       235522.596  0.05471     0.06365     0.05781     
+Dot         276719.228  0.03104     0.05116     0.03625     
+<<<64<<<

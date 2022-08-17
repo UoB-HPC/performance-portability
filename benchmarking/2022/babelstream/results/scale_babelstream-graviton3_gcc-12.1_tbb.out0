@@ -1,0 +1,1164 @@
+Mon 15 Aug 22:00:10 UTC 2022
+/home/tomlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-graviton3_gcc-12.1_tbb
+	linux-vdso.so.1 (0x0000ffffa6450000)
+	libtbb.so.12 => /home/tomlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-graviton3_gcc-12.1_tbb/BabelStream/build/gnu_12.1_cxx11_64_release/libtbb.so.12 (0x0000ffffa63cc000)
+	libstdc++.so.6 => /home/tomlin/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-2wt4bvnu6tcnkx7nrfji47qyy3b5zb2s/lib64/libstdc++.so.6 (0x0000ffffa61a6000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000ffffa60dc000)
+	libgcc_s.so.1 => /home/tomlin/spack/opt/spack/linux-amzn2-graviton2/gcc-7.3.1/gcc-12.1.0-2wt4bvnu6tcnkx7nrfji47qyy3b5zb2s/lib64/libgcc_s.so.1 (0x0000ffffa60ab000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000ffffa5f25000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffffa5f04000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffffa5ecf000)
+	/lib/ld-linux-aarch64.so.1 (0x0000ffffa6422000)
+Listing devices is not supported by TBB
+>>>1>>>
+Mon 15 Aug 22:00:10 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        51345.107   0.16730     0.16882     0.16741     
+Mul         50674.666   0.16951     0.17045     0.16959     
+Add         46394.824   0.27772     0.28198     0.27789     
+Triad       46417.354   0.27759     0.27918     0.27775     
+Dot         32765.177   0.26217     0.26411     0.26226     
+<<<1<<<
+>>>2>>>
+Mon 15 Aug 22:02:13 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        84295.023   0.10190     0.10347     0.10197     
+Mul         83845.426   0.10245     0.10377     0.10251     
+Add         78122.996   0.16493     0.16741     0.16505     
+Triad       78143.639   0.16489     0.16941     0.16504     
+Dot         60226.808   0.14263     0.14313     0.14269     
+<<<2<<<
+>>>3>>>
+Mon 15 Aug 22:03:27 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        115442.150  0.07441     0.07556     0.07448     
+Mul         114938.854  0.07473     0.07692     0.07484     
+Add         107206.593  0.12019     0.12144     0.12028     
+Triad       107297.604  0.12009     0.12161     0.12020     
+Dot         85879.347   0.10002     0.10079     0.10009     
+<<<3<<<
+>>>4>>>
+Mon 15 Aug 22:04:22 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        130640.267  0.06575     0.06589     0.06581     
+Mul         130440.763  0.06585     0.06604     0.06592     
+Add         118841.450  0.10842     0.10948     0.10852     
+Triad       118879.001  0.10839     0.10964     0.10849     
+Dot         98640.639   0.08708     0.08742     0.08715     
+<<<4<<<
+>>>5>>>
+Mon 15 Aug 22:05:11 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        151980.846  0.05652     0.05751     0.05660     
+Mul         151857.997  0.05657     0.05770     0.05666     
+Add         138841.624  0.09280     0.09324     0.09290     
+Triad       138926.412  0.09275     0.09392     0.09285     
+Dot         115904.547  0.07411     0.07447     0.07418     
+<<<5<<<
+>>>6>>>
+Mon 15 Aug 22:05:54 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        175589.615  0.04892     0.04962     0.04898     
+Mul         175262.750  0.04901     0.04952     0.04908     
+Add         165871.514  0.07768     0.07861     0.07777     
+Triad       165961.436  0.07764     0.07898     0.07773     
+Dot         138191.516  0.06216     0.06250     0.06221     
+<<<6<<<
+>>>7>>>
+Mon 15 Aug 22:06:30 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        171722.581  0.05002     0.05047     0.05008     
+Mul         171556.238  0.05007     0.05065     0.05014     
+Add         189707.078  0.06792     0.06911     0.06801     
+Triad       189834.509  0.06787     0.06891     0.06794     
+Dot         113251.350  0.07585     0.07859     0.07747     
+<<<7<<<
+>>>8>>>
+Mon 15 Aug 22:07:07 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        190412.791  0.04511     0.04605     0.04519     
+Mul         190375.052  0.04512     0.04582     0.04519     
+Add         206674.365  0.06234     0.06569     0.06287     
+Triad       206611.985  0.06236     0.06391     0.06302     
+Dot         129830.620  0.06616     0.07237     0.07020     
+<<<8<<<
+>>>9>>>
+Mon 15 Aug 22:07:41 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        195343.174  0.04397     0.04475     0.04403     
+Mul         195254.555  0.04399     0.04452     0.04406     
+Add         214675.186  0.06002     0.06220     0.06087     
+Triad       214764.132  0.06000     0.06177     0.06068     
+Dot         129274.743  0.06645     0.07345     0.07097     
+<<<9<<<
+>>>10>>>
+Mon 15 Aug 22:08:14 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        209127.443  0.04108     0.04128     0.04114     
+Mul         208932.062  0.04111     0.04182     0.04117     
+Add         215719.718  0.05973     0.06223     0.06066     
+Triad       215301.097  0.05985     0.06329     0.06072     
+Dot         162887.007  0.05274     0.06122     0.05742     
+<<<10<<<
+>>>11>>>
+Mon 15 Aug 22:08:45 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        213769.865  0.04018     0.04038     0.04031     
+Mul         213596.917  0.04022     0.04040     0.04032     
+Add         214355.423  0.06011     0.06233     0.06114     
+Triad       214811.480  0.05998     0.06301     0.06093     
+Dot         173782.467  0.04943     0.05680     0.05335     
+<<<11<<<
+>>>12>>>
+Mon 15 Aug 22:09:15 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        212593.038  0.04041     0.04184     0.04053     
+Mul         212458.403  0.04043     0.04135     0.04052     
+Add         214797.654  0.05999     0.06228     0.06113     
+Triad       215065.834  0.05991     0.06245     0.06081     
+Dot         176872.674  0.04857     0.05690     0.05130     
+<<<12<<<
+>>>13>>>
+Mon 15 Aug 22:09:45 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        223706.257  0.03840     0.03906     0.03850     
+Mul         223472.374  0.03844     0.03927     0.03854     
+Add         214928.966  0.05995     0.06207     0.06086     
+Triad       214753.064  0.06000     0.06185     0.06077     
+Dot         184238.549  0.04662     0.05130     0.04839     
+<<<13<<<
+>>>14>>>
+Mon 15 Aug 22:10:15 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        228121.588  0.03766     0.03915     0.03782     
+Mul         227669.430  0.03773     0.03886     0.03791     
+Add         214153.137  0.06017     0.06193     0.06076     
+Triad       214615.882  0.06004     0.06138     0.06056     
+Dot         191210.147  0.04492     0.04819     0.04649     
+<<<14<<<
+>>>15>>>
+Mon 15 Aug 22:10:44 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        231555.709  0.03710     0.03832     0.03729     
+Mul         230643.335  0.03724     0.03863     0.03743     
+Add         213432.737  0.06037     0.06186     0.06093     
+Triad       213851.358  0.06025     0.06289     0.06083     
+Dot         196239.192  0.04377     0.04675     0.04506     
+<<<15<<<
+>>>16>>>
+Mon 15 Aug 22:11:13 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        232560.266  0.03694     0.03785     0.03708     
+Mul         231803.355  0.03706     0.03835     0.03724     
+Add         213156.981  0.06045     0.06213     0.06096     
+Triad       213359.982  0.06039     0.06156     0.06104     
+Dot         199817.506  0.04299     0.04509     0.04379     
+<<<16<<<
+>>>17>>>
+Mon 15 Aug 22:11:42 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        232671.687  0.03692     0.03785     0.03705     
+Mul         231598.880  0.03709     0.03764     0.03723     
+Add         212161.508  0.06073     0.06166     0.06110     
+Triad       212845.044  0.06054     0.06232     0.06083     
+Dot         200774.368  0.04278     0.04429     0.04345     
+<<<17<<<
+>>>18>>>
+Mon 15 Aug 22:12:11 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        233346.393  0.03681     0.03869     0.03699     
+Mul         232304.159  0.03698     0.03813     0.03719     
+Add         211711.647  0.06086     0.06245     0.06120     
+Triad       212074.847  0.06076     0.06121     0.06100     
+Dot         202685.157  0.04238     0.04361     0.04303     
+<<<18<<<
+>>>19>>>
+Mon 15 Aug 22:12:40 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        234026.165  0.03671     0.03880     0.03686     
+Mul         232889.755  0.03688     0.03852     0.03704     
+Add         211193.925  0.06101     0.06211     0.06119     
+Triad       211391.687  0.06095     0.06154     0.06112     
+Dot         202429.044  0.04243     0.04325     0.04267     
+<<<19<<<
+>>>20>>>
+Mon 15 Aug 22:13:09 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        234264.744  0.03667     0.03818     0.03681     
+Mul         233055.852  0.03686     0.03804     0.03698     
+Add         211049.916  0.06105     0.06221     0.06120     
+Triad       211599.583  0.06089     0.06143     0.06108     
+Dot         202521.647  0.04241     0.04314     0.04259     
+<<<20<<<
+>>>21>>>
+Mon 15 Aug 22:13:38 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        234780.366  0.03659     0.03769     0.03668     
+Mul         233626.756  0.03677     0.03856     0.03690     
+Add         210913.110  0.06109     0.06235     0.06125     
+Triad       211672.391  0.06087     0.06218     0.06104     
+Dot         202575.702  0.04240     0.04268     0.04255     
+<<<21<<<
+>>>22>>>
+Mon 15 Aug 22:14:07 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        235378.792  0.03649     0.03667     0.03657     
+Mul         234124.688  0.03669     0.03866     0.03679     
+Add         211360.686  0.06096     0.06210     0.06109     
+Triad       211878.816  0.06081     0.06174     0.06096     
+Dot         203447.247  0.04222     0.04289     0.04232     
+<<<22<<<
+>>>23>>>
+Mon 15 Aug 22:14:35 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        235766.449  0.03643     0.03744     0.03651     
+Mul         234611.700  0.03661     0.03801     0.03670     
+Add         212530.356  0.06063     0.06139     0.06075     
+Triad       213007.870  0.06049     0.06203     0.06063     
+Dot         205299.786  0.04184     0.04231     0.04194     
+<<<23<<<
+>>>24>>>
+Mon 15 Aug 22:15:04 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        236514.147  0.03632     0.03688     0.03640     
+Mul         235430.247  0.03649     0.03756     0.03658     
+Add         213824.660  0.06026     0.06121     0.06037     
+Triad       214184.983  0.06016     0.06126     0.06027     
+Dot         207432.180  0.04141     0.04162     0.04150     
+<<<24<<<
+>>>25>>>
+Mon 15 Aug 22:15:32 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        237352.631  0.03619     0.03789     0.03630     
+Mul         236366.225  0.03634     0.03757     0.03645     
+Add         215329.485  0.05984     0.06095     0.05994     
+Triad       215648.352  0.05975     0.06126     0.05988     
+Dot         210068.141  0.04089     0.04112     0.04098     
+<<<25<<<
+>>>26>>>
+Mon 15 Aug 22:16:01 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        238615.611  0.03600     0.03620     0.03611     
+Mul         237447.831  0.03618     0.03849     0.03629     
+Add         217738.778  0.05918     0.06028     0.05932     
+Triad       217949.900  0.05912     0.05997     0.05924     
+Dot         213325.267  0.04027     0.04056     0.04033     
+<<<26<<<
+>>>27>>>
+Mon 15 Aug 22:16:29 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        239967.175  0.03580     0.03731     0.03594     
+Mul         239221.748  0.03591     0.03821     0.03608     
+Add         219767.263  0.05863     0.05955     0.05878     
+Triad       219839.668  0.05861     0.06015     0.05873     
+Dot         216930.348  0.03960     0.03983     0.03966     
+<<<27<<<
+>>>28>>>
+Mon 15 Aug 22:16:57 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        241736.716  0.03553     0.03828     0.03573     
+Mul         240926.566  0.03565     0.03767     0.03584     
+Add         221844.421  0.05808     0.05888     0.05817     
+Triad       221935.590  0.05806     0.05819     0.05812     
+Dot         220850.554  0.03889     0.03903     0.03897     
+<<<28<<<
+>>>29>>>
+Mon 15 Aug 22:17:24 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        243494.276  0.03528     0.03691     0.03549     
+Mul         242599.517  0.03541     0.03665     0.03560     
+Add         223891.279  0.05755     0.05853     0.05765     
+Triad       224009.223  0.05752     0.05852     0.05762     
+Dot         224380.779  0.03828     0.03844     0.03834     
+<<<29<<<
+>>>30>>>
+Mon 15 Aug 22:17:52 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        244976.743  0.03506     0.03543     0.03528     
+Mul         243808.365  0.03523     0.03556     0.03543     
+Add         225940.837  0.05703     0.05780     0.05711     
+Triad       226119.317  0.05698     0.05848     0.05708     
+Dot         228291.101  0.03763     0.03784     0.03768     
+<<<30<<<
+>>>31>>>
+Mon 15 Aug 22:18:19 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        245977.249  0.03492     0.03583     0.03515     
+Mul         245084.208  0.03505     0.03779     0.03528     
+Add         227833.661  0.05655     0.05773     0.05665     
+Triad       227945.344  0.05653     0.05769     0.05663     
+Dot         231734.860  0.03707     0.03727     0.03713     
+<<<31<<<
+>>>32>>>
+Mon 15 Aug 22:18:46 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        246966.908  0.03478     0.03562     0.03500     
+Mul         245921.440  0.03493     0.03529     0.03510     
+Add         229617.057  0.05611     0.05750     0.05622     
+Triad       229777.494  0.05608     0.05763     0.05620     
+Dot         235030.016  0.03655     0.03676     0.03661     
+<<<32<<<
+>>>33>>>
+Mon 15 Aug 22:19:13 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        247887.932  0.03465     0.03582     0.03492     
+Mul         247048.591  0.03477     0.03522     0.03493     
+Add         231153.432  0.05574     0.05699     0.05582     
+Triad       231430.608  0.05568     0.05649     0.05580     
+Dot         238185.562  0.03606     0.03617     0.03613     
+<<<33<<<
+>>>34>>>
+Mon 15 Aug 22:19:39 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        248723.439  0.03454     0.03778     0.03484     
+Mul         247666.014  0.03468     0.03610     0.03491     
+Add         232906.320  0.05532     0.05588     0.05542     
+Triad       232889.599  0.05533     0.05639     0.05541     
+Dot         241119.908  0.03563     0.03585     0.03570     
+<<<34<<<
+>>>35>>>
+Mon 15 Aug 22:20:06 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        249222.070  0.03447     0.03631     0.03468     
+Mul         248431.941  0.03458     0.03587     0.03479     
+Add         234234.215  0.05501     0.05587     0.05510     
+Triad       234297.709  0.05499     0.05614     0.05509     
+Dot         243715.299  0.03525     0.03548     0.03531     
+<<<35<<<
+>>>36>>>
+Mon 15 Aug 22:20:32 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        249794.016  0.03439     0.03586     0.03460     
+Mul         248707.042  0.03454     0.03681     0.03474     
+Add         235495.240  0.05471     0.05635     0.05482     
+Triad       235533.390  0.05471     0.05531     0.05479     
+Dot         246195.931  0.03489     0.03512     0.03494     
+<<<36<<<
+>>>37>>>
+Mon 15 Aug 22:20:59 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        250302.904  0.03432     0.03572     0.03451     
+Mul         249244.285  0.03446     0.03544     0.03466     
+Add         236649.751  0.05445     0.05460     0.05452     
+Triad       236578.987  0.05446     0.05599     0.05455     
+Dot         248390.591  0.03458     0.03479     0.03462     
+<<<37<<<
+>>>38>>>
+Mon 15 Aug 22:21:25 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        250687.984  0.03427     0.03475     0.03444     
+Mul         249597.433  0.03442     0.03484     0.03459     
+Add         237611.581  0.05423     0.05539     0.05430     
+Triad       237578.818  0.05423     0.05549     0.05431     
+Dot         250678.979  0.03427     0.03696     0.03433     
+<<<38<<<
+>>>39>>>
+Mon 15 Aug 22:21:51 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        251040.726  0.03422     0.03511     0.03440     
+Mul         249979.886  0.03436     0.03611     0.03456     
+Add         238508.776  0.05402     0.05505     0.05410     
+Triad       238548.323  0.05401     0.05436     0.05410     
+Dot         252713.925  0.03399     0.03444     0.03402     
+<<<39<<<
+>>>40>>>
+Mon 15 Aug 22:22:17 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        251090.993  0.03421     0.03570     0.03440     
+Mul         249803.706  0.03439     0.03576     0.03454     
+Add         239265.235  0.05385     0.05477     0.05393     
+Triad       239211.260  0.05386     0.05495     0.05393     
+Dot         254650.493  0.03373     0.03398     0.03376     
+<<<40<<<
+>>>41>>>
+Mon 15 Aug 22:22:43 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        251205.396  0.03419     0.03594     0.03436     
+Mul         250073.730  0.03435     0.03626     0.03448     
+Add         239907.554  0.05371     0.05458     0.05379     
+Triad       239749.940  0.05374     0.05479     0.05382     
+Dot         256437.644  0.03350     0.03368     0.03354     
+<<<41<<<
+>>>42>>>
+Mon 15 Aug 22:23:09 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        251198.013  0.03420     0.03453     0.03433     
+Mul         250079.678  0.03435     0.03464     0.03447     
+Add         240378.816  0.05360     0.05491     0.05368     
+Triad       240345.967  0.05361     0.05489     0.05369     
+Dot         258185.011  0.03327     0.03355     0.03331     
+<<<42<<<
+>>>43>>>
+Mon 15 Aug 22:23:35 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        251353.319  0.03417     0.03674     0.03434     
+Mul         250149.176  0.03434     0.03638     0.03449     
+Add         240819.414  0.05350     0.05522     0.05360     
+Triad       240719.477  0.05353     0.05429     0.05359     
+Dot         259773.103  0.03307     0.03313     0.03309     
+<<<43<<<
+>>>44>>>
+Mon 15 Aug 22:24:01 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        251490.800  0.03416     0.03565     0.03428     
+Mul         250259.937  0.03432     0.03512     0.03444     
+Add         241036.690  0.05346     0.05360     0.05352     
+Triad       240893.527  0.05349     0.05476     0.05356     
+Dot         261188.956  0.03289     0.03315     0.03292     
+<<<44<<<
+>>>45>>>
+Mon 15 Aug 22:24:27 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        251246.791  0.03419     0.03460     0.03429     
+Mul         250083.522  0.03435     0.03673     0.03449     
+Add         241284.577  0.05340     0.05444     0.05348     
+Triad       241087.883  0.05344     0.05435     0.05351     
+Dot         262547.051  0.03272     0.03281     0.03275     
+<<<45<<<
+>>>46>>>
+Mon 15 Aug 22:24:53 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        251169.448  0.03420     0.03466     0.03430     
+Mul         249710.370  0.03440     0.03476     0.03448     
+Add         241415.295  0.05337     0.05498     0.05345     
+Triad       241314.736  0.05339     0.05429     0.05347     
+Dot         263903.564  0.03255     0.03265     0.03258     
+<<<46<<<
+>>>47>>>
+Mon 15 Aug 22:25:19 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        250934.712  0.03423     0.03618     0.03436     
+Mul         249620.542  0.03441     0.03537     0.03451     
+Add         241455.867  0.05336     0.05346     0.05341     
+Triad       241294.387  0.05340     0.05466     0.05346     
+Dot         265127.706  0.03240     0.03254     0.03244     
+<<<47<<<
+>>>48>>>
+Mon 15 Aug 22:25:44 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        250958.612  0.03423     0.03740     0.03439     
+Mul         249698.872  0.03440     0.03579     0.03454     
+Add         241536.384  0.05335     0.05420     0.05341     
+Triad       241405.571  0.05337     0.05400     0.05344     
+Dot         266118.479  0.03228     0.03252     0.03231     
+<<<48<<<
+>>>49>>>
+Mon 15 Aug 22:26:10 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        250672.980  0.03427     0.03473     0.03438     
+Mul         249628.209  0.03441     0.03470     0.03457     
+Add         241414.314  0.05337     0.05468     0.05345     
+Triad       241292.760  0.05340     0.05438     0.05348     
+Dot         267153.121  0.03215     0.03229     0.03219     
+<<<49<<<
+>>>50>>>
+Mon 15 Aug 22:26:36 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        250465.503  0.03430     0.03577     0.03446     
+Mul         249151.222  0.03448     0.03819     0.03468     
+Add         241360.853  0.05338     0.05400     0.05344     
+Triad       241220.488  0.05342     0.05471     0.05351     
+Dot         268219.246  0.03203     0.03222     0.03206     
+<<<50<<<
+>>>51>>>
+Mon 15 Aug 22:27:02 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        250877.460  0.03424     0.03579     0.03441     
+Mul         249994.269  0.03436     0.03618     0.03464     
+Add         241320.761  0.05339     0.05383     0.05346     
+Triad       241143.462  0.05343     0.05356     0.05351     
+Dot         269187.313  0.03191     0.03229     0.03198     
+<<<51<<<
+>>>52>>>
+Mon 15 Aug 22:27:28 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        251361.263  0.03417     0.03474     0.03441     
+Mul         249348.267  0.03445     0.03783     0.03471     
+Add         241042.876  0.05345     0.05525     0.05353     
+Triad       240891.816  0.05349     0.05402     0.05357     
+Dot         269920.381  0.03182     0.03210     0.03187     
+<<<52<<<
+>>>53>>>
+Mon 15 Aug 22:27:53 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        251338.052  0.03418     0.03456     0.03442     
+Mul         248866.940  0.03452     0.03486     0.03471     
+Add         240906.733  0.05349     0.05471     0.05357     
+Triad       240733.351  0.05352     0.05481     0.05363     
+Dot         270554.822  0.03175     0.03202     0.03180     
+<<<53<<<
+>>>54>>>
+Mon 15 Aug 22:28:19 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        249834.003  0.03438     0.03619     0.03464     
+Mul         247199.327  0.03475     0.03602     0.03498     
+Add         240701.184  0.05353     0.05399     0.05357     
+Triad       240528.004  0.05357     0.05494     0.05368     
+Dot         271384.610  0.03165     0.03189     0.03169     
+<<<54<<<
+>>>55>>>
+Mon 15 Aug 22:28:45 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        249473.288  0.03443     0.03636     0.03473     
+Mul         246780.044  0.03481     0.03646     0.03507     
+Add         240525.777  0.05357     0.05395     0.05362     
+Triad       240372.274  0.05360     0.05523     0.05371     
+Dot         272112.081  0.03157     0.03198     0.03163     
+<<<55<<<
+>>>56>>>
+Mon 15 Aug 22:29:11 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        247140.950  0.03476     0.03521     0.03505     
+Mul         244103.633  0.03519     0.03657     0.03545     
+Add         240571.255  0.05356     0.05443     0.05363     
+Triad       240428.250  0.05359     0.05458     0.05371     
+Dot         272643.253  0.03151     0.03177     0.03155     
+<<<56<<<
+>>>57>>>
+Mon 15 Aug 22:29:37 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        250601.166  0.03428     0.03546     0.03458     
+Mul         247337.690  0.03473     0.03660     0.03504     
+Add         240061.086  0.05367     0.05505     0.05376     
+Triad       239833.167  0.05372     0.05467     0.05383     
+Dot         272904.827  0.03148     0.03192     0.03152     
+<<<57<<<
+>>>58>>>
+Mon 15 Aug 22:30:02 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        249782.764  0.03439     0.03606     0.03475     
+Mul         245811.130  0.03495     0.03722     0.03525     
+Add         239942.459  0.05370     0.05482     0.05380     
+Triad       239581.382  0.05378     0.05516     0.05388     
+Dot         273630.546  0.03139     0.03182     0.03144     
+<<<58<<<
+>>>59>>>
+Mon 15 Aug 22:30:28 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        248958.982  0.03450     0.03648     0.03491     
+Mul         244560.247  0.03512     0.03793     0.03543     
+Add         239685.326  0.05376     0.05454     0.05383     
+Triad       239473.109  0.05381     0.05413     0.05389     
+Dot         274220.191  0.03132     0.03170     0.03138     
+<<<59<<<
+>>>60>>>
+Mon 15 Aug 22:30:54 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        247650.826  0.03469     0.03572     0.03506     
+Mul         243149.552  0.03533     0.03761     0.03558     
+Add         239741.687  0.05374     0.05486     0.05387     
+Triad       239260.024  0.05385     0.05529     0.05395     
+Dot         274522.644  0.03129     0.03298     0.03135     
+<<<60<<<
+>>>61>>>
+Mon 15 Aug 22:31:20 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        245143.093  0.03504     0.03743     0.03526     
+Mul         242163.863  0.03547     0.03738     0.03568     
+Add         239426.959  0.05382     0.05606     0.05394     
+Triad       238788.810  0.05396     0.05518     0.05406     
+Dot         275018.135  0.03123     0.03185     0.03127     
+<<<61<<<
+>>>62>>>
+Mon 15 Aug 22:31:46 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        248393.572  0.03458     0.03776     0.03496     
+Mul         244627.714  0.03511     0.03696     0.03542     
+Add         238951.038  0.05392     0.05622     0.05406     
+Triad       238655.319  0.05399     0.05574     0.05411     
+Dot         275260.268  0.03121     0.03329     0.03129     
+<<<62<<<
+>>>63>>>
+Mon 15 Aug 22:32:12 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        246807.988  0.03480     0.03673     0.03517     
+Mul         243703.786  0.03525     0.03728     0.03563     
+Add         238855.838  0.05394     0.05559     0.05418     
+Triad       238405.034  0.05405     0.05746     0.05421     
+Dot         275566.621  0.03117     0.03453     0.03138     
+<<<63<<<
+>>>64>>>
+Mon 15 Aug 22:32:38 UTC 2022
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        248207.413  0.03461     0.03696     0.03526     
+Mul         245627.731  0.03497     0.03659     0.03580     
+Add         237168.635  0.05433     0.05572     0.05495     
+Triad       236971.653  0.05437     0.05624     0.05490     
+Dot         273358.315  0.03142     0.03410     0.03247     
+<<<64<<<
