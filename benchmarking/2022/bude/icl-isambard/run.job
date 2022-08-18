@@ -20,11 +20,17 @@ export ACC_NUM_CORES=64
 export OMP_TARGET_OFFLOAD=DISABLED
 
 case "$MODEL" in
-sycl | omp | omp-target | kokkos)
+sycl | omp | kokkos)
     "$BENCHMARK_EXE" --list
     "$BENCHMARK_EXE" --device "Xeon" --deck miniBUDE/data/bm1 --wgsize 1 --ppwi all
     ;;
+omp-target)
+    "$BENCHMARK_EXE" --list
+    # wgsize should be $(nproc), but try a few more values around it to be sure
+    "$BENCHMARK_EXE" --device "Xeon" --deck miniBUDE/data/bm1 --wgsize 32,64,128 --ppwi all
+    ;;
 *)
+
     echo "Unknown run configuration for model '$MODEL'"
     exit 1
     ;;

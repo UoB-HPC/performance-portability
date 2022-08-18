@@ -1,5 +1,5 @@
-Fri 12 Aug 01:51:38 GMT 2022
-/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_omp-target
+Thu 18 Aug 14:10:29 GMT 2022
+/lustre/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_omp-target
 	linux-vdso.so.1 (0x0000155555551000)
 	libiomp5.so => /lustre/home/br-wlin/intel/oneapi/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libiomp5.so (0x0000155554ef2000)
 	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000155554cd2000)
@@ -17,28 +17,28 @@ Fri 12 Aug 01:51:38 GMT 2022
 	libintlc.so.5 => /lustre/home/br-wlin/intel/oneapi/compiler/2022.1.0/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x000015555132b000)
 miniBUDE:  
 compile_commands:
-   - "/home/br-wlin/intel/oneapi/compiler/2022.1.0/linux/bin/icpx -DOMP -DOMP_TARGET -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/omp -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_omp-target/miniBUDE/build/generated  -DNDEBUG -O3 -march=native -qnextgen -fiopenmp -fopenmp-targets=spir64 -march=icelake-server -Ofast -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
+   - "/lustre/home/br-wlin/intel/oneapi/compiler/2022.1.0/linux/bin/icpx -DOMP -DOMP_TARGET -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/omp -I/lustre/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_omp-target/miniBUDE/build/generated  -DNDEBUG -O3 -march=native -qnextgen -fiopenmp -fopenmp-targets=spir64 -march=icelake-server -Ofast -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
 vcs:
-  commit:  e7bcdd38b0ccc55b4a0b6fd87c02cf28da02f7d9*
+  commit:  05ec6ccc26860bf0eea17e8c8b4ba01ddd7b0d3f*
   author:  "Tom Lin (tom91136@gmail.com)"
-  date:    "2022-08-11 10:19:23 +0000"
-  subject: "Fix quoting for math expr on slurm"
+  date:    "2022-08-15 12:17:01 +0100"
+  subject: "Fix CCE on milan"
 host_cpu:
   ~
-time: { epoch_s:1660269099, formatted: "Fri Aug 12 01:51:39 2022 GMT" }
+time: { epoch_s:1660831829, formatted: "Thu Aug 18 14:10:29 2022 GMT" }
 devices:
   0: "OMP host device #0"
 miniBUDE:  
 compile_commands:
-   - "/home/br-wlin/intel/oneapi/compiler/2022.1.0/linux/bin/icpx -DOMP -DOMP_TARGET -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/omp -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_omp-target/miniBUDE/build/generated  -DNDEBUG -O3 -march=native -qnextgen -fiopenmp -fopenmp-targets=spir64 -march=icelake-server -Ofast -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
+   - "/lustre/home/br-wlin/intel/oneapi/compiler/2022.1.0/linux/bin/icpx -DOMP -DOMP_TARGET -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/omp -I/lustre/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-icl_oneapi-2022.2_omp-target/miniBUDE/build/generated  -DNDEBUG -O3 -march=native -qnextgen -fiopenmp -fopenmp-targets=spir64 -march=icelake-server -Ofast -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
 vcs:
-  commit:  e7bcdd38b0ccc55b4a0b6fd87c02cf28da02f7d9*
+  commit:  05ec6ccc26860bf0eea17e8c8b4ba01ddd7b0d3f*
   author:  "Tom Lin (tom91136@gmail.com)"
-  date:    "2022-08-11 10:19:23 +0000"
-  subject: "Fix quoting for math expr on slurm"
+  date:    "2022-08-15 12:17:01 +0100"
+  subject: "Fix CCE on milan"
 host_cpu:
   ~
-time: { epoch_s:1660269099, formatted: "Fri Aug 12 01:51:39 2022 GMT" }
+time: { epoch_s:1660831829, formatted: "Thu Aug 18 14:10:29 2022 GMT" }
 deck:
   path:         "miniBUDE/data/bm1"
   poses:        65536
@@ -51,29 +51,90 @@ config:
   ppwi:
     available:  [1,2,4,8,16,32,64,128]
     selected:   [1,2,4,8,16,32,64,128]
-  wgsize:       [1]
+  wgsize:       [32,64,128]
+# Unable to parse/select device index `Xeon`:stoul
+# Attempting to match device with substring  `Xeon`
+# No matching device but there's only one device, using it anyway
 device: { index: 0,  name: "OMP host device #0" }
-# (ppwi=1,wgsize=1,valid=1)
-# (ppwi=2,wgsize=1,valid=1)
-# (ppwi=4,wgsize=1,valid=1)
-# (ppwi=8,wgsize=1,valid=1)
-# (ppwi=16,wgsize=1,valid=1)
-# (ppwi=32,wgsize=1,valid=1)
-# (ppwi=64,wgsize=1,valid=1)
-# (ppwi=128,wgsize=1,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+# (ppwi=64,wgsize=128,valid=1)
+# (ppwi=128,wgsize=32,valid=1)
+# (ppwi=128,wgsize=64,valid=1)
+# (ppwi=128,wgsize=128,valid=1)
 results:
   - outcome:             { valid: true, max_diff_%: 0.006 }
-    param:               { ppwi: 1, wgsize: 1 }
-    raw_iterations:      [3290.09,3253.42,3252.84,3252.82,3253.02,3252.72,3254.68,3253.76,3253.68,3252.78]
-    context_ms:          20.275898
-    sum_ms:              26026.301
-    avg_ms:              3253.288
-    min_ms:              3252.719
-    max_ms:              3254.679
-    stddev_ms:           0.651
-    giga_interactions/s: 0.491
-    gflop/s:             19.662
-    gfinst/s:            12.282
+    param:               { ppwi: 1, wgsize: 32 }
+    raw_iterations:      [214.358,102.023,102.074,101.983,101.935,102.047,101.943,101.988,103.168,102.098]
+    context_ms:          25.757053
+    sum_ms:              817.237
+    avg_ms:              102.155
+    min_ms:              101.935
+    max_ms:              103.168
+    stddev_ms:           0.387
+    giga_interactions/s: 15.646
+    gflop/s:             626.184
+    gfinst/s:            391.145
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.006 }
+    param:               { ppwi: 1, wgsize: 64 }
+    raw_iterations:      [63.7123,63.6015,63.6224,63.6124,62.9648,62.8799,62.9163,62.8916,62.9496,62.983]
+    context_ms:          8.645487
+    sum_ms:              504.820
+    avg_ms:              63.103
+    min_ms:              62.880
+    max_ms:              63.622
+    stddev_ms:           0.299
+    giga_interactions/s: 25.329
+    gflop/s:             1013.709
+    gfinst/s:            633.213
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.006 }
+    param:               { ppwi: 1, wgsize: 128 }
+    raw_iterations:      [176.179,62.8558,62.7951,65.3688,62.9184,62.7363,62.776,62.7182,62.7857,62.7127]
+    context_ms:          0.079655
+    sum_ms:              504.811
+    avg_ms:              63.101
+    min_ms:              62.713
+    max_ms:              65.369
+    stddev_ms:           0.859
+    giga_interactions/s: 25.329
+    gflop/s:             1013.727
+    gfinst/s:            633.224
     energies:            
       - 865.52
       - 25.07
@@ -84,17 +145,59 @@ results:
       - 33.95
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.004 }
-    param:               { ppwi: 2, wgsize: 1 }
-    raw_iterations:      [2115.79,2078.63,2079.39,2078.64,2078.75,2078.57,2078.77,2078.7,2079.45,2079.2]
-    context_ms:          1.428190
-    sum_ms:              16631.477
-    avg_ms:              2078.935
-    min_ms:              2078.574
-    max_ms:              2079.446
-    stddev_ms:           0.329
-    giga_interactions/s: 0.769
-    gflop/s:             26.925
-    gfinst/s:            19.220
+    param:               { ppwi: 2, wgsize: 32 }
+    raw_iterations:      [214.455,65.3114,65.2131,65.2097,65.2241,65.2142,65.2063,65.2051,65.2055,65.24]
+    context_ms:          4.582469
+    sum_ms:              521.718
+    avg_ms:              65.215
+    min_ms:              65.205
+    max_ms:              65.240
+    stddev_ms:           0.011
+    giga_interactions/s: 24.508
+    gflop/s:             858.309
+    gfinst/s:            612.703
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.004 }
+    param:               { ppwi: 2, wgsize: 64 }
+    raw_iterations:      [40.2804,40.149,40.1469,40.1235,40.137,40.1697,40.1315,40.1353,40.1179,40.1653]
+    context_ms:          8.327415
+    sum_ms:              321.127
+    avg_ms:              40.141
+    min_ms:              40.118
+    max_ms:              40.170
+    stddev_ms:           0.017
+    giga_interactions/s: 39.817
+    gflop/s:             1394.450
+    gfinst/s:            995.427
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.004 }
+    param:               { ppwi: 2, wgsize: 128 }
+    raw_iterations:      [75.5717,40.2246,40.1319,40.1366,40.1414,40.3589,40.3113,40.1681,40.1905,40.1428]
+    context_ms:          0.076024
+    sum_ms:              321.582
+    avg_ms:              40.198
+    min_ms:              40.132
+    max_ms:              40.359
+    stddev_ms:           0.082
+    giga_interactions/s: 39.761
+    gflop/s:             1392.479
+    gfinst/s:            994.020
     energies:            
       - 865.52
       - 25.07
@@ -105,17 +208,17 @@ results:
       - 33.95
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.007 }
-    param:               { ppwi: 4, wgsize: 1 }
-    raw_iterations:      [1433.41,1395.7,1395.7,1395.87,1395.71,1395.7,1395.87,1395.67,1395.72,1395.86]
-    context_ms:          0.592939
-    sum_ms:              11166.099
-    avg_ms:              1395.762
-    min_ms:              1395.668
-    max_ms:              1395.874
-    stddev_ms:           0.084
-    giga_interactions/s: 1.145
-    gflop/s:             37.240
-    gfinst/s:            28.628
+    param:               { ppwi: 4, wgsize: 32 }
+    raw_iterations:      [195.228,44.032,43.7519,43.7554,43.7424,43.747,44.3513,44.1121,43.7397,43.795]
+    context_ms:          1.400482
+    sum_ms:              350.995
+    avg_ms:              43.874
+    min_ms:              43.740
+    max_ms:              44.351
+    stddev_ms:           0.215
+    giga_interactions/s: 36.429
+    gflop/s:             1184.698
+    gfinst/s:            910.721
     energies:            
       - 865.52
       - 25.07
@@ -126,17 +229,17 @@ results:
       - 33.95
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.007 }
-    param:               { ppwi: 8, wgsize: 1 }
-    raw_iterations:      [1410.72,1373.11,1373.21,1373.04,1373.22,1373.17,1373.09,1373.21,1373.13,1373.09]
-    context_ms:          0.659546
-    sum_ms:              10985.168
-    avg_ms:              1373.146
-    min_ms:              1373.038
-    max_ms:              1373.225
-    stddev_ms:           0.066
-    giga_interactions/s: 1.164
-    gflop/s:             36.398
-    gfinst/s:            29.099
+    param:               { ppwi: 4, wgsize: 64 }
+    raw_iterations:      [27.09,27.0229,27.0082,26.9598,26.9602,26.9624,26.9539,26.9609,28.7348,27.4475]
+    context_ms:          8.357711
+    sum_ms:              217.988
+    avg_ms:              27.248
+    min_ms:              26.954
+    max_ms:              28.735
+    stddev_ms:           0.584
+    giga_interactions/s: 58.656
+    gflop/s:             1907.551
+    gfinst/s:            1466.406
     energies:            
       - 865.52
       - 25.07
@@ -147,17 +250,17 @@ results:
       - 33.95
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.007 }
-    param:               { ppwi: 16, wgsize: 1 }
-    raw_iterations:      [1084.86,1047.42,1047.29,1047.66,1047.66,1047.46,1047.2,1047.18,1047.2,1047.46]
-    context_ms:          0.556257
-    sum_ms:              8379.110
-    avg_ms:              1047.389
-    min_ms:              1047.179
-    max_ms:              1047.659
-    stddev_ms:           0.187
-    giga_interactions/s: 1.526
-    gflop/s:             46.764
-    gfinst/s:            38.149
+    param:               { ppwi: 4, wgsize: 128 }
+    raw_iterations:      [54.3783,27.4214,28.0887,28.005,27.9716,28.0275,27.9336,27.9611,27.5892,27.0744]
+    context_ms:          0.070146
+    sum_ms:              222.651
+    avg_ms:              27.831
+    min_ms:              27.074
+    max_ms:              28.089
+    stddev_ms:           0.319
+    giga_interactions/s: 57.428
+    gflop/s:             1867.599
+    gfinst/s:            1435.692
     energies:            
       - 865.52
       - 25.07
@@ -168,17 +271,17 @@ results:
       - 33.95
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.007 }
-    param:               { ppwi: 32, wgsize: 1 }
-    raw_iterations:      [957.562,920.145,920.167,920.122,920.086,920.112,920.122,920.245,920.013,920.033]
-    context_ms:          0.645952
-    sum_ms:              7360.900
-    avg_ms:              920.113
-    min_ms:              920.013
-    max_ms:              920.245
-    stddev_ms:           0.068
-    giga_interactions/s: 1.737
-    gflop/s:             52.690
-    gfinst/s:            43.427
+    param:               { ppwi: 8, wgsize: 32 }
+    raw_iterations:      [192.435,43.2254,43.2089,43.108,43.1088,43.1196,43.1166,43.1126,43.118,43.1523]
+    context_ms:          2.674777
+    sum_ms:              345.045
+    avg_ms:              43.131
+    min_ms:              43.108
+    max_ms:              43.209
+    stddev_ms:           0.032
+    giga_interactions/s: 37.057
+    gflop/s:             1158.796
+    gfinst/s:            926.426
     energies:            
       - 865.52
       - 25.07
@@ -189,17 +292,17 @@ results:
       - 33.95
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.007 }
-    param:               { ppwi: 64, wgsize: 1 }
-    raw_iterations:      [933.533,903.054,902.99,900.159,899.654,899.819,897.862,900.36,908.097,902.862]
-    context_ms:          0.567706
-    sum_ms:              7211.803
-    avg_ms:              901.475
-    min_ms:              897.862
-    max_ms:              908.097
-    stddev_ms:           2.961
-    giga_interactions/s: 1.773
-    gflop/s:             53.502
-    gfinst/s:            44.324
+    param:               { ppwi: 8, wgsize: 64 }
+    raw_iterations:      [26.6806,26.9641,26.6539,26.6725,26.5686,26.5248,26.5689,26.6525,26.5335,26.6309]
+    context_ms:          8.357721
+    sum_ms:              212.806
+    avg_ms:              26.601
+    min_ms:              26.525
+    max_ms:              26.672
+    stddev_ms:           0.055
+    giga_interactions/s: 60.085
+    gflop/s:             1878.882
+    gfinst/s:            1502.115
     energies:            
       - 865.52
       - 25.07
@@ -210,17 +313,17 @@ results:
       - 33.95
       - 135.59
   - outcome:             { valid: true, max_diff_%: 0.007 }
-    param:               { ppwi: 128, wgsize: 1 }
-    raw_iterations:      [893.66,860.87,860.845,860.785,858.867,860.936,860.851,860.889,860.901,860.946]
-    context_ms:          0.567703
-    sum_ms:              6885.021
-    avg_ms:              860.628
-    min_ms:              858.867
-    max_ms:              860.946
-    stddev_ms:           0.667
-    giga_interactions/s: 1.857
-    gflop/s:             55.897
-    gfinst/s:            46.428
+    param:               { ppwi: 8, wgsize: 128 }
+    raw_iterations:      [53.673,27.2195,27.9193,27.9642,28.9266,27.7355,27.7342,27.3871,26.9141,27.1662]
+    context_ms:          0.076370
+    sum_ms:              221.747
+    avg_ms:              27.718
+    min_ms:              26.914
+    max_ms:              28.927
+    stddev_ms:           0.573
+    giga_interactions/s: 57.662
+    gflop/s:             1803.119
+    gfinst/s:            1441.544
     energies:            
       - 865.52
       - 25.07
@@ -230,4 +333,256 @@ results:
       - 707.35
       - 33.95
       - 135.59
-best: { min_ms: 858.87, max_ms: 860.95, sum_ms: 6885.02, avg_ms: 860.63, ppwi: 128, wgsize: 1 }
+  - outcome:             { valid: true, max_diff_%: 0.007 }
+    param:               { ppwi: 16, wgsize: 32 }
+    raw_iterations:      [163.504,53.8008,32.9607,32.8569,32.8717,32.9914,32.8611,32.8473,32.9097,32.8684]
+    context_ms:          1.731846
+    sum_ms:              263.167
+    avg_ms:              32.896
+    min_ms:              32.847
+    max_ms:              32.991
+    stddev_ms:           0.050
+    giga_interactions/s: 48.586
+    gflop/s:             1488.951
+    gfinst/s:            1214.658
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.007 }
+    param:               { ppwi: 16, wgsize: 64 }
+    raw_iterations:      [20.3723,20.6739,20.4955,20.4431,20.6848,20.5566,20.4161,20.6549,20.3838,20.4523]
+    context_ms:          8.386734
+    sum_ms:              164.087
+    avg_ms:              20.511
+    min_ms:              20.384
+    max_ms:              20.685
+    stddev_ms:           0.104
+    giga_interactions/s: 77.924
+    gflop/s:             2388.022
+    gfinst/s:            1948.103
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.007 }
+    param:               { ppwi: 16, wgsize: 128 }
+    raw_iterations:      [44.6883,20.5929,21.8628,21.7155,21.717,21.5574,21.1034,21.0011,26.2677,31.4074]
+    context_ms:          0.329214
+    sum_ms:              186.632
+    avg_ms:              23.329
+    min_ms:              21.001
+    max_ms:              31.407
+    stddev_ms:           3.442
+    giga_interactions/s: 68.511
+    gflop/s:             2099.546
+    gfinst/s:            1712.770
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.007 }
+    param:               { ppwi: 32, wgsize: 32 }
+    raw_iterations:      [191.111,48.3216,48.1148,48.3213,46.971,34.7113,29.2623,28.8989,28.896,28.9304]
+    context_ms:          0.882007
+    sum_ms:              294.106
+    avg_ms:              36.763
+    min_ms:              28.896
+    max_ms:              48.321
+    stddev_ms:           8.748
+    giga_interactions/s: 43.475
+    gflop/s:             1318.731
+    gfinst/s:            1086.882
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.007 }
+    param:               { ppwi: 32, wgsize: 64 }
+    raw_iterations:      [17.9026,18.3921,18.2856,18.0829,18.1592,18.3575,18.0916,18.1751,18.0702,18.2261]
+    context_ms:          8.383037
+    sum_ms:              145.448
+    avg_ms:              18.181
+    min_ms:              18.070
+    max_ms:              18.357
+    stddev_ms:           0.096
+    giga_interactions/s: 87.910
+    gflop/s:             2666.563
+    gfinst/s:            2197.748
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.007 }
+    param:               { ppwi: 32, wgsize: 128 }
+    raw_iterations:      [42.2098,18.1805,18.2243,18.1291,18.0827,18.2666,18.1588,18.0305,18.1592,18.24]
+    context_ms:          0.381491
+    sum_ms:              145.291
+    avg_ms:              18.161
+    min_ms:              18.031
+    max_ms:              18.267
+    stddev_ms:           0.075
+    giga_interactions/s: 88.005
+    gflop/s:             2669.446
+    gfinst/s:            2200.124
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.007 }
+    param:               { ppwi: 64, wgsize: 32 }
+    raw_iterations:      [138.186,69.8243,28.8945,28.8916,28.7664,28.7385,28.6326,28.9261,28.793,29.0439]
+    context_ms:          1.789710
+    sum_ms:              230.687
+    avg_ms:              28.836
+    min_ms:              28.633
+    max_ms:              29.044
+    stddev_ms:           0.120
+    giga_interactions/s: 55.427
+    gflop/s:             1672.609
+    gfinst/s:            1385.683
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.007 }
+    param:               { ppwi: 64, wgsize: 64 }
+    raw_iterations:      [18.1282,17.991,22.602,17.6332,17.6557,18.7546,17.6006,17.7022,17.8756,18.3396]
+    context_ms:          8.426234
+    sum_ms:              148.163
+    avg_ms:              18.520
+    min_ms:              17.601
+    max_ms:              22.602
+    stddev_ms:           1.590
+    giga_interactions/s: 86.299
+    gflop/s:             2604.207
+    gfinst/s:            2157.471
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.007 }
+    param:               { ppwi: 64, wgsize: 128 }
+    raw_iterations:      [41.7991,18.8483,17.8869,19.1105,17.6383,18.4762,19.1559,18.7028,19.7246,18.7764]
+    context_ms:          0.422890
+    sum_ms:              149.472
+    avg_ms:              18.684
+    min_ms:              17.638
+    max_ms:              19.725
+    stddev_ms:           0.639
+    giga_interactions/s: 85.543
+    gflop/s:             2581.414
+    gfinst/s:            2138.587
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.007 }
+    param:               { ppwi: 128, wgsize: 32 }
+    raw_iterations:      [129.359,71.7362,27.1118,27.0001,27.0097,27.0006,26.9994,27.002,28.0687,27.1884]
+    context_ms:          5.137556
+    sum_ms:              217.381
+    avg_ms:              27.173
+    min_ms:              26.999
+    max_ms:              28.069
+    stddev_ms:           0.345
+    giga_interactions/s: 58.820
+    gflop/s:             1770.392
+    gfinst/s:            1470.500
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.007 }
+    param:               { ppwi: 128, wgsize: 64 }
+    raw_iterations:      [16.354,16.6524,16.6914,16.7567,16.5134,16.5484,16.5312,16.2796,16.5669,16.8237]
+    context_ms:          8.380084
+    sum_ms:              132.711
+    avg_ms:              16.589
+    min_ms:              16.280
+    max_ms:              16.824
+    stddev_ms:           0.158
+    giga_interactions/s: 96.347
+    gflop/s:             2899.899
+    gfinst/s:            2408.675
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.007 }
+    param:               { ppwi: 128, wgsize: 128 }
+    raw_iterations:      [40.6877,16.4926,17.0298,16.5939,16.4363,16.6454,16.665,16.4959,16.3818,17.3892]
+    context_ms:          0.286946
+    sum_ms:              133.637
+    avg_ms:              16.705
+    min_ms:              16.382
+    max_ms:              17.389
+    stddev_ms:           0.319
+    giga_interactions/s: 95.679
+    gflop/s:             2879.804
+    gfinst/s:            2391.984
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+best: { min_ms: 16.28, max_ms: 16.82, sum_ms: 132.71, avg_ms: 16.59, ppwi: 128, wgsize: 64 }
