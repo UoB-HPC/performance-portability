@@ -14,17 +14,17 @@ bude=false
 babelstream=false
 
 declare -A models
-models["tbb"]=true
-models["omp"]=true
-models["cuda"]=true
-models["sycl"]=true
+models["tbb"]=false
+models["omp"]=false
+models["cuda"]=false
+models["sycl"]=false
 models["kokkos"]=true
 
-models["std-data"]=true
-models["std-indices"]=true
+models["std-data"]=false
+models["std-indices"]=false
 
-models["std-data-dplomp"]=true
-models["std-indices-dplomp"]=true
+models["std-data-dplomp"]=false
+models["std-indices-dplomp"]=false
 
 export LARGE=true
 
@@ -54,8 +54,8 @@ bench_once() {
 
 bench_scale() {
     # echo "No"
-    # bench "$1" "$2" "run" "${@:3}"
-    bench "$1" "$2" "run-scale" "${@:3}"
+    bench "$1" "$2" "run" "${@:3}"
+    # bench "$1" "$2" "run-scale" "${@:3}"
 }
 
 babelstream_gcc_cpu_models=(

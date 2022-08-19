@@ -70,7 +70,7 @@ omp)
   BENCHMARK_EXE="omp-stream"
   ;;
 tbb)
-  append_opts "-DMODEL=tbb -DPARTITIONER=STATIC"
+  append_opts "-DMODEL=tbb -DPARTITIONER=AUTO" # auto doesn't work well for icl; use auto for comparison with std-*
   BENCHMARK_EXE="tbb-stream"
   ;;
 std-data)

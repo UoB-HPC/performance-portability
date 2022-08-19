@@ -1,4 +1,4 @@
-Fri 12 Aug 08:44:11 GMT 2022
+Wed 17 Aug 15:04:26 GMT 2022
 /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-icl_oneapi-2022.2_tbb
 	linux-vdso.so.1 (0x0000155555551000)
 	libtbb.so.12 => /home/br-wlin/performance-portability/benchmarking/2022/babelstream/results/babelstream-icl_oneapi-2022.2_tbb/BabelStream/build/intelllvm_2022.1_cxx11_64_release/libtbb.so.12 (0x00001555554e1000)
@@ -21,11 +21,11 @@ Running kernels 100 times
 Precision: double
 Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
-Using TBB partitioner: static_partitioner
+Using TBB partitioner: auto_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        235227.417  0.03652     0.10809     0.04860     
-Mul         242466.293  0.03543     0.11655     0.05069     
-Add         264680.663  0.04868     0.13299     0.06413     
-Triad       263945.755  0.04882     0.13788     0.07332     
-Dot         309310.456  0.02777     0.08582     0.04305     
+Copy        65876.953   0.13039     0.17078     0.15254     
+Mul         75093.958   0.11439     0.16805     0.14647     
+Add         67045.399   0.19218     0.22163     0.20398     
+Triad       74723.547   0.17243     0.21820     0.19965     
+Dot         90204.991   0.09523     0.13661     0.12371     

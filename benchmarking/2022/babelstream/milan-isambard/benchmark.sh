@@ -62,7 +62,7 @@ omp)
   BENCHMARK_EXE="omp-stream"
   ;;
 tbb)
-  append_opts "-DMODEL=tbb -DPARTITIONER=AUTO" # static doesn't work well for milan
+  append_opts "-DMODEL=tbb -DPARTITIONER=AUTO" # static doesn't work well for milan; use auto for comparison with std-*
   BENCHMARK_EXE="tbb-stream"
   ;;
 

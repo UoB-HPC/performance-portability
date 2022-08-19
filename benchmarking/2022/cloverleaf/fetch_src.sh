@@ -14,7 +14,7 @@ fetch_src() {
   kokkos)
     REPO_DIR=cloverleaf_kokkos
     REPO_FILE="$REPO_DIR/clover_leaf.cpp"
-    REPO_BRANCH="nvcpp_fix"
+    REPO_BRANCH="kokkos_noinit"
     REPO_URL="https://github.com/UoB-HPC/cloverleaf_kokkos"
     ;;
   omp-plain)
