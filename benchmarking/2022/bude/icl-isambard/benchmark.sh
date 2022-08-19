@@ -36,10 +36,10 @@ nvhpc-22.7)
   append_opts "-DCMAKE_CXX_COMPILER=$NVHPC_PATH/compilers/bin/nvc++"
   case "$MODEL" in
   omp)
-    append_opts "-DCXX_EXTRA_FLAGS=-target=multicore;-mp;-march=skylake-avx512;-fast"
+    append_opts "-DCXX_EXTRA_FLAGS=-target=multicore;-mp;-march=skylake-avx512;-fast;-Mx,15,0x8"
     ;;
   std-*)
-    append_opts "-DCXX_EXTRA_FLAGS=-target=multicore;-stdpar;-march=skylake-avx512;-fast"
+    append_opts "-DCXX_EXTRA_FLAGS=-target=multicore;-stdpar;-march=skylake-avx512;-fast;-Mx,15,0x8"
     ;;
   esac
 

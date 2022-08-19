@@ -9,19 +9,19 @@ GCC=gcc-12.1
 AOCC=aocc-3.2.0
 ARM=arm-22.0.1
 
-cloverleaf=true
-bude=false
+cloverleaf=false
+bude=true
 babelstream=false
 
 declare -A models
 models["tbb"]=false
-models["omp"]=false
+models["omp"]=true
 models["cuda"]=false
 models["sycl"]=false
-models["kokkos"]=true
+models["kokkos"]=false
 
 models["std-data"]=false
-models["std-indices"]=false
+models["std-indices"]=true
 
 models["std-data-dplomp"]=false
 models["std-indices-dplomp"]=false
@@ -102,8 +102,8 @@ p3)
     module unload cce
     bench_scale milan-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
     module load cce
-    bench_scale milan-isambard $GCC "${generic_gcc_cpu_models[@]}"
-    bench_scale milan-isambard $AOCC "${generic_gcc_cpu_models[@]}"
+    # bench_scale milan-isambard $GCC "${generic_gcc_cpu_models[@]}"
+    # bench_scale milan-isambard $AOCC "${generic_gcc_cpu_models[@]}"
 
     bench_once a100-isambard $NVHPC "${generic_nvhpc_gpu_models[@]}"
 
@@ -125,9 +125,9 @@ p2)
     bench_once v100-isambard $NVHPC "${babelstream_nvhpc_gpu_models[@]}"
 
     cd "$BASE/bude/results"
-    bench_scale icl-isambard $ONEAPI "${generic_gcc_cpu_models[@]}"
+    # bench_scale icl-isambard $ONEAPI "${generic_gcc_cpu_models[@]}"
     bench_scale icl-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
-    bench_scale icl-isambard $GCC "${generic_gcc_cpu_models[@]}"
+    # bench_scale icl-isambard $GCC "${generic_gcc_cpu_models[@]}"
 
     bench_once v100-isambard $NVHPC "${generic_nvhpc_gpu_models[@]}"
 
@@ -147,8 +147,8 @@ aws-g2)
 
     cd "$BASE/bude/results"
     bench_scale graviton2-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"
-    bench_scale graviton2-aws $GCC "${generic_gcc_cpu_models[@]}"
-    bench_scale graviton2-aws $ARM "${generic_gcc_cpu_models[@]}"
+    # bench_scale graviton2-aws $GCC "${generic_gcc_cpu_models[@]}"
+    # bench_scale graviton2-aws $ARM "${generic_gcc_cpu_models[@]}"
 
     cd "$BASE/cloverleaf/results"
     bench_scale graviton2-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"
@@ -164,8 +164,8 @@ aws-g3)
 
     cd "$BASE/bude/results"
     bench_scale graviton3-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"
-    bench_scale graviton3-aws $GCC "${generic_gcc_cpu_models[@]}"
-    bench_scale graviton3-aws $ARM "${generic_gcc_cpu_models[@]}"
+    # bench_scale graviton3-aws $GCC "${generic_gcc_cpu_models[@]}"
+    # bench_scale graviton3-aws $ARM "${generic_gcc_cpu_models[@]}"
 
     cd "$BASE/cloverleaf/results"
     bench_scale graviton3-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"

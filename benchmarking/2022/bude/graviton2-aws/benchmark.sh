@@ -41,10 +41,10 @@ nvhpc-22.7)
   append_opts "-DCMAKE_CXX_COMPILER=$NVHPC_PATH/compilers/bin/nvc++"
   case "$MODEL" in
   omp | kokkos)
-    append_opts "-DCXX_EXTRA_FLAGS=-target=multicore;-mp;-tp=neoverse-n1;-fast"
+    append_opts "-DCXX_EXTRA_FLAGS=-target=multicore;-mp;-tp=neoverse-n1;-fast;-Mx,15,0x8"
     ;;
   std-*)
-    append_opts "-DCXX_EXTRA_FLAGS=-target=multicore;-stdpar;-tp=neoverse-n1;-fast"
+    append_opts "-DCXX_EXTRA_FLAGS=-target=multicore;-stdpar;-tp=neoverse-n1;-fast;-Mx,15,0x8"
     ;;
   esac
   ;;
