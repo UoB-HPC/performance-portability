@@ -1,0 +1,229 @@
+Fri 19 Aug 01:28:24 CDT 2022
+/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-a64fx_gcc-12.1_omp-target
+/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-a64fx_gcc-12.1_omp-target/miniBUDE/build/omp-bude: /lib64/libgomp.so.1: version `GOMP_5.1' not found (required by /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-a64fx_gcc-12.1_omp-target/miniBUDE/build/omp-bude)
+/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-a64fx_gcc-12.1_omp-target/miniBUDE/build/omp-bude: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.29' not found (required by /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-a64fx_gcc-12.1_omp-target/miniBUDE/build/omp-bude)
+	linux-vdso.so.1 (0x0000400005f60000)
+	libgomp.so.1 => /lib64/libgomp.so.1 (0x0000400005f90000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000400005ff0000)
+	libstdc++.so.6 => /lib64/libstdc++.so.6 (0x0000400006030000)
+	libm.so.6 => /lib64/libm.so.6 (0x00004000061e0000)
+	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x00004000062b0000)
+	libc.so.6 => /lib64/libc.so.6 (0x00004000062f0000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000400006470000)
+	/lib/ld-linux-aarch64.so.1 (0x0000400005f00000)
+miniBUDE:  
+compile_commands:
+   - "/lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/bin/g++ -DOMP -DOMP_TARGET -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/omp -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-a64fx_gcc-12.1_omp-target/miniBUDE/build/generated  -DNDEBUG -O3 -march=native -mcpu=a64fx -Ofast -fopenmp -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
+vcs:
+  commit:  43ef292286634ef940b96199d8a1cf1613505d9d*
+  author:  "Tom Lin (tom91136@gmail.com)"
+  date:    "2022-08-18 14:14:32 +0000"
+  subject: "Fix thread count for icl omp target;add NVHPC miscompile workaround"
+host_cpu:
+  ~
+time: { epoch_s:1660890504, formatted: "Fri Aug 19 06:28:24 2022 GMT" }
+devices:
+  0: "OMP host device #0"
+miniBUDE:  
+compile_commands:
+   - "/lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/bin/g++ -DOMP -DOMP_TARGET -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/omp -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-a64fx_gcc-12.1_omp-target/miniBUDE/build/generated  -DNDEBUG -O3 -march=native -mcpu=a64fx -Ofast -fopenmp -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
+vcs:
+  commit:  43ef292286634ef940b96199d8a1cf1613505d9d*
+  author:  "Tom Lin (tom91136@gmail.com)"
+  date:    "2022-08-18 14:14:32 +0000"
+  subject: "Fix thread count for icl omp target;add NVHPC miscompile workaround"
+host_cpu:
+  ~
+time: { epoch_s:1660890504, formatted: "Fri Aug 19 06:28:24 2022 GMT" }
+deck:
+  path:         "miniBUDE/data/bm1"
+  poses:        65536
+  proteins:     938
+  ligands:      26
+  forcefields:  34
+config:
+  iterations:   8
+  poses:        65536
+  ppwi:
+    available:  [1,2,4,8,16,32,64,128]
+    selected:   [1,2,4,8,16,32,64,128]
+  wgsize:       [1]
+device: { index: 0,  name: "OMP host device #0" }
+# (ppwi=1,wgsize=1,valid=1)
+# (ppwi=2,wgsize=1,valid=1)
+# (ppwi=4,wgsize=1,valid=1)
+# (ppwi=8,wgsize=1,valid=1)
+# (ppwi=16,wgsize=1,valid=1)
+# (ppwi=32,wgsize=1,valid=1)
+# (ppwi=64,wgsize=1,valid=1)
+# (ppwi=128,wgsize=1,valid=1)
+results:
+  - outcome:             { valid: true, max_diff_%: 0.004 }
+    param:               { ppwi: 1, wgsize: 1 }
+    raw_iterations:      [1782.37,1777.52,1796.94,1782.89,1779.94,1797.63,1795.95,1796.05,1777.2,1811.61]
+    context_ms:          7.659777
+    sum_ms:              14338.212
+    avg_ms:              1792.276
+    min_ms:              1777.196
+    max_ms:              1811.609
+    stddev_ms:           10.722
+    giga_interactions/s: 0.892
+    gflop/s:             35.691
+    gfinst/s:            22.294
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.002 }
+    param:               { ppwi: 2, wgsize: 1 }
+    raw_iterations:      [1314.88,1347.69,1322.14,1329.61,1330.79,1314.67,1536.16,1302.34,1346.48,1310.12]
+    context_ms:          0.594785
+    sum_ms:              10792.304
+    avg_ms:              1349.038
+    min_ms:              1302.336
+    max_ms:              1536.162
+    stddev_ms:           71.879
+    giga_interactions/s: 1.185
+    gflop/s:             41.492
+    gfinst/s:            29.619
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.001 }
+    param:               { ppwi: 4, wgsize: 1 }
+    raw_iterations:      [1133.82,1366.72,1133.2,1156.87,1139.06,1154.03,1129.85,1130.11,1169.95,1129.96]
+    context_ms:          0.761637
+    sum_ms:              9143.030
+    avg_ms:              1142.879
+    min_ms:              1129.848
+    max_ms:              1169.952
+    stddev_ms:           14.410
+    giga_interactions/s: 1.398
+    gflop/s:             45.480
+    gfinst/s:            34.962
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.001 }
+    param:               { ppwi: 8, wgsize: 1 }
+    raw_iterations:      [557.081,583.868,581.437,596.433,590.077,587.087,579.837,603.36,564.877,593.834]
+    context_ms:          0.310043
+    sum_ms:              4696.941
+    avg_ms:              587.118
+    min_ms:              564.877
+    max_ms:              603.360
+    stddev_ms:           11.093
+    giga_interactions/s: 2.722
+    gflop/s:             85.127
+    gfinst/s:            68.057
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.001 }
+    param:               { ppwi: 16, wgsize: 1 }
+    raw_iterations:      [273.432,270.057,222.243,260.081,270.26,299.687,239.997,257.74,280.001,289.985]
+    context_ms:          0.755646
+    sum_ms:              2119.995
+    avg_ms:              264.999
+    min_ms:              222.243
+    max_ms:              299.687
+    stddev_ms:           24.006
+    giga_interactions/s: 6.031
+    gflop/s:             184.832
+    gfinst/s:            150.783
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.001 }
+    param:               { ppwi: 32, wgsize: 1 }
+    raw_iterations:      [217.627,222.506,200.967,241.428,234.396,220.004,219.95,220.087,216.318,193.65]
+    context_ms:          0.708916
+    sum_ms:              1746.801
+    avg_ms:              218.350
+    min_ms:              193.650
+    max_ms:              241.428
+    stddev_ms:           14.641
+    giga_interactions/s: 7.320
+    gflop/s:             222.033
+    gfinst/s:            182.996
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.001 }
+    param:               { ppwi: 64, wgsize: 1 }
+    raw_iterations:      [198.691,217.763,220.075,176.503,203.418,190.132,201.894,208.026,206.385,203.542]
+    context_ms:          1.105669
+    sum_ms:              1609.976
+    avg_ms:              201.247
+    min_ms:              176.503
+    max_ms:              220.075
+    stddev_ms:           12.109
+    giga_interactions/s: 7.942
+    gflop/s:             239.661
+    gfinst/s:            198.549
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.001 }
+    param:               { ppwi: 128, wgsize: 1 }
+    raw_iterations:      [190.211,170.023,206.441,193.606,179.927,209.985,176.898,193.131,196.433,193.64]
+    context_ms:          0.742646
+    sum_ms:              1550.062
+    avg_ms:              193.758
+    min_ms:              176.898
+    max_ms:              209.985
+    stddev_ms:           10.650
+    giga_interactions/s: 8.249
+    gflop/s:             248.280
+    gfinst/s:            206.223
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+best: { min_ms: 176.90, max_ms: 209.99, sum_ms: 1550.06, avg_ms: 193.76, ppwi: 128, wgsize: 1 }

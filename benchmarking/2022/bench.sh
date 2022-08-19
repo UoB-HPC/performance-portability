@@ -68,9 +68,19 @@ p2)
         wait
     )
     ;;
+a64fx)
+
+    cd "$BASE/bude/results"
+    bench a64fx-isambard nvhpc-22.7 run kokkos omp omp-target
+    bench a64fx-isambard cce run kokkos omp omp-target
+    bench a64fx-isambard gcc-12.1 run kokkos omp omp-target
+
+    bench a64fx-isambard hipsycl-gcc run sycl
+    ;;
 aws-g3)
 
     cd "$BASE/bude/results"
+    bench graviton3-aws cce run kokkos omp omp-target
     bench graviton3-aws nvhpc-22.7 run kokkos omp omp-target
     bench graviton3-aws arm-22.0.1 run kokkos omp omp-target
     bench graviton3-aws gcc-12.1 run kokkos omp omp-target

@@ -1,0 +1,42 @@
+#!/bin/bash
+#PBS -q a64fx
+#PBS -l select=1:ncpus=48
+#PBS -l walltime=00:15:00
+#PBS -joe
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+# compute bound
+export OMP_NUM_THREADS=48
+export OMP_PROC_BIND=true
+export OMP_PLACES="{0:12}:4:12"
+export XOS_MMM_L_PAGING_POLICY=demand:demand:demand
+
+# Isambard 2 A64FX resets modules in PBS jobs, even when run with -V
+case "$COMPILER" in
+gcc-12.1)
+  module load gcc/12.1.0
+  ;;
+cce)
+  module load cce cce-sve cray-mvapich2_noslurm_nogpu # cray links in mpi crap unconditionally
+  ;;
+hipsycl-gcc)
+  module load gcc/12.1.0
+  ;;
+nvhpc-22.7)
+  # load_nvhpc # no need
+  ;;
+*) unknown_compiler ;;
+esac
+
+case "$MODEL" in
+
+*)
+  "$BENCHMARK_EXE" --list
+  "$BENCHMARK_EXE" --deck miniBUDE/data/bm1 --wgsize 1 --ppwi all
+  ;;
+
+esac

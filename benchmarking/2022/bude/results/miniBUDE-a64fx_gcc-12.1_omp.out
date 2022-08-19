@@ -1,0 +1,228 @@
+Fri 19 Aug 01:27:43 CDT 2022
+/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-a64fx_gcc-12.1_omp
+/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-a64fx_gcc-12.1_omp/miniBUDE/build/omp-bude: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.29' not found (required by /home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-a64fx_gcc-12.1_omp/miniBUDE/build/omp-bude)
+	linux-vdso.so.1 (0x000040000d8b0000)
+	libgomp.so.1 => /lib64/libgomp.so.1 (0x000040000d8e0000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000040000d940000)
+	libstdc++.so.6 => /lib64/libstdc++.so.6 (0x000040000d980000)
+	libm.so.6 => /lib64/libm.so.6 (0x000040000db30000)
+	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x000040000dc00000)
+	libc.so.6 => /lib64/libc.so.6 (0x000040000dc40000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000040000ddc0000)
+	/lib/ld-linux-aarch64.so.1 (0x000040000d850000)
+miniBUDE:  
+compile_commands:
+   - "/lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/bin/g++ -DOMP -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/omp -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-a64fx_gcc-12.1_omp/miniBUDE/build/generated  -DNDEBUG -O3 -march=native -mcpu=a64fx -Ofast -fopenmp -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
+vcs:
+  commit:  43ef292286634ef940b96199d8a1cf1613505d9d*
+  author:  "Tom Lin (tom91136@gmail.com)"
+  date:    "2022-08-18 14:14:32 +0000"
+  subject: "Fix thread count for icl omp target;add NVHPC miscompile workaround"
+host_cpu:
+  ~
+time: { epoch_s:1660890463, formatted: "Fri Aug 19 06:27:43 2022 GMT" }
+devices:
+  0: "OMP CPU"
+miniBUDE:  
+compile_commands:
+   - "/lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/bin/g++ -DOMP -DUSE_PPWI=1,2,4,8,16,32,64,128 -I<SRC>/omp -I/home/br-wlin/performance-portability-p3hpc22/benchmarking/2022/bude/results/miniBUDE-a64fx_gcc-12.1_omp/miniBUDE/build/generated  -DNDEBUG -O3 -march=native -mcpu=a64fx -Ofast -fopenmp -std=c++17 -o <OUT>/src/main.cpp.o -c <SRC>/main.cpp"
+vcs:
+  commit:  43ef292286634ef940b96199d8a1cf1613505d9d*
+  author:  "Tom Lin (tom91136@gmail.com)"
+  date:    "2022-08-18 14:14:32 +0000"
+  subject: "Fix thread count for icl omp target;add NVHPC miscompile workaround"
+host_cpu:
+  ~
+time: { epoch_s:1660890463, formatted: "Fri Aug 19 06:27:43 2022 GMT" }
+deck:
+  path:         "miniBUDE/data/bm1"
+  poses:        65536
+  proteins:     938
+  ligands:      26
+  forcefields:  34
+config:
+  iterations:   8
+  poses:        65536
+  ppwi:
+    available:  [1,2,4,8,16,32,64,128]
+    selected:   [1,2,4,8,16,32,64,128]
+  wgsize:       [1]
+device: { index: 0,  name: "OMP CPU" }
+# (ppwi=1,wgsize=1,valid=1)
+# (ppwi=2,wgsize=1,valid=1)
+# (ppwi=4,wgsize=1,valid=1)
+# (ppwi=8,wgsize=1,valid=1)
+# (ppwi=16,wgsize=1,valid=1)
+# (ppwi=32,wgsize=1,valid=1)
+# (ppwi=64,wgsize=1,valid=1)
+# (ppwi=128,wgsize=1,valid=1)
+results:
+  - outcome:             { valid: true, max_diff_%: 0.004 }
+    param:               { ppwi: 1, wgsize: 1 }
+    raw_iterations:      [1730.69,1730.29,1729.96,1703.49,1722.53,1731.6,1731.35,1730.07,1730.4,1703.59]
+    context_ms:          7.465309
+    sum_ms:              13782.987
+    avg_ms:              1722.873
+    min_ms:              1703.487
+    max_ms:              1731.595
+    stddev_ms:           11.481
+    giga_interactions/s: 0.928
+    gflop/s:             37.128
+    gfinst/s:            23.192
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.002 }
+    param:               { ppwi: 2, wgsize: 1 }
+    raw_iterations:      [1280.64,1323.66,1432.82,1642.28,1278.08,1252.18,1277.89,1277.85,1252.43,1277.47]
+    context_ms:          0.243754
+    sum_ms:              10690.993
+    avg_ms:              1336.374
+    min_ms:              1252.179
+    max_ms:              1642.283
+    stddev_ms:           127.834
+    giga_interactions/s: 1.196
+    gflop/s:             41.885
+    gfinst/s:            29.900
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.001 }
+    param:               { ppwi: 4, wgsize: 1 }
+    raw_iterations:      [1087.71,1112.44,1087.68,1112.14,1090.92,1099.18,1112.32,1087.78,1112.52,1087.73]
+    context_ms:          0.180483
+    sum_ms:              8790.278
+    avg_ms:              1098.785
+    min_ms:              1087.679
+    max_ms:              1112.521
+    stddev_ms:           11.063
+    giga_interactions/s: 1.455
+    gflop/s:             47.305
+    gfinst/s:            36.365
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.001 }
+    param:               { ppwi: 8, wgsize: 1 }
+    raw_iterations:      [520.117,542.985,518.035,517.901,517.559,543.001,517.521,517.484,518.639,537.077]
+    context_ms:          0.152262
+    sum_ms:              4187.217
+    avg_ms:              523.402
+    min_ms:              517.484
+    max_ms:              543.001
+    stddev_ms:           9.725
+    giga_interactions/s: 3.054
+    gflop/s:             95.490
+    gfinst/s:            76.341
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.001 }
+    param:               { ppwi: 16, wgsize: 1 }
+    raw_iterations:      [196.247,196.138,196.185,196.099,196.152,196.158,196.32,222.352,196.182,196.241]
+    context_ms:          0.165203
+    sum_ms:              1595.688
+    avg_ms:              199.461
+    min_ms:              196.099
+    max_ms:              222.352
+    stddev_ms:           8.652
+    giga_interactions/s: 8.013
+    gflop/s:             245.564
+    gfinst/s:            200.326
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.001 }
+    param:               { ppwi: 32, wgsize: 1 }
+    raw_iterations:      [154.904,154.897,154.83,155.097,155.348,154.788,154.823,154.987,154.823,154.8]
+    context_ms:          0.153482
+    sum_ms:              1239.496
+    avg_ms:              154.937
+    min_ms:              154.788
+    max_ms:              155.348
+    stddev_ms:           0.186
+    giga_interactions/s: 10.316
+    gflop/s:             312.907
+    gfinst/s:            257.894
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.001 }
+    param:               { ppwi: 64, wgsize: 1 }
+    raw_iterations:      [156.303,142.143,142.193,142.181,142.22,142.148,142.203,142.226,142.167,142.195]
+    context_ms:          0.506849
+    sum_ms:              1137.532
+    avg_ms:              142.191
+    min_ms:              142.148
+    max_ms:              142.226
+    stddev_ms:           0.024
+    giga_interactions/s: 11.240
+    gflop/s:             339.198
+    gfinst/s:            281.011
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+  - outcome:             { valid: true, max_diff_%: 0.001 }
+    param:               { ppwi: 128, wgsize: 1 }
+    raw_iterations:      [129.942,130.073,130.01,129.933,144.228,130.258,129.976,129.904,129.899,130.004]
+    context_ms:          0.154692
+    sum_ms:              1054.213
+    avg_ms:              131.777
+    min_ms:              129.899
+    max_ms:              144.228
+    stddev_ms:           4.707
+    giga_interactions/s: 12.129
+    gflop/s:             365.058
+    gfinst/s:            303.220
+    energies:            
+      - 865.52
+      - 25.07
+      - 368.43
+      - 14.67
+      - 574.99
+      - 707.35
+      - 33.95
+      - 135.59
+best: { min_ms: 129.90, max_ms: 144.23, sum_ms: 1054.21, avg_ms: 131.78, ppwi: 128, wgsize: 1 }
