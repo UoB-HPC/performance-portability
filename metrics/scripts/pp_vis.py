@@ -6,6 +6,7 @@ from matplotlib import pylab as plt
 from scipy.special import erf
 import matplotlib.patches as mpatches
 import matplotlib.gridspec as gridspec
+import matplotlib.patheffects as patheffects
 from scipy.integrate import simps
 import numpy as np
 from pathlib import Path
@@ -283,20 +284,17 @@ def plot_cascade(fig,
                  app_eff_df,
                  handles,
                  app_colors=None,
-                 plat_colors=None):
+                 app_markers=None,
+                 plat_colors=None,
+                 plat_labels=None,
+                 draw_cliff=False):
     """Plot efficiency cascade & platform chart on figure/gridspec fig/gs with gridspec index index.
     app_eff_df is input dataframe. Handles is a dict of column names to handles for legends, which is updated.
     app_colors is a dictionary of column names to colors; if not present, a heuristic is used.
     plat_colors is a list of (color, platform_name) pairs to use in the platform chart. One is created if it is not passed in."""
-    subgrid = gridspec.GridSpecFromSubplotSpec(
-        2, 1, subplot_spec=gs[index[0], index[1]], hspace=0, height_ratios=[5, 1])
     qual_colormap = plt.get_cmap("tab10")
-    ax2 = fig.add_subplot(subgrid[1, :])
-    ax = fig.add_subplot(subgrid[0, :], sharex=ax2)
-
     if plat_colors is None:
         plat_colors = []
-        qual_colormap = plt.get_cmap("tab10")
         for i, name in enumerate(app_eff_df.columns[1:]):
             plat_colors.append((qual_colormap(i), name))
 
@@ -309,11 +307,18 @@ def plot_cascade(fig,
 
         effs, pps, plats = zip(*cascade)
 
+        # FIXME: "draw_cliff" is a hack; I don't understand why the last point needs to be there
         ppl = list(enumerate(pps, 1))
-        ppl = ppl + [(ppl[-1][0], 0.0)]
+        if draw_cliff:
+            ppl = ppl + [(ppl[-1][0], 0.0)]
+        else:
+            ppl = ppl + [(ppl[-1][0], ppl[-1][1])]
         data_pp = np.asarray(ppl)
         effl = list(enumerate(effs, 1))
-        effl = effl + [(effl[-1][0], 0.0)]
+        if draw_cliff:
+            effl = effl + [(effl[-1][0], 0.0)]
+        else:
+            effl = effl + [(effl[-1][0], effl[-1][1])]
         data_eff = np.asarray(effl)
 
         center = data_pp[:, 0]
@@ -330,57 +335,111 @@ def plot_cascade(fig,
         else:
             color = app_colors[name]
         appinfo[name] = (data_pp, data_eff, plats, center, i, color)
+  
+  
+    subgrid = gridspec.GridSpecFromSubplotSpec(
+        2, 1, subplot_spec=gs[index[0], index[1]], hspace=0, height_ratios=[6, len(appinfo)**0.5])
+    qual_colormap = plt.get_cmap("tab10")
+    ax2 = fig.add_subplot(subgrid[1, :])
+    ax = fig.add_subplot(subgrid[0, :], sharex=ax2)
+    
+    axbox = ax.get_window_extent().transformed(fig.dpi_scale_trans.inverted())
+#    w = s*(maxp - 2*x)
+#    2*x*s = o 
+#    s = o/(2*x)
+#    w = o/(2*x) * (maxp - 2 *x)
+#   w = o*(maxp/(2*x) - 1)
+#    x = maxp/(2*(w/o+1)) 
+    end_widths_disp = 2
+    end_widths_data = max_plat/(2*(axbox.width/end_widths_disp+1.0))
+    ax2.set_xlim([1-end_widths_data, max_plat + end_widths_data])    
+    ax2.set_ylim([0, max_plat])   
+
+    fac = max_plat/len(appinfo)
+  
+    #if fac > 0.9:
+    #    bw = 0.9
+    #else:
+    #    bw = fac/2.0 
+        
+    #if bw > end_widths_data*0.5:
+    bw = end_widths_data*0.5
+
     for name, (data_pp, data_eff, plats, center, i, color) in appinfo.items():
         name = name.replace(r"\%", "%")
-        eff_name = f"{name} eff."
+        #eff_name = f"{name} eff."
+        eff_name = f"{name}"
         pp_name = f"{name} PP"
 
+        if app_markers is None:
+            eff_marker = "s"
+            pp_marker = "o"
+        else:
+            eff_marker = app_markers[name]
+            pp_marker = app_markers[name]
+            
         pp_h = ax.plot(center,
                        data_pp[:,
                                1],
                        label=pp_name,
                        color=color,
-                       lw=3,
-                       marker="s",
+                       lw=1.5,
+                       marker=pp_marker,
+                       markersize=8,
                        ls='dashed')[0]
+
         eff_h = ax.plot(center,
                         data_eff[:,
                                  1],
                         label=eff_name,
                         color=color,
-                        marker="o",
-                        lw=3)[0]
+                        marker=eff_marker,
+                        markersize=8,
+                        lw=1.5)[0]
 
         colors = [plat_colors[p] for p in plats]
-        fac = 0.25
-        ax2.bar(center[:-1],
-                height=fac,
-                width=1.0,
-                bottom=i * fac,
-                color=colors,
-                edgecolor=color,
-                linewidth=0,
-                alpha=1.0)
+        t_colors = [(plat_colors[p][0], plat_colors[p][1], plat_colors[p][2], 0.5) for p in plats]
 
-        ax2.bar([0.0, max_plat + 1.0], height=fac,
-                width=1.0, bottom=i * fac, color=color)
+        # Draw white boxes first so transparency doesn't show lines
+        ax2.bar(center[:-1], height=fac, width=bw, bottom=i*fac, color='white', zorder=2)
+
+        spots = ax2.bar(center[:-1],
+                height=fac,
+                width=bw,
+                bottom=i*fac,
+                color=t_colors,
+                edgecolor='black',
+                linewidth=1,
+                zorder=2)
+
+        if plat_labels:
+            plabels = [plat_labels[p] for p in plats]
+            for j,s in enumerate(spots):            
+                txt = ax2.text(s.get_x() + s.get_width()*0.5, s.get_y() + s.get_height()*0.5,
+                        plabels[j],
+                        ha='center', va='center', c='black', fontsize=14, fontfamily='sans-serif', zorder=4)
+                #txt.set_path_effects([patheffects.withStroke(linewidth=1, foreground='#000000')])
+        if app_markers is None:
+            ax2.bar([0.0, max_plat + 1.0], height=i*fac,
+                    width=fac, bottom=i, color=color)
+        else:
+            marker_spots = [1-end_widths_data*0.75, max_plat + end_widths_data*0.75,]
+            ax2.plot(marker_spots, len(marker_spots)*[ (i + 0.5)*fac], marker=app_markers[name], lw=1.5, markersize=8, color=color, zorder=1)
 
         if eff_name not in handles:
             handles[eff_name] = eff_h
-        if pp_name not in handles:
-            handles[pp_name] = pp_h
+        #if pp_name not in handles:
+        #    handles[pp_name] = pp_h
 
-    ax.set_ylabel("App PP (dashed)/efficiency (solid)")
-    ax2.set_xlabel("# of platforms")
-    ax2.set_xlim([0, max_plat + 1])
-    ax2.set_ylim([0, len(appinfo) * fac])
+    ax.set_ylabel("Performance Portability (dashed), Efficiency (solid)")
+    ax2.set_xlabel("# of Platforms")
+    
+    #ax2.set_ylim([0, len(appinfo) * fac])
     ax.set_ylim([0, 1.1])
     ax2.set_xticks(np.arange(min_plat, max_plat + 1))
     ax2.set_yticks([])
     ax.label_outer()
     ax.xaxis.set_ticks_position('none')
-    ax2.axvline(min_plat - 0.5, color="black")
-    ax2.axvline(max_plat + 0.5, color="black")
     ax.grid(True)
     return ax
 
