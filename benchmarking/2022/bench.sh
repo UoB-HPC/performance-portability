@@ -54,8 +54,8 @@ bench_once() {
 
 bench_scale() {
     # echo "No"
-    bench "$1" "$2" "run" "${@:3}"
-    # bench "$1" "$2" "run-scale" "${@:3}"
+    # bench "$1" "$2" "run" "${@:3}"
+    bench "$1" "$2" "run-scale" "${@:3}"
 }
 
 babelstream_gcc_cpu_models=(
