@@ -15,7 +15,7 @@ babelstream=false
 
 declare -A models
 models["tbb"]=false
-models["omp"]=true
+models["omp"]=false
 models["cuda"]=false
 models["sycl"]=false
 models["kokkos"]=false
@@ -49,12 +49,12 @@ bench() { # platform, compiler,  action, models...
 
 bench_once() {
     echo "No"
-    # bench "$1" "$2" "run" "${@:3}"
+    bench "$1" "$2" "run" "${@:3}"
 }
 
 bench_scale() {
-    # echo "No"
-    bench "$1" "$2" "run" "${@:3}"
+    echo "No"
+    # bench "$1" "$2" "run" "${@:3}"
     # bench "$1" "$2" "run-scale" "${@:3}"
 }
 

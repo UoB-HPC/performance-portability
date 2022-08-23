@@ -52,6 +52,12 @@ omp)
   BENCHMARK_EXE="omp-bude"
   ;;
 std-indices)
+
+  if [ ! -e "$PWD/patched_thrust/Makefile" ]; then
+    git clone --recursive -b parallel_for_launch_fix https://github.com/mattmartineau/thrust.git patched_thrust
+  fi
+  append_opts "-DCXX_EXTRA_FLAGS=-I$PWD/patched_thrust"
+
   append_opts "-DMODEL=std-indices"
   append_opts "-DNVHPC_OFFLOAD=cc70"
   BENCHMARK_EXE="std-indices-bude"

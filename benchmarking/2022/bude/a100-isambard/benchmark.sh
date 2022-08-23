@@ -41,7 +41,7 @@ cuda)
   append_opts "-DMODEL=cuda"
   append_opts "-DCMAKE_CUDA_COMPILER=$NVHPC_PATH/compilers/bin/nvcc"
   append_opts "-DCMAKE_C_COMPILER=gcc"
-  append_opts "-DCMAKE_CXX_COMPILER=g++" 
+  append_opts "-DCMAKE_CXX_COMPILER=g++"
   # fastmath enabled by default
   append_opts "-DCUDA_ARCH=sm_80"
   BENCHMARK_EXE="cuda-bude"
@@ -52,6 +52,11 @@ omp)
   BENCHMARK_EXE="omp-bude"
   ;;
 std-indices)
+  if [ ! -e "$PWD/patched_thrust/Makefile" ]; then
+    git clone --recursive -b parallel_for_launch_fix https://github.com/mattmartineau/thrust.git patched_thrust
+  fi
+  append_opts "-DCXX_EXTRA_FLAGS=-I$PWD/patched_thrust"
+
   append_opts "-DMODEL=std-indices"
   append_opts "-DNVHPC_OFFLOAD=cc80"
   BENCHMARK_EXE="std-indices-bude"
