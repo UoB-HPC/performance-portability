@@ -1,0 +1,22 @@
+#!/bin/bash
+#SBATCH -p graviton2
+#SBATCH --exclusive
+#SBATCH --nodes=1
+#SBATCH -t 01:00:00
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+# Best performance observed when only running 16 cores per socket.
+export OMP_NUM_THREADS=64
+export OMP_PROC_BIND=true
+export OMP_PLACES=cores
+
+case "$MODEL" in
+*)
+  "$BENCHMARK_EXE" --list
+  "$BENCHMARK_EXE" --deck miniBUDE/data/bm1 --wgsize 1 --ppwi all
+  ;;
+esac

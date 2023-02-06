@@ -1,0 +1,31 @@
+Thu 26 Jan 06:51:15 GMT 2023
+/lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-a100_gcc-12.1_ocl
+	linux-vdso.so.1 (0x00007ffe17501000)
+	libOpenCL.so.1 => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.7/cuda/lib64/libOpenCL.so.1 (0x0000146217a13000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libstdc++.so.6 (0x00001462177eb000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000146217469000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libgcc_s.so.1 (0x0000146217e0c000)
+	libc.so.6 => /lib64/libc.so.6 (0x00001462170a6000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000146216ea2000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000146216c82000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000146217c1b000)
+
+Devices:
+0: NVIDIA A100-SXM4-40GB
+
+BabelStream
+Version: 4.0
+Implementation: OpenCL
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using OpenCL device NVIDIA A100-SXM4-40GB
+Driver: 515.65.01
+Reduction kernel config: 432 groups of size 1024
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1395995.298 0.00615     0.00616     0.00616     
+Mul         1393922.968 0.00616     0.00617     0.00616     
+Add         1363061.080 0.00945     0.00951     0.00948     
+Triad       1364045.487 0.00945     0.00951     0.00948     
+Dot         1437461.432 0.00598     0.00602     0.00599     

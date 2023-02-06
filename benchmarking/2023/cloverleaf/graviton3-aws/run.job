@@ -1,0 +1,34 @@
+#!/bin/bash
+#SBATCH -p graviton3
+#SBATCH --exclusive
+#SBATCH --nodes=1
+#SBATCH -t 01:00:00
+
+cd "$RUN_DIR" || exit 2
+date
+hostname
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+# Best performance observed when only running 16 cores per socket.
+export OMP_NUM_THREADS=64
+export OMP_PROC_BIND=true
+export OMP_PLACES=cores
+export PMI_NO_FORK=1
+
+case "$MODEL" in
+kokkos)
+  cp "$SRC_DIR/InputDecks/clover_bm16.in" "clover.in"
+  "$BENCHMARK_EXE"
+  ;;
+omp)
+  "$BENCHMARK_EXE" --file "$SRC_DIR/InputDecks/clover_bm16.in"
+  ;;
+tbb | std-*)
+  numactl --physcpubind=all --localalloc "$BENCHMARK_EXE" --file "$SRC_DIR/InputDecks/clover_bm16.in"
+  ;;
+*)
+  echo "Unknown run configuration for model '$MODEL'"
+  exit 1
+  ;;
+esac

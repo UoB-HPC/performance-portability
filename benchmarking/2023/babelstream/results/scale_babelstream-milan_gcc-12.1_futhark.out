@@ -1,0 +1,26 @@
+Fri 27 Jan 00:05:29 GMT 2023
+/lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-milan_gcc-12.1_futhark
+	linux-vdso.so.1 (0x000014ff50680000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libstdc++.so.6 (0x000014ff50232000)
+	libm.so.6 => /lib64/libm.so.6 (0x000014ff4feb0000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libgcc_s.so.1 (0x000014ff50648000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014ff4fc90000)
+	libc.so.6 => /lib64/libc.so.6 (0x000014ff4f8cd000)
+	/lib64/ld-linux-x86-64.so.2 (0x000014ff5045a000)
+>>>128>>>
+Fri 27 Jan 00:05:29 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=128
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        51448.579   0.01044     0.01538     0.01189     
+Mul         48707.172   0.01102     0.01630     0.01253     
+Add         53078.511   0.01517     0.02426     0.01739     
+Triad       50102.788   0.01607     0.02102     0.01814     
+Dot         64831.997   0.00828     0.01116     0.00950     
+<<<128<<<

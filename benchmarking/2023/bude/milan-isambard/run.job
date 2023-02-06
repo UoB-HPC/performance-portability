@@ -1,0 +1,32 @@
+#!/bin/bash
+#PBS -q milanq
+#PBS -l select=1:ncpus=128
+#PBS -l walltime=00:10:00
+#PBS -l place=excl
+#PBS -joe
+
+: >"$OUT_FILE"
+exec &> >(tee -a "$OUT_FILE")
+
+set -eu
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+export OMP_NUM_THREADS=128
+export OMP_PROC_BIND=true
+export OMP_PLACES=cores
+export ACC_NUM_CORES=128
+
+case "$MODEL" in
+tbb | omp | std-* | kokkos)
+    "$BENCHMARK_EXE" --list
+    "$BENCHMARK_EXE" --deck miniBUDE/data/bm1 --wgsize 1 --ppwi all
+    ;;
+*)
+    echo "Unknown run configuration for model '$MODEL'"
+    exit 1
+    ;;
+esac

@@ -1,0 +1,24 @@
+Thu 26 Jan 06:53:46 GMT 2023
+/lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-a100_gcc-12.1_futhark-ocl
+	linux-vdso.so.1 (0x00007ffc3ebe6000)
+	libOpenCL.so.1 => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.7/cuda/lib64/libOpenCL.so.1 (0x0000150a5eb06000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libstdc++.so.6 (0x0000150a5e8de000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000150a5e55c000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libgcc_s.so.1 (0x0000150a5eeff000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000150a5e199000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000150a5df95000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000150a5dd75000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000150a5ed0e000)
+BabelStream
+Version: 4.0
+Implementation: Futhark (OpencL)
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1329500.287 0.00646     0.00652     0.00647     
+Mul         1392777.315 0.00617     0.00619     0.00617     
+Add         1397800.115 0.00922     0.00950     0.00947     
+Triad       1398429.394 0.00921     0.00951     0.00947     
+Dot         1437555.493 0.00598     0.00603     0.00600     

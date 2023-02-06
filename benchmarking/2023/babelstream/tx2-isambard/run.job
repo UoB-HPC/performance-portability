@@ -1,0 +1,37 @@
+#!/bin/bash
+#PBS -q arm
+#PBS -l select=1:ncpus=64
+#PBS -l walltime=00:15:00
+#PBS -joe
+
+set -eu
+
+cd "$RUN_DIR" || exit 2
+date
+hostname
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+if [ "${LARGE:-}" = true ]; then
+  opts=("--arraysize" "536870912")
+fi
+
+# Best performance observed when only running 16 cores per socket.
+export OMP_NUM_THREADS=64
+export OMP_PROC_BIND=true
+export OMP_PLACES=cores
+
+case "$MODEL" in
+omp)
+  aprun -n 1 -d 64 -cc depth "$BENCHMARK_EXE" --list
+  aprun -n 1 -d 64 -cc depth "$BENCHMARK_EXE" "${opts[@]:-}"
+  ;;
+tbb | std-*)
+  aprun -n 1 -d 64 -cc depth "$BENCHMARK_EXE" --list
+  aprun -n 1 -d 64 -cc depth numactl --physcpubind=all --localalloc "$BENCHMARK_EXE" "${opts[@]:-}"
+  ;;
+*)
+  echo "Unknown run configuration for model '$MODEL'"
+  exit 1
+  ;;
+esac

@@ -1,0 +1,1097 @@
+Thu 26 Jan 23:33:36 GMT 2023
+/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-icl_gcc-12.1_futhark
+	linux-vdso.so.1 (0x0000155555551000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libstdc++.so.6 (0x0000155555103000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000155554d81000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libgcc_s.so.1 (0x0000155555514000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000155554b61000)
+	libc.so.6 => /lib64/libc.so.6 (0x000015555479f000)
+	/lib64/ld-linux-x86-64.so.2 (0x000015555532b000)
+>>>1>>>
+Thu 26 Jan 23:33:36 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=1
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        13379.164   0.04013     0.04053     0.04024     
+Mul         13166.150   0.04078     0.04124     0.04093     
+Add         14145.766   0.05693     0.05733     0.05706     
+Triad       14166.916   0.05684     0.05723     0.05698     
+Dot         14833.192   0.03619     0.03649     0.03629     
+<<<1<<<
+>>>2>>>
+Thu 26 Jan 23:33:59 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=2
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        25558.883   0.02101     0.02138     0.02115     
+Mul         25097.152   0.02139     0.02192     0.02151     
+Add         27206.072   0.02960     0.03017     0.02984     
+Triad       27346.866   0.02945     0.02996     0.02964     
+Dot         28961.850   0.01854     0.01895     0.01866     
+<<<2<<<
+>>>3>>>
+Thu 26 Jan 23:34:12 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=3
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        36223.133   0.01482     0.01521     0.01494     
+Mul         35776.530   0.01501     0.01543     0.01511     
+Add         38607.904   0.02086     0.02130     0.02097     
+Triad       38750.949   0.02078     0.02123     0.02089     
+Dot         41722.001   0.01287     0.01325     0.01297     
+<<<3<<<
+>>>4>>>
+Thu 26 Jan 23:34:21 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=4
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        45971.832   0.01168     0.01199     0.01182     
+Mul         45286.347   0.01186     0.01215     0.01197     
+Add         49466.434   0.01628     0.01669     0.01639     
+Triad       49416.774   0.01630     0.01681     0.01641     
+Dot         54561.898   0.00984     0.01031     0.00995     
+<<<4<<<
+>>>5>>>
+Thu 26 Jan 23:34:28 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=5
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        54707.495   0.00981     0.01011     0.00990     
+Mul         55168.033   0.00973     0.01029     0.00983     
+Add         58923.497   0.01367     0.01400     0.01376     
+Triad       58746.938   0.01371     0.01403     0.01377     
+Dot         66402.138   0.00809     0.00845     0.00817     
+<<<5<<<
+>>>6>>>
+Thu 26 Jan 23:34:35 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=6
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        63051.581   0.00851     0.00887     0.00859     
+Mul         62286.113   0.00862     0.00902     0.00870     
+Add         67297.010   0.01197     0.01235     0.01204     
+Triad       67700.248   0.01190     0.01229     0.01196     
+Dot         77225.690   0.00695     0.00735     0.00700     
+<<<6<<<
+>>>7>>>
+Thu 26 Jan 23:34:40 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=7
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        70470.205   0.00762     0.00791     0.00772     
+Mul         69288.078   0.00775     0.00795     0.00783     
+Add         75464.452   0.01067     0.01089     0.01078     
+Triad       75332.534   0.01069     0.01095     0.01077     
+Dot         86690.126   0.00619     0.00643     0.00626     
+<<<7<<<
+>>>8>>>
+Thu 26 Jan 23:34:45 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=8
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        76376.493   0.00703     0.00733     0.00712     
+Mul         75894.271   0.00707     0.00737     0.00718     
+Add         83698.325   0.00962     0.00997     0.00971     
+Triad       82809.547   0.00972     0.01013     0.00980     
+Dot         95344.407   0.00563     0.00578     0.00568     
+<<<8<<<
+>>>9>>>
+Thu 26 Jan 23:34:50 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=9
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        80103.589   0.00670     0.00699     0.00676     
+Mul         81732.816   0.00657     0.00688     0.00666     
+Add         90218.467   0.00893     0.00923     0.00900     
+Triad       90273.221   0.00892     0.00910     0.00900     
+Dot         105784.620  0.00508     0.00526     0.00513     
+<<<9<<<
+>>>10>>>
+Thu 26 Jan 23:34:54 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=10
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        84079.160   0.00639     0.00666     0.00647     
+Mul         85940.652   0.00625     0.00652     0.00633     
+Add         95177.930   0.00846     0.00878     0.00854     
+Triad       96103.153   0.00838     0.00865     0.00845     
+Dot         113960.846  0.00471     0.00502     0.00475     
+<<<10<<<
+>>>11>>>
+Thu 26 Jan 23:34:58 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=11
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        89521.381   0.00600     0.00619     0.00609     
+Mul         86897.485   0.00618     0.00636     0.00626     
+Add         101892.063  0.00790     0.00811     0.00798     
+Triad       101204.729  0.00796     0.00817     0.00803     
+Dot         121477.117  0.00442     0.00465     0.00448     
+<<<11<<<
+>>>12>>>
+Thu 26 Jan 23:35:02 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=12
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        92248.302   0.00582     0.00616     0.00588     
+Mul         92515.428   0.00580     0.00602     0.00590     
+Add         105981.877  0.00760     0.00790     0.00767     
+Triad       104460.595  0.00771     0.00806     0.00778     
+Dot         132410.164  0.00405     0.00423     0.00412     
+<<<12<<<
+>>>13>>>
+Thu 26 Jan 23:35:06 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=13
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        92004.720   0.00584     0.00609     0.00590     
+Mul         95330.033   0.00563     0.00579     0.00569     
+Add         107463.176  0.00749     0.00767     0.00757     
+Triad       107796.789  0.00747     0.00763     0.00754     
+Dot         139122.744  0.00386     0.00400     0.00393     
+<<<13<<<
+>>>14>>>
+Thu 26 Jan 23:35:09 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=14
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        98134.953   0.00547     0.00593     0.00556     
+Mul         97580.461   0.00550     0.00572     0.00559     
+Add         112515.134  0.00716     0.00747     0.00725     
+Triad       111011.007  0.00725     0.00754     0.00737     
+Dot         144904.391  0.00371     0.00396     0.00381     
+<<<14<<<
+>>>15>>>
+Thu 26 Jan 23:35:13 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=15
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        95086.379   0.00565     0.00588     0.00572     
+Mul         100296.462  0.00535     0.00563     0.00545     
+Add         112612.558  0.00715     0.00747     0.00721     
+Triad       112686.053  0.00715     0.00746     0.00722     
+Dot         151485.354  0.00354     0.00380     0.00366     
+<<<15<<<
+>>>16>>>
+Thu 26 Jan 23:35:16 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=16
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        98805.621   0.00543     0.00565     0.00551     
+Mul         99788.741   0.00538     0.00556     0.00545     
+Add         115744.983  0.00696     0.00709     0.00701     
+Triad       112086.867  0.00718     0.00742     0.00727     
+Dot         153558.190  0.00350     0.00377     0.00361     
+<<<16<<<
+>>>17>>>
+Thu 26 Jan 23:35:20 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=17
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        101483.780  0.00529     0.00545     0.00536     
+Mul         100796.429  0.00533     0.00546     0.00539     
+Add         116225.062  0.00693     0.00709     0.00698     
+Triad       116406.370  0.00692     0.00716     0.00699     
+Dot         156407.038  0.00343     0.00362     0.00351     
+<<<17<<<
+>>>18>>>
+Thu 26 Jan 23:35:23 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=18
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        102228.257  0.00525     0.00545     0.00531     
+Mul         101013.846  0.00531     0.00547     0.00538     
+Add         117744.179  0.00684     0.00701     0.00689     
+Triad       118404.980  0.00680     0.00698     0.00686     
+Dot         158227.436  0.00339     0.00364     0.00345     
+<<<18<<<
+>>>19>>>
+Thu 26 Jan 23:35:27 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=19
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        101413.464  0.00529     0.00546     0.00536     
+Mul         104072.463  0.00516     0.00524     0.00520     
+Add         118354.480  0.00680     0.00711     0.00687     
+Triad       121109.046  0.00665     0.00692     0.00673     
+Dot         161863.436  0.00332     0.00353     0.00340     
+<<<19<<<
+>>>20>>>
+Thu 26 Jan 23:35:30 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=20
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        105941.368  0.00507     0.00530     0.00514     
+Mul         106523.253  0.00504     0.00532     0.00514     
+Add         122570.096  0.00657     0.00680     0.00662     
+Triad       119763.011  0.00672     0.00692     0.00678     
+Dot         160656.484  0.00334     0.00379     0.00344     
+<<<20<<<
+>>>21>>>
+Thu 26 Jan 23:35:33 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=21
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        104447.074  0.00514     0.00555     0.00523     
+Mul         106822.827  0.00503     0.00523     0.00510     
+Add         123105.563  0.00654     0.00682     0.00663     
+Triad       124273.948  0.00648     0.00668     0.00657     
+Dot         162072.868  0.00331     0.00375     0.00349     
+<<<21<<<
+>>>22>>>
+Thu 26 Jan 23:35:37 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=22
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        106632.638  0.00503     0.00540     0.00515     
+Mul         105997.152  0.00506     0.00534     0.00516     
+Add         123461.949  0.00652     0.00673     0.00661     
+Triad       123990.897  0.00649     0.00692     0.00659     
+Dot         163919.739  0.00328     0.00371     0.00345     
+<<<22<<<
+>>>23>>>
+Thu 26 Jan 23:35:40 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=23
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        105890.633  0.00507     0.00528     0.00515     
+Mul         108772.320  0.00494     0.00521     0.00500     
+Add         127480.833  0.00632     0.00664     0.00643     
+Triad       129888.564  0.00620     0.00643     0.00629     
+Dot         163931.051  0.00327     0.00363     0.00340     
+<<<23<<<
+>>>24>>>
+Thu 26 Jan 23:35:43 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=24
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        111054.461  0.00483     0.00505     0.00490     
+Mul         108811.826  0.00493     0.00520     0.00499     
+Add         135246.003  0.00595     0.00620     0.00604     
+Triad       130857.993  0.00615     0.00636     0.00623     
+Dot         165620.542  0.00324     0.00364     0.00337     
+<<<24<<<
+>>>25>>>
+Thu 26 Jan 23:35:47 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=25
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        106881.352  0.00502     0.00523     0.00509     
+Mul         109094.915  0.00492     0.00525     0.00502     
+Add         134040.169  0.00601     0.00627     0.00612     
+Triad       143254.764  0.00562     0.00592     0.00570     
+Dot         169648.901  0.00316     0.00352     0.00332     
+<<<25<<<
+>>>26>>>
+Thu 26 Jan 23:35:50 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=26
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        110999.033  0.00484     0.00507     0.00492     
+Mul         109094.693  0.00492     0.00508     0.00499     
+Add         148669.767  0.00542     0.00572     0.00553     
+Triad       147154.577  0.00547     0.00574     0.00555     
+Dot         168854.039  0.00318     0.00376     0.00331     
+<<<26<<<
+>>>27>>>
+Thu 26 Jan 23:35:53 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=27
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        111739.161  0.00480     0.00521     0.00489     
+Mul         114778.154  0.00468     0.00490     0.00476     
+Add         155017.841  0.00519     0.00568     0.00534     
+Triad       158443.564  0.00508     0.00529     0.00518     
+Dot         170680.068  0.00315     0.00345     0.00326     
+<<<27<<<
+>>>28>>>
+Thu 26 Jan 23:35:56 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=28
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        120076.741  0.00447     0.00472     0.00460     
+Mul         117866.493  0.00455     0.00592     0.00466     
+Add         156574.293  0.00514     0.00557     0.00530     
+Triad       154472.822  0.00521     0.00557     0.00529     
+Dot         170928.352  0.00314     0.00352     0.00328     
+<<<28<<<
+>>>29>>>
+Thu 26 Jan 23:35:59 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=29
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        121337.865  0.00442     0.00602     0.00463     
+Mul         129780.783  0.00414     0.00566     0.00432     
+Add         155584.091  0.00518     0.00690     0.00534     
+Triad       156643.458  0.00514     0.00683     0.00526     
+Dot         170058.221  0.00316     0.00423     0.00330     
+<<<29<<<
+>>>30>>>
+Thu 26 Jan 23:36:02 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=30
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        139697.793  0.00384     0.00426     0.00404     
+Mul         141870.319  0.00378     0.00420     0.00396     
+Add         155840.342  0.00517     0.00557     0.00529     
+Triad       156103.792  0.00516     0.00554     0.00527     
+Dot         170917.850  0.00314     0.00344     0.00325     
+<<<30<<<
+>>>31>>>
+Thu 26 Jan 23:36:04 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=31
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        144788.872  0.00371     0.00491     0.00388     
+Mul         145250.600  0.00370     0.00494     0.00384     
+Add         155461.429  0.00518     0.00680     0.00532     
+Triad       157633.162  0.00511     0.00663     0.00524     
+Dot         170787.575  0.00314     0.00409     0.00326     
+<<<31<<<
+>>>32>>>
+Thu 26 Jan 23:36:07 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=32
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        147510.772  0.00364     0.00389     0.00374     
+Mul         149171.127  0.00360     0.00386     0.00370     
+Add         155597.408  0.00518     0.00560     0.00529     
+Triad       155795.872  0.00517     0.00547     0.00527     
+Dot         168023.513  0.00320     0.00361     0.00327     
+<<<32<<<
+>>>33>>>
+Thu 26 Jan 23:36:10 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=33
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        153679.641  0.00349     0.00467     0.00369     
+Mul         151470.695  0.00354     0.00705     0.00376     
+Add         164108.941  0.00491     0.00661     0.00516     
+Triad       166187.047  0.00485     0.00803     0.00512     
+Dot         180038.341  0.00298     0.00407     0.00316     
+<<<33<<<
+>>>34>>>
+Thu 26 Jan 23:36:13 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=34
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        156714.850  0.00343     0.00455     0.00372     
+Mul         160215.926  0.00335     0.00513     0.00353     
+Add         167542.940  0.00481     0.00532     0.00493     
+Triad       168660.332  0.00477     0.00723     0.00490     
+Dot         180033.209  0.00298     0.00530     0.00309     
+<<<34<<<
+>>>35>>>
+Thu 26 Jan 23:36:15 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=35
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        152426.005  0.00352     0.00448     0.00369     
+Mul         159532.600  0.00337     0.00394     0.00353     
+Add         168776.096  0.00477     0.00579     0.00496     
+Triad       171085.916  0.00471     0.00544     0.00489     
+Dot         184054.293  0.00292     0.00357     0.00310     
+<<<35<<<
+>>>36>>>
+Thu 26 Jan 23:36:18 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=36
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        163629.371  0.00328     0.00507     0.00375     
+Mul         158419.143  0.00339     0.00470     0.00379     
+Add         172684.087  0.00466     0.00644     0.00499     
+Triad       174299.947  0.00462     0.00671     0.00504     
+Dot         190191.655  0.00282     0.00387     0.00310     
+<<<36<<<
+>>>37>>>
+Thu 26 Jan 23:36:21 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=37
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        160950.331  0.00334     0.01194     0.00432     
+Mul         156632.322  0.00343     0.01096     0.00427     
+Add         187273.365  0.00430     0.01235     0.00575     
+Triad       186995.622  0.00431     0.01065     0.00573     
+Dot         198960.381  0.00270     0.00783     0.00412     
+<<<37<<<
+>>>38>>>
+Thu 26 Jan 23:36:24 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=38
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        157328.405  0.00341     0.00795     0.00432     
+Mul         157573.556  0.00341     0.00778     0.00422     
+Add         183918.100  0.00438     0.01148     0.00586     
+Triad       187553.070  0.00429     0.01112     0.00575     
+Dot         195674.842  0.00274     0.00729     0.00408     
+<<<38<<<
+>>>39>>>
+Thu 26 Jan 23:36:27 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=39
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        168074.484  0.00319     0.00860     0.00418     
+Mul         157312.086  0.00341     0.00737     0.00419     
+Add         199683.892  0.00403     0.01031     0.00564     
+Triad       186751.176  0.00431     0.00989     0.00570     
+Dot         208271.294  0.00258     0.00702     0.00398     
+<<<39<<<
+>>>40>>>
+Thu 26 Jan 23:36:30 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=40
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        176997.841  0.00303     0.00890     0.00421     
+Mul         183227.515  0.00293     0.00990     0.00410     
+Add         196954.016  0.00409     0.01128     0.00582     
+Triad       192655.966  0.00418     0.01151     0.00566     
+Dot         200016.881  0.00268     0.00743     0.00420     
+<<<40<<<
+>>>41>>>
+Thu 26 Jan 23:36:33 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=41
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        179830.467  0.00299     0.00705     0.00415     
+Mul         176595.419  0.00304     0.00700     0.00403     
+Add         193392.937  0.00416     0.00950     0.00558     
+Triad       190302.960  0.00423     0.01126     0.00545     
+Dot         206471.183  0.00260     0.00746     0.00403     
+<<<41<<<
+>>>42>>>
+Thu 26 Jan 23:36:36 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=42
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        179216.775  0.00300     0.00817     0.00401     
+Mul         176837.281  0.00304     0.00754     0.00399     
+Add         196183.972  0.00410     0.00926     0.00560     
+Triad       195728.084  0.00411     0.00932     0.00534     
+Dot         203038.255  0.00264     0.00731     0.00400     
+<<<42<<<
+>>>43>>>
+Thu 26 Jan 23:36:39 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=43
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        187587.496  0.00286     0.00732     0.00378     
+Mul         178650.050  0.00301     0.00803     0.00393     
+Add         202503.644  0.00398     0.00909     0.00534     
+Triad       203186.152  0.00396     0.00903     0.00526     
+Dot         219105.407  0.00245     0.00692     0.00381     
+<<<43<<<
+>>>44>>>
+Thu 26 Jan 23:36:42 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=44
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        189658.717  0.00283     0.00781     0.00380     
+Mul         180418.299  0.00298     0.00680     0.00385     
+Add         200838.003  0.00401     0.00896     0.00529     
+Triad       205242.307  0.00392     0.00893     0.00513     
+Dot         229441.034  0.00234     0.00681     0.00378     
+<<<44<<<
+>>>45>>>
+Thu 26 Jan 23:36:45 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=45
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        191260.163  0.00281     0.00766     0.00381     
+Mul         191361.536  0.00281     0.00829     0.00379     
+Add         208032.359  0.00387     0.00885     0.00526     
+Triad       209778.297  0.00384     0.00887     0.00500     
+Dot         228443.070  0.00235     0.00666     0.00371     
+<<<45<<<
+>>>46>>>
+Thu 26 Jan 23:36:47 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=46
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        197749.720  0.00271     0.00755     0.00378     
+Mul         187330.651  0.00287     0.00644     0.00376     
+Add         200169.015  0.00402     0.00874     0.00536     
+Triad       206222.626  0.00391     0.00873     0.00512     
+Dot         215578.947  0.00249     0.00815     0.00376     
+<<<46<<<
+>>>47>>>
+Thu 26 Jan 23:36:50 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=47
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        195699.165  0.00274     0.00710     0.00369     
+Mul         193844.836  0.00277     0.00770     0.00375     
+Add         208868.033  0.00386     0.01099     0.00531     
+Triad       203878.695  0.00395     0.00879     0.00518     
+Dot         234273.976  0.00229     0.00635     0.00365     
+<<<47<<<
+>>>48>>>
+Thu 26 Jan 23:36:53 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=48
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        198665.738  0.00270     0.00610     0.00359     
+Mul         197890.690  0.00271     0.00714     0.00360     
+Add         210015.730  0.00383     0.01047     0.00512     
+Triad       219191.463  0.00367     0.00861     0.00488     
+Dot         226926.033  0.00237     0.00666     0.00360     
+<<<48<<<
+>>>49>>>
+Thu 26 Jan 23:36:56 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=49
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        221265.975  0.00243     0.00715     0.00356     
+Mul         205960.919  0.00261     0.00659     0.00354     
+Add         226605.960  0.00355     0.01013     0.00506     
+Triad       231161.245  0.00348     0.00880     0.00501     
+Dot         250908.963  0.00214     0.00631     0.00351     
+<<<49<<<
+>>>50>>>
+Thu 26 Jan 23:36:58 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=50
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        210503.107  0.00255     0.00653     0.00352     
+Mul         204266.161  0.00263     0.00665     0.00358     
+Add         234244.708  0.00344     0.01065     0.00501     
+Triad       224996.883  0.00358     0.00884     0.00505     
+Dot         245527.495  0.00219     0.00724     0.00344     
+<<<50<<<
+>>>51>>>
+Thu 26 Jan 23:37:01 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=51
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        187941.515  0.00286     0.00757     0.00383     
+Mul         191408.543  0.00280     0.00746     0.00381     
+Add         197082.711  0.00409     0.00956     0.00538     
+Triad       205000.039  0.00393     0.01058     0.00521     
+Dot         227119.568  0.00236     0.00747     0.00356     
+<<<51<<<
+>>>52>>>
+Thu 26 Jan 23:37:04 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=52
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        214222.748  0.00251     0.00547     0.00330     
+Mul         207416.202  0.00259     0.00630     0.00348     
+Add         226755.651  0.00355     0.00849     0.00491     
+Triad       227380.664  0.00354     0.00975     0.00492     
+Dot         259216.674  0.00207     0.00576     0.00338     
+<<<52<<<
+>>>53>>>
+Thu 26 Jan 23:37:07 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=53
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        222805.271  0.00241     0.00612     0.00347     
+Mul         209143.079  0.00257     0.00642     0.00357     
+Add         228389.037  0.00353     0.00984     0.00511     
+Triad       238493.404  0.00338     0.00846     0.00490     
+Dot         254833.102  0.00211     0.00577     0.00344     
+<<<53<<<
+>>>54>>>
+Thu 26 Jan 23:37:09 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=54
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        217628.107  0.00247     0.00703     0.00339     
+Mul         213659.641  0.00251     0.00630     0.00339     
+Add         225927.815  0.00356     0.00842     0.00489     
+Triad       231469.739  0.00348     0.00850     0.00483     
+Dot         238468.121  0.00225     0.00702     0.00346     
+<<<54<<<
+>>>55>>>
+Thu 26 Jan 23:37:12 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=55
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        225692.938  0.00238     0.00722     0.00328     
+Mul         213627.674  0.00251     0.00673     0.00341     
+Add         232370.340  0.00347     0.00842     0.00488     
+Triad       234591.899  0.00343     0.00836     0.00478     
+Dot         262990.630  0.00204     0.00571     0.00336     
+<<<55<<<
+>>>56>>>
+Thu 26 Jan 23:37:15 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=56
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        208594.575  0.00257     0.00535     0.00343     
+Mul         211636.129  0.00254     0.00735     0.00344     
+Add         231200.732  0.00348     0.00932     0.00502     
+Triad       236157.455  0.00341     0.00834     0.00485     
+Dot         268208.552  0.00200     0.00567     0.00343     
+<<<56<<<
+>>>57>>>
+Thu 26 Jan 23:37:17 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=57
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        228686.437  0.00235     0.00691     0.00335     
+Mul         211838.885  0.00253     0.00709     0.00348     
+Add         242535.933  0.00332     0.01040     0.00483     
+Triad       242523.881  0.00332     0.01003     0.00479     
+Dot         275568.831  0.00195     0.00555     0.00321     
+<<<57<<<
+>>>58>>>
+Thu 26 Jan 23:37:20 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=58
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        216385.799  0.00248     0.00581     0.00339     
+Mul         220383.392  0.00244     0.00597     0.00338     
+Add         232102.716  0.00347     0.00976     0.00483     
+Triad       231804.543  0.00347     0.00823     0.00484     
+Dot         260167.338  0.00206     0.00560     0.00332     
+<<<58<<<
+>>>59>>>
+Thu 26 Jan 23:37:22 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=59
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        233006.270  0.00230     0.00630     0.00329     
+Mul         228639.300  0.00235     0.00579     0.00325     
+Add         246147.159  0.00327     0.00822     0.00470     
+Triad       252541.425  0.00319     0.00818     0.00464     
+Dot         256821.967  0.00209     0.00637     0.00331     
+<<<59<<<
+>>>60>>>
+Thu 26 Jan 23:37:25 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=60
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        226965.270  0.00237     0.00551     0.00321     
+Mul         219370.949  0.00245     0.00580     0.00338     
+Add         244426.945  0.00329     0.01019     0.00484     
+Triad       254932.449  0.00316     0.00817     0.00475     
+Dot         288803.775  0.00186     0.00535     0.00335     
+<<<60<<<
+>>>61>>>
+Thu 26 Jan 23:37:28 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=61
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        238368.066  0.00225     0.00564     0.00320     
+Mul         224515.883  0.00239     0.00668     0.00332     
+Add         249197.030  0.00323     0.00906     0.00462     
+Triad       258044.519  0.00312     0.00884     0.00460     
+Dot         281832.653  0.00190     0.00532     0.00313     
+<<<61<<<
+>>>62>>>
+Thu 26 Jan 23:37:30 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=62
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        222388.200  0.00241     0.00523     0.00331     
+Mul         229253.118  0.00234     0.00565     0.00329     
+Add         244212.654  0.00330     0.01007     0.00479     
+Triad       253421.101  0.00318     0.00854     0.00479     
+Dot         290551.825  0.00185     0.00534     0.00331     
+<<<62<<<
+>>>63>>>
+Thu 26 Jan 23:37:33 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=63
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        241391.411  0.00222     0.00522     0.00311     
+Mul         238498.419  0.00225     0.00579     0.00318     
+Add         261635.548  0.00308     0.00947     0.00463     
+Triad       257629.364  0.00313     0.00795     0.00460     
+Dot         305197.745  0.00176     0.00523     0.00313     
+<<<63<<<
+>>>64>>>
+Thu 26 Jan 23:37:35 GMT 2023
+BabelStream
+Version: 4.0
+Implementation: Futhark (parallel CPU)
+Running kernels 100 times
+Precision: double
+Array size: 268.4 MB (=0.3 GB)
+Total size: 805.3 MB (=0.8 GB)
+Threads=64
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        241645.217  0.00222     0.00560     0.00327     
+Mul         232126.667  0.00231     0.00555     0.00338     
+Add         270202.037  0.00298     0.00978     0.00488     
+Triad       277574.121  0.00290     0.00902     0.00477     
+Dot         296824.657  0.00181     0.00495     0.00323     
+<<<64<<<

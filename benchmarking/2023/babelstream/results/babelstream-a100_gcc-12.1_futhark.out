@@ -1,0 +1,27 @@
+Thu 26 Jan 06:50:58 GMT 2023
+/lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-a100_gcc-12.1_futhark
+	linux-vdso.so.1 (0x00007fff9b5f9000)
+	libnvrtc.so.11.2 => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.7/cuda/lib64/libnvrtc.so.11.2 (0x000014e2dd8d1000)
+	libcuda.so.1 => /lib64/libcuda.so.1 (0x000014e2dc46d000)
+	libcudart.so.11.0 => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/22.7/cuda/lib64/libcudart.so.11.0 (0x000014e2dc1c8000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libstdc++.so.6 (0x000014e2dbfa0000)
+	libm.so.6 => /lib64/libm.so.6 (0x000014e2dbc1e000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/12.1.0/lib64/libgcc_s.so.1 (0x000014e2e094f000)
+	libc.so.6 => /lib64/libc.so.6 (0x000014e2db85b000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014e2db63b000)
+	librt.so.1 => /lib64/librt.so.1 (0x000014e2db433000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000014e2db22f000)
+	/lib64/ld-linux-x86-64.so.2 (0x000014e2e0760000)
+BabelStream
+Version: 4.0
+Implementation: Futhark (CUDA)
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1330346.756 0.00646     0.00647     0.00646     
+Mul         1393174.204 0.00617     0.00617     0.00617     
+Add         1363616.167 0.00945     0.00951     0.00948     
+Triad       1362883.455 0.00945     0.00951     0.00948     
+Dot         1465271.037 0.00586     0.00591     0.00589     

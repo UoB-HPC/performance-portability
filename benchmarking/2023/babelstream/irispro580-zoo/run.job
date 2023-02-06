@@ -1,0 +1,34 @@
+#!/bin/bash
+#PBS -q workq
+#PBS -l select=1:ngpus=1:gputype=irispro580
+#PBS -l walltime=00:10:00
+#PBS -joe
+
+set -eu
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+if [ "${LARGE:-}" = true ]; then
+    echo "Large problem size not supported."
+    exit 1
+fi
+
+export OMP_TARGET_OFFLOAD=MANDATORY
+
+case "$MODEL" in
+sycl | kokkos)
+    "$BENCHMARK_EXE" --list
+    "$BENCHMARK_EXE" --device 2
+    ;;
+omp | std-*)
+    "$BENCHMARK_EXE" --list
+    "$BENCHMARK_EXE"
+    ;;
+*)
+    echo "Unknown run configuration for model '$MODEL'"
+    exit 1
+    ;;
+esac
