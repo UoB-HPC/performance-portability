@@ -1,0 +1,25 @@
+Fri Jun 30 10:50:32 UTC 2023
+/shared/ec2-user/performance-portability/benchmarking/2023/babelstream/results/babelstream-graviton3e_gcc-13.1_kokkos
+	linux-vdso.so.1 (0x0000ffffb24d3000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffffb2474000)
+	libgomp.so.1 => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/gcc-13.1.0-mk5pb74x5ticwkf4u4tua6n5zwfu3jic/lib64/libgomp.so.1 (0x0000ffffb2413000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffffb23de000)
+	libstdc++.so.6 => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/gcc-13.1.0-mk5pb74x5ticwkf4u4tua6n5zwfu3jic/lib64/libstdc++.so.6 (0x0000ffffb2187000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000ffffb20c6000)
+	libgcc_s.so.1 => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/gcc-13.1.0-mk5pb74x5ticwkf4u4tua6n5zwfu3jic/lib64/libgcc_s.so.1 (0x0000ffffb2095000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000ffffb1f0f000)
+	/lib/ld-linux-aarch64.so.1 (0x0000ffffb2495000)
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        257782.405  0.03332     0.03374     0.03350     
+Mul         255671.435  0.03360     0.03399     0.03377     
+Add         250175.632  0.05150     0.05204     0.05165     
+Triad       247925.785  0.05197     0.05245     0.05216     
+Dot         276146.271  0.03111     0.03164     0.03130     

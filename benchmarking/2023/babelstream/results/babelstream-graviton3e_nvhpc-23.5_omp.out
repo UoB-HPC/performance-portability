@@ -1,0 +1,30 @@
+Fri Jun 30 10:49:39 UTC 2023
+/shared/ec2-user/performance-portability/benchmarking/2023/babelstream/results/babelstream-graviton3e_nvhpc-23.5_omp
+	linux-vdso.so.1 (0x0000ffff8da8d000)
+	libacchost.so => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/nvhpc-23.5-xvfxdx4eptjuj72jnjxl65m472dgrujk/Linux_aarch64/23.5/compilers/lib/libacchost.so (0x0000ffff8d9cd000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffff8d9ac000)
+	libatomic.so.1 => /lib64/libatomic.so.1 (0x0000ffff8d98a000)
+	libnvhpcatm.so => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/nvhpc-23.5-xvfxdx4eptjuj72jnjxl65m472dgrujk/Linux_aarch64/23.5/compilers/lib/libnvhpcatm.so (0x0000ffff8d967000)
+	libstdc++.so.6 => /lib64/libstdc++.so.6 (0x0000ffff8d7b2000)
+	libnvomp.so => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/nvhpc-23.5-xvfxdx4eptjuj72jnjxl65m472dgrujk/Linux_aarch64/23.5/compilers/lib/libnvomp.so (0x0000ffff8d5e4000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffff8d5af000)
+	libnvcpumath.so => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/nvhpc-23.5-xvfxdx4eptjuj72jnjxl65m472dgrujk/Linux_aarch64/23.5/compilers/lib/libnvcpumath.so (0x0000ffff8d46a000)
+	libnvc.so => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/nvhpc-23.5-xvfxdx4eptjuj72jnjxl65m472dgrujk/Linux_aarch64/23.5/compilers/lib/libnvc.so (0x0000ffff8d416000)
+	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x0000ffff8d3e5000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000ffff8d25d000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000ffff8d19c000)
+	/lib/ld-linux-aarch64.so.1 (0x0000ffff8da4f000)
+0: CPU
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        257036.275  0.03342     0.03478     0.03354     
+Mul         258019.414  0.03329     0.03442     0.03343     
+Add         250159.263  0.05151     0.05207     0.05161     
+Triad       248671.131  0.05182     0.05234     0.05187     
+Dot         279988.316  0.03068     0.03138     0.03071     

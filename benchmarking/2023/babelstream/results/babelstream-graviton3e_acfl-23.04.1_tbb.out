@@ -1,0 +1,29 @@
+Fri Jun 30 11:01:04 UTC 2023
+/shared/ec2-user/performance-portability/benchmarking/2023/babelstream/results/babelstream-graviton3e_acfl-23.04.1_tbb
+	linux-vdso.so.1 (0x0000ffff9fe1b000)
+	libamath.so => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/acfl-23.04.1-mq7r2jj4emyu4tfcsq3tobzncxg7y2dk/arm-linux-compiler-23.04.1_AmazonLinux-2/llvm-bin/../lib/libamath.so (0x0000ffff9fc0c000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000ffff9fb4b000)
+	libtbb.so.12 => /shared/ec2-user/performance-portability/benchmarking/2023/babelstream/results/babelstream-graviton3e_acfl-23.04.1_tbb/BabelStream/build/clang_16.0_cxx11_64_release/libtbb.so.12 (0x0000ffff9fae5000)
+	libstdc++.so.6 => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/acfl-23.04.1-mq7r2jj4emyu4tfcsq3tobzncxg7y2dk/gcc-12.2.0_AmazonLinux-2/lib64/libstdc++.so.6 (0x0000ffff9f8bf000)
+	libastring.so => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/acfl-23.04.1-mq7r2jj4emyu4tfcsq3tobzncxg7y2dk/arm-linux-compiler-23.04.1_AmazonLinux-2/llvm-bin/../lib/libastring.so (0x0000ffff9f89e000)
+	libgcc_s.so.1 => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/acfl-23.04.1-mq7r2jj4emyu4tfcsq3tobzncxg7y2dk/gcc-12.2.0_AmazonLinux-2/lib64/libgcc_s.so.1 (0x0000ffff9f86d000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000ffff9f6e7000)
+	/lib/ld-linux-aarch64.so.1 (0x0000ffff9fddd000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffff9f6c6000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffff9f68f000)
+Listing devices is not supported by TBB
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        255937.500  0.03356     0.03743     0.03370     
+Mul         253026.506  0.03395     0.03418     0.03405     
+Add         245011.089  0.05259     0.05274     0.05264     
+Triad       244436.057  0.05271     0.05284     0.05277     
+Dot         279110.608  0.03078     0.03287     0.03084     

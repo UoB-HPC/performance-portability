@@ -161,6 +161,22 @@ aws-g3)
     # bench_once graviton3-aws $GCC "${generic_gcc_cpu_models[@]}"
     # bench_once graviton3-aws $ACFL "${generic_gcc_cpu_models[@]}"
     ;;
+aws-g3e)
+    cd "$BASE/babelstream/results"
+    bench_once graviton3e-aws $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
+    bench_once graviton3e-aws $GCC "${babelstream_gcc_cpu_models[@]}"
+    bench_once graviton3e-aws $ACFL "${babelstream_gcc_cpu_models[@]}"
+
+    # cd "$BASE/bude/results"
+    # bench_once graviton3-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"
+    # # bench_once graviton3-aws $GCC "${generic_gcc_cpu_models[@]}"
+    # # bench_once graviton3-aws $ACFL "${generic_gcc_cpu_models[@]}"
+
+    # cd "$BASE/cloverleaf/results"
+    # bench_once graviton3-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"
+    # bench_once graviton3-aws $GCC "${generic_gcc_cpu_models[@]}"
+    # bench_once graviton3-aws $ACFL "${generic_gcc_cpu_models[@]}"
+    ;;    
 xci)
     cd "$BASE/babelstream/results"
     bench_once tx2-isambard $NVHPC "${babelstream_nvhpc_cpu_models[@]}"

@@ -1,0 +1,28 @@
+Fri Jun 30 10:56:30 UTC 2023
+/shared/ec2-user/performance-portability/benchmarking/2023/babelstream/results/babelstream-graviton3e_gcc-13.1_std-indices-dplomp
+	linux-vdso.so.1 (0x0000ffffbdbea000)
+	libtbb.so.12 => /shared/ec2-user/performance-portability/benchmarking/2023/babelstream/results/babelstream-graviton3e_gcc-13.1_std-indices-dplomp/BabelStream/build/gnu_13.1_cxx11_64_release/libtbb.so.12 (0x0000ffffbdb56000)
+	libstdc++.so.6 => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/gcc-13.1.0-mk5pb74x5ticwkf4u4tua6n5zwfu3jic/lib64/libstdc++.so.6 (0x0000ffffbd8ff000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000ffffbd83e000)
+	libgomp.so.1 => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/gcc-13.1.0-mk5pb74x5ticwkf4u4tua6n5zwfu3jic/lib64/libgomp.so.1 (0x0000ffffbd7dd000)
+	libgcc_s.so.1 => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/gcc-13.1.0-mk5pb74x5ticwkf4u4tua6n5zwfu3jic/lib64/libgcc_s.so.1 (0x0000ffffbd7ac000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffffbd777000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000ffffbd5f1000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffffbd5d0000)
+	/lib/ld-linux-aarch64.so.1 (0x0000ffffbdbac000)
+Listing devices is not supported by the Parallel STL
+BabelStream
+Version: 4.0
+Implementation: STD (index-oriented)
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Backing storage typeid: Pd
+Using oneDPL backend: OpenMP
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        251989.495  0.03409     0.03455     0.03431     
+Mul         248744.002  0.03453     0.03505     0.03472     
+Add         249330.742  0.05168     0.06119     0.05196     
+Triad       248766.999  0.05180     0.05239     0.05199     
+Dot         280629.556  0.03061     0.03099     0.03078     

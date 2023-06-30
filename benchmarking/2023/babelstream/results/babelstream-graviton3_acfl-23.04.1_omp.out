@@ -1,0 +1,28 @@
+Fri Jun 30 10:43:34 UTC 2023
+/shared/ec2-user/performance-portability/benchmarking/2023/babelstream/results/babelstream-graviton3_acfl-23.04.1_omp
+	linux-vdso.so.1 (0x0000ffff85cc2000)
+	libomp.so => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/acfl-23.04.1-mq7r2jj4emyu4tfcsq3tobzncxg7y2dk/arm-linux-compiler-23.04.1_AmazonLinux-2/llvm-bin/../lib/libomp.so (0x0000ffff85b53000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffff85b32000)
+	libamath.so => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/acfl-23.04.1-mq7r2jj4emyu4tfcsq3tobzncxg7y2dk/arm-linux-compiler-23.04.1_AmazonLinux-2/llvm-bin/../lib/libamath.so (0x0000ffff85992000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000ffff858d1000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffff8589c000)
+	libstdc++.so.6 => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/acfl-23.04.1-mq7r2jj4emyu4tfcsq3tobzncxg7y2dk/gcc-12.2.0_AmazonLinux-2/lib64/libstdc++.so.6 (0x0000ffff85676000)
+	libastring.so => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/acfl-23.04.1-mq7r2jj4emyu4tfcsq3tobzncxg7y2dk/arm-linux-compiler-23.04.1_AmazonLinux-2/llvm-bin/../lib/libastring.so (0x0000ffff85655000)
+	libgcc_s.so.1 => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/acfl-23.04.1-mq7r2jj4emyu4tfcsq3tobzncxg7y2dk/gcc-12.2.0_AmazonLinux-2/lib64/libgcc_s.so.1 (0x0000ffff85624000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000ffff8549e000)
+	librt.so.1 => /lib64/librt.so.1 (0x0000ffff8547b000)
+	/lib/ld-linux-aarch64.so.1 (0x0000ffff85c84000)
+0: CPU
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        250547.361  0.03428     0.03586     0.03440     
+Mul         247073.241  0.03477     0.03909     0.03494     
+Add         239526.147  0.05379     0.05442     0.05388     
+Triad       238951.140  0.05392     0.05406     0.05399     
+Dot         277740.078  0.03093     0.03203     0.03097     

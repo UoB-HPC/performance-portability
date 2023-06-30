@@ -1,0 +1,27 @@
+Fri Jun 30 10:39:38 UTC 2023
+/shared/ec2-user/performance-portability/benchmarking/2023/babelstream/results/babelstream-graviton3_gcc-13.1_tbb
+	linux-vdso.so.1 (0x0000ffffa0619000)
+	libtbb.so.12 => /shared/ec2-user/performance-portability/benchmarking/2023/babelstream/results/babelstream-graviton3_gcc-13.1_tbb/BabelStream/build/gnu_13.1_cxx11_64_release/libtbb.so.12 (0x0000ffffa0585000)
+	libstdc++.so.6 => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/gcc-13.1.0-mk5pb74x5ticwkf4u4tua6n5zwfu3jic/lib64/libstdc++.so.6 (0x0000ffffa032e000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000ffffa026d000)
+	libgcc_s.so.1 => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/gcc-13.1.0-mk5pb74x5ticwkf4u4tua6n5zwfu3jic/lib64/libgcc_s.so.1 (0x0000ffffa023c000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000ffffa00b6000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffffa0095000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffffa0060000)
+	/lib/ld-linux-aarch64.so.1 (0x0000ffffa05db000)
+Listing devices is not supported by TBB
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        251058.101  0.03421     0.03493     0.03433     
+Mul         250840.038  0.03424     0.03449     0.03434     
+Add         239915.738  0.05371     0.05438     0.05379     
+Triad       239187.019  0.05387     0.05539     0.05395     
+Dot         277620.459  0.03094     0.03391     0.03103     

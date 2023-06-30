@@ -8,7 +8,7 @@ source "${SCRIPT_DIR}/../fetch_src.sh"
 
 spack load cmake@3.23.1
 
-handle_cmd "${1}" "${2}" "${3}" "babelstream" "graviton3"
+handle_cmd "${1}" "${2}" "${3}" "babelstream" "graviton3e"
 
 export USE_MAKE=false
 export USE_SLURM=true

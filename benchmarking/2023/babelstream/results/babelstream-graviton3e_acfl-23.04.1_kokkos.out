@@ -1,0 +1,28 @@
+Fri Jun 30 10:58:12 UTC 2023
+/shared/ec2-user/performance-portability/benchmarking/2023/babelstream/results/babelstream-graviton3e_acfl-23.04.1_kokkos
+	linux-vdso.so.1 (0x0000ffffb179b000)
+	libamath.so => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/acfl-23.04.1-mq7r2jj4emyu4tfcsq3tobzncxg7y2dk/arm-linux-compiler-23.04.1_AmazonLinux-2/llvm-bin/../lib/libamath.so (0x0000ffffb14ba000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000ffffb13f9000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffffb13d8000)
+	libomp.so => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/acfl-23.04.1-mq7r2jj4emyu4tfcsq3tobzncxg7y2dk/arm-linux-compiler-23.04.1_AmazonLinux-2/llvm-bin/../lib/libomp.so (0x0000ffffb12c8000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffffb1293000)
+	libstdc++.so.6 => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/acfl-23.04.1-mq7r2jj4emyu4tfcsq3tobzncxg7y2dk/gcc-12.2.0_AmazonLinux-2/lib64/libstdc++.so.6 (0x0000ffffb106d000)
+	libastring.so => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/acfl-23.04.1-mq7r2jj4emyu4tfcsq3tobzncxg7y2dk/arm-linux-compiler-23.04.1_AmazonLinux-2/llvm-bin/../lib/libastring.so (0x0000ffffb104c000)
+	libgcc_s.so.1 => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/acfl-23.04.1-mq7r2jj4emyu4tfcsq3tobzncxg7y2dk/gcc-12.2.0_AmazonLinux-2/lib64/libgcc_s.so.1 (0x0000ffffb101b000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000ffffb0e95000)
+	/lib/ld-linux-aarch64.so.1 (0x0000ffffb175d000)
+	librt.so.1 => /lib64/librt.so.1 (0x0000ffffb0e72000)
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        257391.040  0.03337     0.03523     0.03347     
+Mul         254028.424  0.03381     0.03451     0.03392     
+Add         249584.925  0.05163     0.05184     0.05170     
+Triad       248814.249  0.05179     0.05191     0.05183     
+Dot         277583.166  0.03095     0.03236     0.03099     

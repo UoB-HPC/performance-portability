@@ -1,0 +1,31 @@
+Fri Jun 30 10:47:53 UTC 2023
+/shared/ec2-user/performance-portability/benchmarking/2023/babelstream/results/babelstream-graviton3_acfl-23.04.1_std-indices-dplomp
+	linux-vdso.so.1 (0x0000ffff8ed39000)
+	libamath.so => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/acfl-23.04.1-mq7r2jj4emyu4tfcsq3tobzncxg7y2dk/arm-linux-compiler-23.04.1_AmazonLinux-2/llvm-bin/../lib/libamath.so (0x0000ffff8eb2a000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000ffff8ea69000)
+	libtbb.so.12 => /shared/ec2-user/performance-portability/benchmarking/2023/babelstream/results/babelstream-graviton3_acfl-23.04.1_std-indices-dplomp/BabelStream/build/clang_16.0_cxx11_64_release/libtbb.so.12 (0x0000ffff8ea03000)
+	libstdc++.so.6 => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/acfl-23.04.1-mq7r2jj4emyu4tfcsq3tobzncxg7y2dk/gcc-12.2.0_AmazonLinux-2/lib64/libstdc++.so.6 (0x0000ffff8e7dd000)
+	libastring.so => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/acfl-23.04.1-mq7r2jj4emyu4tfcsq3tobzncxg7y2dk/arm-linux-compiler-23.04.1_AmazonLinux-2/llvm-bin/../lib/libastring.so (0x0000ffff8e7bc000)
+	libomp.so => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/acfl-23.04.1-mq7r2jj4emyu4tfcsq3tobzncxg7y2dk/arm-linux-compiler-23.04.1_AmazonLinux-2/llvm-bin/../lib/libomp.so (0x0000ffff8e6ac000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000ffff8e68b000)
+	libgcc_s.so.1 => /shared/ec2-user/spack/opt/spack/linux-amzn2-neoverse_v1/gcc-7.3.1/acfl-23.04.1-mq7r2jj4emyu4tfcsq3tobzncxg7y2dk/gcc-12.2.0_AmazonLinux-2/lib64/libgcc_s.so.1 (0x0000ffff8e65a000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000ffff8e623000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000ffff8e49d000)
+	/lib/ld-linux-aarch64.so.1 (0x0000ffff8ecfb000)
+	librt.so.1 => /lib64/librt.so.1 (0x0000ffff8e47c000)
+Listing devices is not supported by the Parallel STL
+BabelStream
+Version: 4.0
+Implementation: STD (index-oriented)
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Backing storage typeid: Pd
+Using oneDPL backend: OpenMP
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        246182.095  0.03489     0.03515     0.03501     
+Mul         243961.428  0.03521     0.03544     0.03531     
+Add         244098.209  0.05279     0.05301     0.05287     
+Triad       244202.032  0.05276     0.05292     0.05283     
+Dot         280051.831  0.03067     0.03099     0.03077     
