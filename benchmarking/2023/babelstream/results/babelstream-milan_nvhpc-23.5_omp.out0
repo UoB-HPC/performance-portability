@@ -1,0 +1,30 @@
+Wed Jun 28 22:41:11 BST 2023
+/lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-milan_nvhpc-23.5_omp
+	linux-vdso.so.1 (0x00007ffc621f7000)
+	libacchost.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/23.5/compilers/lib/libacchost.so (0x000014bacc987000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000014bacc783000)
+	libatomic.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libatomic.so.1 (0x000014bacc57a000)
+	libnvhpcatm.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/23.5/compilers/lib/libnvhpcatm.so (0x000014bacc36f000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libstdc++.so.6 (0x000014bacbf0d000)
+	libnvomp.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/23.5/compilers/lib/libnvomp.so (0x000014bacaf0c000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014bacacec000)
+	libnvcpumath.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/23.5/compilers/lib/libnvcpumath.so (0x000014baca8d4000)
+	libnvc.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/23.5/compilers/lib/libnvc.so (0x000014baca66f000)
+	libc.so.6 => /lib64/libc.so.6 (0x000014baca2ac000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgcc_s.so.1 (0x000014baca088000)
+	libm.so.6 => /lib64/libm.so.6 (0x000014bac9d06000)
+	/lib64/ld-linux-x86-64.so.2 (0x000014baccbe9000)
+0: CPU
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        336651.417  0.02552     0.02572     0.02560     
+Mul         225560.939  0.03808     0.03825     0.03815     
+Add         245782.572  0.05242     0.05267     0.05252     
+Triad       247208.127  0.05212     0.05234     0.05220     
+Dot         348092.850  0.02468     0.02480     0.02473     

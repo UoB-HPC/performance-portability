@@ -1,0 +1,29 @@
+Thu Jun 29 01:41:54 BST 2023
+/lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-mi100_aomp-17.0.2_omp
+	linux-vdso.so.1 (0x00007ffc0f711000)
+	libomp.so => /lustre/home/br-wlin/usr/lib/aomp_17.0-2/lib/libomp.so (0x0000154df45d8000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000154df4308000)
+	libstdc++.so.6 => /lib64/libstdc++.so.6 (0x0000154df3f73000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000154df3bf1000)
+	libomptarget.so.17_AOMP_STANDALONE_17.0-2 => /lustre/home/br-wlin/usr/lib/aomp_17.0-2/lib/libomptarget.so.17_AOMP_STANDALONE_17.0-2 (0x0000154df3b6b000)
+	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x0000154df3953000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000154df3590000)
+	librt.so.1 => /lib64/librt.so.1 (0x0000154df3388000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000154df3184000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000154df4528000)
+	libz.so.1 => /lib64/libz.so.1 (0x0000154df2f6d000)
+	libtinfo.so.6 => /lib64/libtinfo.so.6 (0x0000154df2d40000)
+There are 4 devices.
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        239967.349  0.03580     0.03611     0.03601     
+Mul         236410.128  0.03633     0.03661     0.03652     
+Add         307983.450  0.04184     0.04205     0.04195     
+Triad       307880.518  0.04185     0.04214     0.04198     
+Dot         40025.655   0.21461     0.21647     0.21567     

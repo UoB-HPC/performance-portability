@@ -1,0 +1,40 @@
+#!/bin/bash
+#PBS -q instinctq
+#PBS -l select=1:ncpus=64:mem=200gb
+#PBS -l walltime=00:10:00
+#PBS -l place=excl
+#PBS -joe
+
+# XXX DO NOT SPECIFY ngpus!
+
+: >"$OUT_FILE"
+exec &> >(tee -a "$OUT_FILE")
+
+set -eu
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+if [ "${LARGE:-}" = true ]; then
+    opts=("--arraysize" "536870912")
+fi
+
+export OMP_TARGET_OFFLOAD=MANDATORY
+# export LD_LIBRARY_PATH=/opt/rocm-4.5.1/lib:${LD_LIBRARY_PATH:-}
+
+case "$MODEL" in
+hip | kokkos)
+    "$BENCHMARK_EXE" --list
+    "$BENCHMARK_EXE" "${opts[@]:-}"
+    ;;
+omp)
+    "$BENCHMARK_EXE" --list
+    "$BENCHMARK_EXE" "${opts[@]:-}" --device 1
+    ;;
+*)
+    echo "Unknown run configuration for model '$MODEL'"
+    exit 1
+    ;;
+esac
