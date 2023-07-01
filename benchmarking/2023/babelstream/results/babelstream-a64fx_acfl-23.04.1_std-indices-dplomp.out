@@ -1,0 +1,31 @@
+Sat Jul  1 02:42:58 UTC 2023
+/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-a64fx_acfl-23.04.1_std-indices-dplomp
+	linux-vdso.so.1 (0x0000400034d00000)
+	libamath.so => /snx11273/home/br-wlin/arm-compiler-for-linux_23.04.1_RHEL-8/arm-linux-compiler-23.04.1_RHEL-8/llvm-bin/../lib/libamath.so (0x0000400034d50000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000400034f10000)
+	libtbb.so.12 => /home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-a64fx_acfl-23.04.1_std-indices-dplomp/BabelStream/build/clang_16.0_cxx11_64_release/libtbb.so.12 (0x0000400034fe0000)
+	libstdc++.so.6 => /snx11273/home/br-wlin/arm-compiler-for-linux_23.04.1_RHEL-8/gcc-12.2.0_RHEL-8/lib64/libstdc++.so.6 (0x0000400035050000)
+	libastring.so => /snx11273/home/br-wlin/arm-compiler-for-linux_23.04.1_RHEL-8/arm-linux-compiler-23.04.1_RHEL-8/llvm-bin/../lib/libastring.so (0x0000400035280000)
+	libomp.so => /snx11273/home/br-wlin/arm-compiler-for-linux_23.04.1_RHEL-8/arm-linux-compiler-23.04.1_RHEL-8/llvm-bin/../lib/libomp.so (0x00004000352b0000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00004000353c0000)
+	libgcc_s.so.1 => /snx11273/home/br-wlin/arm-compiler-for-linux_23.04.1_RHEL-8/gcc-12.2.0_RHEL-8/lib64/libgcc_s.so.1 (0x00004000353f0000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000400035430000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000400035470000)
+	/lib/ld-linux-aarch64.so.1 (0x0000400034ca0000)
+	librt.so.1 => /lib64/librt.so.1 (0x00004000355f0000)
+Listing devices is not supported by the Parallel STL
+BabelStream
+Version: 4.0
+Implementation: STD (index-oriented)
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Backing storage typeid: Pd
+Using oneDPL backend: OpenMP
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        290694.162  0.02955     0.04235     0.03226     
+Mul         290358.405  0.02958     0.05942     0.03180     
+Add         316702.423  0.04068     0.06097     0.04359     
+Triad       313081.033  0.04116     0.05527     0.04393     
+Dot         358126.758  0.02399     0.04835     0.02674     

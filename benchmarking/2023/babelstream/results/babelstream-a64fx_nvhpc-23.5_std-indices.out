@@ -1,0 +1,32 @@
+Sat Jul  1 01:47:10 UTC 2023
+/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-a64fx_nvhpc-23.5_std-indices
+	linux-vdso.so.1 (0x0000400012920000)
+	libacchost.so => /snx11273/home/br-wlin/nvhpc_sdk/Linux_aarch64/23.5/compilers/lib/libacchost.so (0x0000400012930000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00004000129e0000)
+	libatomic.so.1 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libatomic.so.1 (0x0000400012a10000)
+	libnvhpcatm.so => /snx11273/home/br-wlin/nvhpc_sdk/Linux_aarch64/23.5/compilers/lib/libnvhpcatm.so (0x0000400012a40000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libstdc++.so.6 (0x0000400012a70000)
+	libnvomp.so => /snx11273/home/br-wlin/nvhpc_sdk/Linux_aarch64/23.5/compilers/lib/libnvomp.so (0x0000400012ca0000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000400012e70000)
+	libnvcpumath-armv8.so => /snx11273/home/br-wlin/nvhpc_sdk/Linux_aarch64/23.5/compilers/lib/libnvcpumath-armv8.so (0x0000400012eb0000)
+	libnvc.so => /snx11273/home/br-wlin/nvhpc_sdk/Linux_aarch64/23.5/compilers/lib/libnvc.so (0x0000400013000000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libgcc_s.so.1 (0x0000400013060000)
+	libc.so.6 => /lib64/libc.so.6 (0x00004000130a0000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000400013220000)
+	/lib/ld-linux-aarch64.so.1 (0x00004000128c0000)
+	libnvcpumath.so => /snx11273/home/br-wlin/nvhpc_sdk/Linux_aarch64/23.5/compilers/lib/libnvcpumath.so (0x00004000132f0000)
+Listing devices is not supported by the Parallel STL
+BabelStream
+Version: 4.0
+Implementation: STD (index-oriented)
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        16042.627   0.53544     0.54307     0.54077     
+Mul         38993.009   0.22029     0.22450     0.22134     
+Add         43849.511   0.29384     0.30022     0.29879     
+Triad       43710.181   0.29478     0.29974     0.29855     
+Dot         3124.091    2.74958     2.76662     2.76264     

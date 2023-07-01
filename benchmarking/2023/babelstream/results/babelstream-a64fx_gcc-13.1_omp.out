@@ -1,0 +1,25 @@
+Sat Jul  1 01:47:44 UTC 2023
+/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-a64fx_gcc-13.1_omp
+	linux-vdso.so.1 (0x0000400003a20000)
+	libgomp.so.1 => /lustre/projects/bristol/modules-a64fx//gcc/13.1.0/lib64/libgomp.so.1 (0x0000400003a30000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000400003ab0000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules-a64fx//gcc/13.1.0/lib64/libstdc++.so.6 (0x0000400003af0000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000400003d50000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules-a64fx//gcc/13.1.0/lib64/libgcc_s.so.1 (0x0000400003e20000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000400003e50000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000400003fd0000)
+	/lib/ld-linux-aarch64.so.1 (0x00004000039c0000)
+0: CPU
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        550100.767  0.01562     0.02710     0.01584     
+Mul         549314.499  0.01564     0.01970     0.01576     
+Add         605960.737  0.02126     0.02666     0.02147     
+Triad       606173.974  0.02126     0.02623     0.02141     
+Dot         856839.194  0.01003     0.01780     0.01034     

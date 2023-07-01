@@ -1,0 +1,29 @@
+Sat Jul  1 02:42:49 UTC 2023
+/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-a64fx_acfl-23.04.1_tbb
+	linux-vdso.so.1 (0x0000400036df0000)
+	libamath.so => /snx11273/home/br-wlin/arm-compiler-for-linux_23.04.1_RHEL-8/arm-linux-compiler-23.04.1_RHEL-8/llvm-bin/../lib/libamath.so (0x0000400036e40000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000400037000000)
+	libtbb.so.12 => /home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-a64fx_acfl-23.04.1_tbb/BabelStream/build/clang_16.0_cxx11_64_release/libtbb.so.12 (0x00004000370d0000)
+	libstdc++.so.6 => /snx11273/home/br-wlin/arm-compiler-for-linux_23.04.1_RHEL-8/gcc-12.2.0_RHEL-8/lib64/libstdc++.so.6 (0x0000400037140000)
+	libastring.so => /snx11273/home/br-wlin/arm-compiler-for-linux_23.04.1_RHEL-8/arm-linux-compiler-23.04.1_RHEL-8/llvm-bin/../lib/libastring.so (0x0000400037370000)
+	libgcc_s.so.1 => /snx11273/home/br-wlin/arm-compiler-for-linux_23.04.1_RHEL-8/gcc-12.2.0_RHEL-8/lib64/libgcc_s.so.1 (0x00004000373a0000)
+	libc.so.6 => /lib64/libc.so.6 (0x00004000373e0000)
+	/lib/ld-linux-aarch64.so.1 (0x0000400036d90000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000400037560000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000400037590000)
+Listing devices is not supported by TBB
+BabelStream
+Version: 4.0
+Implementation: TBB
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using TBB partitioner: static_partitioner
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        314387.641  0.02732     0.03938     0.03417     
+Mul         316098.485  0.02717     0.03940     0.03407     
+Add         345985.570  0.03724     0.05369     0.04650     
+Triad       359826.921  0.03581     0.05515     0.04648     
+Dot         405508.241  0.02118     0.03301     0.02848     

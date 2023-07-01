@@ -1,0 +1,29 @@
+/usr/bin/id: cannot find name for group ID 415400347
+Sat Jul  1 02:43:19 UTC 2023
+/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-a64fx_acfl-23.04.1_kokkos
+	linux-vdso.so.1 (0x000040001a020000)
+	libamath.so => /snx11273/home/br-wlin/arm-compiler-for-linux_23.04.1_RHEL-8/arm-linux-compiler-23.04.1_RHEL-8/llvm-bin/../lib/libamath.so (0x000040001a140000)
+	libm.so.6 => /lib64/libm.so.6 (0x000040001a300000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000040001a3d0000)
+	libomp.so => /snx11273/home/br-wlin/arm-compiler-for-linux_23.04.1_RHEL-8/arm-linux-compiler-23.04.1_RHEL-8/llvm-bin/../lib/libomp.so (0x000040001a400000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000040001a510000)
+	libstdc++.so.6 => /snx11273/home/br-wlin/arm-compiler-for-linux_23.04.1_RHEL-8/gcc-12.2.0_RHEL-8/lib64/libstdc++.so.6 (0x000040001a550000)
+	libastring.so => /snx11273/home/br-wlin/arm-compiler-for-linux_23.04.1_RHEL-8/arm-linux-compiler-23.04.1_RHEL-8/llvm-bin/../lib/libastring.so (0x000040001a780000)
+	libgcc_s.so.1 => /snx11273/home/br-wlin/arm-compiler-for-linux_23.04.1_RHEL-8/gcc-12.2.0_RHEL-8/lib64/libgcc_s.so.1 (0x000040001a7b0000)
+	libc.so.6 => /lib64/libc.so.6 (0x000040001a7f0000)
+	/lib/ld-linux-aarch64.so.1 (0x0000400019fc0000)
+	librt.so.1 => /lib64/librt.so.1 (0x000040001a970000)
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        550034.439  0.01562     0.02471     0.01588     
+Mul         550226.103  0.01561     0.04506     0.01596     
+Add         608345.731  0.02118     0.02520     0.02131     
+Triad       608002.664  0.02119     0.04015     0.02157     
+Dot         432784.638  0.01985     0.04595     0.02041     

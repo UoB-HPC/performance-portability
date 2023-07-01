@@ -1,0 +1,59 @@
+#!/bin/bash
+#PBS -q a64fx
+#PBS -l select=1:ncpus=48
+#PBS -l walltime=00:15:00
+#PBS -joe
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+if [ "${LARGE:-}" = true ]; then
+  opts=("--arraysize" "536870912")
+fi
+
+export OMP_NUM_THREADS=48
+export OMP_PROC_BIND=true
+export OMP_PLACES="{0:12}:4:12"
+# export OMP_PLACES="{12}:48:1"
+export XOS_MMM_L_PAGING_POLICY=demand:demand:demand
+
+# Isambard 2 A64FX resets modules in PBS jobs, even when run with -V
+case "$COMPILER" in
+gcc-13.1)
+  module load gcc/13.1.0
+  ;;
+cce-14.0.1)
+  module load cce/14.0.1 cray-mvapich2_noslurm_nogpu # cray links in mpi crap unconditionally
+  # export OMP_PLACES="{12}:48:1"
+  # export OMP_PROC_BIND=spread
+  export OMP_PLACES="cores"
+  ;;
+acfl-23.04.1)
+  module use /home/br-wlin/arm-compiler-for-linux_23.04.1_RHEL-8/modulefiles
+  module load acfl/23.04.1
+  ;;  
+hipsycl-gcc)
+  module load gcc/13.1.0
+  ;;
+nvhpc-23.5)
+  # load_nvhpc # no need
+  ;;
+*) unknown_compiler ;;
+esac
+
+case "$MODEL" in
+omp | kokkos)
+  "$BENCHMARK_EXE" --list
+  "$BENCHMARK_EXE" "${opts[@]:-}"
+  ;;
+tbb | std-*)
+  "$BENCHMARK_EXE" --list
+  numactl --physcpubind=all --localalloc "$BENCHMARK_EXE" "${opts[@]:-}"
+  ;;
+*)
+  "$BENCHMARK_EXE" --list
+  "$BENCHMARK_EXE" "${opts[@]:-}"
+  ;;
+esac

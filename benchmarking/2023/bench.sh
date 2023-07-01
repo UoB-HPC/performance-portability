@@ -7,6 +7,7 @@ ONEAPI=oneapi-2023.1
 NVHPC=nvhpc-23.5
 GCC=gcc-13.1
 ACFL=acfl-23.04.1
+CCE=cce-14.0.1
 
 ROCM=rocm-4.5.1
 AOMP=aomp-16.0.3
@@ -40,7 +41,7 @@ bench() { # platform, compiler,  action, models...
     if [ "${!impl}" = true ]; then
         for m in "${@:4}"; do
             if [ "${models[$m]}" = true ]; then
-                build_and_submit "$1" "$2" "$m" "$3" "$impl"
+                build_and_submit "$1" "$2" "$m" "$3" "$impl" &
             fi
         done
     fi
@@ -61,6 +62,12 @@ babelstream_gcc_cpu_models=(
     kokkos omp tbb
     std-indices
     std-indices-dplomp
+)
+
+babelstream_cce_cpu_models=(
+    kokkos omp # tbb
+    # std-indices # XXX doesn't work with CCE
+    # std-indices-dplomp # XXX doesn't work with CCE
 )
 
 babelstream_nvhpc_cpu_models=(
@@ -176,7 +183,7 @@ aws-g3e)
     # bench_once graviton3-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"
     # bench_once graviton3-aws $GCC "${generic_gcc_cpu_models[@]}"
     # bench_once graviton3-aws $ACFL "${generic_gcc_cpu_models[@]}"
-    ;;    
+    ;;
 xci)
     cd "$BASE/babelstream/results"
     bench_once tx2-isambard $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
@@ -190,9 +197,24 @@ xci)
     # bench_once tx2-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
     # bench_once tx2-isambard $GCC "${generic_gcc_cpu_models[@]}"
     ;;
+a64fx)
+    cd "$BASE/babelstream/results"
+    bench_once a64fx-isambard $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
+    bench_once a64fx-isambard $GCC "${babelstream_gcc_cpu_models[@]}"
+    # bench_once a64fx-isambard $CCE "${babelstream_cce_cpu_models[@]}" # OMP is broken
+    bench_once a64fx-isambard $ACFL "${babelstream_gcc_cpu_models[@]}"
+
+    # cd "$BASE/bude/results"
+    # bench_once a64fx-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
+    # bench_once a64fx-isambard $GCC "${generic_gcc_cpu_models[@]}"
+
+    # cd "$BASE/cloverleaf/results"
+    # bench_once a64fx-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
+    # bench_once a64fx-isambard $GCC "${generic_gcc_cpu_models[@]}"
+    ;;
 *)
     echo "Bad platform $1"
     ;;
 esac
-
+wait
 echo "All done!"

@@ -1,0 +1,32 @@
+/usr/bin/id: cannot find name for group ID 415400347
+Sat Jul  1 01:48:59 UTC 2023
+/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-a64fx_nvhpc-23.5_kokkos
+	linux-vdso.so.1 (0x00004000399b0000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00004000399e0000)
+	libacchost.so => /snx11273/home/br-wlin/nvhpc_sdk/Linux_aarch64/23.5/compilers/lib/libacchost.so (0x0000400039a10000)
+	libatomic.so.1 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libatomic.so.1 (0x0000400039aa0000)
+	libnvhpcatm.so => /snx11273/home/br-wlin/nvhpc_sdk/Linux_aarch64/23.5/compilers/lib/libnvhpcatm.so (0x0000400039ad0000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libstdc++.so.6 (0x0000400039b00000)
+	libnvomp.so => /snx11273/home/br-wlin/nvhpc_sdk/Linux_aarch64/23.5/compilers/lib/libnvomp.so (0x0000400039d30000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000400039f00000)
+	libnvcpumath-armv8.so => /snx11273/home/br-wlin/nvhpc_sdk/Linux_aarch64/23.5/compilers/lib/libnvcpumath-armv8.so (0x0000400039f40000)
+	libnvc.so => /snx11273/home/br-wlin/nvhpc_sdk/Linux_aarch64/23.5/compilers/lib/libnvc.so (0x000040003a090000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules-arm-phase2/gcc/12.1.0/lib64/libgcc_s.so.1 (0x000040003a0f0000)
+	libc.so.6 => /lib64/libc.so.6 (0x000040003a130000)
+	libm.so.6 => /lib64/libm.so.6 (0x000040003a2b0000)
+	/lib/ld-linux-aarch64.so.1 (0x0000400039950000)
+	libnvcpumath.so => /snx11273/home/br-wlin/nvhpc_sdk/Linux_aarch64/23.5/compilers/lib/libnvcpumath.so (0x000040003a380000)
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        292235.767  0.02939     0.04938     0.03012     
+Mul         275861.776  0.03114     0.05101     0.03158     
+Add         322654.782  0.03993     0.05974     0.04044     
+Triad       322506.830  0.03995     0.05982     0.04044     
+Dot         148726.062  0.05776     0.08862     0.05901     

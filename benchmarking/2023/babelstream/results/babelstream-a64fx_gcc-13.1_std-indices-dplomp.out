@@ -1,0 +1,29 @@
+/usr/bin/id: cannot find name for group ID 415400347
+Sat Jul  1 01:48:15 UTC 2023
+/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-a64fx_gcc-13.1_std-indices-dplomp
+	linux-vdso.so.1 (0x0000400012ae0000)
+	libtbb.so.12 => /home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-a64fx_gcc-13.1_std-indices-dplomp/BabelStream/build/gnu_13.1_cxx11_64_release/libtbb.so.12 (0x0000400012af0000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules-a64fx//gcc/13.1.0/lib64/libstdc++.so.6 (0x0000400012b40000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000400012dc0000)
+	libgomp.so.1 => /lustre/projects/bristol/modules-a64fx//gcc/13.1.0/lib64/libgomp.so.1 (0x0000400012e90000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules-a64fx//gcc/13.1.0/lib64/libgcc_s.so.1 (0x0000400012ef0000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000400012f20000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000400012f60000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00004000130e0000)
+	/lib/ld-linux-aarch64.so.1 (0x0000400012a80000)
+Listing devices is not supported by the Parallel STL
+BabelStream
+Version: 4.0
+Implementation: STD (index-oriented)
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Backing storage typeid: Pd
+Using oneDPL backend: OpenMP
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        428118.445  0.02006     0.03410     0.02711     
+Mul         443919.152  0.01935     0.03377     0.02752     
+Add         484606.869  0.02659     0.04798     0.03680     
+Triad       453192.121  0.02843     0.04555     0.03724     
+Dot         263599.015  0.03259     0.05123     0.03390     

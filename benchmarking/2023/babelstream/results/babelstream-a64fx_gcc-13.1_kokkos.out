@@ -1,0 +1,25 @@
+Sat Jul  1 01:48:31 UTC 2023
+/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-a64fx_gcc-13.1_kokkos
+	linux-vdso.so.1 (0x0000400035da0000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000400035dd0000)
+	libgomp.so.1 => /lustre/projects/bristol/modules-a64fx//gcc/13.1.0/lib64/libgomp.so.1 (0x0000400035e00000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000400035e60000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules-a64fx//gcc/13.1.0/lib64/libstdc++.so.6 (0x0000400035ea0000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000400036100000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules-a64fx//gcc/13.1.0/lib64/libgcc_s.so.1 (0x00004000361d0000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000400036200000)
+	/lib/ld-linux-aarch64.so.1 (0x0000400035d40000)
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        549782.661  0.01562     0.02007     0.01575     
+Mul         549274.702  0.01564     0.01844     0.01576     
+Add         605674.501  0.02127     0.02613     0.02145     
+Triad       605944.523  0.02126     0.02526     0.02143     
+Dot         148358.584  0.05790     0.07341     0.05858     
