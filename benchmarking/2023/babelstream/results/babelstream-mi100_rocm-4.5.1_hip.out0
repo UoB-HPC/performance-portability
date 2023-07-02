@@ -1,23 +1,23 @@
-Thu Jun 29 01:24:24 BST 2023
+Sun Jul  2 06:29:14 BST 2023
 /lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-mi100_rocm-4.5.1_hip
-	linux-vdso.so.1 (0x00007ffd1429a000)
-	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x000014d2cdb54000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014d2cd934000)
-	libm.so.6 => /lib64/libm.so.6 (0x000014d2cd5b2000)
-	librt.so.1 => /lib64/librt.so.1 (0x000014d2cd3aa000)
-	libamdhip64.so.4 => /opt/rocm-4.5.1/hip/lib/libamdhip64.so.4 (0x000014d2cc5ae000)
-	libstdc++.so.6 => /lib64/libstdc++.so.6 (0x000014d2cc219000)
-	libc.so.6 => /lib64/libc.so.6 (0x000014d2cbe56000)
-	/lib64/ld-linux-x86-64.so.2 (0x000014d2cdd6c000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x000014d2cbc52000)
-	libamd_comgr.so.2 => /opt/rocm-4.5.1/hip/lib/../../lib64/libamd_comgr.so.2 (0x000014d2c4cad000)
-	libhsa-runtime64.so.1 => /opt/rocm-4.5.1/hip/lib/../../lib/libhsa-runtime64.so.1 (0x000014d2c47e7000)
-	libnuma.so.1 => /lib64/libnuma.so.1 (0x000014d2c45db000)
-	libz.so.1 => /opt/rocm-4.5.1/hip/lib/../../lib64/../../../lib64/libz.so.1 (0x000014d2c43c4000)
-	libtinfo.so.5 => /opt/rocm-4.5.1/hip/lib/../../lib64/../../../lib64/libtinfo.so.5 (0x000014d2c4199000)
-	libelf.so.1 => /lib64/libelf.so.1 (0x000014d2c3f80000)
-	libdrm.so.2 => /lib64/libdrm.so.2 (0x000014d2c3d6e000)
-	libdrm_amdgpu.so.1 => /lib64/libdrm_amdgpu.so.1 (0x000014d2c3b64000)
+	linux-vdso.so.1 (0x00007ffddf17b000)
+	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x000014c9792aa000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014c97908a000)
+	libm.so.6 => /lib64/libm.so.6 (0x000014c978d08000)
+	librt.so.1 => /lib64/librt.so.1 (0x000014c978b00000)
+	libamdhip64.so.4 => /opt/rocm-4.5.1/hip/lib/libamdhip64.so.4 (0x000014c977d04000)
+	libstdc++.so.6 => /lib64/libstdc++.so.6 (0x000014c97796f000)
+	libc.so.6 => /lib64/libc.so.6 (0x000014c9775ac000)
+	/lib64/ld-linux-x86-64.so.2 (0x000014c9794c2000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000014c9773a8000)
+	libamd_comgr.so.2 => /opt/rocm-4.5.1/hip/lib/../../lib64/libamd_comgr.so.2 (0x000014c970403000)
+	libhsa-runtime64.so.1 => /opt/rocm-4.5.1/hip/lib/../../lib/libhsa-runtime64.so.1 (0x000014c96ff3d000)
+	libnuma.so.1 => /lib64/libnuma.so.1 (0x000014c96fd31000)
+	libz.so.1 => /opt/rocm-4.5.1/hip/lib/../../lib64/../../../lib64/libz.so.1 (0x000014c96fb1a000)
+	libtinfo.so.5 => /opt/rocm-4.5.1/hip/lib/../../lib64/../../../lib64/libtinfo.so.5 (0x000014c96f8ef000)
+	libelf.so.1 => /lib64/libelf.so.1 (0x000014c96f6d6000)
+	libdrm.so.2 => /lib64/libdrm.so.2 (0x000014c96f4c4000)
+	libdrm_amdgpu.so.1 => /lib64/libdrm_amdgpu.so.1 (0x000014c96f2ba000)
 
 Devices:
 0: 
@@ -35,8 +35,8 @@ Total size: 12884.9 MB (=12.9 GB)
 Using HIP device 
 Driver: 40421432
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        976264.942  0.00880     0.00883     0.00882     
-Mul         958236.799  0.00896     0.00900     0.00898     
-Add         958073.670  0.01345     0.01352     0.01348     
-Triad       927379.606  0.01389     0.01395     0.01393     
-Dot         1040958.022 0.00825     0.00830     0.00828     
+Copy        953643.639  0.00901     0.00904     0.00902     
+Mul         955261.886  0.00899     0.00903     0.00902     
+Add         942246.255  0.01367     0.01376     0.01371     
+Triad       902000.229  0.01428     0.01440     0.01434     
+Dot         1039572.128 0.00826     0.00831     0.00828     

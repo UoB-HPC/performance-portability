@@ -25,13 +25,24 @@ export OMP_PLACES=cores
 export ACC_NUM_CORES=128
 
 case "$MODEL" in
-omp )
+omp)
     "$BENCHMARK_EXE" --list
     "$BENCHMARK_EXE" "${opts[@]:-}"
     ;;
 tbb | std-* | kokkos)
     "$BENCHMARK_EXE" --list
     numactl --physcpubind=all --localalloc "$BENCHMARK_EXE" "${opts[@]:-}"
+    ;;
+sycl*)
+
+    export DPCPP_CPU_PLACES=numa_domains
+    export DPCPP_CPU_CU_AFFINITY=spread
+    export DPCPP_CPU_SCHEDULE=dynamic
+
+    "$BENCHMARK_EXE" --list
+    # 0: Intel(R) FPGA Emulation Device
+    # 1: AMD EPYC 7713 64-Core Processor  <--
+    "$BENCHMARK_EXE" "${opts[@]:-}" --device 1
     ;;
 *)
     echo "Unknown run configuration for model '$MODEL'"

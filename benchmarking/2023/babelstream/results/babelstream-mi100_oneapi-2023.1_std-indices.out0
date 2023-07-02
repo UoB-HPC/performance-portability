@@ -1,0 +1,32 @@
+Sun Jul  2 06:29:46 BST 2023
+/lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-mi100_oneapi-2023.1_std-indices
+	linux-vdso.so.1 (0x00007ffd52d55000)
+	libtbb.so.12 => /lustre/home/br-wlin/intel/oneapi/tbb/2021.9.0/env/../lib/intel64/gcc4.8/libtbb.so.12 (0x000014ee4aa34000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libstdc++.so.6 (0x000014ee4a5d2000)
+	libm.so.6 => /lib64/libm.so.6 (0x000014ee4a250000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgcc_s.so.1 (0x000014ee4a02c000)
+	libsycl.so.6 => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/lib/libsycl.so.6 (0x000014ee49d3c000)
+	libc.so.6 => /lib64/libc.so.6 (0x000014ee49979000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000014ee49775000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014ee49555000)
+	/lib64/ld-linux-x86-64.so.2 (0x000014ee4acae000)
+	libsvml.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libsvml.so (0x000014ee47f2c000)
+	libirng.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libirng.so (0x000014ee47c15000)
+	libimf.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libimf.so (0x000014ee4782b000)
+	libintlc.so.5 => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x000014ee4ae46000)
+Listing devices is not supported by the Parallel STL
+BabelStream
+Version: 4.0
+Implementation: STD (index-oriented)
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Backing storage typeid: Pd
+Using oneDPL backend: SYCL USM (device=gfx908:sramecc+:xnack-)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        36526.305   0.23517     0.24154     0.23694     
+Mul         36568.903   0.23490     0.24275     0.23734     
+Add         32770.269   0.39319     0.39951     0.39733     
+Triad       31931.283   0.40352     0.40734     0.40522     
+Dot         17543.932   0.48962     0.53175     0.52702     

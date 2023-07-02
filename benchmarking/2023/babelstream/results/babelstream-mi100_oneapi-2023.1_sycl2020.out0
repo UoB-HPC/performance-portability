@@ -1,0 +1,39 @@
+Sun Jul  2 06:29:42 BST 2023
+/lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-mi100_oneapi-2023.1_sycl2020
+	linux-vdso.so.1 (0x00007fff4b364000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libstdc++.so.6 (0x00001538c417b000)
+	libm.so.6 => /lib64/libm.so.6 (0x00001538c3df9000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgcc_s.so.1 (0x00001538c3bd5000)
+	libsycl.so.6 => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/lib/libsycl.so.6 (0x00001538c38e5000)
+	libc.so.6 => /lib64/libc.so.6 (0x00001538c3522000)
+	/lib64/ld-linux-x86-64.so.2 (0x00001538c45dd000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00001538c331e000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00001538c30fe000)
+	libsvml.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libsvml.so (0x00001538c1ad5000)
+	libirng.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libirng.so (0x00001538c17be000)
+	libimf.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libimf.so (0x00001538c13d4000)
+	libintlc.so.5 => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x00001538c4775000)
+
+Devices:
+0: Intel(R) FPGA Emulation Device
+1: AMD EPYC 7543P 32-Core Processor               
+2: gfx908:sramecc+:xnack-
+3: gfx908:sramecc+:xnack-
+4: gfx908:sramecc+:xnack-
+5: gfx908:sramecc+:xnack-
+
+BabelStream
+Version: 4.0
+Implementation: SYCL 2020
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using SYCL device gfx908:sramecc+:xnack-
+Driver: HIP 40421.43
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        674878.505  0.01273     0.01366     0.01290     
+Mul         674887.572  0.01273     0.01367     0.01297     
+Add         687902.077  0.01873     0.01956     0.01890     
+Triad       695342.513  0.01853     0.01936     0.01873     
+Dot         970567.469  0.00885     0.01050     0.00906     

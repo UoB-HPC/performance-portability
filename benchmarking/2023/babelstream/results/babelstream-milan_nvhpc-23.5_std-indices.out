@@ -1,20 +1,20 @@
-Wed Jun 28 22:41:21 BST 2023
+Sun Jul  2 06:29:22 BST 2023
 /lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-milan_nvhpc-23.5_std-indices
-	linux-vdso.so.1 (0x00007ffc14ba0000)
-	libacchost.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/23.5/compilers/lib/libacchost.so (0x000014ca3cecd000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x000014ca3ccc9000)
-	libatomic.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libatomic.so.1 (0x000014ca3cac0000)
-	libnvhpcatm.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/23.5/compilers/lib/libnvhpcatm.so (0x000014ca3c8b5000)
-	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libstdc++.so.6 (0x000014ca3c453000)
-	libnvomp.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/23.5/compilers/lib/libnvomp.so (0x000014ca3b452000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014ca3b232000)
-	libnvcpumath.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/23.5/compilers/lib/libnvcpumath.so (0x000014ca3ae1a000)
-	libnvc.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/23.5/compilers/lib/libnvc.so (0x000014ca3abb5000)
-	librt.so.1 => /lib64/librt.so.1 (0x000014ca3a9ad000)
-	libc.so.6 => /lib64/libc.so.6 (0x000014ca3a5ea000)
-	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgcc_s.so.1 (0x000014ca3a3c6000)
-	libm.so.6 => /lib64/libm.so.6 (0x000014ca3a044000)
-	/lib64/ld-linux-x86-64.so.2 (0x000014ca3d12f000)
+	linux-vdso.so.1 (0x00007fff41322000)
+	libacchost.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/23.5/compilers/lib/libacchost.so (0x0000147c30677000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000147c30473000)
+	libatomic.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libatomic.so.1 (0x0000147c3026a000)
+	libnvhpcatm.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/23.5/compilers/lib/libnvhpcatm.so (0x0000147c3005f000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libstdc++.so.6 (0x0000147c2fbfd000)
+	libnvomp.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/23.5/compilers/lib/libnvomp.so (0x0000147c2ebfc000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000147c2e9dc000)
+	libnvcpumath.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/23.5/compilers/lib/libnvcpumath.so (0x0000147c2e5c4000)
+	libnvc.so => /lustre/home/br-wlin/nvhpc_sdk/Linux_x86_64/23.5/compilers/lib/libnvc.so (0x0000147c2e35f000)
+	librt.so.1 => /lib64/librt.so.1 (0x0000147c2e157000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000147c2dd94000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgcc_s.so.1 (0x0000147c2db70000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000147c2d7ee000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000147c308d9000)
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -25,8 +25,8 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        225247.429  0.03814     0.03829     0.03822     
-Mul         219820.565  0.03908     0.03923     0.03915     
-Add         245872.636  0.05240     0.05262     0.05249     
-Triad       247679.049  0.05202     0.05221     0.05211     
-Dot         345304.500  0.02488     0.02525     0.02500     
+Copy        225265.705  0.03813     0.03832     0.03820     
+Mul         219805.293  0.03908     0.03933     0.03919     
+Add         245791.434  0.05242     0.05267     0.05253     
+Triad       247328.475  0.05210     0.05237     0.05218     
+Dot         344392.241  0.02494     0.02549     0.02511     

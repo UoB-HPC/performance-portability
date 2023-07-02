@@ -60,7 +60,8 @@ bench_once() {
 # }
 
 babelstream_gcc_cpu_models=(
-    kokkos omp tbb
+    kokkos omp 
+    tbb
     std-indices
     std-indices-dplomp
 )
@@ -128,13 +129,16 @@ cambridge)
 p3)
     cd "$BASE/babelstream/results"
     module unload cce
-    # bench_once milan-isambard $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
-    # module load cce
-    # bench_once milan-isambard $GCC "${babelstream_gcc_cpu_models[@]}"
+    bench_once milan-isambard $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
+    module load cce
+    bench_once milan-isambard $GCC "${babelstream_gcc_cpu_models[@]}"
+    bench_once milan-isambard $ONEAPI "${babelstream_oneapi_cpu_models[@]}"
 
     # bench_once a100-isambard $NVHPC "${babelstream_nvhpc_gpu_models[@]}"
+
     bench_once mi100-isambard $AOMP "${babelstream_aomp_gpu_models[@]}"
-    # bench_once mi100-isambard $ROCM "${babelstream_rocm_gpu_models[@]}"
+    bench_once mi100-isambard $ROCM "${babelstream_rocm_gpu_models[@]}"
+    bench_once mi100-isambard $ONEAPI "${babelstream_oneapi_gpu_models[@]}"
 
     # cd "$BASE/bude/results"
     # module unload cce

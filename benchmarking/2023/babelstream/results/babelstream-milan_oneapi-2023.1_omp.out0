@@ -1,0 +1,26 @@
+Sun Jul  2 06:29:43 BST 2023
+/lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-milan_oneapi-2023.1_omp
+	linux-vdso.so.1 (0x00007ffdc4f3f000)
+	libiomp5.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libiomp5.so (0x000014caf58fa000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014caf56da000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libstdc++.so.6 (0x000014caf5278000)
+	libm.so.6 => /lib64/libm.so.6 (0x000014caf4ef6000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgcc_s.so.1 (0x000014caf4cd2000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000014caf4ace000)
+	libc.so.6 => /lib64/libc.so.6 (0x000014caf470b000)
+	librt.so.1 => /lib64/librt.so.1 (0x000014caf4503000)
+	/lib64/ld-linux-x86-64.so.2 (0x000014caf5d40000)
+0: CPU
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        224732.846  0.03822     0.03843     0.03830     
+Mul         219074.735  0.03921     0.03942     0.03929     
+Add         245286.291  0.05253     0.05276     0.05263     
+Triad       246680.705  0.05223     0.05247     0.05232     
+Dot         344896.000  0.02491     0.02528     0.02506     

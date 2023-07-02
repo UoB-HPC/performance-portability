@@ -1,18 +1,18 @@
-Fri Jun 30 00:31:45 BST 2023
+Sun Jul  2 06:29:26 BST 2023
 /lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-mi100_aomp-16.0.3_omp
-	linux-vdso.so.1 (0x00007ffef2dd0000)
-	libomp.so => /lustre/home/br-wlin/usr/lib/aomp_16.0-3/lib/libomp.so (0x000014d771f5a000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014d771c76000)
-	libstdc++.so.6 => /lib64/libstdc++.so.6 (0x000014d7718e1000)
-	libm.so.6 => /lib64/libm.so.6 (0x000014d77155f000)
-	libomptarget.so.16_AOMP_STANDALONE_16.0-3 => /lustre/home/br-wlin/usr/lib/aomp_16.0-3/lib/libomptarget.so.16_AOMP_STANDALONE_16.0-3 (0x000014d771ecd000)
-	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x000014d771347000)
-	libc.so.6 => /lib64/libc.so.6 (0x000014d770f84000)
-	librt.so.1 => /lib64/librt.so.1 (0x000014d770d7c000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x000014d770b78000)
-	/lib64/ld-linux-x86-64.so.2 (0x000014d771e96000)
-	libz.so.1 => /lib64/libz.so.1 (0x000014d770961000)
-	libtinfo.so.6 => /lib64/libtinfo.so.6 (0x000014d770734000)
+	linux-vdso.so.1 (0x00007fffcaeff000)
+	libomp.so => /lustre/home/br-wlin/usr/lib/aomp_16.0-3/lib/libomp.so (0x000014951231f000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014951203b000)
+	libstdc++.so.6 => /lib64/libstdc++.so.6 (0x0000149511ca6000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000149511924000)
+	libomptarget.so.16_AOMP_STANDALONE_16.0-3 => /lustre/home/br-wlin/usr/lib/aomp_16.0-3/lib/libomptarget.so.16_AOMP_STANDALONE_16.0-3 (0x0000149512292000)
+	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x000014951170c000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000149511349000)
+	librt.so.1 => /lib64/librt.so.1 (0x0000149511141000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000149510f3d000)
+	/lib64/ld-linux-x86-64.so.2 (0x000014951225b000)
+	libz.so.1 => /lib64/libz.so.1 (0x0000149510d26000)
+	libtinfo.so.6 => /lib64/libtinfo.so.6 (0x0000149510af9000)
 There are 4 devices.
 BabelStream
 Version: 4.0
@@ -22,8 +22,8 @@ Precision: double
 Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        964633.893  0.00890     0.00896     0.00892     
-Mul         963893.183  0.00891     0.00894     0.00892     
-Add         893655.496  0.01442     0.01449     0.01444     
-Triad       884491.097  0.01457     0.01463     0.01459     
-Dot         1016149.277 0.00845     0.00854     0.00849     
+Copy        964546.915  0.00891     0.00896     0.00892     
+Mul         964258.363  0.00891     0.00893     0.00892     
+Add         903580.773  0.01426     0.01435     0.01429     
+Triad       902482.591  0.01428     0.01437     0.01430     
+Dot         1031287.953 0.00833     0.00839     0.00836     
