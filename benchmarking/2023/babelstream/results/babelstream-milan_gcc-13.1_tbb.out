@@ -1,14 +1,14 @@
-Sun Jul  2 04:36:33 BST 2023
+Sun Jul  2 06:29:48 BST 2023
 /lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-milan_gcc-13.1_tbb
-	linux-vdso.so.1 (0x00007ffe9c3e3000)
-	libtbb.so.12 => /lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-milan_gcc-13.1_tbb/BabelStream/build/gnu_13.1_cxx11_64_release/libtbb.so.12 (0x0000145959308000)
-	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libstdc++.so.6 (0x0000145958cd6000)
-	libm.so.6 => /lib64/libm.so.6 (0x0000145958954000)
-	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgcc_s.so.1 (0x0000145958730000)
-	libc.so.6 => /lib64/libc.so.6 (0x000014595836d000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x0000145958169000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000145957f49000)
-	/lib64/ld-linux-x86-64.so.2 (0x0000145959138000)
+	linux-vdso.so.1 (0x00007ffd27b9f000)
+	libtbb.so.12 => /lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-milan_gcc-13.1_tbb/BabelStream/build/gnu_13.1_cxx11_64_release/libtbb.so.12 (0x0000148606580000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libstdc++.so.6 (0x0000148605f4e000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000148605bcc000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgcc_s.so.1 (0x00001486059a8000)
+	libc.so.6 => /lib64/libc.so.6 (0x00001486055e5000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00001486053e1000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00001486051c1000)
+	/lib64/ld-linux-x86-64.so.2 (0x00001486063b0000)
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -20,8 +20,8 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: auto_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        97452.058   0.08815     0.09753     0.09096     
-Mul         96145.705   0.08934     0.09947     0.09305     
-Add         105949.004  0.12161     0.13845     0.12651     
-Triad       103561.287  0.12442     0.14074     0.12893     
-Dot         136894.562  0.06275     0.07129     0.06627     
+Copy        130012.675  0.06607     0.08311     0.07235     
+Mul         130401.129  0.06587     0.08419     0.07241     
+Add         140211.640  0.09190     0.11245     0.10082     
+Triad       138073.997  0.09332     0.11550     0.10301     
+Dot         154380.801  0.05564     0.06685     0.06019     

@@ -1,18 +1,18 @@
-Sun Jul  2 04:37:00 BST 2023
+Sun Jul  2 06:30:11 BST 2023
 /lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-milan_oneapi-2023.1_sycl2020
-	linux-vdso.so.1 (0x00007ffe979c9000)
-	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libstdc++.so.6 (0x000014f3749f8000)
-	libm.so.6 => /lib64/libm.so.6 (0x000014f374676000)
-	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgcc_s.so.1 (0x000014f374452000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x000014f37424e000)
-	libsycl.so.6 => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/lib/libsycl.so.6 (0x000014f373f5e000)
-	libc.so.6 => /lib64/libc.so.6 (0x000014f373b9b000)
-	/lib64/ld-linux-x86-64.so.2 (0x000014f374e5a000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014f37397b000)
-	libsvml.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libsvml.so (0x000014f372352000)
-	libirng.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libirng.so (0x000014f37203b000)
-	libimf.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libimf.so (0x000014f371c51000)
-	libintlc.so.5 => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x000014f374ff3000)
+	linux-vdso.so.1 (0x00007ffc89c51000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libstdc++.so.6 (0x000014b0e93b7000)
+	libm.so.6 => /lib64/libm.so.6 (0x000014b0e9035000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgcc_s.so.1 (0x000014b0e8e11000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000014b0e8c0d000)
+	libsycl.so.6 => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/lib/libsycl.so.6 (0x000014b0e891d000)
+	libc.so.6 => /lib64/libc.so.6 (0x000014b0e855a000)
+	/lib64/ld-linux-x86-64.so.2 (0x000014b0e9819000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014b0e833a000)
+	libsvml.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libsvml.so (0x000014b0e6d11000)
+	libirng.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libirng.so (0x000014b0e69fa000)
+	libimf.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libimf.so (0x000014b0e6610000)
+	libintlc.so.5 => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x000014b0e99b2000)
 
 Devices:
 0: Intel(R) FPGA Emulation Device
@@ -28,8 +28,8 @@ Total size: 12884.9 MB (=12.9 GB)
 Using SYCL device AMD EPYC 7713 64-Core Processor                
 Driver: 2023.15.3.0.20_160000
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        219840.503  0.03907     0.08050     0.05970     
-Mul         214906.192  0.03997     0.08263     0.06955     
-Add         241274.253  0.05340     0.10740     0.08560     
-Triad       244031.840  0.05280     0.10881     0.08201     
-Dot         152601.012  0.05629     0.12022     0.08260     
+Copy        219722.840  0.03909     0.08076     0.05557     
+Mul         214578.102  0.04003     0.08228     0.06387     
+Add         241432.585  0.05337     0.10813     0.08038     
+Triad       243275.182  0.05296     0.10836     0.08074     
+Dot         153830.240  0.05584     0.13886     0.07967     

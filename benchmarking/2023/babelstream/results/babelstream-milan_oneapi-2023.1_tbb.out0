@@ -1,18 +1,18 @@
-Sun Jul  2 04:36:37 BST 2023
+Sun Jul  2 06:29:48 BST 2023
 /lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-milan_oneapi-2023.1_tbb
-	linux-vdso.so.1 (0x00007ffd708b6000)
-	libtbb.so.12 => /lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-milan_oneapi-2023.1_tbb/BabelStream/build/intelllvm_2023.1_cxx11_64_release/libtbb.so.12 (0x000014ce00505000)
-	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libstdc++.so.6 (0x000014cdffeea000)
-	libm.so.6 => /lib64/libm.so.6 (0x000014cdffb68000)
-	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgcc_s.so.1 (0x000014cdff944000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x000014cdff740000)
-	libc.so.6 => /lib64/libc.so.6 (0x000014cdff37d000)
-	libsvml.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libsvml.so (0x000014cdfdd54000)
-	libirng.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libirng.so (0x000014cdfda3d000)
-	libimf.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libimf.so (0x000014cdfd653000)
-	libintlc.so.5 => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x000014ce00478000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014cdfd433000)
-	/lib64/ld-linux-x86-64.so.2 (0x000014ce0034c000)
+	linux-vdso.so.1 (0x00007ffce010b000)
+	libtbb.so.12 => /lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-milan_oneapi-2023.1_tbb/BabelStream/build/intelllvm_2023.1_cxx11_64_release/libtbb.so.12 (0x00001529f749f000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libstdc++.so.6 (0x00001529f6e84000)
+	libm.so.6 => /lib64/libm.so.6 (0x00001529f6b02000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgcc_s.so.1 (0x00001529f68de000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00001529f66da000)
+	libc.so.6 => /lib64/libc.so.6 (0x00001529f6317000)
+	libsvml.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libsvml.so (0x00001529f4cee000)
+	libirng.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libirng.so (0x00001529f49d7000)
+	libimf.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libimf.so (0x00001529f45ed000)
+	libintlc.so.5 => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x00001529f7412000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00001529f43cd000)
+	/lib64/ld-linux-x86-64.so.2 (0x00001529f72e6000)
 Listing devices is not supported by TBB
 BabelStream
 Version: 4.0
@@ -24,8 +24,8 @@ Total size: 12884.9 MB (=12.9 GB)
 Using TBB partitioner: auto_partitioner
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        121103.850  0.07093     0.07884     0.07420     
-Mul         87792.131   0.09784     0.10709     0.10092     
-Add         96439.028   0.13361     0.16223     0.14044     
-Triad       95981.905   0.13424     0.14725     0.13976     
-Dot         127008.195  0.06763     0.07844     0.07138     
+Copy        134403.526  0.06391     0.07091     0.06710     
+Mul         99058.976   0.08672     0.09738     0.09168     
+Add         108054.360  0.11924     0.13777     0.12577     
+Triad       106999.459  0.12042     0.13548     0.12607     
+Dot         141306.317  0.06079     0.06833     0.06460     

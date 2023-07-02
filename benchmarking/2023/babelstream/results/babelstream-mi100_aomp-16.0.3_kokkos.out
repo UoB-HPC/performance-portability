@@ -1,23 +1,23 @@
-Fri Jun 30 00:31:25 BST 2023
+Sun Jul  2 04:52:22 BST 2023
 /lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-mi100_aomp-16.0.3_kokkos
-	linux-vdso.so.1 (0x00007ffd69fef000)
-	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x0000145f2666c000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000145f2644c000)
-	libm.so.6 => /lib64/libm.so.6 (0x0000145f260ca000)
-	librt.so.1 => /lib64/librt.so.1 (0x0000145f25ec2000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x0000145f25cbe000)
-	libamdhip64.so.5 => /lustre/home/br-wlin/usr/lib/aomp_16.0-3/lib/libamdhip64.so.5 (0x0000145f24473000)
-	libstdc++.so.6 => /lib64/libstdc++.so.6 (0x0000145f240de000)
-	libc.so.6 => /lib64/libc.so.6 (0x0000145f23d1b000)
-	/lib64/ld-linux-x86-64.so.2 (0x0000145f26884000)
-	libamd_comgr.so.2 => /lustre/home/br-wlin/usr/lib/aomp_16.0-3/lib/libamd_comgr.so.2 (0x0000145f195ec000)
-	libhsa-runtime64.so.1 => /lustre/home/br-wlin/usr/lib/aomp_16.0-3/lib/libhsa-runtime64.so.1 (0x0000145f192de000)
-	libnuma.so.1 => /lib64/libnuma.so.1 (0x0000145f190d2000)
-	libz.so.1 => /lib64/libz.so.1 (0x0000145f18ebb000)
-	libtinfo.so.6 => /lib64/libtinfo.so.6 (0x0000145f18c8e000)
-	libelf.so.1 => /lib64/libelf.so.1 (0x0000145f18a75000)
-	libdrm_amdgpu.so.1 => /lib64/libdrm_amdgpu.so.1 (0x0000145f1886b000)
-	libdrm.so.2 => /lib64/libdrm.so.2 (0x0000145f18659000)
+	linux-vdso.so.1 (0x00007ffead94e000)
+	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x0000150bb8def000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000150bb8bcf000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000150bb884d000)
+	librt.so.1 => /lib64/librt.so.1 (0x0000150bb8645000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000150bb8441000)
+	libamdhip64.so.5 => /lustre/home/br-wlin/usr/lib/aomp_16.0-3/lib/libamdhip64.so.5 (0x0000150bb6bf6000)
+	libstdc++.so.6 => /lib64/libstdc++.so.6 (0x0000150bb6861000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000150bb649e000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000150bb9007000)
+	libamd_comgr.so.2 => /lustre/home/br-wlin/usr/lib/aomp_16.0-3/lib/libamd_comgr.so.2 (0x0000150babd6f000)
+	libhsa-runtime64.so.1 => /lustre/home/br-wlin/usr/lib/aomp_16.0-3/lib/libhsa-runtime64.so.1 (0x0000150baba61000)
+	libnuma.so.1 => /lib64/libnuma.so.1 (0x0000150bab855000)
+	libz.so.1 => /lib64/libz.so.1 (0x0000150bab63e000)
+	libtinfo.so.6 => /lib64/libtinfo.so.6 (0x0000150bab411000)
+	libelf.so.1 => /lib64/libelf.so.1 (0x0000150bab1f8000)
+	libdrm_amdgpu.so.1 => /lib64/libdrm_amdgpu.so.1 (0x0000150baafee000)
+	libdrm.so.2 => /lib64/libdrm.so.2 (0x0000150baaddc000)
 Kokkos library for N6Kokkos3HIPE
 BabelStream
 Version: 4.0
@@ -27,8 +27,8 @@ Precision: double
 Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        995496.773  0.00863     0.00866     0.00865     
-Mul         996604.742  0.00862     0.00865     0.00864     
-Add         926197.817  0.01391     0.01403     0.01397     
-Triad       939073.243  0.01372     0.01379     0.01375     
-Dot         979298.296  0.00877     0.00899     0.00889     
+Copy        994922.796  0.00863     0.00868     0.00865     
+Mul         995927.171  0.00863     0.00866     0.00864     
+Add         938972.782  0.01372     0.01380     0.01376     
+Triad       926425.035  0.01391     0.01400     0.01395     
+Dot         976018.796  0.00880     0.00901     0.00890     

@@ -26,6 +26,12 @@ aomp-16.0.3)
 rocm-4.5.1)
   export PATH="/opt/rocm-4.5.1/bin:${PATH:-}"
   ;;
+oneapi-2023.1)
+  module load gcc/13.1.0 # libpi_hip needs a newer libstdc++
+  load_oneapi "$HOME/intel/oneapi/setvars.sh" --include-intel-llvm
+  append_opts "-DCMAKE_C_COMPILER=clang"
+  append_opts "-DCMAKE_CXX_COMPILER=clang++"
+  ;;
 *) unknown_compiler ;;
 esac
 
@@ -54,6 +60,29 @@ omp)
   append_opts "-DCMAKE_C_COMPILER=$(which clang)"
   append_opts "-DCMAKE_CXX_COMPILER=$(which clang++)"
   BENCHMARK_EXE="omp-stream"
+  ;;
+std-indices)
+  append_opts "-DMODEL=std-indices"
+  case "$COMPILER" in
+  oneapi-*)
+    append_opts "-DUSE_ONEDPL=DPCPP"
+    append_opts "-DCXX_EXTRA_FLAGS=-fsycl;-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908;-march=znver3"
+    ;;
+  *) unknown_compiler ;;
+  esac
+  BENCHMARK_EXE="std-indices-stream"
+  ;;
+sycl)
+  append_opts "-DMODEL=sycl"
+  append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
+  append_opts "-DCXX_EXTRA_FLAGS=-fsycl;-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908;-march=znver3"
+  BENCHMARK_EXE="sycl-stream"
+  ;;
+sycl2020)
+  append_opts "-DMODEL=sycl2020"
+  append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
+  append_opts "-DCXX_EXTRA_FLAGS=-fsycl;-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908;-march=znver3"
+  BENCHMARK_EXE="sycl2020-stream"
   ;;
 *) unknown_model ;;
 esac

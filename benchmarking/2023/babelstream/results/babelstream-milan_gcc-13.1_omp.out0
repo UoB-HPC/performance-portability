@@ -1,14 +1,14 @@
-Sun Jul  2 04:36:24 BST 2023
+Sun Jul  2 06:29:40 BST 2023
 /lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-milan_gcc-13.1_omp
-	linux-vdso.so.1 (0x00007ffd937ae000)
-	libgomp.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgomp.so.1 (0x0000153ff0a41000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000153ff0821000)
-	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libstdc++.so.6 (0x0000153ff03bf000)
-	libm.so.6 => /lib64/libm.so.6 (0x0000153ff003d000)
-	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgcc_s.so.1 (0x0000153fefe19000)
-	libc.so.6 => /lib64/libc.so.6 (0x0000153fefa56000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x0000153fef852000)
-	/lib64/ld-linux-x86-64.so.2 (0x0000153ff0c90000)
+	linux-vdso.so.1 (0x00007ffc5e3d2000)
+	libgomp.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgomp.so.1 (0x000014ee7586c000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014ee7564c000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libstdc++.so.6 (0x000014ee751ea000)
+	libm.so.6 => /lib64/libm.so.6 (0x000014ee74e68000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgcc_s.so.1 (0x000014ee74c44000)
+	libc.so.6 => /lib64/libc.so.6 (0x000014ee74881000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000014ee7467d000)
+	/lib64/ld-linux-x86-64.so.2 (0x000014ee75abb000)
 0: CPU
 BabelStream
 Version: 4.0
@@ -18,8 +18,8 @@ Precision: double
 Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        224629.837  0.03824     0.03844     0.03831     
-Mul         219155.723  0.03920     0.03939     0.03927     
-Add         245733.593  0.05243     0.05272     0.05256     
-Triad       246944.589  0.05218     0.05239     0.05228     
-Dot         346254.164  0.02481     0.02522     0.02501     
+Copy        224812.242  0.03821     0.03845     0.03831     
+Mul         219231.249  0.03918     0.03944     0.03928     
+Add         245325.937  0.05252     0.05277     0.05264     
+Triad       246935.502  0.05218     0.05262     0.05231     
+Dot         345861.852  0.02484     0.02526     0.02500     

@@ -22,16 +22,26 @@ if [ "${LARGE:-}" = true ]; then
 fi
 
 export OMP_TARGET_OFFLOAD=MANDATORY
-# export LD_LIBRARY_PATH=/opt/rocm-4.5.1/lib:${LD_LIBRARY_PATH:-}
+export LD_LIBRARY_PATH=/opt/rocm-4.5.1/lib:${LD_LIBRARY_PATH:-}
 
 case "$MODEL" in
-hip | kokkos)
+hip | std-* | kokkos)
     "$BENCHMARK_EXE" --list
     "$BENCHMARK_EXE" "${opts[@]:-}"
     ;;
 omp)
     "$BENCHMARK_EXE" --list
     "$BENCHMARK_EXE" "${opts[@]:-}" --device 1
+    ;;
+sycl*)
+    "$BENCHMARK_EXE" --list
+    # 0: Intel(R) FPGA Emulation Device
+    # 1: AMD EPYC 7763 64-Core Processor
+    # 2: gfx908:sramecc+:xnack- <--
+    # 3: gfx908:sramecc+:xnack-
+    # 4: gfx908:sramecc+:xnack-
+    # 5: gfx908:sramecc+:xnack-
+    "$BENCHMARK_EXE" "${opts[@]:-}" --device 2
     ;;
 *)
     echo "Unknown run configuration for model '$MODEL'"

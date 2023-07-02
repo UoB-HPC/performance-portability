@@ -135,8 +135,10 @@ p3)
     bench_once milan-isambard $ONEAPI "${babelstream_oneapi_cpu_models[@]}"
 
     # bench_once a100-isambard $NVHPC "${babelstream_nvhpc_gpu_models[@]}"
-    # bench_once mi100-isambard $AOMP "${babelstream_aomp_gpu_models[@]}"
-    # bench_once mi100-isambard $ROCM "${babelstream_rocm_gpu_models[@]}"
+
+    bench_once mi100-isambard $AOMP "${babelstream_aomp_gpu_models[@]}"
+    bench_once mi100-isambard $ROCM "${babelstream_rocm_gpu_models[@]}"
+    bench_once mi100-isambard $ONEAPI "${babelstream_oneapi_gpu_models[@]}"
 
     # cd "$BASE/bude/results"
     # module unload cce

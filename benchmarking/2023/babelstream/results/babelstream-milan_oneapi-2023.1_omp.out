@@ -1,15 +1,15 @@
-Sun Jul  2 04:36:36 BST 2023
+Sun Jul  2 06:29:43 BST 2023
 /lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-milan_oneapi-2023.1_omp
-	linux-vdso.so.1 (0x00007fffb416d000)
-	libiomp5.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libiomp5.so (0x000015178d23f000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x000015178d01f000)
-	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libstdc++.so.6 (0x000015178cbbd000)
-	libm.so.6 => /lib64/libm.so.6 (0x000015178c83b000)
-	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgcc_s.so.1 (0x000015178c617000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x000015178c413000)
-	libc.so.6 => /lib64/libc.so.6 (0x000015178c050000)
-	librt.so.1 => /lib64/librt.so.1 (0x000015178be48000)
-	/lib64/ld-linux-x86-64.so.2 (0x000015178d685000)
+	linux-vdso.so.1 (0x00007ffdc4f3f000)
+	libiomp5.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libiomp5.so (0x000014caf58fa000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014caf56da000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libstdc++.so.6 (0x000014caf5278000)
+	libm.so.6 => /lib64/libm.so.6 (0x000014caf4ef6000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgcc_s.so.1 (0x000014caf4cd2000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000014caf4ace000)
+	libc.so.6 => /lib64/libc.so.6 (0x000014caf470b000)
+	librt.so.1 => /lib64/librt.so.1 (0x000014caf4503000)
+	/lib64/ld-linux-x86-64.so.2 (0x000014caf5d40000)
 0: CPU
 BabelStream
 Version: 4.0
@@ -19,8 +19,8 @@ Precision: double
 Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        224717.231  0.03823     0.03838     0.03829     
-Mul         218956.462  0.03923     0.03941     0.03932     
-Add         245164.451  0.05256     0.05282     0.05268     
-Triad       246880.273  0.05219     0.05250     0.05232     
-Dot         341827.456  0.02513     0.02544     0.02527     
+Copy        224732.846  0.03822     0.03843     0.03830     
+Mul         219074.735  0.03921     0.03942     0.03929     
+Add         245286.291  0.05253     0.05276     0.05263     
+Triad       246680.705  0.05223     0.05247     0.05232     
+Dot         344896.000  0.02491     0.02528     0.02506     
