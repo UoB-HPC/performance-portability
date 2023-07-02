@@ -22,6 +22,7 @@ models["omp"]=true
 models["cuda"]=true
 models["hip"]=true
 models["sycl"]=true
+models["sycl2020"]=true
 models["kokkos"]=true
 models["std-indices"]=true
 models["std-indices-dplomp"]=true
@@ -80,6 +81,11 @@ babelstream_nvhpc_gpu_models=(
     std-indices
 )
 
+babelstream_oneapi_gpu_models=(
+    sycl sycl2020
+    std-indices
+)
+
 babelstream_aomp_gpu_models=(
     kokkos hip omp
 )
@@ -102,6 +108,15 @@ generic_nvhpc_gpu_models=(
 )
 
 case "$1" in
+cambridge)
+    cd "$BASE/babelstream/results"
+    bench_once a100-cambridge $NVHPC "${babelstream_nvhpc_gpu_models[@]}"
+    bench_once a100-cambridge $ONEAPI "${babelstream_oneapi_gpu_models[@]}"
+
+    bench_once icl-cambridge $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
+    bench_once icl-cambridge $GCC "${babelstream_gcc_cpu_models[@]}"
+    bench_once icl-cambridge $ONEAPI "${babelstream_gcc_cpu_models[@]}"
+    ;;
 p3)
     cd "$BASE/babelstream/results"
     module unload cce

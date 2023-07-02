@@ -1,0 +1,25 @@
+Sun  2 Jul 03:20:46 BST 2023
+/home/hpclin2/rds/hpc-work/performance-portability/benchmarking/2023/babelstream/results/babelstream-icl_gcc-13.1_kokkos
+	linux-vdso.so.1 (0x00007ffc2e3db000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007f4f157d3000)
+	libgomp.so.1 => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/gcc-13.1.0-fx6lhdssnixdqumxgox353pcnfypicuo/lib64/libgomp.so.1 (0x00007f4f15586000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007f4f15366000)
+	libstdc++.so.6 => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/gcc-13.1.0-fx6lhdssnixdqumxgox353pcnfypicuo/lib64/libstdc++.so.6 (0x00007f4f14f14000)
+	libm.so.6 => /lib64/libm.so.6 (0x00007f4f14b92000)
+	libgcc_s.so.1 => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/gcc-13.1.0-fx6lhdssnixdqumxgox353pcnfypicuo/lib64/libgcc_s.so.1 (0x00007f4f1496f000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007f4f145a9000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f4f159d7000)
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        278147.488  0.03088     0.04294     0.03182     
+Mul         281778.070  0.03048     0.03674     0.03134     
+Add         292385.661  0.04407     0.04943     0.04457     
+Triad       295309.554  0.04363     0.05753     0.04426     
+Dot         290763.671  0.02954     0.03627     0.03008     

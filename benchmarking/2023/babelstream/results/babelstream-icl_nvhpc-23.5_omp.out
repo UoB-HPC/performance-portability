@@ -1,0 +1,31 @@
+Sun  2 Jul 03:20:09 BST 2023
+/home/hpclin2/rds/hpc-work/performance-portability/benchmarking/2023/babelstream/results/babelstream-icl_nvhpc-23.5_omp
+	linux-vdso.so.1 (0x00007fffdd3ca000)
+	libacchost.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libacchost.so (0x00007fd483a29000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007fd483825000)
+	libatomic.so.1 => /lib64/libatomic.so.1 (0x00007fd48361d000)
+	libnvhpcatm.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libnvhpcatm.so (0x00007fd483412000)
+	libstdc++.so.6 => /lib64/libstdc++.so.6 (0x00007fd48307d000)
+	libnvomp.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libnvomp.so (0x00007fd48207c000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007fd481e5c000)
+	libnvcpumath-avx512.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libnvcpumath-avx512.so (0x00007fd481a44000)
+	libnvc.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libnvc.so (0x00007fd4817df000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007fd481419000)
+	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x00007fd481201000)
+	libm.so.6 => /lib64/libm.so.6 (0x00007fd480e7f000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007fd483c8b000)
+	libnvcpumath.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libnvcpumath.so (0x00007fd480a67000)
+0: CPU
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        300648.338  0.02857     0.03319     0.02880     
+Mul         204713.533  0.04196     0.04515     0.04222     
+Add         233999.321  0.05506     0.05943     0.05547     
+Triad       234737.277  0.05489     0.06407     0.05530     
+Dot         330333.401  0.02600     0.03808     0.02639     

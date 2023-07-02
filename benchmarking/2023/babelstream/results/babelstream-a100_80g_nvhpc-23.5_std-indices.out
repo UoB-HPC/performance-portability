@@ -1,0 +1,39 @@
+Sun  2 Jul 03:20:46 BST 2023
+/home/hpclin2/rds/hpc-work/performance-portability/benchmarking/2023/babelstream/results/babelstream-a100_80g_nvhpc-23.5_std-indices
+	linux-vdso.so.1 (0x00007ffdf1b70000)
+	libacchost.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libacchost.so (0x00007f65fa7d4000)
+	libaccdevaux110.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libaccdevaux110.so (0x00007f65fa5c1000)
+	libacccuda.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libacccuda.so (0x00007f65fa292000)
+	libnvhpcman.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libnvhpcman.so (0x00007f65fa08c000)
+	libnvhpcmanaux.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libnvhpcmanaux.so (0x00007f65f9e8a000)
+	libcudart.so.11.0 => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/cuda/11.0/lib64/libcudart.so.11.0 (0x00007f65f9c0c000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007f65f9a08000)
+	libcudadevice.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libcudadevice.so (0x00007f65f97f1000)
+	libcudanvhpc.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libcudanvhpc.so (0x00007f65f95ed000)
+	libatomic.so.1 => /usr/local/software/master/gcc/11/lib64/libatomic.so.1 (0x00007f65f93e5000)
+	libnvhpcatm.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libnvhpcatm.so (0x00007f65f91da000)
+	libstdc++.so.6 => /usr/local/software/master/gcc/11/lib64/libstdc++.so.6 (0x00007f65f8dd3000)
+	libnvomp.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libnvomp.so (0x00007f65f7dd2000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007f65f7bb2000)
+	libnvcpumath.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libnvcpumath.so (0x00007f65f779a000)
+	libnvc.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libnvc.so (0x00007f65f7535000)
+	librt.so.1 => /lib64/librt.so.1 (0x00007f65f732d000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007f65f6f67000)
+	libgcc_s.so.1 => /usr/local/software/master/gcc/11/lib64/libgcc_s.so.1 (0x00007f65f6d4e000)
+	libm.so.6 => /lib64/libm.so.6 (0x00007f65f69cc000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f65faa36000)
+Listing devices is not supported by the Parallel STL
+BabelStream
+Version: 4.0
+Implementation: STD (index-oriented)
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1738043.946 0.00494     0.00496     0.00495     
+Mul         1734078.823 0.00495     0.00497     0.00496     
+Add         1778744.073 0.00724     0.00725     0.00725     
+Triad       1777812.195 0.00725     0.00726     0.00725     
+Dot         1847772.222 0.00465     0.00468     0.00466     

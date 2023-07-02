@@ -1,0 +1,30 @@
+Sun  2 Jul 03:20:46 BST 2023
+/home/hpclin2/rds/hpc-work/performance-portability/benchmarking/2023/babelstream/results/babelstream-icl_nvhpc-23.5_kokkos
+	linux-vdso.so.1 (0x00007ffec70f0000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007f99fe11c000)
+	libatomic.so.1 => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/gcc-13.1.0-fx6lhdssnixdqumxgox353pcnfypicuo/lib/gcc/x86_64-pc-linux-gnu/13.1.0//../../../../lib64/libatomic.so.1 (0x00007f99fdf15000)
+	libnvhpcatm.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libnvhpcatm.so (0x00007f99fdd0a000)
+	libstdc++.so.6 => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/gcc-13.1.0-fx6lhdssnixdqumxgox353pcnfypicuo/lib/gcc/x86_64-pc-linux-gnu/13.1.0//../../../../lib64/libstdc++.so.6 (0x00007f99fd8b8000)
+	libnvomp.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libnvomp.so (0x00007f99fc8b7000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007f99fc697000)
+	libnvcpumath-avx512.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libnvcpumath-avx512.so (0x00007f99fc27f000)
+	libnvc.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libnvc.so (0x00007f99fc01a000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007f99fbc54000)
+	libgcc_s.so.1 => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/gcc-13.1.0-fx6lhdssnixdqumxgox353pcnfypicuo/lib/gcc/x86_64-pc-linux-gnu/13.1.0//../../../../lib64/libgcc_s.so.1 (0x00007f99fba31000)
+	libm.so.6 => /lib64/libm.so.6 (0x00007f99fb6af000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f99fe320000)
+	libnvcpumath.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libnvcpumath.so (0x00007f99fb297000)
+Kokkos library for N6Kokkos6OpenMPE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        219061.226  0.03921     0.04828     0.03985     
+Mul         216966.495  0.03959     0.04694     0.04016     
+Add         275587.780  0.04675     0.05225     0.04743     
+Triad       276708.813  0.04656     0.05036     0.04724     
+Dot         329750.994  0.02605     0.03444     0.02650     

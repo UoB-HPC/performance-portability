@@ -1,0 +1,32 @@
+Sun  2 Jul 03:20:46 BST 2023
+/home/hpclin2/rds/hpc-work/performance-portability/benchmarking/2023/babelstream/results/babelstream-a100_80g_oneapi-2023.1_std-indices
+	linux-vdso.so.1 (0x00007ffdcad4c000)
+	libtbb.so.12 => /rds/user/hpclin2/hpc-work/intel/oneapi/tbb/2021.9.0/env/../lib/intel64/gcc4.8/libtbb.so.12 (0x00007ff9e89df000)
+	libstdc++.so.6 => /usr/local/software/master/gcc/11/lib64/libstdc++.so.6 (0x00007ff9e85d8000)
+	libm.so.6 => /lib64/libm.so.6 (0x00007ff9e8256000)
+	libgcc_s.so.1 => /usr/local/software/master/gcc/11/lib64/libgcc_s.so.1 (0x00007ff9e803d000)
+	libsycl.so.6 => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/lib/libsycl.so.6 (0x00007ff9e7d4d000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007ff9e7987000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007ff9e7783000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007ff9e7563000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007ff9e8c59000)
+	libsvml.so => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libsvml.so (0x00007ff9e5f3a000)
+	libirng.so => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libirng.so (0x00007ff9e5c23000)
+	libimf.so => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libimf.so (0x00007ff9e5839000)
+	libintlc.so.5 => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x00007ff9e8e09000)
+Listing devices is not supported by the Parallel STL
+BabelStream
+Version: 4.0
+Implementation: STD (index-oriented)
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Backing storage typeid: Pd
+Using oneDPL backend: SYCL USM (device=NVIDIA A100-SXM4-80GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1742599.746 0.00493     0.00495     0.00494     
+Mul         1743486.100 0.00493     0.00581     0.00495     
+Add         1770462.725 0.00728     0.00730     0.00729     
+Triad       1770192.248 0.00728     0.00823     0.00730     
+Dot         1062854.080 0.00808     0.00835     0.00816     

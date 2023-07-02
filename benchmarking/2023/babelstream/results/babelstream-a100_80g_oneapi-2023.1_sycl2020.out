@@ -1,0 +1,39 @@
+Sun  2 Jul 03:20:10 BST 2023
+/home/hpclin2/rds/hpc-work/performance-portability/benchmarking/2023/babelstream/results/babelstream-a100_80g_oneapi-2023.1_sycl2020
+	linux-vdso.so.1 (0x00007ffd68f43000)
+	libstdc++.so.6 => /usr/local/software/master/gcc/11/lib64/libstdc++.so.6 (0x00007fd9dd058000)
+	libm.so.6 => /lib64/libm.so.6 (0x00007fd9dccd6000)
+	libgcc_s.so.1 => /usr/local/software/master/gcc/11/lib64/libgcc_s.so.1 (0x00007fd9dcabd000)
+	libsycl.so.6 => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/lib/libsycl.so.6 (0x00007fd9dc7cd000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007fd9dc407000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007fd9dd45f000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007fd9dc203000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007fd9dbfe3000)
+	libsvml.so => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libsvml.so (0x00007fd9da9ba000)
+	libirng.so => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libirng.so (0x00007fd9da6a3000)
+	libimf.so => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libimf.so (0x00007fd9da2b9000)
+	libintlc.so.5 => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x00007fd9dd60f000)
+
+Devices:
+0: Intel(R) FPGA Emulation Device
+1: AMD EPYC 7763 64-Core Processor                
+2: NVIDIA A100-SXM4-80GB
+3: NVIDIA A100-SXM4-80GB
+4: NVIDIA A100-SXM4-80GB
+5: NVIDIA A100-SXM4-80GB
+
+BabelStream
+Version: 4.0
+Implementation: SYCL 2020
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using SYCL device NVIDIA A100-SXM4-80GB
+Driver: CUDA 12.0
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1737418.204 0.00494     0.00496     0.00495     
+Mul         1736682.655 0.00495     0.00496     0.00495     
+Add         1765782.894 0.00730     0.00735     0.00731     
+Triad       1763944.976 0.00730     0.00733     0.00731     
+Dot         1618716.232 0.00531     0.00618     0.00536     

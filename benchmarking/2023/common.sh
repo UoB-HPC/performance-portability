@@ -18,7 +18,7 @@ prime_kokkos() {
 }
 
 load_nvhpc() {
-  if grep -q "Amazon Linux" "/etc/os-release"; then
+  if grep -q "Amazon Linux" "/etc/os-release" || [ -n "${RDS_ROOT+x}" ]; then
     # use spack
     export NVHPC_PATH
     spack load nvhpc@23.5
@@ -26,10 +26,10 @@ load_nvhpc() {
   else
     export NVHPC_PATH
     NVHPC_PATH="/lustre/home/br-wlin/nvhpc_sdk/Linux_$(uname -m)/23.5"
-    if [ ! -d "$NVHPC_PATH" ]; then
-      echo "NVHPC dir '$NVHPC_PATH' is not a directory"
-      exit 2
-    fi
+  fi
+  if [ ! -d "$NVHPC_PATH" ]; then
+    echo "NVHPC dir '$NVHPC_PATH' is not a directory"
+    exit 2
   fi
 }
 
@@ -46,7 +46,7 @@ load_oneapi() {
   CURRENT_SCRIPT_DIR="$SCRIPT_DIR" # save current script dir as the setvars overwrites it
 
   # their script also terminates the shell for some reason so we short-circuit it first
-  source "$oneapi_env" --force || true
+  source "$oneapi_env" --force "${@:2}" || true
 
   set -u
   SCRIPT_DIR="$CURRENT_SCRIPT_DIR" #recover script dir

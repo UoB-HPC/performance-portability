@@ -1,0 +1,27 @@
+Sun  2 Jul 03:20:46 BST 2023
+/home/hpclin2/rds/hpc-work/performance-portability/benchmarking/2023/babelstream/results/babelstream-a100_80g_nvhpc-23.5_kokkos
+	linux-vdso.so.1 (0x00007ffcd73c6000)
+	libcuda.so.1 => /lib64/libcuda.so.1 (0x00007f880ed8e000)
+	libcudart.so.12 => /home/hpclin2/rds/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/cuda/lib64/libcudart.so.12 (0x00007f880eae7000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007f880e8e3000)
+	librt.so.1 => /lib64/librt.so.1 (0x00007f880e6db000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007f880e4bb000)
+	libstdc++.so.6 => /usr/local/software/spack/archive2/linux-scientific7-skylake_avx512/gcc-9.3.0/gcc-11.2.0-do3vmb6iub2hwfop75wwnhbsk3s2ucpi/lib64/libstdc++.so.6 (0x00007f880e0b4000)
+	libm.so.6 => /lib64/libm.so.6 (0x00007f880dd32000)
+	libgcc_s.so.1 => /usr/local/software/spack/archive2/linux-scientific7-skylake_avx512/gcc-9.3.0/gcc-11.2.0-do3vmb6iub2hwfop75wwnhbsk3s2ucpi/lib64/libgcc_s.so.1 (0x00007f880db19000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007f880d753000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f8810a6f000)
+Kokkos library for N6Kokkos4CudaE
+BabelStream
+Version: 4.0
+Implementation: Kokkos
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1701572.192 0.00505     0.00506     0.00506     
+Mul         1701693.880 0.00505     0.00509     0.00505     
+Add         1761140.737 0.00732     0.00734     0.00732     
+Triad       1764894.037 0.00730     0.00733     0.00731     
+Dot         1337019.518 0.00642     0.00648     0.00645     

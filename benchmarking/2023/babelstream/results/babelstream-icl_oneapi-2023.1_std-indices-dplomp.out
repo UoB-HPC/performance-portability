@@ -1,0 +1,33 @@
+Sun  2 Jul 03:20:46 BST 2023
+/home/hpclin2/rds/hpc-work/performance-portability/benchmarking/2023/babelstream/results/babelstream-icl_oneapi-2023.1_std-indices-dplomp
+	linux-vdso.so.1 (0x00007fff6449a000)
+	libtbb.so.12 => /home/hpclin2/rds/hpc-work/performance-portability/benchmarking/2023/babelstream/results/babelstream-icl_oneapi-2023.1_std-indices-dplomp/BabelStream/build/intelllvm_2023.1_cxx11_64_release/libtbb.so.12 (0x00007fbb4491d000)
+	libstdc++.so.6 => /usr/local/software/master/gcc/11/lib64/libstdc++.so.6 (0x00007fbb44516000)
+	libm.so.6 => /lib64/libm.so.6 (0x00007fbb44194000)
+	libgcc_s.so.1 => /usr/local/software/master/gcc/11/lib64/libgcc_s.so.1 (0x00007fbb43f7b000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007fbb43d77000)
+	libiomp5.so => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libiomp5.so (0x00007fbb43931000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007fbb43711000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007fbb4334b000)
+	libsvml.so => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libsvml.so (0x00007fbb41d22000)
+	libirng.so => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libirng.so (0x00007fbb41a0b000)
+	libimf.so => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libimf.so (0x00007fbb41621000)
+	libintlc.so.5 => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x00007fbb44d38000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007fbb44b88000)
+	librt.so.1 => /lib64/librt.so.1 (0x00007fbb41419000)
+Listing devices is not supported by the Parallel STL
+BabelStream
+Version: 4.0
+Implementation: STD (index-oriented)
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Backing storage typeid: Pd
+Using oneDPL backend: OpenMP
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        160275.723  0.05359     0.06490     0.05586     
+Mul         160710.476  0.05345     0.05794     0.05543     
+Add         170700.589  0.07548     0.08193     0.07838     
+Triad       172705.865  0.07461     0.09282     0.07830     
+Dot         195126.143  0.04402     0.06069     0.04698     

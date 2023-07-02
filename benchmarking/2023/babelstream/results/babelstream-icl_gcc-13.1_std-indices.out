@@ -1,0 +1,26 @@
+Sun  2 Jul 03:20:46 BST 2023
+/home/hpclin2/rds/hpc-work/performance-portability/benchmarking/2023/babelstream/results/babelstream-icl_gcc-13.1_std-indices
+	linux-vdso.so.1 (0x00007ffeeabdf000)
+	libtbb.so.12 => /home/hpclin2/rds/hpc-work/performance-portability/benchmarking/2023/babelstream/results/babelstream-icl_gcc-13.1_std-indices/BabelStream/build/gnu_13.1_cxx11_64_release/libtbb.so.12 (0x00007f5379320000)
+	libstdc++.so.6 => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/gcc-13.1.0-fx6lhdssnixdqumxgox353pcnfypicuo/lib64/libstdc++.so.6 (0x00007f5378ece000)
+	libm.so.6 => /lib64/libm.so.6 (0x00007f5378b4c000)
+	libgcc_s.so.1 => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/gcc-13.1.0-fx6lhdssnixdqumxgox353pcnfypicuo/lib64/libgcc_s.so.1 (0x00007f5378929000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007f5378563000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007f537835f000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007f537813f000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f5379571000)
+Listing devices is not supported by the Parallel STL
+BabelStream
+Version: 4.0
+Implementation: STD (index-oriented)
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        164889.113  0.05210     0.05764     0.05449     
+Mul         162501.675  0.05286     0.05724     0.05527     
+Add         171129.621  0.07529     0.08011     0.07751     
+Triad       173188.716  0.07440     0.08008     0.07723     
+Dot         193804.337  0.04432     0.04832     0.04638     

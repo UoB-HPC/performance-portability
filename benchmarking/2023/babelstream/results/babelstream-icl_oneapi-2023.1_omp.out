@@ -1,0 +1,26 @@
+Sun  2 Jul 03:20:46 BST 2023
+/home/hpclin2/rds/hpc-work/performance-portability/benchmarking/2023/babelstream/results/babelstream-icl_oneapi-2023.1_omp
+	linux-vdso.so.1 (0x00007fff07f1a000)
+	libiomp5.so => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libiomp5.so (0x00007f094e075000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007f094de55000)
+	libstdc++.so.6 => /usr/local/software/master/gcc/11/lib64/libstdc++.so.6 (0x00007f094da4e000)
+	libm.so.6 => /lib64/libm.so.6 (0x00007f094d6cc000)
+	libgcc_s.so.1 => /usr/local/software/master/gcc/11/lib64/libgcc_s.so.1 (0x00007f094d4b3000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007f094d2af000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007f094cee9000)
+	librt.so.1 => /lib64/librt.so.1 (0x00007f094cce1000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f094e4bb000)
+0: CPU
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        293416.045  0.02928     0.03524     0.02972     
+Mul         288253.206  0.02980     0.05767     0.03060     
+Add         299811.442  0.04298     0.05757     0.04355     
+Triad       298772.837  0.04313     0.04570     0.04354     
+Dot         338139.887  0.02540     0.06166     0.02636     

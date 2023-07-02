@@ -1,0 +1,25 @@
+Sun  2 Jul 03:20:46 BST 2023
+/home/hpclin2/rds/hpc-work/performance-portability/benchmarking/2023/babelstream/results/babelstream-icl_gcc-13.1_omp
+	linux-vdso.so.1 (0x00007ffdb89f5000)
+	libgomp.so.1 => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/gcc-13.1.0-fx6lhdssnixdqumxgox353pcnfypicuo/lib64/libgomp.so.1 (0x00007fe05a154000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007fe059f34000)
+	libstdc++.so.6 => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/gcc-13.1.0-fx6lhdssnixdqumxgox353pcnfypicuo/lib64/libstdc++.so.6 (0x00007fe059ae2000)
+	libm.so.6 => /lib64/libm.so.6 (0x00007fe059760000)
+	libgcc_s.so.1 => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/gcc-13.1.0-fx6lhdssnixdqumxgox353pcnfypicuo/lib64/libgcc_s.so.1 (0x00007fe05953d000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007fe059177000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007fe058f73000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007fe05a3a1000)
+0: CPU
+BabelStream
+Version: 4.0
+Implementation: OpenMP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        290934.336  0.02953     0.03920     0.02999     
+Mul         283962.217  0.03025     0.03994     0.03070     
+Add         294411.654  0.04376     0.05000     0.04429     
+Triad       294972.564  0.04368     0.05093     0.04411     
+Dot         330634.412  0.02598     0.03347     0.02645     

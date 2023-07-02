@@ -1,0 +1,33 @@
+Sun  2 Jul 03:20:09 BST 2023
+/home/hpclin2/rds/hpc-work/performance-portability/benchmarking/2023/babelstream/results/babelstream-icl_nvhpc-23.5_std-indices
+	linux-vdso.so.1 (0x00007fffb5dde000)
+	libacchost.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libacchost.so (0x00007f864cc84000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007f864ca80000)
+	libatomic.so.1 => /lib64/libatomic.so.1 (0x00007f864c878000)
+	libnvhpcatm.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libnvhpcatm.so (0x00007f864c66d000)
+	libstdc++.so.6 => /lib64/libstdc++.so.6 (0x00007f864c2d8000)
+	libnvomp.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libnvomp.so (0x00007f864b2d7000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007f864b0b7000)
+	libnvcpumath-avx512.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libnvcpumath-avx512.so (0x00007f864ac9f000)
+	libnvc.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libnvc.so (0x00007f864aa3a000)
+	librt.so.1 => /lib64/librt.so.1 (0x00007f864a832000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007f864a46c000)
+	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x00007f864a254000)
+	libm.so.6 => /lib64/libm.so.6 (0x00007f8649ed2000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f864cee6000)
+	libnvcpumath.so => /rds/user/hpclin2/hpc-work/spack/opt/spack/linux-scientific7-broadwell/gcc-5.4.0/nvhpc-23.5-4xmiigwb7v5m6yxdijjsefbp5pswlkxb/Linux_x86_64/23.5/compilers/lib/libnvcpumath.so (0x00007f8649aba000)
+Listing devices is not supported by the Parallel STL
+BabelStream
+Version: 4.0
+Implementation: STD (index-oriented)
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Backing storage typeid: Pd
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        223713.237  0.03840     0.04322     0.03863     
+Mul         213274.452  0.04028     0.04205     0.04047     
+Add         267884.139  0.04810     0.05830     0.04860     
+Triad       269411.866  0.04783     0.05433     0.04824     
+Dot         331018.189  0.02595     0.03334     0.02640     
