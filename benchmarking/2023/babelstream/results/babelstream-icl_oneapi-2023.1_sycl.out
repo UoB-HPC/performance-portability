@@ -1,0 +1,36 @@
+Sun  2 Jul 03:43:56 BST 2023
+/home/hpclin2/rds/hpc-work/performance-portability/benchmarking/2023/babelstream/results/babelstream-icl_oneapi-2023.1_sycl
+	linux-vdso.so.1 (0x00007ffca73c3000)
+	libstdc++.so.6 => /usr/local/software/master/gcc/11/lib64/libstdc++.so.6 (0x00007fd9e9357000)
+	libm.so.6 => /lib64/libm.so.6 (0x00007fd9e8fd5000)
+	libgcc_s.so.1 => /usr/local/software/master/gcc/11/lib64/libgcc_s.so.1 (0x00007fd9e8dbc000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007fd9e8bb8000)
+	libsycl.so.6 => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/lib/libsycl.so.6 (0x00007fd9e88c8000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007fd9e8502000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007fd9e975e000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007fd9e82e2000)
+	libsvml.so => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libsvml.so (0x00007fd9e6cb9000)
+	libirng.so => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libirng.so (0x00007fd9e69a2000)
+	libimf.so => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libimf.so (0x00007fd9e65b8000)
+	libintlc.so.5 => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x00007fd9e990e000)
+
+Devices:
+0: Intel(R) FPGA Emulation Device
+1: Intel(R) Xeon(R) Platinum 8368Q CPU @ 2.60GHz
+
+BabelStream
+Version: 4.0
+Implementation: SYCL
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using SYCL device Intel(R) Xeon(R) Platinum 8368Q CPU @ 2.60GHz
+Driver: 2023.15.3.0.20_160000
+Reduction kernel config: 76 groups of size 16
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        205429.881  0.04181     0.05546     0.04447     
+Mul         212875.027  0.04035     0.05332     0.04566     
+Add         269456.387  0.04782     0.05665     0.05207     
+Triad       266956.318  0.04827     0.05804     0.05348     
+Dot         129269.856  0.06645     0.13078     0.07458     

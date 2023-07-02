@@ -91,21 +91,19 @@ std-indices)
   append_opts "-DMODEL=std-indices"
   BENCHMARK_EXE="std-indices-stream"
   ;;
-std-ranges)
-  append_opts "-DMODEL=std-ranges"
-  BENCHMARK_EXE="std-ranges-stream"
-  ;;
-std-data-dplomp)
-  append_opts "-DMODEL=std-data -DUSE_ONEDPL=OPENMP"
-  BENCHMARK_EXE="std-data-stream"
-  ;;
 std-indices-dplomp)
   append_opts "-DMODEL=std-indices -DUSE_ONEDPL=OPENMP"
   BENCHMARK_EXE="std-indices-stream"
   ;;
-std-ranges-dplomp)
-  append_opts "-DMODEL=std-ranges -DUSE_ONEDPL=OPENMP"
-  BENCHMARK_EXE="std-ranges-stream"
+sycl)
+  append_opts "-DMODEL=sycl"
+  append_opts "-DSYCL_COMPILER=ONEAPI-ICPX"
+  BENCHMARK_EXE="sycl-stream"
+  ;;
+sycl2020)
+  append_opts "-DMODEL=sycl2020"
+  append_opts "-DSYCL_COMPILER=ONEAPI-ICPX"
+  BENCHMARK_EXE="sycl2020-stream"
   ;;
 *) unknown_model ;;
 esac

@@ -65,6 +65,14 @@ babelstream_gcc_cpu_models=(
     std-indices-dplomp
 )
 
+babelstream_oneapi_cpu_models=(
+    kokkos omp tbb
+    std-indices
+    std-indices-dplomp
+    sycl sycl2020
+)
+
+
 babelstream_cce_cpu_models=(
     kokkos omp # tbb
     # std-indices # XXX doesn't work with CCE
@@ -115,7 +123,7 @@ cambridge)
 
     bench_once icl-cambridge $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
     bench_once icl-cambridge $GCC "${babelstream_gcc_cpu_models[@]}"
-    bench_once icl-cambridge $ONEAPI "${babelstream_gcc_cpu_models[@]}"
+    bench_once icl-cambridge $ONEAPI "${babelstream_oneapi_cpu_models[@]}"
     ;;
 p3)
     cd "$BASE/babelstream/results"

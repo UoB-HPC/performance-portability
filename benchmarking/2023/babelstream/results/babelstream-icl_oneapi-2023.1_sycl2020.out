@@ -1,0 +1,35 @@
+Sun  2 Jul 03:43:57 BST 2023
+/home/hpclin2/rds/hpc-work/performance-portability/benchmarking/2023/babelstream/results/babelstream-icl_oneapi-2023.1_sycl2020
+	linux-vdso.so.1 (0x00007ffc71729000)
+	libstdc++.so.6 => /usr/local/software/master/gcc/11/lib64/libstdc++.so.6 (0x00007fbae8fb1000)
+	libm.so.6 => /lib64/libm.so.6 (0x00007fbae8c2f000)
+	libgcc_s.so.1 => /usr/local/software/master/gcc/11/lib64/libgcc_s.so.1 (0x00007fbae8a16000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007fbae8812000)
+	libsycl.so.6 => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/lib/libsycl.so.6 (0x00007fbae8522000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007fbae815c000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007fbae93b8000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007fbae7f3c000)
+	libsvml.so => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libsvml.so (0x00007fbae6913000)
+	libirng.so => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libirng.so (0x00007fbae65fc000)
+	libimf.so => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libimf.so (0x00007fbae6212000)
+	libintlc.so.5 => /rds/user/hpclin2/hpc-work/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x00007fbae9568000)
+
+Devices:
+0: Intel(R) FPGA Emulation Device
+1: Intel(R) Xeon(R) Platinum 8368Q CPU @ 2.60GHz
+
+BabelStream
+Version: 4.0
+Implementation: SYCL 2020
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using SYCL device Intel(R) Xeon(R) Platinum 8368Q CPU @ 2.60GHz
+Driver: 2023.15.3.0.20_160000
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        259478.917  0.03310     0.04290     0.03771     
+Mul         255243.082  0.03365     0.04314     0.03851     
+Add         271763.454  0.04741     0.05245     0.04905     
+Triad       272281.270  0.04732     0.05358     0.04950     
+Dot         299564.338  0.02867     0.04050     0.03097     
