@@ -1,0 +1,52 @@
+#!/bin/bash
+#SBATCH -p icelake
+#SBATCH -A MACINTOSH-SMITH-SL2-CPU
+#SBATCH --exclusive
+#SBATCH -t 00:10:00
+set -eu
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+if [ "${LARGE:-}" = true ]; then
+    opts=("--arraysize" "536870912")
+fi
+
+export OMP_NUM_THREADS=76
+export OMP_PROC_BIND=true
+export OMP_PLACES=cores
+export ACC_NUM_CORES=76
+
+case "$COMPILER" in
+oneapi-*)
+    module load gcc/11
+    ;;
+esac
+
+case "$MODEL" in
+omp | kokkos)
+    "$BENCHMARK_EXE" --list
+    "$BENCHMARK_EXE" "${opts[@]:-}"
+    ;;
+tbb | std-*)
+    "$BENCHMARK_EXE" --list
+    numactl --physcpubind=all --localalloc "$BENCHMARK_EXE" "${opts[@]:-}"
+    ;;
+sycl*)
+
+    export DPCPP_CPU_PLACES=numa_domains
+    export DPCPP_CPU_CU_AFFINITY=spread
+    export DPCPP_CPU_SCHEDULE=dynamic
+
+    "$BENCHMARK_EXE" --list
+    # 0: Intel(R) FPGA Emulation Device
+    # 1: Intel(R) Xeon(R) Platinum 8368Q CPU @ 2.60GHz <--
+    "$BENCHMARK_EXE" "${opts[@]:-}" --device 1
+    ;;
+*)
+    echo "Unknown run configuration for model '$MODEL'"
+    exit 1
+    ;;
+esac

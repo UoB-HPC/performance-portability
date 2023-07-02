@@ -1,9 +1,14 @@
 #!/bin/bash
-#PBS -q ilakeq
-#PBS -l select=1:ncpus=64
+#PBS -q instinctq
+#PBS -l select=1:ncpus=64:mem=200gb
 #PBS -l walltime=00:10:00
 #PBS -l place=excl
 #PBS -joe
+
+# XXX DO NOT SPECIFY ngpus!
+
+: >"$OUT_FILE"
+exec &> >(tee -a "$OUT_FILE")
 
 set -eu
 
@@ -16,19 +21,17 @@ if [ "${LARGE:-}" = true ]; then
     opts=("--arraysize" "536870912")
 fi
 
-export OMP_NUM_THREADS=64
-export OMP_PROC_BIND=true
-export OMP_PLACES=cores
-export ACC_NUM_CORES=64
+export OMP_TARGET_OFFLOAD=MANDATORY
+# export LD_LIBRARY_PATH=/opt/rocm-4.5.1/lib:${LD_LIBRARY_PATH:-}
 
 case "$MODEL" in
-omp | kokkos)
+hip | kokkos)
     "$BENCHMARK_EXE" --list
     "$BENCHMARK_EXE" "${opts[@]:-}"
     ;;
-tbb | std-*)
+omp)
     "$BENCHMARK_EXE" --list
-    numactl --physcpubind=all --localalloc "$BENCHMARK_EXE" "${opts[@]:-}"
+    "$BENCHMARK_EXE" "${opts[@]:-}" --device 1
     ;;
 *)
     echo "Unknown run configuration for model '$MODEL'"

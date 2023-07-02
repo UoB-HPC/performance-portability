@@ -1,6 +1,6 @@
 #!/bin/bash
-#PBS -q ampereq
-#PBS -l select=1:ngpus=1:mem=250gb
+#PBS -q milanq
+#PBS -l select=1:ncpus=128:mem=250gb
 #PBS -l walltime=00:10:00
 #PBS -l place=excl
 #PBS -joe
@@ -19,12 +19,19 @@ if [ "${LARGE:-}" = true ]; then
     opts=("--arraysize" "536870912")
 fi
 
-export OMP_TARGET_OFFLOAD=MANDATORY
+export OMP_NUM_THREADS=128
+export OMP_PROC_BIND=true
+export OMP_PLACES=cores
+export ACC_NUM_CORES=128
 
 case "$MODEL" in
-omp | std-* | cuda | kokkos)
+omp )
     "$BENCHMARK_EXE" --list
     "$BENCHMARK_EXE" "${opts[@]:-}"
+    ;;
+tbb | std-* | kokkos)
+    "$BENCHMARK_EXE" --list
+    numactl --physcpubind=all --localalloc "$BENCHMARK_EXE" "${opts[@]:-}"
     ;;
 *)
     echo "Unknown run configuration for model '$MODEL'"

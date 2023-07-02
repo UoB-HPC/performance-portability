@@ -8,7 +8,7 @@ source "${SCRIPT_DIR}/../fetch_src.sh"
 
 module load cmake/3.23.2
 
-handle_cmd "${1}" "${2}" "${3}" "babelstream" "icl"
+handle_cmd "${1}" "${2}" "${3}" "tealeaf" "milan"
 
 export USE_MAKE=false
 
@@ -19,27 +19,20 @@ gcc-13.1)
   module load gcc/13.1.0
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=g++"
-  append_opts "-DCXX_EXTRA_FLAGS=-march=icelake-server;-Ofast"
-  append_opts "-DUSE_TBB=ON"
-  ;;
-oneapi-2022.2)
-  module load gcc/13.1.0
-  load_oneapi "$HOME/intel/oneapi/setvars.sh"
-  append_opts "-DCMAKE_C_COMPILER=icx"
-  append_opts "-DCMAKE_CXX_COMPILER=icpx"
-  append_opts "-DCXX_EXTRA_FLAGS=-march=icelake-server;-Ofast"
+  append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast"
   append_opts "-DUSE_TBB=ON"
   ;;
 nvhpc-23.5)
+  module load gcc/13.1.0 # for libatomic
   load_nvhpc
   append_opts "-DCMAKE_C_COMPILER=$NVHPC_PATH/compilers/bin/nvc"
   append_opts "-DCMAKE_CXX_COMPILER=$NVHPC_PATH/compilers/bin/nvc++"
   case "$MODEL" in
   omp)
-    append_opts "-DCXX_EXTRA_FLAGS=-target=multicore;-mp;-march=skylake-avx512;-fast"
+    append_opts "-DCXX_EXTRA_FLAGS=-target=multicore;-mp;-march=zen3;-fast"
     ;;
   std-*)
-    append_opts "-DCXX_EXTRA_FLAGS=-target=multicore;-stdpar;-march=skylake-avx512;-fast"
+    append_opts "-DCXX_EXTRA_FLAGS=-target=multicore;-stdpar;-march=zen3;-fast"
     ;;
   esac
   ;;
@@ -53,16 +46,7 @@ kokkos)
   prime_kokkos
   append_opts "-DMODEL=kokkos"
   append_opts "-DKOKKOS_IN_TREE=$KOKKOS_DIR -DKokkos_ENABLE_OPENMP=ON"
-  case "$COMPILER" in
-  nvhpc-*)
-    #append_opts "-DKokkos_ARCH_ICX=ON"           # Kokkos needs a patch from master for ICX/ICL
-    export CXXFLAGS="-march=skylake-avx512 -fast"
-    ;;
-  *)
-    #append_opts "-DKokkos_ARCH_ICX=ON"            # Kokkos needs a patch from master for ICX/ICL
-    export CXXFLAGS="-march=icelake-server -Ofast"
-    ;;
-  esac
+  append_opts "-DKokkos_ARCH_ZEN3=ON"
   BENCHMARK_EXE="kokkos-stream"
   ;;
 omp)
@@ -70,9 +54,10 @@ omp)
   BENCHMARK_EXE="omp-stream"
   ;;
 tbb)
-  append_opts "-DMODEL=tbb -DPARTITIONER=AUTO" # auto doesn't work well for icl; use auto for comparison with std-*
+  append_opts "-DMODEL=tbb -DPARTITIONER=AUTO" # static doesn't work well for milan; use auto for comparison with std-*
   BENCHMARK_EXE="tbb-stream"
   ;;
+
 std-data)
   append_opts "-DMODEL=std-data"
   BENCHMARK_EXE="std-data-stream"
@@ -85,6 +70,7 @@ std-ranges)
   append_opts "-DMODEL=std-ranges"
   BENCHMARK_EXE="std-ranges-stream"
   ;;
+
 std-data-dplomp)
   append_opts "-DMODEL=std-data -DUSE_ONEDPL=OPENMP"
   BENCHMARK_EXE="std-data-stream"
@@ -97,6 +83,7 @@ std-ranges-dplomp)
   append_opts "-DMODEL=std-ranges -DUSE_ONEDPL=OPENMP"
   BENCHMARK_EXE="std-ranges-stream"
   ;;
+
 *) unknown_model ;;
 esac
 

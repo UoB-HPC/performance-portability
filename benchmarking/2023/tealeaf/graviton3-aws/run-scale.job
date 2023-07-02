@@ -1,0 +1,42 @@
+#!/bin/bash
+#SBATCH -p g3q
+#SBATCH --exclusive
+#SBATCH --nodes=1
+#SBATCH -t 04:00:00
+
+set -eu
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+if [ "${LARGE:-}" = true ]; then
+  opts=("--arraysize" "536870912")
+fi
+
+"$BENCHMARK_EXE" --list
+
+MIN_CORE=1
+MAX_CORE=64
+for i in $(seq $MIN_CORE $MAX_CORE); do
+  echo ">>>$i>>>"
+  date
+  export OMP_PROC_BIND=true
+  export OMP_PLACES=cores
+  export OMP_NUM_THREADS=$i
+  export ACC_NUM_CORES=$i
+  case "$MODEL" in
+  omp | kokkos)
+    "$BENCHMARK_EXE" "${opts[@]:-}"
+    ;;
+  tbb | std-*)
+    numactl --physcpubind=0-$(($i - 1)) --localalloc "$BENCHMARK_EXE" "${opts[@]:-}"
+    ;;
+  *)
+    echo "Unknown run configuration for model '$MODEL'"
+    exit 1
+    ;;
+  esac
+  echo "<<<$i<<<"
+done
