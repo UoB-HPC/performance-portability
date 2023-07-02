@@ -1,0 +1,33 @@
+Sun Jul  2 04:36:57 BST 2023
+/lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-milan_oneapi-2023.1_std-indices-dplomp
+	linux-vdso.so.1 (0x00007ffebede4000)
+	libtbb.so.12 => /lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-milan_oneapi-2023.1_std-indices-dplomp/BabelStream/build/intelllvm_2023.1_cxx11_64_release/libtbb.so.12 (0x000014ba9705d000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libstdc++.so.6 (0x000014ba96a42000)
+	libm.so.6 => /lib64/libm.so.6 (0x000014ba966c0000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgcc_s.so.1 (0x000014ba9649c000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000014ba96298000)
+	libiomp5.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libiomp5.so (0x000014ba95e52000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014ba95c32000)
+	libc.so.6 => /lib64/libc.so.6 (0x000014ba9586f000)
+	libsvml.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libsvml.so (0x000014ba94246000)
+	libirng.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libirng.so (0x000014ba93f2f000)
+	libimf.so => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libimf.so (0x000014ba93b45000)
+	libintlc.so.5 => /lustre/home/br-wlin/intel/oneapi/compiler/2023.1.0/linux/compiler/lib/intel64_lin/libintlc.so.5 (0x000014ba96fd0000)
+	/lib64/ld-linux-x86-64.so.2 (0x000014ba96ea4000)
+	librt.so.1 => /lib64/librt.so.1 (0x000014ba9393d000)
+Listing devices is not supported by the Parallel STL
+BabelStream
+Version: 4.0
+Implementation: STD (index-oriented)
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Backing storage typeid: Pd
+Using oneDPL backend: OpenMP
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        132746.191  0.06471     0.07538     0.06995     
+Mul         127120.499  0.06757     0.08296     0.07309     
+Add         136965.075  0.09407     0.10152     0.09732     
+Triad       139067.147  0.09265     0.10466     0.09697     
+Dot         160299.510  0.05359     0.06059     0.05717     

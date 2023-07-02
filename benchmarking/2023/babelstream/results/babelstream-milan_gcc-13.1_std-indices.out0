@@ -1,14 +1,14 @@
-Wed Jun 28 22:43:11 BST 2023
+Sun Jul  2 04:36:45 BST 2023
 /lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-milan_gcc-13.1_std-indices
-	linux-vdso.so.1 (0x00007ffce873d000)
-	libtbb.so.12 => /lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-milan_gcc-13.1_std-indices/BabelStream/build/gnu_13.1_cxx11_64_release/libtbb.so.12 (0x0000145832c12000)
-	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libstdc++.so.6 (0x00001458325dd000)
-	libm.so.6 => /lib64/libm.so.6 (0x000014583225b000)
-	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgcc_s.so.1 (0x0000145832037000)
-	libc.so.6 => /lib64/libc.so.6 (0x0000145831c74000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x0000145831a70000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000145831850000)
-	/lib64/ld-linux-x86-64.so.2 (0x0000145832a3f000)
+	linux-vdso.so.1 (0x00007ffdaa2d0000)
+	libtbb.so.12 => /lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-milan_gcc-13.1_std-indices/BabelStream/build/gnu_13.1_cxx11_64_release/libtbb.so.12 (0x0000152f5337a000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libstdc++.so.6 (0x0000152f52d48000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000152f529c6000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgcc_s.so.1 (0x0000152f527a2000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000152f523df000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000152f521db000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000152f51fbb000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000152f531aa000)
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -19,8 +19,8 @@ Array size: 4295.0 MB (=4.3 GB)
 Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        112336.284  0.07647     0.11813     0.08470     
-Mul         110557.368  0.07770     0.09232     0.08350     
-Add         126504.804  0.10185     0.12060     0.10806     
-Triad       115503.944  0.11155     0.12533     0.11550     
-Dot         149873.534  0.05731     0.06423     0.05983     
+Copy        95655.776   0.08980     0.10094     0.09152     
+Mul         113988.077  0.07536     0.08554     0.08027     
+Add         115013.608  0.11203     0.12412     0.11723     
+Triad       87243.120   0.14769     0.15152     0.14898     
+Dot         114807.410  0.07482     0.07850     0.07611     

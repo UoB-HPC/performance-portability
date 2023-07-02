@@ -1,15 +1,15 @@
-Wed Jun 28 22:43:44 BST 2023
+Sun Jul  2 04:37:02 BST 2023
 /lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-milan_gcc-13.1_std-indices-dplomp
-	linux-vdso.so.1 (0x00007ffdef1fa000)
-	libtbb.so.12 => /lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-milan_gcc-13.1_std-indices-dplomp/BabelStream/build/gnu_13.1_cxx11_64_release/libtbb.so.12 (0x000015345cd5e000)
-	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libstdc++.so.6 (0x000015345c729000)
-	libm.so.6 => /lib64/libm.so.6 (0x000015345c3a7000)
-	libgomp.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgomp.so.1 (0x000015345c158000)
-	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgcc_s.so.1 (0x000015345bf34000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x000015345bd14000)
-	libc.so.6 => /lib64/libc.so.6 (0x000015345b951000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x000015345b74d000)
-	/lib64/ld-linux-x86-64.so.2 (0x000015345cb8b000)
+	linux-vdso.so.1 (0x00007fff54104000)
+	libtbb.so.12 => /lustre/home/br-wlin/performance-portability/benchmarking/2023/babelstream/results/babelstream-milan_gcc-13.1_std-indices-dplomp/BabelStream/build/gnu_13.1_cxx11_64_release/libtbb.so.12 (0x0000152a2c379000)
+	libstdc++.so.6 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libstdc++.so.6 (0x0000152a2bd47000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000152a2b9c5000)
+	libgomp.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgomp.so.1 (0x0000152a2b776000)
+	libgcc_s.so.1 => /lustre/projects/bristol/modules/gcc/13.1.0/lib64/libgcc_s.so.1 (0x0000152a2b552000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000152a2b332000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000152a2af6f000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000152a2ad6b000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000152a2c1a9000)
 Listing devices is not supported by the Parallel STL
 BabelStream
 Version: 4.0
@@ -21,8 +21,8 @@ Total size: 12884.9 MB (=12.9 GB)
 Backing storage typeid: Pd
 Using oneDPL backend: OpenMP
 Function    MBytes/sec  Min (sec)   Max         Average     
-Copy        136340.527  0.06300     0.10562     0.08231     
-Mul         171470.265  0.05010     0.10539     0.06790     
-Add         160578.130  0.08024     0.13131     0.10169     
-Triad       151217.262  0.08521     0.13763     0.10509     
-Dot         210941.503  0.04072     0.08206     0.06029     
+Copy        181329.738  0.04737     0.10075     0.07543     
+Mul         182996.516  0.04694     0.10205     0.06726     
+Add         188630.020  0.06831     0.12197     0.09357     
+Triad       209377.439  0.06154     0.12972     0.09420     
+Dot         255849.218  0.03357     0.07628     0.05476     
