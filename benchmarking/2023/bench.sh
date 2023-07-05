@@ -13,16 +13,16 @@ ROCM=rocm-4.5.1
 AOMP=aomp-16.0.3
 
 # cloverleaf=false
-# bude=true
-babelstream=true
+tealeaf=true
+babelstream=false
 
 declare -A models
 models["tbb"]=true
 models["omp"]=true
 models["cuda"]=true
 models["hip"]=true
-models["sycl"]=true
-models["sycl2020"]=true
+models["sycl-acc"]=true
+models["sycl-usm"]=true
 models["kokkos"]=true
 models["std-indices"]=true
 models["std-indices-dplomp"]=true
@@ -59,61 +59,78 @@ bench_once() {
 #     # bench "$1" "$2" "run-scale" "${@:3}"
 # }
 
+## babelstream
 babelstream_gcc_cpu_models=(
-    kokkos omp 
+    kokkos omp
     tbb
     std-indices
     std-indices-dplomp
 )
-
 babelstream_oneapi_cpu_models=(
     kokkos omp tbb
     std-indices
     std-indices-dplomp
     sycl sycl2020
 )
-
-
 babelstream_cce_cpu_models=(
     kokkos omp # tbb
     # std-indices # XXX doesn't work with CCE
     # std-indices-dplomp # XXX doesn't work with CCE
 )
-
 babelstream_nvhpc_cpu_models=(
     kokkos omp
     std-indices
 )
-
 babelstream_nvhpc_gpu_models=(
     kokkos cuda omp
     std-indices
 )
-
 babelstream_oneapi_gpu_models=(
     sycl sycl2020
     std-indices
 )
-
 babelstream_aomp_gpu_models=(
     kokkos hip omp
 )
-
 babelstream_rocm_gpu_models=(
     hip # kokkos needs hipcc>= 5.2
 )
 
-generic_gcc_cpu_models=(
-    kokkos omp tbb
-    std-indices std-indices-dplomp
+## tealeaf
+tealeaf_gcc_cpu_models=(
+    kokkos omp
+    #tbb
+    std-indices
+    std-indices-dplomp
 )
-
-generic_nvhpc_cpu_models=(
-    kokkos omp std-indices
+tealeaf_oneapi_cpu_models=(
+    kokkos omp #tbb
+    std-indices
+    std-indices-dplomp
+    sycl-acc sycl-usm
 )
-
-generic_nvhpc_gpu_models=(
-    kokkos cuda omp std-indices
+tealeaf_cce_cpu_models=(
+    kokkos omp # #tbb
+    # std-indices # XXX doesn't work with CCE
+    # std-indices-dplomp # XXX doesn't work with CCE
+)
+tealeaf_nvhpc_cpu_models=(
+    kokkos omp
+    std-indices
+)
+tealeaf_nvhpc_gpu_models=(
+    kokkos cuda omp
+    std-indices
+)
+tealeaf_oneapi_gpu_models=(
+    sycl-acc sycl-usm
+    std-indices
+)
+tealeaf_aomp_gpu_models=(
+    kokkos hip omp
+)
+tealeaf_rocm_gpu_models=(
+    hip # kokkos needs hipcc>= 5.2
 )
 
 case "$1" in
@@ -134,27 +151,21 @@ p3)
     bench_once milan-isambard $GCC "${babelstream_gcc_cpu_models[@]}"
     bench_once milan-isambard $ONEAPI "${babelstream_oneapi_cpu_models[@]}"
 
-    # bench_once a100-isambard $NVHPC "${babelstream_nvhpc_gpu_models[@]}"
-
     bench_once mi100-isambard $AOMP "${babelstream_aomp_gpu_models[@]}"
     bench_once mi100-isambard $ROCM "${babelstream_rocm_gpu_models[@]}"
     bench_once mi100-isambard $ONEAPI "${babelstream_oneapi_gpu_models[@]}"
 
-    # cd "$BASE/bude/results"
+    export INPUT_BM=5
+    cd "$BASE/tealeaf/results"
     # module unload cce
-    # bench_once milan-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
+    bench_once milan-isambard $NVHPC "${tealeaf_nvhpc_cpu_models[@]}"
     # module load cce
-    # # bench_once milan-isambard $GCC "${generic_gcc_cpu_models[@]}"
+    bench_once milan-isambard $GCC "${tealeaf_gcc_cpu_models[@]}"
+    bench_once milan-isambard $ONEAPI "${tealeaf_oneapi_cpu_models[@]}"
 
-    # bench_once a100-isambard $NVHPC "${generic_nvhpc_gpu_models[@]}"
-
-    # cd "$BASE/cloverleaf/results"
-    # module unload cce
-    # bench_once milan-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
-    # module load cce
-    # bench_once milan-isambard $GCC "${generic_gcc_cpu_models[@]}"
-
-    # bench_once a100-isambard $NVHPC "${generic_nvhpc_gpu_models[@]}"
+    # bench_once mi100-isambard $AOMP "${tealeaf_aomp_gpu_models[@]}"
+    # bench_once mi100-isambard $ROCM "${tealeaf_rocm_gpu_models[@]}"
+    # bench_once mi100-isambard $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
     ;;
 p2)
     cd "$BASE/babelstream/results"

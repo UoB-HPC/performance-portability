@@ -19,7 +19,7 @@ set -eu
 # }
 
 fetch_src() {
-  if [ ! -e 2d/main.c ]; then
+  if [ ! -e TeaLeaf/2d/main.c ]; then
     if ! git clone -b p3hpc23 https://github.com/UoB-HPC/TeaLeaf; then
       echo
       echo "Failed to fetch source code."
@@ -33,5 +33,5 @@ fetch_src() {
       # git fetch && git pull
     )
   fi
-  export SRC_DIR="$PWD/TeaLeaf"
+  export SRC_DIR="$PWD/TeaLeaf/2d"
 }

@@ -73,37 +73,37 @@ kokkos)
     export CXXFLAGS="-march=icelake-server -Ofast"
     ;;
   esac
-  BENCHMARK_EXE="kokkos-stream"
+  BENCHMARK_EXE="kokkos-tealeaf"
   ;;
 omp)
   append_opts "-DMODEL=omp"
-  BENCHMARK_EXE="omp-stream"
+  BENCHMARK_EXE="omp-tealeaf"
   ;;
 tbb)
   append_opts "-DMODEL=tbb -DPARTITIONER=AUTO" # auto doesn't work well for icl; use auto for comparison with std-*
-  BENCHMARK_EXE="tbb-stream"
+  BENCHMARK_EXE="tbb-tealeaf"
   ;;
 std-data)
   append_opts "-DMODEL=std-data"
-  BENCHMARK_EXE="std-data-stream"
+  BENCHMARK_EXE="std-data-tealeaf"
   ;;
 std-indices)
   append_opts "-DMODEL=std-indices"
-  BENCHMARK_EXE="std-indices-stream"
+  BENCHMARK_EXE="std-indices-tealeaf"
   ;;
 std-indices-dplomp)
   append_opts "-DMODEL=std-indices -DUSE_ONEDPL=OPENMP"
-  BENCHMARK_EXE="std-indices-stream"
+  BENCHMARK_EXE="std-indices-tealeaf"
   ;;
 sycl)
   append_opts "-DMODEL=sycl"
   append_opts "-DSYCL_COMPILER=ONEAPI-ICPX"
-  BENCHMARK_EXE="sycl-stream"
+  BENCHMARK_EXE="sycl-tealeaf"
   ;;
 sycl2020)
   append_opts "-DMODEL=sycl2020"
   append_opts "-DSYCL_COMPILER=ONEAPI-ICPX"
-  BENCHMARK_EXE="sycl2020-stream"
+  BENCHMARK_EXE="sycl2020-tealeaf"
   ;;
 *) unknown_model ;;
 esac

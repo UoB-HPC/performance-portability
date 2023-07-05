@@ -39,21 +39,21 @@ kokkos)
   append_opts "-DKokkos_ARCH_VEGA908=ON"
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=hipcc"
-  BENCHMARK_EXE="kokkos-stream"
+  BENCHMARK_EXE="kokkos-tealeaf"
   ;;
 hip)
   append_opts "-DMODEL=hip"
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=hipcc" # auto detected
   append_opts "-DCXX_EXTRA_FLAGS=--offload-arch=gfx908"
-  BENCHMARK_EXE="hip-stream"
+  BENCHMARK_EXE="hip-tealeaf"
   ;;
 omp)
   append_opts "-DMODEL=omp"
   append_opts "-DOFFLOAD=ON -DOFFLOAD_FLAGS=-fopenmp;--offload-arch=gfx908"
   append_opts "-DCMAKE_C_COMPILER=$(which clang)"
   append_opts "-DCMAKE_CXX_COMPILER=$(which clang++)"
-  BENCHMARK_EXE="omp-stream"
+  BENCHMARK_EXE="omp-tealeaf"
   ;;
 *) unknown_model ;;
 esac

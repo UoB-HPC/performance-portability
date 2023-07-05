@@ -52,7 +52,7 @@ kokkos)
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=$KOKKOS_DIR/bin/nvcc_wrapper"
   append_opts "-DCXX_EXTRA_FLAGS=-march=znver3" # CSD3  A100s are hosted on a EPYC 7763
-  BENCHMARK_EXE="kokkos-stream"
+  BENCHMARK_EXE="kokkos-tealeaf"
   ;;
 cuda)
   append_opts "-DMODEL=cuda"
@@ -61,13 +61,13 @@ cuda)
   append_opts "-DCMAKE_CXX_COMPILER=g++"
   append_opts "-DCUDA_ARCH=sm_80"
   append_opts "-DCXX_EXTRA_FLAGS=-march=znver3" # CSD3  A100s are hosted on a EPYC 7763
-  BENCHMARK_EXE="cuda-stream"
+  BENCHMARK_EXE="cuda-tealeaf"
   ;;
 omp)
   append_opts "-DMODEL=omp"
   append_opts "-DOFFLOAD=ON -DOFFLOAD_FLAGS=-mp=gpu;-gpu=cc80"
   append_opts "-DRELEASE_FLAGS='' -DCXX_EXTRA_FLAGS=-mp=gpu;-gpu=cc80;-O3;-tp=zen3" # CSD3 A100s are hosted on a EPYC 7763
-  BENCHMARK_EXE="omp-stream"
+  BENCHMARK_EXE="omp-tealeaf"
   ;;
 std-indices)
   append_opts "-DMODEL=std-indices"
@@ -82,19 +82,19 @@ std-indices)
     ;;
   *) unknown_compiler ;;
   esac
-  BENCHMARK_EXE="std-indices-stream"
+  BENCHMARK_EXE="std-indices-tealeaf"
   ;;
 sycl)
   append_opts "-DMODEL=sycl"
   append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
   append_opts "-DCXX_EXTRA_FLAGS=-fsycl;-fsycl-targets=nvptx64-nvidia-cuda;-Xsycl-target-backend;--cuda-gpu-arch=sm_80;--cuda-path=$NVHPC_PATH/cuda/;-march=znver3"
-  BENCHMARK_EXE="sycl-stream"
+  BENCHMARK_EXE="sycl-tealeaf"
   ;;
 sycl2020)
   append_opts "-DMODEL=sycl2020"
   append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
   append_opts "-DCXX_EXTRA_FLAGS=-fsycl;-fsycl-targets=nvptx64-nvidia-cuda;-Xsycl-target-backend;--cuda-gpu-arch=sm_80;--cuda-path=$NVHPC_PATH/cuda/;-march=znver3"
-  BENCHMARK_EXE="sycl2020-stream"
+  BENCHMARK_EXE="sycl2020-tealeaf"
   ;;
 *) unknown_model ;;
 esac

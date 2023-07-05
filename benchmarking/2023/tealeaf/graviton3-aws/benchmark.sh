@@ -59,31 +59,31 @@ kokkos)
   append_opts "-DMODEL=kokkos"
   append_opts "-DKOKKOS_IN_TREE=$KOKKOS_DIR -DKokkos_ENABLE_OPENMP=ON"
   # append_opts "-DKokkos_ARCH_NATIVE=ON"
-  BENCHMARK_EXE="kokkos-stream"
+  BENCHMARK_EXE="kokkos-tealeaf"
   ;;
 omp)
   append_opts "-DMODEL=omp"
-  BENCHMARK_EXE="omp-stream"
+  BENCHMARK_EXE="omp-tealeaf"
   ;;
 tbb)
   append_opts "-DMODEL=tbb -DPARTITIONER=STATIC"
-  BENCHMARK_EXE="tbb-stream"
+  BENCHMARK_EXE="tbb-tealeaf"
   ;;
 std-data)
   append_opts "-DMODEL=std-data"
-  BENCHMARK_EXE="std-data-stream"
+  BENCHMARK_EXE="std-data-tealeaf"
   ;;
 std-indices)
   append_opts "-DMODEL=std-indices"
-  BENCHMARK_EXE="std-indices-stream"
+  BENCHMARK_EXE="std-indices-tealeaf"
   ;;
 std-indices-dplomp)
   append_opts "-DMODEL=std-indices -DUSE_ONEDPL=OPENMP"
-  BENCHMARK_EXE="std-indices-stream"
+  BENCHMARK_EXE="std-indices-tealeaf"
   ;;
 std-ranges-dplomp)
   append_opts "-DMODEL=std-ranges -DUSE_ONEDPL=OPENMP"
-  BENCHMARK_EXE="std-ranges-stream"
+  BENCHMARK_EXE="std-ranges-tealeaf"
   ;;
 
 *) unknown_model ;;

@@ -1,9 +1,12 @@
 #!/bin/bash
 #PBS -q milanq
-#PBS -l select=1:ncpus=128:mem=250gb
-#PBS -l walltime=00:10:00
-#PBS -l place=excl
+#PBS -l select=8:ncpus=128:mpiprocs=1:mem=250gb
+#PBS -l place=scatter:excl
+#PBS -l walltime=24:00:00
 #PBS -joe
+
+export MPICH_ENV_DISPLAY=1
+module load cray-pals # Use CRAY Parallel Application Launch Service
 
 : >"$OUT_FILE"
 exec &> >(tee -a "$OUT_FILE")
@@ -15,26 +18,68 @@ date
 echo "$PWD"
 ldd "$BENCHMARK_EXE"
 
-if [ "${LARGE:-}" = true ]; then
-    opts=("--arraysize" "536870912")
-fi
+NP=$(wc -l $PBS_NODEFILE | awk '{print $1}')
+DECK="$PWD/2d/Benchmarks/tea_bm_${INPUT_BM}.in"
+PROBLEMS="$PWD/2d/tea.problems"
+NCPUS=$(nproc)
 
-export OMP_NUM_THREADS=128
-export OMP_PROC_BIND=true
-export OMP_PLACES=cores
-export ACC_NUM_CORES=128
+echo "master=$(hostname) nproc=$NCPUS"
+echo "mpicc=$(which mpiexec)"
+echo "PWD=$PWD"
+echo "NP=$NP"
+echo "CONFIG=$CONFIG"
+echo "BENCHMARK_EXE=$BENCHMARK_EXE"
+echo "DECK=$DECK"
+echo "======"
 
+mkdir -p ../out
+
+# gdb -batch -ex "run" -ex "bt" --args
+# gdb -batch -ex "run" -ex "bt" -ex "quit" --args
+
+opts=""
 case "$MODEL" in
-omp )
-    "$BENCHMARK_EXE" --list
-    "$BENCHMARK_EXE" "${opts[@]:-}"
+sycl-*)
+    opts+="--device 1"
     ;;
-tbb | std-* | kokkos)
-    "$BENCHMARK_EXE" --list
-    numactl --physcpubind=all --localalloc "$BENCHMARK_EXE" "${opts[@]:-}"
-    ;;
+tbb | std-* | kokkos | omp) ;; # no-op
 *)
     echo "Unknown run configuration for model '$MODEL'"
     exit 1
     ;;
 esac
+
+(
+    set -o xtrace
+    export OMP_NUM_THREADS=128
+    export OMP_PROC_BIND=true
+    export OMP_PLACES=cores
+
+    export DPCPP_CPU_NUM_CUS=64
+    # export DPCPP_CPU_PLACES=sockets
+    export DPCPP_CPU_CU_AFFINITY=close
+    export DPCPP_CPU_SCHEDULE=static
+
+    for i in $(seq "$NP" -1 1); do
+        echo ">>> Using 1R/N $i"
+        mpiexec -np "$i"  -l --cpu-bind none --mem-bind none \
+            "$BENCHMARK_EXE" --file "$DECK" --problems "$PROBLEMS" --out "../out/tea_np${i}_${CONFIG}_${INPUT_BM}.out" $opts
+    done
+)
+(
+    set -o xtrace
+    export OMP_NUM_THREADS=1
+    export OMP_PROC_BIND=true
+    export OMP_PLACES=cores
+
+    export DPCPP_CPU_NUM_CUS=1
+    export DPCPP_CPU_PLACES=numa_domains
+    export DPCPP_CPU_CU_AFFINITY=close
+    export DPCPP_CPU_SCHEDULE=static
+
+    for i in $(seq "$((NP * NCPUS))" "-$NCPUS" "$NCPUS"); do
+        echo ">>> Using 1R/T $i"
+        mpiexec -np "$i" --cpu-bind core --mem-bind local -l \
+            "$BENCHMARK_EXE" --file "$DECK" --problems "$PROBLEMS" --out "../out/tea_np${i}_${CONFIG}_${INPUT_BM}.out" $opts
+    done
+)
