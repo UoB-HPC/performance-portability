@@ -8,7 +8,7 @@ source "${SCRIPT_DIR}/../fetch_src.sh"
 
 module load cmake/3.23.2
 
-handle_cmd "${1}" "${2}" "${3}" "tealeaf" "milan" "${INPUT_BM:-}"
+handle_cmd "${1}" "${2}" "${3}" "cloverleaf" "milan" "${INPUT_BM:-}"
 
 export USE_MAKE=false
 module load cray-mpich/8.1.25
@@ -30,10 +30,10 @@ gcc-13.1)
 oneapi-2023.2)
   module load gcc/13.1.0
   # load_oneapi "$HOME/intel/oneapi/setvars.sh"
-set +eu
+  set +eu
   source "$HOME/intel/oneapi/compiler/2023.2.0/env/vars.sh"
   source "$HOME/intel/oneapi/tbb/2021.10.0/env/vars.sh"
-  set -eu  
+  set -eu
   append_opts "-DCMAKE_C_COMPILER=icx"
   append_opts "-DCMAKE_CXX_COMPILER=icpx"
   append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast"
@@ -64,33 +64,33 @@ kokkos)
   append_opts "-DMODEL=kokkos"
   append_opts "-DKOKKOS_IN_TREE=$KOKKOS_DIR -DKokkos_ENABLE_OPENMP=ON"
   append_opts "-DKokkos_ARCH_ZEN3=ON"
-  BENCHMARK_EXE="kokkos-tealeaf"
+  BENCHMARK_EXE="kokkos-cloverleaf"
   ;;
 omp)
   append_opts "-DMODEL=omp"
-  BENCHMARK_EXE="omp-tealeaf"
+  BENCHMARK_EXE="omp-cloverleaf"
   ;;
 tbb)
   append_opts "-DMODEL=tbb -DPARTITIONER=AUTO" # static doesn't work well for milan; use auto for comparison with std-*
-  BENCHMARK_EXE="tbb-tealeaf"
+  BENCHMARK_EXE="tbb-cloverleaf"
   ;;
 std-indices)
   append_opts "-DMODEL=std-indices"
-  BENCHMARK_EXE="std-indices-tealeaf"
+  BENCHMARK_EXE="std-indices-cloverleaf"
   ;;
 std-indices-dplomp)
   append_opts "-DMODEL=std-indices -DUSE_ONEDPL=OPENMP"
-  BENCHMARK_EXE="std-indices-tealeaf"
+  BENCHMARK_EXE="std-indices-cloverleaf"
   ;;
 sycl-acc)
   append_opts "-DMODEL=sycl-acc"
   append_opts "-DSYCL_COMPILER=ONEAPI-ICPX"
-  BENCHMARK_EXE="sycl-acc-tealeaf"
+  BENCHMARK_EXE="sycl-acc-cloverleaf"
   ;;
 sycl-usm)
   append_opts "-DMODEL=sycl-usm"
   append_opts "-DSYCL_COMPILER=ONEAPI-ICPX"
-  BENCHMARK_EXE="sycl-usm-tealeaf"
+  BENCHMARK_EXE="sycl-usm-cloverleaf"
   ;;
 *) unknown_model ;;
 esac

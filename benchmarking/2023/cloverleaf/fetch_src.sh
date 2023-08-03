@@ -19,8 +19,8 @@ set -eu
 # }
 
 fetch_src() {
-  if [ ! -e TeaLeaf/CMakeLists.txt ]; then
-    if ! git clone -b p3hpc23 https://github.com/UoB-HPC/TeaLeaf; then
+  if [ ! -e CloverLeaf/CMakeLists.txt ]; then
+    if ! git clone -b main https://github.com/UoB-HPC/CloverLeaf; then
       echo
       echo "Failed to fetch source code."
       echo
@@ -29,9 +29,9 @@ fetch_src() {
     fi
   else
     (
-      cd TeaLeaf
+      cd CloverLeaf
       # git fetch && git pull
     )
   fi
-  export SRC_DIR="$PWD/TeaLeaf"
+  export SRC_DIR="$PWD/CloverLeaf"
 }

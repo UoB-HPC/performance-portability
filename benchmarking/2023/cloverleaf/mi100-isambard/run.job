@@ -23,8 +23,7 @@ echo "$PWD"
 ldd "$BENCHMARK_EXE"
 
 NP=$(wc -l $PBS_NODEFILE | awk '{print $1}')
-DECK="$PWD/TeaLeaf/Benchmarks/tea_bm_${INPUT_BM}.in"
-PROBLEMS="$PWD/tea.problems"
+DECK="$PWD/CloverLeaf/InputDecks/clover_bm${INPUT_BM}.in"
 NCPUS=$(nproc)
 export N_GPUS=4 # 4 per node
 
@@ -75,6 +74,6 @@ function create_command() {
     for i in $(seq "$NP" -1 1); do
         echo ">>> Using 1R/N $i"
         mpiexec -np "$i" -l --cpu-bind none --mem-bind none \
-            sh -c "$(create_command node "$BENCHMARK_EXE --file $DECK --problems $PROBLEMS --out ../out/tea_np${i}_${CONFIG}_${INPUT_BM}_stage_$STAGE.out --staging-buffer $STAGE")"
+            sh -c "$(create_command node "$BENCHMARK_EXE --file $DECK --out ../out/clover_np${i}_${CONFIG}_${INPUT_BM}_stage_$STAGE.out --staging-buffer $STAGE")"
     done
 )

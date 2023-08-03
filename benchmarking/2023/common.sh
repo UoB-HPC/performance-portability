@@ -81,20 +81,21 @@ unknown_model() {
 
 handle_cmd() {
 
-  check_vars 1 2 3 4 5
+  check_vars 1 2 3 4 5 #6
 
   local action=$1
   local compiler=$2
   local model=$3
   local name=$4
   local config=$5
+  local variant=${6:-}
 
   export ACTION="$action"
   export COMPILER="$compiler"
   export MODEL="$model"
 
   export CONFIG="${config}_${compiler}_${model}"
-  export BENCHMARK_NAME="$name-$CONFIG"
+  export BENCHMARK_NAME="$name-$CONFIG-$variant"
   export RUN_DIR="$PWD/$name-$CONFIG"
 
 }

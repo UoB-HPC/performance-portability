@@ -8,7 +8,7 @@ source "${SCRIPT_DIR}/../fetch_src.sh"
 
 module load cmake/3.23.2
 
-handle_cmd "${1}" "${2}" "${3}" "tealeaf" "mi100" "${INPUT_BM:-}"
+handle_cmd "${1}" "${2}" "${3}" "cloverleaf" "mi100" "${INPUT_BM:-}_${STAGE:-}"
 
 export USE_MAKE=false
 module load cray-mpich/8.1.25
@@ -32,7 +32,7 @@ aomp-16.0.3)
   export C_INCLUDE_PATH="$AOMP/include:${C_INCLUDE_PATH:-}"
   export CPLUS_INCLUDE_PATH="$AOMP/include:${CPLUS_INCLUDE_PATH:-}"
   # XXX we need this if we load the HSA GTL: clang's target initialisation happens in the wrong order so we need to skip the check
-  export OFFLOAD_ARCH_OVERRIDE=gfx908
+  export OFFLOAD_ARCH_OVERRIDE=gfx908 
   ;;
 rocm-5.4.1)
   module load gcc/13.1.0
@@ -61,42 +61,42 @@ kokkos)
   append_opts "-DKokkos_ARCH_VEGA908=ON"
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=hipcc"
-  BENCHMARK_EXE="kokkos-tealeaf"
+  BENCHMARK_EXE="kokkos-cloverleaf"
   ;;
 hip)
   append_opts "-DMODEL=hip"
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=hipcc" # auto detected
-  append_opts "-DCXX_EXTRA_FLAGS=--offload-arch=gfx908"
-  BENCHMARK_EXE="hip-tealeaf"
+  append_opts "-DCXX_EXTRA_FLAGS=--offload-arch=gfx908;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+  BENCHMARK_EXE="hip-cloverleaf"
   ;;
 omp)
   append_opts "-DMODEL=omp-target"
   append_opts "-DOFFLOAD=ON -DOFFLOAD_FLAGS=-fopenmp;--offload-arch=gfx908"
   append_opts "-DCMAKE_C_COMPILER=$(which clang)"
   append_opts "-DCMAKE_CXX_COMPILER=$(which clang++)"
-  BENCHMARK_EXE="omp-target-tealeaf"
+  BENCHMARK_EXE="omp-target-cloverleaf"
   ;;
 std-indices)
   hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908"
   append_opts "-DMODEL=std-indices"
   append_opts "-DUSE_ONEDPL=DPCPP"
   append_opts "-DCXX_EXTRA_FLAGS=-fsycl;$hip_sycl_flags -DCXX_EXTRA_LINK_FLAGS=-fsycl;$hip_sycl_flags"
-  BENCHMARK_EXE="std-indices-tealeaf"
+  BENCHMARK_EXE="std-indices-cloverleaf"
   ;;
 sycl-acc)
   hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908"
   append_opts "-DMODEL=sycl-acc"
   append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
   append_opts "-DCXX_EXTRA_FLAGS=$hip_sycl_flags -DCXX_EXTRA_LINK_FLAGS=$hip_sycl_flags"
-  BENCHMARK_EXE="sycl-acc-tealeaf"
+  BENCHMARK_EXE="sycl-acc-cloverleaf"
   ;;
 sycl-usm)
   hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908"
   append_opts "-DMODEL=sycl-usm"
   append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
   append_opts "-DCXX_EXTRA_FLAGS=$hip_sycl_flags -DCXX_EXTRA_LINK_FLAGS=$hip_sycl_flags"
-  BENCHMARK_EXE="sycl-usm-tealeaf"
+  BENCHMARK_EXE="sycl-usm-cloverleaf"
   ;;
 *) unknown_model ;;
 esac
