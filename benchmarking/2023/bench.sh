@@ -12,10 +12,8 @@ CCE=cce-14.0.1
 ROCM=rocm-5.4.1
 AOMP=aomp-16.0.3
 
-babelstream=false
-
-cloverleaf=false
-
+babelstream=true
+cloverleaf=true
 tealeaf=true
 
 declare -A models
@@ -25,6 +23,8 @@ models["cuda"]=true
 models["hip"]=true
 models["sycl-acc"]=true
 models["sycl-usm"]=true
+models["sycl"]=true
+models["sycl2020"]=true
 models["kokkos"]=true
 models["std-indices"]=true
 models["std-indices-dplomp"]=true
@@ -170,6 +170,63 @@ cambridge)
     bench_once icl-cambridge $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
     bench_once icl-cambridge $GCC "${babelstream_gcc_cpu_models[@]}"
     bench_once icl-cambridge $ONEAPI "${babelstream_oneapi_cpu_models[@]}"
+    ;;
+nvidia)
+
+    cd "$BASE/babelstream/results"
+    bench_once a100-nvidia $NVHPC "${babelstream_nvhpc_gpu_models[@]}"
+    bench_once a100-nvidia $ONEAPI "${babelstream_oneapi_gpu_models[@]}"
+
+    bench_once h100-nvidia $NVHPC "${babelstream_nvhpc_gpu_models[@]}"
+    bench_once h100-nvidia $ONEAPI "${babelstream_oneapi_gpu_models[@]}"
+
+    ##########
+
+    export INPUT_BM=5
+    cd "$BASE/tealeaf/results"
+    # GPUs, test with and without staging buffer
+
+    bench_exec exec_build a100-nvidia $NVHPC "${tealeaf_nvhpc_gpu_models[@]}"
+    bench_exec exec_build a100-nvidia $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
+
+    bench_exec exec_build h100-nvidia $NVHPC "${tealeaf_nvhpc_gpu_models[@]}"
+    bench_exec exec_build h100-nvidia $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
+
+    for bm in 1 2 4 8; do
+        for stage in true false; do
+            export INPUT_BM="5e_${bm}"
+            export STAGE="$stage"
+            bench_exec exec_submit a100-nvidia $NVHPC "${tealeaf_nvhpc_gpu_models[@]}"
+            bench_exec exec_submit a100-nvidia $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
+
+            bench_exec exec_submit h100-nvidia $NVHPC "${tealeaf_nvhpc_gpu_models[@]}"
+            bench_exec exec_submit h100-nvidia $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
+        done
+    done
+
+    ##########
+
+    cd "$BASE/cloverleaf/results"
+    # GPUs, test with and without staging buffer
+
+    bench_exec exec_build a100-nvidia $NVHPC "${tealeaf_nvhpc_gpu_models[@]}"
+    bench_exec exec_build a100-nvidia $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
+
+    bench_exec exec_build h100-nvidia $NVHPC "${tealeaf_nvhpc_gpu_models[@]}"
+    bench_exec exec_build h100-nvidia $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
+
+    for bm in 4 16 64 256; do
+        for stage in true false; do
+            export INPUT_BM="${bm}"
+            export STAGE="$stage"
+            bench_exec exec_submit a100-nvidia $NVHPC "${tealeaf_nvhpc_gpu_models[@]}"
+            bench_exec exec_submit a100-nvidia $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
+
+            bench_exec exec_submit h100-nvidia $NVHPC "${tealeaf_nvhpc_gpu_models[@]}"
+            bench_exec exec_submit h100-nvidia $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
+        done
+    done
+
     ;;
 p3)
     module use "$HOME/modulefiles/"

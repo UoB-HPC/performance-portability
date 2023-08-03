@@ -1,0 +1,66 @@
+#!/bin/bash
+: >"$OUT_FILE"
+exec &> >(tee -a "$OUT_FILE")
+
+set -eu
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+NP=8
+DECK="$PWD/TeaLeaf/Benchmarks/tea_bm_${INPUT_BM}.in"
+PROBLEMS="$PWD/tea.problems"
+NCPUS=$(nproc)
+export N_GPUS=4 # 4 per node
+
+echo "master=$(hostname) nproc=$NCPUS"
+echo "mpicc=$(which mpiexec)"
+echo "PWD=$PWD"
+echo "NP=$NP"
+echo "CONFIG=$CONFIG"
+echo "BENCHMARK_EXE=$BENCHMARK_EXE"
+echo "DECK=$DECK"
+echo "======"
+
+mkdir -p ../out
+
+# gdb -batch -ex "run" -ex "bt" --args
+# gdb -batch -ex "run" -ex "bt" -ex "quit" --args
+# /lustreOld/home/br-wlin/dist/usr/bin/gdb  -batch -ex "run" -ex "bt" -ex "quit" --args
+
+export OMP_TARGET_OFFLOAD=MANDATORY
+
+case "$COMPILER" in
+oneapi-*)
+    export ONEAPI_DEVICE_SELECTOR="cuda:*"
+    ;;
+esac
+
+case "$MODEL" in
+sycl-* | std-* | kokkos | omp | cuda | hip) ;; # no-op
+*)
+    echo "Unknown run configuration for model '$MODEL'"
+    exit 1
+    ;;
+esac
+
+function create_command() {
+    # IntelMPI is $MPI_LOCALRANKID
+    # OpenMPI is $OMPI_COMM_WORLD_LOCAL_RANK
+    gpu_launch_prelude='export CUDA_VISIBLE_DEVICES=$(($OMPI_COMM_WORLD_LOCAL_RANK % $N_GPUS)) && echo "# CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES"'
+    echo "$gpu_launch_prelude && $2"
+}
+
+(
+    set -o xtrace
+    export OMP_NUM_THREADS=$NCPUS
+    export OMP_PROC_BIND=true
+    export OMP_PLACES=cores
+    for i in $(seq "$NP" -1 1); do
+        echo ">>> Using 1R/N $i"
+        mpiexec -np "$i" -bind-to core -map-by core \
+            sh -c "$(create_command node "$BENCHMARK_EXE --file $DECK --problems $PROBLEMS --out ../out/tea_np${i}_${CONFIG}_${INPUT_BM}_stage_$STAGE.out --staging-buffer $STAGE")"
+    done
+)
