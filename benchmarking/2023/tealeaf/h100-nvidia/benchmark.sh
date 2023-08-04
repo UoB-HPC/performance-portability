@@ -74,12 +74,14 @@ std-indices)
 sycl-usm)
   append_opts "-DMODEL=sycl-usm"
   append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
+  append_opts "-DUSE_HOSTTASK=ON"
   append_opts "-DCXX_EXTRA_FLAGS=-fsycl;-fsycl-targets=nvptx64-nvidia-cuda;-Xsycl-target-backend;--cuda-gpu-arch=sm_90;--cuda-path=$NVHPC_PATH/cuda/;-march=znver3"
   BENCHMARK_EXE="sycl-usm-tealeaf"
   ;;
 sycl-acc)
   append_opts "-DMODEL=sycl-acc"
   append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
+  append_opts "-DUSE_HOSTTASK=ON"
   append_opts "-DCXX_EXTRA_FLAGS=-fsycl;-fsycl-targets=nvptx64-nvidia-cuda;-Xsycl-target-backend;--cuda-gpu-arch=sm_90;--cuda-path=$NVHPC_PATH/cuda/;-march=znver3"
   BENCHMARK_EXE="sycl-acc-tealeaf"
   ;;
