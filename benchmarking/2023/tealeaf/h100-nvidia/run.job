@@ -11,7 +11,7 @@ ldd "$BENCHMARK_EXE"
 
 NP=8
 DECK="$PWD/TeaLeaf/Benchmarks/tea_bm_${INPUT_BM}.in"
-PROBLEMS="$PWD/tea.problems"
+PROBLEMS="$PWD/TeaLeaf/tea.problems"
 NCPUS=$(nproc)
 export N_GPUS=4 # 4 per node
 
