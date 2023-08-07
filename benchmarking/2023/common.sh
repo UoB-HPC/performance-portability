@@ -3,7 +3,7 @@
 set -eu
 
 prime_kokkos() {
-  KOKKOS_VER="4.0.01"
+  KOKKOS_VER="4.1.00"
   KOKKOS_DIR="$SRC_DIR/kokkos-$KOKKOS_VER"
 
   echo "Using Kokkos src $KOKKOS_DIR"

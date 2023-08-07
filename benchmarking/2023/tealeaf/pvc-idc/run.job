@@ -1,0 +1,84 @@
+#!/bin/bash
+set -eu
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+export I_MPI_PORT_RANGE=50000:50500
+export btl_tcp_port_min_v4=1024
+
+export I_MPI_DEBUG=3
+export I_MPI_OFFLOAD_PIN=0 # we do this by hand
+
+export I_MPI_OFFLOAD=1
+export I_MPI_OFFLOAD_RDMA=1
+export I_MPI_OFFLOAD_IPC=0 # TODO this needs CAP_SYS_PTRACE
+
+NP=4
+DECK="$PWD/TeaLeaf/Benchmarks/tea_bm_${INPUT_BM}.in"
+PROBLEMS="$PWD/TeaLeaf/tea.problems"
+NCPUS=$(nproc)
+export N_GPUS=4 # 4 per node
+
+echo "master=$(hostname) nproc=$NCPUS"
+echo "mpicc=$(which mpiexec)"
+echo "PWD=$PWD"
+echo "NP=$NP"
+echo "CONFIG=$CONFIG"
+echo "BENCHMARK_EXE=$BENCHMARK_EXE"
+echo "DECK=$DECK"
+echo "======"
+
+mkdir -p ../out
+
+# gdb -batch -ex "run" -ex "bt" --args
+# gdb -batch -ex "run" -ex "bt" -ex "quit" --args
+# /lustreOld/home/br-wlin/dist/usr/bin/gdb  -batch -ex "run" -ex "bt" -ex "quit" --args
+
+export OMP_TARGET_OFFLOAD=MANDATORY
+
+case "$COMPILER" in
+oneapi-*)
+    export ONEAPI_DEVICE_SELECTOR="level_zero:*"
+    ;;
+esac
+
+prelude=""
+opts=""
+case "$MODEL" in
+omp)
+    prelude='true'
+    opts='--device $SELECTED_DEVICE'
+    ;;
+*)
+    prelude='export ONEAPI_DEVICE_SELECTOR="level_zero:$SELECTED_DEVICE"'
+    opts="--device 0"
+    ;;
+esac
+
+case "$MODEL" in
+sycl-usm | std-*)
+    export I_MPI_OFFLOAD=0 # offloading USM models would segfault
+    ;;
+esac
+
+function create_command() {
+    # IntelMPI is $MPI_LOCALRANKID
+    # OpenMPI is $OMPI_COMM_WORLD_LOCAL_RANK
+    gpu_launch_prelude='export SELECTED_DEVICE=$(($MPI_LOCALRANKID % $N_GPUS)) && echo "# SELECTED_DEVICE=$SELECTED_DEVICE"'
+    echo "$gpu_launch_prelude && $prelude && $2"
+}
+
+(
+    set -o xtrace
+    export OMP_NUM_THREADS=$NCPUS
+    export OMP_PROC_BIND=true
+    export OMP_PLACES=cores
+    for i in $(seq "$NP" -1 1); do
+        echo ">>> Using 1R/N $i"
+        mpiexec -launcher ssh -np "$i" -map-by core -bind-to core \
+            sh -c "$(create_command node "$BENCHMARK_EXE --file $DECK --problems $PROBLEMS --out ../out/tea_np${i}_${CONFIG}_${INPUT_BM}_stage_$STAGE.out --staging-buffer $STAGE $opts")"
+    done
+)

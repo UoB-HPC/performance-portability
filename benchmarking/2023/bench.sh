@@ -12,7 +12,7 @@ CCE=cce-14.0.1
 ROCM=rocm-5.4.1
 AOMP=aomp-16.0.3
 
-babelstream=true
+babelstream=false
 cloverleaf=true
 tealeaf=true
 
@@ -170,6 +170,34 @@ cambridge)
     bench_once icl-cambridge $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
     bench_once icl-cambridge $GCC "${babelstream_gcc_cpu_models[@]}"
     bench_once icl-cambridge $ONEAPI "${babelstream_oneapi_cpu_models[@]}"
+    ;;
+
+idc)
+
+    cd "$BASE/babelstream/results"
+    bench_once pvc-idc $ONEAPI omp kokkos "${babelstream_oneapi_gpu_models[@]}"
+
+    cd "$BASE/tealeaf/results"
+    # bench_exec exec_build pvc-idc $ONEAPI omp kokkos "${tealeaf_oneapi_gpu_models[@]}"
+
+    for bm in  8; do
+        for stage in true false; do
+            export INPUT_BM="5e_${bm}"
+            export STAGE="$stage"
+            bench_exec exec_submit pvc-idc $ONEAPI omp kokkos "${tealeaf_oneapi_gpu_models[@]}"
+        done
+    done
+
+    cd "$BASE/cloverleaf/results"
+    bench_exec exec_build pvc-idc $ONEAPI omp kokkos "${tealeaf_oneapi_gpu_models[@]}"
+
+    for bm in 4 16 64 256; do
+        for stage in true false; do
+            export INPUT_BM="${bm}"
+            export STAGE="$stage"
+            bench_exec exec_submit pvc-idc $ONEAPI omp kokkos "${tealeaf_oneapi_gpu_models[@]}"
+        done
+    done
     ;;
 nvidia)
 
