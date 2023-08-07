@@ -7,7 +7,9 @@
 
 # XXX DO NOT SPECIFY ngpus!
 
-export MPICH_ENV_DISPLAY=1
+# export MPICH_ENV_DISPLAY=1
+export MPICH_ASYNC_PROGRESS=1
+
 module load cray-pals # Use CRAY Parallel Application Launch Service
 
 : >"$OUT_FILE"
@@ -62,7 +64,7 @@ esac
 function create_command() {
     # IntelMPI is $MPI_LOCALRANKID
     # OpenMPI is $OMPI_COMM_WORLD_LOCAL_RANK
-    gpu_launch_prelude='export CUDA_VISIBLE_DEVICES=$(($PALS_RANKID % $N_GPUS)) && echo "# CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES"'
+    gpu_launch_prelude='export ROCR_VISIBLE_DEVICES=$(($PALS_RANKID % $N_GPUS)) && echo "# ROCR_VISIBLE_DEVICES=$ROCR_VISIBLE_DEVICES"'
     echo "$gpu_launch_prelude && $2"
 }
 
@@ -73,7 +75,7 @@ function create_command() {
     export OMP_PLACES=cores
     for i in $(seq "$NP" -1 1); do
         echo ">>> Using 1R/N $i"
-        mpiexec -np "$i" -l --cpu-bind none --mem-bind none \
+        mpiexec -np "$i" --cpu-bind none --mem-bind none \
             sh -c "$(create_command node "$BENCHMARK_EXE --file $DECK --out ../out/clover_np${i}_${CONFIG}_${INPUT_BM}_stage_$STAGE.out --staging-buffer $STAGE")"
     done
 )

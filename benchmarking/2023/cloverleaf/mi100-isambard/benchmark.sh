@@ -32,7 +32,7 @@ aomp-16.0.3)
   export C_INCLUDE_PATH="$AOMP/include:${C_INCLUDE_PATH:-}"
   export CPLUS_INCLUDE_PATH="$AOMP/include:${CPLUS_INCLUDE_PATH:-}"
   # XXX we need this if we load the HSA GTL: clang's target initialisation happens in the wrong order so we need to skip the check
-  export OFFLOAD_ARCH_OVERRIDE=gfx908 
+  export OFFLOAD_ARCH_OVERRIDE=gfx908
   ;;
 rocm-5.4.1)
   module load gcc/13.1.0
@@ -67,7 +67,7 @@ hip)
   append_opts "-DMODEL=hip"
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=hipcc" # auto detected
-  append_opts "-DCXX_EXTRA_FLAGS=--offload-arch=gfx908;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+  append_opts "-DCXX_EXTRA_FLAGS=--offload-arch=gfx908"
   BENCHMARK_EXE="hip-cloverleaf"
   ;;
 omp)
@@ -88,6 +88,7 @@ sycl-acc)
   hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908"
   append_opts "-DMODEL=sycl-acc"
   append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
+  append_opts "-DUSE_HOSTTASK=ON"
   append_opts "-DCXX_EXTRA_FLAGS=$hip_sycl_flags -DCXX_EXTRA_LINK_FLAGS=$hip_sycl_flags"
   BENCHMARK_EXE="sycl-acc-cloverleaf"
   ;;
@@ -95,6 +96,7 @@ sycl-usm)
   hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908"
   append_opts "-DMODEL=sycl-usm"
   append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
+  append_opts "-DUSE_HOSTTASK=ON"
   append_opts "-DCXX_EXTRA_FLAGS=$hip_sycl_flags -DCXX_EXTRA_LINK_FLAGS=$hip_sycl_flags"
   BENCHMARK_EXE="sycl-usm-cloverleaf"
   ;;

@@ -8,7 +8,7 @@ source "${SCRIPT_DIR}/../fetch_src.sh"
 
 module load cmake/3.23.2
 
-handle_cmd "${1}" "${2}" "${3}" "tealeaf" "mi100" "${INPUT_BM:-}"
+handle_cmd "${1}" "${2}" "${3}" "tealeaf" "mi100" "${INPUT_BM:-}_${STAGE:-}"
 
 export USE_MAKE=false
 module load cray-mpich/8.1.25
@@ -88,6 +88,7 @@ sycl-acc)
   hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908"
   append_opts "-DMODEL=sycl-acc"
   append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
+  append_opts "-DUSE_HOSTTASK=ON"
   append_opts "-DCXX_EXTRA_FLAGS=$hip_sycl_flags -DCXX_EXTRA_LINK_FLAGS=$hip_sycl_flags"
   BENCHMARK_EXE="sycl-acc-tealeaf"
   ;;
@@ -95,6 +96,7 @@ sycl-usm)
   hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908"
   append_opts "-DMODEL=sycl-usm"
   append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
+  append_opts "-DUSE_HOSTTASK=ON"
   append_opts "-DCXX_EXTRA_FLAGS=$hip_sycl_flags -DCXX_EXTRA_LINK_FLAGS=$hip_sycl_flags"
   BENCHMARK_EXE="sycl-usm-tealeaf"
   ;;

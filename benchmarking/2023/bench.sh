@@ -35,7 +35,7 @@ build_and_submit() { # platform, compiler, model, action, impl
     echo "[exec] build $5 $1 $2 $3 "
     "../$1/benchmark.sh" build "$2" "$3"
     echo "[exec] $5 $4 $1 $2 $3"
-    # "../$1/benchmark.sh" "$4" "$2" "$3"
+    "../$1/benchmark.sh" "$4" "$2" "$3"
 }
 
 bench() { # platform, compiler,  action, models...
@@ -244,54 +244,57 @@ p3)
 
     ##########
 
-    export INPUT_BM=5
     cd "$BASE/tealeaf/results"
 
     # CPUs
     bench_exec exec_build milan-isambard $NVHPC "${tealeaf_nvhpc_cpu_models[@]}"
     bench_exec exec_build milan-isambard $GCC "${tealeaf_gcc_cpu_models[@]}"
     bench_exec exec_build milan-isambard $ONEAPI "${tealeaf_oneapi_cpu_models[@]}"
-    for bm in 5; do
-        export INPUT_BM="${bm}"
+    # for bm in 1 2 4 8; do
+    for bm in 2; do
+        export INPUT_BM="5e_${bm}"
         bench_exec exec_submit milan-isambard $NVHPC "${tealeaf_nvhpc_cpu_models[@]}"
         bench_exec exec_submit milan-isambard $GCC "${tealeaf_gcc_cpu_models[@]}"
         bench_exec exec_submit milan-isambard $ONEAPI "${tealeaf_oneapi_cpu_models[@]}"
     done
 
     # GPUs, test with staging buffer
-    # bench_exec exec_build mi100-isambard $AOMP "${tealeaf_aomp_gpu_models[@]}"
-    # bench_exec exec_build mi100-isambard $ROCM "${tealeaf_rocm_gpu_models[@]}"
-    # bench_exec exec_build mi100-isambard $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
-    # for bm in 5; do
-    #     for stage in true false; do
-    #         export INPUT_BM="${bm}"
-    #         export STAGE="$stage"
-    #         bench_exec exec_submit mi100-isambard $AOMP "${tealeaf_aomp_gpu_models[@]}"
-    #         bench_exec exec_submit mi100-isambard $ROCM "${tealeaf_rocm_gpu_models[@]}"
-    #         bench_exec exec_submit mi100-isambard $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
-    #     done
-    # done
+    bench_exec exec_build mi100-isambard $AOMP "${tealeaf_aomp_gpu_models[@]}"
+    bench_exec exec_build mi100-isambard $ROCM "${tealeaf_rocm_gpu_models[@]}"
+    bench_exec exec_build mi100-isambard $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
+    # for bm in 1 2 4 8; do
+    for bm in 2; do
+        for stage in true false; do
+            export INPUT_BM="5e_${bm}"
+            export STAGE="$stage"
+            bench_exec exec_submit mi100-isambard $AOMP "${tealeaf_aomp_gpu_models[@]}"
+            bench_exec exec_submit mi100-isambard $ROCM "${tealeaf_rocm_gpu_models[@]}"
+            bench_exec exec_submit mi100-isambard $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
+        done
+    done
 
     ##########
 
     cd "$BASE/cloverleaf/results"
 
     # CPUs
-    # bench_exec exec_build milan-isambard $NVHPC "${tealeaf_nvhpc_cpu_models[@]}"
-    # bench_exec exec_build milan-isambard $GCC "${tealeaf_gcc_cpu_models[@]}"
-    # bench_exec exec_build milan-isambard $ONEAPI "${tealeaf_oneapi_cpu_models[@]}"
+    bench_exec exec_build milan-isambard $NVHPC "${tealeaf_nvhpc_cpu_models[@]}"
+    bench_exec exec_build milan-isambard $GCC "${tealeaf_gcc_cpu_models[@]}"
+    bench_exec exec_build milan-isambard $ONEAPI "${tealeaf_oneapi_cpu_models[@]}"
     # for bm in 4 16 64 256; do
-    #     export INPUT_BM="${bm}_short"
-    #     bench_exec exec_submit milan-isambard $NVHPC "${tealeaf_nvhpc_cpu_models[@]}"
-    #     bench_exec exec_submit milan-isambard $GCC "${tealeaf_gcc_cpu_models[@]}"
-    #     bench_exec exec_submit milan-isambard $ONEAPI "${tealeaf_oneapi_cpu_models[@]}"
-    # done
+    for bm in 16; do
+        export INPUT_BM="${bm}_short"
+        bench_exec exec_submit milan-isambard $NVHPC "${tealeaf_nvhpc_cpu_models[@]}"
+        bench_exec exec_submit milan-isambard $GCC "${tealeaf_gcc_cpu_models[@]}"
+        bench_exec exec_submit milan-isambard $ONEAPI "${tealeaf_oneapi_cpu_models[@]}"
+    done
 
     # GPUs, test with staging buffer
     bench_exec exec_build mi100-isambard $AOMP "${tealeaf_aomp_gpu_models[@]}"
     bench_exec exec_build mi100-isambard $ROCM "${tealeaf_rocm_gpu_models[@]}"
     bench_exec exec_build mi100-isambard $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
-    for bm in 4 16 64 256; do
+    # for bm in 4 16 64 256; do
+    for bm in 16; do
         for stage in true false; do
             export INPUT_BM="${bm}_short"
             export STAGE="$stage"

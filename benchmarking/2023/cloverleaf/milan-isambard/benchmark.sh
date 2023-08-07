@@ -84,11 +84,13 @@ std-indices-dplomp)
   ;;
 sycl-acc)
   append_opts "-DMODEL=sycl-acc"
+  append_opts "-DUSE_HOSTTASK=ON"
   append_opts "-DSYCL_COMPILER=ONEAPI-ICPX"
   BENCHMARK_EXE="sycl-acc-cloverleaf"
   ;;
 sycl-usm)
   append_opts "-DMODEL=sycl-usm"
+  append_opts "-DUSE_HOSTTASK=ON"
   append_opts "-DSYCL_COMPILER=ONEAPI-ICPX"
   BENCHMARK_EXE="sycl-usm-cloverleaf"
   ;;

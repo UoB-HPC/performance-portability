@@ -5,7 +5,7 @@
 #PBS -l walltime=3:00:00
 #PBS -joe
 
-export MPICH_ENV_DISPLAY=1
+# export MPICH_ENV_DISPLAY=1
 module load cray-pals # Use CRAY Parallel Application Launch Service
 
 : >"$OUT_FILE"
@@ -19,7 +19,7 @@ echo "$PWD"
 ldd "$BENCHMARK_EXE"
 
 NP=$(wc -l $PBS_NODEFILE | awk '{print $1}')
-DECK="$PWD/CloverLeaf/InputDecks/clover_bm${INPUT_BM}_short.in"
+DECK="$PWD/CloverLeaf/InputDecks/clover_bm${INPUT_BM}.in"
 NCPUS=$(nproc)
 
 echo "master=$(hostname) nproc=$NCPUS"
@@ -38,10 +38,20 @@ mkdir -p ../out
 
 opts=""
 case "$MODEL" in
-sycl-*)
-    opts+="--device 1"
+sycl-acc)
+    # With host task on, staging switches to interop_handle which is OpenCL on CPUs, and we can't handle that
+    # with staging on. We revert to get_host_access which probably internally calls clEnqueueMapBuffer so 
+    # the bahaviour should be the same.
+    opts+=" --device 1"
+    opts+=" --staging-buffer true"
     ;;
-tbb | std-* | kokkos | omp) ;; # no-op
+sycl-usm)
+    opts+=" --device 1"
+    opts+=" --staging-buffer false"
+    ;;
+tbb | std-* | kokkos | omp)
+    opts+=" --staging-buffer false"
+    ;; # no-op
 *)
     echo "Unknown run configuration for model '$MODEL'"
     exit 1
@@ -61,7 +71,7 @@ esac
 
     for i in $(seq "$NP" -1 1); do
         echo ">>> Using 1R/N $i"
-        mpiexec -np "$i"  -l --cpu-bind none --mem-bind none \
+        mpiexec -np "$i" --cpu-bind none --mem-bind none \
             "$BENCHMARK_EXE" --file "$DECK" --out "../out/clover_np${i}_${CONFIG}_${INPUT_BM}.out" $opts
     done
 )
@@ -78,7 +88,7 @@ esac
 
     for i in $(seq "$((NP * NCPUS))" "-$NCPUS" "$NCPUS"); do
         echo ">>> Using 1R/T $i"
-        mpiexec -np "$i" --cpu-bind core --mem-bind local -l \
+        mpiexec -np "$i" --cpu-bind core --mem-bind local \
             "$BENCHMARK_EXE" --file "$DECK" --out "../out/clover_np${i}_${CONFIG}_${INPUT_BM}.out" $opts
     done
 )
