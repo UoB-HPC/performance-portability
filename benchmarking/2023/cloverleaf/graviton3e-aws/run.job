@@ -1,0 +1,85 @@
+#!/bin/bash
+#SBATCH -p g3eq
+#SBATCH --nodes 8
+#SBATCH --exclusive
+#SBATCH --time=04:00:00
+
+: >"$OUT_FILE"
+exec &> >(tee -a "$OUT_FILE")
+
+set -eu
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+NP=$SLURM_JOB_NUM_NODES
+DECK="$PWD/CloverLeaf/InputDecks/clover_bm${INPUT_BM}.in"
+NCPUS=$(nproc)
+
+echo "master=$(hostname) nproc=$NCPUS"
+echo "mpicc=$(which mpiexec)"
+echo "PWD=$PWD"
+echo "NP=$NP"
+echo "CONFIG=$CONFIG"
+echo "BENCHMARK_EXE=$BENCHMARK_EXE"
+echo "DECK=$DECK"
+echo "======"
+
+mkdir -p ../out
+
+# gdb -batch -ex "run" -ex "bt" --args
+# gdb -batch -ex "run" -ex "bt" -ex "quit" --args
+
+opts=""
+case "$MODEL" in
+sycl-acc)
+  # With host task on, staging switches to interop_handle which is OpenCL on CPUs, and we can't handle that
+  # with staging on. We revert to get_host_access which probably internally calls clEnqueueMapBuffer so
+  # the bahaviour should be the same.
+  opts+=" --device 1"
+  opts+=" --staging-buffer true"
+  ;;
+sycl-usm)
+  opts+=" --device 1"
+  opts+=" --staging-buffer false"
+  ;;
+tbb | std-* | kokkos | omp)
+  opts+=" --staging-buffer false"
+  ;; # no-op
+*)
+  echo "Unknown run configuration for model '$MODEL'"
+  exit 1
+  ;;
+esac
+
+(
+  set -o xtrace
+  export OMP_NUM_THREADS=64
+  export OMP_PROC_BIND=true
+  export OMP_PLACES=cores
+
+  for i in $(seq "$NP" -1 1); do
+    echo ">>> Using 1R/N $i"
+    mpiexec -np "$i" --map-by ppr:1:node -bind-to none \
+      "$BENCHMARK_EXE" --file "$DECK" --out "../out/clover_np${i}_${CONFIG}_${INPUT_BM}.out" $opts
+  done
+)
+(
+  set -o xtrace
+  export OMP_NUM_THREADS=1
+  export OMP_PROC_BIND=true
+  export OMP_PLACES=cores
+
+  export DPCPP_CPU_NUM_CUS=1
+  export DPCPP_CPU_PLACES=numa_domains
+  export DPCPP_CPU_CU_AFFINITY=close
+  export DPCPP_CPU_SCHEDULE=static
+
+  for i in $(seq "$((NP * NCPUS))" "-$NCPUS" "$NCPUS"); do
+    echo ">>> Using 1R/T $i"
+    mpiexec -np "$i" --map-by ppr:64:node -bind-to core \
+      "$BENCHMARK_EXE" --file "$DECK" --out "../out/clover_np${i}_${CONFIG}_${INPUT_BM}.out" $opts
+  done
+)
