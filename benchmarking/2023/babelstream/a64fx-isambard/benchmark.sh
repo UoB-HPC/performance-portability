@@ -39,7 +39,7 @@ acfl-23.04.1)
   append_opts "-DRELEASE_FLAGS='' -DCXX_EXTRA_FLAGS=-mcpu=a64fx;-mtune=a64fx;-Ofast"
   append_opts "-DUSE_TBB=ON -DTBB_ENABLE_IPO=OFF" # IPO is broken in armclang
   ;;
-hipsycl-gcc)
+hipsycl-trunk)
   # module load gcc/12.1.0
   ;;
 nvhpc-23.5)
@@ -81,28 +81,14 @@ std-indices-dplomp)
   append_opts "-DMODEL=std-indices -DUSE_ONEDPL=OPENMP"
   BENCHMARK_EXE="std-indices-stream"
   ;;
-# omp-target)
-#   append_opts "-DMODEL=omp"
-#   BENCHMARK_EXE="omp-stream"
-#   case "$COMPILER" in
-#   nvhpc-*)
-#     # cc isn't important here, so just pick the latest one
-#     append_opts "-DOFFLOAD=ON -DOFFLOAD_FLAGS=-mp=ompt"
-#     ;;
-#   *)
-#     append_opts "-DOFFLOAD=ON "
-#     append_opts "-DCMAKE_BUILD_TYPE=RELEASE -DCXX_EXTRA_FLAGS=-Ofast -DCXX_EXTRA_LINK_FLAGS=-fopenmp=libomp"
-#     ;;
-#   esac
-#   ;;
 sycl)
   append_opts "-DMODEL=sycl"
   BENCHMARK_EXE="sycl-stream"
   case "$COMPILER" in
 
   hipsycl-gcc)
-    module load boost/1.73.0/gcc-9.3
-    module load gcc/12.1.0
+    # module load boost/1.73.0/gcc-9.3
+    # module load gcc/12.1.0
     append_opts "-DCMAKE_C_COMPILER=gcc"
     append_opts "-DCMAKE_CXX_COMPILER=g++"
     # append_opts "-DCXX_EXTRA_LIBRARIES=stdc++fs"

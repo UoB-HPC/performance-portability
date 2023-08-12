@@ -30,14 +30,18 @@ gcc-13.1)
 oneapi-2023.2)
   module load gcc/13.1.0
   # load_oneapi "$HOME/intel/oneapi/setvars.sh"
-set +eu
+  set +eu
   source "$HOME/intel/oneapi/compiler/2023.2.0/env/vars.sh"
   source "$HOME/intel/oneapi/tbb/2021.10.0/env/vars.sh"
-  set -eu  
+  set -eu
   append_opts "-DCMAKE_C_COMPILER=icx"
   append_opts "-DCMAKE_CXX_COMPILER=icpx"
   append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast"
   append_opts "-DUSE_TBB=ON"
+  ;;
+hipsycl-7b2e459)
+  module load gcc/12.1.0
+  export HIPSYCL_DIR="$HOME/software/x86_64/hipsycl/7b2e459"
   ;;
 nvhpc-23.5)
   module load gcc/13.1.0 # for libatomic
@@ -77,6 +81,16 @@ tbb)
 std-indices)
   append_opts "-DMODEL=std-indices"
   BENCHMARK_EXE="std-indices-tealeaf"
+  case "$COMPILER" in
+  hipsycl-*)
+    export HIPSYCL_TARGETS="omp.accelerated"
+    export HIPSYCL_DEBUG_LEVEL=1 # quieter during runtime
+    append_opts "-DCMAKE_C_COMPILER=gcc"
+    append_opts "-DCMAKE_CXX_COMPILER=$HIPSYCL_DIR/bin/syclcc"
+    export CXXFLAGS="--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+    append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast;--opensycl-stdpar;--opensycl-stdpar-unconditional-offload;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+    ;;
+  esac
   ;;
 std-indices-dplomp)
   append_opts "-DMODEL=std-indices -DUSE_ONEDPL=OPENMP"
@@ -84,15 +98,41 @@ std-indices-dplomp)
   ;;
 sycl-acc)
   append_opts "-DMODEL=sycl-acc"
-  append_opts "-DUSE_HOSTTASK=ON"
-  append_opts "-DSYCL_COMPILER=ONEAPI-ICPX"
   BENCHMARK_EXE="sycl-acc-tealeaf"
+  case "$COMPILER" in
+  hipsycl-*)
+    export HIPSYCL_TARGETS="omp.accelerated"
+    export HIPSYCL_DEBUG_LEVEL=1 # quieter during runtime
+    append_opts "-DCMAKE_C_COMPILER=gcc"
+    append_opts "-DCMAKE_CXX_COMPILER=g++"
+    append_opts "-DSYCL_COMPILER=HIPSYCL -DSYCL_COMPILER_DIR=$HIPSYCL_DIR"
+    append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+    append_opts "-DUSE_HOSTTASK=OFF"
+    ;;
+  oneapi-*)
+    append_opts "-DUSE_HOSTTASK=ON"
+    append_opts "-DSYCL_COMPILER=ONEAPI-ICPX"
+    ;;
+  esac
   ;;
 sycl-usm)
   append_opts "-DMODEL=sycl-usm"
+  BENCHMARK_EXE="sycl-usm-tealeaf"
+  case "$COMPILER" in
+  hipsycl-*)
+    export HIPSYCL_TARGETS="omp.accelerated"
+    export HIPSYCL_DEBUG_LEVEL=1 # quieter during runtime
+    append_opts "-DCMAKE_C_COMPILER=gcc"
+    append_opts "-DCMAKE_CXX_COMPILER=g++"
+    append_opts "-DSYCL_COMPILER=HIPSYCL -DSYCL_COMPILER_DIR=$HIPSYCL_DIR"
+    append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+    append_opts "-DUSE_HOSTTASK=OFF"
+    ;;
+  oneapi-*)
   append_opts "-DUSE_HOSTTASK=ON"
   append_opts "-DSYCL_COMPILER=ONEAPI-ICPX"
-  BENCHMARK_EXE="sycl-usm-tealeaf"
+    ;;
+  esac
   ;;
 *) unknown_model ;;
 esac

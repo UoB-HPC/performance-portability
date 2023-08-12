@@ -2,7 +2,7 @@
 #PBS -q instinctq
 #PBS -l select=2:ncpus=64:mpiprocs=4:mem=250gb
 #PBS -l place=scatter:excl
-#PBS -l walltime=2:00:00
+#PBS -l walltime=3:00:00
 #PBS -joe
 
 # XXX DO NOT SPECIFY ngpus!
@@ -47,11 +47,14 @@ mkdir -p ../out
 
 export OMP_TARGET_OFFLOAD=MANDATORY
 
+opts=""
 case "$COMPILER" in
 oneapi-*)
     # module load gcc/11
     export ONEAPI_DEVICE_SELECTOR="hip:*"
     ;;
+hipsycl-*) opts+=" --device 1" ;; # device 0 is always OpenMP
+*) ;;
 esac
 
 case "$MODEL" in
@@ -77,6 +80,6 @@ function create_command() {
     for i in $(seq "$NP" -1 1); do
         echo ">>> Using 1R/N $i"
         mpiexec -np "$i" --cpu-bind none --mem-bind none \
-            sh -c "$(create_command node  "$BENCHMARK_EXE --file $DECK --problems $PROBLEMS --out ../out/tea_np${i}_${CONFIG}_${INPUT_BM}_stage_$STAGE.out --staging-buffer $STAGE")"
+            sh -c "$(create_command node  "$BENCHMARK_EXE --file $DECK --problems $PROBLEMS --out ../out/tea_np${i}_${CONFIG}_${INPUT_BM}_stage_$STAGE.out --staging-buffer $STAGE $opts")"
     done
 )

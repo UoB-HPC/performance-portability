@@ -2,7 +2,7 @@
 #PBS -q milanq
 #PBS -l select=8:ncpus=128:mpiprocs=1:mem=250gb
 #PBS -l place=scatter:excl
-#PBS -l walltime=3:00:00
+#PBS -l walltime=4:00:00
 #PBS -joe
 
 # export MPICH_ENV_DISPLAY=1

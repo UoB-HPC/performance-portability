@@ -11,6 +11,7 @@ CCE=cce-14.0.1
 
 ROCM=rocm-5.4.1
 AOMP=aomp-16.0.3
+HIPSYCL=hipsycl-7b2e459
 
 babelstream=false
 cloverleaf=true
@@ -44,7 +45,7 @@ bench() { # platform, compiler,  action, models...
     if [ "${!impl}" = true ]; then
         for m in "${@:4}"; do
             if [ "${models[$m]}" = true ]; then
-                build_and_submit "$1" "$2" "$m" "$3" "$impl"
+                build_and_submit "$1" "$2" "$m" "$3" "$impl" &
             fi
         done
     fi
@@ -180,11 +181,11 @@ idc)
     cd "$BASE/tealeaf/results"
     # bench_exec exec_build pvc-idc $ONEAPI omp kokkos "${tealeaf_oneapi_gpu_models[@]}"
 
-    for bm in  8; do
-        for stage in true false; do
+    for bm in 8; do
+        for stage in false; do
             export INPUT_BM="5e_${bm}"
             export STAGE="$stage"
-            bench_exec exec_submit pvc-idc $ONEAPI omp kokkos "${tealeaf_oneapi_gpu_models[@]}"
+            bench_exec exec_submit pvc-idc $ONEAPI std-indices #  omp kokkos "${tealeaf_oneapi_gpu_models[@]}"
         done
     done
 
@@ -260,15 +261,17 @@ p3)
     module use "$HOME/modulefiles/"
 
     cd "$BASE/babelstream/results"
-    module unload cce
+    # module unload cce
     bench_once milan-isambard $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
-    module load cce
+    # module load cce
     bench_once milan-isambard $GCC "${babelstream_gcc_cpu_models[@]}"
     bench_once milan-isambard $ONEAPI "${babelstream_oneapi_cpu_models[@]}"
+    bench_once milan-isambard $HIPSYCL std-indices sycl
 
     bench_once mi100-isambard $AOMP "${babelstream_aomp_gpu_models[@]}"
     bench_once mi100-isambard $ROCM "${babelstream_rocm_gpu_models[@]}"
     bench_once mi100-isambard $ONEAPI "${babelstream_oneapi_gpu_models[@]}"
+    bench_once mi100-isambard $HIPSYCL std-indices sycl
 
     ##########
 
@@ -278,26 +281,30 @@ p3)
     bench_exec exec_build milan-isambard $NVHPC "${tealeaf_nvhpc_cpu_models[@]}"
     bench_exec exec_build milan-isambard $GCC "${tealeaf_gcc_cpu_models[@]}"
     bench_exec exec_build milan-isambard $ONEAPI "${tealeaf_oneapi_cpu_models[@]}"
-    # for bm in 1 2 4 8; do
-    for bm in 2; do
+    bench_exec exec_build milan-isambard $HIPSYCL std-indices sycl-acc sycl-usm
+    for bm in 1 2 4 8; do
+        # for bm in 2; do
         export INPUT_BM="5e_${bm}"
         bench_exec exec_submit milan-isambard $NVHPC "${tealeaf_nvhpc_cpu_models[@]}"
         bench_exec exec_submit milan-isambard $GCC "${tealeaf_gcc_cpu_models[@]}"
         bench_exec exec_submit milan-isambard $ONEAPI "${tealeaf_oneapi_cpu_models[@]}"
+        bench_exec exec_submit milan-isambard $HIPSYCL std-indices sycl-acc sycl-usm
     done
 
     # GPUs, test with staging buffer
     bench_exec exec_build mi100-isambard $AOMP "${tealeaf_aomp_gpu_models[@]}"
     bench_exec exec_build mi100-isambard $ROCM "${tealeaf_rocm_gpu_models[@]}"
-    bench_exec exec_build mi100-isambard $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
-    # for bm in 1 2 4 8; do
-    for bm in 2; do
+    bench_exec exec_build mi100-isambard $ONEAPI sycl-acc  # "${tealeaf_oneapi_gpu_models[@]}"
+    bench_exec exec_build mi100-isambard $HIPSYCL sycl-acc # sycl-usm std-indices
+    for bm in 1 2 4 8; do
+        # for bm in 2; do
         for stage in true false; do
             export INPUT_BM="5e_${bm}"
             export STAGE="$stage"
             bench_exec exec_submit mi100-isambard $AOMP "${tealeaf_aomp_gpu_models[@]}"
             bench_exec exec_submit mi100-isambard $ROCM "${tealeaf_rocm_gpu_models[@]}"
-            bench_exec exec_submit mi100-isambard $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
+            bench_exec exec_submit mi100-isambard $ONEAPI sycl-acc  # "${tealeaf_oneapi_gpu_models[@]}"
+            bench_exec exec_submit mi100-isambard $HIPSYCL sycl-acc # sycl-usm std-indices
         done
     done
 
@@ -309,8 +316,8 @@ p3)
     bench_exec exec_build milan-isambard $NVHPC "${tealeaf_nvhpc_cpu_models[@]}"
     bench_exec exec_build milan-isambard $GCC "${tealeaf_gcc_cpu_models[@]}"
     bench_exec exec_build milan-isambard $ONEAPI "${tealeaf_oneapi_cpu_models[@]}"
-    # for bm in 4 16 64 256; do
-    for bm in 16; do
+    for bm in 4 16 64 256; do
+        # for bm in 16; do
         export INPUT_BM="${bm}_short"
         bench_exec exec_submit milan-isambard $NVHPC "${tealeaf_nvhpc_cpu_models[@]}"
         bench_exec exec_submit milan-isambard $GCC "${tealeaf_gcc_cpu_models[@]}"
@@ -320,57 +327,23 @@ p3)
     # GPUs, test with staging buffer
     bench_exec exec_build mi100-isambard $AOMP "${tealeaf_aomp_gpu_models[@]}"
     bench_exec exec_build mi100-isambard $ROCM "${tealeaf_rocm_gpu_models[@]}"
-    bench_exec exec_build mi100-isambard $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
-    # for bm in 4 16 64 256; do
-    for bm in 16; do
+    bench_exec exec_build mi100-isambard $ONEAPI sycl-acc  # "${tealeaf_oneapi_gpu_models[@]}"
+    bench_exec exec_build mi100-isambard $HIPSYCL sycl-acc # sycl-usm std-indices
+    for bm in 4 16 64 256; do
+        # for bm in 16; do
         for stage in true false; do
-            export INPUT_BM="${bm}_short"
+            export INPUT_BM="${bm}"
             export STAGE="$stage"
             bench_exec exec_submit mi100-isambard $AOMP "${tealeaf_aomp_gpu_models[@]}"
             bench_exec exec_submit mi100-isambard $ROCM "${tealeaf_rocm_gpu_models[@]}"
-            bench_exec exec_submit mi100-isambard $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
+            bench_exec exec_submit mi100-isambard $ONEAPI sycl-acc  # "${tealeaf_oneapi_gpu_models[@]}"
+            bench_exec exec_submit mi100-isambard $HIPSYCL sycl-acc # sycl-usm std-indices
         done
     done
     ;;
-p2)
-    cd "$BASE/babelstream/results"
-    bench_once icl-isambard $ONEAPI "${babelstream_gcc_cpu_models[@]}"
-    bench_once icl-isambard $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
-    bench_once icl-isambard $GCC "${babelstream_gcc_cpu_models[@]}"
-
-    bench_once v100-isambard $NVHPC "${babelstream_nvhpc_gpu_models[@]}"
-
-    # cd "$BASE/bude/results"
-    # # bench_once icl-isambard $ONEAPI "${generic_gcc_cpu_models[@]}"
-    # bench_once icl-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
-    # # bench_once icl-isambard $GCC "${generic_gcc_cpu_models[@]}"
-
-    # bench_once v100-isambard $NVHPC "${generic_nvhpc_gpu_models[@]}"
-
-    # cd "$BASE/cloverleaf/results"
-    # bench_once icl-isambard $ONEAPI "${generic_gcc_cpu_models[@]}"
-    # bench_once icl-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
-    # bench_once icl-isambard $GCC "${generic_gcc_cpu_models[@]}"
-
-    # bench_once v100-isambard $NVHPC "${generic_nvhpc_gpu_models[@]}"
-    ;;
-
-aws-g3)
-    cd "$BASE/babelstream/results"
-    bench_once graviton3-aws $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
-    bench_once graviton3-aws $GCC "${babelstream_gcc_cpu_models[@]}"
-    bench_once graviton3-aws $ACFL "${babelstream_gcc_cpu_models[@]}"
-
-    # cd "$BASE/bude/results"
-    # bench_once graviton3-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"
-    # # bench_once graviton3-aws $GCC "${generic_gcc_cpu_models[@]}"
-    # # bench_once graviton3-aws $ACFL "${generic_gcc_cpu_models[@]}"
-
-    # cd "$BASE/cloverleaf/results"
-    # bench_once graviton3-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"
-    # bench_once graviton3-aws $GCC "${generic_gcc_cpu_models[@]}"
-    # bench_once graviton3-aws $ACFL "${generic_gcc_cpu_models[@]}"
-    ;;
+p2) ;;     # nope
+xci) ;;    # nope
+aws-g3) ;; # nope
 aws-g3e)
     cd "$BASE/babelstream/results"
     bench_once graviton3e-aws $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
@@ -387,19 +360,7 @@ aws-g3e)
     # bench_once graviton3-aws $GCC "${generic_gcc_cpu_models[@]}"
     # bench_once graviton3-aws $ACFL "${generic_gcc_cpu_models[@]}"
     ;;
-xci)
-    cd "$BASE/babelstream/results"
-    bench_once tx2-isambard $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
-    bench_once tx2-isambard $GCC "${babelstream_gcc_cpu_models[@]}"
 
-    # cd "$BASE/bude/results"
-    # bench_once tx2-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
-    # bench_once tx2-isambard $GCC "${generic_gcc_cpu_models[@]}"
-
-    # cd "$BASE/cloverleaf/results"
-    # bench_once tx2-isambard $NVHPC "${generic_nvhpc_cpu_models[@]}"
-    # bench_once tx2-isambard $GCC "${generic_gcc_cpu_models[@]}"
-    ;;
 a64fx)
     cd "$BASE/babelstream/results"
     bench_once a64fx-isambard $NVHPC "${babelstream_nvhpc_cpu_models[@]}"

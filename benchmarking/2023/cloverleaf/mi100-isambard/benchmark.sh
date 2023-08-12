@@ -38,6 +38,10 @@ rocm-5.4.1)
   module load gcc/13.1.0
   export PATH="/opt/rocm-5.4.1/bin:${PATH:-}"
   ;;
+hipsycl-7b2e459)
+  module load gcc/12.1.0
+  export HIPSYCL_DIR="$HOME/software/x86_64/hipsycl/7b2e459"
+  ;;
 oneapi-2023.2)
   module load gcc/13.1.0
   set +eu
@@ -67,7 +71,7 @@ hip)
   append_opts "-DMODEL=hip"
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=hipcc" # auto detected
-  append_opts "-DCXX_EXTRA_FLAGS=--offload-arch=gfx908"
+  append_opts "-DCXX_EXTRA_FLAGS=--offload-arch=gfx908;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
   BENCHMARK_EXE="hip-cloverleaf"
   ;;
 omp)
@@ -78,27 +82,64 @@ omp)
   BENCHMARK_EXE="omp-target-cloverleaf"
   ;;
 std-indices)
-  hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908"
   append_opts "-DMODEL=std-indices"
-  append_opts "-DUSE_ONEDPL=DPCPP"
-  append_opts "-DCXX_EXTRA_FLAGS=-fsycl;$hip_sycl_flags -DCXX_EXTRA_LINK_FLAGS=-fsycl;$hip_sycl_flags"
   BENCHMARK_EXE="std-indices-cloverleaf"
+  case "$COMPILER" in
+  hipsycl-*)
+    export HIPSYCL_TARGETS="hip:gfx908"
+    append_opts "-DCMAKE_C_COMPILER=gcc"
+    append_opts "-DCMAKE_CXX_COMPILER=$HIPSYCL_DIR/bin/syclcc"
+    export CXXFLAGS="--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+    append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast;--opensycl-stdpar;--opensycl-stdpar-unconditional-offload;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+    ;;
+  oneapi-*)
+    hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908"
+    append_opts "-DUSE_ONEDPL=DPCPP"
+    append_opts "-DCXX_EXTRA_FLAGS=-fsycl;$hip_sycl_flags -DCXX_EXTRA_LINK_FLAGS=-fsycl;$hip_sycl_flags"
+    ;;
+  esac
   ;;
 sycl-acc)
-  hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908"
   append_opts "-DMODEL=sycl-acc"
-  append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
-  append_opts "-DUSE_HOSTTASK=ON"
-  append_opts "-DCXX_EXTRA_FLAGS=$hip_sycl_flags -DCXX_EXTRA_LINK_FLAGS=$hip_sycl_flags"
   BENCHMARK_EXE="sycl-acc-cloverleaf"
+  case "$COMPILER" in
+  hipsycl-*)
+    export HIPSYCL_TARGETS="hip:gfx908"
+    export HIPSYCL_DEBUG_LEVEL=1 # quieter during runtime
+    append_opts "-DCMAKE_C_COMPILER=gcc"
+    append_opts "-DCMAKE_CXX_COMPILER=g++"
+    append_opts "-DSYCL_COMPILER=HIPSYCL -DSYCL_COMPILER_DIR=$HIPSYCL_DIR"
+    append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+    append_opts "-DUSE_HOSTTASK=OFF"
+    ;;
+  oneapi-*)
+    hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908"
+    append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
+    append_opts "-DUSE_HOSTTASK=ON"
+    append_opts "-DCXX_EXTRA_FLAGS=$hip_sycl_flags -DCXX_EXTRA_LINK_FLAGS=$hip_sycl_flags"
+    ;;
+  esac
   ;;
 sycl-usm)
-  hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908"
   append_opts "-DMODEL=sycl-usm"
-  append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
-  append_opts "-DUSE_HOSTTASK=ON"
-  append_opts "-DCXX_EXTRA_FLAGS=$hip_sycl_flags -DCXX_EXTRA_LINK_FLAGS=$hip_sycl_flags"
   BENCHMARK_EXE="sycl-usm-cloverleaf"
+  case "$COMPILER" in
+  hipsycl-*)
+    export HIPSYCL_TARGETS="hip:gfx908"
+    export HIPSYCL_DEBUG_LEVEL=1 # quieter during runtime
+    append_opts "-DCMAKE_C_COMPILER=gcc"
+    append_opts "-DCMAKE_CXX_COMPILER=g++"
+    append_opts "-DSYCL_COMPILER=HIPSYCL -DSYCL_COMPILER_DIR=$HIPSYCL_DIR"
+    append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+    append_opts "-DUSE_HOSTTASK=OFF"
+    ;;
+  oneapi-*)
+    hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908"
+    append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
+    append_opts "-DUSE_HOSTTASK=ON"
+    append_opts "-DCXX_EXTRA_FLAGS=$hip_sycl_flags -DCXX_EXTRA_LINK_FLAGS=$hip_sycl_flags"
+    ;;
+  esac
   ;;
 *) unknown_model ;;
 esac

@@ -23,10 +23,15 @@ aomp-16.0.3)
   export C_INCLUDE_PATH="$AOMP/include:${C_INCLUDE_PATH:-}"
   export CPLUS_INCLUDE_PATH="$AOMP/include:${CPLUS_INCLUDE_PATH:-}"
   ;;
-rocm-4.5.1)
-  export PATH="/opt/rocm-4.5.1/bin:${PATH:-}"
+rocm-5.4.1)
+  module load gcc/13.1.0
+  export PATH="/opt/rocm-5.4.1/bin:${PATH:-}"
   ;;
-oneapi-2023.1)
+hipsycl-7b2e459)
+  module load gcc/12.1.0
+  export HIPSYCL_DIR="$HOME/software/x86_64/hipsycl/7b2e459"
+  ;;
+oneapi-2023.2)
   module load gcc/13.1.0 # libpi_hip needs a newer libstdc++
   load_oneapi "$HOME/intel/oneapi/setvars.sh" --include-intel-llvm
   append_opts "-DCMAKE_C_COMPILER=clang"
@@ -64,6 +69,13 @@ omp)
 std-indices)
   append_opts "-DMODEL=std-indices"
   case "$COMPILER" in
+  hipsycl-*)
+    export HIPSYCL_TARGETS="hip:gfx908"
+    append_opts "-DCMAKE_C_COMPILER=gcc"
+    append_opts "-DCMAKE_CXX_COMPILER=$HIPSYCL_DIR/bin/syclcc"
+    append_opts "-DCMAKE_CXX_COMPILER_WORKS=ON"
+    append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;--opensycl-stdpar;--opensycl-stdpar-unconditional-offload;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+    ;;
   oneapi-*)
     append_opts "-DUSE_ONEDPL=DPCPP"
     append_opts "-DCXX_EXTRA_FLAGS=-fsycl;-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908;-march=znver3"
@@ -74,14 +86,31 @@ std-indices)
   ;;
 sycl)
   append_opts "-DMODEL=sycl"
-  append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
-  append_opts "-DCXX_EXTRA_FLAGS=-fsycl;-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908;-march=znver3"
+  case "$COMPILER" in
+  hipsycl-*)
+    export HIPSYCL_TARGETS="hip:gfx908"
+    append_opts "-DSYCL_COMPILER=HIPSYCL"
+    append_opts "-DSYCL_COMPILER_DIR=$HIPSYCL_DIR"
+    append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+    ;;
+  oneapi-*)
+    append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
+    append_opts "-DCXX_EXTRA_FLAGS=-fsycl;-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908;-march=znver3"
+    ;;
+  *) unknown_compiler ;;
+  esac
   BENCHMARK_EXE="sycl-stream"
   ;;
 sycl2020)
   append_opts "-DMODEL=sycl2020"
-  append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
-  append_opts "-DCXX_EXTRA_FLAGS=-fsycl;-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908;-march=znver3"
+  case "$COMPILER" in
+  hipsycl-*) unknown_compiler ;; # no 2020 reduction support
+  oneapi-*)
+    append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
+    append_opts "-DCXX_EXTRA_FLAGS=-fsycl;-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908;-march=znver3"
+    ;;
+  *) unknown_compiler ;;
+  esac
   BENCHMARK_EXE="sycl2020-stream"
   ;;
 *) unknown_model ;;
