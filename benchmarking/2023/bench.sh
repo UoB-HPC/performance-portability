@@ -13,7 +13,7 @@ ROCM=rocm-5.4.1
 AOMP=aomp-16.0.3
 HIPSYCL=hipsycl-7b2e459
 
-babelstream=false
+babelstream=true
 cloverleaf=true
 tealeaf=true
 
@@ -341,26 +341,53 @@ p3)
         done
     done
     ;;
-p2) ;;     # nope
-xci) ;;    # nope
-aws-g3) ;; # nope
-aws-g3e)
+p2) ;;  # nope
+xci) ;; # nope
+aws)
     cd "$BASE/babelstream/results"
-    bench_once graviton3e-aws $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
-    bench_once graviton3e-aws $GCC "${babelstream_gcc_cpu_models[@]}"
-    bench_once graviton3e-aws $ACFL "${babelstream_gcc_cpu_models[@]}"
+    # bench_once graviton3e-aws $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
+    # bench_once graviton3e-aws $GCC "${babelstream_gcc_cpu_models[@]}"
+    # bench_once graviton3e-aws $ACFL "${babelstream_gcc_cpu_models[@]}"
+    # bench_once graviton3e-aws $HIPSYCL std-indices sycl
 
-    # cd "$BASE/bude/results"
-    # bench_once graviton3-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"
-    # # bench_once graviton3-aws $GCC "${generic_gcc_cpu_models[@]}"
-    # # bench_once graviton3-aws $ACFL "${generic_gcc_cpu_models[@]}"
+    cd "$BASE/cloverleaf/results"
 
-    # cd "$BASE/cloverleaf/results"
-    # bench_once graviton3-aws $NVHPC "${generic_nvhpc_cpu_models[@]}"
-    # bench_once graviton3-aws $GCC "${generic_gcc_cpu_models[@]}"
-    # bench_once graviton3-aws $ACFL "${generic_gcc_cpu_models[@]}"
+    # (
+    #     bench_exec exec_build graviton3e-aws $NVHPC "${tealeaf_nvhpc_cpu_models[@]}" &
+    #     bench_exec exec_build graviton3e-aws $GCC "${tealeaf_gcc_cpu_models[@]}" &
+    #     bench_exec exec_build graviton3e-aws $ACFL "${tealeaf_gcc_cpu_models[@]}" &
+    #     bench_exec exec_build graviton3e-aws $HIPSYCL std-indices sycl-acc sycl-usm &
+    #     wait
+    # )
+
+    for bm in 4 16 64 256; do
+    # for bm in 16; do
+        export INPUT_BM="${bm}"
+        bench_exec exec_submit graviton3e-aws $NVHPC "${tealeaf_nvhpc_cpu_models[@]}"
+        bench_exec exec_submit graviton3e-aws $GCC "${tealeaf_gcc_cpu_models[@]}"
+        bench_exec exec_submit graviton3e-aws $ACFL "${tealeaf_gcc_cpu_models[@]}"
+        bench_exec exec_submit graviton3e-aws $HIPSYCL std-indices sycl-acc sycl-usm
+    done
+
+    cd "$BASE/tealeaf/results"
+
+    # (
+    #     bench_exec exec_build graviton3e-aws $NVHPC "${tealeaf_nvhpc_cpu_models[@]}" &
+    #     bench_exec exec_build graviton3e-aws $GCC "${tealeaf_gcc_cpu_models[@]}" &
+    #     bench_exec exec_build graviton3e-aws $ACFL "${tealeaf_gcc_cpu_models[@]}" &
+    #     bench_exec exec_build graviton3e-aws $HIPSYCL std-indices sycl-acc sycl-usm &
+    #     wait
+    # )
+    for bm in 1 2 4 8; do
+    # for bm in 1; do
+        export INPUT_BM="5e_${bm}"
+        bench_exec exec_submit graviton3e-aws $NVHPC "${tealeaf_nvhpc_cpu_models[@]}"
+        bench_exec exec_submit graviton3e-aws $GCC "${tealeaf_gcc_cpu_models[@]}"
+        bench_exec exec_submit graviton3e-aws $ACFL "${tealeaf_gcc_cpu_models[@]}"
+        bench_exec exec_submit graviton3e-aws $HIPSYCL std-indices sycl-acc sycl-usm
+    done
+
     ;;
-
 a64fx)
     cd "$BASE/babelstream/results"
     bench_once a64fx-isambard $NVHPC "${babelstream_nvhpc_cpu_models[@]}"

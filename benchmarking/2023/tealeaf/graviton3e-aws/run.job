@@ -1,8 +1,11 @@
 #!/bin/bash
 #SBATCH -p g3eq
+#SBATCH --nodes 8
 #SBATCH --exclusive
-#SBATCH --nodes=1
-#SBATCH -t 00:10:00
+#SBATCH --time=04:00:00
+
+: >"$OUT_FILE"
+exec &> >(tee -a "$OUT_FILE")
 
 set -eu
 
@@ -11,28 +14,73 @@ date
 echo "$PWD"
 ldd "$BENCHMARK_EXE"
 
-spack load numactl
+NP=$SLURM_JOB_NUM_NODES
+DECK="$PWD/TeaLeaf/Benchmarks/tea_bm_${INPUT_BM}.in"
+PROBLEMS="$PWD/TeaLeaf/tea.problems"
+NCPUS=$(nproc)
 
-if [ "${LARGE:-}" = true ]; then
-  opts=("--arraysize" "536870912")
-fi
+echo "master=$(hostname) nproc=$NCPUS"
+echo "mpicc=$(which mpiexec)"
+echo "PWD=$PWD"
+echo "NP=$NP"
+echo "CONFIG=$CONFIG"
+echo "BENCHMARK_EXE=$BENCHMARK_EXE"
+echo "DECK=$DECK"
+echo "======"
 
-# Best performance observed when only running 16 cores per socket.
-export OMP_NUM_THREADS=64
-export OMP_PROC_BIND=true
-export OMP_PLACES=cores
+mkdir -p ../out
 
+# gdb -batch -ex "run" -ex "bt" --args
+# gdb -batch -ex "run" -ex "bt" -ex "quit" --args
+
+opts=""
 case "$MODEL" in
-omp | kokkos)
-  "$BENCHMARK_EXE" --list
-  "$BENCHMARK_EXE" "${opts[@]:-}"
+sycl-acc)
+  # With host task on, staging switches to interop_handle which is OpenCL on CPUs, and we can't handle that
+  # with staging on. We revert to get_host_access which probably internally calls clEnqueueMapBuffer so
+  # the bahaviour should be the same.
+  opts+=" --device 1"
+  opts+=" --staging-buffer true"
   ;;
-tbb | std-*)
-  "$BENCHMARK_EXE" --list
-  numactl --physcpubind=all --localalloc "$BENCHMARK_EXE" "${opts[@]:-}"
+sycl-usm)
+  opts+=" --device 1"
+  opts+=" --staging-buffer false"
   ;;
+tbb | std-* | kokkos | omp)
+  opts+=" --staging-buffer false"
+  ;; # no-op
 *)
-  "$BENCHMARK_EXE" --list
-  "$BENCHMARK_EXE" "${opts[@]:-}"
+  echo "Unknown run configuration for model '$MODEL'"
+  exit 1
   ;;
 esac
+
+(
+  set -o xtrace
+  export OMP_NUM_THREADS=64
+  export OMP_PROC_BIND=true
+  export OMP_PLACES=cores
+
+  for i in $(seq "$NP" -1 1); do
+    echo ">>> Using 1R/N $i"
+    mpiexec -np "$i" --map-by ppr:1:node -bind-to none \
+      "$BENCHMARK_EXE" --file "$DECK" --problems "$PROBLEMS" --out "../out/tea_np${i}_${CONFIG}_${INPUT_BM}.out" --staging-buffer false $opts
+  done
+)
+(
+  set -o xtrace
+  export OMP_NUM_THREADS=1
+  export OMP_PROC_BIND=true
+  export OMP_PLACES=cores
+
+  export DPCPP_CPU_NUM_CUS=1
+  export DPCPP_CPU_PLACES=numa_domains
+  export DPCPP_CPU_CU_AFFINITY=close
+  export DPCPP_CPU_SCHEDULE=static
+
+  for i in $(seq "$((NP * NCPUS))" "-$NCPUS" "$NCPUS"); do
+    echo ">>> Using 1R/T $i"
+    mpiexec -np "$i" --map-by ppr:64:node -bind-to core \
+      "$BENCHMARK_EXE" --file "$DECK" --problems "$PROBLEMS" --out "../out/tea_np${i}_${CONFIG}_${INPUT_BM}.out" --staging-buffer false $opts
+  done
+)

@@ -34,6 +34,11 @@ acfl-23.04.1)
   export CXXFLAGS="--gcc-toolchain=$(dirname "$(which gcc)")/.."
   export LDFLAGS="--gcc-toolchain=$(dirname "$(which gcc)")/.."
   ;;
+hipsycl-7b2e459)
+  spack load gcc@13.1.0
+  export LD_LIBRARY_PATH="$(spack location -i gcc@13.1.0)/lib64:${LD_LIBRARY_PATH:-}"
+  export HIPSYCL_DIR="$HOME/software/aarch64/hipsycl/7b2e459"
+  ;;
 nvhpc-23.5)
   spack load nvhpc@23.5
   append_opts "-DCMAKE_C_COMPILER=nvc"
@@ -76,6 +81,15 @@ std-data)
 std-indices)
   append_opts "-DMODEL=std-indices"
   BENCHMARK_EXE="std-indices-stream"
+  case "$COMPILER" in
+  hipsycl-*)
+    export HIPSYCL_TARGETS="omp.accelerated"
+    append_opts "-DCMAKE_C_COMPILER=gcc"
+    append_opts "-DCMAKE_CXX_COMPILER=$HIPSYCL_DIR/bin/syclcc"
+    append_opts "-DCMAKE_CXX_COMPILER_WORKS=ON"
+    append_opts "-DCXX_EXTRA_FLAGS=-mcpu=neoverse-v1;-mtune=neoverse-v1;-Ofast;--opensycl-stdpar;--opensycl-stdpar-unconditional-offload;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+    ;;
+  esac
   ;;
 std-indices-dplomp)
   append_opts "-DMODEL=std-indices -DUSE_ONEDPL=OPENMP"
@@ -85,7 +99,20 @@ std-ranges-dplomp)
   append_opts "-DMODEL=std-ranges -DUSE_ONEDPL=OPENMP"
   BENCHMARK_EXE="std-ranges-stream"
   ;;
-
+sycl)
+  append_opts "-DMODEL=sycl"
+  append_opts "-DSYCL_COMPILER=ONEAPI-ICPX"
+  BENCHMARK_EXE="sycl-stream"
+  case "$COMPILER" in
+  hipsycl-*)
+    export HIPSYCL_TARGETS="omp.accelerated"
+    append_opts "-DCMAKE_C_COMPILER=gcc"
+    append_opts "-DCMAKE_CXX_COMPILER=g++"
+    append_opts "-DSYCL_COMPILER=HIPSYCL -DSYCL_COMPILER_DIR=$HIPSYCL_DIR"
+    append_opts "-DCXX_EXTRA_FLAGS=-mcpu=neoverse-v1;-mtune=neoverse-v1;-Ofast;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+    ;;
+  esac
+  ;;
 *) unknown_model ;;
 esac
 
