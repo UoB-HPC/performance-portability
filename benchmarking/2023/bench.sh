@@ -13,7 +13,7 @@ ROCM=rocm-5.4.1
 AOMP=aomp-16.0.3
 HIPSYCL=hipsycl-7b2e459
 
-babelstream=true
+babelstream=false
 cloverleaf=true
 tealeaf=true
 
@@ -45,7 +45,7 @@ bench() { # platform, compiler,  action, models...
     if [ "${!impl}" = true ]; then
         for m in "${@:4}"; do
             if [ "${models[$m]}" = true ]; then
-                build_and_submit "$1" "$2" "$m" "$3" "$impl" &
+                build_and_submit "$1" "$2" "$m" "$3" "$impl"
             fi
         done
     fi
@@ -165,14 +165,52 @@ tealeaf_rocm_gpu_models=(
 case "$1" in
 cambridge)
     cd "$BASE/babelstream/results"
-    bench_once a100-cambridge $NVHPC "${babelstream_nvhpc_gpu_models[@]}"
-    bench_once a100-cambridge $ONEAPI "${babelstream_oneapi_gpu_models[@]}"
 
     bench_once icl-cambridge $NVHPC "${babelstream_nvhpc_cpu_models[@]}"
-    bench_once icl-cambridge $GCC "${babelstream_gcc_cpu_models[@]}"
+    bench_once icl-cambridge $GCC kokkos omp
     bench_once icl-cambridge $ONEAPI "${babelstream_oneapi_cpu_models[@]}"
-    ;;
+    bench_once icl-cambridge $HIPSYCL std-indices sycl
 
+    cd "$BASE/cloverleaf/results"
+    rm -rf CloverLeaf
+    # CPUs
+    bench_exec exec_build icl-cambridge $GCC kokkos omp # tpause issue, no std-indices*
+    (
+        bench_exec exec_build icl-cambridge $NVHPC "${tealeaf_nvhpc_cpu_models[@]}" &
+        bench_exec exec_build icl-cambridge $ONEAPI "${tealeaf_oneapi_cpu_models[@]}" &
+        bench_exec exec_build icl-cambridge $HIPSYCL std-indices sycl-acc sycl-usm &
+        wait
+    )
+    for bm in 4 16 64 256; do
+        # for bm in 16 64; do
+        export INPUT_BM="${bm}_300"
+        bench_exec exec_submit icl-cambridge $GCC kokkos omp # tpause issue, no std-indices*
+        bench_exec exec_submit icl-cambridge $NVHPC "${tealeaf_nvhpc_cpu_models[@]}"
+        bench_exec exec_submit icl-cambridge $ONEAPI "${tealeaf_oneapi_cpu_models[@]}"
+        bench_exec exec_submit icl-cambridge $HIPSYCL std-indices sycl-acc sycl-usm
+    done
+
+    cd "$BASE/tealeaf/results"
+    rm -rf TeaLeaf
+
+    # CPUs
+    bench_exec exec_build icl-cambridge $GCC kokkos omp & # tpause issue, no std-indices*
+    (
+        bench_exec exec_build icl-cambridge $NVHPC "${tealeaf_nvhpc_cpu_models[@]}" &
+        bench_exec exec_build icl-cambridge $ONEAPI "${tealeaf_oneapi_cpu_models[@]}" &
+        bench_exec exec_build icl-cambridge $HIPSYCL std-indices sycl-acc sycl-usm &
+        wait
+    )
+    for bm in 1 2 4 8; do
+        # for bm in 1; do
+        export INPUT_BM="5e_${bm}_2"
+        bench_exec exec_submit icl-cambridge $GCC kokkos omp # tpause issue, no std-indices*
+        bench_exec exec_submit icl-cambridge $NVHPC "${tealeaf_nvhpc_cpu_models[@]}"
+        bench_exec exec_submit icl-cambridge $ONEAPI "${tealeaf_oneapi_cpu_models[@]}"
+        bench_exec exec_submit icl-cambridge $HIPSYCL std-indices sycl-acc sycl-usm
+    done
+
+    ;;
 idc)
 
     cd "$BASE/babelstream/results"
@@ -361,7 +399,7 @@ aws)
     # )
 
     for bm in 4 16 64 256; do
-    # for bm in 16; do
+        # for bm in 16; do
         export INPUT_BM="${bm}"
         bench_exec exec_submit graviton3e-aws $NVHPC "${tealeaf_nvhpc_cpu_models[@]}"
         bench_exec exec_submit graviton3e-aws $GCC "${tealeaf_gcc_cpu_models[@]}"
@@ -379,7 +417,7 @@ aws)
     #     wait
     # )
     for bm in 1 2 4 8; do
-    # for bm in 1; do
+        # for bm in 1; do
         export INPUT_BM="5e_${bm}"
         bench_exec exec_submit graviton3e-aws $NVHPC "${tealeaf_nvhpc_cpu_models[@]}"
         bench_exec exec_submit graviton3e-aws $GCC "${tealeaf_gcc_cpu_models[@]}"

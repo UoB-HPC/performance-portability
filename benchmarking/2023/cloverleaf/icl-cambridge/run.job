@@ -15,8 +15,7 @@ echo "$PWD"
 ldd "$BENCHMARK_EXE"
 
 NP=$SLURM_JOB_NUM_NODES
-DECK="$PWD/TeaLeaf/Benchmarks/tea_bm_${INPUT_BM}.in"
-PROBLEMS="$PWD/TeaLeaf/tea.problems"
+DECK="$PWD/CloverLeaf/InputDecks/clover_bm${INPUT_BM}.in"
 NCPUS=$(nproc)
 
 echo "master=$(hostname) nproc=$NCPUS"
@@ -93,7 +92,7 @@ function create_command() {
     for i in $(seq "$NP" -1 1); do
         echo ">>> Using 1R/N $i"
         mpiexec -np "$i" -print-rank-map \
-            sh -c "$(create_command node "$BENCHMARK_EXE --file $DECK --problems $PROBLEMS --out ../out/tea_np${i}_${CONFIG}_${INPUT_BM}.out --staging-buffer false $opts")"
+            sh -c "$(create_command node "$BENCHMARK_EXE --file $DECK --out ../out/clover_np${i}_${CONFIG}_${INPUT_BM}.out $opts")"
     done
 )
 (
@@ -114,6 +113,6 @@ function create_command() {
             echo "# adjusting rank to $i to prevent MPI_Allreduce stall"
         fi
         mpiexec -np "$i" -print-rank-map -map-by core -bind-to core \
-            sh -c "$(create_command rank "$BENCHMARK_EXE --file $DECK --problems $PROBLEMS --out ../out/tea_np${i}_${CONFIG}_${INPUT_BM}.out --staging-buffer false $opts")"
+            sh -c "$(create_command rank "$BENCHMARK_EXE --file $DECK --out ../out/clover_np${i}_${CONFIG}_${INPUT_BM}.out $opts")"
     done
 )
