@@ -266,7 +266,7 @@ nvidia)
 
     for bm in 1 2 4 8; do
         for stage in true false; do
-            export INPUT_BM="5e_${bm}"
+            export INPUT_BM="5e_${bm}_4"
             export STAGE="$stage"
             bench_exec exec_submit a100-nvidia $NVHPC "${tealeaf_nvhpc_gpu_models[@]}"
             bench_exec exec_submit a100-nvidia $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
@@ -292,7 +292,7 @@ nvidia)
 
     for bm in 4 16 64 256; do
         for stage in true false; do
-            export INPUT_BM="${bm}"
+            export INPUT_BM="${bm}_300"
             export STAGE="$stage"
             bench_exec exec_submit a100-nvidia $NVHPC "${tealeaf_nvhpc_gpu_models[@]}"
             bench_exec exec_submit a100-nvidia $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
