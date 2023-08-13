@@ -13,7 +13,7 @@ ROCM=rocm-5.4.1
 AOMP=aomp-16.0.3
 HIPSYCL=hipsycl-7b2e459
 
-babelstream=false
+babelstream=true
 cloverleaf=true
 tealeaf=true
 
@@ -243,21 +243,26 @@ nvidia)
     cd "$BASE/babelstream/results"
     bench_once a100-nvidia $NVHPC "${babelstream_nvhpc_gpu_models[@]}"
     bench_once a100-nvidia $ONEAPI "${babelstream_oneapi_gpu_models[@]}"
+    bench_exec exec_build a100-nvidia $HIPSYCL std-indices sycl
 
     bench_once h100-nvidia $NVHPC "${babelstream_nvhpc_gpu_models[@]}"
     bench_once h100-nvidia $ONEAPI "${babelstream_oneapi_gpu_models[@]}"
+    bench_exec exec_build h100-nvidia $HIPSYCL std-indices sycl
 
     ##########
 
     export INPUT_BM=5
     cd "$BASE/tealeaf/results"
+    rm -rf TeaLeaf
     # GPUs, test with and without staging buffer
 
     bench_exec exec_build a100-nvidia $NVHPC "${tealeaf_nvhpc_gpu_models[@]}"
     bench_exec exec_build a100-nvidia $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
+    bench_exec exec_build a100-nvidia $HIPSYCL std-indices sycl-acc sycl-usm
 
     bench_exec exec_build h100-nvidia $NVHPC "${tealeaf_nvhpc_gpu_models[@]}"
     bench_exec exec_build h100-nvidia $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
+    bench_exec exec_build h100-nvidia $HIPSYCL std-indices sycl-acc sycl-usm
 
     for bm in 1 2 4 8; do
         for stage in true false; do
@@ -274,13 +279,16 @@ nvidia)
     ##########
 
     cd "$BASE/cloverleaf/results"
+    rm -rf CloverLeaf
     # GPUs, test with and without staging buffer
 
     bench_exec exec_build a100-nvidia $NVHPC "${tealeaf_nvhpc_gpu_models[@]}"
     bench_exec exec_build a100-nvidia $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
+    bench_exec exec_build a100-nvidia $HIPSYCL std-indices sycl-acc sycl-usm
 
     bench_exec exec_build h100-nvidia $NVHPC "${tealeaf_nvhpc_gpu_models[@]}"
     bench_exec exec_build h100-nvidia $ONEAPI "${tealeaf_oneapi_gpu_models[@]}"
+    bench_exec exec_build h100-nvidia $HIPSYCL std-indices sycl-acc sycl-usm
 
     for bm in 4 16 64 256; do
         for stage in true false; do

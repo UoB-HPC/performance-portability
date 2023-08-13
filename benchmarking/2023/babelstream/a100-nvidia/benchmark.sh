@@ -19,6 +19,9 @@ nvhpc-23.5)
   append_opts "-DCMAKE_C_COMPILER=$NVHPC_PATH/compilers/bin/nvc"
   append_opts "-DCMAKE_CXX_COMPILER=$NVHPC_PATH/compilers/bin/nvc++"
   ;;
+hipsycl-7b2e459)
+  export HIPSYCL_DIR="/opt/hipsycl/7b2e459"
+  ;;
 oneapi-2023.2)
   load_oneapi "/opt/intel/oneapi/setvars.sh" --include-intel-llvm
   append_opts "-DCMAKE_C_COMPILER=clang"
@@ -59,6 +62,12 @@ omp)
 std-indices)
   append_opts "-DMODEL=std-indices"
   case "$COMPILER" in
+  hipsycl-*)
+    export HIPSYCL_TARGETS="cuda:sm_80"
+    append_opts "-DCMAKE_C_COMPILER=gcc"
+    append_opts "-DCMAKE_CXX_COMPILER=$HIPSYCL_DIR/bin/syclcc"
+    append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast;--opensycl-stdpar;--opensycl-stdpar-unconditional-offload"
+    ;;
   nvhpc-*)
     append_opts "-DNVHPC_OFFLOAD=cc80"
     append_opts "-DRELEASE_FLAGS='' -DCXX_EXTRA_FLAGS=-stdpar;-gpu=cc80;-O3;-tp=zen3" # CSD3 A100s are hosted on a EPYC 7763
@@ -73,9 +82,21 @@ std-indices)
   ;;
 sycl)
   append_opts "-DMODEL=sycl"
-  append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
-  append_opts "-DCXX_EXTRA_FLAGS=-fsycl;-fsycl-targets=nvptx64-nvidia-cuda;-Xsycl-target-backend;--cuda-gpu-arch=sm_80;--cuda-path=$NVHPC_PATH/cuda/;-march=znver3"
   BENCHMARK_EXE="sycl-stream"
+  case "$COMPILER" in
+  hipsycl-*)
+    export HIPSYCL_TARGETS="cuda:sm_80"
+    export HIPSYCL_DEBUG_LEVEL=1 # quieter during runtime
+    append_opts "-DCMAKE_C_COMPILER=gcc"
+    append_opts "-DCMAKE_CXX_COMPILER=g++"
+    append_opts "-DSYCL_COMPILER=HIPSYCL -DSYCL_COMPILER_DIR=$HIPSYCL_DIR"
+    append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast"
+    ;;
+  oneapi-*)
+    append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
+    append_opts "-DCXX_EXTRA_FLAGS=-fsycl;-fsycl-targets=nvptx64-nvidia-cuda;-Xsycl-target-backend;--cuda-gpu-arch=sm_80;--cuda-path=$NVHPC_PATH/cuda/;-march=znver3"
+    ;;
+  esac
   ;;
 sycl2020)
   append_opts "-DMODEL=sycl2020"
