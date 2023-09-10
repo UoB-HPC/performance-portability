@@ -9,15 +9,21 @@ GCC=gcc-13.1
 ACFL=acfl-23.04.1
 CCE=cce-14.0.1
 
-ROCM=rocm-5.4.1
+ROCM=rocm-5.5.1
 AOMP=aomp-16.0.3
-HIPSYCL=hipsycl-7b2e459
+HIPSYCL=hipsycl-fd5d1c0
+ROC_STDPAR=roc-stdpar-ecb855a5
+ROC_STDPAR_INTERPOSE=roc-stdpar-interpose-ecb855a5
+ROC_STDPAR_INTERPOSE_MS=roc-stdpar-interpose-ms-ecb855a5
 
+bude=false
 babelstream=true
 cloverleaf=true
-tealeaf=true
+tealeaf=false
 
 declare -A models
+models["ocl"]=true
+models["thrust"]=true
 models["tbb"]=true
 models["omp"]=true
 models["cuda"]=true
@@ -119,7 +125,7 @@ babelstream_oneapi_gpu_models=(
     std-indices
 )
 babelstream_aomp_gpu_models=(
-    kokkos hip omp
+    omp
 )
 babelstream_rocm_gpu_models=(
     hip # kokkos needs hipcc>= 5.2
@@ -163,6 +169,110 @@ tealeaf_rocm_gpu_models=(
 )
 
 case "$1" in
+local)
+
+    cd "$BASE/babelstream/results"
+
+    # HSA_XNACK=0 bench_once radeonvii-local $AOMP omp
+    # HSA_XNACK=0 bench_once radeonvii-local $ROCM ocl thrust hip kokkos
+    # HSA_XNACK=0 bench_once radeonvii-local $ONEAPI sycl sycl2020
+    # HSA_XNACK=0 bench_once radeonvii-local $HIPSYCL sycl
+
+    # HSA_XNACK=1 bench_once radeonvii-local $ONEAPI std-indices
+    # HSA_XNACK=1 bench_once radeonvii-local $HIPSYCL std-indices
+    HSA_XNACK=1 bench_once radeonvii-local $ROC_STDPAR_INTERPOSE_MS std-indices # hipMalloc
+    # HSA_XNACK=1 bench_once radeonvii-local $ROC_STDPAR_INTERPOSE std-indices # hipMallocManaged,  HSA_XNACK=0 is too slow here
+    # HSA_XNACK=1 bench_once radeonvii-local $ROC_STDPAR std-indices # malloc
+
+    cd "$BASE/bude/results"
+
+    # bench_exec exec_build radeonvii-local $AOMP omp
+    # bench_exec exec_build radeonvii-local $ROCM ocl thrust hip kokkos
+    # bench_exec exec_build radeonvii-local $ONEAPI sycl
+    # bench_exec exec_build radeonvii-local $HIPSYCL sycl
+
+    # bench_exec exec_build radeonvii-local $ONEAPI std-indices
+    # bench_exec exec_build radeonvii-local $HIPSYCL std-indices
+    # bench_exec exec_build radeonvii-local $ROC_STDPAR std-indices
+    bench_exec exec_build radeonvii-local $ROC_STDPAR_INTERPOSE_MS std-indices # hipMalloc
+
+
+    for bm in 1 2; do
+        export INPUT_BM="bm$bm"
+
+        # HSA_XNACK=0 bench_exec exec_submit radeonvii-local $AOMP omp
+        # HSA_XNACK=0 bench_exec exec_submit radeonvii-local $ROCM ocl thrust hip kokkos
+        # HSA_XNACK=0 bench_exec exec_submit radeonvii-local $ONEAPI sycl
+        # HSA_XNACK=0 bench_exec exec_submit radeonvii-local $HIPSYCL sycl
+
+        # HSA_XNACK=1 bench_exec exec_submit radeonvii-local $ONEAPI std-indices
+        # HSA_XNACK=1 bench_exec exec_submit radeonvii-local $HIPSYCL std-indices
+        # HSA_XNACK=1 bench_exec exec_submit radeonvii-local $ROC_STDPAR std-indices
+
+    done
+
+    cd "$BASE/cloverleaf/results"
+    # rm -rf CloverLeaf
+
+    # bench_exec exec_build radeonvii-local $AOMP omp
+    # bench_exec exec_build radeonvii-local $ROCM hip kokkos
+    # bench_exec exec_build radeonvii-local $ONEAPI sycl-acc
+    # bench_exec exec_build radeonvii-local $HIPSYCL sycl-acc
+
+    # bench_exec exec_build radeonvii-local $ONEAPI sycl-usm std-indices
+    # bench_exec exec_build radeonvii-local $HIPSYCL sycl-usm std-indices
+    # bench_exec exec_build radeonvii-local $ROC_STDPAR std-indices
+    bench_exec exec_build radeonvii-local $ROC_STDPAR_INTERPOSE_MS std-indices # hipMalloc
+
+
+
+    # for bm in 4 16 64; do
+    for bm in 4 16 64; do
+        export INPUT_BM="${bm}_300"
+
+        # HSA_XNACK=0 bench_exec exec_submit radeonvii-local $AOMP omp
+        # HSA_XNACK=0 bench_exec exec_submit radeonvii-local $ROCM hip kokkos
+        # HSA_XNACK=0 bench_exec exec_submit radeonvii-local $ONEAPI sycl-acc
+        # HSA_XNACK=0 bench_exec exec_submit radeonvii-local $HIPSYCL sycl-acc
+
+        # HSA_XNACK=1 bench_exec exec_submit radeonvii-local $ONEAPI sycl-usm std-indices
+        # HSA_XNACK=1 bench_exec exec_submit radeonvii-local $HIPSYCL sycl-usm std-indices
+        # HSA_XNACK=1 bench_exec exec_submit radeonvii-local $ROC_STDPAR std-indices
+
+    done
+
+    cd "$BASE/tealeaf/results"
+    rm -rf TeaLeaf
+
+    # bench_exec exec_build radeonvii-local $AOMP omp
+    # bench_exec exec_build radeonvii-local $ROCM hip kokkos
+    # bench_exec exec_build radeonvii-local $ONEAPI sycl-acc
+    # bench_exec exec_build radeonvii-local $HIPSYCL sycl-acc
+
+    # bench_exec exec_build radeonvii-local $ONEAPI sycl-usm std-indices
+    # bench_exec exec_build radeonvii-local $HIPSYCL sycl-usm std-indices
+    # bench_exec exec_build radeonvii-local $ROC_STDPAR std-indices
+
+    bench_exec exec_build radeonvii-local $ROC_STDPAR_INTERPOSE_MS std-indices # hipMalloc
+
+
+    # for bm in 4 16 64; do
+    for bm in 8; do
+        export INPUT_BM="5e_${bm}_4"
+
+        # HSA_XNACK=0 bench_exec exec_submit radeonvii-local $AOMP omp
+        # HSA_XNACK=0 bench_exec exec_submit radeonvii-local $ROCM hip kokkos
+        # HSA_XNACK=0 bench_exec exec_submit radeonvii-local $ONEAPI sycl-acc
+        # HSA_XNACK=0 bench_exec exec_submit radeonvii-local $HIPSYCL sycl-acc
+
+        # HSA_XNACK=1 bench_exec exec_submit radeonvii-local $ONEAPI sycl-usm std-indices
+        # HSA_XNACK=1 bench_exec exec_submit radeonvii-local $HIPSYCL sycl-usm std-indices
+        # HSA_XNACK=1 bench_exec exec_submit radeonvii-local $ROC_STDPAR std-indices
+
+    done
+
+    ;;
+
 cambridge)
     cd "$BASE/babelstream/results"
 

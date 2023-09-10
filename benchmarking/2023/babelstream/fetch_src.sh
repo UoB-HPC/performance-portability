@@ -27,6 +27,11 @@ fetch_src() {
       exit 1
 
     fi
+    # (
+    #   cd BabelStream
+    #   git apply "$HOME/roc-stdpar/data/patches/BabelStream/BABELSTREAM.patch"
+    # )
+    # echo "Patch applied"
   else
     (
       cd BabelStream

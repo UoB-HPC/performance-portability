@@ -1,0 +1,48 @@
+#!/bin/bash
+set -eu
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+DECK="$PWD/TeaLeaf/Benchmarks/tea_bm_${INPUT_BM}.in"
+PROBLEMS="$PWD/TeaLeaf/tea.problems"
+NCPUS=$(nproc)
+
+echo "master=$(hostname) nproc=$NCPUS"
+echo "PWD=$PWD"
+echo "CONFIG=$CONFIG"
+echo "BENCHMARK_EXE=$BENCHMARK_EXE"
+echo "DECK=$DECK"
+echo "======"
+
+mkdir -p ../out
+
+export OMP_TARGET_OFFLOAD=MANDATORY
+
+case "$COMPILER" in
+oneapi-*)
+    export ONEAPI_DEVICE_SELECTOR="hip:*"
+    ;;
+hipsycl-*)
+    export HIPSYCL_VISIBILITY_MASK="hip;omp"
+    ;;
+*) ;;
+esac
+
+case "$MODEL" in
+sycl-* | std-* | kokkos | omp | cuda | hip) ;; # no-op
+*)
+    echo "Unknown run configuration for model '$MODEL'"
+    exit 1
+    ;;
+esac
+
+(
+    set -o xtrace
+    export OMP_NUM_THREADS=$NCPUS
+    export OMP_PROC_BIND=true
+    export OMP_PLACES=cores
+    $BENCHMARK_EXE --file $DECK --problems $PROBLEMS --out ../out/tea_${CONFIG}_${INPUT_BM}.out
+)
