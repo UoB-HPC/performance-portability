@@ -9,20 +9,6 @@ ldd "$BENCHMARK_EXE"
 export OMP_TARGET_OFFLOAD=MANDATORY
 export LD_LIBRARY_PATH=/opt/rocm/lib:${LD_LIBRARY_PATH:-}
 
-case "$COMPILER" in
-oneapi-*)
-    export ONEAPI_DEVICE_SELECTOR="hip:*"
-    ;;
-hipsycl-*)
-    export HIPSYCL_VISIBILITY_MASK="hip;omp"
-    export HIPSYCL_DEBUG_LEVEL=1
-    ;;
-roc-stdpar-interpose-ms-*)
-    export LD_PRELOAD="/home/tom/ulf/malloc_switch.so"
-    ;;
-*) ;;
-esac
-
 opts=""
 case "$INPUT_BM" in
 bm1) opts="" ;;
@@ -31,6 +17,21 @@ bm2) opts="-n 16384 -i 4" ;;
     echo "Unknown deck '$INPUT_BM'"
     exit 1
     ;;
+esac
+
+case "$COMPILER" in
+oneapi-*)
+    export ONEAPI_DEVICE_SELECTOR="hip:*"
+    ;;
+hipsycl-*)
+    export HIPSYCL_VISIBILITY_MASK="hip;omp"
+    export HIPSYCL_DEBUG_LEVEL=1
+    opts+=" --device 1"
+    ;;
+roc-stdpar-interpose-*)
+    export LD_PRELOAD="/home/tom/ulf/malloc_switch.so"
+    ;;
+*) ;;
 esac
 
 case "$MODEL" in

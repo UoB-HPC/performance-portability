@@ -9,7 +9,7 @@ GCC=gcc-13.1
 ACFL=acfl-23.04.1
 CCE=cce-14.0.1
 
-ROCM=rocm-5.5.1
+ROCM=rocm-5.4.1
 AOMP=aomp-16.0.3
 HIPSYCL=hipsycl-fd5d1c0
 ROC_STDPAR=roc-stdpar-ecb855a5
@@ -18,7 +18,7 @@ ROC_STDPAR_INTERPOSE_MS=roc-stdpar-interpose-ms-ecb855a5
 
 bude=false
 babelstream=true
-cloverleaf=true
+cloverleaf=false
 tealeaf=false
 
 declare -A models

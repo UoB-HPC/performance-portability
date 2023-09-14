@@ -8,7 +8,7 @@ source "${SCRIPT_DIR}/../fetch_src.sh"
 
 module load cmake/3.23.2
 
-handle_cmd "${1}" "${2}" "${3}" "babelstream" "mi100"
+handle_cmd "${1}" "${2}" "${3}" "babelstream" "mi100" "${UTPX:-}"
 
 export USE_MAKE=false
 
@@ -26,10 +26,16 @@ aomp-16.0.3)
 rocm-5.4.1)
   module load gcc/13.1.0
   export PATH="/opt/rocm-5.4.1/bin:${PATH:-}"
+  export ROCM_PATH="/opt/rocm-5.4.1"
   ;;
-hipsycl-7b2e459)
+hipsycl-fd5d1c0)
   module load gcc/12.1.0
-  export HIPSYCL_DIR="$HOME/software/x86_64/hipsycl/7b2e459"
+  export HIPSYCL_DIR="$HOME/software/x86_64/hipsycl/fd5d1c0"
+  ;;
+roc-stdpar-*ecb855a5)
+  module load gcc/13.1.0
+  append_opts "-DCMAKE_C_COMPILER=$HOME/software/x86_64/llvm/ecb855a5a8c5dd9d46ca85041d7fe987fa73ba7c-roc-stdpar/bin/clang"
+  append_opts "-DCMAKE_CXX_COMPILER=$HOME/software/x86_64/llvm/ecb855a5a8c5dd9d46ca85041d7fe987fa73ba7c-roc-stdpar/bin/clang++"
   ;;
 oneapi-2023.2)
   module load gcc/13.1.0 # libpi_hip needs a newer libstdc++
@@ -59,6 +65,20 @@ hip)
   append_opts "-DCXX_EXTRA_FLAGS=--offload-arch=gfx908"
   BENCHMARK_EXE="hip-stream"
   ;;
+ocl)
+  append_opts "-DMODEL=ocl"
+  append_opts "-DCMAKE_C_COMPILER=gcc"
+  append_opts "-DCMAKE_CXX_COMPILER=g++" # auto detected
+  append_opts "-DOpenCL_LIBRARY=$ROCM_PATH/lib/libOpenCL.so"
+  BENCHMARK_EXE="ocl-stream"
+  ;;
+thrust)
+  append_opts "-DMODEL=thrust"
+  append_opts "-DCMAKE_C_COMPILER=gcc"
+  append_opts "-DCMAKE_CXX_COMPILER=hipcc" # auto detected
+  append_opts "-DTHRUST_IMPL=ROCM -DCMAKE_PREFIX_PATH=$ROCM_PATH/lib/cmake/"
+  BENCHMARK_EXE="thrust-stream"
+  ;;
 omp)
   append_opts "-DMODEL=omp"
   append_opts "-DOFFLOAD=ON -DOFFLOAD_FLAGS=-fopenmp;--offload-arch=gfx908"
@@ -80,12 +100,15 @@ std-indices)
     append_opts "-DUSE_ONEDPL=DPCPP"
     append_opts "-DCXX_EXTRA_FLAGS=-fsycl;-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908;-march=znver3"
     ;;
+  roc-stdpar-interpose-*)
+    append_opts "-DCXX_EXTRA_FLAGS=--hipstdpar;--hipstdpar-path=$HOME/roc-stdpar/include;--hipstdpar-interpose-alloc;--offload-arch=gfx908;-march=znver3;-g3;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+    ;;
   *) unknown_compiler ;;
   esac
   BENCHMARK_EXE="std-indices-stream"
   ;;
-sycl)
-  append_opts "-DMODEL=sycl"
+sycl-acc)
+  append_opts "-DMODEL=sycl2020-acc"
   case "$COMPILER" in
   hipsycl-*)
     export HIPSYCL_TARGETS="hip:gfx908"
@@ -99,19 +122,24 @@ sycl)
     ;;
   *) unknown_compiler ;;
   esac
-  BENCHMARK_EXE="sycl-stream"
+  BENCHMARK_EXE="sycl2020-acc-stream"
   ;;
-sycl2020)
-  append_opts "-DMODEL=sycl2020"
+sycl-usm)
+  append_opts "-DMODEL=sycl2020-usm"
   case "$COMPILER" in
-  hipsycl-*) unknown_compiler ;; # no 2020 reduction support
+  hipsycl-*)
+    export HIPSYCL_TARGETS="hip:gfx908"
+    append_opts "-DSYCL_COMPILER=HIPSYCL"
+    append_opts "-DSYCL_COMPILER_DIR=$HIPSYCL_DIR"
+    append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+    ;;
   oneapi-*)
     append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
     append_opts "-DCXX_EXTRA_FLAGS=-fsycl;-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908;-march=znver3"
     ;;
   *) unknown_compiler ;;
   esac
-  BENCHMARK_EXE="sycl2020-stream"
+  BENCHMARK_EXE="sycl2020-usm-stream"
   ;;
 *) unknown_model ;;
 esac

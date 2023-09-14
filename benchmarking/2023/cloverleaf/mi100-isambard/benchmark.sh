@@ -8,7 +8,7 @@ source "${SCRIPT_DIR}/../fetch_src.sh"
 
 module load cmake/3.23.2
 
-handle_cmd "${1}" "${2}" "${3}" "cloverleaf" "mi100" "${INPUT_BM:-}_${STAGE:-}"
+handle_cmd "${1}" "${2}" "${3}" "cloverleaf" "mi100" "${INPUT_BM:-}_${UTPX:-}"
 
 export USE_MAKE=false
 module load cray-mpich/8.1.25
@@ -20,7 +20,7 @@ if [ ! -d "$CRAY_MPICH_DIR" ]; then
   exit 1
 fi
 
-append_opts "-DCMAKE_VERBOSE_MAKEFILE=ON -DENABLE_MPI=ON -DENABLE_PROFILING=ON -DMPI_HOME=$CRAY_MPICH_DIR -DCXX_EXTRA_LIBRARIES=$CRAY_MPICH_ROOTDIR/gtl/lib/libmpi_gtl_hsa.so"
+append_opts "-DCMAKE_VERBOSE_MAKEFILE=ON -DENABLE_MPI=OFF -DENABLE_PROFILING=ON -DMPI_HOME=$CRAY_MPICH_DIR -DCXX_EXTRA_LIBRARIES=$CRAY_MPICH_ROOTDIR/gtl/lib/libmpi_gtl_hsa.so"
 
 case "$COMPILER" in
 aomp-16.0.3)
@@ -37,10 +37,16 @@ aomp-16.0.3)
 rocm-5.4.1)
   module load gcc/13.1.0
   export PATH="/opt/rocm-5.4.1/bin:${PATH:-}"
+  export ROCM_PATH="/opt/rocm-5.4.1"
   ;;
-hipsycl-7b2e459)
+hipsycl-fd5d1c0)
   module load gcc/12.1.0
-  export HIPSYCL_DIR="$HOME/software/x86_64/hipsycl/7b2e459"
+  export HIPSYCL_DIR="$HOME/software/x86_64/hipsycl/fd5d1c0"
+  ;;
+roc-stdpar-*ecb855a5)
+  module load gcc/13.1.0
+  append_opts "-DCMAKE_C_COMPILER=$HOME/software/x86_64/llvm/ecb855a5a8c5dd9d46ca85041d7fe987fa73ba7c-roc-stdpar/bin/clang"
+  append_opts "-DCMAKE_CXX_COMPILER=$HOME/software/x86_64/llvm/ecb855a5a8c5dd9d46ca85041d7fe987fa73ba7c-roc-stdpar/bin/clang++"
   ;;
 oneapi-2023.2)
   module load gcc/13.1.0
@@ -96,6 +102,9 @@ std-indices)
     hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908"
     append_opts "-DUSE_ONEDPL=DPCPP"
     append_opts "-DCXX_EXTRA_FLAGS=-fsycl;$hip_sycl_flags -DCXX_EXTRA_LINK_FLAGS=-fsycl;$hip_sycl_flags"
+    ;;
+  roc-stdpar-interpose-*)
+    append_opts "-DCXX_EXTRA_FLAGS=--hipstdpar;--hipstdpar-path=$HOME/roc-stdpar/include;--hipstdpar-interpose-alloc;--offload-arch=gfx908;-march=znver3;-g3;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
     ;;
   esac
   ;;

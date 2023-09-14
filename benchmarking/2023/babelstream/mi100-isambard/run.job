@@ -22,16 +22,35 @@ if [ "${LARGE:-}" = true ]; then
 fi
 
 export OMP_TARGET_OFFLOAD=MANDATORY
-export LD_LIBRARY_PATH=/opt/rocm-4.5.1/lib:${LD_LIBRARY_PATH:-}
+
+case "$COMPILER" in
+oneapi-*)
+    export ONEAPI_DEVICE_SELECTOR="hip:*"
+    ;;
+hipsycl-*)
+    export HIPSYCL_VISIBILITY_MASK="hip;omp"
+    export HIPSYCL_DEBUG_LEVEL=1
+    opts+=("--device")
+    opts+=("1")
+    ;;
+roc-stdpar-interpose-*)
+    #
+    ;;
+*) ;;
+esac
+
+if [ "${UTPX:-}" = utpx ]; then
+    export LD_PRELOAD="$HOME/utpx/build/libutpx.so"
+fi
 
 case "$MODEL" in
-hip | std-* | kokkos)
+hip | std-* | kokkos | ocl | thrust)
     "$BENCHMARK_EXE" --list
     "$BENCHMARK_EXE" "${opts[@]:-}"
     ;;
 omp)
     "$BENCHMARK_EXE" --list
-    "$BENCHMARK_EXE" "${opts[@]:-}" --device 1
+    "$BENCHMARK_EXE" "${opts[@]:-}"
     ;;
 sycl*)
     "$BENCHMARK_EXE" --list
@@ -41,7 +60,7 @@ sycl*)
     # 3: gfx908:sramecc+:xnack-
     # 4: gfx908:sramecc+:xnack-
     # 5: gfx908:sramecc+:xnack-
-    "$BENCHMARK_EXE" "${opts[@]:-}" --device 2
+    "$BENCHMARK_EXE" "${opts[@]:-}"
     ;;
 *)
     echo "Unknown run configuration for model '$MODEL'"

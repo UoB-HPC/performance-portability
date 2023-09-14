@@ -1,21 +1,14 @@
 #!/bin/bash
 #PBS -q instinctq
-#PBS -l select=2:ncpus=64:mpiprocs=4:mem=250gb
-#PBS -l place=scatter:excl
-#PBS -l walltime=3:00:00
+#PBS -l select=1:ncpus=64:mem=200gb
+#PBS -l walltime=00:30:00
+#PBS -l place=excl
 #PBS -joe
 
 # XXX DO NOT SPECIFY ngpus!
 
-# export MPICH_ENV_DISPLAY=1
-export MPICH_ASYNC_PROGRESS=1
-
-module load cray-pals # Use CRAY Parallel Application Launch Service
-
 : >"$OUT_FILE"
 exec &> >(tee -a "$OUT_FILE")
-
-cat $PBS_NODEFILE | xargs -I {} pbs_tmrsh {} hostname
 
 set -eu
 
@@ -24,61 +17,35 @@ date
 echo "$PWD"
 ldd "$BENCHMARK_EXE"
 
-NP=$(wc -l $PBS_NODEFILE | awk '{print $1}')
-DECK="$PWD/CloverLeaf/InputDecks/clover_bm${INPUT_BM}.in"
-NCPUS=$(nproc)
-export N_GPUS=4 # 4 per node
-
-echo "master=$(hostname) nproc=$NCPUS"
-echo "mpicc=$(which mpiexec)"
-echo "PWD=$PWD"
-echo "NP=$NP"
-echo "CONFIG=$CONFIG"
-echo "BENCHMARK_EXE=$BENCHMARK_EXE"
-echo "DECK=$DECK"
-echo "======"
-
-mkdir -p ../out
-
-# gdb -batch -ex "run" -ex "bt" --args
-# gdb -batch -ex "run" -ex "bt" -ex "quit" --args
-# /lustreOld/home/br-wlin/dist/usr/bin/gdb  -batch -ex "run" -ex "bt" -ex "quit" --args
-
 export OMP_TARGET_OFFLOAD=MANDATORY
+DECK="$PWD/CloverLeaf/InputDecks/clover_bm${INPUT_BM}.in"
 
 opts=""
 case "$COMPILER" in
 oneapi-*)
-    # module load gcc/11
     export ONEAPI_DEVICE_SELECTOR="hip:*"
     ;;
-hipsycl-*) opts+=" --device 1" ;; # device 0 is always OpenMP
+hipsycl-*)
+    export HIPSYCL_VISIBILITY_MASK="hip;omp"
+    export HIPSYCL_DEBUG_LEVEL=1
+    opts+=" --device 1"
+    ;;
+roc-stdpar-interpose-*)
+    #
+    ;;
 *) ;;
 esac
 
+if [ "${UTPX:-}" = utpx ]; then
+    export LD_PRELOAD="$HOME/utpx/build/libutpx.so"
+fi
+
 case "$MODEL" in
-sycl-* | std-* | kokkos | omp | cuda | hip) ;; # no-op
+std-* | thrust | hip | sycl-* | kokkos | omp)
+    $BENCHMARK_EXE --file $DECK --out ../out/clover_${CONFIG}_${INPUT_BM}.out --staging-buffer false $opts
+    ;;
 *)
     echo "Unknown run configuration for model '$MODEL'"
     exit 1
     ;;
 esac
-
-function create_command() {
-    # IntelMPI is $MPI_LOCALRANKID
-    # OpenMPI is $OMPI_COMM_WORLD_LOCAL_RANK
-    gpu_launch_prelude='export ROCR_VISIBLE_DEVICES=$(($PALS_RANKID % $N_GPUS)) && echo "# ROCR_VISIBLE_DEVICES=$ROCR_VISIBLE_DEVICES"'
-    echo "$gpu_launch_prelude && $2"
-}
-
-(
-    set -o xtrace
-    export OMP_NUM_THREADS=$NCPUS
-    export OMP_PROC_BIND=true
-    export OMP_PLACES=cores
-    for i in $(seq "$NP" -1 1); do
-        echo ">>> Using 1R/N $i"
-        mpiexec -np "$i" --cpu-bind none --mem-bind none \
-            sh -c "$(create_command node "$BENCHMARK_EXE --file $DECK --out ../out/clover_np${i}_${CONFIG}_${INPUT_BM}_stage_$STAGE.out --staging-buffer $STAGE $opts")"
-    done
-)
