@@ -22,10 +22,15 @@ hipsycl-*)
     export HIPSYCL_DEBUG_LEVEL=1
     ;;
 roc-stdpar-interpose-ms-*)
-    export LD_PRELOAD="/home/tom/ulf/malloc_switch.so"
+    #
     ;;
 *) ;;
 esac
+
+if [ -n "${UTPX:-}" ]; then
+    export LD_PRELOAD="$HOME/utpx/build/libutpx.so"
+    export UTPX_MODE="$UTPX"
+fi
 
 case "$MODEL" in
 hip | std-* | kokkos | thrust | ocl)

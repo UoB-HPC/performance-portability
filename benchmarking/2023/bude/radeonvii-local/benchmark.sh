@@ -6,7 +6,7 @@ SCRIPT_DIR=$(realpath "$(dirname "$(realpath "$0")")")
 source "${SCRIPT_DIR}/../../common.sh"
 source "${SCRIPT_DIR}/../fetch_src.sh"
 
-handle_cmd "${1}" "${2}" "${3}" "minibude" "radeonvii" "${INPUT_BM:-}"
+handle_cmd "${1}" "${2}" "${3}" "minibude" "radeonvii" "bm=${INPUT_BM:-}_xnack=${HSA_XNACK:-}_utpx=${UTPX:-}"
 
 export USE_MAKE=false
 export USE_SLURM=false
@@ -14,8 +14,8 @@ export USE_SLURM=false
 append_opts "-DCMAKE_VERBOSE_MAKEFILE=ON"
 
 case "$COMPILER" in
-aomp-16.0.3)
-  export AOMP=$HOME/usr/lib/aomp_16.0-3
+aomp-18.0.0)
+  export AOMP=$HOME/usr/lib/aomp_18.0-0
   export PATH="$AOMP/bin:${PATH:-}"
   export LD_LIBRARY_PATH="$AOMP/lib64:${LD_LIBRARY_PATH:-}"
   export LIBRARY_PATH="$AOMP/lib64:${LIBRARY_PATH:-}"
@@ -85,7 +85,7 @@ omp)
   append_opts "-DOFFLOAD=ON -DOFFLOAD_FLAGS=-fopenmp;--offload-arch=gfx906"
   append_opts "-DCMAKE_C_COMPILER=$(which clang)"
   append_opts "-DCMAKE_CXX_COMPILER=$(which clang++)"
-  append_opts "-DCXX_EXTRA_FLAGS=-march=native;-Ofast"
+  append_opts "-DCXX_EXTRA_FLAGS=-march=native;-Ofast;-fopenmp-target-fast"
   BENCHMARK_EXE="omp-bude"
   ;;
 std-indices)

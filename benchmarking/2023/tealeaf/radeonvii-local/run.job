@@ -20,6 +20,7 @@ echo "======"
 mkdir -p ../out
 
 export OMP_TARGET_OFFLOAD=MANDATORY
+export LD_LIBRARY_PATH=/opt/rocm/lib:${LD_LIBRARY_PATH:-}
 
 case "$COMPILER" in
 oneapi-*)

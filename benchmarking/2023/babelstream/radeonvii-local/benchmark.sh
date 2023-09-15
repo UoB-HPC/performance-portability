@@ -6,7 +6,7 @@ SCRIPT_DIR=$(realpath "$(dirname "$(realpath "$0")")")
 source "${SCRIPT_DIR}/../../common.sh"
 source "${SCRIPT_DIR}/../fetch_src.sh"
 
-handle_cmd "${1}" "${2}" "${3}" "babelstream" "radeonvii"
+handle_cmd "${1}" "${2}" "${3}" "babelstream" "radeonvii" "xnack=${HSA_XNACK:-}_utpx=${UTPX:-}"
 
 export USE_MAKE=false
 export USE_SLURM=false
@@ -14,8 +14,8 @@ export USE_SLURM=false
 append_opts "-DCMAKE_VERBOSE_MAKEFILE=ON"
 
 case "$COMPILER" in
-aomp-16.0.3)
-  export AOMP=$HOME/usr/lib/aomp_16.0-3
+aomp-18.0.0)
+  export AOMP=$HOME/usr/lib/aomp_18.0-0
   export PATH="$AOMP/bin:${PATH:-}"
   export LD_LIBRARY_PATH="$AOMP/lib64:${LD_LIBRARY_PATH:-}"
   export LIBRARY_PATH="$AOMP/lib64:${LIBRARY_PATH:-}"
@@ -79,7 +79,7 @@ thrust)
   ;;
 omp)
   append_opts "-DMODEL=omp"
-  append_opts "-DOFFLOAD=ON -DOFFLOAD_FLAGS=-fopenmp;--offload-arch=gfx906"
+  append_opts "-DOFFLOAD=ON -DOFFLOAD_FLAGS=-fopenmp;--offload-arch=gfx906;-fopenmp-target-fast"
   append_opts "-DCMAKE_C_COMPILER=$(which clang)"
   append_opts "-DCMAKE_CXX_COMPILER=$(which clang++)"
   BENCHMARK_EXE="omp-stream"
@@ -99,20 +99,17 @@ std-indices)
     append_opts "-DCXX_EXTRA_LIBRARIES=tbb"
     ;;
   roc-stdpar-interpose-*)
-    append_opts "-DCXX_EXTRA_FLAGS=--hipstdpar;--hipstdpar-path=$HOME/roc-stdpar/include;--hipstdpar-interpose-alloc;--offload-arch=gfx906;-march=native;-g3"
-    # append_opts "-DCXX_EXTRA_FLAGS=--hipstdpar;--hipstdpar-path=$HOME/roc-stdpar/include;--offload-arch=gfx906;-march=native;-g3"
+    append_opts "-DCXX_EXTRA_FLAGS=--hipstdpar;--hipstdpar-path=$HOME/roc-stdpar/include;--hipstdpar-interpose-alloc;--offload-arch=gfx906;-march=native"
     ;;
   roc-stdpar-*)
-    # append_opts "-DCXX_EXTRA_FLAGS=--hipstdpar;--hipstdpar-path=$HOME/roc-stdpar/include;--hipstdpar-prim-path=/home/tom/rocThrust/build/deps/rocprim/include;--hipstdpar-thrust-path=/home/tom/rocThrust/dist/include;--offload-arch=gfx906;-march=native"
-    # append_opts "-DCXX_EXTRA_FLAGS=--hipstdpar;--hipstdpar-path=$HOME/roc-stdpar/include;--hipstdpar-prim-path=/opt/rocm-5.3.3/rocprim/include;--hipstdpar-thrust-path=/opt/rocm-5.3.3/rocthrust/include;-hipstdpar-interpose-alloc;--offload-arch=gfx906;-march=native"
     append_opts "-DCXX_EXTRA_FLAGS=--hipstdpar;--hipstdpar-path=$HOME/roc-stdpar/include;--offload-arch=gfx906;-march=native"
     ;;
   *) unknown_compiler ;;
   esac
   BENCHMARK_EXE="std-indices-stream"
   ;;
-sycl)
-  append_opts "-DMODEL=sycl"
+sycl-acc)
+  append_opts "-DMODEL=sycl2020-acc"
   case "$COMPILER" in
   hipsycl-*)
     export HIPSYCL_TARGETS="hip:gfx906"
@@ -126,19 +123,24 @@ sycl)
     ;;
   *) unknown_compiler ;;
   esac
-  BENCHMARK_EXE="sycl-stream"
+  BENCHMARK_EXE="sycl2020-acc-stream"
   ;;
-sycl2020)
-  append_opts "-DMODEL=sycl2020"
+sycl-usm)
+  append_opts "-DMODEL=sycl2020-usm"
   case "$COMPILER" in
-  hipsycl-*) unknown_compiler ;; # no 2020 reduction support
+  hipsycl-*)
+    export HIPSYCL_TARGETS="hip:gfx906"
+    append_opts "-DSYCL_COMPILER=HIPSYCL"
+    append_opts "-DSYCL_COMPILER_DIR=$HIPSYCL_DIR"
+    append_opts "-DCXX_EXTRA_FLAGS=-march=native"
+    ;;
   oneapi-*)
     append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
     append_opts "-DCXX_EXTRA_FLAGS=-fsycl;-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx906;-march=native"
     ;;
   *) unknown_compiler ;;
   esac
-  BENCHMARK_EXE="sycl2020-stream"
+  BENCHMARK_EXE="sycl2020-usm-stream"
   ;;
 *) unknown_model ;;
 esac

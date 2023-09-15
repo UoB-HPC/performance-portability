@@ -6,16 +6,16 @@ SCRIPT_DIR=$(realpath "$(dirname "$(realpath "$0")")")
 source "${SCRIPT_DIR}/../../common.sh"
 source "${SCRIPT_DIR}/../fetch_src.sh"
 
-handle_cmd "${1}" "${2}" "${3}" "cloverleaf" "radeonvii" "${INPUT_BM:-}"
+handle_cmd "${1}" "${2}" "${3}" "cloverleaf" "radeonvii" "bm=${INPUT_BM:-}_xnack=${HSA_XNACK:-}_utpx=${UTPX:-}"
 
 export USE_MAKE=false
 export USE_SLURM=false
 
-append_opts "-DCMAKE_VERBOSE_MAKEFILE=ON -DENABLE_MPI=OFF -DENABLE_PROFILING=ON -DCMAKE_BUILD_TYPE=Debug"
+append_opts "-DCMAKE_VERBOSE_MAKEFILE=ON -DENABLE_MPI=OFF -DENABLE_PROFILING=ON"
 
 case "$COMPILER" in
-aomp-16.0.3)
-  export AOMP=$HOME/usr/lib/aomp_16.0-3
+aomp-18.0.0)
+  export AOMP=$HOME/usr/lib/aomp_18.0-0
   export PATH="$AOMP/bin:${PATH:-}"
   export LD_LIBRARY_PATH="$AOMP/lib64:${LD_LIBRARY_PATH:-}"
   export LIBRARY_PATH="$AOMP/lib64:${LIBRARY_PATH:-}"
@@ -54,18 +54,19 @@ kokkos)
   append_opts "-DKokkos_ARCH_VEGA906=ON"
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=hipcc"
+  append_opts "-DCXX_EXTRA_FLAGS=-march=native;-Ofast"
   BENCHMARK_EXE="kokkos-cloverleaf"
   ;;
 hip)
   append_opts "-DMODEL=hip"
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=hipcc" # auto detected
-  append_opts "-DCXX_EXTRA_FLAGS=--offload-arch=gfx906"
+  append_opts "-DCXX_EXTRA_FLAGS=--offload-arch=gfx906;-Ofast"
   BENCHMARK_EXE="hip-cloverleaf"
   ;;
 omp)
   append_opts "-DMODEL=omp-target"
-  append_opts "-DOFFLOAD=ON -DOFFLOAD_FLAGS=-fopenmp;--offload-arch=gfx906"
+  append_opts "-DOFFLOAD=ON -DOFFLOAD_FLAGS=-fopenmp;--offload-arch=gfx906;-Ofast;-fopenmp-target-fast"
   append_opts "-DCMAKE_C_COMPILER=$(which clang)"
   append_opts "-DCMAKE_CXX_COMPILER=$(which clang++)"
   BENCHMARK_EXE="omp-target-cloverleaf"
@@ -81,17 +82,17 @@ std-indices)
     append_opts "-DCXX_EXTRA_FLAGS=-march=native;-Ofast;--opensycl-stdpar;--opensycl-stdpar-unconditional-offload"
     ;;
   oneapi-*)
-    hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx906"
+    hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx906;-Ofast"
     append_opts "-DUSE_ONEDPL=DPCPP"
     append_opts "-DCXX_EXTRA_FLAGS=-fsycl;$hip_sycl_flags -DCXX_EXTRA_LINK_FLAGS=-fsycl;$hip_sycl_flags"
     ;;
   roc-stdpar-interpose-*)
     append_opts "-DCLANG_STDPAR_PATH=$HOME/roc-stdpar/include"
-    append_opts "-DCXX_EXTRA_FLAGS=--hipstdpar;--hipstdpar-path=$HOME/roc-stdpar/include;--hipstdpar-prim-path=/opt/rocm-5.3.3/rocprim/include;--hipstdpar-thrust-path=/opt/rocm-5.3.3/rocthrust/include;--hipstdpar-interpose-alloc;--offload-arch=gfx906;-march=native"
+    append_opts "-DCXX_EXTRA_FLAGS=--hipstdpar;--hipstdpar-path=$HOME/roc-stdpar/include;--hipstdpar-prim-path=/opt/rocm-5.3.3/rocprim/include;--hipstdpar-thrust-path=/opt/rocm-5.3.3/rocthrust/include;--hipstdpar-interpose-alloc;--offload-arch=gfx906;-march=native;-Ofast"
     ;;
   roc-stdpar-*)
     append_opts "-DCLANG_STDPAR_PATH=$HOME/roc-stdpar/include"
-    append_opts "-DCXX_EXTRA_FLAGS=--hipstdpar;--hipstdpar-path=$HOME/roc-stdpar/include;--hipstdpar-prim-path=/opt/rocm-5.3.3/rocprim/include;--hipstdpar-thrust-path=/opt/rocm-5.3.3/rocthrust/include;--offload-arch=gfx906;-march=native"
+    append_opts "-DCXX_EXTRA_FLAGS=--hipstdpar;--hipstdpar-path=$HOME/roc-stdpar/include;--hipstdpar-prim-path=/opt/rocm-5.3.3/rocprim/include;--hipstdpar-thrust-path=/opt/rocm-5.3.3/rocthrust/include;--offload-arch=gfx906;-march=native;-Ofast"
     ;;
   esac
   ;;
@@ -109,7 +110,7 @@ sycl-acc)
     append_opts "-DUSE_HOSTTASK=OFF"
     ;;
   oneapi-*)
-    hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx906"
+    hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx906;-Ofast"
     append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
     append_opts "-DUSE_HOSTTASK=ON"
     append_opts "-DCXX_EXTRA_FLAGS=$hip_sycl_flags -DCXX_EXTRA_LINK_FLAGS=$hip_sycl_flags"
@@ -130,7 +131,7 @@ sycl-usm)
     append_opts "-DUSE_HOSTTASK=OFF"
     ;;
   oneapi-*)
-    hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx906"
+    hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx906;-Ofast"
     append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
     append_opts "-DUSE_HOSTTASK=ON"
     append_opts "-DCXX_EXTRA_FLAGS=$hip_sycl_flags -DCXX_EXTRA_LINK_FLAGS=$hip_sycl_flags"

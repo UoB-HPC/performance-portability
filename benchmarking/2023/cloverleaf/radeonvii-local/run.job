@@ -19,6 +19,7 @@ echo "======"
 mkdir -p ../out
 
 export OMP_TARGET_OFFLOAD=MANDATORY
+export LD_LIBRARY_PATH=/opt/rocm/lib:${LD_LIBRARY_PATH:-}
 
 case "$COMPILER" in
 oneapi-*)
@@ -29,6 +30,11 @@ hipsycl-*)
     ;;
 *) ;;
 esac
+
+if [ -n "${UTPX:-}" ]; then
+    export LD_PRELOAD="$HOME/utpx/build/libutpx.so"
+    export UTPX_MODE="$UTPX"
+fi
 
 case "$MODEL" in
 sycl-* | std-* | kokkos | omp | cuda | hip) ;; # no-op
