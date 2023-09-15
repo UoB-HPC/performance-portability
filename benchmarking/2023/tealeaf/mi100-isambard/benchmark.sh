@@ -8,7 +8,7 @@ source "${SCRIPT_DIR}/../fetch_src.sh"
 
 module load cmake/3.23.2
 
-handle_cmd "${1}" "${2}" "${3}" "tealeaf" "mi100" "${INPUT_BM:-}_${UTPX:-}"
+handle_cmd "${1}" "${2}" "${3}" "tealeaf" "mi100" "bm_${INPUT_BM:-}_xnack_${HSA_XNACK:-}_utpx_${UTPX:-}"
 
 export USE_MAKE=false
 module load cray-mpich/8.1.25
@@ -23,9 +23,9 @@ fi
 append_opts "-DCMAKE_VERBOSE_MAKEFILE=ON -DENABLE_MPI=OFF -DENABLE_PROFILING=ON -DMPI_HOME=$CRAY_MPICH_DIR -DCXX_EXTRA_LIBRARIES=$CRAY_MPICH_ROOTDIR/gtl/lib/libmpi_gtl_hsa.so"
 
 case "$COMPILER" in
-aomp-16.0.3)
+aomp-18.0.0)
   module load gcc/13.1.0
-  export AOMP=$HOME/usr/lib/aomp_16.0-3
+  export AOMP=$HOME/usr/lib/aomp_18.0-0
   export PATH="$AOMP/bin:${PATH:-}"
   export LD_LIBRARY_PATH="$AOMP/lib64:${LD_LIBRARY_PATH:-}"
   export LIBRARY_PATH="$AOMP/lib64:${LIBRARY_PATH:-}"
@@ -56,7 +56,6 @@ oneapi-2023.2)
   set -eu
   append_opts "-DCMAKE_C_COMPILER=icx"
   append_opts "-DCMAKE_CXX_COMPILER=icpx"
-  append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast"
   ;;
 *) unknown_compiler ;;
 esac
@@ -71,20 +70,22 @@ kokkos)
   append_opts "-DKokkos_ARCH_VEGA908=ON"
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=hipcc"
+  append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast"
   BENCHMARK_EXE="kokkos-tealeaf"
   ;;
 hip)
   append_opts "-DMODEL=hip"
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=hipcc" # auto detected
-  append_opts "-DCXX_EXTRA_FLAGS=--offload-arch=gfx908;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+  append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;--offload-arch=gfx908;-Ofast;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
   BENCHMARK_EXE="hip-tealeaf"
   ;;
 omp)
   append_opts "-DMODEL=omp-target"
-  append_opts "-DOFFLOAD=ON -DOFFLOAD_FLAGS=-fopenmp;--offload-arch=gfx908"
+  append_opts "-DOFFLOAD=ON -DOFFLOAD_FLAGS=-fopenmp;--offload-arch=gfx908;-fopenmp-target-fast"
   append_opts "-DCMAKE_C_COMPILER=$(which clang)"
   append_opts "-DCMAKE_CXX_COMPILER=$(which clang++)"
+  append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast"
   BENCHMARK_EXE="omp-target-tealeaf"
   ;;
 std-indices)
@@ -99,12 +100,12 @@ std-indices)
     append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast;--opensycl-stdpar;--opensycl-stdpar-unconditional-offload;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
     ;;
   oneapi-*)
-    hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908"
+    hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908;-Ofast"
     append_opts "-DUSE_ONEDPL=DPCPP"
-    append_opts "-DCXX_EXTRA_FLAGS=-fsycl;$hip_sycl_flags -DCXX_EXTRA_LINK_FLAGS=-fsycl;$hip_sycl_flags"
+    append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-fsycl;$hip_sycl_flags -DCXX_EXTRA_LINK_FLAGS=-fsycl;$hip_sycl_flags"
     ;;
   roc-stdpar-interpose-*)
-    append_opts "-DCXX_EXTRA_FLAGS=--hipstdpar;--hipstdpar-path=$HOME/roc-stdpar/include;--hipstdpar-interpose-alloc;--offload-arch=gfx908;-march=znver3;-g3;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+    append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;--hipstdpar;--hipstdpar-path=$HOME/roc-stdpar/include;--hipstdpar-interpose-alloc;--offload-arch=gfx908;-Ofast;-march=znver3;-g3;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
     ;;
   esac
   ;;
@@ -122,7 +123,7 @@ sycl-acc)
     append_opts "-DUSE_HOSTTASK=OFF"
     ;;
   oneapi-*)
-    hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908"
+    hip_sycl_flags="-march=znver3;-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908;-Ofast"
     append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
     append_opts "-DUSE_HOSTTASK=ON"
     append_opts "-DCXX_EXTRA_FLAGS=$hip_sycl_flags -DCXX_EXTRA_LINK_FLAGS=$hip_sycl_flags"
@@ -143,7 +144,7 @@ sycl-usm)
     append_opts "-DUSE_HOSTTASK=OFF"
     ;;
   oneapi-*)
-    hip_sycl_flags="-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908"
+    hip_sycl_flags="-march=znver3;-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908;-Ofast"
     append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
     append_opts "-DUSE_HOSTTASK=ON"
     append_opts "-DCXX_EXTRA_FLAGS=$hip_sycl_flags -DCXX_EXTRA_LINK_FLAGS=$hip_sycl_flags"

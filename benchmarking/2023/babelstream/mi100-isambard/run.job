@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -q instinctq
 #PBS -l select=1:ncpus=64:mem=200gb
-#PBS -l walltime=00:10:00
+#PBS -l walltime=00:25:00
 #PBS -l place=excl
 #PBS -joe
 
@@ -39,8 +39,9 @@ roc-stdpar-interpose-*)
 *) ;;
 esac
 
-if [ "${UTPX:-}" = utpx ]; then
+if [ -n "${UTPX:-}" ]; then
     export LD_PRELOAD="$HOME/utpx/build/libutpx.so"
+    export UTPX_MODE="$UTPX"
 fi
 
 case "$MODEL" in

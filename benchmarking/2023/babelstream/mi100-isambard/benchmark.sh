@@ -8,15 +8,15 @@ source "${SCRIPT_DIR}/../fetch_src.sh"
 
 module load cmake/3.23.2
 
-handle_cmd "${1}" "${2}" "${3}" "babelstream" "mi100" "${UTPX:-}"
+handle_cmd "${1}" "${2}" "${3}" "babelstream" "mi100" "xnack_${HSA_XNACK:-}_utpx_${UTPX:-}"
 
 export USE_MAKE=false
 
 append_opts "-DCMAKE_VERBOSE_MAKEFILE=ON"
 
 case "$COMPILER" in
-aomp-16.0.3)
-  export AOMP=$HOME/usr/lib/aomp_16.0-3
+aomp-18.0.0)
+  export AOMP=$HOME/usr/lib/aomp_18.0-0
   export PATH="$AOMP/bin:${PATH:-}"
   export LD_LIBRARY_PATH="$AOMP/lib64:${LD_LIBRARY_PATH:-}"
   export LIBRARY_PATH="$AOMP/lib64:${LIBRARY_PATH:-}"
@@ -81,7 +81,7 @@ thrust)
   ;;
 omp)
   append_opts "-DMODEL=omp"
-  append_opts "-DOFFLOAD=ON -DOFFLOAD_FLAGS=-fopenmp;--offload-arch=gfx908"
+  append_opts "-DOFFLOAD=ON -DOFFLOAD_FLAGS=-fopenmp;--offload-arch=gfx908;-fopenmp-target-fast"
   append_opts "-DCMAKE_C_COMPILER=$(which clang)"
   append_opts "-DCMAKE_CXX_COMPILER=$(which clang++)"
   BENCHMARK_EXE="omp-stream"

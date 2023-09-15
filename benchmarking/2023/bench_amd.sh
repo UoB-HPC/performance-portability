@@ -17,8 +17,8 @@ ROC_STDPAR_INTERPOSE=roc-stdpar-interpose-ecb855a5
 
 bude=false
 babelstream=false
-cloverleaf=false
-tealeaf=true
+cloverleaf=true
+tealeaf=false
 
 declare -A models
 models["ocl"]=true
@@ -224,21 +224,37 @@ local)
     ;;
 
 p3)
+    ROCM=rocm-5.4.1
     module use "$HOME/modulefiles/"
 
     cd "$BASE/babelstream/results"
+    # rm -rf "$BASE/babelstream/results/BabelStream"
 
+    # (
+    #     bench_exec exec_build mi100-isambard $AOMP omp # git clone is serial
+    #     bench_exec exec_build mi100-isambard $ROCM hip thrust ocl kokkos
+    #     bench_exec exec_build mi100-isambard $ONEAPI sycl-acc sycl-usm std-indices
+    #     bench_exec exec_build mi100-isambard $HIPSYCL sycl-acc sycl-usm std-indices
+    #     bench_exec exec_build mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
+    #     wait
+    # )
     export UTPX=""
-    bench_once mi100-isambard $AOMP omp
-    # bench_once mi100-isambard $ROCM hip thrust ocl kokkos
-    # bench_once mi100-isambard $ONEAPI sycl-acc sycl-usm std-indices
-    # bench_once mi100-isambard $HIPSYCL sycl-acc sycl-usm std-indices
-    # bench_once mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
+    # HSA_XNACK=0 bench_exec exec_submit mi100-isambard $AOMP omp
+    # HSA_XNACK=0 bench_exec exec_submit mi100-isambard $ROCM hip thrust ocl kokkos
+    # HSA_XNACK=0 bench_exec exec_submit mi100-isambard $ONEAPI sycl-acc sycl-usm std-indices
+    # HSA_XNACK=0 bench_exec exec_submit mi100-isambard $HIPSYCL sycl-acc sycl-usm std-indices
+    # HSA_XNACK=0 bench_exec exec_submit mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
 
-    # export UTPX=utpx
-    # bench_once mi100-isambard $ONEAPI sycl-usm std-indices
-    # bench_once mi100-isambard $HIPSYCL sycl-usm std-indices
-    # bench_once mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
+    # HSA_XNACK=1 bench_exec exec_submit mi100-isambard $ONEAPI sycl-usm std-indices
+    # HSA_XNACK=1 bench_exec exec_submit mi100-isambard $HIPSYCL sycl-usm std-indices
+    # HSA_XNACK=1 bench_exec exec_submit mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
+
+    for mode in "DEVICE"; do
+        export UTPX="$mode"
+        HSA_XNACK=0 bench_exec exec_submit mi100-isambard $ONEAPI sycl-usm std-indices
+        HSA_XNACK=0 bench_exec exec_submit mi100-isambard $HIPSYCL sycl-usm std-indices
+        HSA_XNACK=0 bench_exec exec_submit mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
+    done
 
     ##########
     cd "$BASE/bude/results"
@@ -267,37 +283,49 @@ p3)
 
     cd "$BASE/tealeaf/results"
 
-    bench_exec exec_build mi100-isambard $AOMP omp
-    bench_exec exec_build mi100-isambard $ROCM hip kokkos
-    bench_exec exec_build mi100-isambard $ONEAPI sycl-acc sycl-usm std-indices
-    bench_exec exec_build mi100-isambard $HIPSYCL sycl-acc sycl-usm std-indices
-    bench_exec exec_build mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
+    # (
+    #     bench_exec exec_build mi100-isambard $AOMP omp #
+    #     bench_exec exec_build mi100-isambard $ROCM hip kokkos &
+    #     bench_exec exec_build mi100-isambard $ONEAPI sycl-acc sycl-usm std-indices &
+    #     bench_exec exec_build mi100-isambard $HIPSYCL sycl-acc sycl-usm std-indices &
+    #     bench_exec exec_build mi100-isambard $ROC_STDPAR_INTERPOSE std-indices &
+    #     wait
+    # )
 
-    # for bm in 4 16 64 256; do
-    for bm in 1; do
-        # for bm in 16; do
-        export INPUT_BM="5e_${bm}_4"
+    for bm in 4; do
+        export INPUT_BM="5e_${bm}_2"
         export UTPX=""
-        # bench_exec exec_submit mi100-isambard $AOMP omp
-        # bench_exec exec_submit mi100-isambard $ROCM hip kokkos
-        bench_exec exec_submit mi100-isambard $ONEAPI sycl-acc sycl-usm std-indices
-        # bench_exec exec_submit mi100-isambard $HIPSYCL sycl-acc sycl-usm std-indices
-        # bench_exec exec_submit mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
-        export UTPX=utpx
-        # bench_exec exec_submit mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
-        # bench_exec exec_submit mi100-isambard $ONEAPI sycl-usm std-indices
-        # bench_exec exec_submit mi100-isambard $HIPSYCL sycl-usm std-indices
+        HSA_XNACK=0 bench_exec exec_submit mi100-isambard $AOMP omp
+        HSA_XNACK=0 bench_exec exec_submit mi100-isambard $ROCM hip kokkos
+        HSA_XNACK=0 bench_exec exec_submit mi100-isambard $ONEAPI sycl-acc sycl-usm std-indices
+        HSA_XNACK=0 bench_exec exec_submit mi100-isambard $HIPSYCL sycl-acc sycl-usm std-indices
+        HSA_XNACK=0 bench_exec exec_submit mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
+    done
+
+    for bm in 4; do
+        export INPUT_BM="5e_${bm}_2"
+        for mode in "DEVICE" "ADVISE" "MIRROR"; do
+            export UTPX="$mode"
+            HSA_XNACK=0 bench_exec exec_submit mi100-isambard $ONEAPI sycl-usm std-indices
+            HSA_XNACK=0 bench_exec exec_submit mi100-isambard $HIPSYCL sycl-usm std-indices
+            HSA_XNACK=0 bench_exec exec_submit mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
+        done
     done
 
     ##########
 
     cd "$BASE/cloverleaf/results"
 
-    # bench_exec exec_build mi100-isambard $AOMP omp
-    # bench_exec exec_build mi100-isambard $ROCM hip kokkos
-    # bench_exec exec_build mi100-isambard $ONEAPI sycl-acc sycl-usm std-indices
-    # bench_exec exec_build mi100-isambard $HIPSYCL sycl-acc sycl-usm std-indices
-    # bench_exec exec_build mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
+    # (
+    #     bench_exec exec_build mi100-isambard $AOMP omp #
+    #     bench_exec exec_build mi100-isambard $ROCM hip kokkos &
+    #     bench_exec exec_build mi100-isambard $ONEAPI sycl-acc sycl-usm std-indices &
+    #     bench_exec exec_build mi100-isambard $HIPSYCL sycl-acc sycl-usm std-indices &
+    #     bench_exec exec_build mi100-isambard $ROC_STDPAR_INTERPOSE std-indices &
+    #     wait
+    # )
+
+    # exit 0
 
     # for bm in 4 16 64 256; do
     for bm in 64; do
@@ -309,12 +337,139 @@ p3)
         bench_exec exec_submit mi100-isambard $ONEAPI sycl-acc sycl-usm std-indices
         bench_exec exec_submit mi100-isambard $HIPSYCL sycl-acc sycl-usm std-indices
         bench_exec exec_submit mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
-        export UTPX=utpx
-        bench_exec exec_submit mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
-        bench_exec exec_submit mi100-isambard $ONEAPI sycl-usm std-indices
-        bench_exec exec_submit mi100-isambard $HIPSYCL sycl-usm std-indices
+        for mode in "DEVICE" "ADVISE" "MIRROR"; do
+            export UTPX="$mode"
+            bench_exec exec_submit mi100-isambard $ONEAPI sycl-usm std-indices
+            bench_exec exec_submit mi100-isambard $HIPSYCL sycl-usm std-indices
+            bench_exec exec_submit mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
+        done
     done
     ;;
+
+hpe)
+    ROCM=rocm-5.6.1
+
+    cd "$BASE/babelstream/results"
+    # rm -rf "$BASE/babelstream/results/BabelStream"
+
+    (
+        bench_exec exec_build mi100-isambard $AOMP omp # git clone is serial
+        bench_exec exec_build mi100-isambard $ROCM hip thrust ocl kokkos
+        bench_exec exec_build mi100-isambard $ONEAPI sycl-acc sycl-usm std-indices
+        bench_exec exec_build mi100-isambard $HIPSYCL sycl-acc sycl-usm std-indices
+        bench_exec exec_build mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
+        wait
+    )
+
+    exit 0
+    export UTPX=""
+    HSA_XNACK=0 bench_exec exec_submit mi100-isambard $AOMP omp
+    HSA_XNACK=0 bench_exec exec_submit mi100-isambard $ROCM hip thrust ocl kokkos
+    HSA_XNACK=0 bench_exec exec_submit mi100-isambard $ONEAPI sycl-acc sycl-usm std-indices
+    HSA_XNACK=0 bench_exec exec_submit mi100-isambard $HIPSYCL sycl-acc sycl-usm std-indices
+    HSA_XNACK=0 bench_exec exec_submit mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
+
+    HSA_XNACK=1 bench_exec exec_submit mi100-isambard $ONEAPI sycl-usm std-indices
+    HSA_XNACK=1 bench_exec exec_submit mi100-isambard $HIPSYCL sycl-usm std-indices
+    HSA_XNACK=1 bench_exec exec_submit mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
+
+    for mode in "DEVICE"; do
+        export UTPX="$mode"
+        HSA_XNACK=0 bench_exec exec_submit mi100-isambard $ONEAPI sycl-usm std-indices
+        HSA_XNACK=0 bench_exec exec_submit mi100-isambard $HIPSYCL sycl-usm std-indices
+        HSA_XNACK=0 bench_exec exec_submit mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
+    done
+
+    ##########
+    cd "$BASE/bude/results"
+
+    # bench_exec exec_build mi100-isambard $AOMP omp
+    # bench_exec exec_build mi100-isambard $ROCM hip thrust ocl kokkos
+    # bench_exec exec_build mi100-isambard $ONEAPI sycl std-indices
+    # bench_exec exec_build mi100-isambard $HIPSYCL sycl std-indices
+    # bench_exec exec_build mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
+
+    for bm in 2; do
+        # for bm in 1 2; do
+        export INPUT_BM="bm$bm"
+        export UTPX=""
+        bench_exec exec_submit mi100-isambard $AOMP omp
+        bench_exec exec_submit mi100-isambard $ROCM hip thrust ocl kokkos
+        bench_exec exec_submit mi100-isambard $ONEAPI sycl std-indices
+        bench_exec exec_submit mi100-isambard $HIPSYCL sycl std-indices
+        bench_exec exec_submit mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
+
+        export UTPX=utpx
+        bench_exec exec_submit mi100-isambard $ONEAPI std-indices
+        bench_exec exec_submit mi100-isambard $HIPSYCL std-indices
+        bench_exec exec_submit mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
+    done
+
+    cd "$BASE/tealeaf/results"
+
+    # (
+    #     bench_exec exec_build mi100-isambard $AOMP omp #
+    #     bench_exec exec_build mi100-isambard $ROCM hip kokkos &
+    #     bench_exec exec_build mi100-isambard $ONEAPI sycl-acc sycl-usm std-indices &
+    #     bench_exec exec_build mi100-isambard $HIPSYCL sycl-acc sycl-usm std-indices &
+    #     bench_exec exec_build mi100-isambard $ROC_STDPAR_INTERPOSE std-indices &
+    #     wait
+    # )
+
+    for bm in 4; do
+        export INPUT_BM="5e_${bm}_2"
+        export UTPX=""
+        HSA_XNACK=0 bench_exec exec_submit mi100-isambard $AOMP omp
+        HSA_XNACK=0 bench_exec exec_submit mi100-isambard $ROCM hip kokkos
+        HSA_XNACK=0 bench_exec exec_submit mi100-isambard $ONEAPI sycl-acc sycl-usm std-indices
+        HSA_XNACK=0 bench_exec exec_submit mi100-isambard $HIPSYCL sycl-acc sycl-usm std-indices
+        HSA_XNACK=0 bench_exec exec_submit mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
+    done
+
+    for bm in 4; do
+        export INPUT_BM="5e_${bm}_2"
+        for mode in "DEVICE" "ADVISE" "MIRROR"; do
+            export UTPX="$mode"
+            HSA_XNACK=0 bench_exec exec_submit mi100-isambard $ONEAPI sycl-usm std-indices
+            HSA_XNACK=0 bench_exec exec_submit mi100-isambard $HIPSYCL sycl-usm std-indices
+            HSA_XNACK=0 bench_exec exec_submit mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
+        done
+    done
+
+    ##########
+
+    cd "$BASE/cloverleaf/results"
+
+    # (
+    #     bench_exec exec_build mi100-isambard $AOMP omp #
+    #     bench_exec exec_build mi100-isambard $ROCM hip kokkos &
+    #     bench_exec exec_build mi100-isambard $ONEAPI sycl-acc sycl-usm std-indices &
+    #     bench_exec exec_build mi100-isambard $HIPSYCL sycl-acc sycl-usm std-indices &
+    #     bench_exec exec_build mi100-isambard $ROC_STDPAR_INTERPOSE std-indices &
+    #     wait
+    # )
+
+    # exit 0
+
+    # for bm in 4 16 64 256; do
+    for bm in 64; do
+        # for bm in 16; do
+        export INPUT_BM="${bm}_300"
+        export UTPX=""
+        bench_exec exec_submit mi100-isambard $AOMP omp
+        bench_exec exec_submit mi100-isambard $ROCM hip kokkos
+        bench_exec exec_submit mi100-isambard $ONEAPI sycl-acc sycl-usm std-indices
+        bench_exec exec_submit mi100-isambard $HIPSYCL sycl-acc sycl-usm std-indices
+        bench_exec exec_submit mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
+        for mode in "DEVICE" "ADVISE" "MIRROR"; do
+            export UTPX="$mode"
+            bench_exec exec_submit mi100-isambard $ONEAPI sycl-usm std-indices
+            bench_exec exec_submit mi100-isambard $HIPSYCL sycl-usm std-indices
+            bench_exec exec_submit mi100-isambard $ROC_STDPAR_INTERPOSE std-indices
+        done
+    done
+    ;;
+
 *)
     echo "Bad platform $1"
     ;;
