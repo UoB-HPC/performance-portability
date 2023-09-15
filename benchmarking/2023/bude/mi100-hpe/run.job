@@ -1,0 +1,60 @@
+#!/bin/bash
+set -eu
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+export OMP_TARGET_OFFLOAD=MANDATORY
+export LD_LIBRARY_PATH=/opt/rocm/lib:${LD_LIBRARY_PATH:-}
+
+opts=""
+case "$INPUT_BM" in
+bm1) opts="" ;;
+bm2) opts="-n 16384 -i 4" ;;
+*)
+    echo "Unknown deck '$INPUT_BM'"
+    exit 1
+    ;;
+esac
+
+case "$COMPILER" in
+oneapi-*)
+    export ONEAPI_DEVICE_SELECTOR="hip:*"
+    ;;
+hipsycl-*)
+    export HIPSYCL_VISIBILITY_MASK="hip;omp"
+    export HIPSYCL_DEBUG_LEVEL=1
+    opts+=" --device 0"
+    ;;
+roc-stdpar-interpose-*)
+    #
+    ;;
+*) ;;
+esac
+
+if [ -n "${UTPX:-}" ]; then
+    export LD_PRELOAD="$HOME/utpx/build/libutpx.so"
+    export UTPX_MODE="$UTPX"
+fi
+
+case "$MODEL" in
+std-* | thrust)
+    "$BENCHMARK_EXE" --list
+    "$BENCHMARK_EXE" --deck miniBUDE/data/$INPUT_BM $opts --ppwi 1,2,4,8,16 --wgsize 1
+    ;;
+hip | sycl | kokkos | omp)
+    "$BENCHMARK_EXE" --list
+    "$BENCHMARK_EXE" --deck miniBUDE/data/$INPUT_BM $opts --ppwi 1,2,4,8,16 --wgsize 8,16,32,64,128,256,512
+    ;;
+
+ocl)
+    "$BENCHMARK_EXE" --list
+    "$BENCHMARK_EXE" --deck miniBUDE/data/$INPUT_BM $opts --ppwi 1,2,4,8,16 --wgsize 8,16,32,64,128,256
+    ;;
+*)
+    echo "Unknown run configuration for model '$MODEL'"
+    exit 1
+    ;;
+esac
