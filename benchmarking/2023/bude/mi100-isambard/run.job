@@ -44,8 +44,9 @@ roc-stdpar-interpose-*)
 *) ;;
 esac
 
-if [ "${UTPX:-}" = utpx ]; then
+if [ -n "${UTPX:-}" ]; then
     export LD_PRELOAD="$HOME/utpx/build/libutpx.so"
+    export UTPX_MODE="$UTPX"
 fi
 
 case "$MODEL" in

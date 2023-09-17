@@ -8,15 +8,15 @@ source "${SCRIPT_DIR}/../fetch_src.sh"
 
 module load cmake/3.23.2
 
-handle_cmd "${1}" "${2}" "${3}" "minibude" "mi100" "${INPUT_BM:-}_${UTPX:-}"
+handle_cmd "${1}" "${2}" "${3}" "minibude" "mi100" "bm_${INPUT_BM:-}_xnack_${HSA_XNACK:-}_utpx_${UTPX:-}"
 
 export USE_MAKE=false
 
 append_opts "-DCMAKE_VERBOSE_MAKEFILE=ON"
 
 case "$COMPILER" in
-aomp-16.0.3)
-  export AOMP=$HOME/usr/lib/aomp_16.0-3
+aomp-18.0.0)
+  export AOMP=$HOME/usr/lib/aomp_18.0-0
   export PATH="$AOMP/bin:${PATH:-}"
   export LD_LIBRARY_PATH="$AOMP/lib64:${LD_LIBRARY_PATH:-}"
   export LIBRARY_PATH="$AOMP/lib64:${LIBRARY_PATH:-}"
@@ -56,19 +56,21 @@ kokkos)
   append_opts "-DKokkos_ARCH_VEGA908=ON"
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=hipcc"
+append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast"
   BENCHMARK_EXE="kokkos-bude"
   ;;
 hip)
   append_opts "-DMODEL=hip"
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=hipcc" # auto detected
-  append_opts "-DCXX_EXTRA_FLAGS=--offload-arch=gfx908"
+  append_opts "-DCXX_EXTRA_FLAGS=--offload-arch=gfx908;-march=znver3;-Ofast"
   BENCHMARK_EXE="hip-bude"
   ;;
 ocl)
   append_opts "-DMODEL=ocl"
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=g++" # auto detected
+append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast"
   append_opts "-DOpenCL_LIBRARY=$ROCM_PATH/lib/libOpenCL.so"
   BENCHMARK_EXE="ocl-bude"
   ;;
@@ -77,6 +79,7 @@ thrust)
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=hipcc" # auto detected
   append_opts "-DTHRUST_IMPL=ROCM -DCMAKE_PREFIX_PATH=$ROCM_PATH/lib/cmake/"
+append_opts "-DCXX_EXTRA_FLAGS=--offload-arch=gfx906;-march=znver3;-Ofast"
   BENCHMARK_EXE="thrust-bude"
   ;;
 omp)
@@ -84,6 +87,7 @@ omp)
   append_opts "-DOFFLOAD=ON -DOFFLOAD_FLAGS=-fopenmp;--offload-arch=gfx908"
   append_opts "-DCMAKE_C_COMPILER=$(which clang)"
   append_opts "-DCMAKE_CXX_COMPILER=$(which clang++)"
+append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast;-fopenmp-target-fast"
   BENCHMARK_EXE="omp-bude"
   ;;
 std-indices)
@@ -93,15 +97,15 @@ std-indices)
     export HIPSYCL_TARGETS="hip:gfx908"
     append_opts "-DCMAKE_C_COMPILER=gcc"
     append_opts "-DCMAKE_CXX_COMPILER=$HIPSYCL_DIR/bin/syclcc"
-    append_opts "-DCMAKE_CXX_COMPILER_WORKS=ON"
-    append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;--opensycl-stdpar;--opensycl-stdpar-unconditional-offload;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+    export CXXFLAGS="--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+    append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast;--opensycl-stdpar;--opensycl-stdpar-unconditional-offload;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
     ;;
   oneapi-*)
     append_opts "-DUSE_ONEDPL=DPCPP"
-    append_opts "-DCXX_EXTRA_FLAGS=-fsycl;-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908;-march=znver3"
+    append_opts "-DCXX_EXTRA_FLAGS=-fsycl;-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908;-march=znver3;-Ofast"
     ;;
   roc-stdpar-interpose-*)
-    append_opts "-DCXX_EXTRA_FLAGS=--hipstdpar;--hipstdpar-path=$HOME/roc-stdpar/include;--hipstdpar-interpose-alloc;--offload-arch=gfx908;-march=znver3;-g3;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+    append_opts "-DCXX_EXTRA_FLAGS=--hipstdpar;--hipstdpar-path=$HOME/roc-stdpar/include;--hipstdpar-interpose-alloc;--offload-arch=gfx908;-march=znver3;-Ofast;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
     ;;
   *) unknown_compiler ;;
   esac
@@ -114,11 +118,11 @@ sycl)
     export HIPSYCL_TARGETS="hip:gfx908"
     append_opts "-DSYCL_COMPILER=HIPSYCL"
     append_opts "-DSYCL_COMPILER_DIR=$HIPSYCL_DIR"
-    append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+    append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
     ;;
   oneapi-*)
     append_opts "-DSYCL_COMPILER=ONEAPI-Clang"
-    append_opts "-DCXX_EXTRA_FLAGS=-fsycl;-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908;-march=znver3"
+    append_opts "-DCXX_EXTRA_FLAGS=-fsycl;-fsycl-targets=amdgcn-amd-amdhsa;-Xsycl-target-backend;--offload-arch=gfx908;-march=znver3;-Ofast"
     ;;
   *) unknown_compiler ;;
   esac
