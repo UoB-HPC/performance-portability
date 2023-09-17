@@ -29,7 +29,7 @@ rocm-5.5.1)
 hipsycl-fd5d1c0)
   export HIPSYCL_DIR="/opt/hipsycl/fd5d1c0"
   ;;
-roc-stdpar-ecb855a5)
+roc-stdpar-*ecb855a5)
   append_opts "-DCMAKE_C_COMPILER=/opt/llvm/ecb855a5a8c5dd9d46ca85041d7fe987fa73ba7c-roc-stdpar/bin/clang"
   append_opts "-DCMAKE_CXX_COMPILER=/opt/llvm/ecb855a5a8c5dd9d46ca85041d7fe987fa73ba7c-roc-stdpar/bin/clang++"
   ;;

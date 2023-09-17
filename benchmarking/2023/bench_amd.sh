@@ -16,9 +16,9 @@ ROC_STDPAR=roc-stdpar-ecb855a5
 ROC_STDPAR_INTERPOSE=roc-stdpar-interpose-ecb855a5
 
 babelstream=false
-bude=true
+bude=false
 cloverleaf=true
-tealeaf=true
+tealeaf=false
 
 declare -A models
 models["ocl"]=true
@@ -100,30 +100,30 @@ local)
 
     cd "$BASE/babelstream/results"
 
-    # (
-    #     bench_exec exec_build radeonvii-local $AOMP omp # git clone is serial
-    #     bench_exec exec_build radeonvii-local $ROCM hip thrust ocl kokkos &
-    #     bench_exec exec_build radeonvii-local $ONEAPI sycl-acc sycl-usm std-indices &
-    #     bench_exec exec_build radeonvii-local $HIPSYCL sycl-acc sycl-usm std-indices &
-    #     bench_exec exec_build radeonvii-local $ROC_STDPAR_INTERPOSE std-indices &
-    #     wait
-    # )
+    (
+        bench_exec exec_build radeonvii-local $AOMP omp # git clone is serial
+        bench_exec exec_build radeonvii-local $ROCM hip thrust ocl kokkos &
+        bench_exec exec_build radeonvii-local $ONEAPI sycl-acc sycl-usm std-indices &
+        bench_exec exec_build radeonvii-local $HIPSYCL sycl-acc sycl-usm std-indices &
+        bench_exec exec_build radeonvii-local $ROC_STDPAR_INTERPOSE std-indices &
+        wait
+    )
     export UTPX=""
-    # HSA_XNACK=0 bench_exec exec_submit radeonvii-local $AOMP omp
-    # HSA_XNACK=0 bench_exec exec_submit radeonvii-local $ROCM hip thrust ocl kokkos
-    # HSA_XNACK=0 bench_exec exec_submit radeonvii-local $ONEAPI sycl-acc sycl-usm std-indices
-    # HSA_XNACK=0 bench_exec exec_submit radeonvii-local $HIPSYCL sycl-acc sycl-usm std-indices
-    # HSA_XNACK=0 bench_exec exec_submit radeonvii-local $ROC_STDPAR_INTERPOSE std-indices
+    HSA_XNACK=0 bench_exec exec_submit radeonvii-local $AOMP omp
+    HSA_XNACK=0 bench_exec exec_submit radeonvii-local $ROCM hip thrust ocl kokkos
+    HSA_XNACK=0 bench_exec exec_submit radeonvii-local $ONEAPI sycl-acc sycl-usm std-indices
+    HSA_XNACK=0 bench_exec exec_submit radeonvii-local $HIPSYCL sycl-acc sycl-usm std-indices
+    HSA_XNACK=0 bench_exec exec_submit radeonvii-local $ROC_STDPAR_INTERPOSE std-indices
 
-    # HSA_XNACK=1 bench_exec exec_submit radeonvii-local $ONEAPI sycl-usm std-indices
-    # HSA_XNACK=1 bench_exec exec_submit radeonvii-local $HIPSYCL sycl-usm std-indices
-    # HSA_XNACK=1 bench_exec exec_submit radeonvii-local $ROC_STDPAR_INTERPOSE std-indices
+    HSA_XNACK=1 bench_exec exec_submit radeonvii-local $ONEAPI sycl-usm std-indices
+    HSA_XNACK=1 bench_exec exec_submit radeonvii-local $HIPSYCL sycl-usm std-indices
+    HSA_XNACK=1 bench_exec exec_submit radeonvii-local $ROC_STDPAR_INTERPOSE std-indices
 
-    for mode in "DEVICE" "MIRROR" "ADVISE"; do
+    for mode in "MIRROR" "ADVISE" "DEVICE"; do
         export UTPX="$mode"
-        # HSA_XNACK=0 bench_exec exec_submit radeonvii-local $ONEAPI sycl-usm std-indices
-        # HSA_XNACK=0 bench_exec exec_submit radeonvii-local $HIPSYCL sycl-usm std-indices
-        # HSA_XNACK=0 bench_exec exec_submit radeonvii-local $ROC_STDPAR_INTERPOSE std-indices
+        HSA_XNACK=0 bench_exec exec_submit radeonvii-local $ONEAPI sycl-usm std-indices
+        HSA_XNACK=0 bench_exec exec_submit radeonvii-local $HIPSYCL sycl-usm std-indices
+        HSA_XNACK=0 bench_exec exec_submit radeonvii-local $ROC_STDPAR_INTERPOSE std-indices
     done
 
     cd "$BASE/bude/results"

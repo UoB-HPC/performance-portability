@@ -35,11 +35,11 @@ fi
 case "$MODEL" in
 hip | std-* | kokkos | thrust | ocl)
     "$BENCHMARK_EXE" --list
-    "$BENCHMARK_EXE" "${opts[@]:-}"
+    time "$BENCHMARK_EXE" "${opts[@]:-}"
     ;;
 omp)
     "$BENCHMARK_EXE" --list
-    "$BENCHMARK_EXE" "${opts[@]:-}" # --device 0
+    time "$BENCHMARK_EXE" "${opts[@]:-}" # --device 0
     ;;
 sycl*)
     "$BENCHMARK_EXE" --list
@@ -49,7 +49,7 @@ sycl*)
     # 3: gfx908:sramecc+:xnack-
     # 4: gfx908:sramecc+:xnack-
     # 5: gfx908:sramecc+:xnack-
-    "$BENCHMARK_EXE" "${opts[@]:-}"
+    time "$BENCHMARK_EXE" "${opts[@]:-}"
     ;;
 *)
     echo "Unknown run configuration for model '$MODEL'"
