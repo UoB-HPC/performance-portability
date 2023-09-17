@@ -56,7 +56,7 @@ kokkos)
   append_opts "-DKokkos_ARCH_VEGA908=ON"
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=hipcc"
-append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast"
+  append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast"
   BENCHMARK_EXE="kokkos-bude"
   ;;
 hip)
@@ -70,7 +70,7 @@ ocl)
   append_opts "-DMODEL=ocl"
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=g++" # auto detected
-append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast"
+  append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast"
   append_opts "-DOpenCL_LIBRARY=$ROCM_PATH/lib/libOpenCL.so"
   BENCHMARK_EXE="ocl-bude"
   ;;
@@ -79,7 +79,7 @@ thrust)
   append_opts "-DCMAKE_C_COMPILER=gcc"
   append_opts "-DCMAKE_CXX_COMPILER=hipcc" # auto detected
   append_opts "-DTHRUST_IMPL=ROCM -DCMAKE_PREFIX_PATH=$ROCM_PATH/lib/cmake/"
-append_opts "-DCXX_EXTRA_FLAGS=--offload-arch=gfx906;-march=znver3;-Ofast"
+  append_opts "-DCXX_EXTRA_FLAGS=--offload-arch=gfx906;-march=znver3;-Ofast"
   BENCHMARK_EXE="thrust-bude"
   ;;
 omp)
@@ -87,7 +87,7 @@ omp)
   append_opts "-DOFFLOAD=ON -DOFFLOAD_FLAGS=-fopenmp;--offload-arch=gfx908"
   append_opts "-DCMAKE_C_COMPILER=$(which clang)"
   append_opts "-DCMAKE_CXX_COMPILER=$(which clang++)"
-append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast;-fopenmp-target-fast"
+  append_opts "-DCXX_EXTRA_FLAGS=-march=znver3;-Ofast;-fopenmp-target-fast"
   BENCHMARK_EXE="omp-bude"
   ;;
 std-indices)
@@ -106,6 +106,9 @@ std-indices)
     ;;
   roc-stdpar-interpose-*)
     append_opts "-DCXX_EXTRA_FLAGS=--hipstdpar;--hipstdpar-path=$HOME/roc-stdpar/include;--hipstdpar-interpose-alloc;--offload-arch=gfx908;-march=znver3;-Ofast;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
+    ;;
+  roc-stdpar-*)
+    append_opts "-DCXX_EXTRA_FLAGS=--hipstdpar;--hipstdpar-path=$HOME/roc-stdpar/include;--offload-arch=gfx908;-march=znver3;-Ofast;--gcc-toolchain=$(dirname "$(dirname "$(which gcc)")")"
     ;;
   *) unknown_compiler ;;
   esac

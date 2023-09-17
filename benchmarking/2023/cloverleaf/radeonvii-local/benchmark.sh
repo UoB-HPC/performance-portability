@@ -6,7 +6,7 @@ SCRIPT_DIR=$(realpath "$(dirname "$(realpath "$0")")")
 source "${SCRIPT_DIR}/../../common.sh"
 source "${SCRIPT_DIR}/../fetch_src.sh"
 
-handle_cmd "${1}" "${2}" "${3}" "cloverleaf" "radeonvii" "bm=${INPUT_BM:-}_xnack=${HSA_XNACK:-}_utpx=${UTPX:-}"
+handle_cmd "${1}" "${2}" "${3}" "cloverleaf" "radeonvii" "bm_${INPUT_BM:-}_xnack_${HSA_XNACK:-}_utpx_${UTPX:-}"
 
 export USE_MAKE=false
 export USE_SLURM=false
