@@ -4,7 +4,7 @@ set -eu
 
 fetch_src() {
   if [ ! -e miniBUDE/src/main.cpp ]; then
-    if ! git clone -b v2 https://github.com/uob-hpc/miniBUDE; then
+    if ! git clone -b openmp-stdpar https://github.com/uob-hpc/miniBUDE; then
       echo
       echo "Failed to fetch source code."
       echo

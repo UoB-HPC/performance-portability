@@ -1,0 +1,58 @@
+#!/bin/bash
+set -eu
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+DECK="$PWD/TeaLeaf/Benchmarks/tea_bm_${INPUT_BM}.in"
+PROBLEMS="$PWD/TeaLeaf/tea.problems"
+NCPUS=$(nproc)
+
+echo "master=$(hostname) nproc=$NCPUS"
+echo "PWD=$PWD"
+echo "CONFIG=$CONFIG"
+echo "BENCHMARK_EXE=$BENCHMARK_EXE"
+echo "DECK=$DECK"
+echo "======"
+
+mkdir -p ../out
+
+export OMP_TARGET_OFFLOAD=MANDATORY
+export LD_LIBRARY_PATH=/opt/rocm/lib:${LD_LIBRARY_PATH:-}
+
+export HSA_OVERRIDE_GFX_VERSION=10.3.6
+export ROCR_VISIBLE_DEVICES=1
+
+
+case "$COMPILER" in
+oneapi-*)
+    export ONEAPI_DEVICE_SELECTOR="hip:*"
+    ;;
+hipsycl-*)
+    export HIPSYCL_VISIBILITY_MASK="hip;omp"
+    ;;
+*) ;;
+esac
+
+if [ -n "${UTPX:-}" ]; then
+    export LD_PRELOAD="$HOME/utpx/build/libutpx.so"
+    export UTPX_MODE="$UTPX"
+fi
+
+case "$MODEL" in
+sycl-* | std-* | kokkos | omp | cuda | hip) ;; # no-op
+*)
+    echo "Unknown run configuration for model '$MODEL'"
+    exit 1
+    ;;
+esac
+
+(
+    set -o xtrace
+    export OMP_NUM_THREADS=$NCPUS
+    export OMP_PROC_BIND=true
+    export OMP_PLACES=cores
+    $BENCHMARK_EXE --file $DECK --problems $PROBLEMS --out ../out/tea_${CONFIG}_${INPUT_BM}.out --device AMD
+)

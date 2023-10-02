@@ -20,7 +20,7 @@ set -eu
 
 fetch_src() {
   if [ ! -e CloverLeaf/CMakeLists.txt ]; then
-    if ! git clone -b main https://github.com/UoB-HPC/CloverLeaf; then
+    if ! git clone -b openmp-stdpar https://github.com/UoB-HPC/CloverLeaf; then
       echo
       echo "Failed to fetch source code."
       echo

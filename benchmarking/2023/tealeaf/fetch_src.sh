@@ -20,7 +20,7 @@ set -eu
 
 fetch_src() {
   if [ ! -e TeaLeaf/CMakeLists.txt ]; then
-    if ! git clone -b p3hpc23 https://github.com/UoB-HPC/TeaLeaf; then
+    if ! git clone -b openmp-stdpar https://github.com/UoB-HPC/TeaLeaf; then
       echo
       echo "Failed to fetch source code."
       echo

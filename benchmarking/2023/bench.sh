@@ -16,10 +16,10 @@ ROC_STDPAR=roc-stdpar-ecb855a5
 ROC_STDPAR_INTERPOSE=roc-stdpar-interpose-ecb855a5
 ROC_STDPAR_INTERPOSE_MS=roc-stdpar-interpose-ms-ecb855a5
 
-bude=false
+bude=true
 babelstream=true
-cloverleaf=false
-tealeaf=false
+cloverleaf=true
+tealeaf=true
 
 declare -A models
 models["ocl"]=true

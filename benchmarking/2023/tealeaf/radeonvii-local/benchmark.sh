@@ -14,6 +14,19 @@ export USE_SLURM=false
 append_opts "-DCMAKE_VERBOSE_MAKEFILE=ON -DENABLE_MPI=OFF -DENABLE_PROFILING=ON"
 
 case "$COMPILER" in
+llvm-1c5b0b26f757)
+  export LLVM_ROOT="$HOME/software/llvm-ompt/1c5b0b26f757"
+  export PATH="$LLVM_ROOT/bin:${PATH:-}"
+  export LIBRARY_PATH="$LLVM_ROOT/lib64:${LIBRARY_PATH:-}"
+  export C_INCLUDE_PATH="$LLVM_ROOT/include:${C_INCLUDE_PATH:-}"
+  export CPLUS_INCLUDE_PATH="$LLVM_ROOT/include:${CPLUS_INCLUDE_PATH:-}"
+  export LD_LIBRARY_PATH="$LLVM_ROOT/lib/$(arch)-unknown-linux-gnu:${LD_LIBRARY_PATH:-}"
+  append_opts "-DCMAKE_C_COMPILER=clang"
+  append_opts "-DCMAKE_CXX_COMPILER=clang++"
+  append_opts "-DCXX_EXTRA_LIBRARIES=$LLVM_ROOT/lib/libomptarget.so"
+  append_opts "-DOpenMP_CXX_LIB_NAMES=libomp -DOpenMP_libomp_LIBRARY=$LLVM_ROOT/lib/libomp.so"
+  append_opts "-DOpenMP_CXX_FLAGS=-fopenmp=libomp"
+  ;;
 aomp-18.0.0)
   export AOMP=$HOME/usr/lib/aomp_18.0-0
   export PATH="$AOMP/bin:${PATH:-}"
@@ -64,8 +77,12 @@ hip)
   BENCHMARK_EXE="hip-tealeaf"
   ;;
 omp)
+  extra=""
+  case "$COMPILER" in
+  aomp-*) extra="-fopenmp-target-fast" ;;
+  esac
   append_opts "-DMODEL=omp-target"
-  append_opts "-DOFFLOAD=ON -DOFFLOAD_FLAGS=-fopenmp;--offload-arch=gfx906;-fopenmp-target-fast"
+  append_opts "-DOFFLOAD=ON -DOFFLOAD_FLAGS=-fopenmp;--offload-arch=gfx906;$extra"
   append_opts "-DCMAKE_C_COMPILER=$(which clang)"
   append_opts "-DCMAKE_CXX_COMPILER=$(which clang++)"
   BENCHMARK_EXE="omp-target-tealeaf"
@@ -74,6 +91,10 @@ std-indices)
   append_opts "-DMODEL=std-indices"
   BENCHMARK_EXE="std-indices-tealeaf"
   case "$COMPILER" in
+  llvm-*)
+    append_opts "-DCXX_EXTRA_FLAGS=-march=native;-fopenmp;-stdlib=libc++;-fexperimental-library;--offload-arch=gfx906"
+    append_opts "-DUSE_LLVM_OMPT=ON"
+    ;;
   hipsycl-*)
     export HIPSYCL_TARGETS="hip:gfx906"
     append_opts "-DCMAKE_C_COMPILER=gcc"

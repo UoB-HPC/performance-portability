@@ -1,0 +1,65 @@
+#!/bin/bash
+set -eu
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+if [ "${LARGE:-}" = true ]; then
+    opts=("--arraysize" "536870912")
+fi
+
+export OMP_TARGET_OFFLOAD=MANDATORY
+export LD_LIBRARY_PATH=/opt/rocm/lib:${LD_LIBRARY_PATH:-}
+
+export HSA_OVERRIDE_GFX_VERSION=10.3.6
+export ROCR_VISIBLE_DEVICES=1
+
+case "$COMPILER" in
+oneapi-*)
+    export ONEAPI_DEVICE_SELECTOR="hip:*"
+    ;;
+hipsycl-*)
+    export HIPSYCL_VISIBILITY_MASK="hip;omp"
+    export HIPSYCL_DEBUG_LEVEL=1
+    ;;
+roc-stdpar-interpose-ms-*)
+    #
+    ;;
+*) ;;
+esac
+
+if [ -n "${UTPX:-}" ]; then
+    export LD_PRELOAD="$HOME/utpx/build/libutpx.so"
+    export UTPX_MODE="$UTPX"
+fi
+
+case "$MODEL" in
+ocl)
+    "$BENCHMARK_EXE" --list
+    time "$BENCHMARK_EXE" "${opts[@]:-}" --device 1
+    ;;
+hip | std-* | kokkos | thrust | ocl)
+    "$BENCHMARK_EXE" --list
+    time "$BENCHMARK_EXE" "${opts[@]:-}"
+    ;;
+omp)
+    "$BENCHMARK_EXE" --list
+    time "$BENCHMARK_EXE" "${opts[@]:-}" # --device 0
+    ;;
+sycl*)
+    "$BENCHMARK_EXE" --list
+    # 0: Intel(R) FPGA Emulation Device
+    # 1: AMD EPYC 7763 64-Core Processor
+    # 2: gfx908:sramecc+:xnack- <--
+    # 3: gfx908:sramecc+:xnack-
+    # 4: gfx908:sramecc+:xnack-
+    # 5: gfx908:sramecc+:xnack-
+    time "$BENCHMARK_EXE" "${opts[@]:-}"
+    ;;
+*)
+    echo "Unknown run configuration for model '$MODEL'"
+    exit 1
+    ;;
+esac

@@ -20,7 +20,7 @@ set -eu
 
 fetch_src() {
   if [ ! -e BabelStream/src/main.cpp ]; then
-    if ! git clone -b option_for_vec https://github.com/uob-hpc/BabelStream; then
+    if ! git clone -b openmp-stdpar https://github.com/uob-hpc/BabelStream; then
       echo
       echo "Failed to fetch source code."
       echo
