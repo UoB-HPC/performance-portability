@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 # Copyright (c) 2020 Performance Portability authors
 # SPDX-License-Identifier: MIT
 
@@ -58,7 +58,7 @@ for result in data:
     def eff(a, b):
         if isinstance(a, float) and isinstance(b, float):
             return float(100.0 * (a / b))
-        elif a is '-' or b is '-':
+        elif a == '-' or b == '-':
             return float(-100.0)
         else:
             return float(0.0)
@@ -101,7 +101,7 @@ fig.set_size_inches(4, 3)
 colors = "gist_heat"
 if not args.higher_is_better:
     colors = colors + "_r"
-cmap = plt.cm.get_cmap(colors)
+cmap = plt.get_cmap(colors)
 x = np.arange(7)
 y = np.arange(11)
 cmesh = plt.pcolormesh(

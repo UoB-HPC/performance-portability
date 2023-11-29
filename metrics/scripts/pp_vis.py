@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.7
+#!/usr/bin/env python3
 # Copyright (c) 2020 Performance Portability authors
 # SPDX-License-Identifier: MIT
 
@@ -232,7 +232,7 @@ def histogram(bins, data):
 def binplot(ax, app_effs, colordict=None):
     """Compute and plot histogram of dataframe app_effs onto axis ax. Use colors for each column as specified in colordict or compute manually.
     Bin 0 is handled specially and kept separate from others."""
-    bins = np.arange(0, 1.1, 0.1, dtype=np.float)
+    bins = np.arange(0, 1.1, 0.1, dtype=float)
     bins[0] = np.finfo(float).eps
     bins = np.append(np.zeros(1), bins)
     bar_data = {}
