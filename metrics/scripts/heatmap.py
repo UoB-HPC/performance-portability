@@ -102,8 +102,8 @@ colors = "gist_heat"
 if not args.higher_is_better:
     colors = colors + "_r"
 cmap = plt.get_cmap(colors)
-x = np.arange(7)
-y = np.arange(11)
+x = np.arange(len(l)+1)
+y = np.arange(len(heatmap)+1)
 cmesh = plt.pcolormesh(
     x,
     y,
