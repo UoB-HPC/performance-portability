@@ -83,7 +83,7 @@ for result in data:
                 else:
                     l.append('%.0f%%' % (raw[i] / args.factorize))
             else:
-                if raw[i] / args.factorize < 100.0:
+                if raw[i] / args.factorize < 100.0 and not raw[i].is_integer():
                     l.append('%.1f' % (raw[i] / args.factorize))
                 else:
                     l.append('%.0f' % (raw[i] / args.factorize))
