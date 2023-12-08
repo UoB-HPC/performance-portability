@@ -70,7 +70,7 @@ for result in data:
         continue
 
     series.append(result[series_key])
-    heatmap.append([r if isinstance(r, float) else 0.0 for r in raw])
+    heatmap.append([r if isinstance(r, float) else float('nan') for r in raw])
 
     l = []
     for i in range(len(raw)):
@@ -89,38 +89,31 @@ for result in data:
                     l.append('%.0f' % (raw[i] / args.factorize))
     labels.append(l)
 
-plt.rcParams.update({
-    "font.family": "serif",  # use serif/main font for text elements
-    "text.usetex": False,     # use inline math for ticks
-    "pgf.rcfonts": False,    # don't setup fonts from rc parameters
-})
+plt.rc('text', usetex=True)
+plt.rc('font', family='serif', serif='Times')
 fig, ax = plt.subplots()
-fig.set_size_inches(4, 3)
 
 # Set color map to match blackbody, growing brighter for higher values
-colors = "gist_heat"
+colors = "viridis"
 if not args.higher_is_better:
     colors = colors + "_r"
 cmap = plt.get_cmap(colors)
 x = np.arange(len(l)+1)
 y = np.arange(len(heatmap)+1)
+masked = np.ma.masked_where(np.isnan(heatmap),heatmap)
 cmesh = plt.pcolormesh(
     x,
     y,
-    np.array(heatmap),
+    masked,
     cmap=cmap,
     edgecolors='k',
     vmin=1.0E-6)
 ax.set_yticks(np.arange(len(heatmap)) + 0.5, minor=False)
 ax.set_xticks(np.arange(len(heatmap[0])) + 0.5, minor=False)
-
-ax.set_yticklabels(series)
+ax.set_yticklabels(series, fontsize='xx-large')
 for i in range(len(headings)):
-    heading = headings[i].replace('_', r'\_')
-    if not plt.rcParams['text.usetex']:
-        heading = heading.replace(r"\%", "%")
-    headings[i] = heading
-ax.set_xticklabels(headings, rotation=45, ha="right", rotation_mode="anchor")
+  headings[i] = headings[i].replace('_', '\_')
+ax.set_xticklabels(headings, fontsize='xx-large', rotation=45)
 plt.gca().invert_yaxis()
 
 # Add colorbar
@@ -129,7 +122,7 @@ plt.colorbar(cmesh)
 # Add labels
 for i in range(len(headings)):
     for j in range(len(series)):
-        plt.text(i + 0.9, j + 0.5, labels[j][i],
-                 ha='right', va='center', color='#b9c5bf', fontsize='small')
+        plt.text(i + 0.5, j + 0.55, labels[j][i],
+                 ha='center', va='center', color='#b9c5bf', weight='bold', size='xx-large')
 
 plt.savefig(args.output, bbox_inches='tight')
