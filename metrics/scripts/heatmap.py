@@ -47,6 +47,10 @@ series = []  # a row in the input file
 heatmap = []  # empty, to be populated by reading the input file
 labels = []  # labels to display in each heatmap entry
 
+plt.rc('text', usetex=True)
+plt.rc('font', family='serif', serif='Times')
+fig, ax = plt.subplots()
+
 for result in data:
     def get(name):
         str = result[name]
@@ -79,19 +83,15 @@ for result in data:
         else:
             if args.percent:
                 if plt.rcParams['text.usetex']:
-                    l.append('%.0f\\%%' % (raw[i] / args.factorize))
+                    l.append('%.1f\\%%' % (raw[i] / args.factorize))
                 else:
-                    l.append('%.0f%%' % (raw[i] / args.factorize))
+                    l.append('%.1f%%' % (raw[i] / args.factorize))
             else:
                 if raw[i] / args.factorize < 100.0 and not raw[i].is_integer():
                     l.append('%.1f' % (raw[i] / args.factorize))
                 else:
                     l.append('%.0f' % (raw[i] / args.factorize))
     labels.append(l)
-
-plt.rc('text', usetex=True)
-plt.rc('font', family='serif', serif='Times')
-fig, ax = plt.subplots()
 
 # Set color map to match blackbody, growing brighter for higher values
 colors = "viridis"
