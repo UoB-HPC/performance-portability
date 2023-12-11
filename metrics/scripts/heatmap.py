@@ -51,6 +51,9 @@ plt.rc('text', usetex=True)
 plt.rc('font', family='serif', serif='Times')
 fig, ax = plt.subplots()
 
+max_all = -np.inf
+min_all = np.inf
+
 for result in data:
     def get(name):
         str = result[name]
@@ -75,6 +78,8 @@ for result in data:
 
     series.append(result[series_key])
     heatmap.append([r if isinstance(r, float) else float('nan') for r in raw])
+    max_all = max(max_all, max(heatmap[len(heatmap)-1]))
+    min_all = min(min_all, min(heatmap[len(heatmap)-1]))
 
     l = []
     for i in range(len(raw)):
@@ -119,10 +124,18 @@ plt.gca().invert_yaxis()
 # Add colorbar
 plt.colorbar(cmesh)
 
+one_third = min_all + (max_all - min_all) / 3.0
+two_thirds = min_all + 2.0 * (max_all - min_all) / 3.0
+
 # Add labels
 for i in range(len(headings)):
     for j in range(len(series)):
+        labelcolor = 'black'
+        if args.higher_is_better and heatmap[j][i] < one_third: 
+            labelcolor='white'
+        elif not args.higher_is_better and heatmap[j][i] > two_thirds: 
+            labelcolor='white'
         plt.text(i + 0.5, j + 0.55, labels[j][i],
-                 ha='center', va='center', color='#b9c5bf', weight='bold', size='xx-large')
+                 ha='center', va='center', color=labelcolor, weight='bold', size='xx-large')
 
 plt.savefig(args.output, bbox_inches='tight')
