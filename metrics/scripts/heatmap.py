@@ -37,6 +37,8 @@ data = csv.DictReader(open(args.input))
 
 # Get the list of headings from first row
 headings = data.fieldnames[1:]
+if len(headings) < 1:
+    raise Exception("No input fields found")
 
 # Name of the series, what the rows in the CSV actually are
 series_key = data.fieldnames[0]
@@ -88,17 +90,24 @@ for result in data:
         else:
             if args.percent:
                 if plt.rcParams['text.usetex']:
-                    l.append('%.1f\\%%' % (raw[i] / args.factorize))
+                    if raw[i] / args.factorize < 100.0:
+                        l.append('%.1f\\%%' % (raw[i] / args.factorize))
+                    else:
+                        l.append('%.0f\\%%' % (raw[i] / args.factorize))
                 else:
-                    l.append('%.1f%%' % (raw[i] / args.factorize))
+                    if raw[i] / args.factorize < 100.0:
+                        l.append('%.1f%%' % (raw[i] / args.factorize))
+                    else:
+                        l.append('%.0f%%' % (raw[i] / args.factorize))
             else:
-                if raw[i] / args.factorize < 100.0 and not raw[i].is_integer():
+                if not raw[i].is_integer():
                     l.append('%.1f' % (raw[i] / args.factorize))
                 else:
                     l.append('%.0f' % (raw[i] / args.factorize))
     labels.append(l)
 
 # Set color map to match blackbody, growing brighter for higher values
+fig.set_figwidth(fig.get_figwidth() / 5 * len(l))
 colors = "viridis"
 if not args.higher_is_better:
     colors = colors + "_r"
@@ -124,8 +133,10 @@ plt.gca().invert_yaxis()
 # Add colorbar
 plt.colorbar(cmesh)
 
-one_third = min_all + (max_all - min_all) / 3.0
-two_thirds = min_all + 2.0 * (max_all - min_all) / 3.0
+#one_third = min_all + (max_all - min_all) / 3.0
+#two_thirds = min_all + 2.0 * (max_all - min_all) / 3.0
+one_third = max_all / 3.0
+two_thirds = 2.0 * max_all / 3.0
 
 # Add labels
 for i in range(len(headings)):
