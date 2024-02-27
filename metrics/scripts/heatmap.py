@@ -133,8 +133,6 @@ plt.gca().invert_yaxis()
 # Add colorbar
 plt.colorbar(cmesh)
 
-#one_third = min_all + (max_all - min_all) / 3.0
-#two_thirds = min_all + 2.0 * (max_all - min_all) / 3.0
 one_third = max_all / 3.0
 two_thirds = 2.0 * max_all / 3.0
 
