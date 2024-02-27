@@ -1,0 +1,39 @@
+Tue Feb 27 23:51:01 UTC 2024
+/home/aac/shared/teams/university-of-bristol/performance-portability/benchmarking/2024/babelstream/results/babelstream-mi210_rocm-5.7.1_hip
+	linux-vdso.so.1 (0x00007ffd5e650000)
+	libamdhip64.so.5 => /opt/rocm-5.7.1/lib/libamdhip64.so.5 (0x00007f2432e59000)
+	libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f2432c1a000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f2432b33000)
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f2432b13000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f24328eb000)
+	libamd_comgr.so.2 => /opt/rocm-5.7.1/lib/libamd_comgr.so.2 (0x00007f2429ffa000)
+	libhsa-runtime64.so.1 => /opt/rocm-5.7.1/lib/libhsa-runtime64.so.1 (0x00007f2429d3c000)
+	libnuma.so.1 => /lib/x86_64-linux-gnu/libnuma.so.1 (0x00007f2429d2f000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f24348b5000)
+	libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007f2429d13000)
+	libtinfo.so.6 => /lib/x86_64-linux-gnu/libtinfo.so.6 (0x00007f2429ce1000)
+	libelf.so.1 => /lib/x86_64-linux-gnu/libelf.so.1 (0x00007f2429cc1000)
+	libdrm.so.2 => /lib/x86_64-linux-gnu/libdrm.so.2 (0x00007f2429cab000)
+	libdrm_amdgpu.so.1 => /lib/x86_64-linux-gnu/libdrm_amdgpu.so.1 (0x00007f2429c9f000)
+
+Devices:
+0: 
+
+BabelStream
+Version: 5.0
+Implementation: HIP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using HIP device 
+Driver: 50731921
+Memory: DEFAULT
+Init: 0.508243 s (=25351.851629 MBytes/sec)
+Read: 0.421052 s (=30601.662013 MBytes/sec)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1374992.111 0.00625     0.00633     0.00630     
+Mul         1364659.838 0.00629     0.00633     0.00632     
+Add         1266560.330 0.01017     0.02258     0.01033     
+Triad       1263864.298 0.01019     0.02216     0.01034     
+Dot         1377224.855 0.00624     0.00640     0.00632     

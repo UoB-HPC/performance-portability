@@ -20,7 +20,7 @@ set -eu
 
 fetch_src() {
   if [ ! -e BabelStream/src/main.cpp ]; then
-    if ! git clone -b main https://github.com/uob-hpc/BabelStream; then
+    if ! git clone -b bugfix/cuda_pow2 https://github.com/gonzalobg/BabelStream; then
       echo
       echo "Failed to fetch source code."
       echo

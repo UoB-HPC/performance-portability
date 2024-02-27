@@ -6,8 +6,6 @@ BASE="$PWD"
 
 ROCM=rocm-5.7.1
 
-babelstream=true
-
 declare -A models
 models["ocl"]=true
 models["thrust"]=true
@@ -59,35 +57,42 @@ exec_submit() { # platform, compiler, model, app
 bench_exec() { # op, platform, compiler,  models...
     local app
     app="$(basename "$(dirname "$PWD")")"
-    if [ "${!app}" = true ]; then
-        for m in "${@:4}"; do
-            if [ "${models[$m]}" = true ]; then
-                $1 "$2" "$3" "$m" "$app"
-            fi
-        done
-    else
-        echo "# skipping $app"
-    fi
+
+    for m in "${@:4}"; do
+        if [ "${models[$m]}" = true ]; then
+            $1 "$2" "$3" "$m" "$app"
+        fi
+    done
 }
 
 bench_once() {
     bench "$1" "$2" "run" "${@:3}"
 }
 
- 
 case "$1" in
-local)
+aac)
 
-    ROCM=rocm-5.5.1
+    ROCM=rocm-5.7.1
 
     cd "$BASE/babelstream/results"
 
     (
-        bench_exec exec_build radeonvii-local $ROCM hip
+        HSA_XNACK=0 bench_exec exec_build mi210-amdaac $ROCM hip
         wait
     )
 
-    bench_exec exec_submit radeonvii-local $ROCM hip
+    HSA_XNACK=1 bench_exec exec_submit mi210-amdaac $ROCM hip
+    HSA_XNACK=0 bench_exec exec_submit mi210-amdaac $ROCM hip
+
+    cd "$BASE/babelstream-gonzalo/results"
+
+    (
+        HSA_XNACK=0 bench_exec exec_build mi210-amdaac $ROCM hip
+        wait
+    )
+
+    HSA_XNACK=1 bench_exec exec_submit mi210-amdaac $ROCM hip
+    HSA_XNACK=0 bench_exec exec_submit mi210-amdaac $ROCM hip
 
     ;;
 *)
