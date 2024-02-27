@@ -7,7 +7,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 import argparse
-from statistics import mean, harmonic_mean, median
+from statistics import mean, harmonic_mean, geometric_mean, median
 import math
 import sys
 
@@ -16,7 +16,9 @@ def geomean(n):
     # geometric_mean was not added to statistics until Python 3.8
     if (sys.version_info.major > 3) or (
             sys.version_info.major == 3 and sys.version_info.minor >= 8):
-        return statistics.geometric_mean(n)
+        if 0 in n:
+            return 0
+        return geometric_mean(n)
     else:
         return np.prod(n)**(1.0 / float(len(n)))
 
@@ -70,7 +72,6 @@ data = pd.read_csv(
     args.input_file,
     skipinitialspace=True,
     sep=r',\s+',
-    delimiter=',',
     na_values='X')
 
 # In the case of trailing whitespace, the X don't get converted.
@@ -124,7 +125,8 @@ results = pd.DataFrame()
 for (name, f) in averages.items():
     avg = data_nona.apply(f, raw=True).copy()
     avg.name = name
-    results = results.append(avg, ignore_index=False)
+    results = pd.concat([results, avg], axis=1, ignore_index=False)
+results = results.transpose()
 
 # Sort columns according to their PP value
 # sort_index is not supported by old Pandas

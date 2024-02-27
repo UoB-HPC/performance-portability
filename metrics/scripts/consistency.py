@@ -113,7 +113,6 @@ data = pd.read_csv(
     args.input_file,
     skipinitialspace=True,
     sep=r',\s+',
-    delimiter=',',
     na_values='X')
 
 # In the case of trailing whitespace, the X don't get converted.
@@ -167,7 +166,8 @@ results = pd.DataFrame()
 for (name, f) in measures.items():
     measure = data_nona.apply(f, raw=True).copy()
     measure.name = name
-    results = results.append(measure, ignore_index=False)
+    results = pd.concat([results, measure], axis=1, ignore_index=False)
+results = results.transpose()
 
 # Sort columns according to their PP value
 # sort_index is not supported by old Pandas

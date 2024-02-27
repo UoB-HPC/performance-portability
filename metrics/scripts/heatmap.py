@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 # Copyright (c) 2020 Performance Portability authors
 # SPDX-License-Identifier: MIT
 
@@ -37,6 +37,8 @@ data = csv.DictReader(open(args.input))
 
 # Get the list of headings from first row
 headings = data.fieldnames[1:]
+if len(headings) < 1:
+    raise Exception("No input fields found")
 
 # Name of the series, what the rows in the CSV actually are
 series_key = data.fieldnames[0]
@@ -46,6 +48,13 @@ series = []  # a row in the input file
 
 heatmap = []  # empty, to be populated by reading the input file
 labels = []  # labels to display in each heatmap entry
+
+plt.rc('text', usetex=True)
+plt.rc('font', family='serif', serif='Times')
+fig, ax = plt.subplots()
+
+max_all = -np.inf
+min_all = np.inf
 
 for result in data:
     def get(name):
@@ -58,7 +67,7 @@ for result in data:
     def eff(a, b):
         if isinstance(a, float) and isinstance(b, float):
             return float(100.0 * (a / b))
-        elif a is '-' or b is '-':
+        elif a == '-' or b == '-':
             return float(-100.0)
         else:
             return float(0.0)
@@ -70,7 +79,9 @@ for result in data:
         continue
 
     series.append(result[series_key])
-    heatmap.append([r if isinstance(r, float) else 0.0 for r in raw])
+    heatmap.append([r if isinstance(r, float) else float('nan') for r in raw])
+    max_all = max(max_all, max(heatmap[len(heatmap)-1]))
+    min_all = min(min_all, min(heatmap[len(heatmap)-1]))
 
     l = []
     for i in range(len(raw)):
@@ -79,57 +90,61 @@ for result in data:
         else:
             if args.percent:
                 if plt.rcParams['text.usetex']:
-                    l.append('%.0f\\%%' % (raw[i] / args.factorize))
+                    if raw[i] / args.factorize < 100.0:
+                        l.append('%.1f\\%%' % (raw[i] / args.factorize))
+                    else:
+                        l.append('%.0f\\%%' % (raw[i] / args.factorize))
                 else:
-                    l.append('%.0f%%' % (raw[i] / args.factorize))
+                    if raw[i] / args.factorize < 100.0:
+                        l.append('%.1f%%' % (raw[i] / args.factorize))
+                    else:
+                        l.append('%.0f%%' % (raw[i] / args.factorize))
             else:
-                if raw[i] / args.factorize < 100.0:
+                if not raw[i].is_integer():
                     l.append('%.1f' % (raw[i] / args.factorize))
                 else:
                     l.append('%.0f' % (raw[i] / args.factorize))
     labels.append(l)
 
-plt.rcParams.update({
-    "font.family": "serif",  # use serif/main font for text elements
-    "text.usetex": False,     # use inline math for ticks
-    "pgf.rcfonts": False,    # don't setup fonts from rc parameters
-})
-fig, ax = plt.subplots()
-fig.set_size_inches(4, 3)
-
 # Set color map to match blackbody, growing brighter for higher values
-colors = "gist_heat"
+fig.set_figwidth(fig.get_figwidth() / 5 * len(l))
+colors = "viridis"
 if not args.higher_is_better:
     colors = colors + "_r"
-cmap = plt.cm.get_cmap(colors)
-x = np.arange(7)
-y = np.arange(11)
+cmap = plt.get_cmap(colors)
+x = np.arange(len(l)+1)
+y = np.arange(len(heatmap)+1)
+masked = np.ma.masked_where(np.isnan(heatmap),heatmap)
 cmesh = plt.pcolormesh(
     x,
     y,
-    np.array(heatmap),
+    masked,
     cmap=cmap,
     edgecolors='k',
     vmin=1.0E-6)
 ax.set_yticks(np.arange(len(heatmap)) + 0.5, minor=False)
 ax.set_xticks(np.arange(len(heatmap[0])) + 0.5, minor=False)
-
-ax.set_yticklabels(series)
+ax.set_yticklabels(series, fontsize='xx-large')
 for i in range(len(headings)):
-    heading = headings[i].replace('_', r'\_')
-    if not plt.rcParams['text.usetex']:
-        heading = heading.replace(r"\%", "%")
-    headings[i] = heading
-ax.set_xticklabels(headings, rotation=45, ha="right", rotation_mode="anchor")
+  headings[i] = headings[i].replace('_', '\_')
+ax.set_xticklabels(headings, fontsize='xx-large', rotation=45)
 plt.gca().invert_yaxis()
 
 # Add colorbar
 plt.colorbar(cmesh)
 
+one_third = max_all / 3.0
+two_thirds = 2.0 * max_all / 3.0
+
 # Add labels
 for i in range(len(headings)):
     for j in range(len(series)):
-        plt.text(i + 0.9, j + 0.5, labels[j][i],
-                 ha='right', va='center', color='#b9c5bf', fontsize='small')
+        labelcolor = 'black'
+        if args.higher_is_better and heatmap[j][i] < one_third: 
+            labelcolor='white'
+        elif not args.higher_is_better and heatmap[j][i] > two_thirds: 
+            labelcolor='white'
+        plt.text(i + 0.5, j + 0.55, labels[j][i],
+                 ha='center', va='center', color=labelcolor, weight='bold', size='xx-large')
 
 plt.savefig(args.output, bbox_inches='tight')
