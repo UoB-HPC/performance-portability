@@ -1,0 +1,68 @@
+#!/bin/bash
+#SBATCH --partition=standard-g
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --gpus-per-node=1
+#SBATCH --time=00:05:00
+#SBATCH --exclusive
+#SBATCH --account=project_462000397
+
+# : >"$OUT_FILE"
+# exec &> >(tee -a "$OUT_FILE")
+
+set -eu
+
+cd "$RUN_DIR" || exit 2
+date
+echo "$PWD"
+ldd "$BENCHMARK_EXE"
+
+if [ "${LARGE:-}" = true ]; then
+    opts=("--arraysize" "536870912")
+fi
+
+export OMP_TARGET_OFFLOAD=MANDATORY
+
+case "$COMPILER" in
+oneapi-*)
+    export ONEAPI_DEVICE_SELECTOR="hip:*"
+    ;;
+hipsycl-*)
+    export HIPSYCL_VISIBILITY_MASK="hip;omp"
+    export HIPSYCL_DEBUG_LEVEL=1
+    opts+=("--device")
+    opts+=("1")
+    ;;
+roc-stdpar-interpose-*)
+    #
+    ;;
+*) ;;
+esac
+
+# rocm-smi
+# rocminfo
+
+case "$MODEL" in
+hip | std-* | kokkos | ocl | thrust)
+    "$BENCHMARK_EXE" --list
+    "$BENCHMARK_EXE" "${opts[@]:-}"
+    ;;
+omp)
+    "$BENCHMARK_EXE" --list
+    "$BENCHMARK_EXE" "${opts[@]:-}"
+    ;;
+sycl*)
+    "$BENCHMARK_EXE" --list
+    # 0: Intel(R) FPGA Emulation Device
+    # 1: AMD EPYC 7763 64-Core Processor
+    # 2: gfx908:sramecc+:xnack- <--
+    # 3: gfx908:sramecc+:xnack-
+    # 4: gfx908:sramecc+:xnack-
+    # 5: gfx908:sramecc+:xnack-
+    "$BENCHMARK_EXE" "${opts[@]:-}"
+    ;;
+*)
+    echo "Unknown run configuration for model '$MODEL'"
+    exit 1
+    ;;
+esac

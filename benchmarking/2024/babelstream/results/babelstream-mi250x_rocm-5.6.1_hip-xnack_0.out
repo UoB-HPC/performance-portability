@@ -1,0 +1,50 @@
+Wed 28 Feb 2024 02:52:47 AM EET
+/users/tomlin/performance-portability/benchmarking/2024/babelstream/results/babelstream-mi250x_rocm-5.6.1_hip
+	linux-vdso.so.1 (0x00007ffe8459f000)
+	libamdhip64.so.5 => /appl/lumi/SW/LUMI-23.09/G/EB/rocm/5.6.1/lib/libamdhip64.so.5 (0x000015196830a000)
+	libstdc++.so.6 => /usr/lib64/libstdc++.so.6 (0x0000151967ecd000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000151967d81000)
+	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x0000151967b63000)
+	libc.so.6 => /lib64/libc.so.6 (0x000015196796a000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000151967965000)
+	librt.so.1 => /lib64/librt.so.1 (0x000015196795b000)
+	libamd_comgr.so.2 => /appl/lumi/SW/LUMI-23.09/G/EB/rocm/5.6.1/lib/libamd_comgr.so.2 (0x000015195f480000)
+	libhsa-runtime64.so.1 => /appl/lumi/SW/LUMI-23.09/G/EB/rocm/5.6.1/lib/libhsa-runtime64.so.1 (0x000015195f1e1000)
+	libnuma.so.1 => /usr/lib64/libnuma.so.1 (0x000015195efd3000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000015195efaf000)
+	/lib64/ld-linux-x86-64.so.2 (0x00001519699d5000)
+	libz.so.1 => /lib64/libz.so.1 (0x000015195ed98000)
+	libzstd.so.1 => /usr/lib64/libzstd.so.1 (0x000015195ec67000)
+	libtinfo.so.6 => /lib64/libtinfo.so.6 (0x000015195ea39000)
+	libelf.so.1 => /usr/lib64/libelf.so.1 (0x000015195e81e000)
+	libdrm.so.2 => /usr/lib64/libdrm.so.2 (0x000015195e60a000)
+	libdrm_amdgpu.so.1 => /usr/lib64/libdrm_amdgpu.so.1 (0x000015195e400000)
+
+Devices:
+0: 
+1: 
+2: 
+3: 
+4: 
+5: 
+6: 
+7: 
+
+BabelStream
+Version: 5.0
+Implementation: HIP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using HIP device 
+Driver: 50631062
+Memory: DEFAULT
+Init: 1.808072 s (=7126.322977 MBytes/sec)
+Read: 3.428844 s (=3757.797296 MBytes/sec)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1379391.539 0.00623     0.00631     0.00626     
+Mul         1374215.614 0.00625     0.00632     0.00630     
+Add         1219757.927 0.01056     0.01071     0.01064     
+Triad       1223002.444 0.01054     0.01070     0.01062     
+Dot         1208498.467 0.00711     0.00718     0.00714     

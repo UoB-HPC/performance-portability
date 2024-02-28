@@ -1,0 +1,53 @@
+Wed 28 Feb 2024 02:52:45 AM EET
+/users/tomlin/performance-portability/benchmarking/2024/babelstream/results/babelstream-mi250x_rocm-5.6.1_hip
+	linux-vdso.so.1 (0x00007fff15f57000)
+	libamdhip64.so.5 => /appl/lumi/SW/LUMI-23.09/G/EB/rocm/5.6.1/lib/libamdhip64.so.5 (0x00001551502ea000)
+	libstdc++.so.6 => /usr/lib64/libstdc++.so.6 (0x000015514fead000)
+	libm.so.6 => /lib64/libm.so.6 (0x000015514fd61000)
+	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x000015514fb43000)
+	libc.so.6 => /lib64/libc.so.6 (0x000015514f94a000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000015514f945000)
+	librt.so.1 => /lib64/librt.so.1 (0x000015514f93b000)
+	libamd_comgr.so.2 => /appl/lumi/SW/LUMI-23.09/G/EB/rocm/5.6.1/lib/libamd_comgr.so.2 (0x0000155147460000)
+	libhsa-runtime64.so.1 => /appl/lumi/SW/LUMI-23.09/G/EB/rocm/5.6.1/lib/libhsa-runtime64.so.1 (0x00001551471c1000)
+	libnuma.so.1 => /usr/lib64/libnuma.so.1 (0x0000155146fb3000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000155146f8f000)
+	/lib64/ld-linux-x86-64.so.2 (0x00001551519b5000)
+	libz.so.1 => /lib64/libz.so.1 (0x0000155146d78000)
+	libzstd.so.1 => /usr/lib64/libzstd.so.1 (0x0000155146c47000)
+	libtinfo.so.6 => /lib64/libtinfo.so.6 (0x0000155146a19000)
+	libelf.so.1 => /usr/lib64/libelf.so.1 (0x00001551467fe000)
+	libdrm.so.2 => /usr/lib64/libdrm.so.2 (0x00001551465ea000)
+	libdrm_amdgpu.so.1 => /usr/lib64/libdrm_amdgpu.so.1 (0x00001551463e0000)
+
+Devices:
+0: 
+1: 
+2: 
+3: 
+4: 
+5: 
+6: 
+7: 
+
+BabelStream
+Version: 5.0
+Implementation: HIP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using HIP device 
+Driver: 50631062
+Memory: DEFAULT
+Init: 0.002860 s (=4505909.969240 MBytes/sec)
+Read: 3.570043 s (=3609.172531 MBytes/sec)
+Validation failed on a[]. Average error 0.00168703
+Validation failed on b[]. Average error 0.00070293
+Validation failed on c[]. Average error 0.00246025
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1379919.147 0.00622     0.00627     0.00625     
+Mul         1372020.001 0.00626     0.00633     0.00629     
+Add         1305428.648 0.00987     0.01018     0.01010     
+Triad       1292834.890 0.00997     0.01018     0.01011     
+Dot         1236604.846 0.00695     0.00703     0.00699     

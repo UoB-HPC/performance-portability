@@ -1,0 +1,50 @@
+Wed 28 Feb 2024 02:53:19 AM EET
+/users/tomlin/performance-portability/benchmarking/2024/babelstream-gonzalo/results/babelstream-mi250x_rocm-5.6.1_hip
+	linux-vdso.so.1 (0x00007ffcd533c000)
+	libamdhip64.so.5 => /appl/lumi/SW/LUMI-23.09/G/EB/rocm/5.6.1/lib/libamdhip64.so.5 (0x0000154772bdd000)
+	libstdc++.so.6 => /usr/lib64/libstdc++.so.6 (0x00001547727a0000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000154772654000)
+	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x0000154772436000)
+	libc.so.6 => /lib64/libc.so.6 (0x000015477223d000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000154772238000)
+	librt.so.1 => /lib64/librt.so.1 (0x000015477222e000)
+	libamd_comgr.so.2 => /appl/lumi/SW/LUMI-23.09/G/EB/rocm/5.6.1/lib/libamd_comgr.so.2 (0x0000154769d53000)
+	libhsa-runtime64.so.1 => /appl/lumi/SW/LUMI-23.09/G/EB/rocm/5.6.1/lib/libhsa-runtime64.so.1 (0x0000154769ab4000)
+	libnuma.so.1 => /usr/lib64/libnuma.so.1 (0x00001547698a6000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000154769882000)
+	/lib64/ld-linux-x86-64.so.2 (0x00001547742a8000)
+	libz.so.1 => /lib64/libz.so.1 (0x000015476966b000)
+	libzstd.so.1 => /usr/lib64/libzstd.so.1 (0x000015476953a000)
+	libtinfo.so.6 => /lib64/libtinfo.so.6 (0x000015476930c000)
+	libelf.so.1 => /usr/lib64/libelf.so.1 (0x00001547690f1000)
+	libdrm.so.2 => /usr/lib64/libdrm.so.2 (0x0000154768edd000)
+	libdrm_amdgpu.so.1 => /usr/lib64/libdrm_amdgpu.so.1 (0x0000154768cd3000)
+
+Devices:
+0: 
+1: 
+2: 
+3: 
+4: 
+5: 
+6: 
+7: 
+
+BabelStream
+Version: 5.0
+Implementation: HIP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using HIP device 
+Driver: 50631062
+Memory: DEFAULT
+Init: 1.827772 s (=7049.511121 MBytes/sec)
+Read: 0.997273 s (=12920.136832 MBytes/sec)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1375719.470 0.00624     0.00631     0.00627     
+Mul         1372130.459 0.00626     0.00636     0.00632     
+Add         1233660.635 0.01044     0.01074     0.01065     
+Triad       1222154.572 0.01054     0.01070     0.01061     
+Dot         1209410.977 0.00710     0.00718     0.00713     

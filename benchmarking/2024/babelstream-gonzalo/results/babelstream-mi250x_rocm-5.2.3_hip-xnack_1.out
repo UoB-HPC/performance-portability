@@ -1,0 +1,49 @@
+Wed 28 Feb 2024 02:49:57 AM EET
+/users/tomlin/performance-portability/benchmarking/2024/babelstream-gonzalo/results/babelstream-mi250x_rocm-5.2.3_hip
+	linux-vdso.so.1 (0x00007fff2ef08000)
+	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x00001477c1c4f000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00001477c1c2b000)
+	libm.so.6 => /lib64/libm.so.6 (0x00001477c1adf000)
+	librt.so.1 => /lib64/librt.so.1 (0x00001477c1ad5000)
+	libamdhip64.so.5 => /opt/rocm/lib/libamdhip64.so.5 (0x00001477c0ba5000)
+	libstdc++.so.6 => /usr/lib64/libstdc++.so.6 (0x00001477c0780000)
+	libc.so.6 => /lib64/libc.so.6 (0x00001477c0589000)
+	/lib64/ld-linux-x86-64.so.2 (0x00001477c1e87000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00001477c0584000)
+	libamd_comgr.so.2 => /opt/rocm/lib/libamd_comgr.so.2 (0x00001477b8ec2000)
+	libhsa-runtime64.so.1 => /opt/rocm/lib/libhsa-runtime64.so.1 (0x00001477b8a76000)
+	libnuma.so.1 => /usr/lib64/libnuma.so.1 (0x00001477b886a000)
+	libz.so.1 => /lib64/libz.so.1 (0x00001477b8653000)
+	libtinfo.so.6 => /lib64/libtinfo.so.6 (0x00001477b8425000)
+	libelf.so.1 => /usr/lib64/libelf.so.1 (0x00001477b820c000)
+	libdrm.so.2 => /usr/lib64/libdrm.so.2 (0x00001477b7ff6000)
+	libdrm_amdgpu.so.1 => /usr/lib64/libdrm_amdgpu.so.1 (0x00001477b7dec000)
+
+Devices:
+0: 
+1: 
+2: 
+3: 
+4: 
+5: 
+6: 
+7: 
+
+BabelStream
+Version: 5.0
+Implementation: HIP
+Running kernels 100 times
+Precision: double
+Array size: 4295.0 MB (=4.3 GB)
+Total size: 12884.9 MB (=12.9 GB)
+Using HIP device 
+Driver: 50221153
+Memory: DEFAULT
+Init: 5.864380 s (=2197.146419 MBytes/sec)
+Read: 0.517567 s (=24895.136074 MBytes/sec)
+Function    MBytes/sec  Min (sec)   Max         Average     
+Copy        1377959.442 0.00623     0.00629     0.00626     
+Mul         1370374.010 0.00627     0.00638     0.00630     
+Add         1305312.931 0.00987     0.01018     0.01009     
+Triad       1295799.795 0.00994     0.01020     0.01010     
+Dot         1247766.400 0.00688     0.00697     0.00693     

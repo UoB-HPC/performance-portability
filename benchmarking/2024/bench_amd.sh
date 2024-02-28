@@ -95,6 +95,24 @@ aac)
     HSA_XNACK=0 bench_exec exec_submit mi210-amdaac $ROCM hip
 
     ;;
+lumi)
+
+    # ROCM=rocm-5.2.3
+    ROCM=rocm-5.6.1
+
+    cd "$BASE/babelstream/results"
+    HSA_XNACK=0 bench_exec exec_build mi250x-lumi $ROCM hip
+
+    HSA_XNACK=1 bench_exec exec_submit mi250x-lumi $ROCM hip
+    HSA_XNACK=0 bench_exec exec_submit mi250x-lumi $ROCM hip
+
+    cd "$BASE/babelstream-gonzalo/results"
+    HSA_XNACK=0 bench_exec exec_build mi250x-lumi $ROCM hip
+
+    HSA_XNACK=1 bench_exec exec_submit mi250x-lumi $ROCM hip
+    HSA_XNACK=0 bench_exec exec_submit mi250x-lumi $ROCM hip
+
+    ;;
 *)
     echo "Bad platform $1"
     ;;
